@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { testConnection } from "./config/db";
 import taskRoutes from "./routes/task.routes";
+import leadRoutes from "./routes/lead.routes";
+import proposalRoutes from "./routes/proposal.routes";
 
 dotenv.config();
 
@@ -17,6 +19,8 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/tasks", taskRoutes);
+app.use("/api/leads", leadRoutes);
+app.use("/api/proposals", proposalRoutes);
 
 async function start() {
   await testConnection();

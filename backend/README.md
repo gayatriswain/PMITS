@@ -45,6 +45,8 @@ mysql -u root -p < sql/schema.sql
 | POST   | `/api/tasks`     | create a task      |
 | PUT    | `/api/tasks/:id` | update a task      |
 | DELETE | `/api/tasks/:id` | delete a task      |
+| POST   | `/api/leads`     | save a "Start Your Project" enquiry (`idea`, `email`) |
+| POST   | `/api/proposals` | save a "Get My Free Proposal" request (`firstName`, `lastName`, `email`, `phone`, `location`, `message`) |
 
 Add new resources the same way: a table in `sql/schema.sql`, a controller in `src/controllers/`, a router in `src/routes/`, mounted in `src/server.ts`.
 

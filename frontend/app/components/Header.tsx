@@ -23,6 +23,7 @@ const navLinks = [
   { label: "Services", href: "/services", dropdown: true },
   { label: "Portfolio", href: "/portfolio" },
   { label: "About Us", href: "/about" },
+  { label: "Who We Are", href: "/who-we-are" },
   { label: "Location", href: "/location" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Blog", href: "/blog" },
@@ -40,6 +41,7 @@ const serviceLinks = [
   { label: "Web Hosting", href: "/services/web-hosting" },
   { label: "Shopify Web Design", href: "/services/shopify-web-design" },
   { label: "Custom Development", href: "/services/custom-development" },
+  { label: "Hire WooCommerce Developers", href: "/services/hire-woocommerce-developers" },
 ];
 
 const BRAND = "#0b3b35";
