@@ -1,10 +1,10 @@
-import WhyChooseUsHero from "@/app/components/WhyChooseUsHero";
-import WhyChooseUsBenefits from "@/app/components/WhyChooseUsBenefits";
-import WhyChooseUsApproach from "@/app/components/WhyChooseUsApproach";
-import HowWeWorkProcess from "@/app/components/HowWeWorkProcess";
-import WhyChooseUsValue from "@/app/components/WhyChooseUsValue";
-import WhyChooseUsFutureReady from "@/app/components/WhyChooseUsFutureReady";
-import WhyChooseUsProposalForm from "@/app/components/WhyChooseUsProposalForm";
+import WhyChooseUsHero from "@/app/components/why-choose-us/WhyChooseUsHero";
+import WhyChooseUsBenefits from "@/app/components/why-choose-us/WhyChooseUsBenefits";
+import WhyChooseUsApproach from "@/app/components/why-choose-us/WhyChooseUsApproach";
+import HowWeWorkProcess from "@/app/components/why-choose-us/HowWeWorkProcess";
+import WhyChooseUsValue from "@/app/components/why-choose-us/WhyChooseUsValue";
+import WhyChooseUsFutureReady from "@/app/components/why-choose-us/WhyChooseUsFutureReady";
+import WhyChooseUsProposalForm from "@/app/components/why-choose-us/WhyChooseUsProposalForm";
 
 export const metadata = {
   title: "Why Choose Us | ProManage",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import BlogHero from "../components/BlogHero";
-import BlogInsights from "../components/BlogInsights";
-import BlogGrid from "../components/BlogGrid";
+import BlogHero from "../components/blog/BlogHero";
+import BlogInsights from "../components/blog/BlogInsights";
+import BlogGrid from "../components/blog/BlogGrid";
 
 export const metadata: Metadata = {
   title: "Blog & Insights | ProManage",

@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import Container from "../components/Container";
-import TrustedBar from "../components/TrustedBar";
-import IndustriesWeEmpower from "../components/IndustriesWeEmpower";
-import RecentSuccessStories from "../components/RecentSuccessStories";
-import WhyChooseUs from "../components/WhyChooseUs";
-import ClientStories from "../components/ClientStories";
-import FAQSection from "../components/FAQSection";
-import CtaSection from "../components/CtaSection";
+import Container from "../components/shared/Container";
+import TrustedBar from "../components/shared/TrustedBar";
+import IndustriesWeEmpower from "../components/location/IndustriesWeEmpower";
+import RecentSuccessStories from "../components/location/RecentSuccessStories";
+import WhyChooseUs from "../components/shared/WhyChooseUs";
+import ClientStories from "../components/shared/ClientStories";
+import FAQSection from "../components/shared/FAQSection";
+import CtaSection from "../components/shared/CtaSection";
 import {
   ArrowIcon,
   BriefcaseIcon,
@@ -30,7 +30,7 @@ import {
   TrophyIcon,
   UserIcon,
   UsersIcon,
-} from "../components/icons";
+} from "../components/shared/icons";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";

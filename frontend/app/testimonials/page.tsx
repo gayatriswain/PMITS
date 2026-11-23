@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import TestimonialsHero from "../components/TestimonialsHero";
-import TestimonialsAwards from "../components/TestimonialsAwards";
-import ClientStories from "../components/ClientStories";
-import TestimonialsPlatforms from "../components/TestimonialsPlatforms";
-import TestimonialsStrategy from "../components/TestimonialsStrategy";
+import TestimonialsHero from "../components/testimonials/TestimonialsHero";
+import TestimonialsAwards from "../components/testimonials/TestimonialsAwards";
+import ClientStories from "../components/shared/ClientStories";
+import TestimonialsPlatforms from "../components/testimonials/TestimonialsPlatforms";
+import TestimonialsStrategy from "../components/testimonials/TestimonialsStrategy";
 
 export const metadata: Metadata = {
   title: "Client Testimonials | ProManage",

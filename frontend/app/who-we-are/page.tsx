@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import WhoWeAreHero from "../components/WhoWeAreHero";
-import WhoWeAreSolve from "../components/WhoWeAreSolve";
-import WhoWeAreApproach from "../components/WhoWeAreApproach";
-import WhoWeAreMission from "../components/WhoWeAreMission";
-import WhoWeAreVision from "../components/WhoWeAreVision";
-import WhoWeAreValues from "../components/WhoWeAreValues";
-import WooProposal from "../components/WooProposal";
+import WhoWeAreHero from "../components/who-we-are/WhoWeAreHero";
+import WhoWeAreSolve from "../components/who-we-are/WhoWeAreSolve";
+import WhoWeAreApproach from "../components/who-we-are/WhoWeAreApproach";
+import WhoWeAreMission from "../components/who-we-are/WhoWeAreMission";
+import WhoWeAreVision from "../components/who-we-are/WhoWeAreVision";
+import WhoWeAreValues from "../components/who-we-are/WhoWeAreValues";
+import WooProposal from "../components/shared/WooProposal";
 
 export const metadata: Metadata = {
   title: "Who We Are | ProManage",

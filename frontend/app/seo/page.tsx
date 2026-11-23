@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import SeoHero from "../components/SeoHero";
-import SeoOpportunity from "../components/SeoOpportunity";
-import SeoTransformation from "../components/SeoTransformation";
-import SeoProcess from "../components/SeoProcess";
-import SeoEcosystem from "../components/SeoEcosystem";
-import SeoGrowthFramework from "../components/SeoGrowthFramework";
-import WebsiteDevComparison from "../components/WebsiteDevComparison";
-import FAQSection from "../components/FAQSection";
+import SeoHero from "../components/seo/SeoHero";
+import SeoOpportunity from "../components/seo/SeoOpportunity";
+import SeoTransformation from "../components/seo/SeoTransformation";
+import SeoProcess from "../components/seo/SeoProcess";
+import SeoEcosystem from "../components/seo/SeoEcosystem";
+import SeoGrowthFramework from "../components/seo/SeoGrowthFramework";
+import WebsiteDevComparison from "../components/shared/WebsiteDevComparison";
+import FAQSection from "../components/shared/FAQSection";
 
 export const metadata: Metadata = {
   title: "SEO Services | ProManage",

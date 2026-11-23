@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Container from "../components/Container";
+import Container from "../components/shared/Container";
 import {
   BoltIcon,
   ArrowIcon,
@@ -13,7 +13,7 @@ import {
   CloudUploadIcon,
   LockIcon,
   UsersIcon,
-} from "../components/icons";
+} from "../components/shared/icons";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";

@@ -1,17 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import Container from "./components/Container";
-import GrowthDashboardCard from "./components/GrowthDashboardCard";
-import ProjectsCarousel from "./components/ProjectsCarousel";
-import CoreExpertise from "./components/CoreExpertise";
-import TrustedBar from "./components/TrustedBar";
-import WhyChooseUs from "./components/WhyChooseUs";
-import ServicesShowcase from "./components/ServicesShowcase";
-import ClientStories from "./components/ClientStories";
-import OurWork from "./components/OurWork";
-import AboutBento from "./components/AboutBento";
-import FAQSection from "./components/FAQSection";
-import CtaSection from "./components/CtaSection";
+import Container from "./components/shared/Container";
+import GrowthDashboardCard from "./components/home/GrowthDashboardCard";
+import ProjectsCarousel from "./components/home/ProjectsCarousel";
+import CoreExpertise from "./components/home/CoreExpertise";
+import TrustedBar from "./components/shared/TrustedBar";
+import WhyChooseUs from "./components/shared/WhyChooseUs";
+import ServicesShowcase from "./components/home/ServicesShowcase";
+import ClientStories from "./components/shared/ClientStories";
+import OurWork from "./components/home/OurWork";
+import AboutBento from "./components/home/AboutBento";
+import FAQSection from "./components/shared/FAQSection";
+import CtaSection from "./components/shared/CtaSection";
 import {
   PinIcon,
   ArrowIcon,
@@ -24,7 +24,7 @@ import {
   ShieldCheckIcon,
   BriefcaseIcon,
   SparkleIcon,
-} from "./components/icons";
+} from "./components/shared/icons";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
