@@ -15,7 +15,9 @@ import {
   Film,
   Glasses,
   Globe,
+  Hexagon,
   LayoutDashboard,
+  Package,
   PenTool,
   Server,
   Share2,
@@ -129,6 +131,8 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
       { label: "Hire CakePHP Developers", href: "/services/hire-cakephp-developers", desc: "Secure CakePHP applications", icon: Cake },
       { label: "Hire ASP.NET Developers", href: "/services/hire-aspnet-developers", desc: "Enterprise-grade .NET apps", icon: Cpu, badge: "New" },
       { label: "Hire Shopify Developers", href: "/services/hire-shopify-developers", desc: "Custom Shopify builds", icon: ShoppingBag },
+      { label: "Hire Magento Developers", href: "/services/hire-magento-developers", desc: "Scalable Magento stores", icon: Hexagon },
+      { label: "Hire BigCommerce Developers", href: "/services/hire-bigcommerce-developers", desc: "BigCommerce builds that grow", icon: Package },
     ],
   },
 ];

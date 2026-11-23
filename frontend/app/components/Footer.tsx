@@ -37,6 +37,8 @@ const linkColumns: { title: string; links: { label: string; href?: string }[] }[
       { label: "CakePHP Developers", href: "/services/hire-cakephp-developers" },
       { label: "ASP.NET Developers", href: "/services/hire-aspnet-developers" },
       { label: "Shopify Developers", href: "/services/hire-shopify-developers" },
+      { label: "Magento Developers", href: "/services/hire-magento-developers" },
+      { label: "BigCommerce Developers", href: "/services/hire-bigcommerce-developers" },
       { label: "Social Media Marketing", href: "/services/social-media-marketing" },
       { label: "Google Ads", href: "/services/google-ads" },
       { label: "Animation & Graphic Design", href: "/services/animation-and-graphic-design" },
