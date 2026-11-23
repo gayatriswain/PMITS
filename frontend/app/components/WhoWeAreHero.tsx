@@ -406,8 +406,12 @@ const beltProgress = (i: number, seconds: number, fromEmpty = false) => {
   if (fromEmpty && raw < 1) return -1;
   return (raw + 1) % 1;
 };
+// panels fade in as they leave the wall, then slowly fade away over the front stretch of the belt
+const FADE_FROM = 0.5;
+const FADE_TO = 0.85;
+const beltOpacity = (p: number) => Math.min(1, p / 0.03, Math.max(0, (FADE_TO - p) / (FADE_TO - FADE_FROM)));
 const beltStyle = (p: number) =>
-  p < 0 ? { offsetDistance: "0%", opacity: 0 } : { offsetDistance: `${p * 100}%`, opacity: Math.min(1, p / 0.03) };
+  p < 0 ? { offsetDistance: "0%", opacity: 0 } : { offsetDistance: `${p * 100}%`, opacity: beltOpacity(p) };
 // tiny where the belt emerges far away, growing steadily to full size as the panel comes forward
 const growStyle = (p: number) => ({ transform: `scale(${PANEL_SCALE * (0.12 + 0.88 * Math.sqrt(Math.min(1, p / 0.7)))})` });
 

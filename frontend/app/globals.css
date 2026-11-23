@@ -10,6 +10,8 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-playfair);
+  --font-playfair: var(--font-playfair);
+  --font-caveat: var(--font-caveat);
   --font-heading: var(--font-sans);
   --font-subheading: var(--font-geist-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -69,7 +71,15 @@ h6 {
 }
 
 button {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: inherit;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), Georgia, serif !important;
+}
+
+.font-caveat {
+  font-family: var(--font-caveat), cursive, sans-serif !important;
 }
 
 .no-scrollbar {

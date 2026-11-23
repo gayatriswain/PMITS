@@ -23,18 +23,47 @@ const TEAL = "#0d9488";
 const DARK_BG = "#0a1f33";
 const DARK_CARD = "#0d2b46";
 
-const linkColumns = [
+// every page on the site, grouped; "Industries" has no pages of its own yet, so its entries aren't links
+const linkColumns: { title: string; links: { label: string; href?: string }[] }[] = [
   {
     title: "Services",
     links: [
-      "WordPress Development",
-      "SEO Services",
-      "Website Design",
-      "E-commerce Solutions",
-      "Custom Development",
-      "Website Maintenance",
-      "Speed & Security",
-      "Conversion Optimization",
+      { label: "Website Development", href: "/website-development" },
+      { label: "App Development", href: "/services/app-development" },
+      { label: "Custom Development", href: "/services/custom-development" },
+      { label: "Shopify Web Design", href: "/services/shopify-web-design" },
+      { label: "WooCommerce Developers", href: "/services/hire-woocommerce-developers" },
+      { label: "Core PHP Developers", href: "/services/hire-core-php-developers" },
+      { label: "CakePHP Developers", href: "/services/hire-cakephp-developers" },
+      { label: "ASP.NET Developers", href: "/services/hire-aspnet-developers" },
+      { label: "Shopify Developers", href: "/services/hire-shopify-developers" },
+      { label: "Social Media Marketing", href: "/services/social-media-marketing" },
+      { label: "Google Ads", href: "/services/google-ads" },
+      { label: "Animation & Graphic Design", href: "/services/animation-and-graphic-design" },
+      { label: "Custom AR/VR Solution", href: "/services/custom-ar-vr-solution" },
+    ],
+  },
+  {
+    title: "SEO & Hosting",
+    links: [
+      { label: "SEO Services", href: "/seo" },
+      { label: "AI SEO", href: "/ai-seo" },
+      { label: "E-commerce SEO", href: "/services/ecommerce-seo" },
+      { label: "Hosting", href: "/hosting" },
+      { label: "Web Hosting", href: "/services/web-hosting" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "Home", href: "/" },
+      { label: "About Us", href: "/about" },
+      { label: "Who We Are", href: "/who-we-are" },
+      { label: "Why Choose Us", href: "/why-choose-us" },
+      { label: "Careers", href: "/career" },
+      { label: "Location", href: "/location" },
+      { label: "Blog", href: "/blog" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
   {
@@ -48,15 +77,7 @@ const linkColumns = [
       "Retail & E-commerce",
       "Hospitality",
       "Startups & SMEs",
-    ],
-  },
-  {
-    title: "Company",
-    links: ["About Us", "Our Work", "Case Studies", "Testimonials", "Careers", "Blog", "Contact Us"],
-  },
-  {
-    title: "Resources",
-    links: ["SEO Guide", "WordPress Tips", "Web Development Guide", "Performance Checklist", "Free Audit", "FAQs", "Glossary"],
+    ].map((label) => ({ label })),
   },
 ];
 
@@ -214,15 +235,22 @@ export default function Footer() {
                 </div>
                 <div className="mt-1 h-px w-5" style={{ backgroundColor: TEAL }} />
                 <ul className="mt-4 flex flex-col gap-6">
-                  {col.links.map((link) => (
-                    <li key={link}>
-                      <Link
-                        href="#"
-                        className="flex items-center gap-1 text-sm text-slate-600 transition-colors hover:text-teal-700"
-                      >
-                        <ChevronRightIcon />
-                        {link}
-                      </Link>
+                  {col.links.map(({ label, href }) => (
+                    <li key={label}>
+                      {href ? (
+                        <Link
+                          href={href}
+                          className="flex items-center gap-1 text-sm text-slate-600 transition-colors hover:text-teal-700"
+                        >
+                          <ChevronRightIcon />
+                          {label}
+                        </Link>
+                      ) : (
+                        <span className="flex items-center gap-1 text-sm text-slate-600">
+                          <ChevronRightIcon />
+                          {label}
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>

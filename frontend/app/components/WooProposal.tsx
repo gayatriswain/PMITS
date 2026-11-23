@@ -268,7 +268,9 @@ function Field({
   );
 }
 
-function ProposalForm() {
+/* `formId` names this form everywhere: it's sent to the backend as `source` (stored with the request, so leads
+   can be told apart by page), it's the <form>'s id, and it prefixes every field id so two forms never clash. */
+function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: string }) {
   const [values, setValues] = useState<Fields>(EMPTY);
   const [touched, setTouched] = useState<Partial<Record<keyof Fields, boolean>>>({});
   const [serverErrors, setServerErrors] = useState<FieldErrors>({});
@@ -279,7 +281,7 @@ function ProposalForm() {
   const show = (k: keyof Fields) => (touched[k] ? errors[k] : undefined);
 
   const bind = (k: keyof Fields) => ({
-    id: `wp-${k}`,
+    id: `${fieldPrefix}-${k}`,
     name: k,
     value: values[k],
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -288,7 +290,7 @@ function ProposalForm() {
     },
     onBlur: () => setTouched((t) => ({ ...t, [k]: true })),
     "aria-invalid": !!show(k),
-    "aria-describedby": `wp-${k}-err`,
+    "aria-describedby": `${fieldPrefix}-${k}-err`,
   });
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -303,7 +305,7 @@ function ProposalForm() {
       const res = await fetch(`${API_URL}/api/proposals`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, source: "hire-woocommerce-developers", website: honeypot }),
+        body: JSON.stringify({ ...values, source: formId, website: honeypot }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
@@ -361,24 +363,33 @@ function ProposalForm() {
           </button>
         </motion.div>
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="mt-7">
+        <form id={formId} data-form-id={formId} onSubmit={handleSubmit} noValidate className="mt-7">
           <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
-            <Field id="wp-firstName" icon={<UserIcon />} error={show("firstName")}>
+            <Field id={`${fieldPrefix}-firstName`} icon={<UserIcon />} error={show("firstName")}>
               <input {...bind("firstName")} autoComplete="given-name" placeholder="First Name*" className={input} />
             </Field>
-            <Field id="wp-lastName" icon={<UserIcon />} error={show("lastName")}>
+            <Field id={`${fieldPrefix}-lastName`} icon={<UserIcon />} error={show("lastName")}>
               <input {...bind("lastName")} autoComplete="family-name" placeholder="Last Name*" className={input} />
             </Field>
-            <Field id="wp-email" icon={<MailIcon />} error={show("email")}>
+            <Field id={`${fieldPrefix}-email`} icon={<MailIcon />} error={show("email")}>
               <input {...bind("email")} type="email" autoComplete="email" placeholder="Business Email*" className={input} />
             </Field>
-            <Field id="wp-phone" icon={<PhoneIcon />} error={show("phone")}>
-              <input {...bind("phone")} type="tel" autoComplete="tel" placeholder="Phone Number* (with country code)" className={input} />
+            <Field id={`${fieldPrefix}-phone`} icon={<PhoneIcon />} error={show("phone")}>
+              <span className="relative block w-full">
+                <input {...bind("phone")} type="tel" autoComplete="tel" aria-label="Phone Number (with country code)" className={`${input} peer`} />
+                {/* two-line placeholder (a native one can't wrap), hidden once there's a value */}
+                {!values.phone && (
+                  <span className="pointer-events-none absolute inset-y-0 left-0 flex flex-col justify-center text-[14px] leading-tight text-slate-300/80">
+                    Phone Number*
+                    <span className="text-[12px] text-slate-300/60">(with country code)</span>
+                  </span>
+                )}
+              </span>
             </Field>
             <div className="sm:col-span-2">
-              <Field id="wp-location" icon={<PinIcon />} error={show("location")}>
+              <Field id={`${fieldPrefix}-location`} icon={<PinIcon />} error={show("location")}>
                 <input {...bind("location")} autoComplete="address-level2" placeholder="Your Location*" className={input} />
               </Field>
             </div>
@@ -397,7 +408,7 @@ function ProposalForm() {
                   className="w-full resize-y bg-transparent pb-3 text-[14px] leading-relaxed text-white placeholder:text-slate-300/80 outline-none"
                 />
               </div>
-              <p id="wp-message-err" className="mt-1 min-h-[14px] text-[11px] text-red-300">{show("message")}</p>
+              <p id={`${fieldPrefix}-message-err`} className="mt-1 min-h-[14px] text-[11px] text-red-300">{show("message")}</p>
             </div>
           </div>
 
@@ -444,11 +455,20 @@ function ProposalForm() {
   );
 }
 
-export default function WooProposal() {
+// defaults keep the WooCommerce page exactly as it was; other pages pass their own ids
+export default function WooProposal({
+  formId = "hire-woocommerce-developers",
+  fieldPrefix = "wp",
+  sectionId = "free-proposal",
+}: {
+  formId?: string;
+  fieldPrefix?: string;
+  sectionId?: string;
+}) {
   return (
-    <section id="free-proposal" className="relative w-full overflow-hidden bg-gradient-to-br from-white via-[#f8fbfb] to-[#f1f7f6] py-14 sm:py-16 lg:py-20">
+    <section id={sectionId} className="relative w-full overflow-hidden bg-gradient-to-br from-white via-[#f8fbfb] to-[#f1f7f6] py-14 sm:py-16 lg:py-20">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:mx-auto lg:w-[80%] lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
           {/* Left */}
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
             <motion.span
@@ -504,7 +524,7 @@ export default function WooProposal() {
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
           >
-            <ProposalForm />
+            <ProposalForm formId={formId} fieldPrefix={fieldPrefix} />
           </motion.div>
         </div>
       </Container>

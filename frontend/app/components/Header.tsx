@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import Container from "./Container";
+import { ServicesMegaPanel, ServicesMobileList } from "./ServicesMegaMenu";
 import {
   PhoneIcon,
   MailIcon,
@@ -29,30 +32,65 @@ const navLinks = [
   { label: "Blog", href: "/blog" },
 ];
 
-const serviceLinks = [
-  { label: "Website Development", href: "/website-development" },
-  { label: "App Development", href: "/services/app-development" },
-  { label: "UI/UX Design", href: "/services/ui-ux-design" },
-  { label: "Digital Marketing", href: "/services/digital-marketing" },
-  { label: "Social Media Marketing", href: "/services/social-media-marketing" },
-  { label: "Google Ads", href: "/services/google-ads" },
-  { label: "AI SEO", href: "/ai-seo" },
-  { label: "E-commerce SEO", href: "/services/ecommerce-seo" },
-  { label: "Web Hosting", href: "/services/web-hosting" },
-  { label: "Shopify Web Design", href: "/services/shopify-web-design" },
-  { label: "Custom Development", href: "/services/custom-development" },
-  { label: "Hire WooCommerce Developers", href: "/services/hire-woocommerce-developers" },
-];
-
 const BRAND = "#0b3b35";
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const pathname = usePathname();
+  // "open" is stored as the path it was opened on, so navigating anywhere closes both menus without an effect
+  const [mobileOpenAt, setMobileOpenAt] = useState<string | null>(null);
+  const [servicesOpenAt, setServicesOpenAt] = useState<string | null>(null);
+  const mobileOpen = mobileOpenAt === pathname;
+  const servicesOpen = servicesOpenAt === pathname;
+  const setMobileOpen = useCallback((open: boolean) => setMobileOpenAt(open ? pathname : null), [pathname]);
+  const setServicesOpen = useCallback((open: boolean) => setServicesOpenAt(open ? pathname : null), [pathname]);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // hover intent: a short delay stops the panel flickering while the pointer travels from the trigger to the panel
+  const openMega = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setServicesOpen(true);
+  }, [setServicesOpen]);
+  const closeMega = useCallback(
+    (delay = 140) => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+      closeTimer.current = setTimeout(() => setServicesOpen(false), delay);
+    },
+    [setServicesOpen],
+  );
+  const closeAll = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setServicesOpen(false);
+    setMobileOpen(false);
+  }, [setServicesOpen, setMobileOpen]);
+
+  // Escape closes the panel
+  useEffect(() => {
+    if (!servicesOpen && !mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeAll();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [servicesOpen, mobileOpen, closeAll]);
 
   return (
     <header className="sticky top-0 z-50 w-full">
+      {/* soft backdrop while the services panel is open */}
+      <AnimatePresence>
+        {servicesOpen && (
+          <motion.div
+            key="mega-backdrop"
+            aria-hidden
+            className="pointer-events-none fixed inset-0 -z-10 hidden bg-slate-900/15 backdrop-blur-[2px] lg:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Top info bar */}
       <div className="hidden text-white lg:block" style={{ backgroundColor: BRAND }}>
         <Container className="flex items-center justify-between py-2 text-xs">
@@ -96,7 +134,7 @@ export default function Header() {
       </div>
 
       {/* Main nav */}
-      <div className="border-b border-black/5 bg-white">
+      <div className="relative border-b border-black/5 bg-white">
         <Container className="flex items-center justify-between py-4">
           <Link href="/" className="shrink-0">
             <Image
@@ -114,29 +152,43 @@ export default function Header() {
               link.dropdown ? (
                 <div
                   key={link.label}
-                  className="relative"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseEnter={openMega}
+                  onMouseLeave={() => closeMega()}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) closeMega(0);
+                  }}
                 >
                   <button
-                    className="flex items-center gap-1 font-sans text-sm font-medium text-zinc-700 transition-colors hover:text-teal-700"
+                    type="button"
+                    className={`flex items-center gap-1 font-sans text-sm font-medium transition-colors hover:text-teal-700 ${
+                      servicesOpen ? "text-teal-700" : "text-zinc-700"
+                    }`}
                     aria-expanded={servicesOpen}
+                    aria-haspopup="true"
+                    aria-controls="services-mega"
+                    onClick={() => (servicesOpen ? closeAll() : openMega())}
                   >
-                    {link.label} <ChevronDownIcon className={servicesOpen ? "rotate-180" : ""} />
+                    {link.label} <ChevronDownIcon className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
                   </button>
-                  {servicesOpen && (
-                    <div className="absolute left-0 top-full w-56 rounded-lg border border-black/5 bg-white py-2 shadow-lg">
-                      {serviceLinks.map((s) => (
-                        <Link
-                          key={s.href}
-                          href={s.href}
-                          className="block px-4 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-teal-700"
-                        >
-                          {s.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+
+                  {/* panel is as wide as its content and centred under the nav row (the top padding bridges the hover gap) */}
+                  <AnimatePresence>
+                    {servicesOpen && (
+                      <motion.div
+                        id="services-mega"
+                        key="mega"
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="absolute left-1/2 top-full z-50 w-max max-w-[calc(100vw-2rem)] -translate-x-1/2 pt-2"
+                      >
+                        <div className="rounded-2xl border border-black/5 bg-white shadow-[0_30px_60px_-24px_rgba(11,59,53,0.4)]">
+                          <ServicesMegaPanel pathname={pathname} onNavigate={closeAll} />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ) : (
                 <Link
@@ -160,7 +212,7 @@ export default function Header() {
             </Link>
             <button
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-black/10 text-zinc-700 lg:hidden"
-              onClick={() => setMobileOpen((v) => !v)}
+              onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
             >
@@ -172,7 +224,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-b border-black/5 bg-white lg:hidden">
+        <div className="max-h-[calc(100svh-4.5rem)] overflow-y-auto border-b border-black/5 bg-white lg:hidden">
           <Container className="py-4">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) =>
@@ -184,22 +236,22 @@ export default function Header() {
                     aria-expanded={mobileServicesOpen}
                   >
                     {link.label}
-                    <ChevronDownIcon className={mobileServicesOpen ? "rotate-180" : ""} />
+                    <ChevronDownIcon className={`transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`} />
                   </button>
-                  {mobileServicesOpen && (
-                    <div className="ml-3 flex flex-col border-l border-black/10 pl-3">
-                      {serviceLinks.map((s) => (
-                        <Link
-                          key={s.href}
-                          href={s.href}
-                          className="rounded-lg px-2 py-2 text-sm text-zinc-600"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {s.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        key="m-services"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <ServicesMobileList pathname={pathname} onNavigate={closeAll} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ) : (
                 <Link
