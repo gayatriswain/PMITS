@@ -404,8 +404,12 @@ export function UsersManager({ selfId }: { selfId: string }) {
               setBusy(true); setErrors({});
               try {
                 const { _id, lastLoginAt: _l, createdAt: _c, ...body } = edit as UserRow & { password?: string };
-                await api(_id ? `/api/admin/users/${_id}` : "/api/admin/users", { method: _id ? "PUT" : "POST", json: body });
-                toast("success", _id ? "User updated" : "User added"); setEdit(null); load();
+                const saved = await api<{ welcomeEmailSent?: boolean }>(_id ? `/api/admin/users/${_id}` : "/api/admin/users", { method: _id ? "PUT" : "POST", json: body });
+                if (_id) toast("success", "User updated");
+                else if (saved?.welcomeEmailSent) toast("success", `User added. A welcome email was sent to ${body.email}.`);
+                // email off/failing: the account still works; share the sign-in details yourself
+                else toast("info", "User added, but the welcome email could not be sent (check Email (SMTP) settings). Share the sign-in details with them directly.");
+                setEdit(null); load();
               } catch (e) { if (e instanceof ApiError && e.errors) setErrors(e.errors); toast("error", (e as Error).message); }
               finally { setBusy(false); }
             }}>{edit._id ? "Save" : "Add user"}</Button>

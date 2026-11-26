@@ -154,8 +154,15 @@ export function Badge({ value, label }: { value: string; label?: string }) {
 
 export function Modal({ title, children, onClose, size = "md" }: { title: ReactNode; children: ReactNode; onClose: () => void; size?: "sm" | "md" | "lg" | "xl" }) {
   const ref = useRef<HTMLDivElement>(null);
+  // Callers usually pass a new inline onClose on every render (e.g. on each keystroke in a form).
+  // Keep the latest one in a ref so the effect below runs once: re-running it would call focus()
+  // again and steal focus from the input being typed in.
+  const closeRef = useRef(onClose);
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    closeRef.current = onClose;
+  });
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeRef.current();
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -164,7 +171,7 @@ export function Modal({ title, children, onClose, size = "md" }: { title: ReactN
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
     };
-  }, [onClose]);
+  }, []);
   const w = { sm: "max-w-md", md: "max-w-xl", lg: "max-w-3xl", xl: "max-w-5xl" }[size];
   return (
     <div className="fixed inset-0 z-[90] flex items-start justify-center overflow-y-auto bg-slate-900/40 p-4 pt-[8vh]" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
