@@ -541,31 +541,116 @@ export function ProfileForm({ name, email, role }: { name: string; email: string
   const [v, setV] = useState<Record<string, unknown>>({});
   const [errors, setErrors] = useState<Errs>({});
   const [busy, setBusy] = useState(false);
+  const pw = String(v.newPassword ?? "");
+  const rules = [
+    { ok: pw.length >= 10, text: "At least 10 characters" },
+    { ok: /[A-Z]/.test(pw), text: "An upper case letter" },
+    { ok: /[a-z]/.test(pw), text: "A lower case letter" },
+    { ok: /[0-9]/.test(pw), text: "A number" },
+    { ok: !!pw && pw === v.confirm, text: "Both new passwords match" },
+  ];
+  const score = rules.slice(0, 4).filter((r) => r.ok).length + (pw.length >= 14 ? 1 : 0);
+  const strength = !pw ? null : score <= 2 ? { label: "Weak", cls: "bg-rose-500", w: "w-1/4" } : score === 3 ? { label: "Fair", cls: "bg-amber-500", w: "w-2/4" } : score === 4 ? { label: "Good", cls: "bg-teal", w: "w-3/4" } : { label: "Strong", cls: "bg-emerald-500", w: "w-full" };
+  const info = ROLE_INFO[role];
+  const initials = name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+
+  const submit = async () => {
+    if (v.newPassword !== v.confirm) { setErrors({ confirm: "Passwords do not match" }); return; }
+    setBusy(true); setErrors({});
+    try { await api("/api/auth/change-password", { method: "POST", json: { currentPassword: v.currentPassword, newPassword: v.newPassword } }); setV({}); toast("success", "Password updated. Other devices were signed out."); }
+    catch (e) { if (e instanceof ApiError && e.errors) setErrors(e.errors); toast("error", (e as Error).message); }
+    finally { setBusy(false); }
+  };
+
   return (
     <>
-      <PageHeader title="My profile" crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "Profile" }]} />
-      <div className="grid gap-6 lg:grid-cols-2">
-        <Card title="Account">
-          <dl className="space-y-3 text-sm">
-            <div><dt className="text-xs text-slate-500">Name</dt><dd className="font-medium text-slate-800">{name}</dd></div>
-            <div><dt className="text-xs text-slate-500">Email</dt><dd className="text-slate-800">{email}</dd></div>
-            <div><dt className="text-xs text-slate-500">Role</dt><dd className="text-slate-800">{ROLE_LABELS[role]}</dd></div>
-          </dl>
-        </Card>
-        <Card title="Change password">
-          <FieldGroup values={v} onChange={setV} errors={errors} fields={[
-            { name: "currentPassword", label: "Current password", type: "password", required: true },
-            { name: "newPassword", label: "New password", type: "password", required: true, help: "10+ characters with upper & lower case letters and a number." },
-            { name: "confirm", label: "Repeat new password", type: "password", required: true },
-          ]} />
-          <Button className="mt-4" loading={busy} onClick={async () => {
-            if (v.newPassword !== v.confirm) { setErrors({ confirm: "Passwords do not match" }); return; }
-            setBusy(true); setErrors({});
-            try { await api("/api/auth/change-password", { method: "POST", json: { currentPassword: v.currentPassword, newPassword: v.newPassword } }); setV({}); toast("success", "Password updated. Other devices were signed out."); }
-            catch (e) { if (e instanceof ApiError && e.errors) setErrors(e.errors); toast("error", (e as Error).message); }
-            finally { setBusy(false); }
-          }}>Update password</Button>
-        </Card>
+      <PageHeader title="My profile" description="Your account details and password." crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "Profile" }]} />
+
+      {/* identity banner */}
+      <section className="auth-rise relative mb-6 overflow-hidden rounded-3xl bg-[linear-gradient(120deg,#0c1e3d_0%,#0b3350_55%,#0b5f5a_100%)] p-6 text-white shadow-[0_24px_60px_-30px_rgba(12,30,61,0.7)] sm:p-8">
+        <div aria-hidden className="auth-glow absolute -right-16 -top-20 h-64 w-64 rounded-full bg-teal/40 blur-[80px]" />
+        <div aria-hidden className="auth-orbit absolute -right-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full border border-dashed border-white/15" />
+        <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center">
+          <span className="grid h-20 w-20 shrink-0 place-items-center rounded-3xl bg-gradient-to-br from-teal-300 to-teal text-2xl font-extrabold text-navy shadow-[0_12px_30px_-10px_rgba(45,212,191,0.8)]">{initials}</span>
+          <div className="min-w-0">
+            <h2 className="truncate text-2xl font-bold tracking-tight sm:text-3xl">{name}</h2>
+            <p className="mt-1 flex items-center gap-2 truncate text-sm text-slate-300"><Mail className="h-4 w-4 shrink-0 text-teal-200" /> {email}</p>
+            <span className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur">
+              <info.icon className="h-3.5 w-3.5 text-teal-200" /> {ROLE_LABELS[role]}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div className="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
+        {/* account */}
+        <div className="auth-rise space-y-6 [animation-delay:80ms]">
+          <Card title="Account details">
+            <dl className="grid gap-3">
+              {[
+                { icon: UserPlus, label: "Full name", value: name },
+                { icon: Mail, label: "Sign-in email", value: email },
+                { icon: info.icon, label: "Role", value: ROLE_LABELS[role] },
+              ].map((r) => (
+                <div key={r.label} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50/60 px-4 py-3">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-teal ring-1 ring-slate-200"><r.icon className="h-4 w-4" /></span>
+                  <div className="min-w-0">
+                    <dt className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">{r.label}</dt>
+                    <dd className="truncate text-sm font-semibold text-slate-900">{r.value}</dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-4 text-xs text-slate-500">To change your name, email or role, ask a Super Admin (Users &amp; roles).</p>
+          </Card>
+          <Card title="What your role can do">
+            <div className="flex items-start gap-3">
+              <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${info.cls}`}><info.icon className="h-5 w-5" /></span>
+              <div>
+                <p className="text-sm font-semibold text-slate-900">{ROLE_LABELS[role]}</p>
+                <p className="mt-0.5 text-sm text-slate-500">{info.text}</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* password */}
+        <div className="auth-rise [animation-delay:160ms]">
+          <Card title={<span className="inline-flex items-center gap-2"><KeyRound className="h-4 w-4 text-teal" /> Change password</span>}>
+            <form onSubmit={(e) => { e.preventDefault(); submit(); }} className="space-y-4 [&>div]:grid-cols-1">
+              <FieldGroup values={v} onChange={setV} errors={errors} fields={[
+                { name: "currentPassword", label: "Current password", type: "password", required: true },
+                { name: "newPassword", label: "New password", type: "password", required: true },
+                { name: "confirm", label: "Repeat new password", type: "password", required: true },
+              ]} />
+              {strength && (
+                <div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-semibold text-slate-600">Password strength</span>
+                    <span className="font-bold text-slate-800">{strength.label}</span>
+                  </div>
+                  <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div className={`h-full rounded-full transition-all duration-500 ${strength.cls} ${strength.w}`} />
+                  </div>
+                </div>
+              )}
+              <ul className="grid gap-1.5 rounded-2xl bg-slate-50 p-3 sm:grid-cols-2">
+                {rules.map((r) => (
+                  <li key={r.text} className={`flex items-center gap-2 text-xs transition ${r.ok ? "font-semibold text-emerald-700" : "text-slate-500"}`}>
+                    <span className={`grid h-4 w-4 place-items-center rounded-full text-[10px] ${r.ok ? "bg-emerald-500 text-white" : "bg-slate-200 text-transparent"}`}>✓</span>
+                    {r.text}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-col gap-3 border-t border-slate-100 pt-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs text-slate-500">You stay signed in here; other devices are signed out.</p>
+                <Button type="submit" variant="teal" loading={busy} disabled={!rules.every((r) => r.ok) || !v.currentPassword}>
+                  <KeyRound className="h-4 w-4" /> Update password
+                </Button>
+              </div>
+            </form>
+          </Card>
+        </div>
       </div>
     </>
   );

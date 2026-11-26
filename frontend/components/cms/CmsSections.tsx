@@ -8,6 +8,7 @@ import CtaSection from "@/app/components/shared/CtaSection";
 import WebsiteDevComparison from "@/app/components/shared/WebsiteDevComparison";
 import ClientStories from "@/app/components/shared/ClientStories";
 import ProjectsCarousel from "@/app/components/home/ProjectsCarousel";
+import BeforeAfterShowcase from "@/app/components/website-development/BeforeAfterShowcase";
 
 type Entry = readonly [key: string, element: ReactElement];
 
@@ -19,6 +20,7 @@ const GLOBAL_BY_COMPONENT = new Map<unknown, GlobalKey>([
   [WhyChooseUs, "why-choose-us"],
   [CtaSection, "cta-section"],
   [WebsiteDevComparison, "website-dev-comparison"],
+  [BeforeAfterShowcase, "before-after"],
 ]);
 
 /**

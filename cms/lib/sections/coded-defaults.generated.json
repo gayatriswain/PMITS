@@ -1,0 +1,441 @@
+{
+  "BeforeAfterShowcase": {
+    "resultsLabel": "· The Results",
+    "beforeBadge": "Before",
+    "afterBadge": "After",
+    "categories": [
+      {
+        "label": "Ecommerce",
+        "icon": "cart",
+        "projects": [
+          {
+            "name": "Organic Harvest",
+            "tag": "Ecommerce",
+            "thumb": "/lux.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "312%",
+                "label": "Increase in Organic Traffic",
+                "sub": "Within 6 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "280%",
+                "label": "More Enquiries",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "3.6X",
+                "label": "Increase in Online Sales",
+                "sub": "Within 4 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "95/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          },
+          {
+            "name": "Urban Thread",
+            "tag": "Ecommerce",
+            "thumb": "/furnisher.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "265%",
+                "label": "Increase in Organic Traffic",
+                "sub": "Within 5 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "190%",
+                "label": "More Enquiries",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.9X",
+                "label": "Increase in Online Sales",
+                "sub": "Within 3 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "92/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Corporate",
+        "icon": "briefcase",
+        "projects": [
+          {
+            "name": "Skyline Corp",
+            "tag": "Corporate",
+            "thumb": "/lux.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "220%",
+                "label": "Increase in Qualified Leads",
+                "sub": "Within 6 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "150%",
+                "label": "More Enquiries",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.1X",
+                "label": "Increase in Client Wins",
+                "sub": "Within 6 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "96/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          },
+          {
+            "name": "Nova Consulting",
+            "tag": "Corporate",
+            "thumb": "/furnisher.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "198%",
+                "label": "Increase in Qualified Leads",
+                "sub": "Within 5 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "140%",
+                "label": "More Enquiries",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "1.8X",
+                "label": "Increase in Client Wins",
+                "sub": "Within 6 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "94/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Healthcare",
+        "icon": "heart",
+        "projects": [
+          {
+            "name": "VitalCare Clinic",
+            "tag": "Healthcare",
+            "thumb": "/lux.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "240%",
+                "label": "Increase in Appointment Bookings",
+                "sub": "Within 6 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "175%",
+                "label": "More Patient Enquiries",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.4X",
+                "label": "Increase in New Patients",
+                "sub": "Within 4 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "97/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          },
+          {
+            "name": "Wellness Hub",
+            "tag": "Healthcare",
+            "thumb": "/furnisher.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "210%",
+                "label": "Increase in Appointment Bookings",
+                "sub": "Within 5 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "160%",
+                "label": "More Patient Enquiries",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.0X",
+                "label": "Increase in New Patients",
+                "sub": "Within 4 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "93/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Education",
+        "icon": "graduation",
+        "projects": [
+          {
+            "name": "BrightPath Academy",
+            "tag": "Education",
+            "thumb": "/lux.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "255%",
+                "label": "Increase in Admission Enquiries",
+                "sub": "Within 6 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "185%",
+                "label": "More Parent Enquiries",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.6X",
+                "label": "Increase in Applications",
+                "sub": "Within 5 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "95/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          },
+          {
+            "name": "EduSpark Institute",
+            "tag": "Education",
+            "thumb": "/furnisher.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "205%",
+                "label": "Increase in Admission Enquiries",
+                "sub": "Within 5 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "165%",
+                "label": "More Parent Enquiries",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.2X",
+                "label": "Increase in Applications",
+                "sub": "Within 5 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "91/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Restaurant",
+        "icon": "restaurant",
+        "projects": [
+          {
+            "name": "Spice Route",
+            "tag": "Restaurant",
+            "thumb": "/lux.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "230%",
+                "label": "Increase in Online Orders",
+                "sub": "Within 4 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "170%",
+                "label": "More Table Reservations",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.3X",
+                "label": "Increase in Online Sales",
+                "sub": "Within 3 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "94/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          },
+          {
+            "name": "Cafe Bloom",
+            "tag": "Restaurant",
+            "thumb": "/furnisher.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "195%",
+                "label": "Increase in Online Orders",
+                "sub": "Within 4 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "150%",
+                "label": "More Table Reservations",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "1.9X",
+                "label": "Increase in Online Sales",
+                "sub": "Within 3 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "90/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Real Estate",
+        "icon": "home",
+        "projects": [
+          {
+            "name": "Prime Realty",
+            "tag": "Real Estate",
+            "thumb": "/lux.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "270%",
+                "label": "Increase in Property Enquiries",
+                "sub": "Within 6 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "200%",
+                "label": "More Site Visit Requests",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.8X",
+                "label": "Increase in Qualified Leads",
+                "sub": "Within 5 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "95/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          },
+          {
+            "name": "Urban Nest",
+            "tag": "Real Estate",
+            "thumb": "/furnisher.webp",
+            "before": "/furnisher.webp",
+            "after": "/lux.webp",
+            "stats": [
+              {
+                "value": "215%",
+                "label": "Increase in Property Enquiries",
+                "sub": "Within 5 Months",
+                "icon": "trend"
+              },
+              {
+                "value": "180%",
+                "label": "More Site Visit Requests",
+                "sub": "Than Previous Website",
+                "icon": "users"
+              },
+              {
+                "value": "2.2X",
+                "label": "Increase in Qualified Leads",
+                "sub": "Within 5 Months",
+                "icon": "cart"
+              },
+              {
+                "value": "92/100",
+                "label": "Performance Score",
+                "sub": "Google PageSpeed",
+                "icon": "gauge"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

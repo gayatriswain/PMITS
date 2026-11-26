@@ -10,6 +10,7 @@
 import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { GLOBAL_PATH, GLOBAL_SECTIONS } from "../../frontend/components/cms/global-sections.data";
+import { BEFORE_AFTER_DEFAULTS } from "../../frontend/components/cms/before-after.data";
 
 const FRONTEND_APP = path.resolve(process.cwd(), "../frontend/app");
 const OUT = path.resolve(process.cwd(), "lib/sections/pages.generated.json");
@@ -108,5 +109,7 @@ pages.unshift({
   sections: GLOBAL_SECTIONS.map((g) => ({ key: g.key, component: g.component, label: g.label, carousel: g.carousel })),
 });
 writeFileSync(OUT, JSON.stringify(pages, null, 2) + "\n");
+// Default content of coded sections whose data lives in a frontend data module (admin "reset" + seed).
+writeFileSync(path.resolve(process.cwd(), "lib/sections/coded-defaults.generated.json"), JSON.stringify({ BeforeAfterShowcase: BEFORE_AFTER_DEFAULTS }, null, 2) + "\n");
 console.log(`Wrote ${pages.length} pages, ${pages.reduce((n, p) => n + p.sections.length, 0)} sections -> ${path.relative(process.cwd(), OUT)}`);
 for (const p of pages) console.log(`${p.reorderable ? " " : "*"} ${p.path.padEnd(52)} ${p.sections.length} sections`);

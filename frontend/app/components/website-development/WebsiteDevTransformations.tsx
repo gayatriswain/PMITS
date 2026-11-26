@@ -13,7 +13,8 @@ const TEAL = "#0d9488";
 const GOLD = "#b58e3a";
 const DARK = "#0b3b35";
 
-export default function WebsiteDevTransformations() {
+/** `showcase`: the before/after projects block (a global section, placed by the page). */
+export default function WebsiteDevTransformations({ showcase }: { showcase?: React.ReactNode }) {
   const $t = useCmsText();
   return (
     <section className="relative w-full bg-white overflow-hidden py-8 lg:py-10">
@@ -114,7 +115,7 @@ export default function WebsiteDevTransformations() {
         </div>
 
         {/* --- BEFORE / AFTER SHOWCASE: category filter → carousel → slider --- */}
-        <BeforeAfterShowcase />
+        {showcase ?? <BeforeAfterShowcase />}
 
         {/* --- BOTTOM BANNER --- */}
         <div className="mt-4 lg:mt-6 w-full bg-[#FEFEFC] rounded-[24px] lg:rounded-[32px] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-100 p-6 lg:px-10 lg:py-8 flex flex-col xl:flex-row items-center gap-8 xl:gap-0 relative z-20">

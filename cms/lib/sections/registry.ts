@@ -13,6 +13,7 @@
  */
 import generated from "./pages.generated.json";
 import contentFields from "./content.generated.json";
+import codedDefaults from "./coded-defaults.generated.json";
 
 export type FieldType = "text" | "textarea" | "richtext" | "richinline" | "image" | "link" | "number" | "boolean" | "select" | "list" | "href" | "textlist" | "group";
 export type Field = {
@@ -128,6 +129,36 @@ const CODED_WITH_FIELDS: SectionDef[] = [
       { name: "logos", label: "Client logos", type: "list", maxItems: 30, fields: [text("name", "Client name", 80), image("image", "Logo (SVG/PNG/WebP)")] },
     ],
     defaults: TRUSTED_DEFAULTS,
+  },
+  {
+    // global "before-after" section (frontend/components/cms/before-after.data.ts)
+    component: "BeforeAfterShowcase",
+    label: "Before / after showcase",
+    kind: "coded",
+    description: "Category buttons, a before/after slider with the project's results, and a project carousel. Each category holds its own projects.",
+    fields: [
+      { name: "categories", label: "Categories", type: "list", maxItems: 12, fields: [
+        text("label", "Category name", 60),
+        { name: "icon", label: "Icon", type: "select", options: [["cart", "Shopping cart"], ["briefcase", "Briefcase"], ["heart", "Heart (health)"], ["graduation", "Graduation cap"], ["restaurant", "Fork & knife"], ["home", "House"]].map(([value, label]) => ({ value, label })) },
+        { name: "projects", label: "Projects", type: "list", maxItems: 20, fields: [
+          text("name", "Project / client name", 80),
+          text("tag", "Tag under the name (optional)", 60),
+          image("before", "BEFORE image (old website)"),
+          image("after", "AFTER image (new website)"),
+          image("thumb", "Carousel thumbnail (optional - uses the after image)"),
+          { name: "stats", label: "Results", type: "list", maxItems: 4, fields: [
+            text("value", "Number (e.g. 270%)", 20),
+            text("label", "What it measures", 80),
+            text("sub", "Small text (e.g. Within 6 Months)", 60),
+            { name: "icon", label: "Icon", type: "select", options: [["trend", "Trend up"], ["users", "People"], ["cart", "Cart"], ["gauge", "Speed / clock"]].map(([value, label]) => ({ value, label })) },
+          ] },
+        ] },
+      ] },
+      text("resultsLabel", "Text after the project name in the results panel", 60),
+      text("beforeBadge", "Before badge", 20),
+      text("afterBadge", "After badge", 20),
+    ],
+    defaults: (codedDefaults as Record<string, Record<string, unknown>>).BeforeAfterShowcase ?? {},
   },
 ];
 

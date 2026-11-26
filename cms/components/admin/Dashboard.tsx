@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Area, AreaChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import {
-  Activity, ArrowRight, ArrowUpRight, BookOpen, Briefcase, CalendarDays, FileStack, FolderKanban, Inbox, Layers, LayoutGrid,
+  ArrowRight, ArrowUpRight, BookOpen, Briefcase, CalendarDays, FileStack, FolderKanban, Inbox, Layers, LayoutGrid,
   MessageSquareQuote, PenLine, ScrollText, Sparkles, TrendingUp,
 } from "lucide-react";
 import { api } from "@/lib/client/api";
@@ -329,30 +329,6 @@ export function Dashboard({ name, role }: { name: string; role: Role }) {
         </>
       )}
 
-      {/* ---------- activity ---------- */}
-      {allow("activity.read") && (
-        <Card title={<span className="inline-flex items-center gap-2"><Activity className="h-4 w-4 text-teal" /> Recent activity</span>} className="mt-6" actions={<Link href="/admin/activity" className="inline-flex items-center gap-1 text-xs font-semibold text-teal hover:underline">Full log <ArrowRight className="h-3.5 w-3.5" /></Link>}>
-          {s.recentActivity.length === 0 ? (
-            <EmptyState title="No activity yet" />
-          ) : (
-            <ol className="relative space-y-4 before:absolute before:bottom-1 before:left-[15px] before:top-1 before:w-px before:bg-slate-200">
-              {s.recentActivity.map((a) => (
-                <li key={a._id} className="relative flex items-start gap-3 text-sm">
-                  <span className="relative z-10 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-[10px] font-bold text-teal ring-2 ring-teal/20">
-                    {initials(a.userName ?? "System")}
-                  </span>
-                  <div className="min-w-0 flex-1 pt-1">
-                    <p className="text-slate-700">
-                      <b className="font-semibold text-slate-900">{a.userName ?? "System"}</b> · {a.summary ?? `${a.action} ${a.entity}`}
-                    </p>
-                    <p className="mt-0.5 text-xs text-slate-400">{ago(a.createdAt)} · {a.entity}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          )}
-        </Card>
-      )}
     </>
   );
 }

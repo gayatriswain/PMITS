@@ -26,6 +26,12 @@
         "carousel": true
       },
       {
+        "key": "before-after",
+        "component": "BeforeAfterShowcase",
+        "label": "Before / after showcase",
+        "carousel": true
+      },
+      {
         "key": "why-choose-us",
         "component": "WhyChooseUs",
         "label": "Why choose us",
@@ -1375,6 +1381,11 @@
         "key": "transformations",
         "component": "WebsiteDevTransformations",
         "label": "Website Dev Transformations"
+      },
+      {
+        "key": "before-after",
+        "component": "BeforeAfterShowcase",
+        "label": "Before After Showcase"
       },
       {
         "key": "approach",

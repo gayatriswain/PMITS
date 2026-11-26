@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import { CartIcon, BriefcaseIcon, HeartIcon, HomeIcon, ChevronLeftIcon, ChevronRightIcon } from "../shared/icons";
-import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { BEFORE_AFTER_DEFAULTS, type BAContent, type BAIcon, type BAProject, type BAStat, type BAStatIcon } from "@/components/cms/before-after.data";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -68,233 +68,55 @@ function StatGaugeIcon() {
 }
 
 /* ---------------- Data ---------------- */
-// NOTE: only "/furnisher.webp" (before) + "/lux.webp" (after) exist as a real
-// before/after pair today. Every project below reuses that pair as a
-// placeholder so the category → carousel → slider flow is fully wired up.
-// Swap `before`/`after` per project once real client screenshots are added.
+// Content comes from the CMS global section "before-after" (Admin -> Global -> Before / after showcase);
+// until it is saved there the defaults in before-after.data.ts are shown.
 
-type Stat = { value: string; label: string; sub: string; Icon: () => React.JSX.Element };
-
-type Project = {
-  id: string;
-  name: string;
-  categoryId: string;
-  tag: string;
-  thumb: string;
-  before: string;
-  after: string;
-  stats: Stat[];
+const CATEGORY_ICONS: Record<BAIcon, (p: { className?: string }) => React.JSX.Element> = {
+  cart: CartIcon,
+  briefcase: BriefcaseIcon,
+  heart: HeartIcon,
+  graduation: GraduationCapIcon,
+  restaurant: RestaurantIcon,
+  home: HomeIcon,
 };
+const STAT_ICONS: Record<BAStatIcon, () => React.JSX.Element> = { trend: StatTrendIcon, users: StatUsersIcon, cart: StatCartIcon, gauge: StatGaugeIcon };
 
-const categories__cms = [
-  { id: "ecommerce", label: "Ecommerce", Icon: CartIcon },
-  { id: "corporate", label: "Corporate", Icon: BriefcaseIcon },
-  { id: "healthcare", label: "Healthcare", Icon: HeartIcon },
-  { id: "education", label: "Education", Icon: GraduationCapIcon },
-  { id: "restaurant", label: "Restaurant", Icon: RestaurantIcon },
-  { id: "realestate", label: "Real Estate", Icon: HomeIcon },
-] as const;
+type Stat = BAStat & { Icon: () => React.JSX.Element };
+type Project = Omit<BAProject, "stats"> & { id: string; categoryId: string; stats: Stat[] };
 
-const projects__cms: Project[] = [
-  // Ecommerce
-  {
-    id: "organic-harvest",
-    name: "Organic Harvest",
-    categoryId: "ecommerce",
-    tag: "Ecommerce",
-    thumb: "/lux.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "312%", label: "Increase in Organic Traffic", sub: "Within 6 Months", Icon: StatTrendIcon },
-      { value: "280%", label: "More Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "3.6X", label: "Increase in Online Sales", sub: "Within 4 Months", Icon: StatCartIcon },
-      { value: "95/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  {
-    id: "urban-thread",
-    name: "Urban Thread",
-    categoryId: "ecommerce",
-    tag: "Ecommerce",
-    thumb: "/furnisher.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "265%", label: "Increase in Organic Traffic", sub: "Within 5 Months", Icon: StatTrendIcon },
-      { value: "190%", label: "More Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.9X", label: "Increase in Online Sales", sub: "Within 3 Months", Icon: StatCartIcon },
-      { value: "92/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  // Corporate
-  {
-    id: "skyline-corp",
-    name: "Skyline Corp",
-    categoryId: "corporate",
-    tag: "Corporate",
-    thumb: "/lux.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "220%", label: "Increase in Qualified Leads", sub: "Within 6 Months", Icon: StatTrendIcon },
-      { value: "150%", label: "More Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.1X", label: "Increase in Client Wins", sub: "Within 6 Months", Icon: StatCartIcon },
-      { value: "96/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  {
-    id: "nova-consulting",
-    name: "Nova Consulting",
-    categoryId: "corporate",
-    tag: "Corporate",
-    thumb: "/furnisher.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "198%", label: "Increase in Qualified Leads", sub: "Within 5 Months", Icon: StatTrendIcon },
-      { value: "140%", label: "More Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "1.8X", label: "Increase in Client Wins", sub: "Within 6 Months", Icon: StatCartIcon },
-      { value: "94/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  // Healthcare
-  {
-    id: "vitalcare-clinic",
-    name: "VitalCare Clinic",
-    categoryId: "healthcare",
-    tag: "Healthcare",
-    thumb: "/lux.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "240%", label: "Increase in Appointment Bookings", sub: "Within 6 Months", Icon: StatTrendIcon },
-      { value: "175%", label: "More Patient Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.4X", label: "Increase in New Patients", sub: "Within 4 Months", Icon: StatCartIcon },
-      { value: "97/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  {
-    id: "wellness-hub",
-    name: "Wellness Hub",
-    categoryId: "healthcare",
-    tag: "Healthcare",
-    thumb: "/furnisher.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "210%", label: "Increase in Appointment Bookings", sub: "Within 5 Months", Icon: StatTrendIcon },
-      { value: "160%", label: "More Patient Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.0X", label: "Increase in New Patients", sub: "Within 4 Months", Icon: StatCartIcon },
-      { value: "93/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  // Education
-  {
-    id: "brightpath-academy",
-    name: "BrightPath Academy",
-    categoryId: "education",
-    tag: "Education",
-    thumb: "/lux.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "255%", label: "Increase in Admission Enquiries", sub: "Within 6 Months", Icon: StatTrendIcon },
-      { value: "185%", label: "More Parent Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.6X", label: "Increase in Applications", sub: "Within 5 Months", Icon: StatCartIcon },
-      { value: "95/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  {
-    id: "eduspark-institute",
-    name: "EduSpark Institute",
-    categoryId: "education",
-    tag: "Education",
-    thumb: "/furnisher.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "205%", label: "Increase in Admission Enquiries", sub: "Within 5 Months", Icon: StatTrendIcon },
-      { value: "165%", label: "More Parent Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.2X", label: "Increase in Applications", sub: "Within 5 Months", Icon: StatCartIcon },
-      { value: "91/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  // Restaurant
-  {
-    id: "spice-route",
-    name: "Spice Route",
-    categoryId: "restaurant",
-    tag: "Restaurant",
-    thumb: "/lux.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "230%", label: "Increase in Online Orders", sub: "Within 4 Months", Icon: StatTrendIcon },
-      { value: "170%", label: "More Table Reservations", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.3X", label: "Increase in Online Sales", sub: "Within 3 Months", Icon: StatCartIcon },
-      { value: "94/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  {
-    id: "cafe-bloom",
-    name: "Cafe Bloom",
-    categoryId: "restaurant",
-    tag: "Restaurant",
-    thumb: "/furnisher.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "195%", label: "Increase in Online Orders", sub: "Within 4 Months", Icon: StatTrendIcon },
-      { value: "150%", label: "More Table Reservations", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "1.9X", label: "Increase in Online Sales", sub: "Within 3 Months", Icon: StatCartIcon },
-      { value: "90/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  // Real Estate
-  {
-    id: "prime-realty",
-    name: "Prime Realty",
-    categoryId: "realestate",
-    tag: "Real Estate",
-    thumb: "/lux.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "270%", label: "Increase in Property Enquiries", sub: "Within 6 Months", Icon: StatTrendIcon },
-      { value: "200%", label: "More Site Visit Requests", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.8X", label: "Increase in Qualified Leads", sub: "Within 5 Months", Icon: StatCartIcon },
-      { value: "95/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-  {
-    id: "urban-nest",
-    name: "Urban Nest",
-    categoryId: "realestate",
-    tag: "Real Estate",
-    thumb: "/furnisher.webp",
-    before: "/furnisher.webp",
-    after: "/lux.webp",
-    stats: [
-      { value: "215%", label: "Increase in Property Enquiries", sub: "Within 5 Months", Icon: StatTrendIcon },
-      { value: "180%", label: "More Site Visit Requests", sub: "Than Previous Website", Icon: StatUsersIcon },
-      { value: "2.2X", label: "Increase in Qualified Leads", sub: "Within 5 Months", Icon: StatCartIcon },
-      { value: "92/100", label: "Performance Score", sub: "Google PageSpeed", Icon: StatGaugeIcon },
-    ],
-  },
-];
+/** Flatten "categories -> projects" into the shapes the UI below works with (ids are positional). */
+function normalise(c: Partial<BAContent> | undefined) {
+  const cats = c?.categories?.length ? c.categories : BEFORE_AFTER_DEFAULTS.categories;
+  const categories = cats.map((cat, ci) => ({ id: `c${ci}`, label: cat.label, Icon: CATEGORY_ICONS[cat.icon] ?? CartIcon }));
+  const projects: Project[] = cats.flatMap((cat, ci) =>
+    (cat.projects ?? []).map((p, pi) => ({
+      ...p,
+      id: `c${ci}-p${pi}`,
+      categoryId: `c${ci}`,
+      tag: p.tag || cat.label,
+      thumb: p.thumb || p.after || p.before,
+      stats: (p.stats ?? []).map((st) => ({ ...st, Icon: STAT_ICONS[st.icon] ?? StatTrendIcon })),
+    })),
+  );
+  return {
+    categories: categories.filter((cat) => projects.some((p) => p.categoryId === cat.id)),
+    projects,
+    resultsLabel: c?.resultsLabel ?? BEFORE_AFTER_DEFAULTS.resultsLabel,
+    beforeBadge: c?.beforeBadge || BEFORE_AFTER_DEFAULTS.beforeBadge,
+    afterBadge: c?.afterBadge || BEFORE_AFTER_DEFAULTS.afterBadge,
+  };
+}
 
-export default function BeforeAfterShowcase() {
-  const $t = useCmsText();
-  const categories = useCmsData("BeforeAfterShowcase__categories", categories__cms);
-  const projects = useCmsData("BeforeAfterShowcase__projects", projects__cms);
-  const [categoryId, setCategoryId] = useState<string>(categories[0].id);
-  const [projectId, setProjectId] = useState<string>(projects[0].id);
+/** Before/after projects: category pills -> before/after slider + results -> project carousel. */
+export default function BeforeAfterShowcase({ content }: { content?: Partial<BAContent> }) {
+  const { categories, projects, resultsLabel, beforeBadge, afterBadge } = useMemo(() => normalise(content), [content]);
+  const [categoryId, setCategoryId] = useState<string>(categories[0]?.id ?? "");
+  const [projectId, setProjectId] = useState<string>(projects[0]?.id ?? "");
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects = useMemo(
     () => projects.filter((p) => p.categoryId === categoryId),
-    [categoryId]
+    [categoryId, projects]
   );
 
   const selectedProject = useMemo(
@@ -353,8 +175,8 @@ export default function BeforeAfterShowcase() {
             key={selectedProject.id}
             beforeImage={selectedProject.before}
             afterImage={selectedProject.after}
-            beforeBadge="Before"
-            afterBadge="After"
+            beforeBadge={beforeBadge}
+            afterBadge={afterBadge}
           />
         </div>
 
@@ -362,13 +184,13 @@ export default function BeforeAfterShowcase() {
         <div className="w-full xl:w-[340px] bg-[#fafafa] border-t xl:border-t-0 xl:border-l border-slate-100 p-8 flex flex-col justify-center relative z-20">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-[10px] font-bold tracking-[0.15em] text-[#132a43] uppercase">
-              {selectedProject.name} {$t("BeforeAfterShowcase__t1", "· The Results")}</span>
+              {selectedProject.name} {resultsLabel}</span>
           </div>
           <div className="h-px w-full bg-slate-200 mb-6" />
 
           <div className="flex flex-col gap-6">
-            {selectedProject.stats.map((stat) => (
-              <div key={stat.label} className="flex items-start gap-3">
+            {selectedProject.stats.map((stat, si) => (
+              <div key={si} className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-full bg-[#0b3b35] text-white flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
                   <stat.Icon />
                 </div>

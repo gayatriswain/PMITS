@@ -3,6 +3,7 @@ import Container from "../../components/shared/Container";
 import WebsiteDevHeroVisual from "../../components/website-development/WebsiteDevHeroVisual";
 import TrustedBar from "../../components/shared/TrustedBar";
 import WebsiteDevTransformations from "../../components/website-development/WebsiteDevTransformations";
+import BeforeAfterShowcase from "../../components/website-development/BeforeAfterShowcase";
 import WebsiteDevApproach from "../../components/website-development/WebsiteDevApproach";
 import WebsiteDevGrowthJourney from "../../components/website-development/WebsiteDevGrowthJourney";
 import WebsiteDevComparison from "../../components/shared/WebsiteDevComparison";
@@ -30,7 +31,7 @@ export default function WebsiteDevelopmentPage() {
         </Container>
       </section>
       
-      <CmsSlot path="/web-software/website-development" k="transformations"><WebsiteDevTransformations /></CmsSlot>
+      <CmsSlot path="/web-software/website-development" k="transformations"><WebsiteDevTransformations showcase={<CmsSlot path="/web-software/website-development" k="before-after"><BeforeAfterShowcase /></CmsSlot>} /></CmsSlot>
 
       <CmsSlot path="/web-software/website-development" k="approach"><WebsiteDevApproach /></CmsSlot>
 

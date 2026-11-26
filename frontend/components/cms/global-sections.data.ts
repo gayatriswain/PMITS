@@ -12,6 +12,7 @@ export const GLOBAL_SECTIONS = [
   { key: "trusted-bar", component: "TrustedBar", label: "Client logos (Trusted by…)", carousel: true },
   { key: "projects-carousel", component: "ProjectsCarousel", label: "Featured projects slider", carousel: true },
   { key: "client-stories", component: "ClientStories", label: "Client stories slider", carousel: true },
+  { key: "before-after", component: "BeforeAfterShowcase", label: "Before / after showcase", carousel: true },
   { key: "why-choose-us", component: "WhyChooseUs", label: "Why choose us", carousel: false },
   { key: "cta-section", component: "CtaSection", label: "Call to action banner", carousel: false },
   { key: "website-dev-comparison", component: "WebsiteDevComparison", label: "Us vs others comparison", carousel: false },

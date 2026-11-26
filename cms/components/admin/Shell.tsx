@@ -6,7 +6,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import {
   Activity, BookOpen, Briefcase, FileStack, FolderKanban, Gauge, ImageIcon, Inbox, LayoutGrid, LogOut, Menu, MessageSquareQuote,
   Mail, Navigation, ScrollText, Settings, Tags, UserCircle, Users, UsersRound, X, ExternalLink, FileUser,
-  Layers, BadgeCheck, GalleryHorizontalEnd, Quote,
+  Layers, BadgeCheck, GalleryHorizontalEnd, Quote, SplitSquareHorizontal,
 } from "lucide-react";
 import { can, ROLE_LABELS, type Permission, type Role } from "@/lib/permissions";
 import { api } from "@/lib/client/api";
@@ -32,6 +32,7 @@ const NAV: { title: string; items: NavItem[] }[] = [
       { href: "/admin/global/trusted-bar", label: "Client logos slider", icon: BadgeCheck, perm: "pages.read" },
       { href: "/admin/global/projects-carousel", label: "Featured projects slider", icon: GalleryHorizontalEnd, perm: "pages.read" },
       { href: "/admin/global/client-stories", label: "Client stories slider", icon: Quote, perm: "pages.read" },
+      { href: "/admin/global/before-after", label: "Before / after showcase", icon: SplitSquareHorizontal, perm: "pages.read" },
     ],
   },
   {
