@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { Lock, Mail } from "lucide-react";
+import { ArrowRight, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { api } from "@/lib/client/api";
 import { Button } from "@/components/admin/ui";
 
@@ -14,6 +14,7 @@ export function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [show, setShow] = useState(false);
 
   // Only allow redirects back into the admin (no open redirects).
   const next = params.get("next");
@@ -21,7 +22,7 @@ export function LoginForm() {
 
   return (
     <form
-      className="space-y-4"
+      className="space-y-5"
       onSubmit={async (e) => {
         e.preventDefault();
         setError("");
@@ -39,8 +40,8 @@ export function LoginForm() {
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-slate-700">Email</span>
         <span className="relative block">
-          <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-          <input type="email" required autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} className="h-11 w-full rounded-lg border border-slate-200 pl-9 pr-3 text-sm outline-none focus:border-teal focus:ring-2 focus:ring-teal/15" />
+          <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <input type="email" required autoFocus autoComplete="username" placeholder="you@promanageitsolution.com" value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/60 pl-10 pr-3 text-sm outline-none transition focus:border-teal focus:bg-white focus:ring-4 focus:ring-teal/10" />
         </span>
       </label>
       <label className="block">
@@ -51,13 +52,22 @@ export function LoginForm() {
           </Link>
         </span>
         <span className="relative block">
-          <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-          <input type="password" required autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className="h-11 w-full rounded-lg border border-slate-200 pl-9 pr-3 text-sm outline-none focus:border-teal focus:ring-2 focus:ring-teal/15" />
+          <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <input type={show ? "text" : "password"} required autoComplete="current-password" placeholder="Your password" value={password} onChange={(e) => setPassword(e.target.value)} className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/60 pl-10 pr-11 text-sm outline-none transition focus:border-teal focus:bg-white focus:ring-4 focus:ring-teal/10" />
+          <button
+            type="button"
+            onClick={() => setShow((v) => !v)}
+            aria-label={show ? "Hide password" : "Show password"}
+            className="absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+          >
+            {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+          </button>
         </span>
       </label>
       {error && <p role="alert" className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{error}</p>}
-      <Button type="submit" className="h-11 w-full" loading={busy}>
+      <Button type="submit" className="group h-12 w-full rounded-xl text-[15px]" loading={busy}>
         Sign in
+        {!busy && <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />}
       </Button>
     </form>
   );

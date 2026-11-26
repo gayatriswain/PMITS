@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { api } from "@/lib/client/api";
 import { Button } from "@/components/admin/ui";
+import { PasswordInput } from "@/components/admin/PasswordInput";
 
 export function ResetForm() {
   const params = useSearchParams();
@@ -43,8 +44,8 @@ export function ResetForm() {
       }}
     >
       <p className="text-sm text-slate-500">Setting a new password for <b className="text-slate-700">{email}</b>. Use 10+ characters with upper and lower case letters and a number.</p>
-      <input type="password" required autoComplete="new-password" placeholder="New password" value={password} onChange={(e) => setPassword(e.target.value)} className="h-11 w-full rounded-lg border border-slate-200 px-3 text-sm outline-none focus:border-teal focus:ring-2 focus:ring-teal/15" />
-      <input type="password" required autoComplete="new-password" placeholder="Repeat new password" value={confirm} onChange={(e) => setConfirm(e.target.value)} className="h-11 w-full rounded-lg border border-slate-200 px-3 text-sm outline-none focus:border-teal focus:ring-2 focus:ring-teal/15" />
+      <PasswordInput required autoComplete="new-password" placeholder="New password" value={password} onChange={(e) => setPassword(e.target.value)} className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3.5 text-sm outline-none transition focus:border-teal focus:bg-white focus:ring-4 focus:ring-teal/10" />
+      <PasswordInput required autoComplete="new-password" placeholder="Repeat new password" value={confirm} onChange={(e) => setConfirm(e.target.value)} className="h-12 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3.5 text-sm outline-none transition focus:border-teal focus:bg-white focus:ring-4 focus:ring-teal/10" />
       {error && <p role="alert" className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{error}</p>}
       <Button type="submit" className="h-11 w-full" loading={busy}>Update password</Button>
     </form>

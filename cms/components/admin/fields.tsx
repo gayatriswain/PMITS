@@ -6,6 +6,7 @@ import { ArrowDown, ArrowUp, ImageIcon, Plus, Trash2, X } from "lucide-react";
 import { api, qs } from "@/lib/client/api";
 import { MediaPicker, Thumb } from "./MediaPicker";
 import { Button } from "./ui";
+import { PasswordInput } from "./PasswordInput";
 
 const RichTextEditor = dynamic(() => import("./RichTextEditor").then((m) => m.RichTextEditor), {
   ssr: false,
@@ -330,15 +331,19 @@ export function FieldInput({ field, value, onChange, errors, path }: { field: Fi
         </div>
       );
       break;
+    case "password":
+      control = (
+        <PasswordInput id={id} maxLength={field.max} className={inputCls} value={str} autoComplete="new-password" onChange={(e) => onChange(e.target.value)} placeholder={field.placeholder} />
+      );
+      break;
     default:
       control = (
         <input
           id={id}
-          type={field.type === "email" ? "email" : field.type === "password" ? "password" : field.type === "url" ? "text" : "text"}
+          type={field.type === "email" ? "email" : "text"}
           maxLength={field.max}
           className={`${inputCls} ${field.type === "slug" ? "font-mono text-xs" : ""}`}
           value={str}
-          autoComplete={field.type === "password" ? "new-password" : undefined}
           onChange={(e) => onChange(field.type === "slug" ? e.target.value.toLowerCase().replace(/[^a-z0-9/-]/g, "-") : e.target.value)}
           placeholder={field.placeholder}
         />

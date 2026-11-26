@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Sign in" };
 export default async function LoginPage() {
   if (await getSessionUser()) redirect("/admin");
   return (
-    <AuthCard title="Sign in to the CMS" subtitle="Manage the ProManage website content.">
+    <AuthCard title="Welcome back" subtitle="Sign in to manage the ProManage website.">
       <Suspense>
         <LoginForm />
       </Suspense>
