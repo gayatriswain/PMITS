@@ -82,7 +82,7 @@ const TargetIllustration = () => {
     <div className="absolute inset-0 bg-teal-50 rounded-full blur-3xl opacity-70"></div>
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <img
-      src={$t("GoogleAdsIntent__t1", "/target.png")}
+      src={$t("GoogleAdsIntent__t1", "/target.webp")}
       alt={$t("GoogleAdsIntent__t2", "Target Bullseye")}
       className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
     />
@@ -223,7 +223,7 @@ export default function GoogleAdsIntent() {
                       boxShadow: '8px 15px 30px rgba(0,0,0,0.18)'
                     }}
                   >
-                    <Image src={$t("GoogleAdsIntent__t20", "/google-ads1.avif")} alt={$t("GoogleAdsIntent__t21", "High Intent")} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <Image src={$t("GoogleAdsIntent__t20", "/google-ads1.webp")} alt={$t("GoogleAdsIntent__t21", "High Intent")} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="relative -mt-6 bg-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 border border-slate-50">
                     <PhoneIcon />
@@ -257,7 +257,7 @@ export default function GoogleAdsIntent() {
                       boxShadow: '8px 15px 30px rgba(0,0,0,0.18)'
                     }}
                   >
-                    <Image src={$t("GoogleAdsIntent__t29", "/google-ads2.avif")} alt={$t("GoogleAdsIntent__t30", "Decision Intent")} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <Image src={$t("GoogleAdsIntent__t29", "/google-ads2.webp")} alt={$t("GoogleAdsIntent__t30", "Decision Intent")} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="relative -mt-6 bg-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 border border-slate-50">
                     <CalendarIcon />
@@ -291,7 +291,7 @@ export default function GoogleAdsIntent() {
                       boxShadow: '8px 15px 30px rgba(0,0,0,0.18)'
                     }}
                   >
-                    <Image src={$t("GoogleAdsIntent__t38", "/google-ads3.avif")} alt={$t("GoogleAdsIntent__t39", "Solution Intent")} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <Image src={$t("GoogleAdsIntent__t38", "/google-ads3.webp")} alt={$t("GoogleAdsIntent__t39", "Solution Intent")} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="relative -mt-6 bg-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 border border-slate-50">
                     <ChartIcon />

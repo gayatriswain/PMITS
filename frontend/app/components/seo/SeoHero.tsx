@@ -447,7 +447,7 @@ export default function SeoHero() {
         transition={{ duration: 1.2, ease: EASE }}
         aria-hidden
       >
-        <Image src={$t("SeoHero__t9", "/seo-bg.png")} alt="" fill priority sizes="60vw" className="object-cover object-right" />
+        <Image src={$t("SeoHero__t9", "/seo-bg.webp")} alt="" fill priority sizes="60vw" className="object-cover object-right" />
       </motion.div>
 
       <Container className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-10 lg:gap-4 items-center">
@@ -589,13 +589,13 @@ export default function SeoHero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: EASE }}
           >
-            <Image src={$t("SeoHero__t26", "/seo-bg.png")} alt="" fill priority sizes="100vw" className="object-contain" />
+            <Image src={$t("SeoHero__t26", "/seo-bg.webp")} alt="" fill priority sizes="100vw" className="object-contain" />
           </motion.div>
           {/* man sits above the cards (static, no animation) */}
           <div className="absolute inset-x-0 bottom-0 aspect-[1494/1052] z-30 pointer-events-none">
             <div className="absolute inset-0 scale-[0.95] origin-[100%_92%] translate-y-[14%]">
               <Image
-                src={$t("SeoHero__t27", "/seo-man.png")}
+                src={$t("SeoHero__t27", "/seo-man.webp")}
                 alt={$t("SeoHero__t28", "Business owner looking at the city skyline")}
                 fill
                 priority

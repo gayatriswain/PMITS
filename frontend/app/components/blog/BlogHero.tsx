@@ -201,10 +201,10 @@ export default function BlogHero() {
 
                     {/* Static Image replacing the SVG Hologram */}
                     <img 
-                      src={$t("BlogHero__t23", "/Blog.png")} 
+                      src={$t("BlogHero__t23", "/Blog.webp")} 
                       alt={$t("BlogHero__t24", "AI Hologram Illustration")} 
                       className="w-[180%] h-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[45%] object-contain z-10"
-                      onError={(e) => { e.currentTarget.src = "/blog-vector.svg"; }}
+                      onError={(e) => { e.currentTarget.src = "/blog-vector.webp"; }}
                     />
                   </div>
                   </motion.div>
@@ -258,10 +258,10 @@ export default function BlogHero() {
             {/* Book Image */}
             <div className="shrink-0 relative w-48 md:w-[320px] flex items-end justify-start self-stretch">
                <img 
-                 src={$t("BlogHero__t31", "/blog2.png")} 
+                 src={$t("BlogHero__t31", "/blog2.webp")} 
                  alt={$t("BlogHero__t32", "Knowledge Book")} 
                  className="w-full h-auto object-contain object-bottom md:object-left-bottom mix-blend-multiply"
-                 onError={(e) => { e.currentTarget.src = "/Blog.png"; }}
+                 onError={(e) => { e.currentTarget.src = "/Blog.webp"; }}
                />
             </div>
             

@@ -68,7 +68,7 @@ function StatGaugeIcon() {
 }
 
 /* ---------------- Data ---------------- */
-// NOTE: only "/furnisher.png" (before) + "/lux.png" (after) exist as a real
+// NOTE: only "/furnisher.webp" (before) + "/lux.webp" (after) exist as a real
 // before/after pair today. Every project below reuses that pair as a
 // placeholder so the category → carousel → slider flow is fully wired up.
 // Swap `before`/`after` per project once real client screenshots are added.
@@ -102,9 +102,9 @@ const projects__cms: Project[] = [
     name: "Organic Harvest",
     categoryId: "ecommerce",
     tag: "Ecommerce",
-    thumb: "/lux.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/lux.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "312%", label: "Increase in Organic Traffic", sub: "Within 6 Months", Icon: StatTrendIcon },
       { value: "280%", label: "More Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -117,9 +117,9 @@ const projects__cms: Project[] = [
     name: "Urban Thread",
     categoryId: "ecommerce",
     tag: "Ecommerce",
-    thumb: "/furnisher.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/furnisher.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "265%", label: "Increase in Organic Traffic", sub: "Within 5 Months", Icon: StatTrendIcon },
       { value: "190%", label: "More Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -133,9 +133,9 @@ const projects__cms: Project[] = [
     name: "Skyline Corp",
     categoryId: "corporate",
     tag: "Corporate",
-    thumb: "/lux.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/lux.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "220%", label: "Increase in Qualified Leads", sub: "Within 6 Months", Icon: StatTrendIcon },
       { value: "150%", label: "More Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -148,9 +148,9 @@ const projects__cms: Project[] = [
     name: "Nova Consulting",
     categoryId: "corporate",
     tag: "Corporate",
-    thumb: "/furnisher.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/furnisher.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "198%", label: "Increase in Qualified Leads", sub: "Within 5 Months", Icon: StatTrendIcon },
       { value: "140%", label: "More Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -164,9 +164,9 @@ const projects__cms: Project[] = [
     name: "VitalCare Clinic",
     categoryId: "healthcare",
     tag: "Healthcare",
-    thumb: "/lux.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/lux.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "240%", label: "Increase in Appointment Bookings", sub: "Within 6 Months", Icon: StatTrendIcon },
       { value: "175%", label: "More Patient Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -179,9 +179,9 @@ const projects__cms: Project[] = [
     name: "Wellness Hub",
     categoryId: "healthcare",
     tag: "Healthcare",
-    thumb: "/furnisher.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/furnisher.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "210%", label: "Increase in Appointment Bookings", sub: "Within 5 Months", Icon: StatTrendIcon },
       { value: "160%", label: "More Patient Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -195,9 +195,9 @@ const projects__cms: Project[] = [
     name: "BrightPath Academy",
     categoryId: "education",
     tag: "Education",
-    thumb: "/lux.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/lux.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "255%", label: "Increase in Admission Enquiries", sub: "Within 6 Months", Icon: StatTrendIcon },
       { value: "185%", label: "More Parent Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -210,9 +210,9 @@ const projects__cms: Project[] = [
     name: "EduSpark Institute",
     categoryId: "education",
     tag: "Education",
-    thumb: "/furnisher.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/furnisher.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "205%", label: "Increase in Admission Enquiries", sub: "Within 5 Months", Icon: StatTrendIcon },
       { value: "165%", label: "More Parent Enquiries", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -226,9 +226,9 @@ const projects__cms: Project[] = [
     name: "Spice Route",
     categoryId: "restaurant",
     tag: "Restaurant",
-    thumb: "/lux.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/lux.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "230%", label: "Increase in Online Orders", sub: "Within 4 Months", Icon: StatTrendIcon },
       { value: "170%", label: "More Table Reservations", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -241,9 +241,9 @@ const projects__cms: Project[] = [
     name: "Cafe Bloom",
     categoryId: "restaurant",
     tag: "Restaurant",
-    thumb: "/furnisher.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/furnisher.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "195%", label: "Increase in Online Orders", sub: "Within 4 Months", Icon: StatTrendIcon },
       { value: "150%", label: "More Table Reservations", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -257,9 +257,9 @@ const projects__cms: Project[] = [
     name: "Prime Realty",
     categoryId: "realestate",
     tag: "Real Estate",
-    thumb: "/lux.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/lux.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "270%", label: "Increase in Property Enquiries", sub: "Within 6 Months", Icon: StatTrendIcon },
       { value: "200%", label: "More Site Visit Requests", sub: "Than Previous Website", Icon: StatUsersIcon },
@@ -272,9 +272,9 @@ const projects__cms: Project[] = [
     name: "Urban Nest",
     categoryId: "realestate",
     tag: "Real Estate",
-    thumb: "/furnisher.png",
-    before: "/furnisher.png",
-    after: "/lux.png",
+    thumb: "/furnisher.webp",
+    before: "/furnisher.webp",
+    after: "/lux.webp",
     stats: [
       { value: "215%", label: "Increase in Property Enquiries", sub: "Within 5 Months", Icon: StatTrendIcon },
       { value: "180%", label: "More Site Visit Requests", sub: "Than Previous Website", Icon: StatUsersIcon },

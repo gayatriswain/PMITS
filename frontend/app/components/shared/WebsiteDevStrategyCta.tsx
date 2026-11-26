@@ -182,7 +182,7 @@ function ProofStrip() {
         </div>
         <div className="flex items-center gap-3 pl-10">
           <span className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-white shadow-md">
-            <Image src={$t("WebsiteDevStrategyCta__t2", "/image1.jpg")} alt={$t("WebsiteDevStrategyCta__t3", "Ravi Sharma")} fill sizes="44px" className="object-cover" />
+            <Image src={$t("WebsiteDevStrategyCta__t2", "/image1.webp")} alt={$t("WebsiteDevStrategyCta__t3", "Ravi Sharma")} fill sizes="44px" className="object-cover" />
           </span>
           <div>
             <p className="text-small font-bold" style={{ color: NAVY }}>{rich($t("WebsiteDevStrategyCta__t4", "Ravi Sharma"))}</p>
@@ -273,7 +273,7 @@ export default function WebsiteDevStrategyCta() {
     <section className="relative w-full overflow-hidden bg-[#FBF8F3] py-14 lg:py-20">
       {/* Background artwork (leaf shadows + plant on the right) */}
       <Image
-        src={$t("WebsiteDevStrategyCta__t14", "/growth.png")}
+        src={$t("WebsiteDevStrategyCta__t14", "/growth.webp")}
         alt=""
         fill
         sizes="100vw"

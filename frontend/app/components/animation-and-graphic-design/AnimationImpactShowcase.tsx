@@ -28,7 +28,7 @@ const showcaseProjects__cms: ProjectItem[] = [
     id: "3d-explainer",
     category: "3D Animation",
     title: "Explainer Video",
-    image: "/explainer-character-showcase.jpg",
+    image: "/explainer-character-showcase.webp",
     client: "FinTrack SaaS",
     timeline: "3 Weeks",
     deliverables: ["4K Master 3D Animation", "Custom Character Rigging", "Sound Design & VO"],
@@ -38,7 +38,7 @@ const showcaseProjects__cms: ProjectItem[] = [
     id: "herbal-tea",
     category: "Packaging Design",
     title: "Herbal Tea",
-    image: "/herbal-tea-packaging.jpg",
+    image: "/herbal-tea-packaging.webp",
     client: "Naturova Organic",
     timeline: "2 Weeks",
     deliverables: ["Matte Standup Pouch", "Botanical Foil Embellishments", "Print-Ready Vector Master"],
@@ -48,7 +48,7 @@ const showcaseProjects__cms: ProjectItem[] = [
     id: "saas-dashboard",
     category: "UI/UX Design",
     title: "Dashboard Interface",
-    image: "/saas-dashboard-showcase.jpg",
+    image: "/saas-dashboard-showcase.webp",
     client: "Nexus Performance",
     timeline: "4 Weeks",
     deliverables: ["Dark Mode UI System", "Interactive Micro-Interactions", "Figma Design System"],
@@ -58,7 +58,7 @@ const showcaseProjects__cms: ProjectItem[] = [
     id: "verdant-branding",
     category: "Brand Identity",
     title: "Verdant Reality",
-    image: "/verdant-branding-showcase.jpg",
+    image: "/verdant-branding-showcase.webp",
     client: "Verdant Reality Corp",
     timeline: "3 Weeks",
     deliverables: ["Geometric Gold Logo", "Executive Stationery Suite", "Comprehensive Brand Guidelines"],
@@ -68,7 +68,7 @@ const showcaseProjects__cms: ProjectItem[] = [
     id: "sneaker-motion",
     category: "E-commerce / Motion",
     title: "Modern Sneaker 3D",
-    image: "/sneaker-mobile-showcase.jpg",
+    image: "/sneaker-mobile-showcase.webp",
     client: "Velocity Footwear",
     timeline: "2 Weeks",
     deliverables: ["3D Product Animation", "Interactive 360 Spin", "Social Ad Cutdowns"],
@@ -78,7 +78,7 @@ const showcaseProjects__cms: ProjectItem[] = [
     id: "ev-explainer",
     category: "Motion Graphics",
     title: "EV Charger Explainer",
-    image: "/ev-charger-showcase.jpg",
+    image: "/ev-charger-showcase.webp",
     client: "VoltGrid Mobility",
     timeline: "3 Weeks",
     deliverables: ["60s Explainer Animation", "Neon Energy FX", "Social Media Cutdowns"],
@@ -88,7 +88,7 @@ const showcaseProjects__cms: ProjectItem[] = [
     id: "amethyst-brand",
     category: "Graphic Design",
     title: "Amethyst Brand Kit",
-    image: "/graphic-design-card-visual.jpg",
+    image: "/graphic-design-card-visual.webp",
     client: "Amethyst Studio",
     timeline: "2 Weeks",
     deliverables: ["Logo & Monogram", "Stationery & Merch Mockups", "Colour Palette Guide"],
@@ -98,7 +98,7 @@ const showcaseProjects__cms: ProjectItem[] = [
     id: "video-player-ui",
     category: "2D / 3D Motion",
     title: "Glass Video Player",
-    image: "/animation-card-visual.jpg",
+    image: "/animation-card-visual.webp",
     client: "Streamly Media",
     timeline: "2 Weeks",
     deliverables: ["Glassmorphic Player UI", "3D Object Animation", "Micro-Interaction Loops"],
@@ -458,7 +458,7 @@ export default function AnimationImpactShowcase() {
                     onClick={() => setActiveModalProject(showcaseProjects[0])}
                   >
                     <Image
-                      src={$t("AnimationImpactShowcase__t18", "/ev-charger-showcase.jpg")}
+                      src={$t("AnimationImpactShowcase__t18", "/ev-charger-showcase.webp")}
                       alt={$t("AnimationImpactShowcase__t19", "EV Charger Explainer Animation")}
                       fill
                       unoptimized
@@ -477,7 +477,7 @@ export default function AnimationImpactShowcase() {
                     onClick={() => setActiveModalProject(showcaseProjects[1])}
                   >
                     <Image
-                      src={$t("AnimationImpactShowcase__t20", "/herbal-tea-packaging.jpg")}
+                      src={$t("AnimationImpactShowcase__t20", "/herbal-tea-packaging.webp")}
                       alt={$t("AnimationImpactShowcase__t21", "Naturova Herbal Tea Packaging")}
                       fill
                       unoptimized
@@ -492,7 +492,7 @@ export default function AnimationImpactShowcase() {
                     onClick={() => setActiveModalProject(showcaseProjects[3])}
                   >
                     <Image
-                      src={$t("AnimationImpactShowcase__t22", "/verdant-branding-showcase.jpg")}
+                      src={$t("AnimationImpactShowcase__t22", "/verdant-branding-showcase.webp")}
                       alt={$t("AnimationImpactShowcase__t23", "Verdant Reality Brand Identity")}
                       fill
                       unoptimized
@@ -507,7 +507,7 @@ export default function AnimationImpactShowcase() {
                     onClick={() => setActiveModalProject(showcaseProjects[2])}
                   >
                     <Image
-                      src={$t("AnimationImpactShowcase__t24", "/saas-dashboard-showcase.jpg")}
+                      src={$t("AnimationImpactShowcase__t24", "/saas-dashboard-showcase.webp")}
                       alt={$t("AnimationImpactShowcase__t25", "SaaS Analytics Dashboard UI")}
                       fill
                       unoptimized
@@ -1018,7 +1018,7 @@ export default function AnimationImpactShowcase() {
           ========================================================= */}
       <AnimatePresence>
         {activeModalProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md">
             
             {/* Modal Overlay Click to Close */}
             <div

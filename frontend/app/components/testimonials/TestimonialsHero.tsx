@@ -244,7 +244,7 @@ function Showcase() {
 
         {/* podium, its glowing top sitting right under the quote card; stretched sideways so its rings spread wider */}
         <div className="absolute" style={{ left: 0, top: 10, width: CANVAS_W, height: CANVAS_H, transform: "scaleX(1.35)", transformOrigin: "62% 100%" }}>
-          <Image src={$t("TestimonialsHero__t5", "/Client%20Testimonials1.png")} alt="" fill priority sizes="640px" className="object-contain mix-blend-multiply" aria-hidden />
+          <Image src={$t("TestimonialsHero__t5", "/Client%20Testimonials1.webp")} alt="" fill priority sizes="640px" className="object-contain mix-blend-multiply" aria-hidden />
         </div>
 
         {/* both cards rise out of the podium's glowing top, growing from tiny to full size */}

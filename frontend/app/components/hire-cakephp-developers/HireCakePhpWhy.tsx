@@ -13,7 +13,7 @@ import { rich } from "@/components/cms/rich";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
 const INK = "#0f1a2e";
-const CAKE = "/Red_Velvet_Cake_with_Glowing_Rim-removebg-preview.png";
+const CAKE = "/Red_Velvet_Cake_with_Glowing_Rim-removebg-preview.webp";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },

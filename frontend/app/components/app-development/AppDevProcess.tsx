@@ -208,7 +208,7 @@ function DiscoverScreen() {
         {[{ n: $t("AppDevProcess__t7", "Minimal Chair"), tag: $t("AppDevProcess__t8", "New Decor") }, { n: $t("AppDevProcess__t9", "Table Lamp"), tag: $t("AppDevProcess__t10", "New Decor") }].map((it) => (
           <div key={it.n} className="rounded-xl bg-slate-50 p-2">
             <div className="relative h-12 w-full overflow-hidden rounded-lg mb-1.5 bg-slate-100">
-              <Image src={$t("AppDevProcess__t11", "/83a9d1eb-da0f-4585-bf40-f9031fb7e5f1.png")} alt={it.n} fill className="object-cover" sizes="80px" />
+              <Image src={$t("AppDevProcess__t11", "/83a9d1eb-da0f-4585-bf40-f9031fb7e5f1.webp")} alt={it.n} fill className="object-cover" sizes="80px" />
             </div>
             <p className="text-[8px] font-bold truncate" style={{ color: NAVY }}>{it.n}</p>
             <p className="text-[6.5px] text-slate-400">{it.tag}</p>
@@ -231,7 +231,7 @@ function DiscoverScreen() {
       </div>
 
       <div className="relative mx-4 mb-3 flex-1 overflow-hidden rounded-2xl p-3.5">
-        <Image src={$t("AppDevProcess__t17", "/db67c28c-d876-48dc-bd73-fcdea87c15cb.png")} alt="" fill className="object-cover" sizes="200px" />
+        <Image src={$t("AppDevProcess__t17", "/db67c28c-d876-48dc-bd73-fcdea87c15cb.webp")} alt="" fill className="object-cover" sizes="200px" />
         <div className="absolute inset-0" style={{ background: `linear-gradient(100deg, ${DEEP_TEAL} 40%, transparent 95%)` }} />
         <p className="relative text-[8px] font-semibold uppercase tracking-wide text-white/70">{rich($t("AppDevProcess__t18", "Summer Sale"))}</p>
         <p className="text-caption relative font-bold text-white mt-1">{rich($t("AppDevProcess__t19", "Up to 40% Off"))}</p>
@@ -382,7 +382,7 @@ export default function AppDevProcess() {
                 <div className="flex -space-x-2">
                   {[1, 2, 3].map((i) => (
                     <div key={i} className="h-7 w-7 rounded-full ring-2 ring-white overflow-hidden relative bg-slate-200">
-                      <Image src={$t("AppDevProcess__t35", "/image1.jpg")} alt={$t("AppDevProcess__t36", "Client")} fill className="object-cover" />
+                      <Image src={$t("AppDevProcess__t35", "/image1.webp")} alt={$t("AppDevProcess__t36", "Client")} fill className="object-cover" />
                     </div>
                   ))}
                 </div>

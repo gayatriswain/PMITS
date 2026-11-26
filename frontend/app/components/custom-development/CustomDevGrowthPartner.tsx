@@ -183,7 +183,7 @@ export default function CustomDevGrowthPartner() {
             transition={{ duration: 0.7, ease: EASE }}
             className="hidden lg:block relative self-start mx-auto w-full max-w-[880px] aspect-[938/1136]"
           >
-            <Image src={$t("CustomDevGrowthPartner__t5", "/shopify-vision.png")} alt={$t("CustomDevGrowthPartner__t6", "Your Vision, Our Expertise, Your Software, Real Business Impact")} fill sizes="880px" className="object-contain" priority={false} />
+            <Image src={$t("CustomDevGrowthPartner__t5", "/shopify-vision.webp")} alt={$t("CustomDevGrowthPartner__t6", "Your Vision, Our Expertise, Your Software, Real Business Impact")} fill sizes="880px" className="object-contain" priority={false} />
           </motion.div>
 
           {/* Right: annotation + testimonial */}

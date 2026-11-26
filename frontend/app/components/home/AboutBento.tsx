@@ -72,19 +72,19 @@ function CsatCard({ delay }: { delay: number }) {
 
 const strategySlides__cms = [
   {
-    image: "/project1.png",
+    image: "/project1.webp",
     icon: BarChartUpIcon,
     heading: "Strategy that matters",
     text: "Thoughtful direction aligned with real business goals.",
   },
   {
-    image: "/project4.png",
+    image: "/project4.webp",
     icon: TrendingUpIcon,
     heading: "Built for long-term growth",
     text: "Your brand remains consistent and powerful as you expand.",
   },
   {
-    image: "/project6.png",
+    image: "/project6.webp",
     icon: GaugeIcon,
     heading: "Designed to convert",
     text: "Every layout choice is built to turn visitors into customers.",
@@ -291,7 +291,7 @@ function AgencyRebuildCard({ delay }: { delay: number }) {
       </div>
       <div className="relative mt-3 flex-1 overflow-hidden rounded-lg bg-slate-50">
         <Image
-          src={$t("AboutBento__t15", "/image1.jpg")}
+          src={$t("AboutBento__t15", "/image1.webp")}
           alt={$t("AboutBento__t16", "Agency website rebuild case study")}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"

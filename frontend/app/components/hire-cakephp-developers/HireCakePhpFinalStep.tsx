@@ -11,7 +11,7 @@ import { rich } from "@/components/cms/rich";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
 const INK = "#0f1a2e";
-const PEDESTAL = "/cakephp-pedestal-clean.png";
+const PEDESTAL = "/cakephp-pedestal-clean.webp";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -375,21 +375,21 @@ export default function HireCakePhpFinalStep() {
             {/* Team Avatars */}
             <div className="flex items-center -space-x-2">
               <Image
-                src={$t("HireCakePhpFinalStep__t18", "/customer-avatar.jpg")}
+                src={$t("HireCakePhpFinalStep__t18", "/customer-avatar.webp")}
                 alt={$t("HireCakePhpFinalStep__t19", "ProManage Team Member")}
                 width={36}
                 height={36}
                 className="h-9 w-9 rounded-full border-2 border-white object-cover shadow-sm"
               />
               <Image
-                src={$t("HireCakePhpFinalStep__t20", "/ravi-sharma-avatar.jpg")}
+                src={$t("HireCakePhpFinalStep__t20", "/ravi-sharma-avatar.webp")}
                 alt={$t("HireCakePhpFinalStep__t21", "ProManage CakePHP Specialist")}
                 width={36}
                 height={36}
                 className="h-9 w-9 rounded-full border-2 border-white object-cover shadow-sm"
               />
               <Image
-                src={$t("HireCakePhpFinalStep__t22", "/agent-live-avatar.png")}
+                src={$t("HireCakePhpFinalStep__t22", "/agent-live-avatar.webp")}
                 alt={$t("HireCakePhpFinalStep__t23", "ProManage Technical Lead")}
                 width={36}
                 height={36}

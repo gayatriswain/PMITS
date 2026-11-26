@@ -136,7 +136,7 @@ export default function EcommerceSeoEcosystem() {
               {/* Product Result */}
               <div className="flex gap-8 items-start border-l-4 border-transparent">
                 <div className="w-[200px] h-[240px] bg-slate-50 rounded-xl overflow-hidden shrink-0 flex items-center justify-center relative p-2 shadow-inner">
-                  <img src={$t("EcommerceSeoEcosystem__t19", "/backpack.jpg")} alt={$t("EcommerceSeoEcosystem__t20", "Minimalist Leather Backpack")} className="w-full h-full object-contain mix-blend-multiply" />
+                  <img src={$t("EcommerceSeoEcosystem__t19", "/backpack.webp")} alt={$t("EcommerceSeoEcosystem__t20", "Minimalist Leather Backpack")} className="w-full h-full object-contain mix-blend-multiply" />
                 </div>
                 
                 <div className="flex-1 pt-1">

@@ -30,3 +30,49 @@ body {
 .ProseMirror.inline-rich { min-height: 42px; }
 .inline-rich p { margin: 0; line-height: 1.55; }
 .ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: #94a3b8; float: left; height: 0; pointer-events: none; }
+
+/* Admin sidebar: slim scrollbar that blends into the navy sidebar (shows on hover/scroll only). */
+.sidebar-scroll {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: transparent transparent;
+  scrollbar-gutter: stable;
+}
+.sidebar-scroll:hover,
+.sidebar-scroll:focus-within {
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-button {
+  display: none; /* no up/down arrows */
+  height: 0;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 9999px;
+}
+.sidebar-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+}
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* Sign-in screens (components/admin/AuthCard.tsx) */
+@keyframes auth-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes auth-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes auth-glow { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.12); } }
+@keyframes auth-orbit { to { transform: rotate(360deg); } }
+@keyframes auth-bar { 0%, 100% { transform: scaleY(0.55); } 50% { transform: scaleY(1); } }
+.auth-rise { animation: auth-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.auth-float { animation: auth-float 6s ease-in-out infinite; }
+.auth-glow { animation: auth-glow 9s ease-in-out infinite; }
+.auth-orbit { animation: auth-orbit 40s linear infinite; }
+.auth-bar { transform-origin: bottom; animation: auth-bar 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .auth-rise, .auth-float, .auth-glow, .auth-orbit, .auth-bar { animation: none; }
+}

@@ -278,7 +278,7 @@ export default function ArVrSolutions() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               <Image
-                src={$t("ArVrSolutions__t12", "/ARVR2.png")}
+                src={$t("ArVrSolutions__t12", "/ARVR2.webp")}
                 alt={$t("ArVrSolutions__t13", "Immersive futuristic world with a portal on a floating platform")}
                 width={1779}
                 height={884}

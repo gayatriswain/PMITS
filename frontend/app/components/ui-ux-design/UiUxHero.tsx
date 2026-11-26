@@ -82,7 +82,7 @@ const swatches__cms = [
 ];
 
 const slides__cms = [
-  "/uiux-architecture.jpg",
+  "/uiux-architecture.webp",
   "/Futuristic Lavender Archway Atrium.webp",
   "/Luminous Icy Blue Abstract Waves.webp",
 ];

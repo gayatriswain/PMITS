@@ -94,7 +94,8 @@ export default function Header({ cms }: { cms?: HeaderCms } = {}) {
   }, [servicesOpen, mobileOpen, closeAll]);
 
   return (
-    <header className="sticky top-0 z-50 w-full">
+    // z-[90]: above every page section (sliders/cards go up to z-60); popups/modals use z-[100] so they still cover it
+    <header className="sticky top-0 z-[90] w-full">
       {/* soft backdrop while the services panel is open */}
       <AnimatePresence>
         {servicesOpen && (

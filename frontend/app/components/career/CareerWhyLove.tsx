@@ -193,7 +193,7 @@ export default function CareerWhyLove() {
         style={{ aspectRatio: "1376 / 768" }}
       >
         <Image
-          src={$t("CareerWhyLove__t8", "/career2.png")}
+          src={$t("CareerWhyLove__t8", "/career2.webp")}
           alt={$t("CareerWhyLove__t9", "ProManage teammates chatting on sofas in the office lounge under a 'Teamwork makes the dream work' sign")}
           fill
           sizes="100vw"

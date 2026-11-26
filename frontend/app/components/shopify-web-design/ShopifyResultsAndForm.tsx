@@ -164,7 +164,7 @@ export default function ShopifyResultsAndForm() {
 
                 {/* Laptop Mockup Image Placeholder */}
                 <div className="flex-1 relative -mt-16 ml-4 hidden md:block">
-                  <img src={$t("ShopifyResultsAndForm__t25", "/shopify5.png")} alt={$t("ShopifyResultsAndForm__t26", "Shopify Design")} className="w-full h-auto object-contain drop-shadow-2xl scale-110 origin-bottom-right" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                  <img src={$t("ShopifyResultsAndForm__t25", "/shopify5.webp")} alt={$t("ShopifyResultsAndForm__t26", "Shopify Design")} className="w-full h-auto object-contain drop-shadow-2xl scale-110 origin-bottom-right" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                   {/* Handwritten text */}
                   <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 rotate-[-2deg]">
                     <span className="font-['Caveat',_cursive] italic text-[#0b3b35] text-[20px] font-bold">{$t("ShopifyResultsAndForm__t27", "Smart Design. Real Results.")}</span>

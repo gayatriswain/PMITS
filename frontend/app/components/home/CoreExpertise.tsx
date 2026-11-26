@@ -103,7 +103,7 @@ export default function CoreExpertise() {
               {/* Right column: laptop preview */}
               <div className="relative mx-auto w-full max-w-[340px] self-start sm:mx-0 sm:max-w-none">
                 <Image
-                  src={$t("CoreExpertise__t10", "/Laptop.png")}
+                  src={$t("CoreExpertise__t10", "/Laptop.webp")}
                   alt={$t("CoreExpertise__t11", "Website design preview shown on a laptop")}
                   width={1440}
                   height={1092}

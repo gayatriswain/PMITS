@@ -44,7 +44,7 @@ const GRID_IMAGES = [
   "/product6.webp",
   "/product7.webp",
 ];
-const POST_TILES__cms = [...GRID_IMAGES, "/content-lifestyle.jpg", "/content-ugc.jpg"];
+const POST_TILES__cms = [...GRID_IMAGES, "/content-lifestyle.webp", "/content-ugc.webp"];
 
 // A coded (not photographed) phone screen showing a generic Instagram-profile-style layout —
 // placeholder "yourbrand" text with a real (already-licensed) image grid for the posts.

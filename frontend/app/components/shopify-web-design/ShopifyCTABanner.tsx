@@ -31,8 +31,8 @@ export default function ShopifyCTABanner() {
             
             {/* The Image (Composite 3D illustration) */}
             <div className="w-[180px] md:w-[220px] shrink-0 relative">
-              {/* Fallback image path, assuming shopify4.png or similar is the 3D asset */}
-              <img src={$t("ShopifyCTABanner__t4", "/shopify4.png")} alt={$t("ShopifyCTABanner__t5", "Shopify Strategy")} className="w-full h-auto object-contain" 
+              {/* Fallback image path, assuming shopify4.webp or similar is the 3D asset */}
+              <img src={$t("ShopifyCTABanner__t4", "/shopify4.webp")} alt={$t("ShopifyCTABanner__t5", "Shopify Strategy")} className="w-full h-auto object-contain" 
                    onError={(e) => { e.currentTarget.style.display = 'none'; }} />
             </div>
 

@@ -186,7 +186,7 @@ export default function LocationServices({ slot1 }: { slot1: ReactNode }) {
 
                   {/* Static WordPress badge */}
                   <Image
-                    src={$t("LocationServices__t11", "/wordpress-logo-svgrepo-com.png")}
+                    src={$t("LocationServices__t11", "/wordpress-logo-svgrepo-com.webp")}
                     alt={$t("LocationServices__t12", "WordPress")}
                     width={64}
                     height={64}
@@ -270,7 +270,7 @@ export default function LocationServices({ slot1 }: { slot1: ReactNode }) {
         {/* Local presence across Noida & NCR */}
         <div className="mt-8 flex flex-col items-center gap-8 rounded-3xl border border-slate-100 bg-[#F4F8F9] p-[10px] shadow-[0_20px_60px_-30px_rgba(15,23,42,0.2)] lg:flex-row lg:gap-10">
           <div className="relative h-28 w-full shrink-0 overflow-hidden rounded-2xl sm:w-48 lg:w-44">
-            <Image src={$t("LocationServices__t19", "/local area.png")} alt={$t("LocationServices__t20", "Noida skyline")} fill className="object-cover" />
+            <Image src={$t("LocationServices__t19", "/local area.webp")} alt={$t("LocationServices__t20", "Noida skyline")} fill className="object-cover" />
           </div>
 
           <div className="text-center lg:max-w-xs lg:shrink-0 lg:text-left">

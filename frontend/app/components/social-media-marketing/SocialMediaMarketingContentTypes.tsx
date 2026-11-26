@@ -92,12 +92,12 @@ type CardData = {
 };
 
 const CARDS__cms: CardData[] = [
-  { label: "Reels", Icon: ReelsIcon, image: "/content-reels.jpg", href: "#" },
-  { label: "Carousels", Icon: GridIcon, image: "/content-carousels.jpg", href: "#" },
-  { label: "Stories", Icon: CircleDotIcon, image: "/content-stories.jpg", href: "#" },
-  { label: "Product Shots", Icon: StarIcon, image: "/content-product-shots.jpg", href: "#" },
-  { label: "Lifestyle", Icon: StarIcon, image: "/content-lifestyle.jpg", href: "#" },
-  { label: "UGC Content", Icon: UserIcon, image: "/content-ugc.jpg", href: "#" },
+  { label: "Reels", Icon: ReelsIcon, image: "/content-reels.webp", href: "#" },
+  { label: "Carousels", Icon: GridIcon, image: "/content-carousels.webp", href: "#" },
+  { label: "Stories", Icon: CircleDotIcon, image: "/content-stories.webp", href: "#" },
+  { label: "Product Shots", Icon: StarIcon, image: "/content-product-shots.webp", href: "#" },
+  { label: "Lifestyle", Icon: StarIcon, image: "/content-lifestyle.webp", href: "#" },
+  { label: "UGC Content", Icon: UserIcon, image: "/content-ugc.webp", href: "#" },
 ];
 
 function ContentCard({ card }: { card: CardData }) {

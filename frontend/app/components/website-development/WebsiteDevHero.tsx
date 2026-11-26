@@ -58,7 +58,7 @@ export default function WebsiteDevHero({ slot1 }: { slot1: ReactNode }) {
             <div className="flex -space-x-3">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="relative w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden bg-slate-200">
-                  <Image src={$t("WebsiteDevHero__t11", "/image1.jpg")} alt={$t("WebsiteDevHero__t12", "User")} fill className="object-cover" />
+                  <Image src={$t("WebsiteDevHero__t11", "/image1.webp")} alt={$t("WebsiteDevHero__t12", "User")} fill className="object-cover" />
                 </div>
               ))}
               <div className="w-10 h-10 rounded-full border-2 border-white bg-teal-50 flex items-center justify-center text-[11px] font-bold text-teal-700 shadow-sm z-10 relative">

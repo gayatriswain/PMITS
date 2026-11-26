@@ -144,7 +144,7 @@ export default function RecentSuccessStories() {
               {/* Image Container */}
               <div className="relative z-10 w-[58%] flex items-center justify-end pl-2">
                 <img 
-                  src={$t("RecentSuccessStories__t30", "/website1.png")} 
+                  src={$t("RecentSuccessStories__t30", "/website1.webp")} 
                   alt={study.title} 
                   className="max-w-full max-h-full w-auto h-auto rounded-xl shadow-lg border border-black/5 group-hover:-translate-y-1 transition-transform duration-500 object-contain"
                 />

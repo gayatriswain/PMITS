@@ -16,7 +16,7 @@ const clientStories__cms = [
       "Promanage delivered a platform that not only looks exceptional but also made our entire process faster, smarter and effortless.",
     author: "Arjun Malhotra",
     role: "CEO, SolarWave Energy",
-    avatar: "/ravi-sharma-avatar.jpg",
+    avatar: "/ravi-sharma-avatar.webp",
     company: "SOLARWAVE",
     companySub: "ENERGY",
     companyIcon: (
@@ -33,7 +33,7 @@ const clientStories__cms = [
     laptop: {
       headline: "Powering a sustainable future.",
       sub: "Smart solar solutions for homes, businesses and industries.",
-      heroImage: "/verdant-branding-showcase.jpg",
+      heroImage: "/verdant-branding-showcase.webp",
       metrics: [
         { label: "Total Projects", val: "248", icon: "🌱" },
         { label: "Active Systems", val: "1,248", icon: "⚡" },
@@ -55,7 +55,7 @@ const clientStories__cms = [
       "Our patient engagement surged by 74% within 3 weeks of launch. The intuitive booking flow transformed our entire digital healthcare practice.",
     author: "Dr. Elena Rostova",
     role: "Head of Product, HealthPulse",
-    avatar: "/customer-avatar.jpg",
+    avatar: "/customer-avatar.webp",
     company: "HEALTHPULSE",
     companySub: "AI HEALTH",
     companyIcon: (
@@ -66,7 +66,7 @@ const clientStories__cms = [
     laptop: {
       headline: "Clinical intelligence at your fingertips.",
       sub: "Next-gen telehealth experiences built with empathy and speed.",
-      heroImage: "/case-velore-main.jpg",
+      heroImage: "/case-velore-main.webp",
       metrics: [
         { label: "Consultations", val: "34.2k", icon: "🩺" },
         { label: "Patient Care", val: "99.4%", icon: "💙" },
@@ -88,7 +88,7 @@ const clientStories__cms = [
       "The design system and high-density dashboard ProManage created allowed our traders to execute complex portfolio workflows 3x faster.",
     author: "Marcus Vance",
     role: "Chief Design Officer, FinScale",
-    avatar: "/ravi-sharma-avatar.jpg",
+    avatar: "/ravi-sharma-avatar.webp",
     company: "FINSCALE",
     companySub: "CAPITAL",
     companyIcon: (
@@ -99,7 +99,7 @@ const clientStories__cms = [
     laptop: {
       headline: "Institutional-grade wealth intelligence.",
       sub: "Actionable real-time market insights with zero cognitive fatigue.",
-      heroImage: "/saas-dashboard-showcase.jpg",
+      heroImage: "/saas-dashboard-showcase.webp",
       metrics: [
         { label: "AUM Managed", val: "$1.4B+", icon: "📈" },
         { label: "Uptime Feed", val: "99.99%", icon: "⚡" },

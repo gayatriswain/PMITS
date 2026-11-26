@@ -187,7 +187,7 @@ export default function ShopifyProductDesign() {
                   {/* Main image container */}
                   <div className="relative shrink-0 overflow-hidden rounded-xl" style={{width: 220, height: 320}}>
                     <img
-                      src={$t("ShopifyProductDesign__t21", "/images/lumen-serum.jpg")}
+                      src={$t("ShopifyProductDesign__t21", "/images/lumen-serum.webp")}
                       alt={$t("ShopifyProductDesign__t22", "Lumen Hydrating Face Serum")}
                       className="w-full h-full object-cover object-center"
                     />
@@ -205,7 +205,7 @@ export default function ShopifyProductDesign() {
                         {[0, 1, 2, 3].map((i) => (
                           <div key={i} className="w-10 h-10 rounded-[12px] bg-white p-[3px] shadow-[0_2px_8px_rgba(0,0,0,0.05)] flex items-center justify-center">
                             <div className="w-full h-full rounded-[8px] overflow-hidden">
-                              <img src={$t("ShopifyProductDesign__t24", "/images/lumen-serum.jpg")} alt="" className="w-full h-full object-cover"/>
+                              <img src={$t("ShopifyProductDesign__t24", "/images/lumen-serum.webp")} alt="" className="w-full h-full object-cover"/>
                             </div>
                           </div>
                         ))}
@@ -330,7 +330,7 @@ export default function ShopifyProductDesign() {
         >
           {/* Left Graphic */}
           <div className="relative shrink-0 flex h-28 w-28 sm:h-32 sm:w-32 items-center justify-center">
-            <img src={$t("ShopifyProductDesign__t47", "/shopify2.png")} alt={$t("ShopifyProductDesign__t48", "Shopify")} className="w-full h-full object-contain" />
+            <img src={$t("ShopifyProductDesign__t47", "/shopify2.webp")} alt={$t("ShopifyProductDesign__t48", "Shopify")} className="w-full h-full object-contain" />
           </div>
 
           {/* Center Content */}

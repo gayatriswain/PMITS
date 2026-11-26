@@ -326,7 +326,7 @@ export default function AnimationGraphicDesignHero() {
                 
                 {/* Clean 3D Workspace PNG (No cards burned in, High-Res, No hover effect, No shadow) */}
                 <Image
-                  src={$t("AnimationGraphicDesignHero__t25", "/animation-graphic-clean.png")}
+                  src={$t("AnimationGraphicDesignHero__t25", "/animation-graphic-clean.webp")}
                   alt={$t("AnimationGraphicDesignHero__t26", "Animation & Graphic Design 3D Workspace")}
                   width={1672}
                   height={941}

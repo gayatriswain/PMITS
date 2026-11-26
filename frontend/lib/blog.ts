@@ -27,7 +27,7 @@ export async function cmsPosts(): Promise<BlogCard[]> {
     id: p._id,
     href: `/blog/${p.slug}`,
     category: p.categories?.[0]?.name ?? "Insights",
-    image: absoluteUrl(p.featuredImage) ?? "/blog-vector.svg",
+    image: absoluteUrl(p.featuredImage) ?? "/blog-vector.webp",
     date: p.publishedAt ?? new Date().toISOString(),
     readTime: `${p.readingTime || 1} min read`,
     title: p.title,

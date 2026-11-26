@@ -162,7 +162,7 @@ export default function SocialMediaMarketingHero() {
               <div className="flex -space-x-2.5">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="h-8 w-8 rounded-full ring-2 ring-white overflow-hidden relative bg-slate-200">
-                    <Image src={$t("SocialMediaMarketingHero__t12", "/image1.jpg")} alt={$t("SocialMediaMarketingHero__t13", "Client")} fill className="object-cover" />
+                    <Image src={$t("SocialMediaMarketingHero__t12", "/image1.webp")} alt={$t("SocialMediaMarketingHero__t13", "Client")} fill className="object-cover" />
                   </div>
                 ))}
               </div>

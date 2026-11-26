@@ -148,7 +148,7 @@ export default function CreativePartnershipSection() {
       <div className="hidden lg:block absolute left-0 top-[310px] xl:top-[330px] 2xl:top-[350px] w-[62%] xl:w-[66%] 2xl:w-[68%] h-[380px] xl:h-[440px] 2xl:h-[480px] pointer-events-none z-10">
         <div className="relative w-full h-full">
           <Image
-            src={$t("CreativePartnershipSection__t1", "/animation-graphic-design2-seamless.png")}
+            src={$t("CreativePartnershipSection__t1", "/animation-graphic-design2-seamless.webp")}
             alt={$t("CreativePartnershipSection__t2", "Creative Motion Wave Artwork")}
             fill
             priority
@@ -200,7 +200,7 @@ export default function CreativePartnershipSection() {
             {/* Mobile wave fallback (screen-touching on mobile) */}
             <div className="lg:hidden relative w-screen -ml-4 sm:-ml-8 h-[260px] sm:h-[320px] my-6 overflow-hidden">
               <Image
-                src={$t("CreativePartnershipSection__t9", "/animation-graphic-design2-seamless.png")}
+                src={$t("CreativePartnershipSection__t9", "/animation-graphic-design2-seamless.webp")}
                 alt={$t("CreativePartnershipSection__t10", "Creative Motion Wave Artwork")}
                 fill
                 priority

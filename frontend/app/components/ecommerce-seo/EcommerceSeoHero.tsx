@@ -119,8 +119,8 @@ export default function EcommerceSeoHero() {
                 <p className="text-[10.5px] font-bold text-slate-500 mb-1">{rich($t("EcommerceSeoHero__t21", "BEFORE SEO"))}</p>
                 <p className="text-[9.5px] text-slate-500 mb-4">{rich($t("EcommerceSeoHero__t22", "Page 5 of results"))}</p>
                 {[
-                  $t("EcommerceSeoHero__t23", "/red-jacket.jpg"),
-                  $t("EcommerceSeoHero__t24", "/furnisher.png"),
+                  $t("EcommerceSeoHero__t23", "/red-jacket.webp"),
+                  $t("EcommerceSeoHero__t24", "/furnisher.webp"),
                   $t("EcommerceSeoHero__t25", "/product3.webp"),
                   $t("EcommerceSeoHero__t26", "/product4.webp")
                 ].map((img, i) => (
@@ -197,7 +197,7 @@ export default function EcommerceSeoHero() {
                 {/* The Product Result */}
                 <div className="border border-[#00897b] rounded-2xl p-4 flex gap-4 bg-white relative overflow-hidden">
                   <div className="w-[110px] h-[110px] bg-white rounded-xl flex items-center justify-center shrink-0">
-                    <img src={$t("EcommerceSeoHero__t39", "/red-jacket.jpg")} alt={$t("EcommerceSeoHero__t40", "Running Jacket")} className="w-full h-full object-contain scale-110" />
+                    <img src={$t("EcommerceSeoHero__t39", "/red-jacket.webp")} alt={$t("EcommerceSeoHero__t40", "Running Jacket")} className="w-full h-full object-contain scale-110" />
                   </div>
                   <div>
                     <h3 className="text-[#1a0dab] font-bold text-[15px] leading-tight mb-1 cursor-pointer hover:underline">{$t("EcommerceSeoHero__t41", "Women's Running Jacket")}</h3>

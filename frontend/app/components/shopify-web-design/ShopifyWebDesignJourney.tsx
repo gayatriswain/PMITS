@@ -440,7 +440,7 @@ export default function ShopifyWebDesignJourney() {
           className="mt-10 lg:mt-12 rounded-2xl bg-[#f7fbfa] border border-slate-100 p-6 sm:p-8 flex flex-col lg:flex-row items-center gap-8"
         >
           <div className="relative shrink-0 flex h-32 w-32 items-center justify-center">
-            <img src={$t("ShopifyWebDesignJourney__t5", "/shopify2.png")} alt={$t("ShopifyWebDesignJourney__t6", "Shopify")} className="w-full h-full object-contain" />
+            <img src={$t("ShopifyWebDesignJourney__t5", "/shopify2.webp")} alt={$t("ShopifyWebDesignJourney__t6", "Shopify")} className="w-full h-full object-contain" />
           </div>
 
           <div className="flex-1 text-center lg:text-left">

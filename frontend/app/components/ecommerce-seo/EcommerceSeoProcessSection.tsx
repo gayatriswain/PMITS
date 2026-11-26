@@ -158,7 +158,7 @@ export default function EcommerceSeoProcessSection() {
               </div>
 
               {/* Center Image */}
-              <img src={$t("EcommerceSeoProcessSection__t11", "/e-commerce1.png")} alt={$t("EcommerceSeoProcessSection__t12", "Ecommerce SEO Process")} className="w-[45%] h-[45%] object-contain relative z-10 drop-shadow-2xl" 
+              <img src={$t("EcommerceSeoProcessSection__t11", "/e-commerce1.webp")} alt={$t("EcommerceSeoProcessSection__t12", "Ecommerce SEO Process")} className="w-[45%] h-[45%] object-contain relative z-10 drop-shadow-2xl" 
                 onError={(e) => {
                   e.currentTarget.src = 'https://placehold.co/400x400/transparent/0f766e?text=Cart+Image';
                 }}

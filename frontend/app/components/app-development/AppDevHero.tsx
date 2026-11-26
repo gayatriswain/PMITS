@@ -186,8 +186,8 @@ const FEATURES__cms = [
 
 /** Client faces in the trust bar (replace with real client photos in the CMS). */
 const AVATARS__cms = [
-  { name: "Client", image: "/customer-avatar.jpg" },
-  { name: "Client", image: "/ravi-sharma-avatar.jpg" },
+  { name: "Client", image: "/customer-avatar.webp" },
+  { name: "Client", image: "/ravi-sharma-avatar.webp" },
   { name: "Client", image: "/local-seo/avatar-sarah.webp" },
 ];
 
@@ -327,7 +327,7 @@ function FoodScreen() {
           {RESTAURANTS.map((r) => (
             <div key={r.name} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2 py-1.5">
               <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg bg-orange-100">
-                <Image src={$t("AppDevHero__t11", "/project4.png")} alt={r.name} fill className="object-cover" sizes="32px" />
+                <Image src={$t("AppDevHero__t11", "/project4.webp")} alt={r.name} fill className="object-cover" sizes="32px" />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-[9px] font-bold truncate" style={{ color: NAVY }}>{r.name}</p>
@@ -354,7 +354,7 @@ function EcommerceScreen() {
       </div>
 
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl p-3.5">
-        <Image src={$t("AppDevHero__t17", "/lux.png")} alt="" fill className="object-cover" sizes="200px" />
+        <Image src={$t("AppDevHero__t17", "/lux.webp")} alt="" fill className="object-cover" sizes="200px" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(100deg, rgba(219,39,119,0.9) 30%, rgba(219,39,119,0.15) 90%)" }} />
         <p className="relative text-[8px] font-bold uppercase tracking-wide text-white/85">{rich($t("AppDevHero__t18", "Today's Deals"))}</p>
         <p className="relative text-[10.5px] font-bold leading-snug mt-1 max-w-[60%] text-white">{rich($t("AppDevHero__t19", "Summer Collection up to 40% off"))}</p>
@@ -379,9 +379,9 @@ function EcommerceScreen() {
         <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>{rich($t("AppDevHero__t26", "Best Sellers"))}</p>
         <div className="flex flex-1 flex-col justify-between">
           {[
-            { name: $t("AppDevHero__t27", "Minimal Chair"), price: $t("AppDevHero__t28", "$88.00"), image: $t("AppDevHero__t29", "/83a9d1eb-da0f-4585-bf40-f9031fb7e5f1.png") },
-            { name: $t("AppDevHero__t30", "Everyday Sneakers"), price: $t("AppDevHero__t31", "$64.00"), image: $t("AppDevHero__t32", "/furnisher.png") },
-            { name: $t("AppDevHero__t33", "Canvas Tote Bag"), price: $t("AppDevHero__t34", "$22.00"), image: $t("AppDevHero__t35", "/lux.png") },
+            { name: $t("AppDevHero__t27", "Minimal Chair"), price: $t("AppDevHero__t28", "$88.00"), image: $t("AppDevHero__t29", "/83a9d1eb-da0f-4585-bf40-f9031fb7e5f1.webp") },
+            { name: $t("AppDevHero__t30", "Everyday Sneakers"), price: $t("AppDevHero__t31", "$64.00"), image: $t("AppDevHero__t32", "/furnisher.webp") },
+            { name: $t("AppDevHero__t33", "Canvas Tote Bag"), price: $t("AppDevHero__t34", "$22.00"), image: $t("AppDevHero__t35", "/lux.webp") },
           ].map((p) => (
             <div key={p.name} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2 py-1.5">
               <span className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-slate-200">
@@ -566,7 +566,7 @@ function MoreScreen() {
         <p className="text-[11px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t85", "And Many More Industries"))}</p>
       </div>
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl p-3.5">
-        <Image src={$t("AppDevHero__t86", "/954cbb0f-d7ee-4b91-b540-716a91c584b5.png")} alt="" fill className="object-cover" sizes="200px" />
+        <Image src={$t("AppDevHero__t86", "/954cbb0f-d7ee-4b91-b540-716a91c584b5.webp")} alt="" fill className="object-cover" sizes="200px" />
         <div className="absolute inset-0 bg-white/80" />
         <p className="relative text-[10.5px] font-bold leading-snug" style={{ color: NAVY }}>{rich($t("AppDevHero__t87", "Real estate, education, travel & more"))}</p>
         <p className="relative text-[8px] text-slate-500 mt-1">{rich($t("AppDevHero__t88", "Custom apps for every industry we serve."))}</p>

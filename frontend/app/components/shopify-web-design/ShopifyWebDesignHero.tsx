@@ -162,7 +162,7 @@ function StoreMockup() {
 
         {/* Storefront banner */}
         <div className="relative h-[260px] sm:h-[320px]">
-          <Image src={$t("ShopifyWebDesignHero__t6", "/case-urban.jpg")} alt="" fill sizes="560px" className="object-cover" />
+          <Image src={$t("ShopifyWebDesignHero__t6", "/case-urban.webp")} alt="" fill sizes="560px" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/35 to-transparent" />
           <div className="absolute left-4 sm:left-6 top-[18%] max-w-[180px]">
             <div className="mb-2 flex items-center gap-2 rounded-full bg-white/80 px-2.5 py-1 w-fit">
@@ -321,7 +321,7 @@ export default function ShopifyWebDesignHero() {
                 className="relative z-10 w-[185px] xl:w-[200px] rounded-2xl bg-white shadow-[0_20px_50px_-12px_rgba(15,23,42,0.28)] border border-slate-100 overflow-hidden pointer-events-auto"
               >
                 <div className="relative h-[190px] xl:h-[210px]">
-                  <Image src={$t("ShopifyWebDesignHero__t21", "/case-luxera.jpg")} alt="" fill sizes="200px" className="object-cover" />
+                  <Image src={$t("ShopifyWebDesignHero__t21", "/case-luxera.webp")} alt="" fill sizes="200px" className="object-cover" />
                 </div>
                 <div className="p-3">
                   <p className="text-caption font-bold" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignHero__t22", "Linen Wrap Dress"))}</p>
@@ -362,7 +362,7 @@ export default function ShopifyWebDesignHero() {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <span className="relative h-12 w-10 shrink-0 overflow-hidden rounded">
-                      <Image src={$t("ShopifyWebDesignHero__t32", "/case-luxera.jpg")} alt="" fill sizes="28px" className="object-cover" />
+                      <Image src={$t("ShopifyWebDesignHero__t32", "/case-luxera.webp")} alt="" fill sizes="28px" className="object-cover" />
                     </span>
                     <div className="min-w-0">
                       <p className="text-[8px] font-semibold truncate" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignHero__t33", "Linen Wrap Dress"))}</p>

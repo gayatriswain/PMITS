@@ -83,7 +83,7 @@ export function Shell({ user, children }: { user: ShellUser; children: ReactNode
           <p className="text-[11px] text-slate-400">Content Management</p>
         </div>
       </div>
-      <div className="flex-1 space-y-5 overflow-y-auto px-3 py-4">
+      <div className="sidebar-scroll flex-1 space-y-5 overflow-y-auto px-3 py-4">
         {NAV.map((g) => {
           const items = g.items.filter((i) => can(user.role, i.perm) || (i.href === "/admin/seo" && can(user.role, "seo.write")));
           if (!items.length) return null;

@@ -116,12 +116,12 @@ export default function EcommerceSeoLayers() {
                   <span className="text-slate-600">{$t("EcommerceSeoLayers__t20", "Performance Jacket")}</span>
                 </div>
                 <div className="aspect-[4/3] bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 p-4">
-                  <img src={$t("EcommerceSeoLayers__t21", "/red-jacket.jpg")} alt={$t("EcommerceSeoLayers__t22", "Jacket")} className="w-full h-full object-contain mix-blend-multiply" style={{ filter: 'hue-rotate(150deg)' }} />
+                  <img src={$t("EcommerceSeoLayers__t21", "/red-jacket.webp")} alt={$t("EcommerceSeoLayers__t22", "Jacket")} className="w-full h-full object-contain mix-blend-multiply" style={{ filter: 'hue-rotate(150deg)' }} />
                 </div>
                 <div className="flex gap-2 justify-between">
                   {[1,2,3,4].map(i => (
                     <div key={i} className={`aspect-square w-[22%] bg-slate-50 rounded-lg border ${i===1 ? 'border-[#00897b]' : 'border-slate-100'} p-1`}>
-                      <img src={$t("EcommerceSeoLayers__t23", "/red-jacket.jpg")} alt={$t("EcommerceSeoLayers__t24", "Thumb")} className="w-full h-full object-contain mix-blend-multiply opacity-80" style={{ filter: 'hue-rotate(150deg)' }} />
+                      <img src={$t("EcommerceSeoLayers__t23", "/red-jacket.webp")} alt={$t("EcommerceSeoLayers__t24", "Thumb")} className="w-full h-full object-contain mix-blend-multiply opacity-80" style={{ filter: 'hue-rotate(150deg)' }} />
                     </div>
                   ))}
                 </div>

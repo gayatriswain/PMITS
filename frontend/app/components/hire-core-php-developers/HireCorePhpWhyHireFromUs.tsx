@@ -442,7 +442,7 @@ export default function HireCorePhpWhyHireFromUs() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <Image src={$t("HireCorePhpWhyHireFromUs__t12", "/core-php3.png")} alt={$t("HireCorePhpWhyHireFromUs__t13", "Core PHP developer")} width={435} height={432} priority className="w-full h-auto select-none drop-shadow-[0_20px_30px_rgba(15,35,80,0.12)]" />
+                <Image src={$t("HireCorePhpWhyHireFromUs__t12", "/core-php3-dev.webp")} alt={$t("HireCorePhpWhyHireFromUs__t13", "Core PHP developer")} width={435} height={432} priority className="w-full h-auto select-none drop-shadow-[0_20px_30px_rgba(15,35,80,0.12)]" />
               </motion.div>
 
               {arcPods.map((pod, i) => (
@@ -466,7 +466,7 @@ export default function HireCorePhpWhyHireFromUs() {
 
           <div className="relative mt-8 mx-auto max-w-[360px]">
             <div className="absolute inset-0 rounded-full bg-sky-100/70 blur-2xl" />
-            <Image src={$t("HireCorePhpWhyHireFromUs__t17", "/core-php3.png")} alt={$t("HireCorePhpWhyHireFromUs__t18", "Core PHP developer")} width={435} height={432} className="relative w-full h-auto" />
+            <Image src={$t("HireCorePhpWhyHireFromUs__t17", "/core-php3-dev.webp")} alt={$t("HireCorePhpWhyHireFromUs__t18", "Core PHP developer")} width={435} height={432} className="relative w-full h-auto" />
           </div>
 
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -140,7 +140,7 @@ export default function HireCorePhpSolutions() {
             />
           </div>
 
-          {/* Right: Core PHP Developer at Desk Image (core-php-2.png) */}
+          {/* Right: Core PHP Developer at Desk Image (core-php-2.webp) */}
           <motion.div
             className="lg:col-span-6 flex justify-center lg:justify-end relative"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -150,7 +150,7 @@ export default function HireCorePhpSolutions() {
           >
             <div className="relative w-full max-w-[640px] flex items-center justify-center">
               <Image
-                src={$t("HireCorePhpSolutions__t5", "/core-php-2.png")}
+                src={$t("HireCorePhpSolutions__t5", "/core-php-2.webp")}
                 alt={$t("HireCorePhpSolutions__t6", "Core PHP Developer solving complex challenges")}
                 width={800}
                 height={560}

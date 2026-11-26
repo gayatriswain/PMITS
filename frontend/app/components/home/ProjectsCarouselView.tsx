@@ -28,12 +28,12 @@ const projects__cms: Project[] = [
   {
     brand: "AURELIA",
     tag: "Luxury Chauffeur",
-    image: "/website1.png",
+    image: "/website1.webp",
   },
   {
     brand: "VITALCARE",
     tag: "Healthcare",
-    image: "/website2.png",
+    image: "/website2.webp",
   },
   {
     brand: "SKYLINE GROUP",

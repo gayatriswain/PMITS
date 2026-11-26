@@ -11,7 +11,7 @@ import { goToThankYou } from "@/lib/forms";
 
 const RED = "#d92b32";
 const INK = "#0f1a2e";
-const PEDESTAL = "/cakephp-pedestal-logo.png"; // transparent cut-out of the CakePHP logo (no baked-in labels or backdrop)
+const PEDESTAL = "/cakephp-pedestal-logo.webp"; // transparent cut-out of the CakePHP logo (no baked-in labels or backdrop)
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

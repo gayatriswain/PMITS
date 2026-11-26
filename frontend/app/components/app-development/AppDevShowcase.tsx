@@ -185,7 +185,7 @@ const PEEK_CATEGORIES__cms = [
     bg: "#fff1e6",
     tagline: "Delicious food delivered fast.",
     Icon: FoodBowlIcon,
-    image: "/app-dev1.jpg",
+    image: "/app-dev1.webp",
     nav: ["Home", "Orders", "Delivery", "Rewards"],
   },
   {
@@ -194,7 +194,7 @@ const PEEK_CATEGORIES__cms = [
     bg: "#e6f4fd",
     tagline: "Book appointments with ease.",
     Icon: StethoscopeIcon,
-    image: "/app-dev2.jpg",
+    image: "/app-dev2.webp",
     nav: ["Home", "Doctors", "Records", "Profile"],
   },
   {
@@ -203,7 +203,7 @@ const PEEK_CATEGORIES__cms = [
     bg: "#e3f6f8",
     tagline: "Explore. Book. Travel.",
     Icon: PalmTreeIcon,
-    image: "/app-dev3.jpg",
+    image: "/app-dev3.webp",
     nav: ["Home", "Categories", "Travel", "Points"],
   },
   {
@@ -221,7 +221,7 @@ const PEEK_CATEGORIES__cms = [
     bg: "#fde8f2",
     tagline: "Shop the latest trends.",
     Icon: BagPeekIcon,
-    image: "/lux.png",
+    image: "/lux.webp",
     nav: ["Home", "Shop", "Cart", "Profile"],
   },
   {
@@ -230,7 +230,7 @@ const PEEK_CATEGORIES__cms = [
     bg: "#f1ebfe",
     tagline: "Smart gadgets, smarter living.",
     Icon: LaptopPeekIcon,
-    image: "/project2.png",
+    image: "/project2.webp",
     nav: ["Home", "New", "Deals", "Profile"],
   },
 ];
@@ -419,7 +419,7 @@ function ShopScreenBody() {
 
       <div className="px-4 mb-1"><p className="text-[9px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevShowcase__t4", "Featured"))}</p></div>
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl p-3.5">
-        <Image src={$t("AppDevShowcase__t5", "/project2.png")} alt="" fill className="object-cover" sizes="200px" />
+        <Image src={$t("AppDevShowcase__t5", "/project2.webp")} alt="" fill className="object-cover" sizes="200px" />
         <div className="absolute inset-0" style={{ background: `linear-gradient(100deg, ${DEEP_TEAL} 38%, transparent 90%)` }} />
         <p className="relative text-[8px] font-semibold uppercase tracking-wide text-white/70">{rich($t("AppDevShowcase__t6", "New Collection"))}</p>
         <p className="relative text-[11.5px] font-bold text-white mt-1 max-w-[62%]">{rich($t("AppDevShowcase__t7", "Summer Essentials"))}</p>
@@ -450,8 +450,8 @@ function ShopScreenBody() {
         </div>
         <div className="flex flex-1 flex-col justify-between">
           {[
-            { n: $t("AppDevShowcase__t18", "Minimal Watch"), sub: $t("AppDevShowcase__t19", "Leather Strap"), p: $t("AppDevShowcase__t20", "$129.00"), rating: $t("AppDevShowcase__t21", "4.5"), image: $t("AppDevShowcase__t22", "/project3.png") },
-            { n: $t("AppDevShowcase__t23", "Wireless Headphones"), sub: $t("AppDevShowcase__t24", "Noise Cancelling"), p: $t("AppDevShowcase__t25", "$169.00"), rating: $t("AppDevShowcase__t26", "4.7"), image: $t("AppDevShowcase__t27", "/project2.png") },
+            { n: $t("AppDevShowcase__t18", "Minimal Watch"), sub: $t("AppDevShowcase__t19", "Leather Strap"), p: $t("AppDevShowcase__t20", "$129.00"), rating: $t("AppDevShowcase__t21", "4.5"), image: $t("AppDevShowcase__t22", "/project3.webp") },
+            { n: $t("AppDevShowcase__t23", "Wireless Headphones"), sub: $t("AppDevShowcase__t24", "Noise Cancelling"), p: $t("AppDevShowcase__t25", "$169.00"), rating: $t("AppDevShowcase__t26", "4.7"), image: $t("AppDevShowcase__t27", "/project2.webp") },
           ].map((pr) => (
             <div key={pr.n} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2 py-1.5">
               <span className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-slate-200">
@@ -743,7 +743,7 @@ export default function AppDevShowcase() {
                   <div className="flex -space-x-2">
                     {[1, 2, 3].map((i) => (
                       <div key={i} className="h-6 w-6 rounded-full ring-2 ring-white overflow-hidden relative bg-slate-200">
-                        <Image src={$t("AppDevShowcase__t50", "/image1.jpg")} alt={$t("AppDevShowcase__t51", "Client")} fill className="object-cover" />
+                        <Image src={$t("AppDevShowcase__t50", "/image1.webp")} alt={$t("AppDevShowcase__t51", "Client")} fill className="object-cover" />
                       </div>
                     ))}
                   </div>
@@ -779,7 +779,7 @@ export default function AppDevShowcase() {
               </div>
               <div className="flex items-center gap-3 shrink-0">
                 <div className="w-10 h-10 rounded-full overflow-hidden relative bg-slate-200">
-                  <Image src={$t("AppDevShowcase__t57", "/image1.jpg")} alt={$t("AppDevShowcase__t58", "Rohit Sharma")} fill className="object-cover" />
+                  <Image src={$t("AppDevShowcase__t57", "/image1.webp")} alt={$t("AppDevShowcase__t58", "Rohit Sharma")} fill className="object-cover" />
                 </div>
                 <div>
                   <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">{$t("AppDevShowcase__t59", "Rohit Sharma")}</h4>

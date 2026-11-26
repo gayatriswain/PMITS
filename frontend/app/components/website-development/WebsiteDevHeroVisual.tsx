@@ -39,7 +39,7 @@ export default function WebsiteDevHeroVisual() {
         {/* BASE PLATFORM IMAGE */}
         <div className="absolute z-0 w-[135%] lg:w-[90%] bottom-[-15%] lg:bottom-[-20%] h-[200px] lg:h-[250px] pointer-events-none left-1/2 -translate-x-1/2">
           <Image
-            src={$t("WebsiteDevHeroVisual__t1", "/website-dev.png")}
+            src={$t("WebsiteDevHeroVisual__t1", "/website-dev.webp")}
             alt={$t("WebsiteDevHeroVisual__t2", "Base Platform")}
             fill
             className="object-contain lg:object-fill object-bottom"
@@ -93,7 +93,7 @@ export default function WebsiteDevHeroVisual() {
                     {$t("WebsiteDevHeroVisual__t15", "Get Started")}</div>
                 </div>
                 <div className="flex-[0.9] relative rounded-2xl overflow-hidden shadow-inner ring-1 ring-black/5">
-                  <Image src={$t("WebsiteDevHeroVisual__t16", "/image1.jpg")} alt={$t("WebsiteDevHeroVisual__t17", "Website Content")} fill className="object-cover" />
+                  <Image src={$t("WebsiteDevHeroVisual__t16", "/image1.webp")} alt={$t("WebsiteDevHeroVisual__t17", "Website Content")} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#132a43]/70 via-transparent to-transparent" />
                 </div>
               </div>

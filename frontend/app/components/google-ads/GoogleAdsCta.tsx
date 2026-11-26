@@ -81,7 +81,7 @@ export default function GoogleAdsCta() {
         {/* Right Side - Image & Overlay */}
         <div className="w-full lg:w-[55%] relative min-h-[500px] lg:min-h-full">
           <img 
-            src={$t("GoogleAdsCta__t14", "/growth_doorway.jpg")} 
+            src={$t("GoogleAdsCta__t14", "/growth_doorway.webp")} 
             alt={$t("GoogleAdsCta__t15", "Growth Doorway")} 
             className="absolute inset-0 w-full h-full object-cover rounded-l-3xl"
           />

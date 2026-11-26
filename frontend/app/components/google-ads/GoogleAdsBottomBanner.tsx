@@ -13,7 +13,7 @@ export default function GoogleAdsBottomBanner() {
 
         {/* Background Image */}
         <img
-          src={$t("GoogleAdsBottomBanner__t1", "/google-ads-bottom.png")}
+          src={$t("GoogleAdsBottomBanner__t1", "/google-ads-bottom.webp")}
           alt={$t("GoogleAdsBottomBanner__t2", "Background")}
           className="absolute inset-0 w-full h-full object-cover"
         />

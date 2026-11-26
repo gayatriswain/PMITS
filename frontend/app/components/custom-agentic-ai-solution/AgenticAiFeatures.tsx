@@ -43,7 +43,7 @@ export default function AgenticAiFeatures() {
             {/* 1. Image */}
             <div className="w-full flex items-center justify-center">
               <Image
-                src={$t("AgenticAiFeatures__t6", "/feature-analytics-dashboard.png")}
+                src={$t("AgenticAiFeatures__t6", "/feature-analytics-dashboard.webp")}
                 alt={$t("AgenticAiFeatures__t7", "Advanced Analytics Dashboard")}
                 width={432}
                 height={210}
@@ -72,7 +72,7 @@ export default function AgenticAiFeatures() {
             {/* 1. Image */}
             <div className="w-full flex items-center justify-center">
               <Image
-                src={$t("AgenticAiFeatures__t10", "/feature-relationship-crm.png")}
+                src={$t("AgenticAiFeatures__t10", "/feature-relationship-crm.webp")}
                 alt={$t("AgenticAiFeatures__t11", "Streamlined Relationship Organization")}
                 width={432}
                 height={200}
@@ -100,7 +100,7 @@ export default function AgenticAiFeatures() {
             {/* 1. Image */}
             <div className="w-full flex items-center justify-center">
               <Image
-                src={$t("AgenticAiFeatures__t14", "/feature-data-analysis.png")}
+                src={$t("AgenticAiFeatures__t14", "/feature-data-analysis.webp")}
                 alt={$t("AgenticAiFeatures__t15", "Smart and Effortless Data Analysis")}
                 width={592}
                 height={418}
@@ -128,7 +128,7 @@ export default function AgenticAiFeatures() {
             {/* 1. Image */}
             <div className="w-full flex items-center justify-center">
               <Image
-                src={$t("AgenticAiFeatures__t18", "/feature-task-planner.png")}
+                src={$t("AgenticAiFeatures__t18", "/feature-task-planner.webp")}
                 alt={$t("AgenticAiFeatures__t19", "Intelligent Automated Task Planner")}
                 width={532}
                 height={418}

@@ -142,7 +142,7 @@ function GlassTile({ children, tilt }: { children: React.ReactNode; tilt: { rota
 }
 
 /* ------------------------------------------------------------------ */
-/*  Podium with the glass </> (public/aspnet-podium.png)                       */
+/*  Podium with the glass </> (public/aspnet-podium.webp)                       */
 /* ------------------------------------------------------------------ */
 function Podium({ reduce }: { reduce: boolean }) {
   const $t = useCmsText();
@@ -179,7 +179,7 @@ function Podium({ reduce }: { reduce: boolean }) {
           transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
-            src={$t("HireAspNetHero__t2", "/aspnet-podium.png")}
+            src={$t("HireAspNetHero__t2", "/aspnet-podium.webp")}
             alt={$t("HireAspNetHero__t3", "Glass code symbol on a glowing podium")}
             width={762}
             height={328}

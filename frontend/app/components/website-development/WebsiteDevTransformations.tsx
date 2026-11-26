@@ -100,7 +100,7 @@ export default function WebsiteDevTransformations() {
               <div className="flex -space-x-2">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-slate-200 overflow-hidden relative">
-                     <Image src={$t("WebsiteDevTransformations__t10", "/image1.jpg")} alt={$t("WebsiteDevTransformations__t11", "User")} fill className="object-cover" />
+                     <Image src={$t("WebsiteDevTransformations__t10", "/image1.webp")} alt={$t("WebsiteDevTransformations__t11", "User")} fill className="object-cover" />
                   </div>
                 ))}
               </div>
@@ -131,7 +131,7 @@ export default function WebsiteDevTransformations() {
             {/* Author */}
             <div className="flex items-center gap-3 shrink-0">
               <div className="w-10 h-10 rounded-full overflow-hidden relative bg-slate-200">
-                 <Image src={$t("WebsiteDevTransformations__t15", "/image1.jpg")} alt={$t("WebsiteDevTransformations__t16", "Rahul Mehta")} fill className="object-cover" />
+                 <Image src={$t("WebsiteDevTransformations__t15", "/image1.webp")} alt={$t("WebsiteDevTransformations__t16", "Rahul Mehta")} fill className="object-cover" />
               </div>
               <div>
                  <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">{$t("WebsiteDevTransformations__t17", "Rahul Mehta")}</h4>

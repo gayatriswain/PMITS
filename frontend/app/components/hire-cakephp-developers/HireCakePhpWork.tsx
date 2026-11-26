@@ -97,7 +97,7 @@ function StoreScreen() {
 
       {/* hero */}
       <div className="absolute right-0 overflow-hidden" style={{ top: cq(7), width: "52%", height: cq(34) }}>
-        <Image src={$t("HireCakePhpWork__t7", "/case-luxera.jpg")} alt="" fill sizes="200px" className="origin-[55%_58%] scale-[1.25] object-cover" style={{ objectPosition: "50% 58%" }} />
+        <Image src={$t("HireCakePhpWork__t7", "/case-luxera.webp")} alt="" fill sizes="200px" className="origin-[55%_58%] scale-[1.25] object-cover" style={{ objectPosition: "50% 58%" }} />
         <motion.div
           aria-hidden
           className="absolute inset-0 bg-gradient-to-r from-[#f4f3f1] via-transparent to-transparent"

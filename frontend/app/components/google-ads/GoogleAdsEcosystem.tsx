@@ -143,7 +143,7 @@ export default function GoogleAdsEcosystem() {
           <div className="hidden lg:block relative w-full max-w-[550px] xl:max-w-[680px] mx-auto">
             {/* The Image */}
             <Image 
-              src={$t("GoogleAdsEcosystem__t9", "/google-ads.png")} 
+              src={$t("GoogleAdsEcosystem__t9", "/google-ads.webp")} 
               alt={$t("GoogleAdsEcosystem__t10", "Google Ads Ecosystem")} 
               width={800} 
               height={500} 
@@ -195,7 +195,7 @@ export default function GoogleAdsEcosystem() {
 
             {/* Mobile Image */}
             <div className="w-full max-w-[400px] mx-auto relative z-10 shrink-0">
-              <Image src={$t("GoogleAdsEcosystem__t14", "/google-ads.png")} alt={$t("GoogleAdsEcosystem__t15", "Google Ads Ecosystem")} width={500} height={500} className="w-full h-auto drop-shadow-xl" />
+              <Image src={$t("GoogleAdsEcosystem__t14", "/google-ads.webp")} alt={$t("GoogleAdsEcosystem__t15", "Google Ads Ecosystem")} width={500} height={500} className="w-full h-auto drop-shadow-xl" />
             </div>
 
             {/* Business Outcome */}

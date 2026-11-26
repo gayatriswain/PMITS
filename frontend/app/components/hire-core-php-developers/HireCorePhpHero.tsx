@@ -352,7 +352,7 @@ export default function HireCorePhpHero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.25 }}
               >
-                <Image src={$t("HireCorePhpHero__t12", "/core-php-base.png")} alt={$t("HireCorePhpHero__t13", "Core PHP platform")} width={633} height={394} priority className="w-full h-auto select-none drop-shadow-[0_20px_36px_rgba(15,35,80,0.12)]" />
+                <Image src={$t("HireCorePhpHero__t12", "/core-php-base.webp")} alt={$t("HireCorePhpHero__t13", "Core PHP platform")} width={633} height={394} priority className="w-full h-auto select-none drop-shadow-[0_20px_36px_rgba(15,35,80,0.12)]" />
               </motion.div>
 
               {/* Levitating badge */}
@@ -363,7 +363,7 @@ export default function HireCorePhpHero() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Image src={$t("HireCorePhpHero__t14", "/core-php-badge.png")} alt={$t("HireCorePhpHero__t15", "Core PHP")} width={523} height={477} priority className="w-full h-auto select-none drop-shadow-[0_18px_30px_rgba(14,116,144,0.4)]" />
+                <Image src={$t("HireCorePhpHero__t14", "/core-php-badge.webp")} alt={$t("HireCorePhpHero__t15", "Core PHP")} width={523} height={477} priority className="w-full h-auto select-none drop-shadow-[0_18px_30px_rgba(14,116,144,0.4)]" />
               </motion.div>
 
               {/* Features */}
@@ -387,7 +387,7 @@ export default function HireCorePhpHero() {
 
           <div className="relative mt-8 mx-auto w-[300px] sm:w-[380px] h-[260px] sm:h-[310px]">
             <div className="absolute inset-x-0 bottom-0">
-              <Image src={$t("HireCorePhpHero__t17", "/core-php-base.png")} alt={$t("HireCorePhpHero__t18", "Core PHP platform")} width={633} height={394} className="w-full h-auto" />
+              <Image src={$t("HireCorePhpHero__t17", "/core-php-base.webp")} alt={$t("HireCorePhpHero__t18", "Core PHP platform")} width={633} height={394} className="w-full h-auto" />
             </div>
             <motion.div
               className="absolute left-1/2 -translate-x-1/2 top-0 w-[130px] sm:w-[165px] origin-bottom"
@@ -395,7 +395,7 @@ export default function HireCorePhpHero() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Image src={$t("HireCorePhpHero__t19", "/core-php-badge.png")} alt={$t("HireCorePhpHero__t20", "Core PHP")} width={523} height={477} priority className="w-full h-auto drop-shadow-[0_14px_24px_rgba(14,116,144,0.4)]" />
+              <Image src={$t("HireCorePhpHero__t19", "/core-php-badge.webp")} alt={$t("HireCorePhpHero__t20", "Core PHP")} width={523} height={477} priority className="w-full h-auto drop-shadow-[0_14px_24px_rgba(14,116,144,0.4)]" />
             </motion.div>
           </div>
 

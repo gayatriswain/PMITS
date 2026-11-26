@@ -25,21 +25,21 @@ const leftProjects__cms: Project[] = [
     href: "/portfolio",
     year: "2025",
     category: "Web Design",
-    image: "/project1.png",
+    image: "/project1.webp",
   },
   {
     name: "Bloom Cosmetics",
     href: "/portfolio",
     year: "2025",
     category: "Branding",
-    image: "/project2.png",
+    image: "/project2.webp",
   },
   {
     name: "Horizon App UI",
     href: "/portfolio",
     year: "2025",
     category: "UI/UX Design",
-    image: "/project3.png",
+    image: "/project3.webp",
   },
 ];
 
@@ -49,21 +49,21 @@ const rightProjects__cms: Project[] = [
     href: "/portfolio",
     year: "2024",
     category: "Branding",
-    image: "/project4.png",
+    image: "/project4.webp",
   },
   {
     name: "Vertex Analytics",
     href: "/portfolio",
     year: "2024",
     category: "Creative Development",
-    image: "/project5.png",
+    image: "/project5.webp",
   },
   {
     name: "Arclight Interior",
     href: "/portfolio",
     year: "2024",
     category: "Web Design",
-    image: "/project6.png",
+    image: "/project6.webp",
   },
 ];
 

@@ -263,7 +263,7 @@ export default function AppDevServices() {
             className="relative mx-auto w-full max-w-[600px] aspect-[1393/1129]"
           >
             <Image
-              src={$t("AppDevServices__t6", "/app-dev-3-section.png")}
+              src={$t("AppDevServices__t6", "/app-dev-3-section.webp")}
               alt={$t("AppDevServices__t7", "ProManage-built ecommerce app running on a phone")}
               fill
               className="object-contain object-bottom"

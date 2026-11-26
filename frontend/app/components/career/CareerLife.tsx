@@ -91,11 +91,11 @@ type Moment = {
 };
 const MOMENTS__cms: Moment[] = [
   { Icon: TeamIcon, title: "Collaborate", desc: "We believe the best ideas come together.", src: "/career1.webp", position: "65% 50%", zoom: 1.15 },
-  { Icon: PartyIcon, title: "Celebrate", desc: "Milestones, big or small, we celebrate together.", src: "/career2.png", zoom: 4, focus: "40% 100%" },
+  { Icon: PartyIcon, title: "Celebrate", desc: "Milestones, big or small, we celebrate together.", src: "/career2.webp", zoom: 4, focus: "40% 100%" },
   { Icon: CreateIcon, title: "Create", desc: "A space to think, design and build your best work.", src: "/career1.webp", zoom: 2.4, focus: "33% 61%" },
   { Icon: BookIcon, title: "Learn", desc: "Knowledge sharing that helps everyone grow.", src: "/career1.webp", position: "0% 50%", zoom: 2.4, focus: "23% 58%" },
-  { Icon: SmileIcon, title: "Have Fun", desc: "Good vibes, great people, unforgettable moments.", src: "/career2.png", zoom: 4, focus: "77% 100%" },
-  { Icon: SummitIcon, title: "Grow Together", desc: "Supporting each other to reach new heights.", src: "/career2.png", position: "100% 50%", zoom: 2.6, focus: "79% 95%" },
+  { Icon: SmileIcon, title: "Have Fun", desc: "Good vibes, great people, unforgettable moments.", src: "/career2.webp", zoom: 4, focus: "77% 100%" },
+  { Icon: SummitIcon, title: "Grow Together", desc: "Supporting each other to reach new heights.", src: "/career2.webp", position: "100% 50%", zoom: 2.6, focus: "79% 95%" },
 ];
 
 /* Photo in a ring, with the icon badge hanging off its foot */

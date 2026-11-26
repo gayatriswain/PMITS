@@ -50,7 +50,7 @@ const workItems__cms: WorkItem[] = [
     filter: "Animation",
     title: "SaaS Product Explainer",
     description: "Simplifying a complex product with storytelling and motion.",
-    image: "/explainer-character-showcase.jpg",
+    image: "/explainer-character-showcase.webp",
     video: "/video1.mp4",
   },
   {
@@ -60,7 +60,7 @@ const workItems__cms: WorkItem[] = [
     filter: "Packaging",
     title: "Naturova Tea Packaging",
     description: "Premium packaging that reflects purity, nature and trust.",
-    image: "/herbal-tea-packaging.jpg",
+    image: "/herbal-tea-packaging.webp",
   },
   {
     id: "ev-charger",
@@ -69,7 +69,7 @@ const workItems__cms: WorkItem[] = [
     filter: "Animation",
     title: "EV Charger Explainer Animation",
     description: "Explaining next-gen EV charging with engaging 3D visuals.",
-    image: "/ev-charger-showcase.jpg",
+    image: "/ev-charger-showcase.webp",
     video: "/video2.mp4",
   },
   {
@@ -79,7 +79,7 @@ const workItems__cms: WorkItem[] = [
     filter: "Branding",
     title: "Verdant Realty Branding",
     description: "A complete brand identity that stands out and stays remembered.",
-    image: "/verdant-branding-showcase.jpg",
+    image: "/verdant-branding-showcase.webp",
   },
   {
     id: "sneaker-social",
@@ -88,7 +88,7 @@ const workItems__cms: WorkItem[] = [
     filter: "Social Media",
     title: "Social Media Campaign",
     description: "Scroll-stopping designs that drive engagement.",
-    image: "/sneaker-mobile-showcase.jpg",
+    image: "/sneaker-mobile-showcase.webp",
   },
   {
     id: "dashboard-motion",
@@ -97,7 +97,7 @@ const workItems__cms: WorkItem[] = [
     filter: "UI Motion",
     title: "Analytics Dashboard Motion",
     description: "Fluid micro-interactions that bring data to life.",
-    image: "/saas-dashboard-showcase.jpg",
+    image: "/saas-dashboard-showcase.webp",
     video: "/video3.mp4",
   },
   {
@@ -107,7 +107,7 @@ const workItems__cms: WorkItem[] = [
     filter: "Graphic Design",
     title: "Amethyst Brand Kit",
     description: "Stationery, merch and colour system with a royal touch.",
-    image: "/graphic-design-card-visual.jpg",
+    image: "/graphic-design-card-visual.webp",
   },
   {
     id: "glass-player",
@@ -116,7 +116,7 @@ const workItems__cms: WorkItem[] = [
     filter: "UI Motion",
     title: "Glass Video Player",
     description: "Frosted-glass player UI with floating 3D objects.",
-    image: "/animation-card-visual.jpg",
+    image: "/animation-card-visual.webp",
     video: "/video4.mp4",
   },
 ];

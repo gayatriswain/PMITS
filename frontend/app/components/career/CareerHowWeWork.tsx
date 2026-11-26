@@ -81,7 +81,7 @@ const STEPS__cms: Step[] = [
     num: "01",
     title: "Think",
     desc: "We understand, research and plan with clarity to find the right solution.",
-    photo: "/career-step-think.jpg",
+    photo: "/career-step-think.webp",
     alt: "A developer thinking at his laptop",
     Icon: BulbIcon,
     badge: "linear-gradient(140deg,#22d3ee,#0e7490)",
@@ -90,7 +90,7 @@ const STEPS__cms: Step[] = [
     num: "02",
     title: "Collaborate",
     desc: "We share ideas, align together and solve problems as one team.",
-    photo: "/career-step-collab.jpg",
+    photo: "/career-step-collab.webp",
     alt: "Three teammates working round one laptop",
     Icon: TeamIcon,
     badge: "linear-gradient(140deg,#3b82f6,#1e3a8a)",
@@ -99,7 +99,7 @@ const STEPS__cms: Step[] = [
     num: "03",
     title: "Create",
     desc: "We build, design and deliver with passion and precision.",
-    photo: "/career-step-create.jpg",
+    photo: "/career-step-create.webp",
     alt: "A designer smiling at her laptop",
     Icon: CodeIcon,
     badge: "linear-gradient(140deg,#2dd4bf,#0f766e)",
@@ -108,7 +108,7 @@ const STEPS__cms: Step[] = [
     num: "04",
     title: "Improve",
     desc: "We measure, learn and keep getting better every day.",
-    photo: "/career-step-improve.jpg",
+    photo: "/career-step-improve.webp",
     alt: "A tablet showing a performance dashboard",
     Icon: ChartIcon,
     badge: "linear-gradient(140deg,#6366f1,#1e3a8a)",
@@ -234,7 +234,7 @@ export default function CareerHowWeWork() {
   const STEPS = useCmsData("CareerHowWeWork__STEPS", STEPS__cms);
   return (
     <section className="relative w-full overflow-hidden py-16 lg:py-20">
-      <Image src={$t("CareerHowWeWork__t1", "/career3.png")} alt="" fill sizes="100vw" className="object-cover" aria-hidden />
+      <Image src={$t("CareerHowWeWork__t1", "/career3.webp")} alt="" fill sizes="100vw" className="object-cover" aria-hidden />
 
       <Container className="relative">
         <motion.div

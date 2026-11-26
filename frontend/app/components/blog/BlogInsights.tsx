@@ -279,7 +279,7 @@ export default function BlogInsights() {
           {/* Right Edge Telescope Graphic */}
           <div className="absolute right-[-20px] bottom-0 w-[180px] lg:w-[240px] pointer-events-none hidden lg:block z-0 mix-blend-multiply">
             <img 
-              src={$t("BlogInsights__t62", "/blog3.png")} 
+              src={$t("BlogInsights__t62", "/blog3.webp")} 
               alt={$t("BlogInsights__t63", "Telescope")} 
               className="w-full h-auto object-contain object-right-bottom drop-shadow-xl"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}

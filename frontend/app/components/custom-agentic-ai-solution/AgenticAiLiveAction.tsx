@@ -281,7 +281,7 @@ export default function AgenticAiLiveAction() {
                 {/* Circular Agent Avatar Frame */}
                 <div className="relative w-[140px] h-[140px] sm:w-[155px] sm:h-[155px] lg:w-[170px] lg:h-[170px] rounded-full p-1 bg-white ring-4 ring-white shadow-[0_15px_35px_-8px_rgba(2,132,199,0.35)] overflow-hidden">
                   <Image
-                    src={$t("AgenticAiLiveAction__t12", "/agent-live-avatar.png")}
+                    src={$t("AgenticAiLiveAction__t12", "/agent-live-avatar.webp")}
                     alt={$t("AgenticAiLiveAction__t13", "Custom AI Agent")}
                     width={155}
                     height={155}

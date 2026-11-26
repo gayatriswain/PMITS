@@ -297,7 +297,7 @@ export default function VisualCommunicationSolutions() {
                       }}
                     >
                       <Image
-                        src={$t("VisualCommunicationSolutions__t15", "/animation-card-visual.jpg")}
+                        src={$t("VisualCommunicationSolutions__t15", "/animation-card-visual.webp")}
                         alt={$t("VisualCommunicationSolutions__t16", "Animation Services 3D Visual")}
                         fill
                         sizes="(max-width: 768px) 100vw, 320px"
@@ -433,7 +433,7 @@ export default function VisualCommunicationSolutions() {
                       }}
                     >
                       <Image
-                        src={$t("VisualCommunicationSolutions__t27", "/graphic-design-card-visual.jpg")}
+                        src={$t("VisualCommunicationSolutions__t27", "/graphic-design-card-visual.webp")}
                         alt={$t("VisualCommunicationSolutions__t28", "Graphic Design Services Stationery Visual")}
                         fill
                         sizes="(max-width: 768px) 100vw, 320px"

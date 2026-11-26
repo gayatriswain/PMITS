@@ -193,7 +193,7 @@ function HeroVisual() {
           transition={{ duration: 0.9, ease: EASE }}
           className="absolute left-0 top-[8px] w-[760px]"
         >
-          <Image src={$t("WooHireHero__t2", "/woo-comm-image2.png")} alt="" width={1477} height={1065} priority sizes="760px" className="h-auto w-full"
+          <Image src={$t("WooHireHero__t2", "/woo-comm-image2.webp")} alt="" width={1477} height={1065} priority sizes="760px" className="h-auto w-full"
             style={{
               // the photo has a white backdrop; fade its rectangular edges into the section
               maskImage:
@@ -265,7 +265,7 @@ function HeroVisual() {
           className="absolute left-[118px] top-[76px] w-[590px]"
         >
           <Image
-            src={$t("WooHireHero__t7", "/woo-comm-image1.png")}
+            src={$t("WooHireHero__t7", "/woo-comm-image1.webp")}
             alt={$t("WooHireHero__t8", "WooCommerce developer building an online store")}
             width={588}
             height={424}

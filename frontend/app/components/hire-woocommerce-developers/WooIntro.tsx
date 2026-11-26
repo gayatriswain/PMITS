@@ -82,7 +82,7 @@ function IntroVisual() {
           <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-[#eef3f5] to-slate-200" />
           <div className="absolute left-[20px] top-[48px] w-[560px]">
             <Image
-              src={$t("WooIntro__t1", "/woo-comm-image1.png")}
+              src={$t("WooIntro__t1", "/woo-comm-image1.webp")}
               alt={$t("WooIntro__t2", "WooCommerce developer working on an online store")}
               width={588}
               height={424}

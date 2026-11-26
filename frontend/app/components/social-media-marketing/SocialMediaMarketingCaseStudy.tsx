@@ -142,17 +142,17 @@ type CaseStudy = {
 // Shown as the 4 clickable side thumbnails for every case study — clicking one swaps the big
 // visual to that image. Reuses whatever's already in /public rather than sourcing anything new.
 const SIDE_THUMBS__cms = [
-  { image: "/content-reels.jpg", caption: "Behind The Scenes", video: true },
-  { image: "/content-product-shots.jpg", caption: "3 Reasons They Choose Us" },
-  { image: "/content-stories.jpg", caption: "Consistency Every Day" },
-  { image: "/content-lifestyle.jpg", caption: "Your Growth Starts Here", cta: "Explore" },
+  { image: "/content-reels.webp", caption: "Behind The Scenes", video: true },
+  { image: "/content-product-shots.webp", caption: "3 Reasons They Choose Us" },
+  { image: "/content-stories.webp", caption: "Consistency Every Day" },
+  { image: "/content-lifestyle.webp", caption: "Your Growth Starts Here", cta: "Explore" },
 ];
 
 const CASE_STUDIES__cms: CaseStudy[] = [
   {
     brand: "Veloré Skincare",
     category: "Skincare Brand",
-    mainImage: "/case-velore-main.jpg",
+    mainImage: "/case-velore-main.webp",
     tagline: ["Nature.", "Science.", "Results."],
     subtagline: "Clean, Conscious, Confident.",
     challenge: "Low brand awareness and minimal online presence in a highly competitive skincare market.",
@@ -171,7 +171,7 @@ const CASE_STUDIES__cms: CaseStudy[] = [
   {
     brand: "Luxera Fashion",
     category: "Fashion Brand",
-    mainImage: "/case-luxera.jpg",
+    mainImage: "/case-luxera.webp",
     tagline: ["Style.", "Confidence.", "Presence."],
     subtagline: "Wear Your Story.",
     challenge: "Struggled to stand out in a saturated fashion market with generic product-only content.",
@@ -189,7 +189,7 @@ const CASE_STUDIES__cms: CaseStudy[] = [
   {
     brand: "Nutrixia",
     category: "Health Supplement Brand",
-    mainImage: "/case-nutrixia.jpg",
+    mainImage: "/case-nutrixia.webp",
     tagline: ["Fuel.", "Focus.", "Feel Better."],
     subtagline: "Backed By Science.",
     challenge: "Needed to build trust in a crowded, skepticism-heavy supplements category.",
@@ -207,7 +207,7 @@ const CASE_STUDIES__cms: CaseStudy[] = [
   {
     brand: "Pawsome Pet Care",
     category: "Pet Care Brand",
-    mainImage: "/case-pawsome.jpg",
+    mainImage: "/case-pawsome.webp",
     tagline: ["Happy.", "Healthy.", "Pawsome."],
     subtagline: "Every Tail Matters.",
     challenge: "Low awareness outside a small local customer base, mostly offline.",
@@ -225,7 +225,7 @@ const CASE_STUDIES__cms: CaseStudy[] = [
   {
     brand: "Urban Threads",
     category: "Streetwear Brand",
-    mainImage: "/case-urban.jpg",
+    mainImage: "/case-urban.webp",
     tagline: ["Bold.", "Street.", "Unapologetic."],
     subtagline: "Worn By The Culture.",
     challenge: "Drops sold inconsistently with no repeatable hype-building system.",
@@ -243,7 +243,7 @@ const CASE_STUDIES__cms: CaseStudy[] = [
   {
     brand: "EduClimb",
     category: "EdTech Platform",
-    mainImage: "/case-educlimb.jpg",
+    mainImage: "/case-educlimb.webp",
     tagline: ["Learn.", "Grow.", "Climb."],
     subtagline: "Your Next Step, Simplified.",
     challenge: "High traffic but low enrolment conversion from social channels.",

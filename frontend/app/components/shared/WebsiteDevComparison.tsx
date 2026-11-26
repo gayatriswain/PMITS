@@ -316,7 +316,7 @@ export default function WebsiteDevComparison() {
     <section className="relative w-full bg-[#F7F9F8] py-8 lg:py-10 overflow-hidden">
       {/* Background artwork — full width, never cropped (section is at least as tall as the image) */}
       <Image
-        src={$t("WebsiteDevComparison__t4", "/diff-section.png")}
+        src={$t("WebsiteDevComparison__t4", "/diff-section.webp")}
         alt=""
         width={1740}
         height={904}

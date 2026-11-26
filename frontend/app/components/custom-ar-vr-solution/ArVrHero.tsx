@@ -8,7 +8,7 @@ import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
 import { rich } from "@/components/cms/rich";
 
-// Opening inside ARVR-frame.png (fractions of the image box)
+// Opening inside ARVR-frame.webp (fractions of the image box)
 const LENS_CENTER_Y = 0.556;
 const LENS_W = 0.585;
 const LENS_H = 0.615;
@@ -321,7 +321,7 @@ export default function ArVrHero() {
             className="will-change-transform"
           >
             <Image
-              src={$t("ArVrHero__t10", "/ARVR-frame.png")}
+              src={$t("ArVrHero__t10", "/ARVR-frame.webp")}
               alt={$t("ArVrHero__t11", "VR headset frame")}
               width={2146}
               height={733}

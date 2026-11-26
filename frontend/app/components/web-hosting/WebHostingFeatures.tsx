@@ -130,7 +130,7 @@ export default function WebHostingFeatures() {
             className="relative z-10 w-full h-[450px] flex items-center justify-center mix-blend-multiply"
           >
             <Image 
-              src={$t("WebHostingFeatures__t4", "/web-hosting-2.png")} 
+              src={$t("WebHostingFeatures__t4", "/web-hosting-2.webp")} 
               alt={$t("WebHostingFeatures__t5", "Website Hosting Dashboard")}
               fill
               className="object-contain drop-shadow-2xl"
@@ -174,7 +174,7 @@ export default function WebHostingFeatures() {
             viewport={{ once: true }}
             className="relative w-full h-[250px] mix-blend-multiply"
           >
-            <Image src={$t("WebHostingFeatures__t6", "/web-hosting-2.png")} alt={$t("WebHostingFeatures__t7", "Dashboard")} fill className="object-contain" />
+            <Image src={$t("WebHostingFeatures__t6", "/web-hosting-2.webp")} alt={$t("WebHostingFeatures__t7", "Dashboard")} fill className="object-contain" />
           </motion.div>
           
           {radialFeatures.map(f => (

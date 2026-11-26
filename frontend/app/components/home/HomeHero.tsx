@@ -95,7 +95,7 @@ export default function HomeHero({ slot1 }: { slot1: ReactNode }) {
             <span className="hidden h-10 w-px bg-slate-200 sm:block" />
 
             <div className="flex items-center gap-2">
-              <Image src={$t("HomeHero__t17", "/clutch.png")} alt={$t("HomeHero__t18", "Clutch")} width={779} height={256} className="h-6 w-auto" />
+              <Image src={$t("HomeHero__t17", "/clutch.webp")} alt={$t("HomeHero__t18", "Clutch")} width={779} height={256} className="h-6 w-auto" />
               <div>
                 <div className="flex items-center gap-1">
                   <span className="text-sm font-bold" style={{ color: NAVY }}>

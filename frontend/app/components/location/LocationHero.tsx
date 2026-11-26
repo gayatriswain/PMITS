@@ -101,7 +101,7 @@ export default function LocationHero() {
         <div className="relative mx-auto w-full max-w-lg lg:mx-0 lg:-ml-14 lg:flex lg:w-[calc(100%+3.5rem)] lg:max-w-none lg:items-stretch">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] lg:aspect-auto lg:w-auto lg:flex-1">
             <Image
-              src={$t("LocationHero__t11", "/about-us-main.png")}
+              src={$t("LocationHero__t11", "/about-us-main.webp")}
               alt={$t("LocationHero__t12", "The ProManage team helping a Noida business grow")}
               fill
               priority
@@ -165,7 +165,7 @@ export default function LocationHero() {
             <span className="hidden h-10 w-px bg-slate-200 sm:block" />
 
             <div className="flex items-center gap-2">
-              <Image src={$t("LocationHero__t23", "/clutch.png")} alt={$t("LocationHero__t24", "Clutch")} width={779} height={256} className="h-6 w-auto" />
+              <Image src={$t("LocationHero__t23", "/clutch.webp")} alt={$t("LocationHero__t24", "Clutch")} width={779} height={256} className="h-6 w-auto" />
               <div>
                 <div className="flex items-center gap-1">
                   <span className="text-sm font-bold" style={{ color: NAVY }}>

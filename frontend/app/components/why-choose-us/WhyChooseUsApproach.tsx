@@ -125,7 +125,7 @@ export default function WhyChooseUsApproach() {
           >
             {/* The Image from public folder */}
             <Image 
-              src={$t("WhyChooseUsApproach__t10", "/why-choose -us.png")} 
+              src={$t("WhyChooseUsApproach__t10", "/why-choose -us.webp")} 
               alt={$t("WhyChooseUsApproach__t11", "ProManage Approach")} 
               fill 
               sizes="320px"

@@ -110,7 +110,7 @@ export default function WebHostingHero() {
             className="relative w-full h-[300px] lg:h-[500px] flex items-center justify-center mix-blend-multiply"
           >
             <Image 
-              src={$t("WebHostingHero__t10", "/web-hosting-hero.png")} 
+              src={$t("WebHostingHero__t10", "/web-hosting-hero.webp")} 
               alt={$t("WebHostingHero__t11", "Web Hosting Dashboard")}
               fill
               className="object-contain"

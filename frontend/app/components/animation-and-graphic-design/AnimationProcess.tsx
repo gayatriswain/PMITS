@@ -256,7 +256,7 @@ export default function AnimationProcess() {
             {/* Floating 3D Infinity Ribbon Image */}
             <div className="relative w-full max-w-[480px] h-[250px] sm:h-[290px] lg:h-[310px] z-10">
               <Image
-                src={$t("AnimationProcess__t7", "/animation-graphic-design3.png")}
+                src={$t("AnimationProcess__t7", "/animation-graphic-design3.webp")}
                 alt={$t("AnimationProcess__t8", "3D Infinity Ribbon Motion Loop")}
                 fill
                 priority
@@ -383,7 +383,7 @@ export default function AnimationProcess() {
               <div className="flex items-center gap-3">
                 <div className="relative w-11 h-11 rounded-full overflow-hidden border border-slate-200 shadow-sm flex-shrink-0">
                   <Image
-                    src={$t("AnimationProcess__t10", "/ravi-sharma-avatar.jpg")}
+                    src={$t("AnimationProcess__t10", "/ravi-sharma-avatar.webp")}
                     alt={$t("AnimationProcess__t11", "Ravi Sharma")}
                     fill
                     className="object-cover"
