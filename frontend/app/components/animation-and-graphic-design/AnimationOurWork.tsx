@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    OUR WORK DATA (Coverflow carousel + filter tabs)
@@ -30,7 +32,7 @@ interface WorkItem {
   video?: string;
 }
 
-const workFilters: WorkFilter[] = [
+const workFilters__cms: WorkFilter[] = [
   "All Work",
   "Animation",
   "Graphic Design",
@@ -40,7 +42,7 @@ const workFilters: WorkFilter[] = [
   "Social Media",
 ];
 
-const workItems: WorkItem[] = [
+const workItems__cms: WorkItem[] = [
   {
     id: "saas-explainer",
     category: "2D Animation",
@@ -152,13 +154,14 @@ const IMAGE_RATIO = 66;
    ========================================================================= */
 
 function TrustedLogos() {
+  const $t = useCmsText();
   return (
     <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-slate-700">
       <div className="flex items-center gap-1.5">
-        <div className="w-6 h-6 rounded bg-slate-700 text-white text-[11px] font-black flex items-center justify-center">B</div>
+        <div className="w-6 h-6 rounded bg-slate-700 text-white text-[11px] font-black flex items-center justify-center">{$t("AnimationOurWork__t1", "B")}</div>
         <div className="leading-none">
-          <div className="text-[13px] font-black tracking-tight">BYJU&apos;S</div>
-          <div className="text-[7px] font-bold text-slate-500">The Learning App</div>
+          <div className="text-[13px] font-black tracking-tight">{$t("AnimationOurWork__t2", "BYJU'S")}</div>
+          <div className="text-[7px] font-bold text-slate-500">{$t("AnimationOurWork__t3", "The Learning App")}</div>
         </div>
       </div>
       <div className="flex items-center gap-1">
@@ -169,12 +172,12 @@ function TrustedLogos() {
         </svg>
         <span className="text-[14px] font-bold lowercase">lenskart</span>
       </div>
-      <span className="text-[18px] font-black tracking-tighter">OYO</span>
+      <span className="text-[18px] font-black tracking-tighter">{$t("AnimationOurWork__t4", "OYO")}</span>
       <div className="flex items-center gap-1">
         <svg className="w-4 h-3.5" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
           <path d="M2 17L7 4L12 14L17 4L22 17" />
         </svg>
-        <span className="text-[13px] font-extrabold">Myntra</span>
+        <span className="text-[13px] font-extrabold">{$t("AnimationOurWork__t5", "Myntra")}</span>
       </div>
       <span className="text-[17px] font-black lowercase">boat</span>
       <span className="text-[15px] font-black italic lowercase">zomato</span>
@@ -187,6 +190,9 @@ function TrustedLogos() {
    ========================================================================= */
 
 export default function AnimationOurWork() {
+  const $t = useCmsText();
+  const workFilters = useCmsData("AnimationOurWork__workFilters", workFilters__cms);
+  const workItems = useCmsData("AnimationOurWork__workItems", workItems__cms);
   const [activeFilter, setActiveFilter] = useState<WorkFilter>("All Work");
   const [activeIndex, setActiveIndex] = useState(2);
   const [isPaused, setIsPaused] = useState(false);
@@ -247,9 +253,8 @@ export default function AnimationOurWork() {
       {/* Giant faint brush watermark */}
       <div className="absolute top-6 right-[4%] hidden md:block pointer-events-none select-none">
         <div className="font-caveat font-bold uppercase text-[110px] lg:text-[150px] leading-[0.85] text-slate-200/60 -rotate-6 tracking-wide">
-          Crafted
-          <br />
-          <span className="pl-16">To Impact</span>
+          {$t("AnimationOurWork__t6", "Crafted")}<br />
+          <span className="pl-16">{$t("AnimationOurWork__t7", "To Impact")}</span>
         </div>
       </div>
 
@@ -259,23 +264,19 @@ export default function AnimationOurWork() {
           {/* Left: Heading block */}
           <div className="lg:col-span-6">
             <span className="text-[11px] font-black tracking-[0.22em] text-[#0d9488] uppercase block mb-3">
-              Our Work
-            </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-[#0f2333] tracking-tight leading-[1.05]">
-              Real Projects.
-              <br />
-              Real <span className="text-[#0d9488]">Impact.</span>
+              {$t("AnimationOurWork__t8", "Our Work")}</span>
+            <h2 className="text-h2 font-extrabold text-[#0f2333] tracking-tight">
+              {$t("AnimationOurWork__t9", "Real Projects.")}<br />
+              {$t("AnimationOurWork__t10", "Real ")}<span className="text-[#0d9488]">{$t("AnimationOurWork__t11", "Impact.")}</span>
             </h2>
             <div className="w-14 h-[3px] bg-[#0d9488] rounded-full mt-5 mb-5" />
-            <p className="text-slate-500 text-sm sm:text-[15px] leading-relaxed max-w-md">
-              Explore how our animation and design solutions help brands communicate, engage and grow.
-            </p>
+            <p className="text-body text-slate-500 max-w-md">
+              {rich($t("AnimationOurWork__t12", "Explore how our animation and design solutions help brands communicate, engage and grow."))}</p>
 
             {/* Script tagline with squiggle */}
             <div className="mt-4 inline-flex items-center gap-1.5">
               <span className="font-caveat text-lg sm:text-xl font-bold text-[#0d9488]">
-                Ideas. Crafted. Delivered.
-              </span>
+                {$t("AnimationOurWork__t13", "Ideas. Crafted. Delivered.")}</span>
               <svg className="w-5 h-4 text-[#0d9488]" viewBox="0 0 20 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                 <path d="M3 13 L8 3" />
                 <path d="M9 13 L14 5" />
@@ -285,7 +286,7 @@ export default function AnimationOurWork() {
 
             {/* View all projects */}
             <div className="mt-7 flex items-center gap-3">
-              <Link href="#contact-form" className="group inline-flex items-center gap-3">
+              <Link href={$t("AnimationOurWork__t14", "#contact-form")} className="group inline-flex items-center gap-3">
                 <span className="w-11 h-11 rounded-full bg-[#0f5e63] text-white flex items-center justify-center shadow-[0_8px_20px_-4px_rgba(13,148,136,0.5)] group-hover:bg-[#0d9488] transition-colors">
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14" />
@@ -293,8 +294,7 @@ export default function AnimationOurWork() {
                   </svg>
                 </span>
                 <span className="text-sm font-bold text-slate-800 group-hover:text-[#0d9488] transition-colors">
-                  View All Projects
-                </span>
+                  {$t("AnimationOurWork__t15", "View All Projects")}</span>
               </Link>
               {/* Dashed doodle arrow */}
               <svg className="w-14 h-6 text-[#0d9488]/70 hidden sm:block" viewBox="0 0 60 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
@@ -312,10 +312,8 @@ export default function AnimationOurWork() {
                 <path d="M5 33 L10 40 L16 34" />
               </svg>
               <div className="font-caveat text-lg font-bold text-slate-700 leading-tight -rotate-6 mb-6">
-                Design + Motion
-                <br />
-                that drives results
-              </div>
+                {$t("AnimationOurWork__t16", "Design + Motion")}<br />
+                {$t("AnimationOurWork__t17", "that drives results")}</div>
             </div>
 
             {/* Filter Tabs */}
@@ -452,7 +450,7 @@ export default function AnimationOurWork() {
                       {item.title}
                     </h3>
                     <p
-                      className={`mt-1 text-[11px] lg:text-xs leading-snug line-clamp-2 transition-colors duration-700 ${
+                      className={`text-caption mt-1 line-clamp-2 transition-colors duration-700 ${
                         isActive ? "text-slate-300 max-w-[85%]" : "text-slate-500"
                       }`}
                     >
@@ -498,8 +496,7 @@ export default function AnimationOurWork() {
           {/* Trusted by */}
           <div className="lg:col-span-6">
             <p className="text-[10.5px] font-black tracking-[0.2em] text-[#0d9488] uppercase mb-4">
-              Trusted by forward-thinking brands
-            </p>
+              {rich($t("AnimationOurWork__t18", "Trusted by forward-thinking brands"))}</p>
             <TrustedLogos />
           </div>
 
@@ -515,18 +512,17 @@ export default function AnimationOurWork() {
               </div>
             </div>
             <div className="flex-1 sm:ml-2">
-              <h4 className="text-lg sm:text-xl font-bold text-[#0f2333]">Have a project in mind?</h4>
-              <p className="text-xs sm:text-[13px] text-[#0d9488] mt-0.5">Let&apos;s create something amazing together.</p>
+              <h4 className="text-h6 font-bold text-[#0f2333]">{$t("AnimationOurWork__t19", "Have a project in mind?")}</h4>
+              <p className="text-small text-[#0d9488] mt-0.5">{rich($t("AnimationOurWork__t20", "Let's create something amazing together."))}</p>
               <svg className="w-28 h-2 mt-1 text-[#0d9488]" viewBox="0 0 120 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M2 5 C 30 1, 60 7, 118 3" />
               </svg>
             </div>
             <Link
-              href="#contact-form"
+              href={$t("AnimationOurWork__t21", "#contact-form")}
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0f2333] text-white text-sm font-semibold shadow-[0_10px_30px_-6px_rgba(99,102,241,0.55)] ring-1 ring-indigo-400/40 hover:bg-[#0d9488] transition-colors"
             >
-              Let&apos;s Talk
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              {$t("AnimationOurWork__t22", "Let's Talk")}<span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </div>
         </div>
@@ -559,7 +555,7 @@ export default function AnimationOurWork() {
                   <span className="text-[10px] font-black tracking-[0.18em] text-[#2dd4bf] uppercase">
                     {playingItem.category}
                   </span>
-                  <h3 className="text-lg sm:text-xl font-bold">{playingItem.title}</h3>
+                  <h3 className="text-h6 font-bold">{playingItem.title}</h3>
                 </div>
                 <button
                   type="button"

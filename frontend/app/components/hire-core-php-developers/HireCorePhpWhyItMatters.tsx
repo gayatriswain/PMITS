@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 interface FeatureCard {
   id: string;
@@ -12,7 +14,7 @@ interface FeatureCard {
   icon: React.ReactNode;
 }
 
-const features: FeatureCard[] = [
+const features__cms: FeatureCard[] = [
   {
     id: "secure",
     title: "Secure",
@@ -78,6 +80,8 @@ const features: FeatureCard[] = [
 ];
 
 export default function HireCorePhpWhyItMatters() {
+  const $t = useCmsText();
+  const features = useCmsData("HireCorePhpWhyItMatters__features", features__cms);
   return (
     <section id="why-it-matters" className="relative w-full overflow-hidden font-sans bg-[linear-gradient(180deg,#f7fafc_0%,#f2f6fa_60%,#edf2f7_100%)] py-12 sm:py-16">
       <Container className="relative z-10 max-w-6xl">
@@ -89,17 +93,14 @@ export default function HireCorePhpWhyItMatters() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-[11px] font-bold tracking-[0.26em] text-[#0f8a83] uppercase">Why It Matters</div>
+          <div className="text-[11px] font-bold tracking-[0.26em] text-[#0f8a83] uppercase">{$t("HireCorePhpWhyItMatters__t1", "Why It Matters")}</div>
           <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-[#0f8a83]" />
-          <h2 className="mt-4 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.08] text-[#0c1e3d]">
-            Powerful Applications.
-            <br />
-            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">Real Business Impact.</span>
+          <h2 className="text-h2 mt-4 font-black tracking-tight text-[#0c1e3d]">
+            {$t("HireCorePhpWhyItMatters__t2", "Powerful Applications.")}<br />
+            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpWhyItMatters__t3", "Real Business Impact.")}</span>
           </h2>
-          <p className="mt-5 text-[14.5px] sm:text-[15.5px] text-slate-600 leading-relaxed">
-            Our Core PHP solutions are built to perform,
-            <br className="hidden sm:inline" /> scale and drive measurable results for your business.
-          </p>
+          <p className="text-body mt-5 text-slate-600">
+            {rich($t("HireCorePhpWhyItMatters__t4", "Our Core PHP solutions are built to perform,"))}<br className="hidden sm:inline" /> {rich($t("HireCorePhpWhyItMatters__t5", "scale and drive measurable results for your business."))}</p>
           <motion.div
             className="mt-5 mx-auto h-[2px] rounded-full bg-[#0f8a83]"
             initial={{ width: 0 }}
@@ -152,7 +153,7 @@ export default function HireCorePhpWhyItMatters() {
 
               <h3 className="mt-9 text-[15px] font-bold text-[#0c1e3d] group-hover:text-[#0f8a83] transition-colors">{f.title}</h3>
               <span className="mt-3 w-5 h-[2px] rounded-full bg-[#1aa6a6]" />
-              <p className="mt-4 text-[12px] text-slate-500 leading-relaxed max-w-[170px]">{f.desc}</p>
+              <p className="text-caption mt-4 text-slate-500 max-w-[170px]">{f.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -179,31 +180,27 @@ export default function HireCorePhpWhyItMatters() {
               </svg>
             </motion.span>
             <div className="text-left text-[19px] font-semibold leading-snug text-white">
-              Let&apos;s build something
-              <br />
-              <span className="text-[#3fd6cf]">powerful</span> together.
-            </div>
+              {$t("HireCorePhpWhyItMatters__t6", "Let's build something")}<br />
+              <span className="text-[#3fd6cf]">powerful</span> {$t("HireCorePhpWhyItMatters__t7", "together.")}</div>
           </div>
 
           <div className="relative flex items-center gap-4 flex-wrap justify-center">
             <Link
-              href="#contact"
+              href={$t("HireCorePhpWhyItMatters__t8", "#contact")}
               className="group inline-flex items-center justify-center gap-3 h-[48px] px-8 rounded-lg bg-white text-[#0f6f78] text-[13.5px] font-semibold shadow-lg hover:shadow-xl transition whitespace-nowrap"
             >
-              Hire Core PHP Developers
-              <svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              {$t("HireCorePhpWhyItMatters__t9", "Hire Core PHP Developers")}<svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M7 17 17 7M8 7h9v9" />
               </svg>
             </Link>
             <Link
-              href="#contact"
+              href={$t("HireCorePhpWhyItMatters__t10", "#contact")}
               className="inline-flex items-center justify-center gap-2.5 h-[48px] px-7 rounded-lg border border-white/25 text-white text-[13.5px] font-medium hover:bg-white/10 transition whitespace-nowrap"
             >
               <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M7 17 17 7M8 7h9v9" />
               </svg>
-              Talk to an Expert
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              {$t("HireCorePhpWhyItMatters__t11", "Talk to an Expert")}<svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
             </Link>

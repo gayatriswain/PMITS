@@ -1,8 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import { submitEnquiry, goToThankYou } from "@/lib/forms";
+import Honeypot from "@/components/cms/Honeypot";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    SMALL ICONS
@@ -83,7 +87,7 @@ function LogoMark({ type }: { type: "hexG" | "cube" | "plus" | "hex" | "f" | "ba
   }
 }
 
-const logos = [
+const logos__cms = [
   { name: "Greenwoods", sub: "REALTY", type: "hexG" as const },
   { name: "Eduspark", sub: "LEARNING", type: "cube" as const },
   { name: "CarePlus", sub: "HEALTHCARE", type: "plus" as const },
@@ -111,26 +115,32 @@ function Field({ icon, children }: { icon: string; children: React.ReactNode }) 
 }
 
 function ConsultationForm() {
+  const $t = useCmsText();
   const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", message: "" });
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [hp, setHp] = useState("");
 
   const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm({ ...form, [key]: e.target.value });
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim()) {
       setError("Please enter your name and work email.");
       return;
     }
+    if (sending) return;
     setError("");
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    const r = await submitEnquiry("custom-crm-consultation", { ...form, service: "Custom CRM Solution", hp });
+    setSending(false);
+    if (r.ok) {
       setSent(true);
-    }, 1200);
+      goToThankYou("custom-crm");
+    }
+    else setError(r.error);
   };
 
   const reset = () => {
@@ -144,29 +154,29 @@ function ConsultationForm() {
         <span className="w-14 h-14 rounded-full bg-[#e8f6f4] text-[#0f8a83] flex items-center justify-center">
           <Icon d="m5 12.5 4.5 4.5L19 7.5" className="w-7 h-7" />
         </span>
-        <h4 className="mt-4 text-xl font-extrabold text-[#0b2447]">Thank you, {form.name}!</h4>
-        <p className="mt-1.5 text-sm text-slate-600 max-w-xs">Our CRM experts will reach out within 24 hours to schedule your free consultation.</p>
+        <h4 className="text-h6 mt-4 font-extrabold text-[#0b2447]">{$t("CustomCrmStartJourney__t1", "Thank you, ")}{form.name}!</h4>
+        <p className="text-small mt-1.5 text-slate-600 max-w-xs">{rich($t("CustomCrmStartJourney__t2", "Our CRM experts will reach out within 24 hours to schedule your free consultation."))}</p>
         <button type="button" onClick={reset} className="mt-4 text-sm font-semibold text-[#0f8a83] underline cursor-pointer">
-          Send another request
-        </button>
+          {$t("CustomCrmStartJourney__t3", "Send another request")}</button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={submit} noValidate>
+    <form onSubmit={submit} noValidate className="relative">
+      <Honeypot value={hp} onChange={setHp} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <Field icon={FIELD_ICONS.user}>
-          <input type="text" placeholder="Full Name" value={form.name} onChange={set("name")} className={`${inputBase} pl-10 pr-3 py-3`} />
+          <input type="text" placeholder={$t("CustomCrmStartJourney__t4", "Full Name")} value={form.name} onChange={set("name")} className={`${inputBase} pl-10 pr-3 py-3`} />
         </Field>
         <Field icon={FIELD_ICONS.building}>
-          <input type="text" placeholder="Company Name" value={form.company} onChange={set("company")} className={`${inputBase} pl-10 pr-3 py-3`} />
+          <input type="text" placeholder={$t("CustomCrmStartJourney__t5", "Company Name")} value={form.company} onChange={set("company")} className={`${inputBase} pl-10 pr-3 py-3`} />
         </Field>
         <Field icon={FIELD_ICONS.mail}>
-          <input type="email" placeholder="Work Email" value={form.email} onChange={set("email")} className={`${inputBase} pl-10 pr-3 py-3`} />
+          <input type="email" placeholder={$t("CustomCrmStartJourney__t6", "Work Email")} value={form.email} onChange={set("email")} className={`${inputBase} pl-10 pr-3 py-3`} />
         </Field>
         <Field icon={FIELD_ICONS.phone}>
-          <input type="tel" placeholder="Phone Number" value={form.phone} onChange={set("phone")} className={`${inputBase} pl-10 pr-3 py-3`} />
+          <input type="tel" placeholder={$t("CustomCrmStartJourney__t7", "Phone Number")} value={form.phone} onChange={set("phone")} className={`${inputBase} pl-10 pr-3 py-3`} />
         </Field>
       </div>
 
@@ -176,28 +186,28 @@ function ConsultationForm() {
         </span>
         <textarea
           rows={3}
-          placeholder="What do you want your CRM to solve?"
+          placeholder={$t("CustomCrmStartJourney__t8", "What do you want your CRM to solve?")}
           value={form.message}
           onChange={set("message")}
           className={`${inputBase} pl-10 pr-3 py-3 resize-none`}
         />
       </div>
 
-      {error && <p className="mt-3 text-xs font-semibold text-red-600">{error}</p>}
+      {error && <p className="text-caption mt-3 font-semibold text-red-600">{error}</p>}
 
       <button
         type="submit"
         disabled={sending}
         className="group mt-5 w-full h-[52px] rounded-full bg-[linear-gradient(90deg,#0b6b70_0%,#12a39c_100%)] text-white text-[15px] font-semibold shadow-[0_14px_30px_-12px_rgba(15,138,131,0.7)] flex items-center justify-between pl-8 pr-2 hover:brightness-105 transition disabled:opacity-70 cursor-pointer"
       >
-        <span className="flex-1 text-center">{sending ? "Sending..." : "Get My Free CRM Consultation"}</span>
+        <span className="flex-1 text-center">{sending ? $t("CustomCrmStartJourney__t9", "Sending...") : $t("CustomCrmStartJourney__t10", "Get My Free CRM Consultation")}</span>
         <span className="w-10 h-10 rounded-full bg-white text-[#0f8a83] flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
           <Icon d="M5 12h14M13 6l6 6-6 6" className="w-4 h-4" />
         </span>
       </button>
 
       <ul className="mt-5 flex flex-wrap items-center justify-center gap-y-2 text-[12px] text-slate-600">
-        {["Free Consultation", "No Obligation", "Expert Guidance"].map((t, i) => (
+        {[$t("CustomCrmStartJourney__t11", "Free Consultation"), $t("CustomCrmStartJourney__t12", "No Obligation"), $t("CustomCrmStartJourney__t13", "Expert Guidance")].map((t, i) => (
           <li key={t} className={`flex items-center gap-2 px-5 ${i > 0 ? "sm:border-l border-slate-200" : ""}`}>
             <span className="w-[18px] h-[18px] rounded-full border border-[#0f8a83] text-[#0f8a83] flex items-center justify-center">
               <Icon d="m6 12.5 4 4 8-9" className="w-3 h-3" />
@@ -217,6 +227,8 @@ function ConsultationForm() {
 const dots = "bg-[radial-gradient(circle,#8fd0cb_1.2px,transparent_1.6px)] [background-size:11px_11px]";
 
 export default function CustomCrmStartJourney() {
+  const $t = useCmsText();
+  const logos = useCmsData("CustomCrmStartJourney__logos", logos__cms);
   return (
     <section id="contact" className="relative w-full overflow-hidden bg-[linear-gradient(180deg,#f3f8fa_0%,#fbfdfd_100%)] pt-4 sm:pt-6 pb-14 sm:pb-20 font-sans scroll-mt-20">
       {/* Dotted decoration */}
@@ -239,10 +251,9 @@ export default function CustomCrmStartJourney() {
               {/* Left: copy */}
               <div className="lg:pr-6">
                 <div className="relative inline-block">
-                  <h2 className="text-4xl sm:text-5xl lg:text-[44px] xl:text-[48px] font-extrabold tracking-tight leading-[1.1] text-[#0b2447]">
-                    Start Your
-                    <br />
-                    <span className="text-[#0f8a83]">CRM Journey</span>
+                  <h2 className="text-h2 font-extrabold tracking-tight text-[#0b2447]">
+                    {$t("CustomCrmStartJourney__t14", "Start Your")}<br />
+                    <span className="text-[#0f8a83]">{$t("CustomCrmStartJourney__t15", "CRM Journey")}</span>
                   </h2>
                   {/* Hand-drawn underline + curly arrow towards the form */}
                   <svg className="hidden lg:block absolute left-0 top-full -mt-1 w-[130%] h-[84px] pointer-events-none overflow-visible" viewBox="0 0 420 84" fill="none" stroke="#0f8a83" strokeWidth="2" strokeLinecap="round">
@@ -251,9 +262,8 @@ export default function CustomCrmStartJourney() {
                     <path d="m388 58 10 8-12 4" />
                   </svg>
                 </div>
-                <p className="mt-16 lg:mt-20 text-sm sm:text-[15px] text-slate-600 leading-relaxed max-w-xs">
-                  Book a free consultation and let our experts show you how we can build the right CRM for your business.
-                </p>
+                <p className="text-body mt-16 lg:mt-20 text-slate-600 max-w-xs">
+                  {rich($t("CustomCrmStartJourney__t16", "Book a free consultation and let our experts show you how we can build the right CRM for your business."))}</p>
               </div>
 
               {/* Right: form card */}
@@ -264,9 +274,8 @@ export default function CustomCrmStartJourney() {
 
             {/* Trusted by */}
             <div className="relative border-t border-slate-100 bg-[#fafcfd] px-6 py-7 sm:px-10">
-              <p className="text-center text-[11px] sm:text-xs font-bold tracking-[0.16em] text-[#0f8a83] uppercase">
-                Trusted by businesses that grow with us
-              </p>
+              <p className="text-caption text-center font-bold tracking-[0.16em] text-[#0f8a83] uppercase">
+                {rich($t("CustomCrmStartJourney__t17", "Trusted by businesses that grow with us"))}</p>
               <div className="mt-5 flex flex-wrap items-center justify-center lg:justify-between gap-x-8 gap-y-5">
                 {logos.map((l) => (
                   <div key={l.name} className="flex items-center gap-2.5 text-[#0b2447]">
@@ -295,22 +304,19 @@ export default function CustomCrmStartJourney() {
               </svg>
             </span>
             <p className="mt-5 text-2xl sm:text-[30px] font-medium text-[#0b2447] leading-snug">
-              We can&apos;t wait to build something
-              <br />
+              {rich($t("CustomCrmStartJourney__t18", "We can't wait to build something"))}<br />
               <span className="relative inline-block mr-2">
                 <span className="font-caveat italic font-bold text-[#0f8a83] text-[1.15em]">amazing</span>
                 <svg className="absolute left-0 -bottom-1 w-full h-2.5" viewBox="0 0 120 10" preserveAspectRatio="none" fill="none" stroke="#0f8a83" strokeWidth="2" strokeLinecap="round">
                   <path d="M2 7C30 2 60 9 118 3" />
                 </svg>
               </span>{" "}
-              together.
-            </p>
+              {rich($t("CustomCrmStartJourney__t19", "together."))}</p>
             <a
-              href="#contact"
+              href={$t("CustomCrmStartJourney__t20", "#contact")}
               className="mt-7 inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#0b1220] text-white text-sm font-semibold hover:bg-[#0f6b6b] transition-colors"
             >
-              Let&apos;s Talk
-              <span aria-hidden>→</span>
+              {$t("CustomCrmStartJourney__t21", "Let's Talk")}<span aria-hidden>→</span>
             </a>
           </motion.div>
         </div>

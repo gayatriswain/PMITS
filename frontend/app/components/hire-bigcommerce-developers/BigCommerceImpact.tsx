@@ -6,6 +6,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import CountUp from "../shared/CountUp";
 import { BC, BrandRow, CtaStrip, Eyebrow, Icon, Swoosh, ease, fadeUp, heading, useSeen, type IconName } from "./BigCommerceShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /*
  * NOTE: the case study below is placeholder content ("Hearth & Haven" is a fictional brand and
@@ -13,13 +15,13 @@ import { BC, BrandRow, CtaStrip, Eyebrow, Icon, Swoosh, ease, fadeUp, heading, u
  */
 const BRAND = "Hearth & Haven";
 
-const results: { icon: IconName; value: React.ReactNode; label: [string, string] }[] = [
+const results__cms: { icon: IconName; value: React.ReactNode; label: [string, string] }[] = [
   { icon: "trend", value: <CountUp to={3.2} decimals={1} suffix="x" />, label: ["Revenue Growth", "in just 12 months"] },
   { icon: "cart", value: <CountUp to={2.7} decimals={1} suffix="x" />, label: ["Increase in", "Conversion Rate"] },
   { icon: "network", value: <CountUp to={40} suffix="%+" />, label: ["Growth in", "International Sales"] },
 ];
 
-const brands = [
+const brands__cms = [
   { name: "Hearth & Haven", style: "font-serif italic text-xl" },
   { name: "NORTHPEAK", style: "font-black tracking-wider text-lg" },
   { name: "VELORA", style: "font-light tracking-[0.35em] text-lg" },
@@ -29,7 +31,7 @@ const brands = [
 ];
 
 /* Chart milestones on the image's growth curve (image pixels). */
-const milestones = [
+const milestones__cms = [
   { x: 670, y: 742, label: "MONTH 1", sub: "Laying the foundation", drop: 1.8 },
   { x: 1060, y: 677, label: "MONTH 6", sub: "Strong momentum", drop: 5.5 },
   { x: 1516, y: 416, label: "MONTH 12", sub: "Breakout growth", drop: 20 },
@@ -39,6 +41,10 @@ const px = (x: number) => `${(x / IW) * 100}%`;
 const py = (y: number) => `${(y / IH) * 100}%`;
 
 export default function BigCommerceImpact() {
+  const $t = useCmsText();
+  const results = useCmsData("BigCommerceImpact__results", results__cms);
+  const brands = useCmsData("BigCommerceImpact__brands", brands__cms);
+  const milestones = useCmsData("BigCommerceImpact__milestones", milestones__cms);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const seen = useSeen(ref, 0.25);
@@ -47,40 +53,35 @@ export default function BigCommerceImpact() {
     <section className="relative overflow-hidden bg-gradient-to-b from-[#f6f8fe] to-[#eef3fc] py-12 sm:py-16">
       <Container className="relative">
         <div className="mx-auto max-w-[820px] text-center">
-          <Eyebrow variant="line" className="tracking-[0.3em]">Real brands. Real results.</Eyebrow>
+          <Eyebrow variant="line" className="tracking-[0.3em]">{$t("BigCommerceImpact__t1", "Real brands. Real results.")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-[38px] font-bold leading-[1.08] tracking-tight text-[#0b1a4a] sm:text-5xl lg:text-[60px]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
           >
-            Your Growth.
-            <br />
-            Our{" "}
+            {$t("BigCommerceImpact__t2", "Your Growth.")}<br />
+            {$t("BigCommerceImpact__t3", "Our")}{" "}
             <span className="relative inline-block text-[#2348e6]">
-              Real Impact.
-              <Swoosh className="-bottom-2 left-0 h-3 w-[60%]" />
+              {$t("BigCommerceImpact__t4", "Real Impact.")}<Swoosh className="-bottom-2 left-0 h-3 w-[60%]" />
             </span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-5 text-base text-slate-600 sm:text-lg">
-            See how businesses like yours scale higher with BigCommerce.
-          </motion.p>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-5 text-slate-600">
+            {rich($t("BigCommerceImpact__t5", "See how businesses like yours scale higher with BigCommerce."))}</motion.p>
         </div>
 
         <div className="mt-10 grid items-center gap-10 xl:grid-cols-[0.62fr_1fr] xl:gap-8">
           {/* story */}
           <div>
             <motion.span variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="inline-block rounded-full bg-gradient-to-r from-[#2348e6] to-[#3b6cf6] px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white">
-              Success story
-            </motion.span>
+              {$t("BigCommerceImpact__t6", "Success story")}</motion.span>
             <motion.p variants={fadeUp} custom={0.5} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-4 font-serif text-[34px] italic leading-none text-[#1f2937]">
               {BRAND}
-              <span className="ml-1 align-top text-[10px] not-italic tracking-[0.3em] text-slate-500">HOME</span>
+              <span className="ml-1 align-top text-[10px] not-italic tracking-[0.3em] text-slate-500">{$t("BigCommerceImpact__t7", "HOME")}</span>
             </motion.p>
-            <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-3 max-w-[340px] text-[15px] text-slate-600">
-              From inspiration to impact—scaling globally with BigCommerce.
-            </motion.p>
+            <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-3 max-w-[340px] text-slate-600">
+              {rich($t("BigCommerceImpact__t8", "From inspiration to impact—scaling globally with BigCommerce."))}</motion.p>
             <ul className="mt-6 grid grid-cols-3 border-t border-slate-200 pt-6">
               {results.map((r, i) => (
                 <motion.li key={r.label[0]} variants={fadeUp} custom={1.5 + i * 0.4} initial="hidden" whileInView="show" viewport={{ once: true }} className={`group px-3 first:pl-0 ${i > 0 ? "border-l border-slate-200" : ""}`}>
@@ -88,7 +89,7 @@ export default function BigCommerceImpact() {
                     <Icon name={r.icon} className="h-6 w-6" />
                   </span>
                   <p className={`${heading.className} mt-3 text-[26px] font-bold text-[#1d3fd8]`}>{r.value}</p>
-                  <p className="text-[12.5px] leading-snug text-slate-600">
+                  <p className="text-caption text-slate-600">
                     <span className="font-medium text-[#0b1a4a]">{r.label[0]}</span>
                     <br />
                     {r.label[1]}
@@ -107,14 +108,13 @@ export default function BigCommerceImpact() {
               <div className="flex gap-4">
                 <span className="font-serif text-5xl leading-none text-[#2348e6]">“</span>
                 <blockquote className="text-[14px] leading-relaxed text-slate-700">
-                  BigCommerce gave us the flexibility, performance, and scalability to take our brand to the next level globally.
-                </blockquote>
+                  {rich($t("BigCommerceImpact__t9", "BigCommerce gave us the flexibility, performance, and scalability to take our brand to the next level globally."))}</blockquote>
               </div>
               <figcaption className="mt-4 flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-rose-300 to-amber-300 text-sm font-bold text-white">EM</span>
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-rose-300 to-amber-300 text-sm font-bold text-white">{$t("BigCommerceImpact__t10", "EM")}</span>
                 <span>
-                  <span className="block text-sm font-semibold text-[#0b1a4a]">Elena Marsh</span>
-                  <span className="block text-xs text-slate-500">Founder &amp; Creative Director</span>
+                  <span className="block text-sm font-semibold text-[#0b1a4a]">{$t("BigCommerceImpact__t11", "Elena Marsh")}</span>
+                  <span className="block text-xs text-slate-500">{$t("BigCommerceImpact__t12", "Founder & Creative Director")}</span>
                 </span>
               </figcaption>
             </motion.figure>
@@ -136,7 +136,7 @@ export default function BigCommerceImpact() {
               <div className="absolute flex items-center justify-between" style={{ left: px(480), top: py(80), width: px(760), height: py(60) }}>
                 <span className="font-serif text-[1.55cqw] italic text-[#1f2937]">{BRAND}</span>
                 <span className="flex items-center gap-[1.4cqw] text-[0.62cqw] font-medium tracking-wider text-slate-600">
-                  <span>SHOP</span><span>COLLECTIONS</span><span>ABOUT US</span><span>SALE</span>
+                  <span>{$t("BigCommerceImpact__t13", "SHOP")}</span><span>{$t("BigCommerceImpact__t14", "COLLECTIONS")}</span><span>{$t("BigCommerceImpact__t15", "ABOUT US")}</span><span>{$t("BigCommerceImpact__t16", "SALE")}</span>
                   <Icon name="search" className="h-[1cqw] w-[1cqw]" />
                   <Icon name="cart" className="h-[1cqw] w-[1cqw]" />
                 </span>
@@ -149,15 +149,15 @@ export default function BigCommerceImpact() {
                 className="absolute"
                 style={{ left: px(500), top: py(215) }}
               >
-                <p className={`${heading.className} text-[2cqw] font-medium leading-[1.2] text-[#1f2937]`}>Timeless Style.<br />Inspired Living.</p>
-                <span className="mt-[1cqw] inline-block rounded-full bg-[#1f2937] px-[1.2cqw] py-[0.45cqw] text-[0.6cqw] font-semibold tracking-wider text-white">SHOP NOW</span>
+                <p className={`${heading.className} text-[2cqw] font-medium leading-[1.2] text-[#1f2937]`}>{rich($t("BigCommerceImpact__t17", "Timeless Style."))}<br />{rich($t("BigCommerceImpact__t18", "Inspired Living."))}</p>
+                <span className="mt-[1cqw] inline-block rounded-full bg-[#1f2937] px-[1.2cqw] py-[0.45cqw] text-[0.6cqw] font-semibold tracking-wider text-white">{$t("BigCommerceImpact__t19", "SHOP NOW")}</span>
               </motion.div>
               {/* category labels */}
               {[
-                ["FURNITURE", 570],
-                ["BED & BATH", 750],
-                ["DÉCOR", 935],
-                ["LIGHTING", 1122],
+                [$t("BigCommerceImpact__t20", "FURNITURE"), 570],
+                [$t("BigCommerceImpact__t21", "BED & BATH"), 750],
+                [$t("BigCommerceImpact__t22", "DÉCOR"), 935],
+                [$t("BigCommerceImpact__t23", "LIGHTING"), 1122],
               ].map(([t, x]) => (
                 <span key={t} className="absolute -translate-x-1/2 text-[0.55cqw] font-semibold tracking-wider text-slate-600" style={{ left: px(x as number), top: py(628) }}>{t}</span>
               ))}
@@ -167,8 +167,8 @@ export default function BigCommerceImpact() {
                 <span className="font-serif text-[0.8cqw] italic">{BRAND}</span>
                 <Icon name="cart" className="h-[0.9cqw] w-[0.9cqw]" />
               </div>
-              <p className={`${heading.className} absolute text-[0.95cqw] font-medium leading-[1.2] text-[#1f2937]`} style={{ left: px(218), top: py(345) }}>Timeless Style.<br />Inspired Living.</p>
-              <p className="absolute text-[0.75cqw] font-semibold text-[#1f2937]" style={{ left: px(222), top: py(565) }}>Best Sellers</p>
+              <p className={`${heading.className} absolute text-[0.95cqw] font-medium leading-[1.2] text-[#1f2937]`} style={{ left: px(218), top: py(345) }}>{rich($t("BigCommerceImpact__t24", "Timeless Style."))}<br />{rich($t("BigCommerceImpact__t25", "Inspired Living."))}</p>
+              <p className="absolute text-[0.75cqw] font-semibold text-[#1f2937]" style={{ left: px(222), top: py(565) }}>{rich($t("BigCommerceImpact__t26", "Best Sellers"))}</p>
 
               {/* milestones */}
               {milestones.map((m, i) => (
@@ -195,9 +195,9 @@ export default function BigCommerceImpact() {
                 className="absolute w-[10%] rounded-2xl border border-white bg-white/95 py-[0.8cqw] text-center shadow-[0_18px_36px_-18px_rgba(35,72,230,0.6)]"
                 style={{ left: px(1310), top: py(60) }}
               >
-                <span className="mx-auto block w-fit rounded-full bg-blue-50 px-[0.7cqw] text-[0.6cqw] font-bold tracking-wider text-[#2348e6]">12 MONTHS</span>
-                <span className={`${heading.className} mt-[0.3cqw] block text-[2.4cqw] font-bold text-[#1d3fd8]`}>3.2x</span>
-                <span className="block text-[0.75cqw] leading-tight text-slate-600">Revenue<br />Growth</span>
+                <span className="mx-auto block w-fit rounded-full bg-blue-50 px-[0.7cqw] text-[0.6cqw] font-bold tracking-wider text-[#2348e6]">{$t("BigCommerceImpact__t27", "12 MONTHS")}</span>
+                <span className={`${heading.className} mt-[0.3cqw] block text-[2.4cqw] font-bold text-[#1d3fd8]`}>{$t("BigCommerceImpact__t28", "3.2x")}</span>
+                <span className="block text-[0.75cqw] leading-tight text-slate-600">{$t("BigCommerceImpact__t29", "Revenue")}<br />{$t("BigCommerceImpact__t30", "Growth")}</span>
               </motion.div>
             </motion.div>
           </div>
@@ -205,7 +205,7 @@ export default function BigCommerceImpact() {
 
         <div className="mt-10 text-center">
           <p className="flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.25em] text-[#2348e6]">
-            <span className="h-px w-10 bg-[#2348e6]/50" /> Trusted by growing brands worldwide <span className="h-px w-10 bg-[#2348e6]/50" />
+            <span className="h-px w-10 bg-[#2348e6]/50" /> {rich($t("BigCommerceImpact__t31", "Trusted by growing brands worldwide "))}<span className="h-px w-10 bg-[#2348e6]/50" />
           </p>
           <BrandRow brands={brands} className="mt-5" />
         </div>
@@ -213,13 +213,13 @@ export default function BigCommerceImpact() {
         <div className="mt-10">
           <CtaStrip
             dark
-            title="Ready to Make Your"
+            title={$t("BigCommerceImpact__t32", "Ready to Make Your")}
             accent="Growth Happen?"
-            text="Join thousands of brands turning potential into performance with BigCommerce."
+            text={$t("BigCommerceImpact__t33", "Join thousands of brands turning potential into performance with BigCommerce.")}
             checks={[
-              { icon: "check", label: "No credit card required" },
-              { icon: "bolt", label: "Setup in minutes" },
-              { icon: "clock", label: "Cancel anytime" },
+              { icon: "check", label: $t("BigCommerceImpact__t34", "No credit card required") },
+              { icon: "bolt", label: $t("BigCommerceImpact__t35", "Setup in minutes") },
+              { icon: "clock", label: $t("BigCommerceImpact__t36", "Cancel anytime") },
             ]}
           />
         </div>

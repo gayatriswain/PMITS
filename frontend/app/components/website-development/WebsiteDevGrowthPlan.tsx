@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -319,7 +321,7 @@ function WebAppArt() {
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
 
-const PLANS = [
+const PLANS__cms = [
   {
     num: "01",
     title: ["Business Growth", "Website"],
@@ -397,7 +399,7 @@ const PLANS = [
   },
 ];
 
-const FEATURES = [
+const FEATURES__cms = [
   "Custom Website Design & Development",
   "Responsive & Mobile-First Design",
   "SEO-Friendly Development",
@@ -407,7 +409,7 @@ const FEATURES = [
   "Ongoing Maintenance & Support",
 ];
 
-const STATS = [
+const STATS__cms = [
   {
     target: 200,
     suffix: "+",
@@ -484,6 +486,7 @@ function DottedRule() {
 }
 
 function Stats() {
+  const STATS = useCmsData("WebsiteDevGrowthPlan__STATS", STATS__cms);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -502,7 +505,7 @@ function Stats() {
         >
           <span className="shrink-0 w-12 h-12 rounded-full bg-[#F1F4F6] flex items-center justify-center">{stat.icon}</span>
           <div>
-            <p className="text-xl font-bold tabular-nums leading-none mb-1" style={{ color: DEEP_TEAL }}>
+            <p className="text-body font-bold tabular-nums mb-1" style={{ color: DEEP_TEAL }}>
               {inView ? <Counter target={stat.target} suffix={stat.suffix} /> : `0${stat.suffix}`}
             </p>
             <p className="text-[11px] text-slate-500">{stat.label}</p>
@@ -514,6 +517,9 @@ function Stats() {
 }
 
 export default function WebsiteDevGrowthPlan() {
+  const $t = useCmsText();
+  const PLANS = useCmsData("WebsiteDevGrowthPlan__PLANS", PLANS__cms);
+  const FEATURES = useCmsData("WebsiteDevGrowthPlan__FEATURES", FEATURES__cms);
   return (
     <section className="relative w-full bg-white py-12 lg:py-16 overflow-x-clip">
       <Container>
@@ -529,16 +535,13 @@ export default function WebsiteDevGrowthPlan() {
           <div className="flex items-center gap-4 mb-3">
             <DottedRule />
             <p className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              Choose Your Growth Plan
-            </p>
+              {rich($t("WebsiteDevGrowthPlan__t1", "Choose Your Growth Plan"))}</p>
             <DottedRule />
           </div>
-          <h2 className="font-serif text-3xl md:text-[44px] leading-tight font-semibold mb-3" style={{ color: NAVY }}>
-            Choose Your Growth Plan
-          </h2>
-          <p className="text-sm md:text-base text-slate-600 max-w-xl leading-relaxed">
-            Different businesses. Different goals. We create the right website solution to help you grow, scale and lead in your industry.
-          </p>
+          <h2 className="text-h2 font-serif font-semibold mb-3" style={{ color: NAVY }}>
+            {$t("WebsiteDevGrowthPlan__t2", "Choose Your Growth Plan")}</h2>
+          <p className="text-body text-slate-600 max-w-xl">
+            {rich($t("WebsiteDevGrowthPlan__t3", "Different businesses. Different goals. We create the right website solution to help you grow, scale and lead in your industry."))}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,2fr)] gap-5">
@@ -610,8 +613,7 @@ export default function WebsiteDevGrowthPlan() {
                 className="text-[10px] font-bold tracking-[0.25em] uppercase whitespace-nowrap [writing-mode:vertical-rl] rotate-180"
                 style={{ color: TEAL }}
               >
-                Our Core Focus
-              </span>
+                {$t("WebsiteDevGrowthPlan__t4", "Our Core Focus")}</span>
               <motion.span
                 className="w-px flex-1 origin-top"
                 style={{ backgroundColor: `${TEAL}80` }}
@@ -625,10 +627,10 @@ export default function WebsiteDevGrowthPlan() {
 
             {/* Content */}
             <div className="relative pt-[184px] pb-10 pl-14 pr-5">
-              <h3 className="font-serif text-xl md:text-[22px] leading-[1.25] font-semibold mb-4">
-                <span style={{ color: NAVY }}>Website<br />Development</span>
+              <h3 className="text-h5 font-serif font-semibold mb-4">
+                <span style={{ color: NAVY }}>{$t("WebsiteDevGrowthPlan__t5", "Website")}<br />{$t("WebsiteDevGrowthPlan__t6", "Development")}</span>
                 <br />
-                <span style={{ color: TEAL }}>Solutions That Drive<br />Real Business Growth</span>
+                <span style={{ color: TEAL }}>{$t("WebsiteDevGrowthPlan__t7", "Solutions That Drive")}<br />{$t("WebsiteDevGrowthPlan__t8", "Real Business Growth")}</span>
               </h3>
               <span className="block w-8 h-[2px] mb-6" style={{ backgroundColor: GOLD }} />
 
@@ -653,18 +655,17 @@ export default function WebsiteDevGrowthPlan() {
 
               <div className="flex flex-nowrap items-center gap-3">
                 <Link
-                  href="/contact"
+                  href={$t("WebsiteDevGrowthPlan__t9", "/contact")}
                   className="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg text-white text-[12px] font-semibold whitespace-nowrap shadow-lg shadow-teal-900/20 transition-transform hover:-translate-y-0.5"
                   style={{ backgroundColor: DEEP_TEAL }}
                 >
-                  Discuss Your Project
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  {$t("WebsiteDevGrowthPlan__t10", "Discuss Your Project")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14" />
                     <path d="M12 5l7 7-7 7" />
                   </svg>
                 </Link>
-                <Link href="/portfolio" className="group shrink-0 inline-flex items-center gap-2 text-[12px] font-semibold whitespace-nowrap" style={{ color: DEEP_TEAL }}>
-                  <span className="border-b" style={{ borderColor: DEEP_TEAL }}>View Our Work</span>
+                <Link href={$t("WebsiteDevGrowthPlan__t11", "/portfolio")} className="group shrink-0 inline-flex items-center gap-2 text-[12px] font-semibold whitespace-nowrap" style={{ color: DEEP_TEAL }}>
+                  <span className="border-b" style={{ borderColor: DEEP_TEAL }}>{$t("WebsiteDevGrowthPlan__t12", "View Our Work")}</span>
                   <span className="w-7 h-7 rounded-full border flex items-center justify-center transition-transform group-hover:translate-x-1" style={{ borderColor: DEEP_TEAL }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14" />
@@ -703,7 +704,7 @@ export default function WebsiteDevGrowthPlan() {
                     {icon}
                   </motion.span>
                   <div className="pt-1">
-                    <h3 className="font-serif text-lg md:text-xl leading-tight font-semibold" style={{ color: NAVY }}>
+                    <h3 className="text-h6 font-serif font-semibold" style={{ color: NAVY }}>
                       {title[0]}
                       <br />
                       {title[1]}
@@ -719,15 +720,14 @@ export default function WebsiteDevGrowthPlan() {
                   </span>
                 </div>
 
-                <p className="relative z-10 text-[13px] text-slate-600 leading-relaxed max-w-[64%] mb-6">{text}</p>
+                <p className="text-small relative z-10 text-slate-600 max-w-[64%] mb-6">{text}</p>
 
                 <Link
-                  href="/contact"
+                  href={$t("WebsiteDevGrowthPlan__t13", "/contact")}
                   className="relative z-10 mt-auto inline-flex items-center gap-2 text-[13px] font-semibold self-start"
                   style={{ color: DEEP_TEAL }}
                 >
-                  Learn More
-                  <motion.svg
+                  {$t("WebsiteDevGrowthPlan__t14", "Learn More")}<motion.svg
                     variants={{ hover: { x: 5 } }}
                     width="16"
                     height="16"

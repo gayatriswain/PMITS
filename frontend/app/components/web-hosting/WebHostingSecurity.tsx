@@ -18,8 +18,12 @@ import {
   Zap,
 } from 'lucide-react';
 import Container from '../shared/Container';
+import { useCmsText } from "@/components/cms/SectionContent";
+import Link from "next/link";
+import { rich } from "@/components/cms/rich";
 
 export default function WebHostingSecurity() {
+  const $t = useCmsText();
   return (
     <section className="py-24 bg-white overflow-hidden">
       <Container>
@@ -38,24 +42,23 @@ export default function WebHostingSecurity() {
             transition={{ duration: 0.6 }}
           >
             <div className="inline-flex items-center gap-1.5 text-[#0f766e] text-[11px] font-bold tracking-widest uppercase mb-4">
-              SECURITY YOU CAN TRUST <ShieldCheck size={14} />
+              {$t("WebHostingSecurity__t1", "SECURITY YOU CAN TRUST ")}<ShieldCheck size={14} />
             </div>
 
-            <h2 className="text-[38px] md:text-[46px] font-black text-[#0f2923] leading-[1.05] mb-5">
-              Protected Before<br />
-              <span className="text-[#0f766e]">Problems Happen.</span>
+            <h2 className="text-h2 font-black text-[#0f2923] mb-5">
+              {$t("WebHostingSecurity__t2", "Protected Before")}<br />
+              <span className="text-[#0f766e]">{$t("WebHostingSecurity__t3", "Problems Happen.")}</span>
             </h2>
 
-            <p className="text-slate-500 text-[15px] leading-relaxed mb-10 max-w-sm">
-              Enterprise-grade security that works quietly in the background, so your website stays protected while you focus on your business.
-            </p>
+            <p className="text-body text-slate-500 mb-10 max-w-sm">
+              {rich($t("WebHostingSecurity__t4", "Enterprise-grade security that works quietly in the background, so your website stays protected while you focus on your business."))}</p>
 
             {/* Protection Toggle Card */}
             <div className="bg-white rounded-2xl p-5 shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-slate-100 mb-4">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2.5">
-                  <span className="text-[13px] font-bold text-[#0f2923]">Protection</span>
-                  <span className="bg-[#10b981] text-white text-[10px] font-black px-2 py-0.5 rounded">ON</span>
+                  <span className="text-[13px] font-bold text-[#0f2923]">{$t("WebHostingSecurity__t5", "Protection")}</span>
+                  <span className="bg-[#10b981] text-white text-[10px] font-black px-2 py-0.5 rounded">{$t("WebHostingSecurity__t6", "ON")}</span>
                 </div>
                 <div className="w-11 h-6 bg-[#10b981] rounded-full relative shadow-inner cursor-pointer">
                   <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full shadow"></div>
@@ -66,8 +69,8 @@ export default function WebHostingSecurity() {
                   <Lock size={17} className="text-[#10b981]" />
                 </div>
                 <div>
-                  <p className="text-[13px] font-bold text-[#0f2923]">Your website is secure</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">All protection layers are active</p>
+                  <p className="text-small font-bold text-[#0f2923]">{rich($t("WebHostingSecurity__t7", "Your website is secure"))}</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">{rich($t("WebHostingSecurity__t8", "All protection layers are active"))}</p>
                 </div>
               </div>
             </div>
@@ -76,13 +79,13 @@ export default function WebHostingSecurity() {
             <div className="bg-white rounded-2xl p-5 shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-slate-100">
               <div className="flex items-center justify-between gap-2">
                 {[
-                  { icon: <User size={16} className="text-[#0f766e]" />, label: 'Visitor', sub: 'User requests\nyour website' },
+                  { icon: <User size={16} className="text-[#0f766e]" />, label: $t("WebHostingSecurity__t9", 'Visitor'), sub: $t("WebHostingSecurity__t10", 'User requests\nyour website') },
                   { arrow: true },
-                  { icon: <Shield size={16} className="text-[#10b981]" />, label: 'Firewall', sub: 'We block threats\nand bad bots', highlight: true },
+                  { icon: <Shield size={16} className="text-[#10b981]" />, label: $t("WebHostingSecurity__t11", 'Firewall'), sub: $t("WebHostingSecurity__t12", 'We block threats\nand bad bots'), highlight: true },
                   { arrow: true },
-                  { icon: <Server size={16} className="text-[#0f766e]" />, label: 'Your Website', sub: 'Delivers fast and\nsecurely' },
+                  { icon: <Server size={16} className="text-[#0f766e]" />, label: $t("WebHostingSecurity__t13", 'Your Website'), sub: $t("WebHostingSecurity__t14", 'Delivers fast and\nsecurely') },
                   { arrow: true },
-                  { icon: <ShieldCheck size={16} className="text-[#0f766e]" />, label: 'Protected Data', sub: 'Your data stays\nsafe and private' },
+                  { icon: <ShieldCheck size={16} className="text-[#0f766e]" />, label: $t("WebHostingSecurity__t15", 'Protected Data'), sub: $t("WebHostingSecurity__t16", 'Your data stays\nsafe and private') },
                 ].map((item, i) =>
                   item.arrow ? (
                     <ArrowRight key={i} size={12} className="text-[#a7f3d0] shrink-0" />
@@ -187,7 +190,7 @@ export default function WebHostingSecurity() {
                 </div>
                 <div className="absolute left-1/2 -translate-x-1/2 h-5 w-52 bg-[#263547] rounded flex items-center justify-center gap-1.5 px-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#10b981]"></div>
-                  <span className="text-[9px] text-slate-300 font-medium tracking-wide">yourwebsite.com</span>
+                  <span className="text-[9px] text-slate-300 font-medium tracking-wide">{$t("WebHostingSecurity__t17", "yourwebsite.com")}</span>
                 </div>
               </div>
 
@@ -195,22 +198,21 @@ export default function WebHostingSecurity() {
               <div className="bg-white p-5">
                 {/* Nav row */}
                 <div className="flex items-center justify-between mb-5">
-                  <span className="text-[13px] font-black text-[#0f2923]">YourWebsite</span>
+                  <span className="text-[13px] font-black text-[#0f2923]">{$t("WebHostingSecurity__t18", "YourWebsite")}</span>
                   <div className="flex gap-4 text-[9px] font-medium text-[#10b981]">
-                    <span>Home</span><span>About</span><span>Services</span><span>Blog</span><span>Contact</span>
+                    <span>{$t("WebHostingSecurity__t19", "Home")}</span><span>{$t("WebHostingSecurity__t20", "About")}</span><span>{$t("WebHostingSecurity__t21", "Services")}</span><span>{$t("WebHostingSecurity__t22", "Blog")}</span><span>{$t("WebHostingSecurity__t23", "Contact")}</span>
                   </div>
                 </div>
 
                 {/* Content row */}
                 <div className="grid grid-cols-[1fr_180px] gap-4 items-start">
                   <div>
-                    <h3 className="text-[22px] font-black text-[#0f2923] leading-tight mb-2">
-                      We Build Websites<br />That <span className="text-[#0f766e]">Drive Results.</span>
+                    <h3 className="text-h5 font-black text-[#0f2923] mb-2">
+                      {$t("WebHostingSecurity__t24", "We Build Websites")}<br />{$t("WebHostingSecurity__t25", "That ")}<span className="text-[#0f766e]">{$t("WebHostingSecurity__t26", "Drive Results.")}</span>
                     </h3>
-                    <p className="text-[10px] text-slate-400 mb-5">Fast. Secure. Reliable.</p>
-                    <button className="bg-[#10b981] hover:bg-[#0d9f6e] text-white text-[10px] font-bold py-2 px-5 rounded transition-colors">
-                      Get Started
-                    </button>
+                    <p className="text-[10px] text-slate-400 mb-5">{rich($t("WebHostingSecurity__t27", "Fast. Secure. Reliable."))}</p>
+                    <Link href={$t("WebHostingSecurity__u1", "/contact")} className="inline-block bg-[#10b981] hover:bg-[#0d9f6e] text-white text-[10px] font-bold py-2 px-5 rounded transition-colors">
+                      {$t("WebHostingSecurity__t28", "Get Started")}</Link>
                   </div>
 
                   {/* Realistic glass building SVG */}
@@ -248,8 +250,8 @@ export default function WebHostingSecurity() {
                   <ShieldCheck size={15} className="text-[#10b981]" />
                 </div>
                 <div>
-                  <p className="text-[11px] font-bold text-[#0f2923]">Your website is protected</p>
-                  <p className="text-[9px] text-slate-400">All security layers are active and monitoring 24/7</p>
+                  <p className="text-[11px] font-bold text-[#0f2923]">{rich($t("WebHostingSecurity__t29", "Your website is protected"))}</p>
+                  <p className="text-[9px] text-slate-400">{rich($t("WebHostingSecurity__t30", "All security layers are active and monitoring 24/7"))}</p>
                 </div>
               </div>
             </div>
@@ -265,8 +267,8 @@ export default function WebHostingSecurity() {
                 <Lock size={17} className="text-white" />
               </div>
               <div>
-                <p className="text-[12px] font-bold text-[#0f2923]">SSL Encryption</p>
-                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">Encrypt every connection<br />with SSL certificates.</p>
+                <p className="text-caption font-bold text-[#0f2923]">{rich($t("WebHostingSecurity__t31", "SSL Encryption"))}</p>
+                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">{rich($t("WebHostingSecurity__t32", "Encrypt every connection"))}<br />{rich($t("WebHostingSecurity__t33", "with SSL certificates."))}</p>
               </div>
             </motion.div>
 
@@ -281,9 +283,9 @@ export default function WebHostingSecurity() {
                 <div className="w-9 h-9 rounded-xl bg-[#0f766e] flex items-center justify-center shrink-0">
                   <Server size={16} className="text-white" />
                 </div>
-                <p className="text-[12px] font-bold text-[#0f2923] leading-tight">Firewall<br />Protection</p>
+                <p className="text-caption font-bold text-[#0f2923]">{rich($t("WebHostingSecurity__t34", "Firewall"))}<br />{rich($t("WebHostingSecurity__t35", "Protection"))}</p>
               </div>
-              <p className="text-[10px] text-slate-500 leading-relaxed">Advanced firewall blocks malicious traffic and attacks.</p>
+              <p className="text-[10px] text-slate-500 leading-relaxed">{rich($t("WebHostingSecurity__t36", "Advanced firewall blocks malicious traffic and attacks."))}</p>
             </motion.div>
 
             {/* ── RIGHT floating card: Malware Protection ── */}
@@ -297,9 +299,9 @@ export default function WebHostingSecurity() {
                 <div className="w-9 h-9 rounded-xl bg-[#0f766e] flex items-center justify-center shrink-0">
                   <Bug size={16} className="text-white" />
                 </div>
-                <p className="text-[12px] font-bold text-[#0f2923] leading-tight">Malware<br />Protection</p>
+                <p className="text-caption font-bold text-[#0f2923]">{rich($t("WebHostingSecurity__t37", "Malware"))}<br />{rich($t("WebHostingSecurity__t38", "Protection"))}</p>
               </div>
-              <p className="text-[10px] text-slate-500 leading-relaxed">Continuous scanning and monitoring keeps your site clean.</p>
+              <p className="text-[10px] text-slate-500 leading-relaxed">{rich($t("WebHostingSecurity__t39", "Continuous scanning and monitoring keeps your site clean."))}</p>
             </motion.div>
 
             {/* ── BOTTOM floating card: Daily Backups ── */}
@@ -313,8 +315,8 @@ export default function WebHostingSecurity() {
                 <RefreshCcw size={17} className="text-white" />
               </div>
               <div>
-                <p className="text-[12px] font-bold text-[#0f2923]">Daily Backups</p>
-                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">Automatic daily backups<br />so you can recover anytime.</p>
+                <p className="text-caption font-bold text-[#0f2923]">{rich($t("WebHostingSecurity__t40", "Daily Backups"))}</p>
+                <p className="text-[10px] text-slate-500 leading-tight mt-0.5">{rich($t("WebHostingSecurity__t41", "Automatic daily backups"))}<br />{rich($t("WebHostingSecurity__t42", "so you can recover anytime."))}</p>
               </div>
             </motion.div>
 
@@ -329,9 +331,9 @@ export default function WebHostingSecurity() {
                 <div className="w-9 h-9 rounded-xl bg-[#0f766e] flex items-center justify-center shrink-0">
                   <Database size={16} className="text-white" />
                 </div>
-                <p className="text-[12px] font-bold text-[#0f2923] leading-tight">Protected Data</p>
+                <p className="text-caption font-bold text-[#0f2923]">{rich($t("WebHostingSecurity__t43", "Protected Data"))}</p>
               </div>
-              <p className="text-[10px] text-slate-500 leading-relaxed">Your data stays safe and private.</p>
+              <p className="text-[10px] text-slate-500 leading-relaxed">{rich($t("WebHostingSecurity__t44", "Your data stays safe and private."))}</p>
             </motion.div>
 
           </motion.div>
@@ -355,11 +357,10 @@ export default function WebHostingSecurity() {
               <div className="absolute inset-0 rounded-full border border-[#0f766e]/10 scale-[1.6]"></div>
             </div>
             <div>
-              <p className="text-[15px] font-semibold text-[#0f2923] mb-1">
-                Your website shouldn't need a security expert watching it every minute.
-              </p>
-              <p className="text-[20px] font-black text-[#0f766e]">
-                We keep watch. <span className="text-[#10b981]">You keep growing.</span>
+              <p className="text-body font-semibold text-[#0f2923] mb-1">
+                {rich($t("WebHostingSecurity__t45", "Your website shouldn't need a security expert watching it every minute."))}</p>
+              <p className="text-body font-black text-[#0f766e]">
+                {rich($t("WebHostingSecurity__t46", "We keep watch. "))}<span className="text-[#10b981]">{$t("WebHostingSecurity__t47", "You keep growing.")}</span>
               </p>
             </div>
           </div>
@@ -367,9 +368,9 @@ export default function WebHostingSecurity() {
           {/* Right feature pills */}
           <div className="flex flex-wrap items-center gap-5 bg-white px-6 py-4 rounded-2xl shadow-sm border border-slate-100">
             {[
-              { icon: <MonitorSmartphone size={18} className="text-[#0f766e]" />, title: '24/7 Monitoring', sub: 'Always watching\nfor threats.' },
-              { icon: <Zap size={18} className="text-[#10b981] fill-[#10b981]" />, title: 'Instant Alerts', sub: 'We act fast and\nkeep you informed.' },
-              { icon: <Headset size={18} className="text-[#0f766e]" />, title: 'Human Support', sub: 'Real people ready\nto help you.' },
+              { icon: <MonitorSmartphone size={18} className="text-[#0f766e]" />, title: $t("WebHostingSecurity__t48", '24/7 Monitoring'), sub: $t("WebHostingSecurity__t49", 'Always watching\nfor threats.') },
+              { icon: <Zap size={18} className="text-[#10b981] fill-[#10b981]" />, title: $t("WebHostingSecurity__t50", 'Instant Alerts'), sub: $t("WebHostingSecurity__t51", 'We act fast and\nkeep you informed.') },
+              { icon: <Headset size={18} className="text-[#0f766e]" />, title: $t("WebHostingSecurity__t52", 'Human Support'), sub: $t("WebHostingSecurity__t53", 'Real people ready\nto help you.') },
             ].map((item, i, arr) => (
               <React.Fragment key={i}>
                 <div className="flex items-center gap-3">
@@ -377,7 +378,7 @@ export default function WebHostingSecurity() {
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-[12px] font-bold text-[#0f2923]">{item.title}</p>
+                    <p className="text-caption font-bold text-[#0f2923]">{item.title}</p>
                     <p className="text-[10px] text-slate-500 leading-tight whitespace-pre-line mt-0.5">{item.sub}</p>
                   </div>
                 </div>

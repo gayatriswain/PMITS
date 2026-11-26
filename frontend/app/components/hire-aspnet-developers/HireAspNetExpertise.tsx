@@ -3,11 +3,12 @@
 import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { Plus_Jakarta_Sans } from "next/font/google";
 import { Code2, Cloud, Database, Building2, ShoppingCart, ShieldCheck, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const display = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["500", "600", "700", "800"], display: "swap" });
+const display = { className: "font-heading" }; // global font from app/layout.tsx
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const TEAL = "#0d8a91";
@@ -20,12 +21,12 @@ const fadeUp: Variants = {
 
 type Item = { title: string; text: string; icon: LucideIcon };
 
-const LEFT: Item[] = [
+const LEFT__cms: Item[] = [
   { title: "Custom Application Development", text: "High-performance ASP.NET Core applications tailored to your business goals.", icon: Code2 },
   { title: "API & Backend Engineering", text: "Secure, scalable APIs and robust backend systems that power your applications.", icon: Cloud },
   { title: "Legacy Modernization", text: "Upgrade legacy .NET applications to modern architectures for better performance and maintainability.", icon: Database },
 ];
-const RIGHT: Item[] = [
+const RIGHT__cms: Item[] = [
   { title: "Enterprise Solutions", text: "Complex, secure and feature-rich enterprise applications aligned with your workflows.", icon: Building2 },
   { title: "E-commerce Development", text: "Scalable e-commerce platforms with seamless integrations and exceptional performance.", icon: ShoppingCart },
   { title: "Maintenance & Optimization", text: "Ongoing support, performance tuning, security updates and continuous improvements.", icon: ShieldCheck },
@@ -43,6 +44,7 @@ function MsLogo() {
   );
 }
 function CsLogo() {
+  const $t = useCmsText();
   return (
     <svg viewBox="0 0 48 48" className="h-10 w-10" aria-hidden>
       <defs>
@@ -52,7 +54,7 @@ function CsLogo() {
         </linearGradient>
       </defs>
       <path d="M24 3l17.500 10v22L24 45 6.500 35V13z" fill="url(#exCs)" />
-      <text x="24" y="31" textAnchor="middle" fontSize="17" fontWeight="800" fill="#fff" fontFamily="Arial, sans-serif">C#</text>
+      <text x="24" y="31" textAnchor="middle" fontSize="17" fontWeight="800" fill="#fff" fontFamily="Arial, sans-serif">{$t("HireAspNetExpertise__t1", "C#")}</text>
     </svg>
   );
 }
@@ -100,7 +102,7 @@ function AzureLogo() {
   );
 }
 
-const ECOSYSTEM = [
+const ECOSYSTEM__cms = [
   { label: ".NET 8", logo: <MsLogo /> },
   { label: "C#", logo: <CsLogo /> },
   { label: "ASP.NET Core", logo: <CoreLogo /> },
@@ -126,7 +128,7 @@ function SideItem({ item, side, i }: { item: Item; side: "l" | "r"; i: number })
       </span>
       <div className="max-w-[270px]">
         <h3 className="text-[14.5px] font-bold leading-snug" style={{ color: NAVY }}>{item.title}</h3>
-        <p className="mt-1.5 text-[12px] leading-relaxed text-slate-500">{item.text}</p>
+        <p className="text-caption mt-1.5 text-slate-500">{item.text}</p>
       </div>
     </motion.li>
   );
@@ -134,6 +136,10 @@ function SideItem({ item, side, i }: { item: Item; side: "l" | "r"; i: number })
 
 /* ------------------------------ section ------------------------------ */
 export default function HireAspNetExpertise() {
+  const $t = useCmsText();
+  const LEFT = useCmsData("HireAspNetExpertise__LEFT", LEFT__cms);
+  const RIGHT = useCmsData("HireAspNetExpertise__RIGHT", RIGHT__cms);
+  const ECOSYSTEM = useCmsData("HireAspNetExpertise__ECOSYSTEM", ECOSYSTEM__cms);
   const reduce = !!useReducedMotion();
 
   return (
@@ -145,16 +151,14 @@ export default function HireAspNetExpertise() {
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }} className="mx-auto max-w-[760px] text-center">
           <motion.p variants={fadeUp} custom={0} className="flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.26em]" style={{ color: TEAL }}>
             <i aria-hidden className="h-px w-8 bg-[#0d8a91]/45 sm:w-14" />
-            Engineering excellence
-            <i aria-hidden className="h-px w-8 bg-[#0d8a91]/45 sm:w-14" />
+            {rich($t("HireAspNetExpertise__t2", "Engineering excellence"))}<i aria-hidden className="h-px w-8 bg-[#0d8a91]/45 sm:w-14" />
           </motion.p>
-          <h2 className={`${display.className} mt-5 text-[32px] font-extrabold leading-[1.12] tracking-[-0.02em] sm:text-[46px]`} style={{ color: NAVY }}>
+          <h2 className={`text-h2 ${display.className} mt-5 font-extrabold tracking-[-0.02em]`} style={{ color: NAVY }}>
             {[
-              <>ASP.NET expertise</>,
+              <>{$t("HireAspNetExpertise__t3", "ASP.NET expertise")}</>,
               <>
-                built for{" "}
-                <span className="bg-[linear-gradient(100deg,#0b6f78_10%,#18a8ae_45%,#0d8a91_75%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[aspExShine_6s_linear_infinite]">real-world</span> impact.
-              </>,
+                {$t("HireAspNetExpertise__t4", "built for")}{" "}
+                <span className="bg-[linear-gradient(100deg,#0b6f78_10%,#18a8ae_45%,#0d8a91_75%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[aspExShine_6s_linear_infinite]">{$t("HireAspNetExpertise__t12", "real-world")}</span> {$t("HireAspNetExpertise__t5", "impact.")}</>,
             ].map((l, i) => (
               <span key={i} className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
                 <motion.span
@@ -166,9 +170,8 @@ export default function HireAspNetExpertise() {
               </span>
             ))}
           </h2>
-          <motion.p variants={fadeUp} custom={3} className="mx-auto mt-4 max-w-[600px] text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-            Our ASP.NET developers deliver secure, scalable and high-performance solutions tailored to your business and built for the future.
-          </motion.p>
+          <motion.p variants={fadeUp} custom={3} className="text-body mx-auto mt-4 max-w-[600px] text-slate-600">
+            {rich($t("HireAspNetExpertise__t6", "Our ASP.NET developers deliver secure, scalable and high-performance solutions tailored to your business and built for the future."))}</motion.p>
           <motion.span
             variants={{ hidden: { scaleX: 0 }, show: { scaleX: 1, transition: { duration: 0.7, delay: 0.5, ease: EASE } } }}
             className="mx-auto mt-5 block h-[3px] w-12 origin-center rounded-full"
@@ -239,8 +242,8 @@ export default function HireAspNetExpertise() {
             >
               <motion.div animate={reduce ? undefined : { y: [0, -9, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
                 <Image
-                  src="/aspnet-badge.webp"
-                  alt="ASP.NET"
+                  src={$t("HireAspNetExpertise__t7", "/aspnet-badge.webp")}
+                  alt={$t("HireAspNetExpertise__t8", "ASP.NET")}
                   width={1310}
                   height={1200}
                   sizes="(min-width: 1280px) 420px, 340px"
@@ -266,10 +269,9 @@ export default function HireAspNetExpertise() {
           className="mt-12 grid items-center gap-6 rounded-2xl border border-white bg-white/85 p-5 shadow-[0_24px_54px_-34px_rgba(22,38,77,0.45)] backdrop-blur-sm lg:grid-cols-[250px_1fr] lg:gap-8 lg:px-8"
         >
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: NAVY }}>Built on the powerful</p>
-            <p className={`${display.className} mt-1 whitespace-nowrap text-[22px] font-extrabold leading-tight`} style={{ color: TEAL }}>
-              <span style={{ color: NAVY }}>.NET</span> ECOSYSTEM
-            </p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: NAVY }}>{rich($t("HireAspNetExpertise__t9", "Built on the powerful"))}</p>
+            <p className={`text-body ${display.className} mt-1 whitespace-nowrap font-extrabold`} style={{ color: TEAL }}>
+              <span style={{ color: NAVY }}>{$t("HireAspNetExpertise__t10", ".NET")}</span> {rich($t("HireAspNetExpertise__t11", "ECOSYSTEM"))}</p>
           </div>
           <ul className="grid grid-cols-3 gap-y-5 lg:grid-cols-6 lg:divide-x lg:divide-slate-200/80">
             {ECOSYSTEM.map((e, i) => (

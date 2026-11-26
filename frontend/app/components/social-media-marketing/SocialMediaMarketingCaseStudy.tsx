@@ -5,6 +5,8 @@ import Image from "next/image";
 import { motion, AnimatePresence, animate, useMotionValue, type Variants } from "framer-motion";
 import { Counter } from "../shared/useCountUp";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -116,7 +118,7 @@ const ShieldCheckIcon = ({ size = 18, color = DEEP_TEAL }: IconProps) => (
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
 
-const STATS = [
+const STATS__cms = [
   { target: 50, suffix: "+", label: "Brands Served", Icon: UsersIcon },
   { target: 2500, suffix: "+", label: "Campaigns Delivered", Icon: LayersIcon },
   { target: 160, suffix: "M+", label: "People Reached", Icon: EyeIcon },
@@ -139,14 +141,14 @@ type CaseStudy = {
 
 // Shown as the 4 clickable side thumbnails for every case study — clicking one swaps the big
 // visual to that image. Reuses whatever's already in /public rather than sourcing anything new.
-const SIDE_THUMBS = [
+const SIDE_THUMBS__cms = [
   { image: "/content-reels.jpg", caption: "Behind The Scenes", video: true },
   { image: "/content-product-shots.jpg", caption: "3 Reasons They Choose Us" },
   { image: "/content-stories.jpg", caption: "Consistency Every Day" },
   { image: "/content-lifestyle.jpg", caption: "Your Growth Starts Here", cta: "Explore" },
 ];
 
-const CASE_STUDIES: CaseStudy[] = [
+const CASE_STUDIES__cms: CaseStudy[] = [
   {
     brand: "Veloré Skincare",
     category: "Skincare Brand",
@@ -258,7 +260,7 @@ const CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
-const FOOTER_FEATURES = [
+const FOOTER_FEATURES__cms = [
   { title: "Data-Driven Strategies", Icon: TargetIcon },
   { title: "Creative that Converts", Icon: BulbIcon },
   { title: "Full-Funnel Execution", Icon: FunnelIcon },
@@ -282,6 +284,11 @@ const listContainer: Variants = {
 /* ------------------------------------------------------------------ */
 
 export default function SocialMediaMarketingCaseStudy() {
+  const $t = useCmsText();
+  const STATS = useCmsData("SocialMediaMarketingCaseStudy__STATS", STATS__cms);
+  const SIDE_THUMBS = useCmsData("SocialMediaMarketingCaseStudy__SIDE_THUMBS", SIDE_THUMBS__cms);
+  const CASE_STUDIES = useCmsData("SocialMediaMarketingCaseStudy__CASE_STUDIES", CASE_STUDIES__cms);
+  const FOOTER_FEATURES = useCmsData("SocialMediaMarketingCaseStudy__FOOTER_FEATURES", FOOTER_FEATURES__cms);
   const [selected, setSelected] = useState(0);
   const [mainImageOverride, setMainImageOverride] = useState<string | null>(null);
   const active = CASE_STUDIES[selected];
@@ -352,17 +359,14 @@ export default function SocialMediaMarketingCaseStudy() {
             transition={{ duration: 0.6, ease: EASE }}
           >
             <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              04 &middot; Proof &amp; Results
-            </span>
-            <h2 className="font-serif text-3xl md:text-[42px] leading-tight font-bold mt-3">
-              <span className="block" style={{ color: NAVY }}>Real Strategies.</span>
+              {$t("SocialMediaMarketingCaseStudy__t1", "04 · Proof & Results")}</span>
+            <h2 className="text-h2 font-serif font-bold mt-3">
+              <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingCaseStudy__t2", "Real Strategies.")}</span>
               <span className="block font-serif italic underline" style={{ color: TEAL, textDecorationColor: TEAL }}>
-                Real Growth.
-              </span>
+                {$t("SocialMediaMarketingCaseStudy__t3", "Real Growth.")}</span>
             </h2>
-            <p className="text-sm text-slate-500 leading-relaxed mt-3 max-w-md">
-              We turn strategy into impact. Here&apos;s how we&apos;ve helped brands grow, scale, and lead their market.
-            </p>
+            <p className="text-small text-slate-500 mt-3 max-w-md">
+              {rich($t("SocialMediaMarketingCaseStudy__t4", "We turn strategy into impact. Here's how we've helped brands grow, scale, and lead their market."))}</p>
           </motion.div>
 
           <motion.div
@@ -376,7 +380,7 @@ export default function SocialMediaMarketingCaseStudy() {
               <div key={s.label} className={`flex items-center gap-2 ${i > 0 ? "lg:border-l lg:pl-8 border-slate-200" : ""}`}>
                 <s.Icon size={16} />
                 <div>
-                  <p className="text-base font-bold" style={{ color: NAVY }}>
+                  <p className="text-body font-bold" style={{ color: NAVY }}>
                     {Number.isInteger(s.target) ? <Counter target={s.target} suffix={s.suffix} /> : `${s.target}${s.suffix}`}
                   </p>
                   <p className="text-[11px] text-slate-500 whitespace-nowrap">{s.label}</p>
@@ -455,18 +459,18 @@ export default function SocialMediaMarketingCaseStudy() {
               {/* Brand / Challenge / Strategy */}
               <motion.div variants={listContainer} initial="hidden" animate="show">
                 <motion.div variants={fadeUp}>
-                  <p className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>The Brand</p>
-                  <p className="text-[15px] font-bold mt-1" style={{ color: NAVY }}>{active.brand}</p>
-                  <p className="text-[12px] text-slate-500">{active.category}</p>
+                  <p className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>{rich($t("SocialMediaMarketingCaseStudy__t5", "The Brand"))}</p>
+                  <p className="text-body font-bold mt-1" style={{ color: NAVY }}>{active.brand}</p>
+                  <p className="text-caption text-slate-500">{active.category}</p>
                 </motion.div>
 
                 <motion.div variants={fadeUp} className="mt-5">
-                  <p className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>Challenge</p>
-                  <p className="text-[12.5px] text-slate-500 leading-relaxed mt-1.5">{active.challenge}</p>
+                  <p className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>{rich($t("SocialMediaMarketingCaseStudy__t6", "Challenge"))}</p>
+                  <p className="text-caption text-slate-500 mt-1.5">{active.challenge}</p>
                 </motion.div>
 
                 <motion.div variants={fadeUp} className="mt-5">
-                  <p className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>Our Strategy</p>
+                  <p className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>{rich($t("SocialMediaMarketingCaseStudy__t7", "Our Strategy"))}</p>
                   <ul className="flex flex-col gap-2 mt-2">
                     {active.strategyPoints.map((point) => (
                       <li key={point} className="flex items-start gap-2 text-[12.5px] text-slate-600">
@@ -484,7 +488,7 @@ export default function SocialMediaMarketingCaseStudy() {
         {/* More growth stories — auto-advancing carousel (same `selected` state as the main card
             above, so both stay in sync); arrows sit stacked on the right, centered on the row */}
         <div className="mt-10 lg:mt-14">
-          <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-slate-400 mb-4">More Growth Stories</p>
+          <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-slate-400 mb-4">{rich($t("SocialMediaMarketingCaseStudy__t8", "More Growth Stories"))}</p>
 
           <div
             className="flex items-center gap-3"
@@ -557,14 +561,11 @@ export default function SocialMediaMarketingCaseStudy() {
           className="mt-10 lg:mt-14 rounded-2xl border border-slate-200 p-6 lg:px-8 lg:py-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
         >
           <div>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold leading-snug" style={{ color: NAVY }}>
-              We don&apos;t chase
-              <br />
-              vanity metrics.
-            </h3>
-            <p className="font-serif italic text-lg mt-1" style={{ color: TEAL }}>
-              We drive real business impact.
-            </p>
+            <h3 className="text-h5 font-serif font-bold" style={{ color: NAVY }}>
+              {$t("SocialMediaMarketingCaseStudy__t9", "We don't chase")}<br />
+              {$t("SocialMediaMarketingCaseStudy__t10", "vanity metrics.")}</h3>
+            <p className="text-body font-serif italic mt-1" style={{ color: TEAL }}>
+              {rich($t("SocialMediaMarketingCaseStudy__t11", "We drive real business impact."))}</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-3">

@@ -1,13 +1,17 @@
 "use client";
 import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Grid, Search, Sparkles, ShoppingCart, MapPin, Monitor, 
   TrendingUp, Filter, Calendar, Clock, ChevronDown, ChevronLeft, ChevronRight 
 } from 'lucide-react';
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
+import { categoryHref, categorySlug } from "@/lib/blog-slug";
 
 // --- Dummy Data ---
-const CATEGORIES = [
+const CATEGORIES__cms = [
   { id: 'All', label: 'All', icon: Grid },
   { id: 'SEO', label: 'SEO', icon: Search },
   { id: 'AI & GEO', label: 'AI & GEO', icon: Sparkles },
@@ -23,7 +27,7 @@ const AUTHORS = {
   kabir: { name: 'Kabir', role: 'Product Designer', avatar: 'https://i.pravatar.cc/150?img=13' },
 };
 
-const ALL_ARTICLES = [
+const ALL_ARTICLES__cms = [
   {
     id: 1,
     category: 'AI & GEO',
@@ -135,8 +139,25 @@ const ALL_ARTICLES = [
   }
 ];
 
-export default function BlogGrid() {
-  const [activeCategory, setActiveCategory] = useState('All');
+/** A card as the grid renders it. Published CMS posts are mapped to this shape on the server. */
+export type BlogCard = {
+  id: string | number;
+  category: string;
+  image: string;
+  date: string;
+  readTime: string;
+  title: string;
+  author: { name: string; role: string; avatar: string };
+  href?: string;
+};
+
+/** activeCategory: set on /blog/category/<slug>; the category chips are real links, so every topic has its own crawlable URL. */
+export default function BlogGrid({ posts, activeCategory = 'All' }: { posts?: BlogCard[]; activeCategory?: string }) {
+  const $t = useCmsText();
+  const CATEGORIES = useCmsData("BlogGrid__CATEGORIES", CATEGORIES__cms);
+  const ALL_ARTICLES = useCmsData("BlogGrid__ALL_ARTICLES", ALL_ARTICLES__cms);
+  // Live posts from the CMS when any are published, otherwise the built-in showcase cards.
+  const articles: BlogCard[] = posts && posts.length ? posts : ALL_ARTICLES;
   const [sortBy, setSortBy] = useState('Latest First');
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 8;
@@ -149,10 +170,11 @@ export default function BlogGrid() {
 
   // Filter and Sort Logic
   const filteredArticles = useMemo(() => {
-    let result = [...ALL_ARTICLES];
+    let result = [...articles];
     
     if (activeCategory !== 'All') {
-      result = result.filter(a => a.category === activeCategory);
+      const slug = categorySlug(activeCategory);
+      result = result.filter(a => categorySlug(a.category) === slug);
     }
 
     if (sortBy === 'Latest First') {
@@ -161,7 +183,7 @@ export default function BlogGrid() {
       result.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     }
     return result;
-  }, [activeCategory, sortBy]);
+  }, [activeCategory, sortBy, articles]);
 
   // Pagination Logic
   const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
@@ -170,21 +192,15 @@ export default function BlogGrid() {
     currentPage * ITEMS_PER_PAGE
   );
 
-  const handleCategoryChange = (cat: string) => {
-    setActiveCategory(cat);
-    setCurrentPage(1); // reset to page 1 on filter
-  };
-
   return (
-    <section className="py-12 lg:py-16 bg-white relative z-20">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20">
+    <section id="all-articles" className="py-12 lg:py-16 bg-white relative z-20">
+      <div className="max-w-[1640px] mx-auto px-5">
         
         {/* Top Header Label */}
         <div className="flex items-center justify-center gap-4 mb-12">
           <div className="h-px bg-gradient-to-r from-transparent to-[#14b8a6]/40 w-16"></div>
           <span className="text-[#0f766e] text-[10px] font-extrabold uppercase tracking-widest">
-            EXPLORE INSIGHTS BY TOPIC
-          </span>
+            {$t("BlogGrid__t1", "EXPLORE INSIGHTS BY TOPIC")}</span>
           <div className="h-px bg-gradient-to-l from-transparent to-[#14b8a6]/40 w-16"></div>
         </div>
 
@@ -193,11 +209,12 @@ export default function BlogGrid() {
           <div className="flex flex-wrap items-center gap-3">
             {CATEGORIES.map((cat) => {
               const Icon = cat.icon;
-              const isActive = activeCategory === cat.id;
+              const isActive = categorySlug(activeCategory) === categorySlug(cat.id);
               return (
-                <button
+                <Link
                   key={cat.id}
-                  onClick={() => handleCategoryChange(cat.id)}
+                  href={`${categoryHref(cat.id)}#all-articles`}
+                  aria-current={isActive ? 'page' : undefined}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all border ${
                     isActive 
                     ? 'bg-[#0f2923] text-white border-[#0f2923] shadow-md' 
@@ -206,38 +223,37 @@ export default function BlogGrid() {
                 >
                   <Icon size={16} className={isActive ? 'text-[#14b8a6]' : 'text-slate-400'} />
                   {cat.label}
-                </button>
+                </Link>
               );
             })}
           </div>
 
           <button className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:border-[#14b8a6] hover:text-[#0f766e] transition-all ml-auto lg:ml-0">
             <Filter size={16} className="text-slate-400" />
-            Filter <ChevronDown size={14} className="ml-1" />
+            {$t("BlogGrid__t2", "Filter ")}<ChevronDown size={14} className="ml-1" />
           </button>
         </div>
 
         {/* Title & Sort Bar */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-[32px] font-extrabold text-[#0f2923] mb-4">
-              {activeCategory === 'All' ? 'All Insights' : `${activeCategory} Insights`}
+            <h2 className="text-h2 font-extrabold text-[#0f2923] mb-4">
+              {activeCategory === 'All' ? $t("BlogGrid__t3", 'All Insights') : `${activeCategory} Insights`}
             </h2>
-            <p className="text-slate-500 text-[15px] leading-relaxed">
-              In-depth articles, expert opinions, and practical guides to help your business grow with SEO, AI, and digital strategies.
-            </p>
+            <p className="text-body text-slate-500">
+              {rich($t("BlogGrid__t4", "In-depth articles, expert opinions, and practical guides to help your business grow with SEO, AI, and digital strategies."))}</p>
           </div>
 
           <div className="flex items-center gap-3 whitespace-nowrap">
-            <span className="text-sm text-slate-500 font-medium">Sort by:</span>
+            <span className="text-sm text-slate-500 font-medium">{$t("BlogGrid__t5", "Sort by:")}</span>
             <div className="relative">
               <select 
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="appearance-none bg-white border border-slate-200 text-slate-700 text-sm font-bold py-2.5 pl-4 pr-10 rounded-lg outline-none focus:border-[#14b8a6] cursor-pointer"
               >
-                <option value="Latest First">Latest First</option>
-                <option value="Oldest First">Oldest First</option>
+                <option value="Latest First">{$t("BlogGrid__t6", "Latest First")}</option>
+                <option value="Oldest First">{$t("BlogGrid__t7", "Oldest First")}</option>
               </select>
               <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
             </div>
@@ -256,9 +272,10 @@ export default function BlogGrid() {
                 exit={{ opacity: 0, scale: 0.95, y: -10 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 key={article.id}
-                className="bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden group hover:shadow-[0_8px_30px_rgba(15,118,110,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                className="relative bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden group hover:shadow-[0_8px_30px_rgba(15,118,110,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col"
               >
                 {/* Image Area */}
+                {article.href && <Link href={article.href} className="absolute inset-0 z-20" aria-label={article.title} />}
                 <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                   <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[10px] font-extrabold text-[#0f766e] uppercase tracking-wider shadow-sm">
                     {article.category}
@@ -289,9 +306,15 @@ export default function BlogGrid() {
 
                   {/* Author */}
                   <div className="mt-auto flex items-center gap-3 pt-4 border-t border-slate-50">
-                    <img src={article.author.avatar} alt={article.author.name} className="w-8 h-8 rounded-full bg-slate-200" />
+                    {article.author.avatar ? (
+                      <img src={article.author.avatar} alt={article.author.name} className="w-8 h-8 rounded-full bg-slate-200" />
+                    ) : (
+                      <span className="w-8 h-8 rounded-full bg-[#e6f4f1] text-[#0f766e] text-[12px] font-extrabold flex items-center justify-center">
+                        {article.author.name.charAt(0).toUpperCase()}
+                      </span>
+                    )}
                     <div>
-                      <p className="text-[12px] font-extrabold text-slate-700 leading-tight">{article.author.name}</p>
+                      <p className="text-caption font-extrabold text-slate-700">{article.author.name}</p>
                       <p className="text-[10px] text-slate-500">{article.author.role}</p>
                     </div>
                   </div>
@@ -310,8 +333,7 @@ export default function BlogGrid() {
                 disabled={currentPage === 1}
                 className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-bold border border-slate-200 text-slate-500 hover:border-[#14b8a6] hover:text-[#0f766e] disabled:opacity-50 disabled:pointer-events-none transition-all"
               >
-                <ChevronLeft size={16} /> Previous
-              </button>
+                <ChevronLeft size={16} /> {$t("BlogGrid__t8", "Previous")}</button>
               
               <div className="flex items-center gap-1">
                 {Array.from({ length: totalPages }).map((_, i) => {
@@ -338,20 +360,19 @@ export default function BlogGrid() {
                 disabled={currentPage === totalPages}
                 className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-bold border border-slate-200 text-slate-500 hover:border-[#14b8a6] hover:text-[#0f766e] disabled:opacity-50 disabled:pointer-events-none transition-all"
               >
-                Next <ChevronRight size={16} />
+                {$t("BlogGrid__t9", "Next ")}<ChevronRight size={16} />
               </button>
             </div>
             
-            <p className="text-xs text-slate-500 font-medium">
-              Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1} to {Math.min(currentPage * ITEMS_PER_PAGE, filteredArticles.length)} of {filteredArticles.length} articles
+            <p className="text-caption text-slate-500 font-medium">
+              {rich($t("BlogGrid__t10", "Showing "))}{(currentPage - 1) * ITEMS_PER_PAGE + 1} to {Math.min(currentPage * ITEMS_PER_PAGE, filteredArticles.length)} of {filteredArticles.length} articles
             </p>
           </div>
         )}
 
         {filteredArticles.length === 0 && (
           <div className="text-center py-20 text-slate-500">
-            No articles found for this category.
-          </div>
+            {$t("BlogGrid__t11", "No articles found for this category.")}</div>
         )}
 
       </div>

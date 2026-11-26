@@ -5,21 +5,23 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { Emblem, Eyebrow, Icon, IMG, ease, fadeUp, heading, useSeen, type IconName } from "../shared/MagentoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 type Item = { text: string; icon: IconName };
-const left: Item[] = [
+const left__cms: Item[] = [
   { text: "Magento Design and Development", icon: "pen" },
   { text: "Vast research and development", icon: "search" },
   { text: "Fair and honest quote upfront", icon: "doc" },
   { text: "Zero downtime", icon: "clock" },
 ];
-const right: Item[] = [
+const right__cms: Item[] = [
   { text: "Services for all sectors of economy", icon: "users" },
   { text: "Customization of Magento extension", icon: "puzzle" },
   { text: "Authorization to source code", icon: "code" },
   { text: "Solid support round the clock", icon: "headset" },
 ];
-const badges: { label: [string, string]; icon: IconName }[] = [
+const badges__cms: { label: [string, string]; icon: IconName }[] = [
   { label: ["Multi-Industry", "Experience"], icon: "diamond" },
   { label: ["Certified", "Developers"], icon: "users" },
   { label: ["Custom", "Solutions"], icon: "cog" },
@@ -37,6 +39,10 @@ const arcPath = (side: -1 | 1) => `M ${arcX(side, 0)} 0 A ${R} ${R} 0 0 ${side =
 const pct = (v: number, of: number) => `${(v / of) * 100}%`;
 
 export default function MagentoExpertise() {
+  const $t = useCmsText();
+  const left = useCmsData("MagentoExpertise__left", left__cms);
+  const right = useCmsData("MagentoExpertise__right", right__cms);
+  const badges = useCmsData("MagentoExpertise__badges", badges__cms);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -58,24 +64,19 @@ export default function MagentoExpertise() {
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-[52%] h-[640px] w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(241,245,249,1),rgba(255,255,255,0))]" />
       <Container className="relative">
         <div className="mx-auto max-w-[900px] text-center">
-          <Eyebrow variant="line" className="tracking-[0.3em]">Industry focused expertise</Eyebrow>
+          <Eyebrow variant="line" className="tracking-[0.3em]">{$t("MagentoExpertise__t1", "Industry focused expertise")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-[32px] font-bold leading-[1.12] tracking-tight text-[#0c1e3d] sm:text-[44px]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0c1e3d]`}
           >
-            Magento Developers Having
-            <br />
-            <span className="text-[#0d9488]">Industry Specific Expertise</span>
+            {$t("MagentoExpertise__t2", "Magento Developers Having")}<br />
+            <span className="text-[#0d9488]">{$t("MagentoExpertise__t3", "Industry Specific Expertise")}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mx-auto mt-5 max-w-[760px] text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-            When you choose ProManage IT Solution over its competitors, you get a unique benefit of hiring certified Magento developers having
-            experience in your chosen niche. Yes, we have a team of very talented Magento developers coming from different backgrounds and
-            industries. What this means is that besides hiring Magento developers on an hourly, monthly, or contractual basis, you also get
-            industry specific experience in your Magento developers.
-          </motion.p>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mx-auto mt-5 max-w-[760px] text-slate-600">
+            {rich($t("MagentoExpertise__t4", "When you choose ProManage IT Solution over its competitors, you get a unique benefit of hiring certified Magento developers having experience in your chosen niche. Yes, we have a team of very talented Magento developers coming from different backgrounds and industries. What this means is that besides hiring Magento developers on an hourly, monthly, or contractual basis, you also get industry specific experience in your Magento developers."))}</motion.p>
         </div>
 
         {/* Desktop radial stage */}

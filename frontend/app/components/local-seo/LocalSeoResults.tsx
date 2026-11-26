@@ -25,6 +25,8 @@ import {
 } from "lucide-react";
 import CountUp from "../shared/CountUp";
 import { Inner, LH2, LPill, LS, Panel, Stars, T, ease, heading } from "./LocalSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 type Biz = { name: string; rating: number; reviews: number; type: string; dist: string; img: string };
 type Case = {
@@ -41,7 +43,7 @@ type Case = {
   list: Biz[];
 };
 
-const CASES: Case[] = [
+const CASES__cms: Case[] = [
   {
     query: "plumber near me",
     Icon: Wrench,
@@ -143,6 +145,8 @@ function Growth() {
 }
 
 export default function LocalSeoResults() {
+  const $t = useCmsText();
+  const CASES = useCmsData("LocalSeoResults__CASES", CASES__cms);
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
   const [auto, setAuto] = useState(true);
@@ -163,11 +167,10 @@ export default function LocalSeoResults() {
     <Panel id="local-seo-results" inner="!bg-white">
       <Inner className="!max-w-[1460px] py-14 sm:py-16 lg:py-20 2xl:py-24">
         <div className="text-center">
-          <LPill soft>Proven Impact. Real Growth.</LPill>
+          <LPill soft>{$t("LocalSeoResults__t1", "Proven Impact. Real Growth.")}</LPill>
           <LH2 className="mt-5" size="text-[clamp(32px,3.4vw,66px)]">
-            Real <T>Results.</T> Real Businesses.
-          </LH2>
-          <p className="mt-4 text-lg text-slate-600 sm:text-xl 2xl:text-[23px]">Local visibility that drives real-world impact.</p>
+            {$t("LocalSeoResults__t2", "Real ")}<T>{$t("LocalSeoResults__t3", "Results.")}</T> {$t("LocalSeoResults__t4", "Real Businesses.")}</LH2>
+          <p className="text-body mt-4 text-slate-600">{rich($t("LocalSeoResults__t5", "Local visibility that drives real-world impact."))}</p>
         </div>
 
         <div className="relative mt-10 flex items-center gap-4">
@@ -194,16 +197,15 @@ export default function LocalSeoResults() {
                 <X className="h-4 w-4 text-slate-500" />
               </div>
               <div className="mt-3 flex gap-5 border-b border-slate-100 px-1 text-[14px] text-slate-600">
-                {["All", "Maps", "Images", "Shopping", "News"].map((t, k) => (
+                {[$t("LocalSeoResults__t6", "All"), $t("LocalSeoResults__t7", "Maps"), $t("LocalSeoResults__t8", "Images"), $t("LocalSeoResults__t9", "Shopping"), $t("LocalSeoResults__t10", "News")].map((t, k) => (
                   <span key={t} className={`pb-2.5 ${k === 0 ? "rounded-t-lg border-b-2 border-[#0f766e] bg-teal-50/70 px-3 font-semibold text-[#0b1b33]" : ""}`}>
                     {t}
                   </span>
                 ))}
               </div>
-              <p className="mt-4 flex items-center justify-between text-[15px] font-medium text-[#0b1b33]">
+              <p className="text-body mt-4 flex items-center justify-between font-medium text-[#0b1b33]">
                 <span className="flex items-center gap-2">
-                  <BarChart3 className="h-4 w-4" /> Businesses
-                </span>
+                  <BarChart3 className="h-4 w-4" /> {$t("LocalSeoResults__t11", "Businesses")}</span>
                 <ChevronRight className="h-4 w-4 text-slate-400" />
               </p>
               <AnimatePresence mode="wait">
@@ -222,13 +224,12 @@ export default function LocalSeoResults() {
                           {b.rating} <Stars n={Math.round(b.rating)} className="h-3 w-3" /> ({b.reviews}) · {b.type}
                         </span>
                         <span>
-                          {b.dist} · <span className="text-green-600">Open</span> · Closes 7 PM
-                        </span>
+                          {b.dist} · <span className="text-green-600">{$t("LocalSeoResults__t12", "Open")}</span> {$t("LocalSeoResults__t13", "· Closes 7 PM")}</span>
                       </span>
                       <span className="hidden gap-3 text-center text-[10.5px] text-slate-500 sm:flex">
                         {[
-                          { I: Phone, l: "Call" },
-                          { I: Globe2, l: "Website" },
+                          { I: Phone, l: $t("LocalSeoResults__t14", "Call") },
+                          { I: Globe2, l: $t("LocalSeoResults__t15", "Website") },
                         ].map(({ I, l }) => (
                           <span key={l} className="flex flex-col items-center gap-1">
                             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 text-[#0f766e]">
@@ -242,7 +243,7 @@ export default function LocalSeoResults() {
                   ))}
                 </motion.ul>
               </AnimatePresence>
-              <p className="mt-3 rounded-full bg-slate-50 py-2.5 text-center text-[14px] font-medium text-[#0b1b33]">View more businesses ›</p>
+              <p className="text-small mt-3 rounded-full bg-slate-50 py-2.5 text-center font-medium text-[#0b1b33]">{rich($t("LocalSeoResults__t16", "View more businesses ›"))}</p>
             </div>
 
             {/* case details */}
@@ -262,8 +263,8 @@ export default function LocalSeoResults() {
                 <div className="mt-5 grid gap-4 border-t border-slate-100 pt-5 sm:grid-cols-[minmax(0,1fr)_170px] 2xl:grid-cols-[minmax(0,1fr)_230px]">
                   <div className="space-y-4">
                     {[
-                      { I: Target, h: "Challenge", t: c.challenge },
-                      { I: Zap, h: "What We Did", t: c.did },
+                      { I: Target, h: $t("LocalSeoResults__t17", "Challenge"), t: c.challenge },
+                      { I: Zap, h: $t("LocalSeoResults__t18", "What We Did"), t: c.did },
                     ].map(({ I, h, t }) => (
                       <div key={h} className="flex gap-3">
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal-50 text-[#0f766e]">
@@ -280,18 +281,18 @@ export default function LocalSeoResults() {
                         <Trophy className="h-4 w-4" />
                       </span>
                       <span className="text-[14px] text-slate-700 2xl:text-[15.5px]">
-                        <span className="block text-[12px] font-bold uppercase tracking-wide text-[#0b1b33]">The Result</span>
-                        <span className="mt-1 block"><b className="text-[#0f766e]">+{c.views}%</b> Profile Views</span>
-                        <span className="block"><b className="text-[#0f766e]">+{c.calls}%</b> Calls from Profile</span>
-                        <span className="block"><b className="text-[#0f766e]">+{c.directions}%</b> Direction Requests</span>
-                        <span className="block">Top 3 Rankings for {c.keywords} Keywords</span>
+                        <span className="block text-[12px] font-bold uppercase tracking-wide text-[#0b1b33]">{$t("LocalSeoResults__t19", "The Result")}</span>
+                        <span className="mt-1 block"><b className="text-[#0f766e]">+{c.views}%</b> {$t("LocalSeoResults__t20", "Profile Views")}</span>
+                        <span className="block"><b className="text-[#0f766e]">+{c.calls}%</b> {$t("LocalSeoResults__t21", "Calls from Profile")}</span>
+                        <span className="block"><b className="text-[#0f766e]">+{c.directions}%</b> {$t("LocalSeoResults__t22", "Direction Requests")}</span>
+                        <span className="block">{$t("LocalSeoResults__t23", "Top 3 Rankings for ")}{c.keywords} {$t("LocalSeoResults__t24", "Keywords")}</span>
                       </span>
                     </div>
                   </div>
                   <div className="relative hidden h-full min-h-[200px] sm:block">
                     <span className="absolute right-6 top-0 z-10 rounded-lg border border-slate-100 bg-white px-3 py-1.5 text-center shadow-md">
                       <span className={`${heading.className} block text-lg font-bold text-[#0f766e]`}>+{c.views}%</span>
-                      <span className="text-[10.5px] text-slate-500">Profile Views</span>
+                      <span className="text-[10.5px] text-slate-500">{$t("LocalSeoResults__t25", "Profile Views")}</span>
                     </span>
                     <div className="absolute inset-x-0 bottom-0 top-12">
                       <Growth />
@@ -300,10 +301,10 @@ export default function LocalSeoResults() {
                 </div>
                 <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-teal-50/70 p-4 sm:grid-cols-4">
                   {[
-                    { I: Eye, v: c.views, s: "%", l: "More Visibility" },
-                    { I: Phone, v: c.calls, s: "%", l: "More Calls" },
-                    { I: Navigation, v: c.directions, s: "%", l: "More Directions" },
-                    { I: Trophy, v: 3, s: "", l: "Rankings", p: "Top " },
+                    { I: Eye, v: c.views, s: "%", l: $t("LocalSeoResults__t26", "More Visibility") },
+                    { I: Phone, v: c.calls, s: "%", l: $t("LocalSeoResults__t27", "More Calls") },
+                    { I: Navigation, v: c.directions, s: "%", l: $t("LocalSeoResults__t28", "More Directions") },
+                    { I: Trophy, v: 3, s: "", l: $t("LocalSeoResults__t29", "Rankings"), p: $t("LocalSeoResults__t30", "Top ") },
                   ].map(({ I, v, s, l, p }) => (
                     <div key={l} className="flex items-center gap-2.5">
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#0f766e] shadow-sm">

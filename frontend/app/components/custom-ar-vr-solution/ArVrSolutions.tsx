@@ -10,6 +10,8 @@ import {
   type Variants,
 } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -78,7 +80,7 @@ type CardData = {
   delay: number;
 };
 
-const CARDS: CardData[] = [
+const CARDS__cms: CardData[] = [
   {
     icon: icons.training,
     title: "Virtual Training",
@@ -109,7 +111,7 @@ const CARDS: CardData[] = [
   },
 ];
 
-const STATS = [
+const STATS__cms = [
   { icon: icons.users, value: 50, suffix: "K+", label: "Training Hours Delivered" },
   { icon: icons.product, value: 100, suffix: "+", label: "Projects Completed" },
   { icon: icons.smile, value: 1, suffix: "K+", label: "Happy Clients" },
@@ -149,6 +151,7 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
 }
 
 function SolutionCard({ icon, title, text, side, delay }: CardData) {
+  const $t = useCmsText();
   const left = side === "left";
   return (
     <motion.div
@@ -179,13 +182,12 @@ function SolutionCard({ icon, title, text, side, delay }: CardData) {
         </span>
         <div>
           <h3 className="text-[15px] font-bold leading-tight text-[#0f1535]">{title}</h3>
-          <p className="mt-1.5 text-[12.5px] leading-relaxed text-slate-500">{text}</p>
+          <p className="text-caption mt-1.5 text-slate-500">{text}</p>
           <Link
-            href="#contact-form"
+            href={$t("ArVrSolutions__t1", "#contact-form")}
             className="group mt-3 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#5b43e8] hover:text-[#4a35cc]"
           >
-            Explore
-            <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+            {$t("ArVrSolutions__t2", "Explore")}<span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
           </Link>
@@ -196,6 +198,9 @@ function SolutionCard({ icon, title, text, side, delay }: CardData) {
 }
 
 export default function ArVrSolutions() {
+  const $t = useCmsText();
+  const CARDS = useCmsData("ArVrSolutions__CARDS", CARDS__cms);
+  const STATS = useCmsData("ArVrSolutions__STATS", STATS__cms);
   return (
     <section
       id="solutions"
@@ -214,46 +219,41 @@ export default function ArVrSolutions() {
             custom={0}
             className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
           >
-            What can we build for you?
-          </motion.span>
+            {$t("ArVrSolutions__t3", "What can we build for you?")}</motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="mt-3 text-3xl font-black leading-[1.1] tracking-tight text-[#0f1535] sm:text-4xl lg:text-[48px]"
+            className="text-h2 mt-3 font-black tracking-tight text-[#0f1535]"
           >
-            Immersive Solutions.
-            <br />
-            Real-World{" "}
+            {$t("ArVrSolutions__t4", "Immersive Solutions.")}<br />
+            {$t("ArVrSolutions__t5", "Real-World")}{" "}
             <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-              Impact.
-            </span>
+              {$t("ArVrSolutions__t6", "Impact.")}</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base"
+            className="text-body mx-auto mt-4 max-w-2xl text-slate-600"
           >
-            We design and develop custom AR/VR experiences that solve real
-            challenges, drive engagement, and deliver measurable results.
-          </motion.p>
+            {rich($t("ArVrSolutions__t7", "We design and develop custom AR/VR experiences that solve real challenges, drive engagement, and deliver measurable results."))}</motion.p>
           <motion.div
             variants={fadeUp}
             custom={3}
             className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
           >
             <Link
-              href="#contact-form"
+              href={$t("ArVrSolutions__t8", "#contact-form")}
               className="inline-flex items-center gap-2.5 rounded-full bg-[#5b43e8] px-6 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_-4px_rgba(91,67,232,0.45)] transition-colors duration-200 hover:bg-[#4a35cc] sm:px-7"
             >
-              <span>Explore All Solutions</span>
+              <span>{$t("ArVrSolutions__t9", "Explore All Solutions")}</span>
               <span aria-hidden>→</span>
             </Link>
             <Link
-              href="#showreel"
+              href={$t("ArVrSolutions__t10", "#showreel")}
               className="inline-flex items-center gap-2.5 rounded-full border border-[#d9d9f5] bg-white px-6 py-2.5 text-sm font-semibold text-[#0f1535] transition-colors duration-200 hover:border-[#5b43e8] hover:text-[#5b43e8] sm:px-7"
             >
               <span aria-hidden className="text-[#5b43e8]">▶</span>
-              <span>Watch Showreel</span>
+              <span>{$t("ArVrSolutions__t11", "Watch Showreel")}</span>
             </Link>
           </motion.div>
         </motion.div>
@@ -278,8 +278,8 @@ export default function ArVrSolutions() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               <Image
-                src="/ARVR2.png"
-                alt="Immersive futuristic world with a portal on a floating platform"
+                src={$t("ArVrSolutions__t12", "/ARVR2.png")}
+                alt={$t("ArVrSolutions__t13", "Immersive futuristic world with a portal on a floating platform")}
                 width={1779}
                 height={884}
                 sizes="(min-width: 1024px) 50vw, 100vw"

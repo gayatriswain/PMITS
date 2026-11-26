@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -143,7 +145,7 @@ type Project = {
   Icon: (p: IconProps) => React.JSX.Element;
 };
 
-const PROJECTS: Project[] = [
+const PROJECTS__cms: Project[] = [
   {
     name: "Business Management System",
     title: ["Business", "Management", "System"],
@@ -181,13 +183,13 @@ const PROJECTS: Project[] = [
   },
 ];
 
-const CTA_POINTS = [
+const CTA_POINTS__cms = [
   { Icon: ChatIcon, title: "Free Consultation", desc: "Let's discuss your idea." },
   { Icon: LockIcon, title: "No Obligation", desc: "You decide, we build." },
   { Icon: (p: IconProps) => <ShieldIcon {...p} color="#5eead4" />, title: "100% Confidential", desc: "Your idea is always safe." },
 ];
 
-const STEPS = [
+const STEPS__cms = [
   { Icon: TargetIcon, num: "01", title: "Real Challenge", desc: "Every solution starts with an actual business problem." },
   { Icon: BulbIcon, num: "02", title: "Our Approach", desc: "We design, build, and integrate what fits — nothing more, nothing less." },
   { Icon: GrowthIcon, num: "03", title: "Real Impact", desc: "Solutions that streamline operations and create measurable value." },
@@ -195,16 +197,16 @@ const STEPS = [
 
 /* ---------- Dashboard mockup pieces ---------- */
 
-const NAV = ["Dashboard", "Projects", "Clients", "Tasks", "Team", "Reports", "Settings"];
+const NAV__cms = ["Dashboard", "Projects", "Clients", "Tasks", "Team", "Reports", "Settings"];
 
-const STATS = [
+const STATS__cms = [
   { label: "Total Projects", value: "128", delta: "14%" },
   { label: "Active Clients", value: "64", delta: "12%" },
   { label: "Team Members", value: "24", delta: "8%" },
   { label: "Completion Rate", value: "89%", delta: "6%" },
 ];
 
-const ACTIVITY = [
+const ACTIVITY__cms = [
   { title: "Project Alpha", sub: "Design Completed", time: "2h ago" },
   { title: "Mobile App", sub: "Development In Progress", time: "5h ago" },
   { title: "Client Meeting", sub: "Project Briefing", time: "1d ago" },
@@ -240,6 +242,7 @@ function LineChart() {
 }
 
 function Donut() {
+  const $t = useCmsText();
   const r = 15;
   const c = 2 * Math.PI * r;
   const segs = [
@@ -270,14 +273,18 @@ function Donut() {
         })}
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center leading-none">
-        <span className="text-[10px] font-bold" style={{ color: NAVY }}>128</span>
-        <span className="text-[5px] text-slate-400">Total</span>
+        <span className="text-[10px] font-bold" style={{ color: NAVY }}>{$t("CustomDevOurWork__t1", "128")}</span>
+        <span className="text-[5px] text-slate-400">{$t("CustomDevOurWork__t2", "Total")}</span>
       </div>
     </div>
   );
 }
 
 function DashboardMock() {
+  const $t = useCmsText();
+  const NAV = useCmsData("CustomDevOurWork__NAV", NAV__cms);
+  const STATS = useCmsData("CustomDevOurWork__STATS", STATS__cms);
+  const ACTIVITY = useCmsData("CustomDevOurWork__ACTIVITY", ACTIVITY__cms);
   return (
     <div className="flex h-full w-full bg-[#f6f9fa] text-[7px]">
       {/* Sidebar */}
@@ -286,7 +293,7 @@ function DashboardMock() {
           <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full" style={{ backgroundColor: DEEP_TEAL }}>
             <span className="h-1.5 w-1.5 rounded-full bg-white" />
           </span>
-          <span className="text-[9px] font-bold" style={{ color: NAVY }}>OpsHub</span>
+          <span className="text-[9px] font-bold" style={{ color: NAVY }}>{$t("CustomDevOurWork__t3", "OpsHub")}</span>
         </div>
         <ul className="flex flex-col gap-1">
           {NAV.map((n, i) => (
@@ -306,11 +313,11 @@ function DashboardMock() {
       <div className="flex-1 min-w-0 p-3 flex flex-col gap-2">
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-[11px] font-bold leading-none" style={{ color: NAVY }}>Dashboard</p>
-            <p className="text-[6px] text-slate-400 mt-0.5">Welcome back, Admin</p>
+            <p className="text-[11px] font-bold leading-none" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t4", "Dashboard"))}</p>
+            <p className="text-[6px] text-slate-400 mt-0.5">{rich($t("CustomDevOurWork__t5", "Welcome back, Admin"))}</p>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[6px] text-slate-500">May 01 – May 31, 2024</span>
+            <span className="rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[6px] text-slate-500">{$t("CustomDevOurWork__t6", "May 01 – May 31, 2024")}</span>
             <span className="h-4 w-4 rounded-full bg-gradient-to-br from-slate-300 to-slate-400" />
           </div>
         </div>
@@ -333,24 +340,24 @@ function DashboardMock() {
         <div className="grid grid-cols-[1.6fr_1fr] gap-1.5 flex-1 min-h-0">
           <div className="rounded-md bg-white border border-slate-100 p-1.5 flex flex-col">
             <div className="flex items-center justify-between">
-              <p className="text-[7px] font-semibold" style={{ color: NAVY }}>Project Overview</p>
-              <span className="text-[5.5px] text-slate-400">This Month ▾</span>
+              <p className="text-[7px] font-semibold" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t7", "Project Overview"))}</p>
+              <span className="text-[5.5px] text-slate-400">{$t("CustomDevOurWork__t8", "This Month ▾")}</span>
             </div>
             <div className="relative flex-1 min-h-[50px] mt-1">
               <LineChart />
               <span className="absolute right-[12%] top-[8%] rounded bg-white px-1 py-0.5 text-[5px] shadow border border-slate-100" style={{ color: NAVY }}>
-                May<br /><b>128 Projects</b>
+                {$t("CustomDevOurWork__t9", "May")}<br /><b>{$t("CustomDevOurWork__t10", "128 Projects")}</b>
               </span>
             </div>
             <div className="flex justify-between text-[5px] text-slate-400 mt-0.5">
-              {["Jan", "Feb", "Mar", "Apr", "May"].map((m) => <span key={m}>{m}</span>)}
+              {[$t("CustomDevOurWork__t11", "Jan"), $t("CustomDevOurWork__t12", "Feb"), $t("CustomDevOurWork__t13", "Mar"), $t("CustomDevOurWork__t14", "Apr"), $t("CustomDevOurWork__t15", "May")].map((m) => <span key={m}>{m}</span>)}
             </div>
           </div>
 
           <div className="rounded-md bg-white border border-slate-100 p-1.5">
             <div className="flex items-center justify-between mb-1">
-              <p className="text-[7px] font-semibold" style={{ color: NAVY }}>Recent Activity</p>
-              <span className="text-[5.5px]" style={{ color: TEAL }}>View All</span>
+              <p className="text-[7px] font-semibold" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t16", "Recent Activity"))}</p>
+              <span className="text-[5.5px]" style={{ color: TEAL }}>{$t("CustomDevOurWork__t17", "View All")}</span>
             </div>
             <ul className="flex flex-col gap-1.5">
               {ACTIVITY.map((a) => (
@@ -369,11 +376,11 @@ function DashboardMock() {
 
         <div className="grid grid-cols-[1fr_1.6fr] gap-1.5">
           <div className="rounded-md bg-white border border-slate-100 p-1.5">
-            <p className="text-[7px] font-semibold mb-1" style={{ color: NAVY }}>Tasks by Status</p>
+            <p className="text-[7px] font-semibold mb-1" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t18", "Tasks by Status"))}</p>
             <div className="flex items-center gap-2">
               <Donut />
               <ul className="flex-1 flex flex-col gap-0.5 text-[5.5px] text-slate-500">
-                {[["Completed", "70%", DEEP_TEAL], ["In Progress", "20%", "#5eead4"], ["Pending", "10%", "#cbd5e1"]].map(([l, v, c]) => (
+                {[[$t("CustomDevOurWork__t19", "Completed"), "70%", DEEP_TEAL], [$t("CustomDevOurWork__t20", "In Progress"), "20%", "#5eead4"], [$t("CustomDevOurWork__t21", "Pending"), "10%", "#cbd5e1"]].map(([l, v, c]) => (
                   <li key={l} className="flex items-center justify-between gap-1">
                     <span className="flex items-center gap-1"><span className="h-1 w-1 rounded-full" style={{ backgroundColor: c }} />{l}</span>
                     <span>{v}</span>
@@ -384,8 +391,8 @@ function DashboardMock() {
           </div>
           <div className="rounded-md bg-white border border-slate-100 p-1.5">
             <div className="flex items-center justify-between mb-1">
-              <p className="text-[7px] font-semibold" style={{ color: NAVY }}>Team Workload</p>
-              <span className="text-[5.5px]" style={{ color: TEAL }}>+ Add Member</span>
+              <p className="text-[7px] font-semibold" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t22", "Team Workload"))}</p>
+              <span className="text-[5.5px]" style={{ color: TEAL }}>{$t("CustomDevOurWork__t23", "+ Add Member")}</span>
             </div>
             <div className="flex items-end justify-around h-[46px]">
               {WORKLOAD.map((w, i) => (
@@ -435,24 +442,23 @@ function FeaturedBackground() {
 }
 
 function FeaturedContent({ project }: { project: Project }) {
+  const $t = useCmsText();
   return (
     <div className="relative flex flex-col">
       <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[9px] font-semibold tracking-[0.12em] uppercase text-teal-200">
-        <SparkIcon size={8} color="#5eead4" /> Featured Project
-      </span>
-      <h3 className="mt-4 font-serif text-[28px] lg:text-[26px] xl:text-[34px] font-bold leading-[1.12] text-white">
+        <SparkIcon size={8} color="#5eead4" /> {$t("CustomDevOurWork__t24", "Featured Project")}</span>
+      <h3 className="text-h4 mt-4 font-serif font-bold text-white">
         {project.title.map((line) => <span key={line} className="block">{line}</span>)}
       </h3>
-      <p className="mt-4 text-[12px] xl:text-[13px] leading-relaxed text-slate-300 max-w-[240px]">
+      <p className="text-small mt-4 text-slate-300 max-w-[240px]">
         {project.desc}
       </p>
       <Link
-        href="/contact"
+        href={$t("CustomDevOurWork__t25", "/contact")}
         className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/25 px-3.5 py-1.5 text-[11.5px] font-medium text-white transition-colors hover:bg-white/10"
       >
         <span className="h-1.5 w-1.5 rounded-full bg-white" />
-        View Case Study
-        <span className="transition-transform group-hover:translate-x-0.5"><ArrowIcon size={13} /></span>
+        {$t("CustomDevOurWork__t26", "View Case Study")}<span className="transition-transform group-hover:translate-x-0.5"><ArrowIcon size={13} /></span>
       </Link>
     </div>
   );
@@ -503,6 +509,7 @@ function useFitScale(designWidth: number) {
 }
 
 function ShowcaseCanvas({ project }: { project: Project }) {
+  const $t = useCmsText();
   const { ref, scale } = useFitScale(CANVAS_W);
   return (
     <div ref={ref} className="relative w-full" style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}>
@@ -538,21 +545,19 @@ function ShowcaseCanvas({ project }: { project: Project }) {
           className="absolute left-[56px] top-[104px] w-[225px]"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] uppercase text-teal-200">
-            <SparkIcon size={9} color="#5eead4" /> Featured Project
-          </span>
-          <h3 className="mt-5 font-serif text-[31px] font-bold leading-[1.1] text-white">
+            <SparkIcon size={9} color="#5eead4" /> {$t("CustomDevOurWork__t27", "Featured Project")}</span>
+          <h3 className="text-h4 mt-5 font-serif font-bold text-white">
             {project.title.map((line) => <span key={line} className="block">{line}</span>)}
           </h3>
-          <p className="mt-4 text-[13px] leading-[1.65] text-slate-300">
+          <p className="text-small mt-4 text-slate-300">
             {project.desc}
           </p>
           <Link
-            href="/contact"
+            href={$t("CustomDevOurWork__t28", "/contact")}
             className="group mt-7 inline-flex items-center gap-2.5 rounded-full border border-white/25 px-4 py-2 text-[13.5px] font-medium text-white transition-colors hover:bg-white/10"
           >
             <span className="h-2 w-2 rounded-full bg-white" />
-            View Case Study
-            <span className="transition-transform group-hover:translate-x-0.5"><ArrowIcon size={15} /></span>
+            {$t("CustomDevOurWork__t29", "View Case Study")}<span className="transition-transform group-hover:translate-x-0.5"><ArrowIcon size={15} /></span>
           </Link>
         </motion.div>
 
@@ -588,10 +593,8 @@ function ShowcaseCanvas({ project }: { project: Project }) {
           className="absolute left-[722px] top-[490px] flex items-center gap-4 rounded-2xl bg-white/95 backdrop-blur pl-5 pr-4 py-4 shadow-[0_24px_45px_-15px_rgba(15,40,60,0.4)] border border-slate-100"
         >
           <ShieldIcon size={42} />
-          <p className="text-[16px] font-bold leading-tight" style={{ color: NAVY }}>
-            Secure
-            <br />& Scalable
-          </p>
+          <p className="text-body font-bold" style={{ color: NAVY }}>
+            {rich($t("CustomDevOurWork__t30", "Secure"))}<br />{rich($t("CustomDevOurWork__t31", "& Scalable"))}</p>
           <span className="self-end"><CheckBadge /></span>
         </motion.div>
       </div>
@@ -603,6 +606,7 @@ const SLIDE_TRANSITION = { duration: 0.9, ease: EASE };
 const mod = (a: number, n: number) => ((a % n) + n) % n;
 
 function ProjectCarousel({ onChange }: { onChange: (i: number) => void }) {
+  const PROJECTS = useCmsData("CustomDevOurWork__PROJECTS", PROJECTS__cms);
   const n = PROJECTS.length;
   // Unbounded slide position; the project shown is pos mod n, so it loops forever.
   const [pos, setPos] = useState(0);
@@ -675,6 +679,8 @@ function ProjectCarousel({ onChange }: { onChange: (i: number) => void }) {
 }
 
 function SuccessCta() {
+  const $t = useCmsText();
+  const CTA_POINTS = useCmsData("CustomDevOurWork__CTA_POINTS", CTA_POINTS__cms);
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -710,11 +716,9 @@ function SuccessCta() {
             </span>
           </div>
           <p className="text-[22px] sm:text-[26px] leading-tight text-white font-medium">
-            Your idea could be
-            <br />
+            {rich($t("CustomDevOurWork__t32", "Your idea could be"))}<br />
             <span className="font-semibold text-teal-300 underline decoration-teal-300/70 decoration-2 underline-offset-[6px]">
-              our next success story.
-            </span>
+              {$t("CustomDevOurWork__t33", "our next success story.")}</span>
           </p>
         </div>
 
@@ -724,7 +728,7 @@ function SuccessCta() {
             <div key={pt.title} className={`flex items-start gap-3 sm:px-6 ${i > 0 ? "sm:border-l sm:border-white/15" : ""}`}>
               <pt.Icon size={22} />
               <div>
-                <p className="text-[13px] font-semibold text-white">{pt.title}</p>
+                <p className="text-small font-semibold text-white">{pt.title}</p>
                 <p className="mt-0.5 text-[11.5px] text-slate-400">{pt.desc}</p>
               </div>
             </div>
@@ -734,12 +738,11 @@ function SuccessCta() {
         {/* Button + social proof */}
         <div className="flex flex-col items-center gap-2.5 shrink-0">
           <Link
-            href="/contact"
+            href={$t("CustomDevOurWork__t34", "/contact")}
             className="group inline-flex items-center gap-4 rounded-full border border-teal-300/40 pl-6 pr-1.5 py-1.5 text-[15px] font-semibold text-white transition hover:-translate-y-0.5"
             style={{ background: "linear-gradient(135deg, #0f766e, #0f5c56)" }}
           >
-            Start Your Project
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
+            {$t("CustomDevOurWork__t35", "Start Your Project")}<span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
               <ArrowIcon size={16} color={DEEP_TEAL} />
             </span>
           </Link>
@@ -749,7 +752,7 @@ function SuccessCta() {
                 <span key={c} className="h-6 w-6 rounded-full ring-2 ring-[#0b2a2a]" style={{ backgroundColor: c }} />
               ))}
             </div>
-            <span className="text-[11.5px] text-slate-300 whitespace-nowrap">Trusted by 500+ businesses</span>
+            <span className="text-[11.5px] text-slate-300 whitespace-nowrap">{$t("CustomDevOurWork__t36", "Trusted by 500+ businesses")}</span>
           </div>
         </div>
       </div>
@@ -758,6 +761,9 @@ function SuccessCta() {
 }
 
 export default function CustomDevOurWork() {
+  const $t = useCmsText();
+  const PROJECTS = useCmsData("CustomDevOurWork__PROJECTS", PROJECTS__cms);
+  const STEPS = useCmsData("CustomDevOurWork__STEPS", STEPS__cms);
   const [active, setActive] = useState(0);
   const project = PROJECTS[active];
   return (
@@ -781,16 +787,13 @@ export default function CustomDevOurWork() {
                 style={{ backgroundColor: "#e6f6f4", color: DEEP_TEAL }}
               >
                 <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: TEAL }} />
-                Our Work in Action
-              </span>
-              <h2 className="mt-5 font-serif text-4xl sm:text-5xl lg:text-[54px] font-bold leading-[1.05]" style={{ color: NAVY }}>
-                Real Problems.
-                <br />
-                <span style={{ color: TEAL }}>Real Solutions.</span>
+                {$t("CustomDevOurWork__t37", "Our Work in Action")}</span>
+              <h2 className="text-h2 mt-5 font-serif font-bold" style={{ color: NAVY }}>
+                {$t("CustomDevOurWork__t38", "Real Problems.")}<br />
+                <span style={{ color: TEAL }}>{$t("CustomDevOurWork__t39", "Real Solutions.")}</span>
               </h2>
-              <p className="mt-5 text-[15px] sm:text-base text-slate-500 leading-relaxed max-w-md">
-                Custom software we&apos;ve built for businesses to simplify operations and drive real results.
-              </p>
+              <p className="text-body mt-5 text-slate-500 max-w-md">
+                {rich($t("CustomDevOurWork__t40", "Custom software we've built for businesses to simplify operations and drive real results."))}</p>
             </motion.div>
 
             <motion.ol
@@ -812,9 +815,9 @@ export default function CustomDevOurWork() {
                     <s.Icon />
                   </span>
                   <div className="pt-1">
-                    <p className="text-[12px] font-semibold" style={{ color: TEAL }}>{s.num}</p>
+                    <p className="text-caption font-semibold" style={{ color: TEAL }}>{s.num}</p>
                     <h3 className="mt-0.5 text-[17px] font-bold" style={{ color: NAVY }}>{s.title}</h3>
-                    <p className="mt-1 text-[13.5px] text-slate-500 leading-snug max-w-[250px]">{s.desc}</p>
+                    <p className="text-small mt-1 text-slate-500 max-w-[250px]">{s.desc}</p>
                   </div>
                 </motion.li>
               ))}

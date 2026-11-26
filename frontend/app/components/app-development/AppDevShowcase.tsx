@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -119,14 +121,14 @@ const UsersBadgeIcon = (p: { color?: string; size?: number }) => (
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
 
-const LEFT_CHECKLIST = [
+const LEFT_CHECKLIST__cms = [
   { title: "Idea Validation", desc: "Turn your concept into a real product." },
   { title: "Market & User Research", desc: "Understand your market and audience." },
   { title: "Product Strategy", desc: "Build the right product, the right way." },
   { title: "Interactive Prototype", desc: "Experience your app before it's built." },
 ];
 
-const RIGHT_CHECKLIST = [
+const RIGHT_CHECKLIST__cms = [
   { Icon: SmileyIcon, title: "Users Love It", desc: "Intuitive design that users enjoy and remember." },
   { Icon: RepeatIcon, title: "They Keep Coming Back", desc: "Seamless experience that builds loyalty and retention." },
   { Icon: ThumbsUpIcon, title: "They Recommend It", desc: "Happy users turn into your biggest advocates." },
@@ -176,7 +178,7 @@ const LaptopPeekIcon = (p: { color?: string; size?: number }) => (
   </svg>
 );
 
-const PEEK_CATEGORIES = [
+const PEEK_CATEGORIES__cms = [
   {
     label: "Food Delivery",
     color: "#ea580c",
@@ -233,16 +235,16 @@ const PEEK_CATEGORIES = [
   },
 ];
 
-const STATS = [
+const STATS__cms = [
   { target: 120, suffix: "+", label: "Apps Delivered", sub: "Across Industries", Icon: RocketBadgeIcon },
   { target: 98, suffix: "%", label: "Client Satisfaction", sub: "Rate", Icon: SmileyIcon },
   { target: 15, suffix: "+", label: "Industries Served", sub: "", Icon: BuildingIcon },
   { target: 4.9, suffix: "/5", label: "Average Rating", sub: "On Clutch", Icon: StarIcon },
 ];
 
-const TRUSTED_BY = { label: "Trusted by", sub: "Startups to Enterprises Worldwide", Icon: UsersBadgeIcon };
+const TRUSTED_BY__cms = { label: "Trusted by", sub: "Startups to Enterprises Worldwide", Icon: UsersBadgeIcon };
 
-const FOOTER_FEATURES = [
+const FOOTER_FEATURES__cms = [
   { title: "End-to-End Development", sub: "From concept to launch" },
   { title: "Agile & Transparent Process", sub: "You're in the loop, always" },
   { title: "Ongoing Support", sub: "We grow with you" },
@@ -292,7 +294,7 @@ function ChecklistCard({
         <Icon color={TEAL} size={13} />
         {badge}
       </span>
-      <h3 className="font-serif text-[19px] leading-snug font-bold mt-2.5 mb-4" style={{ color: NAVY }}>
+      <h3 className="text-h6 font-serif font-bold mt-2.5 mb-4" style={{ color: NAVY }}>
         {heading} <span style={{ color: TEAL }}>{highlight}</span>
       </h3>
       <motion.ul variants={listVariants} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="flex flex-col gap-4">
@@ -326,7 +328,7 @@ function Peek({
   touchPhone = false,
   z = 0,
 }: {
-  cat: (typeof PEEK_CATEGORIES)[number];
+  cat: (typeof PEEK_CATEGORIES__cms)[number];
   side: "left" | "right";
   overlap?: boolean;
   touchPhone?: boolean;
@@ -351,8 +353,8 @@ function Peek({
       className={`relative flex w-[140px] sm:w-[168px] shrink-0 flex-col ${overlap ? "-ml-10 sm:-ml-14" : ""}`}
     >
       <div className="flex h-full flex-col rounded-[26px] bg-white p-4 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.25)] ring-1 ring-slate-100">
-        <p className="text-[14px] sm:text-[15px] font-bold leading-tight" style={{ color: NAVY }}>{cat.label}</p>
-        <p className="text-[11px] sm:text-[12px] text-slate-500 leading-snug mt-2 mb-3.5">{cat.tagline}</p>
+        <p className="text-body font-bold" style={{ color: NAVY }}>{cat.label}</p>
+        <p className="text-caption text-slate-500 mt-2 mb-3.5">{cat.tagline}</p>
 
         <div className="relative flex-1 min-h-[130px] sm:min-h-[150px] overflow-hidden rounded-2xl mb-3.5 bg-slate-100">
           <Image src={cat.image} alt={cat.label} fill className="object-cover" sizes="168px" />
@@ -396,14 +398,15 @@ const BOTTOM_NAV_ICONS: Record<string, React.ReactNode> = {
 };
 
 function ShopScreenBody() {
+  const $t = useCmsText();
   return (
     <div className="h-full w-full overflow-hidden bg-white flex flex-col">
       <div className="flex items-center justify-between px-4 pt-3 pb-1.5 text-[9px] font-semibold" style={{ color: NAVY }}>
-        <span>9:41</span>
+        <span>{$t("AppDevShowcase__t1", "9:41")}</span>
         <span className="w-3 h-2 rounded-sm border border-current" />
       </div>
       <div className="px-4 pb-2.5 flex items-center justify-between">
-        <p className="text-[12px] font-bold" style={{ color: NAVY }}>Hello, Alex <span aria-hidden>{"\u{1F44B}"}</span></p>
+        <p className="text-caption font-bold" style={{ color: NAVY }}>{rich($t("AppDevShowcase__t2", "Hello, Alex "))}<span aria-hidden>{"\u{1F44B}"}</span></p>
         <span className="relative">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2"><path d="M6 9a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5H4.5S6 13 6 9Z" /><path d="M10 19a2 2 0 0 0 4 0" /></svg>
           <span className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-orange-500" />
@@ -411,25 +414,25 @@ function ShopScreenBody() {
       </div>
       <div className="mx-4 mb-3 flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="6.5" /><path d="M16 16 L20.5 20.5" /></svg>
-        <span className="text-[8.5px] text-slate-400">Search anything...</span>
+        <span className="text-[8.5px] text-slate-400">{$t("AppDevShowcase__t3", "Search anything...")}</span>
       </div>
 
-      <div className="px-4 mb-1"><p className="text-[9px] font-bold" style={{ color: NAVY }}>Featured</p></div>
+      <div className="px-4 mb-1"><p className="text-[9px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevShowcase__t4", "Featured"))}</p></div>
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl p-3.5">
-        <Image src="/project2.png" alt="" fill className="object-cover" sizes="200px" />
+        <Image src={$t("AppDevShowcase__t5", "/project2.png")} alt="" fill className="object-cover" sizes="200px" />
         <div className="absolute inset-0" style={{ background: `linear-gradient(100deg, ${DEEP_TEAL} 38%, transparent 90%)` }} />
-        <p className="relative text-[8px] font-semibold uppercase tracking-wide text-white/70">New Collection</p>
-        <p className="relative text-[11.5px] font-bold text-white mt-1 max-w-[62%]">Summer Essentials</p>
-        <span className="relative inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: DEEP_TEAL }}>Shop Now</span>
+        <p className="relative text-[8px] font-semibold uppercase tracking-wide text-white/70">{rich($t("AppDevShowcase__t6", "New Collection"))}</p>
+        <p className="relative text-[11.5px] font-bold text-white mt-1 max-w-[62%]">{rich($t("AppDevShowcase__t7", "Summer Essentials"))}</p>
+        <span className="relative inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: DEEP_TEAL }}>{$t("AppDevShowcase__t8", "Shop Now")}</span>
       </div>
 
       <div className="px-4 mb-3">
         <div className="mb-2 flex items-center justify-between">
-          <p className="text-[9.5px] font-bold" style={{ color: NAVY }}>Categories</p>
-          <p className="text-[7.5px] font-semibold" style={{ color: DEEP_TEAL }}>View all</p>
+          <p className="text-[9.5px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevShowcase__t9", "Categories"))}</p>
+          <p className="text-[7.5px] font-semibold" style={{ color: DEEP_TEAL }}>{rich($t("AppDevShowcase__t10", "View all"))}</p>
         </div>
         <div className="flex items-center justify-between">
-          {["Fashion", "Electronics", "Home", "Beauty", "More"].map((c) => (
+          {[$t("AppDevShowcase__t11", "Fashion"), $t("AppDevShowcase__t12", "Electronics"), $t("AppDevShowcase__t13", "Home"), $t("AppDevShowcase__t14", "Beauty"), $t("AppDevShowcase__t15", "More")].map((c) => (
             <div key={c} className="flex flex-col items-center gap-1">
               <span className="flex h-7 w-7 items-center justify-center rounded-full" style={{ backgroundColor: "#e6f6f4", color: DEEP_TEAL }}>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{CATEGORY_ICONS[c]}</svg>
@@ -442,13 +445,13 @@ function ShopScreenBody() {
 
       <div className="px-4 flex flex-1 flex-col pb-2">
         <div className="mb-2 flex items-center justify-between">
-          <p className="text-[9.5px] font-bold" style={{ color: NAVY }}>Popular Products</p>
-          <p className="text-[7.5px] font-semibold" style={{ color: DEEP_TEAL }}>View all</p>
+          <p className="text-[9.5px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevShowcase__t16", "Popular Products"))}</p>
+          <p className="text-[7.5px] font-semibold" style={{ color: DEEP_TEAL }}>{rich($t("AppDevShowcase__t17", "View all"))}</p>
         </div>
         <div className="flex flex-1 flex-col justify-between">
           {[
-            { n: "Minimal Watch", sub: "Leather Strap", p: "$129.00", rating: "4.5", image: "/project3.png" },
-            { n: "Wireless Headphones", sub: "Noise Cancelling", p: "$169.00", rating: "4.7", image: "/project2.png" },
+            { n: $t("AppDevShowcase__t18", "Minimal Watch"), sub: $t("AppDevShowcase__t19", "Leather Strap"), p: $t("AppDevShowcase__t20", "$129.00"), rating: $t("AppDevShowcase__t21", "4.5"), image: $t("AppDevShowcase__t22", "/project3.png") },
+            { n: $t("AppDevShowcase__t23", "Wireless Headphones"), sub: $t("AppDevShowcase__t24", "Noise Cancelling"), p: $t("AppDevShowcase__t25", "$169.00"), rating: $t("AppDevShowcase__t26", "4.7"), image: $t("AppDevShowcase__t27", "/project2.png") },
           ].map((pr) => (
             <div key={pr.n} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2 py-1.5">
               <span className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-slate-200">
@@ -468,7 +471,7 @@ function ShopScreenBody() {
       </div>
 
       <div className="mt-auto flex items-center justify-around border-t border-slate-100 px-1 pt-2 pb-3">
-        {["Home", "Categories", "Cart", "Wishlist", "Profile"].map((l, i) => (
+        {[$t("AppDevShowcase__t28", "Home"), $t("AppDevShowcase__t29", "Categories"), $t("AppDevShowcase__t30", "Cart"), $t("AppDevShowcase__t31", "Wishlist"), $t("AppDevShowcase__t32", "Profile")].map((l, i) => (
           <div key={l} className="flex flex-col items-center gap-0.5" style={{ color: i === 0 ? DEEP_TEAL : "#cbd5e1" }}>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{BOTTOM_NAV_ICONS[l]}</svg>
             <span className="text-[5.5px] font-semibold">{l}</span>
@@ -482,11 +485,12 @@ function ShopScreenBody() {
 // Generic themed screen for every category other than Shopping (which keeps the richer,
 // bespoke ShopScreen above) — built from the same PEEK_CATEGORIES data (icon, color, tagline,
 // image, nav), so the phone's content genuinely changes to match whichever category is active.
-function CategoryScreenBody({ cat }: { cat: (typeof PEEK_CATEGORIES)[number] }) {
+function CategoryScreenBody({ cat }: { cat: (typeof PEEK_CATEGORIES__cms)[number] }) {
+  const $t = useCmsText();
   return (
     <div className="h-full w-full overflow-hidden bg-white flex flex-col">
       <div className="flex items-center justify-between px-4 pt-3 pb-1.5 text-[9px] font-semibold" style={{ color: NAVY }}>
-        <span>9:41</span>
+        <span>{$t("AppDevShowcase__t33", "9:41")}</span>
         <span className="w-3 h-2 rounded-sm border border-current" />
       </div>
 
@@ -502,7 +506,7 @@ function CategoryScreenBody({ cat }: { cat: (typeof PEEK_CATEGORIES)[number] }) 
 
       <div className="mx-4 mb-3 flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="6.5" /><path d="M16 16 L20.5 20.5" /></svg>
-        <span className="text-[8.5px] text-slate-400">Search {cat.label.toLowerCase()}...</span>
+        <span className="text-[8.5px] text-slate-400">{$t("AppDevShowcase__t34", "Search ")}{cat.label.toLowerCase()}...</span>
       </div>
 
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl" style={{ backgroundColor: cat.color }}>
@@ -511,7 +515,7 @@ function CategoryScreenBody({ cat }: { cat: (typeof PEEK_CATEGORIES)[number] }) 
         </div>
         <div className="absolute inset-0 flex flex-col justify-end p-3" style={{ background: "linear-gradient(0deg, rgba(0,0,0,0.55), transparent 60%)" }}>
           <p className="text-[10.5px] font-bold text-white max-w-[80%] leading-snug">{cat.tagline}</p>
-          <span className="inline-block mt-2 w-fit rounded-full bg-white px-2.5 py-1 text-[7.5px] font-bold" style={{ color: cat.color }}>Explore</span>
+          <span className="inline-block mt-2 w-fit rounded-full bg-white px-2.5 py-1 text-[7.5px] font-bold" style={{ color: cat.color }}>{$t("AppDevShowcase__t35", "Explore")}</span>
         </div>
       </div>
 
@@ -541,7 +545,7 @@ function CategoryScreenBody({ cat }: { cat: (typeof PEEK_CATEGORIES)[number] }) 
 // Hosts the actual "slide one card out, slide the next one in" transition — the outgoing
 // screen slides fully out to the left while the incoming one slides in from the right, both
 // visible mid-transition, exactly like the hero section's phone.
-function PhoneScreenFor({ cat }: { cat: (typeof PEEK_CATEGORIES)[number] }) {
+function PhoneScreenFor({ cat }: { cat: (typeof PEEK_CATEGORIES__cms)[number] }) {
   return (
     <div className="absolute inset-[3px] rounded-[34px] overflow-hidden bg-white">
       <AnimatePresence initial={false} mode="popLayout">
@@ -561,6 +565,8 @@ function PhoneScreenFor({ cat }: { cat: (typeof PEEK_CATEGORIES)[number] }) {
 }
 
 function StatsBar() {
+  const STATS = useCmsData("AppDevShowcase__STATS", STATS__cms);
+  const TRUSTED_BY = useCmsData("AppDevShowcase__TRUSTED_BY", TRUSTED_BY__cms);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   return (
@@ -577,7 +583,7 @@ function StatsBar() {
             <stat.Icon color={DEEP_TEAL} size={18} />
           </span>
           <div>
-            <p className="text-lg font-bold tabular-nums leading-none" style={{ color: DEEP_TEAL }}>
+            <p className="text-body font-bold tabular-nums" style={{ color: DEEP_TEAL }}>
               {Number.isInteger(stat.target) ? <Counter target={stat.target} suffix={stat.suffix} /> : `${stat.target}${stat.suffix}`}
             </p>
             <p className="text-[11px] font-semibold text-slate-700 mt-1">{stat.label}</p>
@@ -590,7 +596,7 @@ function StatsBar() {
           <TRUSTED_BY.Icon color={DEEP_TEAL} size={18} />
         </span>
         <div>
-          <p className="text-[13px] font-bold leading-snug" style={{ color: DEEP_TEAL }}>{TRUSTED_BY.label}</p>
+          <p className="text-small font-bold" style={{ color: DEEP_TEAL }}>{TRUSTED_BY.label}</p>
           <p className="text-[9.5px] text-slate-400 leading-snug max-w-[130px]">{TRUSTED_BY.sub}</p>
         </div>
       </div>
@@ -601,6 +607,11 @@ function StatsBar() {
 /* ------------------------------------------------------------------ */
 
 export default function AppDevShowcase() {
+  const $t = useCmsText();
+  const LEFT_CHECKLIST = useCmsData("AppDevShowcase__LEFT_CHECKLIST", LEFT_CHECKLIST__cms);
+  const RIGHT_CHECKLIST = useCmsData("AppDevShowcase__RIGHT_CHECKLIST", RIGHT_CHECKLIST__cms);
+  const PEEK_CATEGORIES = useCmsData("AppDevShowcase__PEEK_CATEGORIES", PEEK_CATEGORIES__cms);
+  const FOOTER_FEATURES = useCmsData("AppDevShowcase__FOOTER_FEATURES", FOOTER_FEATURES__cms);
   // Same mechanism as the hero's category carousel: one category is "active" (shown inside the
   // phone itself, content and all), the 4 around it are the next/previous ones in the rotation —
   // a discrete slider (settle, pause, slide) rather than a continuous marquee, with a smooth ease.
@@ -629,17 +640,15 @@ export default function AppDevShowcase() {
           >
             <div className="flex items-center gap-3 mb-4">
               <span className="h-1 w-1 rounded-full" style={{ backgroundColor: TEAL }} />
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: TEAL }}>Real Results, Real Growth</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: TEAL }}>{$t("AppDevShowcase__t36", "Real Results, Real Growth")}</span>
               <span className="h-1 w-1 rounded-full" style={{ backgroundColor: TEAL }} />
             </div>
-            <h2 className="font-serif text-3xl md:text-[46px] leading-tight font-bold" style={{ color: NAVY }}>
-              Imagine Your Business.
-              <br />
-              <span style={{ color: TEAL }}>In Every Customer&apos;s Pocket.</span>
+            <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
+              {$t("AppDevShowcase__t37", "Imagine Your Business.")}<br />
+              <span style={{ color: TEAL }}>{$t("AppDevShowcase__t38", "In Every Customer's Pocket.")}</span>
             </h2>
-            <p className="text-sm md:text-base text-slate-600 max-w-xl leading-relaxed mt-4">
-              From idea to impact, we design and build mobile apps that delight users and drive real business growth.
-            </p>
+            <p className="text-body text-slate-600 max-w-xl mt-4">
+              {rich($t("AppDevShowcase__t39", "From idea to impact, we design and build mobile apps that delight users and drive real business growth."))}</p>
           </motion.div>
 
           {/* 3-column showcase */}
@@ -653,10 +662,9 @@ export default function AppDevShowcase() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="relative pl-1"
               >
-                <span className="font-serif italic text-lg" style={{ color: GOLD }}>Your Idea</span>
-                <p className="text-[12px] text-slate-500 leading-relaxed mt-1.5 max-w-[220px]">
-                  We turn it into <span className="font-semibold" style={{ color: NAVY }}>extraordinary</span> digital experiences.
-                </p>
+                <span className="font-serif italic text-lg" style={{ color: GOLD }}>{$t("AppDevShowcase__t40", "Your Idea")}</span>
+                <p className="text-caption text-slate-500 mt-1.5 max-w-[220px]">
+                  {rich($t("AppDevShowcase__t41", "We turn it into "))}<span className="font-semibold" style={{ color: NAVY }}>extraordinary</span> {rich($t("AppDevShowcase__t42", "digital experiences."))}</p>
                 <svg className="mt-2 w-10 h-8 text-slate-300" viewBox="0 0 40 32" fill="none" aria-hidden>
                   <path d="M4 4 C10 20 22 26 34 24" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" fill="none" />
                   <path d="M28 20 L36 25 L30 29" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -664,9 +672,9 @@ export default function AppDevShowcase() {
               </motion.div>
 
               <ChecklistCard
-                badge="Start With an Idea"
+                badge={$t("AppDevShowcase__t43", "Start With an Idea")}
                 Icon={LightbulbIcon}
-                heading="We help you see"
+                heading={$t("AppDevShowcase__t44", "We help you see")}
                 highlight="the big picture."
                 items={LEFT_CHECKLIST}
               />
@@ -702,9 +710,8 @@ export default function AppDevShowcase() {
                 </div>
               </div>
 
-              <p className="font-serif italic text-[15px] sm:text-base mt-6" style={{ color: TEAL }}>
-                Your App. Your Brand. Our Expertise.
-              </p>
+              <p className="text-body font-serif italic mt-6" style={{ color: TEAL }}>
+                {rich($t("AppDevShowcase__t45", "Your App. Your Brand. Our Expertise."))}</p>
             </div>
 
             {/* Right column */}
@@ -721,36 +728,34 @@ export default function AppDevShowcase() {
                     <CalendarChatIcon color="#fff" size={18} />
                   </span>
                   <div>
-                    <p className="text-[13px] font-bold leading-snug" style={{ color: NAVY }}>Curious how we can do the same for you?</p>
-                    <p className="text-[11px] text-slate-500 leading-relaxed mt-1">Let&apos;s discuss your goals in a free strategy call.</p>
+                    <p className="text-small font-bold" style={{ color: NAVY }}>{rich($t("AppDevShowcase__t46", "Curious how we can do the same for you?"))}</p>
+                    <p className="text-[11px] text-slate-500 leading-relaxed mt-1">{rich($t("AppDevShowcase__t47", "Let's discuss your goals in a free strategy call."))}</p>
                   </div>
                 </div>
                 <Link
-                  href="/contact"
+                  href={$t("AppDevShowcase__t48", "/contact")}
                   className="flex items-center justify-center gap-2 w-full rounded-lg py-2.5 text-[12px] font-semibold text-white transition-transform hover:-translate-y-0.5"
                   style={{ backgroundColor: DEEP_TEAL }}
                 >
-                  Book Free Strategy Call
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                  {$t("AppDevShowcase__t49", "Book Free Strategy Call")}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                 </Link>
                 <div className="flex items-center gap-2.5 mt-4">
                   <div className="flex -space-x-2">
                     {[1, 2, 3].map((i) => (
                       <div key={i} className="h-6 w-6 rounded-full ring-2 ring-white overflow-hidden relative bg-slate-200">
-                        <Image src="/image1.jpg" alt="Client" fill className="object-cover" />
+                        <Image src={$t("AppDevShowcase__t50", "/image1.jpg")} alt={$t("AppDevShowcase__t51", "Client")} fill className="object-cover" />
                       </div>
                     ))}
                   </div>
                   <p className="text-[10px] text-slate-500 leading-tight">
-                    50+ businesses<br />transformed with ProManage
-                  </p>
+                    {rich($t("AppDevShowcase__t52", "50+ businesses"))}<br />{rich($t("AppDevShowcase__t53", "transformed with ProManage"))}</p>
                 </div>
               </motion.div>
 
               <ChecklistCard
-                badge="Real Impact. Real Growth."
+                badge={$t("AppDevShowcase__t54", "Real Impact. Real Growth.")}
                 Icon={HeartIcon}
-                heading="We build apps that"
+                heading={$t("AppDevShowcase__t55", "We build apps that")}
                 highlight="deliver measurable results."
                 items={RIGHT_CHECKLIST}
                 align="right"
@@ -769,17 +774,16 @@ export default function AppDevShowcase() {
             <div className="flex-1 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 xl:pr-10">
               <div className="flex items-start gap-3 sm:gap-4 max-w-[320px]">
                 <QuoteIcon />
-                <p className="text-[12px] sm:text-[13px] font-medium text-slate-700 leading-relaxed">
-                  ProManage didn&apos;t just build our app, they became our product partners. The results have been exceptional.
-                </p>
+                <p className="text-small font-medium text-slate-700">
+                  {rich($t("AppDevShowcase__t56", "ProManage didn't just build our app, they became our product partners. The results have been exceptional."))}</p>
               </div>
               <div className="flex items-center gap-3 shrink-0">
                 <div className="w-10 h-10 rounded-full overflow-hidden relative bg-slate-200">
-                  <Image src="/image1.jpg" alt="Rohit Sharma" fill className="object-cover" />
+                  <Image src={$t("AppDevShowcase__t57", "/image1.jpg")} alt={$t("AppDevShowcase__t58", "Rohit Sharma")} fill className="object-cover" />
                 </div>
                 <div>
-                  <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">Rohit Sharma</h4>
-                  <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-tight">Co-founder, FitLife</p>
+                  <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">{$t("AppDevShowcase__t59", "Rohit Sharma")}</h4>
+                  <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-tight">{rich($t("AppDevShowcase__t60", "Co-founder, FitLife"))}</p>
                 </div>
               </div>
             </div>
@@ -790,20 +794,17 @@ export default function AppDevShowcase() {
             <div className="flex-1 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 xl:pl-10">
               <div className="flex flex-col gap-1.5 max-w-[300px]">
                 <h3 className="text-[15px] sm:text-[16px] font-bold text-[#132a43] leading-snug">
-                  Ready to build your success story?
-                </h3>
-                <p className="text-[11px] sm:text-[12px] text-slate-500 font-medium">
-                  Let&apos;s turn your idea into the next big thing.
-                </p>
+                  {$t("AppDevShowcase__t61", "Ready to build your success story?")}</h3>
+                <p className="text-caption text-slate-500 font-medium">
+                  {rich($t("AppDevShowcase__t62", "Let's turn your idea into the next big thing."))}</p>
               </div>
               <div className="flex flex-col items-start sm:items-end gap-2 shrink-0">
-                <Link href="/success-stories" className="bg-[#0b3b35] hover:bg-[#132a43] text-white text-[12px] font-semibold py-3 px-5 rounded-lg transition-colors flex items-center gap-2 shadow-sm">
-                  View More Success Stories
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
+                <Link href={$t("AppDevShowcase__t63", "/testimonials")} className="bg-[#0b3b35] hover:bg-[#132a43] text-white text-[12px] font-semibold py-3 px-5 rounded-lg transition-colors flex items-center gap-2 shadow-sm">
+                  {$t("AppDevShowcase__t64", "View More Success Stories")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
                 </Link>
                 <div className="flex items-center gap-1.5 text-[#0d9488]/80 sm:mr-1 mt-0.5">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 15c0-4.4 3.6-8 8-8s8 3.6 8 8" /><polyline points="17 11 21 15 17 19" /></svg>
-                  <span className="text-[9px] font-bold tracking-wide">Explore more transformations</span>
+                  <span className="text-[9px] font-bold tracking-wide">{$t("AppDevShowcase__t65", "Explore more transformations")}</span>
                 </div>
               </div>
             </div>
@@ -835,9 +836,8 @@ export default function AppDevShowcase() {
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border" style={{ borderColor: "rgba(20,184,166,0.35)", backgroundColor: "#0d2e3a" }}>
                 <SparkleIcon color="#fbbf24" size={22} />
               </span>
-              <p className="text-[14px] sm:text-[15px] font-semibold text-white max-w-md leading-snug">
-                Whether you have an idea or need to scale, we&apos;re here to build what&apos;s possible.
-              </p>
+              <p className="text-body font-semibold text-white max-w-md">
+                {rich($t("AppDevShowcase__t66", "Whether you have an idea or need to scale, we're here to build what's possible."))}</p>
             </div>
 
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 relative z-10">
@@ -852,12 +852,11 @@ export default function AppDevShowcase() {
             </div>
 
             <Link
-              href="/contact"
+              href={$t("AppDevShowcase__t67", "/contact")}
               className="relative z-10 shrink-0 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-[13px] font-bold whitespace-nowrap transition-colors"
               style={{ backgroundColor: "#fbbf24", color: NAVY }}
             >
-              Let&apos;s Build Your App
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+              {$t("AppDevShowcase__t68", "Let's Build Your App")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
             </Link>
           </motion.div>
         </>

@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const G_BLUE = "#4285F4";
@@ -209,14 +211,14 @@ const PlayIcon = ({ size = 9 }: { size?: number }) => (
   </svg>
 );
 
-const FEATURES = [
+const FEATURES__cms = [
   { label: "ROI Focused Campaigns", Icon: TargetIcon },
   { label: "Transparent Reporting", Icon: ReportIcon },
   { label: "Conversion Optimized", Icon: FunnelIcon },
   { label: "Dedicated Account Manager", Icon: UserIcon },
 ];
 
-const STATS = [
+const STATS__cms = [
   { value: "250+", label: "Businesses Scaled", sub: "Across 20+ Industries", Icon: UsersStatIcon, tint: "#e8f0fe" },
   { value: "4.6X", label: "Average ROAS", sub: "Across All Campaigns", Icon: ChartStatIcon, tint: "#e6f4ea" },
   { value: "52%", label: "Lower Cost Per Lead", sub: "Through Optimization", Icon: CoinStatIcon, tint: "#fef7e0" },
@@ -224,6 +226,7 @@ const STATS = [
 ];
 
 function SearchMockup() {
+  const $t = useCmsText();
   const typed = useTypingOnce(SEARCH_QUERY);
   const typingDone = typed.length === SEARCH_QUERY.length;
 
@@ -240,7 +243,7 @@ function SearchMockup() {
         <div className="flex items-center gap-3 mb-3">
           <GoogleGIcon size={22} />
           <div className="flex flex-1 items-center gap-2 rounded-full border border-slate-200 px-3.5 py-2">
-            <p className="flex-1 min-w-0 truncate text-[12px] sm:text-[13px] text-slate-600">
+            <p className="text-small flex-1 min-w-0 truncate text-slate-600">
               {typed}
               <motion.span
                 className="inline-block w-[1.5px] h-[13px] align-middle ml-0.5 bg-slate-500"
@@ -266,12 +269,12 @@ function SearchMockup() {
               <motion.div variants={revealContainer} initial="hidden" animate="show" className="pt-2">
               {/* Tabs */}
               <motion.div variants={revealItem} className="flex items-center gap-4 border-b border-slate-100 pb-2.5 mb-4 text-[11px] sm:text-[12px] text-slate-500 overflow-x-auto">
-                <span className="font-semibold pb-2.5 -mb-[11px] border-b-2 whitespace-nowrap" style={{ color: G_BLUE, borderColor: G_BLUE }}>All</span>
-                <span className="whitespace-nowrap">Maps</span>
-                <span className="whitespace-nowrap">Images</span>
-                <span className="whitespace-nowrap">News</span>
-                <span className="whitespace-nowrap">Videos</span>
-                <span className="whitespace-nowrap">More</span>
+                <span className="font-semibold pb-2.5 -mb-[11px] border-b-2 whitespace-nowrap" style={{ color: G_BLUE, borderColor: G_BLUE }}>{$t("GoogleAdsHero__t1", "All")}</span>
+                <span className="whitespace-nowrap">{$t("GoogleAdsHero__t2", "Maps")}</span>
+                <span className="whitespace-nowrap">{$t("GoogleAdsHero__t3", "Images")}</span>
+                <span className="whitespace-nowrap">{$t("GoogleAdsHero__t4", "News")}</span>
+                <span className="whitespace-nowrap">{$t("GoogleAdsHero__t5", "Videos")}</span>
+                <span className="whitespace-nowrap">{$t("GoogleAdsHero__t6", "More")}</span>
               </motion.div>
 
               {/* Sponsored ad card */}
@@ -283,34 +286,30 @@ function SearchMockup() {
                   animate={{ opacity: 1 }} 
                   transition={{ delay: 1.4, duration: 0.6 }} 
                 />
-                <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Sponsored</span>
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">{$t("GoogleAdsHero__t7", "Sponsored")}</span>
                 <div className="flex items-start gap-2.5 mt-1.5">
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: G_BLUE }}>
                     <GlobeIcon size={14} color="#fff" />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-[13px] sm:text-[14px] font-bold leading-snug" style={{ color: G_BLUE }}>ProManage IT Solution</p>
-                    <p className="text-[11px] text-slate-500 truncate">www.promanageitsolution.com</p>
+                    <p className="text-small font-bold" style={{ color: G_BLUE }}>{rich($t("GoogleAdsHero__t8", "ProManage IT Solution"))}</p>
+                    <p className="text-[11px] text-slate-500 truncate">{rich($t("GoogleAdsHero__t9", "www.promanageitsolution.com"))}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5 mt-2">
-                  <span className="text-[12px] font-semibold text-slate-700">5.0</span>
+                  <span className="text-[12px] font-semibold text-slate-700">{$t("GoogleAdsHero__t10", "5.0")}</span>
                   <span className="flex gap-0.5">{[0, 1, 2, 3, 4].map((s) => <StarIcon key={s} />)}</span>
-                  <span className="text-[11px] text-slate-400">(120+ reviews)</span>
+                  <span className="text-[11px] text-slate-400">{$t("GoogleAdsHero__t11", "(120+ reviews)")}</span>
                 </div>
-                <p className="text-[12px] text-slate-500 leading-relaxed mt-2">
-                  Professional Web Design Services. Get a Free Consultation Today.
-                </p>
+                <p className="text-caption text-slate-500 mt-2">
+                  {rich($t("GoogleAdsHero__t12", "Professional Web Design Services. Get a Free Consultation Today."))}</p>
                 <div className="flex flex-wrap items-center gap-2 mt-3">
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1.5 text-[11px] font-medium text-slate-600">
-                    <PhoneIcon /> Call Us
-                  </span>
+                    <PhoneIcon /> {$t("GoogleAdsHero__t13", "Call Us")}</span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1.5 text-[11px] font-medium text-slate-600">
-                    <QuoteIcon /> Get Quote
-                  </span>
+                    <QuoteIcon /> {$t("GoogleAdsHero__t14", "Get Quote")}</span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1.5 text-[11px] font-medium text-slate-600">
-                    <GlobeIcon /> Visit Website
-                  </span>
+                    <GlobeIcon /> {$t("GoogleAdsHero__t15", "Visit Website")}</span>
                 </div>
               </motion.div>
 
@@ -356,9 +355,9 @@ function SearchMockup() {
               <PhoneIcon size={14} color={G_GREEN} />
             </span>
             <div>
-              <p className="text-[12px] font-bold leading-tight" style={{ color: NAVY }}>New Lead</p>
-              <p className="text-[10.5px] text-slate-500 leading-tight">Phone Call</p>
-              <p className="text-[10px] text-slate-400 leading-tight">Just now</p>
+              <p className="text-caption font-bold" style={{ color: NAVY }}>{rich($t("GoogleAdsHero__t16", "New Lead"))}</p>
+              <p className="text-[10.5px] text-slate-500 leading-tight">{rich($t("GoogleAdsHero__t17", "Phone Call"))}</p>
+              <p className="text-[10px] text-slate-400 leading-tight">{rich($t("GoogleAdsHero__t18", "Just now"))}</p>
             </div>
             <TrendUpIcon />
           </motion.div>
@@ -369,6 +368,9 @@ function SearchMockup() {
 }
 
 export default function GoogleAdsHero() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("GoogleAdsHero__FEATURES", FEATURES__cms);
+  const STATS = useCmsData("GoogleAdsHero__STATS", STATS__cms);
   return (
     <section className="relative w-full bg-white pt-10 pb-12 lg:pt-14 lg:pb-16 overflow-x-clip">
       <Container>
@@ -377,44 +379,40 @@ export default function GoogleAdsHero() {
           <motion.div variants={container} initial="hidden" animate="show" className="relative z-10 max-w-xl">
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-slate-200 pl-2.5 pr-4 py-1.5 mb-5">
               <GoogleGIcon size={16} />
-              <span className="text-[11px] font-semibold text-slate-500">Google Partner</span>
+              <span className="text-[11px] font-semibold text-slate-500">{$t("GoogleAdsHero__t19", "Google Partner")}</span>
               <span className="text-slate-300">|</span>
-              <span className="text-[11px] font-semibold text-slate-500">5-Star Rated</span>
+              <span className="text-[11px] font-semibold text-slate-500">{$t("GoogleAdsHero__t20", "5-Star Rated")}</span>
               <span className="flex gap-0.5">{[0, 1, 2, 3, 4].map((s) => <StarIcon key={s} size={10} />)}</span>
             </motion.div>
 
-            <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-5xl lg:text-[54px] leading-[1.1] font-bold tracking-tight mb-6" style={{ color: NAVY }}>
-              Be Found.
-              <br />
-              Get <span style={{ color: G_BLUE }}>More Customers.</span>
+            <motion.h1 variants={fadeUp} className="text-h1 font-serif font-bold tracking-tight mb-6" style={{ color: NAVY }}>
+              {$t("GoogleAdsHero__t21", "Be Found.")}<br />
+              {$t("GoogleAdsHero__t22", "Get ")}<span style={{ color: G_BLUE }}>{$t("GoogleAdsHero__t23", "More Customers.")}</span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="text-sm md:text-base text-slate-600 leading-relaxed max-w-lg mb-8">
-              We create high-performing Google Ads campaigns that put your business at the top of search results—driving qualified leads, more calls, and real revenue.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body text-slate-600 max-w-lg mb-8">
+              {rich($t("GoogleAdsHero__t24", "We create high-performing Google Ads campaigns that put your business at the top of search results—driving qualified leads, more calls, and real revenue."))}</motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-9">
               <Link
-                href="/contact"
+                href={$t("GoogleAdsHero__t25", "/contact")}
                 className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-lg text-white text-[14px] font-semibold shadow-[0_15px_30px_-12px_rgba(66,133,244,0.6)] transition-transform hover:-translate-y-0.5"
                 style={{ backgroundColor: G_BLUE }}
               >
-                Get Free Google Ads Audit
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+                {$t("GoogleAdsHero__t26", "Get Free Google Ads Audit")}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
                   <path d="M5 12h14" />
                   <path d="M12 5l7 7-7 7" />
                 </svg>
               </Link>
               <Link
-                href="/portfolio"
+                href={$t("GoogleAdsHero__t27", "/portfolio")}
                 className="inline-flex items-center gap-3 px-6 py-3.5 rounded-lg bg-white border border-slate-300 text-[14px] font-semibold transition-colors hover:border-slate-400"
                 style={{ color: NAVY }}
               >
                 <span className="w-6 h-6 rounded-full border-[1.5px] flex items-center justify-center" style={{ borderColor: NAVY }}>
                   <PlayIcon />
                 </span>
-                See Our Success Stories
-              </Link>
+                {$t("GoogleAdsHero__t28", "See Our Success Stories")}</Link>
             </motion.div>
 
             {/* Feature row */}
@@ -448,10 +446,10 @@ export default function GoogleAdsHero() {
                 <stat.Icon />
               </span>
               <div>
-                <p className="text-lg font-bold leading-none" style={{ color: NAVY }}>
+                <p className="text-body font-bold" style={{ color: NAVY }}>
                   {stat.value === "24/7" ? stat.value : <Counter targetValue={stat.value} />}
                 </p>
-                <p className="text-[12px] font-semibold text-slate-700 mt-1">{stat.label}</p>
+                <p className="text-caption font-semibold text-slate-700 mt-1">{stat.label}</p>
                 <p className="text-[11px] text-slate-400">{stat.sub}</p>
               </div>
             </div>

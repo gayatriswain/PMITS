@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const PURPLE = "#7f54b3";
@@ -101,7 +102,7 @@ const ArrowIcon = ({ size = 15, color = PURPLE }: IconProps) => (
   </svg>
 );
 
-const POINTS = [
+const POINTS__cms = [
   {
     Icon: ShieldIcon,
     text: "Hiring qualified and experienced developers and not freelancers means your online store never experiences downtime. It also means all your projects are finished on time.",
@@ -124,7 +125,7 @@ const POINTS = [
   },
 ];
 
-const PROMISES = [
+const PROMISES__cms = [
   { Icon: ShieldIcon, title: "Secure & Reliable", desc: "Your store is in safe hands." },
   { Icon: BoltIcon, title: "Fast & Scalable", desc: "Built for speed and growth." },
   { Icon: BarsIcon, title: "Results Driven", desc: "Better stores. Higher sales." },
@@ -136,6 +137,7 @@ const CANVAS_W = 600;
 const CANVAS_H = 450;
 
 function CommitmentVisual() {
+  const $t = useCmsText();
   const { ref, scale } = useFitScale(CANVAS_W);
   return (
     <div ref={ref} className="relative w-full" style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}>
@@ -152,8 +154,8 @@ function CommitmentVisual() {
           className="absolute inset-0"
         >
           <Image
-            src="/WooCommerce3.webp"
-            alt="WooCommerce store on a laptop with a plant and a Woo shopping bag"
+            src={$t("WooCommitment__t1", "/WooCommerce3.webp")}
+            alt={$t("WooCommitment__t2", "WooCommerce store on a laptop with a plant and a Woo shopping bag")}
             width={1448}
             height={1086}
             sizes="(min-width: 1024px) 600px, 100vw"
@@ -173,11 +175,9 @@ function CommitmentVisual() {
             <BarsIcon size={20} />
           </span>
           <p className="text-[11px] font-bold leading-tight" style={{ color: NAVY }}>
-            Growing
-            <br />
-            Your Business
-            <br />
-            <span style={{ color: PURPLE }}>is Our Goal!</span>
+            {rich($t("WooCommitment__t3", "Growing"))}<br />
+            {rich($t("WooCommitment__t4", "Your Business"))}<br />
+            <span style={{ color: PURPLE }}>{$t("WooCommitment__t5", "is Our Goal!")}</span>
           </p>
         </motion.div>
 
@@ -187,6 +187,9 @@ function CommitmentVisual() {
 }
 
 export default function WooCommitment() {
+  const $t = useCmsText();
+  const POINTS = useCmsData("WooCommitment__POINTS", POINTS__cms);
+  const PROMISES = useCmsData("WooCommitment__PROMISES", PROMISES__cms);
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-white to-[#faf8fd] py-14 sm:py-16 lg:py-20">
       <Container>
@@ -201,17 +204,15 @@ export default function WooCommitment() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full" style={{ backgroundColor: PURPLE }}>
                 <StarIcon />
               </span>
-              Your success. Our commitment.
-            </motion.span>
+              {$t("WooCommitment__t6", "Your success. Our commitment.")}</motion.span>
 
             <motion.h2
               variants={fadeUp}
-              className="mt-5 text-[30px] sm:text-[38px] lg:text-[42px] font-extrabold leading-[1.15] tracking-tight"
+              className="text-h2 mt-5 font-extrabold tracking-tight"
               style={{ color: NAVY }}
             >
-              Build Powerful Stores.
-              <br />
-              Delivered with <span style={{ color: PURPLE }}>Commitment.</span>
+              {$t("WooCommitment__t7", "Build Powerful Stores.")}<br />
+              {$t("WooCommitment__t8", "Delivered with ")}<span style={{ color: PURPLE }}>{$t("WooCommitment__t9", "Commitment.")}</span>
             </motion.h2>
 
             <ol className="relative mt-8 flex flex-col gap-6">
@@ -223,7 +224,7 @@ export default function WooCommitment() {
                   >
                     <p.Icon />
                   </span>
-                  <p className="pt-1 text-[13.5px] leading-[1.75] text-slate-600">{p.text}</p>
+                  <p className="text-small pt-1 text-slate-600">{p.text}</p>
                 </motion.li>
               ))}
             </ol>
@@ -248,8 +249,8 @@ export default function WooCommitment() {
                   <span className="flex h-12 w-12 items-center justify-center rounded-full" style={{ backgroundColor: PURPLE_SOFT }}>
                     <p.Icon size={24} />
                   </span>
-                  <p className="mt-3 text-[13.5px] font-bold" style={{ color: NAVY }}>{p.title}</p>
-                  <p className="mt-1 max-w-[130px] text-[12px] leading-snug text-slate-500">{p.desc}</p>
+                  <p className="text-small mt-3 font-bold" style={{ color: NAVY }}>{p.title}</p>
+                  <p className="text-caption mt-1 max-w-[130px] text-slate-500">{p.desc}</p>
                 </motion.li>
               ))}
             </motion.ul>
@@ -274,26 +275,22 @@ export default function WooCommitment() {
           </span>
           <div className="relative flex-1 text-center md:text-left">
             <p className="text-[22px] sm:text-[26px] font-extrabold tracking-tight" style={{ color: NAVY }}>
-              Let&apos;s Build Something{" "}
+              {rich($t("WooCommitment__t10", "Let's Build Something"))}{" "}
               <span className={`${caveat.className} relative inline-block text-[32px] font-bold`} style={{ color: PURPLE }}>
-                Great
-                <svg className="pointer-events-none absolute -bottom-1 left-0 h-2 w-full" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
+                {$t("WooCommitment__t11", "Great")}<svg className="pointer-events-none absolute -bottom-1 left-0 h-2 w-full" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
                   <path d="M2 6C30 2 70 2 98 4" fill="none" stroke={PURPLE} strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
               </span>{" "}
-              Together!
-            </p>
-            <p className="mt-1 text-[13.5px] text-slate-600">
-              Call us today to learn how we can help you through WooCommerce development services.
-            </p>
+              {rich($t("WooCommitment__t12", "Together!"))}</p>
+            <p className="text-small mt-1 text-slate-600">
+              {rich($t("WooCommitment__t13", "Call us today to learn how we can help you through WooCommerce development services."))}</p>
           </div>
           <Link
-            href="/contact"
+            href={$t("WooCommitment__t14", "/contact")}
             className="group relative inline-flex shrink-0 items-center gap-4 rounded-xl py-2 pl-7 pr-2 text-[15px] font-semibold text-white shadow-[0_18px_35px_-14px_rgba(91,58,140,0.75)] transition hover:-translate-y-0.5"
             style={{ background: `linear-gradient(90deg, ${PURPLE_DARK}, ${PURPLE})` }}
           >
-            Let&apos;s Get Started
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
+            {$t("WooCommitment__t15", "Let's Get Started")}<span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
               <ArrowIcon />
             </span>
           </Link>

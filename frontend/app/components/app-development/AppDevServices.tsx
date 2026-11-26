@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -117,7 +119,7 @@ const ArrowIcon = () => (
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
 
-const SERVICES = [
+const SERVICES__cms = [
   { Icon: AppleIcon, title: "iOS App Development", desc: "High-performance iOS apps crafted for speed, security and an exceptional user experience." },
   { Icon: AndroidIcon, title: "Android App Development", desc: "Feature-rich Android apps that are powerful, scalable and built to reach billions of users." },
   { Icon: LayersIcon, title: "Cross-Platform Apps", desc: "One codebase. Any platform. Faster time to market with seamless cross-platform solutions." },
@@ -126,7 +128,7 @@ const SERVICES = [
   { Icon: ShieldCheckIcon, title: "Testing & Quality", desc: "Rigorous testing for performance, security and a bug-free experience your users will love." },
 ];
 
-const STATS = [
+const STATS__cms = [
   { target: 120, suffix: "+", label: "Apps Delivered", sub: "Across industries worldwide", Icon: RocketIcon },
   { target: 98, suffix: "%", label: "Client Satisfaction", sub: "Long-term relationships built on trust", Icon: SmileyIcon },
   { target: 4.9, suffix: "/5", label: "Average Rating", sub: "Consistently rated high by our clients", Icon: StarIcon },
@@ -193,6 +195,7 @@ function FloatingBadge({
 }
 
 function StatsBar() {
+  const STATS = useCmsData("AppDevServices__STATS", STATS__cms);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   return (
@@ -203,14 +206,14 @@ function StatsBar() {
             <stat.Icon color={DEEP_TEAL} size={19} />
           </span>
           <div>
-            <p className="text-xl font-bold tabular-nums leading-none" style={{ color: DEEP_TEAL }}>
+            <p className="text-body font-bold tabular-nums" style={{ color: DEEP_TEAL }}>
               {inView
                 ? Number.isInteger(stat.target)
                   ? <Counter target={stat.target} suffix={stat.suffix} />
                   : `${stat.target}${stat.suffix}`
                 : `0${stat.suffix}`}
             </p>
-            <p className="text-[12px] font-semibold text-slate-700 mt-1.5">{stat.label}</p>
+            <p className="text-caption font-semibold text-slate-700 mt-1.5">{stat.label}</p>
             <p className="text-[10.5px] text-slate-400 leading-snug mt-0.5 max-w-[140px]">{stat.sub}</p>
           </div>
         </div>
@@ -222,6 +225,8 @@ function StatsBar() {
 /* ------------------------------------------------------------------ */
 
 export default function AppDevServices() {
+  const $t = useCmsText();
+  const SERVICES = useCmsData("AppDevServices__SERVICES", SERVICES__cms);
   return (
     <section className="relative w-full bg-[#F7F9FA] py-14 lg:py-20 overflow-x-clip">
       <Container>
@@ -235,19 +240,16 @@ export default function AppDevServices() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-1 w-1 rounded-full" style={{ backgroundColor: TEAL }} />
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: TEAL }}>App Development Services</span>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: TEAL }}>{$t("AppDevServices__t1", "App Development Services")}</span>
             <span className="h-1 w-1 rounded-full" style={{ backgroundColor: TEAL }} />
           </div>
-          <h2 className="font-serif text-3xl md:text-[44px] leading-tight font-bold" style={{ color: NAVY }}>
-            Powerful Apps.
-            <br />
-            Seamless Experiences.
-            <br />
-            <span style={{ color: TEAL }}>Built For Growth.</span>
+          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
+            {$t("AppDevServices__t2", "Powerful Apps.")}<br />
+            {$t("AppDevServices__t3", "Seamless Experiences.")}<br />
+            <span style={{ color: TEAL }}>{$t("AppDevServices__t4", "Built For Growth.")}</span>
           </h2>
-          <p className="text-sm md:text-base text-slate-500 max-w-xl leading-relaxed mt-4">
-            From idea to launch and beyond, we build high-performance mobile apps that engage users, streamline operations, and drive measurable business success.
-          </p>
+          <p className="text-body text-slate-500 max-w-xl mt-4">
+            {rich($t("AppDevServices__t5", "From idea to launch and beyond, we build high-performance mobile apps that engage users, streamline operations, and drive measurable business success."))}</p>
         </motion.div>
 
         {/* Phone image + services grid */}
@@ -261,17 +263,17 @@ export default function AppDevServices() {
             className="relative mx-auto w-full max-w-[600px] aspect-[1393/1129]"
           >
             <Image
-              src="/app-dev-3-section.png"
-              alt="ProManage-built ecommerce app running on a phone"
+              src={$t("AppDevServices__t6", "/app-dev-3-section.png")}
+              alt={$t("AppDevServices__t7", "ProManage-built ecommerce app running on a phone")}
               fill
               className="object-contain object-bottom"
               sizes="(min-width: 1024px) 600px, 80vw"
               priority
             />
 
-            <FloatingBadge Icon={ChartIcon} label="Performance" sub="Optimized" className="left-[-6%] top-[38%] sm:left-[-4%]" delay={0.2} floatDuration={3} />
-            <FloatingBadge Icon={UserFocusIcon} label="User" sub="Focused" className="right-[2%] top-[42%] sm:right-[6%]" delay={0.35} floatDuration={3.6} />
-            <FloatingBadge Icon={ShieldCheckIcon} label="Secure &" sub="Reliable" className="left-[-2%] bottom-[16%] sm:left-[2%]" delay={0.5} floatDuration={3.3} />
+            <FloatingBadge Icon={ChartIcon} label={$t("AppDevServices__t8", "Performance")} sub="Optimized" className="left-[-6%] top-[38%] sm:left-[-4%]" delay={0.2} floatDuration={3} />
+            <FloatingBadge Icon={UserFocusIcon} label={$t("AppDevServices__t9", "User")} sub="Focused" className="right-[2%] top-[42%] sm:right-[6%]" delay={0.35} floatDuration={3.6} />
+            <FloatingBadge Icon={ShieldCheckIcon} label={$t("AppDevServices__t10", "Secure &")} sub="Reliable" className="left-[-2%] bottom-[16%] sm:left-[2%]" delay={0.5} floatDuration={3.3} />
             <motion.span
               initial={{ opacity: 0, scale: 0.7 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -302,9 +304,9 @@ export default function AppDevServices() {
                   <s.Icon color={DEEP_TEAL} size={22} />
                 </span>
                 <h3 className="text-[14px] font-bold mb-1.5" style={{ color: NAVY }}>{s.title}</h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed flex-1">{s.desc}</p>
+                <p className="text-caption text-slate-500 flex-1">{s.desc}</p>
                 <Link
-                  href="/contact"
+                  href={$t("AppDevServices__t11", "/contact")}
                   aria-label={`Learn more about ${s.title}`}
                   className="mt-4 flex h-7 w-7 items-center justify-center rounded-full border border-slate-200 transition-colors group-hover:border-transparent group-hover:text-white"
                   style={{ color: DEEP_TEAL }}
@@ -348,16 +350,15 @@ export default function AppDevServices() {
               <RocketIcon color="#fff" size={22} />
             </span>
             <div className="relative z-10">
-              <h3 className="text-[15px] font-bold text-white leading-snug">Have an App Idea?</h3>
+              <h3 className="text-[15px] font-bold text-white leading-snug">{$t("AppDevServices__t12", "Have an App Idea?")}</h3>
               <p className="text-[11px] text-white/70 leading-relaxed mt-1 mb-3">
-                We turn your idea into a powerful mobile experience that drives real impact.
-              </p>
+                {rich($t("AppDevServices__t13", "We turn your idea into a powerful mobile experience that drives real impact."))}</p>
               <Link
-                href="/contact"
+                href={$t("AppDevServices__t14", "/contact")}
                 className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-2 text-[11px] font-bold"
                 style={{ color: DEEP_TEAL }}
               >
-                Let&apos;s Build Together <ArrowIcon />
+                {$t("AppDevServices__t15", "Let's Build Together ")}<ArrowIcon />
               </Link>
             </div>
           </div>

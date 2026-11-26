@@ -4,6 +4,8 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import type { InstagramMedia } from "../../lib/instagram";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -89,7 +91,7 @@ type CardData = {
   href: string;
 };
 
-const CARDS: CardData[] = [
+const CARDS__cms: CardData[] = [
   { label: "Reels", Icon: ReelsIcon, image: "/content-reels.jpg", href: "#" },
   { label: "Carousels", Icon: GridIcon, image: "/content-carousels.jpg", href: "#" },
   { label: "Stories", Icon: CircleDotIcon, image: "/content-stories.jpg", href: "#" },
@@ -159,7 +161,7 @@ function LiveMediaCard({ item }: { item: InstagramMedia }) {
 /* Platforms                                                           */
 /* ------------------------------------------------------------------ */
 
-const PLATFORMS = [
+const PLATFORMS__cms = [
   {
     label: "Instagram",
     icon: (
@@ -230,6 +232,9 @@ export default function SocialMediaMarketingContentTypes({
 }: {
   liveMedia?: InstagramMedia[] | null;
 }) {
+  const $t = useCmsText();
+  const CARDS = useCmsData("SocialMediaMarketingContentTypes__CARDS", CARDS__cms);
+  const PLATFORMS = useCmsData("SocialMediaMarketingContentTypes__PLATFORMS", PLATFORMS__cms);
   const hasLiveMedia = !!liveMedia && liveMedia.length > 0;
 
   return (
@@ -246,22 +251,20 @@ export default function SocialMediaMarketingContentTypes({
             <motion.div variants={fadeUp} className="flex items-center gap-3 mb-3">
               <span className="w-6 h-[2px]" style={{ backgroundColor: TEAL }} />
               <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-                Content That Connects
-              </span>
+                {$t("SocialMediaMarketingContentTypes__t1", "Content That Connects")}</span>
             </motion.div>
-            <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-[42px] leading-tight font-bold">
-              <span className="block" style={{ color: NAVY }}>Great Content</span>
-              <span className="block" style={{ color: NAVY }}>Lives Everywhere.</span>
-              <span className="block font-serif italic" style={{ color: TEAL }}>We Make It Work.</span>
+            <motion.h2 variants={fadeUp} className="text-h2 font-serif font-bold">
+              <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingContentTypes__t2", "Great Content")}</span>
+              <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingContentTypes__t3", "Lives Everywhere.")}</span>
+              <span className="block font-serif italic" style={{ color: TEAL }}>{$t("SocialMediaMarketingContentTypes__t4", "We Make It Work.")}</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-sm md:text-base text-slate-600 leading-relaxed mt-4 max-w-md">
-              From scroll-stopping reels to engaging carousels and stories that convert &mdash; we create content designed to connect, engage, and grow your brand.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body text-slate-600 mt-4 max-w-md">
+              {rich($t("SocialMediaMarketingContentTypes__t5", "From scroll-stopping reels to engaging carousels and stories that convert — we create content designed to connect, engage, and grow your brand."))}</motion.p>
           </div>
 
           <motion.div variants={fadeUp} className="lg:pt-2 lg:text-right">
-            <p className="text-sm text-slate-500">Every platform. Every format.</p>
-            <p className="text-sm font-bold" style={{ color: NAVY }}>One consistent brand experience.</p>
+            <p className="text-small text-slate-500">{rich($t("SocialMediaMarketingContentTypes__t6", "Every platform. Every format."))}</p>
+            <p className="text-small font-bold" style={{ color: NAVY }}>{rich($t("SocialMediaMarketingContentTypes__t7", "One consistent brand experience."))}</p>
           </motion.div>
         </motion.div>
 
@@ -285,8 +288,7 @@ export default function SocialMediaMarketingContentTypes({
           className="mt-14 lg:mt-16 flex flex-col items-center text-center"
         >
           <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-slate-400 mb-5">
-            Creating Impact Across Platforms
-          </p>
+            {rich($t("SocialMediaMarketingContentTypes__t8", "Creating Impact Across Platforms"))}</p>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {PLATFORMS.map((p) => (
               <span key={p.label} className="flex items-center gap-2 text-[13px] font-medium text-slate-500">

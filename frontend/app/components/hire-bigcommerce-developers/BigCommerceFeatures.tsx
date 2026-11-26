@@ -6,11 +6,13 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, BC, DotGrid, Eyebrow, Icon, QUOTE_HREF, ease, fadeUp, heading, useSeen, type IconName } from "./BigCommerceShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* Stage 900×400 (from the design). Icons are 74 across. */
 const SW = 900, SH = 400, ICON = 74;
 type F = { title: string; text: string; icon: IconName; x: number; y: number; side: "l" | "r" };
-const feats: F[] = [
+const feats__cms: F[] = [
   { title: "Custom Storefronts", text: "Design unique, conversion-focused storefronts that reflect your brand and captivate customers.", icon: "store", x: 302, y: 60, side: "l" },
   { title: "Powerful Integrations", text: "Connect with 100+ apps and tools to streamline your workflow and extend your store’s capabilities.", icon: "puzzle", x: 230, y: 200, side: "l" },
   { title: "Scalable Infrastructure", text: "Enterprise-grade platform that grows with your business—no matter the size or scale.", icon: "grid", x: 268, y: 357, side: "l" },
@@ -21,6 +23,8 @@ const feats: F[] = [
 const pct = (v: number, of: number) => `${(v / of) * 100}%`;
 
 export default function BigCommerceFeatures() {
+  const $t = useCmsText();
+  const feats = useCmsData("BigCommerceFeatures__feats", feats__cms);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const seen = useSeen(ref);
@@ -40,22 +44,20 @@ export default function BigCommerceFeatures() {
       <DotGrid className="bottom-[16%] right-[3%] hidden xl:grid" cols={8} rows={6} />
       <Container className="relative">
         <div className="mx-auto max-w-[820px] text-center">
-          <Eyebrow variant="line" className="tracking-[0.3em]">BigCommerce Development</Eyebrow>
+          <Eyebrow variant="line" className="tracking-[0.3em]">{$t("BigCommerceFeatures__t1", "BigCommerce Development")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-[40px] font-bold leading-[1.05] tracking-tight text-[#0b1a4a] sm:text-6xl lg:text-[68px]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
           >
-            Build Commerce.
-            <br />
-            Scale <span className="text-[#0d8f9a]">Success.</span>
+            {$t("BigCommerceFeatures__t2", "Build Commerce.")}<br />
+            {$t("BigCommerceFeatures__t3", "Scale ")}<span className="text-[#0d8f9a]">{$t("BigCommerceFeatures__t4", "Success.")}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-4 text-base text-slate-600 sm:text-lg">
-            End-to-end BigCommerce development for stores that
-            <br className="hidden sm:block" />{" "}
-            <span className="font-semibold text-[#0d8f9a]">grow bigger, sell smarter, and scale faster.</span>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-4 text-slate-600">
+            {rich($t("BigCommerceFeatures__t5", "End-to-end BigCommerce development for stores that"))}<br className="hidden sm:block" />{" "}
+            <span className="font-semibold text-[#0d8f9a]">{$t("BigCommerceFeatures__t6", "grow bigger, sell smarter, and scale faster.")}</span>
           </motion.p>
         </div>
 
@@ -70,7 +72,7 @@ export default function BigCommerceFeatures() {
             style={{ left: pct(72, SW), top: pct(-15, SH), width: pct(831, SW), aspectRatio: "1736 / 906" }}
           >
             <div className="absolute inset-0 [mask-image:radial-gradient(circle_at_45.5%_52%,black_36%,transparent_56%)]">
-              <Image src={BC.coding.src} alt="BigCommerce developer coding a storefront" fill sizes="1000px" className="object-contain" />
+              <Image src={BC.coding.src} alt={$t("BigCommerceFeatures__t7", "BigCommerce developer coding a storefront")} fill sizes="1000px" className="object-contain" />
             </div>
             {/* wordmark on the blank monitor */}
             <motion.div
@@ -84,7 +86,7 @@ export default function BigCommerceFeatures() {
                 <path d="M4 32 36 2v30Z" fill="#0b1a4a" />
                 <path d="M18 18h8a5 5 0 0 1 0 10h-8Z" fill="#fff" />
               </svg>
-              <p className={`${heading.className} text-[1.25cqw] font-bold tracking-tight text-[#0b1a4a]`}>BIGCOMMERCE</p>
+              <p className={`${heading.className} text-[1.25cqw] font-bold tracking-tight text-[#0b1a4a]`}>{rich($t("BigCommerceFeatures__t8", "BIGCOMMERCE"))}</p>
             </motion.div>
             {/* spinning arc over the ring */}
             {!reduce && (
@@ -154,7 +156,7 @@ export default function BigCommerceFeatures() {
         {/* mobile / tablet */}
         <div className="mt-8 xl:hidden">
           <div className="relative mx-auto aspect-square w-[min(100%,380px)] overflow-hidden rounded-full border-4 border-cyan-200/70 shadow-[0_0_40px_rgba(34,211,238,0.35)]">
-            <Image src={BC.coding.src} alt="BigCommerce developer coding a storefront" fill sizes="380px" className="scale-[2.05] object-cover object-[46%_50%]" />
+            <Image src={BC.coding.src} alt={$t("BigCommerceFeatures__t9", "BigCommerce developer coding a storefront")} fill sizes="380px" className="scale-[2.05] object-cover object-[46%_50%]" />
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {feats.map((f, i) => (
@@ -175,25 +177,23 @@ export default function BigCommerceFeatures() {
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-10 flex flex-col items-center gap-5 xl:mt-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-6">
             <Link href={QUOTE_HREF} className="group inline-flex items-center justify-center gap-8 rounded-md bg-[#0d8f9a] px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_14px_30px_-14px_rgba(13,143,154,0.9)] transition hover:-translate-y-0.5 hover:bg-[#0b7c86]">
-              Start Your Project
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {$t("BigCommerceFeatures__t10", "Start Your Project")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link href={QUOTE_HREF} className="group inline-flex items-center justify-center gap-8 rounded-md border border-[#0d8f9a]/70 bg-white/70 px-9 py-3.5 text-[15px] font-semibold text-[#0d8f9a] transition hover:-translate-y-0.5 hover:bg-white">
-              View Our Work
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {$t("BigCommerceFeatures__t11", "View Our Work")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
           <div className="flex items-center gap-3 text-sm text-slate-600">
             <span className="flex -space-x-2">
               {[
-                ["RS", "from-amber-300 to-orange-400"],
-                ["AK", "from-sky-300 to-blue-500"],
-                ["NP", "from-teal-300 to-cyan-600"],
+                [$t("BigCommerceFeatures__t12", "RS"), "from-amber-300 to-orange-400"],
+                [$t("BigCommerceFeatures__t13", "AK"), "from-sky-300 to-blue-500"],
+                [$t("BigCommerceFeatures__t14", "NP"), "from-teal-300 to-cyan-600"],
               ].map(([t, g]) => (
                 <span key={t} className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br text-[10px] font-bold text-white ${g}`}>{t}</span>
               ))}
             </span>
-            <span>Let’s build something <span className="font-semibold text-[#0d8f9a]">amazing</span> together.</span>
+            <span>{$t("BigCommerceFeatures__t15", "Let’s build something ")}<span className="font-semibold text-[#0d8f9a]">amazing</span> {$t("BigCommerceFeatures__t16", "together.")}</span>
           </div>
         </motion.div>
       </Container>

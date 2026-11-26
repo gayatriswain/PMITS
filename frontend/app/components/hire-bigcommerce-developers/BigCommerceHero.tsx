@@ -6,6 +6,8 @@ import Link from "next/link";
 import { animate, motion, useMotionValue, useReducedMotion, useSpring, useTransform, type MotionValue } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, BC, Eyebrow, Icon, QUOTE_HREF, ease, heading, type IconName } from "./BigCommerceShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* Stage geometry (1560×590) taken from the design mock. Card rows are centred on these y values. */
 const SW = 1560, SH = 590;
@@ -20,12 +22,13 @@ const pct = (v: number, of: number) => `${(v / of) * 100}%`;
 type CardDef = { title: string; text: string; icon: IconName; mini: React.ReactNode };
 
 function MiniStorefront() {
+  const $t = useCmsText();
   return (
     <div className="w-[118px] rounded-lg border border-slate-100 bg-white p-1.5 shadow-sm">
       <div className="mb-1 flex gap-1">{["bg-rose-400", "bg-amber-400", "bg-emerald-400"].map((c) => <span key={c} className={`h-1 w-1 rounded-full ${c}`} />)}</div>
       <div className="flex h-[58px] items-center gap-1 rounded bg-gradient-to-r from-slate-50 to-sky-50 px-1.5">
         <div className="flex-1">
-          <p className="text-[8px] font-bold leading-tight text-[#0b1a4a]">Summer<br />Collection</p>
+          <p className="text-[8px] font-bold leading-tight text-[#0b1a4a]">{rich($t("BigCommerceHero__t1", "Summer"))}<br />{rich($t("BigCommerceHero__t2", "Collection"))}</p>
           <span className="mt-1 block h-2 w-8 rounded-sm bg-[#0b1a4a]" />
         </div>
         <div className="h-[50px] w-[34px] rounded-t-full bg-gradient-to-b from-amber-200 via-[#0d8f9a] to-[#0b5f6a]" />
@@ -34,10 +37,11 @@ function MiniStorefront() {
   );
 }
 function MiniApps() {
+  const $t = useCmsText();
   const apps = [
-    { c: "bg-amber-100 text-amber-700", t: "M" },
+    { c: "bg-amber-100 text-amber-700", t: $t("BigCommerceHero__t3", "M") },
     { c: "bg-sky-100 text-sky-600", t: "◎" },
-    { c: "bg-blue-600 text-white", t: "P" },
+    { c: "bg-blue-600 text-white", t: $t("BigCommerceHero__t4", "P") },
   ];
   return (
     <div className="flex items-center gap-1.5">
@@ -57,38 +61,42 @@ function MiniApps() {
   );
 }
 function MiniPay() {
+  const $t = useCmsText();
   return (
     <div className="w-[124px] rounded-lg border border-slate-100 bg-white p-2 shadow-sm">
-      <p className="text-[7px] text-slate-400">Credit Card</p>
-      <p className="mt-1 rounded border border-slate-100 px-1 py-0.5 text-[8px] tracking-wider text-slate-600">•••• •••• •••• 4242</p>
-      <span className="mt-1.5 block rounded bg-[#0d8f9a] py-1 text-center text-[8px] font-semibold text-white">Pay Securely</span>
+      <p className="text-[7px] text-slate-400">{rich($t("BigCommerceHero__t5", "Credit Card"))}</p>
+      <p className="mt-1 rounded border border-slate-100 px-1 py-0.5 text-[8px] tracking-wider text-slate-600">{rich($t("BigCommerceHero__t6", "•••• •••• •••• 4242"))}</p>
+      <span className="mt-1.5 block rounded bg-[#0d8f9a] py-1 text-center text-[8px] font-semibold text-white">{$t("BigCommerceHero__t7", "Pay Securely")}</span>
     </div>
   );
 }
 function MiniPhone() {
+  const $t = useCmsText();
   return (
     <div className="w-[64px] rounded-[10px] border border-slate-200 bg-white p-1.5 shadow-sm">
-      <p className="text-[6px] text-slate-400">Headphones</p>
+      <p className="text-[6px] text-slate-400">{rich($t("BigCommerceHero__t8", "Headphones"))}</p>
       <svg viewBox="0 0 40 34" className="mx-auto my-1 h-8 w-9" aria-hidden>
         <path d="M6 22v-6a14 14 0 0 1 28 0v6" stroke="#111827" strokeWidth="4" fill="none" />
         <rect x="3" y="18" width="9" height="13" rx="4" fill="#111827" />
         <rect x="28" y="18" width="9" height="13" rx="4" fill="#111827" />
       </svg>
-      <p className="text-[7px] font-bold text-[#0b1a4a]">$89.00</p>
+      <p className="text-[7px] font-bold text-[#0b1a4a]">{rich($t("BigCommerceHero__t9", "$89.00"))}</p>
     </div>
   );
 }
 function MiniTheme() {
+  const $t = useCmsText();
   return (
     <div className="w-[120px] overflow-hidden rounded-lg border border-slate-100 bg-white shadow-sm">
       <div className="flex gap-1 p-1">{["bg-rose-400", "bg-amber-400", "bg-emerald-400"].map((c) => <span key={c} className={`h-1 w-1 rounded-full ${c}`} />)}</div>
       <div className="flex h-[54px] items-end bg-gradient-to-br from-slate-700 via-slate-500 to-slate-300 p-1.5">
-        <p className="text-[8px] font-bold leading-tight text-white">NEW<br />ARRIVALS</p>
+        <p className="text-[8px] font-bold leading-tight text-white">{rich($t("BigCommerceHero__t10", "NEW"))}<br />{rich($t("BigCommerceHero__t11", "ARRIVALS"))}</p>
       </div>
     </div>
   );
 }
 function MiniGauge({ start }: { start: boolean }) {
+  const $t = useCmsText();
   const reduce = useReducedMotion();
   const [v, setV] = useState(reduce ? 95 : 0);
   useEffect(() => {
@@ -119,9 +127,9 @@ function MiniGauge({ start }: { start: boolean }) {
       </svg>
       <span className="absolute inset-x-0 top-[34%] text-center">
         <span className={`${heading.className} text-xl font-bold text-[#0b1a4a]`}>{v}</span>
-        <span className="text-[9px] text-slate-500">/100</span>
+        <span className="text-[9px] text-slate-500">{$t("BigCommerceHero__t12", "/100")}</span>
       </span>
-      <span className="absolute inset-x-0 bottom-0 text-center text-[8px] text-slate-400">Site Speed</span>
+      <span className="absolute inset-x-0 bottom-0 text-center text-[8px] text-slate-400">{$t("BigCommerceHero__t13", "Site Speed")}</span>
     </div>
   );
 }
@@ -146,11 +154,12 @@ function MiniLock() {
   );
 }
 function MiniChart() {
+  const $t = useCmsText();
   const reduce = useReducedMotion();
   return (
     <div className="w-[120px] rounded-lg border border-slate-100 bg-white p-2 shadow-sm">
-      <p className="text-[7px] text-slate-400">Total Sales</p>
-      <p className={`${heading.className} text-sm font-bold text-[#0b1a4a]`}>$48,860</p>
+      <p className="text-[7px] text-slate-400">{rich($t("BigCommerceHero__t14", "Total Sales"))}</p>
+      <p className={`text-small ${heading.className} font-bold text-[#0b1a4a]`}>{rich($t("BigCommerceHero__t15", "$48,860"))}</p>
       <svg viewBox="0 0 100 40" className="mt-1 h-9 w-full" aria-hidden>
         <defs>
           <linearGradient id="bcArea" x1="0" y1="0" x2="0" y2="1">
@@ -203,7 +212,7 @@ function FeatureCard({ c, side, i }: { c: CardDef; side: "l" | "r"; i: number })
   );
 }
 
-const trust: { label: [string, string]; icon: IconName }[] = [
+const trust__cms: { label: [string, string]; icon: IconName }[] = [
   { label: ["Expert BigCommerce", "Developers"], icon: "users" },
   { label: ["Agile & Scalable", "Solutions"], icon: "rocket" },
   { label: ["Transparent &", "Reliable"], icon: "shield" },
@@ -211,6 +220,8 @@ const trust: { label: [string, string]; icon: IconName }[] = [
 ];
 
 export default function BigCommerceHero() {
+  const $t = useCmsText();
+  const trust = useCmsData("BigCommerceHero__trust", trust__cms);
   const reduce = useReducedMotion();
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
@@ -220,20 +231,20 @@ export default function BigCommerceHero() {
 
 
   const left: CardDef[] = [
-    { title: "Custom Storefronts", text: "Unique storefronts that convert and engage.", icon: "store", mini: <MiniStorefront /> },
-    { title: "Apps & Integrations", text: "Connect with the tools your business relies on.", icon: "puzzle", mini: <MiniApps /> },
-    { title: "Payments & Checkout", text: "Secure, seamless, and high-converting checkout experiences.", icon: "briefcase", mini: <MiniPay /> },
-    { title: "Mobile Optimized", text: "Smooth shopping experience across all devices.", icon: "phone", mini: <MiniPhone /> },
+    { title: $t("BigCommerceHero__t16", "Custom Storefronts"), text: $t("BigCommerceHero__t17", "Unique storefronts that convert and engage."), icon: "store", mini: <MiniStorefront /> },
+    { title: $t("BigCommerceHero__t18", "Apps & Integrations"), text: $t("BigCommerceHero__t19", "Connect with the tools your business relies on."), icon: "puzzle", mini: <MiniApps /> },
+    { title: $t("BigCommerceHero__t20", "Payments & Checkout"), text: $t("BigCommerceHero__t21", "Secure, seamless, and high-converting checkout experiences."), icon: "briefcase", mini: <MiniPay /> },
+    { title: $t("BigCommerceHero__t22", "Mobile Optimized"), text: $t("BigCommerceHero__t23", "Smooth shopping experience across all devices."), icon: "phone", mini: <MiniPhone /> },
   ];
   const right: CardDef[] = [
-    { title: "Theme Customization", text: "Tailored themes built for your brand and goals.", icon: "sliders", mini: <MiniTheme /> },
-    { title: "Performance Optimization", text: "Faster stores. Happier customers. Higher sales.", icon: "chart", mini: <MiniGauge start /> },
-    { title: "Security & Reliability", text: "Enterprise-grade security you can count on.", icon: "shieldCheck", mini: <MiniLock /> },
-    { title: "Analytics & Insights", text: "Data-driven decisions that fuel growth.", icon: "trend", mini: <MiniChart /> },
+    { title: $t("BigCommerceHero__t24", "Theme Customization"), text: $t("BigCommerceHero__t25", "Tailored themes built for your brand and goals."), icon: "sliders", mini: <MiniTheme /> },
+    { title: $t("BigCommerceHero__t26", "Performance Optimization"), text: $t("BigCommerceHero__t27", "Faster stores. Happier customers. Higher sales."), icon: "chart", mini: <MiniGauge start /> },
+    { title: $t("BigCommerceHero__t28", "Security & Reliability"), text: $t("BigCommerceHero__t29", "Enterprise-grade security you can count on."), icon: "shieldCheck", mini: <MiniLock /> },
+    { title: $t("BigCommerceHero__t30", "Analytics & Insights"), text: $t("BigCommerceHero__t31", "Data-driven decisions that fuel growth."), icon: "trend", mini: <MiniChart /> },
   ];
 
-  const words1 = ["Build", "Commerce."];
-  const words2 = ["Scale", "Success."];
+  const words1 = [$t("BigCommerceHero__t32", "Build"), $t("BigCommerceHero__t33", "Commerce.")];
+  const words2 = [$t("BigCommerceHero__t34", "Scale"), $t("BigCommerceHero__t35", "Success.")];
 
   return (
     <section
@@ -250,8 +261,8 @@ export default function BigCommerceHero() {
 
       <Container className="relative">
         <div className="mx-auto max-w-[900px] text-center">
-          <Eyebrow variant="line" className="text-[13px] tracking-[0.3em] sm:text-sm">BigCommerce Development</Eyebrow>
-          <h1 className={`${heading.className} mt-5 text-[44px] font-bold leading-[1.02] tracking-tight text-[#0b1a4a] sm:text-6xl lg:text-[76px]`}>
+          <Eyebrow variant="line" className="text-[13px] tracking-[0.3em] sm:text-sm">{$t("BigCommerceHero__t36", "BigCommerce Development")}</Eyebrow>
+          <h1 className={`text-h1 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}>
             {[words1, words2].map((line, li) => (
               <span key={li} className="block">
                 {line.map((w, i) => (
@@ -273,12 +284,11 @@ export default function BigCommerceHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6, ease }}
-            className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg"
+            className="text-body mt-5 text-slate-600"
           >
-            End-to-end BigCommerce development for stores that
-            <br className="hidden sm:block" />{" "}
-            <span className="font-semibold text-[#0d8f9a]">grow bigger</span>, <span className="font-semibold text-[#0d8f9a]">sell smarter</span>, and{" "}
-            <span className="font-semibold text-[#0d8f9a]">scale faster</span>.
+            {rich($t("BigCommerceHero__t37", "End-to-end BigCommerce development for stores that"))}<br className="hidden sm:block" />{" "}
+            <span className="font-semibold text-[#0d8f9a]">{$t("BigCommerceHero__t38", "grow bigger")}</span>, <span className="font-semibold text-[#0d8f9a]">{$t("BigCommerceHero__t39", "sell smarter")}</span>{rich($t("BigCommerceHero__t40", ", and"))}{" "}
+            <span className="font-semibold text-[#0d8f9a]">{$t("BigCommerceHero__t41", "scale faster")}</span>.
           </motion.p>
         </div>
 
@@ -340,7 +350,7 @@ export default function BigCommerceHero() {
               transition={{ duration: 1.1, delay: 0.4, ease }}
               className="absolute inset-0 [mask-image:radial-gradient(ellipse_62%_60%_at_50%_52%,black_70%,transparent_100%)]"
             >
-              <Image src={BC.heroDev.src} alt="BigCommerce developer at work" fill priority sizes="(min-width:1280px) 660px, 560px" className="object-contain" />
+              <Image src={BC.heroDev.src} alt={$t("BigCommerceHero__t42", "BigCommerce developer at work")} fill priority sizes="(min-width:1280px) 660px, 560px" className="object-contain" />
             </motion.div>
             {/* logo on the laptop lid + mug */}
             <svg viewBox="0 0 40 30" className="absolute h-[5.5%] w-[5%]" style={{ left: "43%", top: "62.6%" }} aria-hidden>
@@ -360,9 +370,8 @@ export default function BigCommerceHero() {
               style={{ top: "80.5%" }}
             >
               <p className={`${heading.className} text-[clamp(18px,3.2vw,38px)] font-bold leading-none tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]`}>
-                <span className="font-extrabold">BIG</span>COMMERCE
-              </p>
-              <p className="mt-1 text-[clamp(7px,0.9vw,12px)] font-semibold tracking-[0.3em] text-white/90">POWERING YOUR COMMERCE</p>
+                <span className="font-extrabold">{$t("BigCommerceHero__t43", "BIG")}</span>{rich($t("BigCommerceHero__t44", "COMMERCE"))}</p>
+              <p className="mt-1 text-[clamp(7px,0.9vw,12px)] font-semibold tracking-[0.3em] text-white/90">{rich($t("BigCommerceHero__t45", "POWERING YOUR COMMERCE"))}</p>
             </motion.div>
             {!reduce && (
               <span aria-hidden className="mag-anim absolute left-1/2 top-[75%] h-[22%] w-[76%] rounded-[50%] border-2 border-cyan-300/70" style={{ animation: "magPing 3s ease-out infinite" }} />
@@ -397,18 +406,15 @@ export default function BigCommerceHero() {
         >
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-5">
             <Link href={QUOTE_HREF} className="group inline-flex items-center justify-center gap-6 rounded-md bg-[#0d8f9a] px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_14px_30px_-14px_rgba(13,143,154,0.9)] transition hover:-translate-y-0.5 hover:bg-[#0b7c86]">
-              Start Your Project
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {$t("BigCommerceHero__t46", "Start Your Project")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link href={QUOTE_HREF} className="group inline-flex items-center justify-center gap-6 rounded-md border border-[#0d8f9a]/70 bg-white/70 px-7 py-3.5 text-[15px] font-semibold text-[#0b1a4a] transition hover:-translate-y-0.5 hover:bg-white">
-              View Our Work
-              <ArrowRight className="h-4 w-4 text-[#0d8f9a] transition-transform group-hover:translate-x-1" />
+              {$t("BigCommerceHero__t47", "View Our Work")}<ArrowRight className="h-4 w-4 text-[#0d8f9a] transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-          <p className="flex items-center gap-2 text-sm text-slate-500">
+          <p className="text-small flex items-center gap-2 text-slate-500">
             <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#0d8f9a]" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z" /></svg>
-            Let’s build something amazing together.
-          </p>
+            {rich($t("BigCommerceHero__t48", "Let’s build something amazing together."))}</p>
         </motion.div>
 
         {/* trust bar */}

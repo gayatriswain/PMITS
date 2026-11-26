@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -38,7 +40,7 @@ type Plan = {
   featured?: boolean;
 };
 
-const PLANS: Plan[] = [
+const PLANS__cms: Plan[] = [
   {
     title: "CakePHP Developer",
     tag: "Backend Expert",
@@ -94,7 +96,7 @@ const PLANS: Plan[] = [
   },
 ];
 
-const PERKS = [
+const PERKS__cms = [
   {
     title: "Dedicated Resource",
     text: "100% focused on your project",
@@ -152,6 +154,9 @@ function Check() {
 }
 
 export default function HireCakePhpHireOptions() {
+  const $t = useCmsText();
+  const PLANS = useCmsData("HireCakePhpHireOptions__PLANS", PLANS__cms);
+  const PERKS = useCmsData("HireCakePhpHireOptions__PERKS", PERKS__cms);
   return (
     <section
       id="hire-options"
@@ -177,24 +182,20 @@ export default function HireCakePhpHireOptions() {
             style={{ color: RED }}
           >
             <i aria-hidden className="h-px w-8" style={{ background: RED, opacity: 0.5 }} />
-            Hire the Right Expertise
-            <i aria-hidden className="h-px w-8" style={{ background: RED, opacity: 0.5 }} />
+            {$t("HireCakePhpHireOptions__t1", "Hire the Right Expertise")}<i aria-hidden className="h-px w-8" style={{ background: RED, opacity: 0.5 }} />
           </motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="mt-4 font-playfair text-[34px] font-bold leading-[1.12] tracking-tight text-[#0f1a2e] sm:text-5xl lg:text-[50px]"
+            className="text-h2 mt-4 font-playfair font-bold tracking-tight text-[#0f1a2e]"
           >
-            Hire <span style={{ color: RED }}>CakePHP</span> Developers
-          </motion.h2>
+            {$t("HireCakePhpHireOptions__t2", "Hire ")}<span style={{ color: RED }}>{$t("HireCakePhpHireOptions__t3", "CakePHP")}</span> {$t("HireCakePhpHireOptions__t4", "Developers")}</motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-[15px]"
+            className="text-body mx-auto mt-4 max-w-xl text-slate-600"
           >
-            Choose the ideal CakePHP expertise for your project and scale your development
-            capacity as your business grows.
-          </motion.p>
+            {rich($t("HireCakePhpHireOptions__t5", "Choose the ideal CakePHP expertise for your project and scale your development capacity as your business grows."))}</motion.p>
         </motion.div>
 
         <div className="relative mt-12 lg:mt-14">
@@ -212,7 +213,7 @@ export default function HireCakePhpHireOptions() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               <Image
-                src="/Photorealistic Red Velvet Cake Slice.webp"
+                src={$t("HireCakePhpHireOptions__t6", "/Photorealistic Red Velvet Cake Slice.webp")}
                 alt=""
                 width={1199}
                 height={1312}
@@ -244,8 +245,7 @@ export default function HireCakePhpHireOptions() {
                       className="absolute right-4 top-0 -translate-y-1/2 rounded-full px-3 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-white shadow-md"
                       style={{ background: RED }}
                     >
-                      ★ Most Popular
-                    </span>
+                      {$t("HireCakePhpHireOptions__t7", "★ Most Popular")}</span>
                   )}
 
                   <div className="flex items-center gap-3">
@@ -266,7 +266,7 @@ export default function HireCakePhpHireOptions() {
                     </div>
                   </div>
 
-                  <p className="mt-4 text-[12.5px] leading-relaxed text-slate-500">{p.text}</p>
+                  <p className="text-caption mt-4 text-slate-500">{p.text}</p>
                   <hr className="my-4 border-[#f0e6e6]" />
 
                   <ul className="mb-6 flex-1 space-y-2.5">
@@ -279,7 +279,7 @@ export default function HireCakePhpHireOptions() {
                   </ul>
 
                   <Link
-                    href="#contact"
+                    href={$t("HireCakePhpHireOptions__t8", "#contact")}
                     className={`group inline-flex h-11 items-center justify-center gap-2.5 rounded-lg px-5 text-[13px] font-semibold transition ${
                       p.featured
                         ? "text-white shadow-[0_14px_28px_-10px_rgba(217,43,50,0.7)] hover:brightness-110"
@@ -329,18 +329,15 @@ export default function HireCakePhpHireOptions() {
                 style={{ borderColor: "#f1c9cb", background: "#fff8f8" }}
               >
                 <h4 className="text-[12.5px] font-bold leading-snug text-[#0f1a2e]">
-                  Need help choosing the right developer?
-                </h4>
+                  {$t("HireCakePhpHireOptions__t9", "Need help choosing the right developer?")}</h4>
                 <p className="mt-1 text-[10.5px] leading-snug text-slate-500">
-                  Our experts will help you find the perfect fit for your project.
-                </p>
+                  {rich($t("HireCakePhpHireOptions__t10", "Our experts will help you find the perfect fit for your project."))}</p>
                 <Link
-                  href="#contact"
+                  href={$t("HireCakePhpHireOptions__t11", "#contact")}
                   className="group mt-2 inline-flex items-center gap-1.5 text-[11.5px] font-semibold"
                   style={{ color: RED }}
                 >
-                  Get a Free Consultation
-                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+                  {$t("HireCakePhpHireOptions__t12", "Get a Free Consultation")}<span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
                 </Link>

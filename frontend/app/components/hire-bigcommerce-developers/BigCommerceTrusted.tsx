@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import CountUp from "../shared/CountUp";
 import { ArrowRight, Eyebrow, Icon, QUOTE_HREF, ease, fadeUp, heading, type IconName } from "./BigCommerceShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* Brands that run on the BigCommerce platform, shown as plain-text wordmarks (not logos). */
-const platformBrands: { name: string; cls: string }[] = [
+const platformBrands__cms: { name: string; cls: string }[] = [
   { name: "PAIGE", cls: "font-black tracking-[-0.02em] text-[26px] text-[#111]" },
   { name: "BEN & JERRY’S", cls: "rounded-full border-2 border-[#3b2412] bg-[#f5e3c6] px-3 py-0.5 text-[13px] font-black italic text-[#3b2412]" },
   { name: "Skullcandy", cls: "font-extrabold tracking-tight text-[22px] text-[#111]" },
@@ -17,7 +19,7 @@ const platformBrands: { name: string; cls: string }[] = [
   { name: "TED BAKER", cls: "font-serif text-[16px] tracking-[0.35em] text-[#111]" },
 ];
 
-const stats: { icon: IconName; value: React.ReactNode; label: [string, string] }[] = [
+const stats__cms: { icon: IconName; value: React.ReactNode; label: [string, string] }[] = [
   { icon: "store", value: <CountUp to={60000} suffix="+" />, label: ["Active Stores", "and Counting"] },
   { icon: "network", value: <CountUp to={120} suffix="+" />, label: ["Countries", "Globally"] },
   { icon: "users", value: "Millions", label: ["of Shoppers Served", "Worldwide"] },
@@ -48,22 +50,23 @@ function DotMap({ className = "", seed = 1 }: { className?: string; seed?: numbe
 }
 
 export default function BigCommerceTrusted() {
+  const $t = useCmsText();
+  const platformBrands = useCmsData("BigCommerceTrusted__platformBrands", platformBrands__cms);
+  const stats = useCmsData("BigCommerceTrusted__stats", stats__cms);
   return (
     <section className="relative overflow-hidden bg-[#f7f9fc] py-12 sm:py-16">
       <Container className="relative">
         <div className="mx-auto max-w-[820px] text-center">
-          <Eyebrow variant="line" className="tracking-[0.25em]">Trusted by 60,000+ businesses worldwide</Eyebrow>
+          <Eyebrow variant="line" className="tracking-[0.25em]">{$t("BigCommerceTrusted__t1", "Trusted by 60,000+ businesses worldwide")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-[34px] font-bold leading-[1.1] tracking-tight text-[#0b1a4a] sm:text-5xl lg:text-[54px]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
           >
-            Powering <span className="text-[#0d8f9a]">60,000+</span> Stores
-            <br />
-            Across the Globe
-          </motion.h2>
+            {$t("BigCommerceTrusted__t2", "Powering ")}<span className="text-[#0d8f9a]">{$t("BigCommerceTrusted__t3", "60,000+")}</span> {$t("BigCommerceTrusted__t4", "Stores")}<br />
+            {$t("BigCommerceTrusted__t5", "Across the Globe")}</motion.h2>
           <motion.span
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -71,9 +74,8 @@ export default function BigCommerceTrusted() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mx-auto mt-3 block h-[3px] w-12 rounded bg-[#0d8f9a]"
           />
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mx-auto mt-4 max-w-[560px] text-base text-slate-600 sm:text-lg">
-            From startups to global enterprises, BigCommerce empowers brands of all sizes to build, grow, and succeed online.
-          </motion.p>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mx-auto mt-4 max-w-[560px] text-slate-600">
+            {rich($t("BigCommerceTrusted__t6", "From startups to global enterprises, BigCommerce empowers brands of all sizes to build, grow, and succeed online."))}</motion.p>
         </div>
 
         {/* brand strip */}
@@ -115,7 +117,7 @@ export default function BigCommerceTrusted() {
                   <Icon name={s.icon} className="h-7 w-7" />
                 </span>
                 <p className={`${heading.className} mt-3 text-2xl font-bold text-[#0b1a4a]`}>{s.value}</p>
-                <p className="text-[13px] leading-snug text-slate-600">
+                <p className="text-small text-slate-600">
                   {s.label[0]}
                   <br />
                   {s.label[1]}
@@ -125,8 +127,7 @@ export default function BigCommerceTrusted() {
           </ul>
           <div className="mt-8 flex justify-center">
             <Link href={QUOTE_HREF} className="group inline-flex items-center gap-3 text-[15px] font-semibold text-[#0d8f9a]">
-              See all customer stories
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0d8f9a] text-white transition-transform group-hover:translate-x-1">
+              {$t("BigCommerceTrusted__t7", "See all customer stories")}<span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0d8f9a] text-white transition-transform group-hover:translate-x-1">
                 <ArrowRight className="h-4 w-4" />
               </span>
             </Link>

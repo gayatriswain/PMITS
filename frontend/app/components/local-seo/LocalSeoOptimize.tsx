@@ -4,8 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Eye, FileText, Gauge, MapPin, Megaphone, MapPinned, Network, Search, Star, Store, Target, TrendingUp, Users } from "lucide-react";
 import { Inner, LH2, LS, Panel, T, ease, heading } from "./LocalSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const SERVICES = [
+const SERVICES__cms = [
   { Icon: Store, title: "Google Business Profile Optimization", text: "Complete, optimize and enhance your GBP to rank higher and get noticed." },
   { Icon: Search, title: "Local Keyword Strategy", text: "Target the right local keywords that your customers are actually searching." },
   { Icon: Megaphone, title: "On-Page Local SEO", text: "Optimize your website pages to make them relevant, visible and conversion-ready." },
@@ -16,7 +18,7 @@ const SERVICES = [
   { Icon: Gauge, title: "Technical SEO for Local", text: "Improve site speed, mobile experience and technical health for better local rankings." },
 ];
 
-const WINS = [
+const WINS__cms = [
   { Icon: Eye, label: "Rank Higher in Local Searches" },
   { Icon: Users, label: "Attract More Local Customers" },
   { Icon: MapPin, label: "Increase Foot Traffic" },
@@ -24,13 +26,16 @@ const WINS = [
 ];
 
 export default function LocalSeoOptimize() {
+  const $t = useCmsText();
+  const SERVICES = useCmsData("LocalSeoOptimize__SERVICES", SERVICES__cms);
+  const WINS = useCmsData("LocalSeoOptimize__WINS", WINS__cms);
   return (
     <Panel inner="!bg-[#f6f8fa]">
       <Inner className="!max-w-[1360px] py-14 sm:py-16 lg:py-20 2xl:py-24">
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div>
             <LH2 size="text-[clamp(32px,3.3vw,64px)]">
-              What We <T>Optimize.</T>
+              {$t("LocalSeoOptimize__t1", "What We ")}<T>{$t("LocalSeoOptimize__t2", "Optimize.")}</T>
             </LH2>
             <motion.span
               initial={{ scaleX: 0 }}
@@ -39,9 +44,9 @@ export default function LocalSeoOptimize() {
               transition={{ delay: 0.3, duration: 0.8, ease }}
               className="mt-4 block h-[3px] w-20 origin-left rounded-full bg-[#0f766e]"
             />
-            <p className="mt-5 max-w-[520px] text-lg leading-relaxed text-slate-600 2xl:text-[21px]">
-              Let&apos;s top-end Local SEO that improves <b className="font-semibold text-[#0f766e]">visibility</b>, <b className="font-semibold text-[#0f766e]">trust</b> and{" "}
-              <b className="font-semibold text-[#0f766e]">foot traffic.</b>
+            <p className="text-body mt-5 max-w-[520px] text-slate-600">
+              {rich($t("LocalSeoOptimize__t3", "Let's top-end Local SEO that improves "))}<b className="font-semibold text-[#0f766e]">visibility</b>, <b className="font-semibold text-[#0f766e]">trust</b> and{" "}
+              <b className="font-semibold text-[#0f766e]">{$t("LocalSeoOptimize__t4", "foot traffic.")}</b>
             </p>
           </div>
           <motion.div
@@ -51,7 +56,7 @@ export default function LocalSeoOptimize() {
             transition={{ duration: 0.8, ease }}
             className="relative aspect-[2.78] w-full"
           >
-            <Image src={LS.routeScene} alt="Route leading to a local shop on a map" fill sizes="(min-width:1024px) 680px, 95vw" className="object-contain [mask-image:radial-gradient(60%_70%_at_50%_50%,#000_60%,transparent)]" />
+            <Image src={LS.routeScene} alt={$t("LocalSeoOptimize__t5", "Route leading to a local shop on a map")} fill sizes="(min-width:1024px) 680px, 95vw" className="object-contain [mask-image:radial-gradient(60%_70%_at_50%_50%,#000_60%,transparent)]" />
           </motion.div>
         </div>
 
@@ -87,7 +92,7 @@ export default function LocalSeoOptimize() {
                 </span>
               </span>
               <h3 className={`${heading.className} mt-5 min-h-[2.6em] text-[17px] font-semibold leading-snug text-[#0b1b33] 2xl:text-[19px]`}>{title}</h3>
-              <p className="mt-2 text-[14px] leading-relaxed text-slate-600 2xl:text-[15px]">{text}</p>
+              <p className="text-small mt-2 text-slate-600">{text}</p>
             </motion.div>
           ))}
         </div>
@@ -101,10 +106,8 @@ export default function LocalSeoOptimize() {
         >
           <div className="flex items-center gap-4 sm:col-span-full lg:col-span-1 lg:pr-8">
             <Target className="h-14 w-14 shrink-0 text-[#14a39a]" strokeWidth={1.6} />
-            <p className={`${heading.className} text-[17px] font-semibold leading-snug text-[#0b1b33] 2xl:text-[19px]`}>
-              More Visibility.
-              <br /> More Trust.
-              <br /> More <T>Customers.</T>
+            <p className={`text-body ${heading.className} font-semibold text-[#0b1b33]`}>
+              {rich($t("LocalSeoOptimize__t6", "More Visibility."))}<br /> {rich($t("LocalSeoOptimize__t7", "More Trust."))}<br /> {rich($t("LocalSeoOptimize__t8", "More "))}<T>{$t("LocalSeoOptimize__t9", "Customers.")}</T>
             </p>
           </div>
           {WINS.map(({ Icon, label }) => (

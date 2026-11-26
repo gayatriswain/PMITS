@@ -6,6 +6,8 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, DotGrid, Emblem, EdgeChevrons, Eyebrow, Icon, IMG, ease, fadeUp, heading, useSeen, type IconName } from "../shared/MagentoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 type Svc = {
   n: string;
@@ -22,7 +24,7 @@ type Svc = {
 /* Geometry taken from the design mock, in a 1440×700 stage.
    Bulb: 270 wide centred on x=715, top y=150. Tablet: 615 wide centred on x=722, top y=470. Nodes are 120 across. */
 const SW = 1440, SH = 700, NODE = 120;
-const services: Svc[] = [
+const services__cms: Svc[] = [
   { n: "01", title: ["Magento Store", "Development"], icon: "store", x: 340, y: 298, label: "l", spoke: [430, 297, 556, 297], text: "End-to-end store builds — catalog, checkout, payments and shipping set up right." },
   { n: "02", title: ["Theme & Frontend", "Development"], icon: "layout", x: 490, y: 128, label: "l", spoke: [547, 177, 588, 205], text: "Pixel-perfect, mobile-first themes (Luma, Hyvä or custom) that load fast." },
   { n: "03", title: ["Custom", "Development"], icon: "code", x: 700, y: 67, label: "t", spoke: [703, 133, 705, 162], text: "Custom modules and business logic built to Magento coding standards." },
@@ -34,6 +36,8 @@ const services: Svc[] = [
 const pct = (v: number, of: number) => `${(v / of) * 100}%`;
 
 export default function MagentoServices() {
+  const $t = useCmsText();
+  const services = useCmsData("MagentoServices__services", services__cms);
   const reduce = useReducedMotion();
   const stageRef = useRef<HTMLDivElement>(null);
 
@@ -56,21 +60,19 @@ export default function MagentoServices() {
 
       <Container className="relative">
         <div className="text-center">
-          <Eyebrow>What your Magento developer can handle</Eyebrow>
+          <Eyebrow>{$t("MagentoServices__t1", "What your Magento developer can handle")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-4xl font-bold uppercase leading-[1.05] tracking-tight text-[#0c1e3d] sm:text-5xl lg:text-[56px]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold uppercase tracking-tight text-[#0c1e3d]`}
           >
-            7 <span className="text-[#0d9488]">Services.</span>
+            {$t("MagentoServices__t2", "7 ")}<span className="text-[#0d9488]">{$t("MagentoServices__t3", "Services.")}</span>
             <br />
-            One Solution.
-          </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-4 text-base text-slate-600 sm:text-lg">
-            Everything your store needs. Handled by Magento experts.
-          </motion.p>
+            {$t("MagentoServices__t4", "One Solution.")}</motion.h2>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-4 text-slate-600">
+            {rich($t("MagentoServices__t5", "Everything your store needs. Handled by Magento experts."))}</motion.p>
         </div>
 
         {/* Desktop stage */}
@@ -121,7 +123,7 @@ export default function MagentoServices() {
             style={{ left: pct(715 - 135, SW), top: pct(150, SH), width: pct(270, SW) }}
           >
             <motion.div animate={reduce ? undefined : { y: [0, -6, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
-              <Image src={IMG.bulb.src} alt="Magento ideas light bulb" width={IMG.bulb.w} height={IMG.bulb.h} sizes="240px" className="h-auto w-full drop-shadow-[0_0_28px_rgba(249,115,22,0.35)]" />
+              <Image src={IMG.bulb.src} alt={$t("MagentoServices__t6", "Magento ideas light bulb")} width={IMG.bulb.w} height={IMG.bulb.h} sizes="240px" className="h-auto w-full drop-shadow-[0_0_28px_rgba(249,115,22,0.35)]" />
             </motion.div>
           </motion.div>
 
@@ -222,7 +224,7 @@ export default function MagentoServices() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.3 }}
-              className="rounded-full border border-slate-200 bg-white/90 px-5 py-2 text-sm text-slate-600 shadow-sm"
+              className="text-small rounded-full border border-slate-200 bg-white/90 px-5 py-2 text-slate-600 shadow-sm"
               aria-live="polite"
             >
               <span className="font-semibold text-[#0d9488]">{services[active].n}</span>
@@ -236,7 +238,7 @@ export default function MagentoServices() {
         <div className="mt-8 xl:hidden">
           <div className="relative mx-auto w-[220px]">
             <motion.div animate={reduce ? undefined : { y: [0, -6, 0] }} transition={{ duration: 4, repeat: Infinity }} className="relative z-10 mx-auto w-[120px]">
-              <Image src={IMG.bulb.src} alt="Magento ideas light bulb" width={IMG.bulb.w} height={IMG.bulb.h} sizes="120px" className="h-auto w-full" />
+              <Image src={IMG.bulb.src} alt={$t("MagentoServices__t7", "Magento ideas light bulb")} width={IMG.bulb.w} height={IMG.bulb.h} sizes="120px" className="h-auto w-full" />
             </motion.div>
             <Image src={IMG.tablet.src} alt="" width={IMG.tablet.w} height={IMG.tablet.h} sizes="220px" className="-mt-10 h-auto w-full" />
           </div>
@@ -293,20 +295,18 @@ export default function MagentoServices() {
             </motion.div>
           </div>
           <div className="flex-1 text-center md:text-left">
-            <h3 className={`${heading.className} text-2xl font-semibold text-[#0c1e3d] sm:text-[28px]`}>
-              One platform. <span className="text-[#0d9488]">Endless possibilities.</span>
+            <h3 className={`text-h4 ${heading.className} font-semibold text-[#0c1e3d]`}>
+              {$t("MagentoServices__t8", "One platform. ")}<span className="text-[#0d9488]">{$t("MagentoServices__t9", "Endless possibilities.")}</span>
             </h3>
-            <p className="mt-2 max-w-[520px] text-sm leading-relaxed text-slate-600 sm:text-base">
-              Whether you’re building from scratch or improving an existing store, get Magento expertise aligned with what you need.
-            </p>
+            <p className="text-body mt-2 max-w-[520px] text-slate-600">
+              {rich($t("MagentoServices__t10", "Whether you’re building from scratch or improving an existing store, get Magento expertise aligned with what you need."))}</p>
           </div>
           <Link
-            href="#magento-proposal"
+            href={$t("MagentoServices__t11", "#magento-proposal")}
             className="group relative inline-flex shrink-0 items-center gap-3 overflow-hidden rounded-md bg-[#0c1e3d] px-6 py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition hover:-translate-y-0.5"
           >
             <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 skew-x-[-20deg] bg-white/20 transition-[left] duration-700 group-hover:left-[120%]" />
-            Tell us your requirement
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            {$t("MagentoServices__t12", "Tell us your requirement")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </motion.div>
       </Container>

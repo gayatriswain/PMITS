@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const INK = "#0d1b33";
 const TEAL = "#0e7490";
@@ -53,14 +54,14 @@ function Laurel({ color, flip }: { color: string; flip?: boolean }) {
   );
 }
 
-const AWARDS = [
+const AWARDS__cms = [
   { src: "/client-testimonial3.webp", alt: "Clutch Top Web Developers 2024 badge", title: "Top Web Developers", by: "Clutch", year: "2024", color: "#1d4ed8" },
   { src: "/client-testimonial4.webp", alt: "GoodFirms Top Digital Marketing Company badge", title: "Top Digital Marketing Company", by: "GoodFirms", year: "2023", color: "#2563eb" },
   { src: "/client-testimonial5.webp", alt: "Upwork Top Rated Plus Agency badge", title: "Top Rated Plus Agency", by: "Upwork", year: "2024", color: "#15803d" },
   { src: "/client-testimonial6.webp", alt: "The Manifest Most Reviewed Company badge", title: "Most Reviewed Company", by: "The Manifest", year: "2024", color: "#be123c" },
 ];
 
-function AwardCard({ a, i }: { a: (typeof AWARDS)[number]; i: number }) {
+function AwardCard({ a, i }: { a: (typeof AWARDS__cms)[number]; i: number }) {
   return (
     <motion.li
       initial={{ opacity: 0, y: 36 }}
@@ -108,11 +109,11 @@ function AwardCard({ a, i }: { a: (typeof AWARDS)[number]; i: number }) {
       <h3 className="-mt-4 whitespace-nowrap text-[16px] font-bold leading-snug" style={{ color: INK }}>
         {a.title}
       </h3>
-      <p className="mt-0.5 text-[14px] font-medium" style={{ color: a.color }}>
+      <p className="text-small mt-0.5 font-medium" style={{ color: a.color }}>
         {a.by}
       </p>
       <span className="mt-2 h-[2px] w-6 rounded-full" style={{ backgroundColor: a.color, opacity: 0.6 }} />
-      <p className="mt-1.5 flex items-center gap-3 text-[18px] font-bold" style={{ color: INK }}>
+      <p className="text-body mt-1.5 flex items-center gap-3 font-bold" style={{ color: INK }}>
         <Laurel color={a.color} />
         {a.year}
         <Laurel color={a.color} flip />
@@ -122,23 +123,21 @@ function AwardCard({ a, i }: { a: (typeof AWARDS)[number]; i: number }) {
 }
 
 export default function TestimonialsAwards() {
+  const $t = useCmsText();
+  const AWARDS = useCmsData("TestimonialsAwards__AWARDS", AWARDS__cms);
   return (
     <section id="client-stories" className="relative w-full overflow-hidden bg-gradient-to-b from-white via-[#f7fafc] to-white pb-12 pt-16 lg:pb-14 lg:pt-20">
       <Container className="relative">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
-            <motion.p variants={fadeUp} className="text-[13px] font-semibold uppercase tracking-[0.12em]" style={{ color: TEAL }}>
-              Recognition &amp; Awards
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-small font-semibold uppercase tracking-[0.12em]" style={{ color: TEAL }}>
+              {rich($t("TestimonialsAwards__t1", "Recognition & Awards"))}</motion.p>
             <motion.span variants={fadeUp} className="mt-2 block h-[2px] w-10 rounded-full" style={{ backgroundColor: TEAL }} />
-            <motion.h2 variants={fadeUp} className="mt-5 text-[40px] font-bold leading-[1.08] tracking-tight sm:text-[56px]" style={{ color: INK }}>
-              Milestones that
-              <br />
-              <span style={{ color: TEAL }}>Reflect Our</span> Mission.
-            </motion.h2>
-            <motion.p variants={fadeUp} className="mt-6 max-w-[440px] text-[16px] leading-[1.7] text-slate-600">
-              Every award is a reflection of our commitment to deliver excellence, innovation and impact.
-            </motion.p>
+            <motion.h2 variants={fadeUp} className="text-h2 mt-5 font-bold tracking-tight" style={{ color: INK }}>
+              {$t("TestimonialsAwards__t2", "Milestones that")}<br />
+              <span style={{ color: TEAL }}>{$t("TestimonialsAwards__t3", "Reflect Our")}</span> {$t("TestimonialsAwards__t4", "Mission.")}</motion.h2>
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[440px] text-slate-600">
+              {rich($t("TestimonialsAwards__t5", "Every award is a reflection of our commitment to deliver excellence, innovation and impact."))}</motion.p>
             <motion.svg variants={fadeUp} className="mt-4" width="60" height="10" viewBox="0 0 60 10" fill="none" aria-hidden>
               <path d="M2 7c6-5 10-5 14 0s8 5 14 0 10-5 14 0 8 5 14 0" stroke="#22d3ee" strokeWidth="2" strokeLinecap="round" />
             </motion.svg>
@@ -154,8 +153,8 @@ export default function TestimonialsAwards() {
             style={{ aspectRatio: "1411 / 752" }}
           >
             <Image
-              src="/client-testimonial2.webp"
-              alt="A glass star trophy on a podium, with award icons round it"
+              src={$t("TestimonialsAwards__t6", "/client-testimonial2.webp")}
+              alt={$t("TestimonialsAwards__t7", "A glass star trophy on a podium, with award icons round it")}
               fill
               sizes="(min-width: 1024px) 55vw, 100vw"
               className="object-cover [mask-image:radial-gradient(ellipse_at_center,#000_55%,transparent_75%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,#000_55%,transparent_75%)]"
@@ -164,13 +163,10 @@ export default function TestimonialsAwards() {
               className={`${caveat.className} absolute right-[2%] top-[14%] -rotate-6 text-right text-[26px] leading-[1.05] sm:text-[32px]`}
               style={{ color: INK }}
             >
-              Recognized.
-              <br />
-              Trusted.
-              <br />
+              {rich($t("TestimonialsAwards__t8", "Recognized."))}<br />
+              {rich($t("TestimonialsAwards__t9", "Trusted."))}<br />
               <span className="relative">
-                Chosen.
-                <svg className="absolute -bottom-2 left-0 h-2 w-full" viewBox="0 0 80 8" preserveAspectRatio="none" aria-hidden>
+                {$t("TestimonialsAwards__t10", "Chosen.")}<svg className="absolute -bottom-2 left-0 h-2 w-full" viewBox="0 0 80 8" preserveAspectRatio="none" aria-hidden>
                   <path d="M2 6C25 2 55 1 78 3" stroke={TEAL} strokeWidth="2" strokeLinecap="round" fill="none" />
                 </svg>
               </span>

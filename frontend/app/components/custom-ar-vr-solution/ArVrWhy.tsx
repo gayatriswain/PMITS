@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -27,7 +29,7 @@ const I = {
   className: "h-7 w-7",
 };
 
-const POINTS = [
+const POINTS__cms = [
   {
     title: "Business-First Thinking",
     text: "We start with your objective, audience and measurable outcome to ensure real value.",
@@ -86,12 +88,14 @@ const POINTS = [
 const ROW = 96;
 const ARC = 44;
 const DOT_X = 14;
-const pushFor = (i: number) => {
+
+
+function ArcLine() {
+  const POINTS = useCmsData("ArVrWhy__POINTS", POINTS__cms);
+  const pushFor = (i: number) => {
   const t = i / (POINTS.length - 1);
   return ARC * 4 * t * (1 - t);
 };
-
-function ArcLine() {
   const h = ROW * POINTS.length;
   const y0 = ROW / 2;
   const y1 = h - ROW / 2;
@@ -126,6 +130,12 @@ function ArcLine() {
 }
 
 export default function ArVrWhy() {
+  const $t = useCmsText();
+  const POINTS = useCmsData("ArVrWhy__POINTS", POINTS__cms);
+  const pushFor = (i: number) => {
+  const t = i / (POINTS.length - 1);
+  return ARC * 4 * t * (1 - t);
+};
   return (
     <section
       id="why-promanage"
@@ -145,27 +155,22 @@ export default function ArVrWhy() {
                 custom={0}
                 className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
               >
-                Why ProManage
-              </motion.span>
+                {$t("ArVrWhy__t1", "Why ProManage")}</motion.span>
               <motion.h2
                 variants={fadeUp}
                 custom={1}
-                className="mt-4 text-4xl font-black leading-[1.08] tracking-tight text-[#0f1535] sm:text-5xl lg:text-[52px]"
+                className="text-h2 mt-4 font-black tracking-tight text-[#0f1535]"
               >
-                Technology that solves{" "}
+                {$t("ArVrWhy__t2", "Technology that solves")}{" "}
                 <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-                  real business
-                </span>{" "}
-                problems.
-              </motion.h2>
+                  {$t("ArVrWhy__t3", "real business")}</span>{" "}
+                {$t("ArVrWhy__t4", "problems.")}</motion.h2>
               <motion.p
                 variants={fadeUp}
                 custom={2}
-                className="mt-5 max-w-lg text-sm leading-relaxed text-slate-600 sm:text-[15px]"
+                className="text-body mt-5 max-w-lg text-slate-600"
               >
-                We combine strategy, design, technology and industry understanding to create
-                AR/VR experiences that deliver measurable impact.
-              </motion.p>
+                {rich($t("ArVrWhy__t5", "We combine strategy, design, technology and industry understanding to create AR/VR experiences that deliver measurable impact."))}</motion.p>
             </motion.div>
 
             <motion.div
@@ -176,8 +181,8 @@ export default function ArVrWhy() {
               className="relative mt-8 w-full max-w-[640px]"
             >
               <Image
-                src="/Neon Performance Overview Interface.webp"
-                alt="Engineer in an AR headset using a holographic performance dashboard"
+                src={$t("ArVrWhy__t6", "/Neon Performance Overview Interface.webp")}
+                alt={$t("ArVrWhy__t7", "Engineer in an AR headset using a holographic performance dashboard")}
                 width={1616}
                 height={973}
                 sizes="(min-width: 1024px) 40vw, 92vw"
@@ -209,7 +214,7 @@ export default function ArVrWhy() {
                     </span>
                     {p.title}
                   </h3>
-                  <p className="mt-1.5 text-[12px] leading-relaxed text-slate-500">{p.text}</p>
+                  <p className="text-caption mt-1.5 text-slate-500">{p.text}</p>
                   <span aria-hidden className="mt-2 block h-px w-6 bg-[#7c5cf6]" />
                 </div>
               </motion.li>
@@ -237,23 +242,19 @@ export default function ArVrWhy() {
               </span>
             </span>
             <div>
-              <h3 className="text-xl font-bold leading-snug text-[#0f1535] sm:text-[22px]">
-                Have a business challenge that
-                <br className="hidden sm:block" />{" "}
-                <span className="text-[#5b43e8]">immersive technology</span> could solve?
-              </h3>
-              <p className="mt-1.5 text-[13px] text-slate-600">
-                Let&apos;s build an experience that makes a real difference.
-              </p>
+              <h3 className="text-h5 font-bold text-[#0f1535]">
+                {$t("ArVrWhy__t8", "Have a business challenge that")}<br className="hidden sm:block" />{" "}
+                <span className="text-[#5b43e8]">{$t("ArVrWhy__t9", "immersive technology")}</span> {$t("ArVrWhy__t10", "could solve?")}</h3>
+              <p className="text-small mt-1.5 text-slate-600">
+                {rich($t("ArVrWhy__t11", "Let's build an experience that makes a real difference."))}</p>
             </div>
           </div>
 
           <Link
-            href="#contact-form"
+            href={$t("ArVrWhy__t12", "#contact-form")}
             className="inline-flex h-12 shrink-0 items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#6d4df0] to-[#4f46e5] px-7 text-sm font-semibold text-white shadow-[0_10px_24px_-6px_rgba(91,67,232,0.55)] transition hover:brightness-110"
           >
-            Talk to an AR/VR Specialist
-            <span aria-hidden>→</span>
+            {$t("ArVrWhy__t13", "Talk to an AR/VR Specialist")}<span aria-hidden>→</span>
           </Link>
         </motion.div>
       </Container>

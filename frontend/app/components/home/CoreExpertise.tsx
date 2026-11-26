@@ -1,13 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Container from "../shared/Container";
 import OrganicTrafficChart from "./OrganicTrafficChart";
 import { DrawMonitorCodeIcon, DrawSearchIcon, DrawCheckIcon, DrawBarChartUpIcon, DrawArrowIcon } from "../shared/drawIcons";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
 
-const webDevChecklist = [
+const webDevChecklist__cms = [
   "Custom & Responsive Design",
   "High-Performance Development",
   "SEO-Friendly & Fast Loading",
@@ -15,7 +19,7 @@ const webDevChecklist = [
   "Conversion-Focused UI/UX",
 ];
 
-const seoChecklist = [
+const seoChecklist__cms = [
   "Keyword Research & Strategy",
   "On-Page & Technical SEO",
   "High-Quality Link Building",
@@ -52,6 +56,9 @@ function ExploreLink({ href, children }: { href: string; children: React.ReactNo
 }
 
 export default function CoreExpertise() {
+  const $t = useCmsText();
+  const webDevChecklist = useCmsData("CoreExpertise__webDevChecklist", webDevChecklist__cms);
+  const seoChecklist = useCmsData("CoreExpertise__seoChecklist", seoChecklist__cms);
   return (
     <section className="bg-white pb-8 pt-8 lg:pb-10 lg:pt-10">
       <Container>
@@ -60,16 +67,12 @@ export default function CoreExpertise() {
             className="inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            OUR CORE EXPERTISE
-          </span>
-          <h2 className="mt-4 text-3xl font-bold leading-snug sm:text-4xl" style={{ color: NAVY }}>
-            Our Core Expertise, <span style={{ color: TEAL }}>Your Competitive Advantage</span>
+            {$t("CoreExpertise__t1", "OUR CORE EXPERTISE")}</span>
+          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>
+            {$t("CoreExpertise__t2", "Our Core Expertise, ")}<span style={{ color: TEAL }}>{$t("CoreExpertise__t3", "Your Competitive Advantage")}</span>
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-slate-500 sm:text-base">
-            We specialize in two core areas that drive real results for your business.
-            <br className="hidden sm:block" /> Beautiful websites that convert visitors and SEO strategies that
-            bring qualified traffic.
-          </p>
+          <p className="text-body mt-4 text-slate-500">
+            {rich($t("CoreExpertise__t4", "We specialize in two core areas that drive real results for your business."))}<br className="hidden sm:block" /> {rich($t("CoreExpertise__t5", "Beautiful websites that convert visitors and SEO strategies that bring qualified traffic."))}</p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -85,26 +88,23 @@ export default function CoreExpertise() {
                   >
                     <DrawMonitorCodeIcon />
                   </span>
-                  <h3 className="text-xl font-bold leading-snug" style={{ color: NAVY }}>
-                    Website Design &amp; Development
-                  </h3>
+                  <h3 className="text-h6 font-bold" style={{ color: NAVY }}>
+                    {$t("CoreExpertise__t6", "Website Design & Development")}</h3>
                 </div>
 
-                <p className="mt-4 text-sm leading-relaxed text-slate-500">
-                  We design and build fast, responsive, and conversion-focused websites that create a powerful
-                  first impression and turn visitors into loyal customers.
-                </p>
+                <p className="text-small mt-4 text-slate-500">
+                  {rich($t("CoreExpertise__t7", "We design and build fast, responsive, and conversion-focused websites that create a powerful first impression and turn visitors into loyal customers."))}</p>
 
                 <Checklist items={webDevChecklist} />
 
-                <ExploreLink href="/web-software/website-development">Explore Web Development</ExploreLink>
+                <ExploreLink href={$t("CoreExpertise__t8", "/web-software/website-development")}>{$t("CoreExpertise__t9", "Explore Web Development")}</ExploreLink>
               </div>
 
               {/* Right column: laptop preview */}
               <div className="relative mx-auto w-full max-w-[340px] self-start sm:mx-0 sm:max-w-none">
                 <Image
-                  src="/Laptop.png"
-                  alt="Website design preview shown on a laptop"
+                  src={$t("CoreExpertise__t10", "/Laptop.png")}
+                  alt={$t("CoreExpertise__t11", "Website design preview shown on a laptop")}
                   width={1440}
                   height={1092}
                   className="w-full"
@@ -117,14 +117,11 @@ export default function CoreExpertise() {
                     <DrawBarChartUpIcon />
                   </span>
                   <div>
-                    <p className="text-sm font-bold" style={{ color: NAVY }}>
-                      3.2X
-                    </p>
+                    <p className="text-small font-bold" style={{ color: NAVY }}>
+                      {rich($t("CoreExpertise__t12", "3.2X"))}</p>
                     <p className="text-[10px] leading-tight text-slate-500">
-                      Higher Conversion Rate
-                      <br />
-                      For Our Clients
-                    </p>
+                      {rich($t("CoreExpertise__t13", "Higher Conversion Rate"))}<br />
+                      {rich($t("CoreExpertise__t14", "For Our Clients"))}</p>
                   </div>
                 </div>
               </div>
@@ -143,29 +140,25 @@ export default function CoreExpertise() {
                   >
                     <DrawSearchIcon />
                   </span>
-                  <h3 className="text-xl font-bold leading-snug" style={{ color: NAVY }}>
-                    Search Engine Optimization (SEO)
-                  </h3>
+                  <h3 className="text-h6 font-bold" style={{ color: NAVY }}>
+                    {$t("CoreExpertise__t15", "Search Engine Optimization (SEO)")}</h3>
                 </div>
 
-                <p className="mt-4 text-sm leading-relaxed text-slate-500">
-                  We help your business rank higher on Google, attract qualified traffic, and grow consistently
-                  with result-driven SEO strategies.
-                </p>
+                <p className="text-small mt-4 text-slate-500">
+                  {rich($t("CoreExpertise__t16", "We help your business rank higher on Google, attract qualified traffic, and grow consistently with result-driven SEO strategies."))}</p>
 
                 <Checklist items={seoChecklist} />
 
-                <ExploreLink href="/seo">Explore SEO Services</ExploreLink>
+                <ExploreLink href={$t("CoreExpertise__t17", "/seo")}>{$t("CoreExpertise__t18", "Explore SEO Services")}</ExploreLink>
               </div>
 
               {/* Right column: traffic chart + stat panels */}
               <div className="flex flex-col gap-3">
                 <div className="rounded-xl border border-slate-100 bg-slate-50 p-3">
-                  <p className="text-xs text-slate-500">Organic Traffic</p>
-                  <p className="text-lg font-bold" style={{ color: TEAL }}>
-                    +247%
-                  </p>
-                  <p className="text-[10px] text-slate-400">Increase in 6 Months</p>
+                  <p className="text-caption text-slate-500">{rich($t("CoreExpertise__t19", "Organic Traffic"))}</p>
+                  <p className="text-body font-bold" style={{ color: TEAL }}>
+                    {rich($t("CoreExpertise__t20", "+247%"))}</p>
+                  <p className="text-[10px] text-slate-400">{rich($t("CoreExpertise__t21", "Increase in 6 Months"))}</p>
                   <div className="mt-1 h-14 w-full">
                     <OrganicTrafficChart />
                   </div>
@@ -173,30 +166,27 @@ export default function CoreExpertise() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="rounded-xl border border-slate-100 bg-slate-50 p-3">
-                    <p className="text-base font-bold" style={{ color: NAVY }}>
-                      320+
-                    </p>
-                    <p className="text-[10px] leading-tight text-slate-500">Keywords Ranked</p>
-                    <p className="text-[10px] leading-tight text-slate-400">Top 3 Positions</p>
+                    <p className="text-body font-bold" style={{ color: NAVY }}>
+                      {rich($t("CoreExpertise__t22", "320+"))}</p>
+                    <p className="text-[10px] leading-tight text-slate-500">{rich($t("CoreExpertise__t23", "Keywords Ranked"))}</p>
+                    <p className="text-[10px] leading-tight text-slate-400">{rich($t("CoreExpertise__t24", "Top 3 Positions"))}</p>
                   </div>
                   <div className="rounded-xl border border-slate-100 bg-slate-50 p-3">
-                    <p className="text-base font-bold" style={{ color: NAVY }}>
-                      1.8M+
-                    </p>
-                    <p className="text-[10px] leading-tight text-slate-500">Impressions</p>
-                    <p className="text-[10px] leading-tight text-slate-400">in 6 Months</p>
+                    <p className="text-body font-bold" style={{ color: NAVY }}>
+                      {rich($t("CoreExpertise__t25", "1.8M+"))}</p>
+                    <p className="text-[10px] leading-tight text-slate-500">{rich($t("CoreExpertise__t26", "Impressions"))}</p>
+                    <p className="text-[10px] leading-tight text-slate-400">{rich($t("CoreExpertise__t27", "in 6 Months"))}</p>
                   </div>
                 </div>
 
                 <div className="rounded-xl border border-slate-200 bg-white p-3">
                   <p className="text-[11px] font-semibold" style={{ color: TEAL }}>
-                    yourbusiness.com
-                  </p>
-                  <p className="text-[10px] text-slate-500">Your Business — Official Site</p>
+                    {rich($t("CoreExpertise__t28", "yourbusiness.com"))}</p>
+                  <p className="text-[10px] text-slate-500">{rich($t("CoreExpertise__t29", "Your Business — Official Site"))}</p>
                   <div className="mt-2 h-1.5 w-full rounded-full bg-slate-100">
                     <div className="h-1.5 w-[92%] rounded-full" style={{ backgroundColor: TEAL }} />
                   </div>
-                  <p className="mt-1 text-[10px] font-semibold text-slate-600">#1 Position on Google</p>
+                  <p className="mt-1 text-[10px] font-semibold text-slate-600">{rich($t("CoreExpertise__t30", "#1 Position on Google"))}</p>
                 </div>
               </div>
             </div>

@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Container from "../shared/Container";
 import { motion } from "framer-motion";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const TargetIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00acc1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -39,7 +41,7 @@ const ChartIcon = () => (
   </svg>
 );
 
-const FEATURES = [
+const FEATURES__cms = [
   {
     title: "High Intent",
     desc: "Reach customers already looking for your services.",
@@ -97,7 +99,7 @@ const CalendarIcon = () => (
   </svg>
 );
 
-const INTENTS = [
+const INTENTS__cms = [
   { text: "Website Development", top: "16%" },
   { text: "Digital Marketing Agency", top: "33%" },
   { text: "Accountant Near Me", top: "50%" },
@@ -105,7 +107,7 @@ const INTENTS = [
   { text: "Your Service", top: "84%" }
 ];
 
-const OUTCOMES = [
+const OUTCOMES__cms = [
   { title: "New Phone Call", desc: "A potential customer is calling you.", Icon: PhoneIcon, bg: "#e0f2f1", top: "16%" },
   { title: "New Quote Request", desc: "Someone is interested in your service.", Icon: MailIcon, bg: "#e0f7fa", top: "39%" },
   { title: "WhatsApp Enquiry", desc: "A new enquiry just came in.", Icon: MessageIcon, bg: "#e8f5e9", top: "62%" },
@@ -113,6 +115,10 @@ const OUTCOMES = [
 ];
 
 export default function GoogleAdsEcosystem() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("GoogleAdsEcosystem__FEATURES", FEATURES__cms);
+  const INTENTS = useCmsData("GoogleAdsEcosystem__INTENTS", INTENTS__cms);
+  const OUTCOMES = useCmsData("GoogleAdsEcosystem__OUTCOMES", OUTCOMES__cms);
   return (
     <section className="py-16 lg:py-24 bg-white overflow-hidden relative">
       <Container>
@@ -120,17 +126,14 @@ export default function GoogleAdsEcosystem() {
         <div className="text-center mb-12 lg:mb-20">
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="h-px w-8 bg-[#00acc1]"></span>
-            <span className="text-[#00acc1] font-bold text-xs tracking-widest uppercase">Why Google Ads</span>
+            <span className="text-[#00acc1] font-bold text-xs tracking-widest uppercase">{$t("GoogleAdsEcosystem__t1", "Why Google Ads")}</span>
             <span className="h-px w-8 bg-[#00acc1]"></span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#132a43] mb-4 font-serif leading-tight">
-            Someone Is Searching<br/>
-            For <span className="text-[#00acc1]">Your Business</span> Right Now.
-          </h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-sm md:text-base">
-            Every day, potential customers search Google looking for businesses they can trust. 
-            The question isn't whether they're searching—it's whether they find <span className="font-semibold text-[#00acc1]">your business</span> or your competitor's.
-          </p>
+          <h2 className="text-h2 font-bold text-[#132a43] mb-4 font-serif">
+            {$t("GoogleAdsEcosystem__t2", "Someone Is Searching")}<br/>
+            {$t("GoogleAdsEcosystem__t3", "For ")}<span className="text-[#00acc1]">{$t("GoogleAdsEcosystem__t4", "Your Business")}</span> {$t("GoogleAdsEcosystem__t5", "Right Now.")}</h2>
+          <p className="text-body text-slate-500 max-w-2xl mx-auto">
+            {rich($t("GoogleAdsEcosystem__t6", "Every day, potential customers search Google looking for businesses they can trust. The question isn't whether they're searching—it's whether they find "))}<span className="font-semibold text-[#00acc1]">{$t("GoogleAdsEcosystem__t7", "your business")}</span> {rich($t("GoogleAdsEcosystem__t8", "or your competitor's."))}</p>
         </div>
 
         {/* Ecosystem Layout */}
@@ -140,8 +143,8 @@ export default function GoogleAdsEcosystem() {
           <div className="hidden lg:block relative w-full max-w-[550px] xl:max-w-[680px] mx-auto">
             {/* The Image */}
             <Image 
-              src="/google-ads.png" 
-              alt="Google Ads Ecosystem" 
+              src={$t("GoogleAdsEcosystem__t9", "/google-ads.png")} 
+              alt={$t("GoogleAdsEcosystem__t10", "Google Ads Ecosystem")} 
               width={800} 
               height={500} 
               className="w-full h-auto mix-blend-multiply opacity-95"
@@ -153,7 +156,7 @@ export default function GoogleAdsEcosystem() {
             
             {/* Left Cards (Customer Intent) */}
             {/* Placed at left: 8% so they overlap the faded lines as per the design */}
-            <p className="absolute -top-10 left-[8%] -translate-x-full w-[260px] xl:w-[280px] text-center text-xs font-bold text-slate-800 uppercase tracking-widest">Customer Intent</p>
+            <p className="absolute -top-10 left-[8%] -translate-x-full w-[260px] xl:w-[280px] text-center text-xs font-bold text-slate-800 uppercase tracking-widest">{rich($t("GoogleAdsEcosystem__t11", "Customer Intent"))}</p>
             {INTENTS.map((intent) => (
               <div key={intent.text} className="absolute left-[8%] -translate-x-full -translate-y-1/2 bg-white rounded-full shadow-[0_8px_25px_rgb(0,0,0,0.06)] border border-slate-100 py-3 px-5 flex items-center gap-3 w-[260px] xl:w-[280px] hover:border-[#00acc1] transition-colors cursor-default" style={{ top: intent.top }}>
                 <SearchIcon />
@@ -163,7 +166,7 @@ export default function GoogleAdsEcosystem() {
             
             {/* Right Cards (Business Outcome) */}
             {/* Placed at right: 0 and translated right by 100% so their left edge exactly touches the dots without hiding them */}
-            <p className="absolute -top-10 right-0 translate-x-full w-[280px] xl:w-[300px] text-center text-xs font-bold text-slate-800 uppercase tracking-widest">Business Outcome</p>
+            <p className="absolute -top-10 right-0 translate-x-full w-[280px] xl:w-[300px] text-center text-xs font-bold text-slate-800 uppercase tracking-widest">{rich($t("GoogleAdsEcosystem__t12", "Business Outcome"))}</p>
             {OUTCOMES.map((outcome) => (
               <div key={outcome.title} className="absolute right-0 translate-x-full -translate-y-1/2 bg-white rounded-2xl shadow-[0_8px_25px_rgb(0,0,0,0.06)] border border-slate-100 p-4 flex items-start gap-4 w-[280px] xl:w-[300px] hover:border-[#00acc1] transition-colors cursor-default" style={{ top: outcome.top }}>
                 <span className="flex items-center justify-center w-10 h-10 rounded-full shrink-0" style={{ backgroundColor: outcome.bg }}>
@@ -181,7 +184,7 @@ export default function GoogleAdsEcosystem() {
           <div className="lg:hidden w-full flex flex-col gap-10">
             {/* Customer Intent */}
             <div className="w-full flex flex-col gap-3">
-              <p className="text-xs font-bold text-slate-800 uppercase tracking-widest pl-4 mb-2">Customer Intent</p>
+              <p className="text-caption font-bold text-slate-800 uppercase tracking-widest pl-4 mb-2">{rich($t("GoogleAdsEcosystem__t13", "Customer Intent"))}</p>
               {INTENTS.map((intent) => (
                 <div key={intent.text} className="bg-white rounded-full shadow-[0_4px_15px_rgb(0,0,0,0.05)] border border-slate-100 py-3 px-5 flex items-center gap-3 w-full">
                   <SearchIcon />
@@ -192,12 +195,12 @@ export default function GoogleAdsEcosystem() {
 
             {/* Mobile Image */}
             <div className="w-full max-w-[400px] mx-auto relative z-10 shrink-0">
-              <Image src="/google-ads.png" alt="Google Ads Ecosystem" width={500} height={500} className="w-full h-auto drop-shadow-xl" />
+              <Image src={$t("GoogleAdsEcosystem__t14", "/google-ads.png")} alt={$t("GoogleAdsEcosystem__t15", "Google Ads Ecosystem")} width={500} height={500} className="w-full h-auto drop-shadow-xl" />
             </div>
 
             {/* Business Outcome */}
             <div className="w-full flex flex-col gap-3">
-              <p className="text-xs font-bold text-slate-800 uppercase tracking-widest pl-4 mb-2 text-right">Business Outcome</p>
+              <p className="text-caption font-bold text-slate-800 uppercase tracking-widest pl-4 mb-2 text-right">{rich($t("GoogleAdsEcosystem__t16", "Business Outcome"))}</p>
               {OUTCOMES.map((outcome) => (
                 <div key={outcome.title} className="bg-white rounded-2xl shadow-[0_4px_15px_rgb(0,0,0,0.05)] border border-slate-100 p-4 flex items-start gap-3.5 w-full">
                   <span className="flex items-center justify-center w-10 h-10 rounded-full shrink-0" style={{ backgroundColor: outcome.bg }}>
@@ -217,10 +220,10 @@ export default function GoogleAdsEcosystem() {
         <div className="mt-20 lg:mt-32">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold text-[#132a43] font-serif leading-snug flex flex-col items-center">
-              <span>The Goal Was Never More Clicks.</span>
+            <h3 className="text-h4 font-bold text-[#132a43] font-serif flex flex-col items-center">
+              <span>{$t("GoogleAdsEcosystem__t17", "The Goal Was Never More Clicks.")}</span>
               <span className="relative mt-2">
-                The Goal Is <span className="text-[#00acc1]">More Customers.</span>
+                {$t("GoogleAdsEcosystem__t18", "The Goal Is ")}<span className="text-[#00acc1]">{$t("GoogleAdsEcosystem__t19", "More Customers.")}</span>
                 <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-10 h-[2px] bg-[#00acc1]"></span>
               </span>
             </h3>
@@ -235,7 +238,7 @@ export default function GoogleAdsEcosystem() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#132a43] mb-1">{feature.title}</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">{feature.desc}</p>
+                  <p className="text-caption text-slate-500">{feature.desc}</p>
                 </div>
               </div>
             ))}

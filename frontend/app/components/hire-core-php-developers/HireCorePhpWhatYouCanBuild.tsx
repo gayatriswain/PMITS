@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 
 interface BuildCard {
   id: string;
@@ -12,7 +13,7 @@ interface BuildCard {
   icon: React.ReactNode;
 }
 
-const leftCards: BuildCard[] = [
+const leftCards__cms: BuildCard[] = [
   {
     id: "custom-web",
     title: "Custom Web Applications",
@@ -54,7 +55,7 @@ const leftCards: BuildCard[] = [
   },
 ];
 
-const rightCards: BuildCard[] = [
+const rightCards__cms: BuildCard[] = [
   {
     id: "cms-portal",
     title: "CMS & Portal Applications",
@@ -100,7 +101,7 @@ const rightCards: BuildCard[] = [
   },
 ];
 
-const bottomPillars = [
+const bottomPillars__cms = [
   {
     title: "Agile Development",
     desc: "Iterative, transparent and on-time delivery.",
@@ -233,6 +234,7 @@ function BuildCardView({
 
 /* Dark glass hexagon with "Core php" wordmark */
 function CoreHex({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <svg viewBox="0 0 200 224" className={className} fill="none">
       <defs>
@@ -248,21 +250,25 @@ function CoreHex({ className = "" }: { className?: string }) {
       </defs>
       <polygon points="100 8, 188 58, 188 166, 100 216, 12 166, 12 58" fill="url(#coreHexBody)" stroke="url(#coreHexRim)" strokeWidth="9" strokeLinejoin="round" />
       <polygon points="100 22, 176 65, 176 159, 100 202, 24 159, 24 65" fill="none" stroke="#ffffff" strokeOpacity="0.16" strokeWidth="1.5" strokeLinejoin="round" />
-      <text x="100" y="82" textAnchor="middle" fill="#ffffff" fontSize="24" fontWeight="700" fontFamily="system-ui, sans-serif">Core</text>
+      <text x="100" y="82" textAnchor="middle" fill="#ffffff" fontSize="24" fontWeight="700" fontFamily="system-ui, sans-serif">{$t("HireCorePhpWhatYouCanBuild__t1", "Core")}</text>
       <text x="100" y="140" textAnchor="middle" fill="#ffffff" fontSize="64" fontWeight="500" fontStyle="italic" fontFamily="system-ui, sans-serif" letterSpacing="-2">php</text>
-      <text x="100" y="170" textAnchor="middle" fill="#9fc3dd" fontSize="11" fontFamily="system-ui, sans-serif">Robust. Scalable. Secure.</text>
+      <text x="100" y="170" textAnchor="middle" fill="#9fc3dd" fontSize="11" fontFamily="system-ui, sans-serif">{$t("HireCorePhpWhatYouCanBuild__t2", "Robust. Scalable. Secure.")}</text>
     </svg>
   );
 }
 
 export default function HireCorePhpWhatYouCanBuild() {
+  const $t = useCmsText();
+  const leftCards = useCmsData("HireCorePhpWhatYouCanBuild__leftCards", leftCards__cms);
+  const rightCards = useCmsData("HireCorePhpWhatYouCanBuild__rightCards", rightCards__cms);
+  const bottomPillars = useCmsData("HireCorePhpWhatYouCanBuild__bottomPillars", bottomPillars__cms);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const subtitle =
     "From custom web applications to complex enterprise systems, our Core PHP developers build solutions that scale with your business.";
 
   return (
     <section id="what-you-can-build" className="relative w-full overflow-hidden font-sans bg-[linear-gradient(180deg,#ffffff_0%,#f4f8fc_55%,#f0f5fa_100%)] pt-10 sm:pt-14 pb-12 sm:pb-16">
-      <Container className="relative z-10 max-w-[1320px] w-full sm:px-10 lg:px-16">
+      <Container className="relative z-10 max-w-[1320px] w-full">
         {/* ======================= DESKTOP: fixed 1300 x 450 canvas, scaled ======================= */}
         <div className="hidden lg:block">
           <ScaleBox width={1300} height={450}>
@@ -274,17 +280,15 @@ export default function HireCorePhpWhatYouCanBuild() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                What you can build —
-              </motion.div>
+                {$t("HireCorePhpWhatYouCanBuild__t3", "What you can build —")}</motion.div>
               <motion.h2
                 className="absolute left-[38px] top-[52px] text-[40px] font-black tracking-tight leading-[1.1] text-[#0c1e3d]"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Powerful Solutions.
-                <br />
-                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">Built With Core PHP.</span>
+                {$t("HireCorePhpWhatYouCanBuild__t4", "Powerful Solutions.")}<br />
+                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpWhatYouCanBuild__t5", "Built With Core PHP.")}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[38px] top-[176px] w-[262px] text-[13px] leading-[1.55] text-slate-600"
@@ -371,13 +375,12 @@ export default function HireCorePhpWhatYouCanBuild() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">What you can build —</div>
-          <h2 className="mt-3 text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] text-[#0c1e3d]">
-            Powerful Solutions.
-            <br />
-            <span className="text-[#0f8a83]">Built With Core PHP.</span>
+          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">{$t("HireCorePhpWhatYouCanBuild__t6", "What you can build —")}</div>
+          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0c1e3d]">
+            {$t("HireCorePhpWhatYouCanBuild__t7", "Powerful Solutions.")}<br />
+            <span className="text-[#0f8a83]">{$t("HireCorePhpWhatYouCanBuild__t8", "Built With Core PHP.")}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">{subtitle}</p>
+          <p className="text-body mt-4 text-slate-600 max-w-xl">{subtitle}</p>
           <div className="mt-5 w-11 h-[3px] rounded-full bg-[#0f8a83]" />
 
           <motion.div
@@ -415,30 +418,26 @@ export default function HireCorePhpWhatYouCanBuild() {
 
           <div className="relative xl:w-[330px] shrink-0">
             <div className="text-[22px] sm:text-[24px] font-semibold leading-snug text-white">
-              Tell us <span className="text-[#3fd6cf]">what you need</span> built.
-              <br />
-              We&apos;ll build the right solution for you.
-            </div>
+              {$t("HireCorePhpWhatYouCanBuild__t9", "Tell us ")}<span className="text-[#3fd6cf]">{$t("HireCorePhpWhatYouCanBuild__t10", "what you need")}</span> {$t("HireCorePhpWhatYouCanBuild__t11", "built.")}<br />
+              {$t("HireCorePhpWhatYouCanBuild__t12", "We'll build the right solution for you.")}</div>
             <div className="mt-6 flex items-center gap-3 flex-wrap">
               <Link
-                href="#contact"
+                href={$t("HireCorePhpWhatYouCanBuild__t13", "#contact")}
                 className="group inline-flex items-center justify-center gap-2 h-[42px] px-5 rounded-lg bg-[linear-gradient(90deg,#0f8a99,#1aa6a6)] text-white text-[12.5px] font-semibold shadow-[0_10px_22px_-8px_rgba(26,166,166,0.7)] hover:brightness-110 transition whitespace-nowrap"
               >
-                Hire Core PHP Developers
-                <svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                {$t("HireCorePhpWhatYouCanBuild__t14", "Hire Core PHP Developers")}<svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </Link>
               <Link
-                href="#contact"
+                href={$t("HireCorePhpWhatYouCanBuild__t15", "#contact")}
                 className="inline-flex items-center justify-center gap-2 h-[42px] px-5 rounded-lg border border-white/25 text-white text-[12.5px] font-medium hover:bg-white/10 transition whitespace-nowrap"
               >
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                 </svg>
-                Talk to an Expert
-              </Link>
+                {$t("HireCorePhpWhatYouCanBuild__t16", "Talk to an Expert")}</Link>
             </div>
           </div>
 

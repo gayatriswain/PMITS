@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -75,7 +76,7 @@ type Step = {
   badge: string;
 };
 
-const STEPS: Step[] = [
+const STEPS__cms: Step[] = [
   {
     num: "01",
     title: "Think",
@@ -149,11 +150,11 @@ function StepText({ step }: { step: Step }) {
       <p className="text-[30px] font-semibold leading-none" style={{ color: TEAL }}>
         {step.num}
       </p>
-      <h3 className="mt-2 text-[19px] font-bold" style={{ color: INK }}>
+      <h3 className="text-h6 mt-2 font-bold" style={{ color: INK }}>
         {step.title}
       </h3>
       <span className="mt-2 block h-[2px] w-7 rounded-full" style={{ backgroundColor: TEAL }} />
-      <p className="mt-3 max-w-[170px] text-[13px] leading-[1.65] text-slate-600">{step.desc}</p>
+      <p className="text-small mt-3 max-w-[170px] text-slate-600">{step.desc}</p>
     </div>
   );
 }
@@ -229,9 +230,11 @@ function Path() {
 }
 
 export default function CareerHowWeWork() {
+  const $t = useCmsText();
+  const STEPS = useCmsData("CareerHowWeWork__STEPS", STEPS__cms);
   return (
     <section className="relative w-full overflow-hidden py-16 lg:py-20">
-      <Image src="/career3.png" alt="" fill sizes="100vw" className="object-cover" aria-hidden />
+      <Image src={$t("CareerHowWeWork__t1", "/career3.png")} alt="" fill sizes="100vw" className="object-cover" aria-hidden />
 
       <Container className="relative">
         <motion.div
@@ -241,22 +244,20 @@ export default function CareerHowWeWork() {
           viewport={{ once: true, amount: 0.4 }}
           className="mx-auto max-w-[760px] text-center"
         >
-          <motion.p variants={fadeUp} className="text-[13px] font-semibold uppercase tracking-[0.16em]" style={{ color: TEAL }}>
-            How We Work
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-small font-semibold uppercase tracking-[0.16em]" style={{ color: TEAL }}>
+            {rich($t("CareerHowWeWork__t2", "How We Work"))}</motion.p>
           <motion.span variants={fadeUp} className="mx-auto mt-2 block h-[2px] w-10 rounded-full" style={{ backgroundColor: TEAL }} />
-          <motion.h2 variants={fadeUp} className="mt-4 text-[34px] font-bold leading-tight tracking-tight sm:text-[46px]" style={{ color: INK }}>
-            Turning Ideas into Impact,{" "}
+          <motion.h2 variants={fadeUp} className="text-h2 mt-4 font-bold tracking-tight" style={{ color: INK }}>
+            {$t("CareerHowWeWork__t3", "Turning Ideas into Impact,")}{" "}
             <span className={`${caveat.className} relative inline-block text-[46px] font-bold sm:text-[60px]`} style={{ color: TEAL }}>
-              Together.
-              <svg className="pointer-events-none absolute -bottom-1 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+              {$t("CareerHowWeWork__t4", "Together.")}<svg className="pointer-events-none absolute -bottom-1 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                 <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={TEAL} strokeWidth="2.5" strokeLinecap="round" />
               </svg>
             </span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="mx-auto mt-5 max-w-[520px] text-[16px] leading-[1.75] text-slate-600">
-            Our process is simple. Our focus is you. We think, collaborate, create, and continuously improve to deliver{" "}
-            <span className="font-semibold" style={{ color: TEAL }}>real results</span>.
+          <motion.p variants={fadeUp} className="text-body mx-auto mt-5 max-w-[520px] text-slate-600">
+            {rich($t("CareerHowWeWork__t5", "Our process is simple. Our focus is you. We think, collaborate, create, and continuously improve to deliver"))}{" "}
+            <span className="font-semibold" style={{ color: TEAL }}>{$t("CareerHowWeWork__t6", "real results")}</span>.
           </motion.p>
         </motion.div>
 
@@ -280,12 +281,10 @@ export default function CareerHowWeWork() {
             <HeartIcon size={22} color={TEAL} />
           </span>
           <span className="text-[15px] font-medium" style={{ color: INK }}>
-            Different steps. One goal.
-          </span>
+            {$t("CareerHowWeWork__t7", "Different steps. One goal.")}</span>
           <span className="hidden h-8 w-px bg-slate-200 sm:block" />
           <span className={`${caveat.className} relative text-[28px] font-bold leading-none`} style={{ color: DEEP_TEAL }}>
-            Your success.
-            <svg className="pointer-events-none absolute -bottom-1.5 left-0 h-2 w-full" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden>
+            {$t("CareerHowWeWork__t8", "Your success.")}<svg className="pointer-events-none absolute -bottom-1.5 left-0 h-2 w-full" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden>
               <path d="M2 6C60 2 140 1 198 4" fill="none" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
             </svg>
           </span>

@@ -4,61 +4,65 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, Sparkles, ShoppingCart, MapPin, Search, CheckCircle, ChevronRight, Telescope } from 'lucide-react';
 import Image from 'next/image';
+import { useCmsText } from "@/components/cms/SectionContent";
+import Link from "next/link";
+import { rich } from "@/components/cms/rich";
 
 export default function BlogInsights() {
+  const $t = useCmsText();
   const smallCards = [
     {
-      tag: "AI & GEO",
-      title: "GEO vs SEO: What's the Difference and Why It Matters Now",
-      date: "May 16, 2026",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop" // AI chip abstract
+      tag: $t("BlogInsights__t1", "AI & GEO"),
+      title: $t("BlogInsights__t2", "GEO vs SEO: What's the Difference and Why It Matters Now"),
+      date: $t("BlogInsights__t3", "May 16, 2026"),
+      readTime: $t("BlogInsights__t4", "6 min read"),
+      image: $t("BlogInsights__t5", "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop") // AI chip abstract
     },
     {
-      tag: "Ecommerce",
-      title: "Product Page SEO: The Complete Optimization Checklist",
-      date: "May 15, 2026",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=600&auto=format&fit=crop" // Ecommerce cart
+      tag: $t("BlogInsights__t6", "Ecommerce"),
+      title: $t("BlogInsights__t7", "Product Page SEO: The Complete Optimization Checklist"),
+      date: $t("BlogInsights__t8", "May 15, 2026"),
+      readTime: $t("BlogInsights__t9", "5 min read"),
+      image: $t("BlogInsights__t10", "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=600&auto=format&fit=crop") // Ecommerce cart
     },
     {
-      tag: "Local SEO",
-      title: "Local SEO for Ecommerce Brands: Rank Locally, Sell Globally",
-      date: "May 12, 2026",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=600&auto=format&fit=crop" // Map abstract
+      tag: $t("BlogInsights__t11", "Local SEO"),
+      title: $t("BlogInsights__t12", "Local SEO for Ecommerce Brands: Rank Locally, Sell Globally"),
+      date: $t("BlogInsights__t13", "May 12, 2026"),
+      readTime: $t("BlogInsights__t14", "6 min read"),
+      image: $t("BlogInsights__t15", "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=600&auto=format&fit=crop") // Map abstract
     },
     {
-      tag: "Web & UX",
-      title: "Core Web Vitals & SEO: The Real Impact on Rankings",
-      date: "May 10, 2026",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" // Speed/data abstract
+      tag: $t("BlogInsights__t16", "Web & UX"),
+      title: $t("BlogInsights__t17", "Core Web Vitals & SEO: The Real Impact on Rankings"),
+      date: $t("BlogInsights__t18", "May 10, 2026"),
+      readTime: $t("BlogInsights__t19", "7 min read"),
+      image: $t("BlogInsights__t20", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop") // Speed/data abstract
     },
     {
-      tag: "Digital Growth",
-      title: "From Traffic to Revenue: Building a Growth System That Scales",
-      date: "May 8, 2026",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" // Chart upward
+      tag: $t("BlogInsights__t21", "Digital Growth"),
+      title: $t("BlogInsights__t22", "From Traffic to Revenue: Building a Growth System That Scales"),
+      date: $t("BlogInsights__t23", "May 8, 2026"),
+      readTime: $t("BlogInsights__t24", "8 min read"),
+      image: $t("BlogInsights__t25", "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop") // Chart upward
     },
     {
-      tag: "SEO",
-      title: "Ecommerce SEO in 2026: 10 Strategies That Actually Drive Growth",
-      date: "May 6, 2026",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=600&auto=format&fit=crop" // Laptop dashboard
+      tag: $t("BlogInsights__t26", "SEO"),
+      title: $t("BlogInsights__t27", "Ecommerce SEO in 2026: 10 Strategies That Actually Drive Growth"),
+      date: $t("BlogInsights__t28", "May 6, 2026"),
+      readTime: $t("BlogInsights__t29", "7 min read"),
+      image: $t("BlogInsights__t30", "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=600&auto=format&fit=crop") // Laptop dashboard
     }
   ];
 
   return (
     <section className="py-12 lg:py-16 bg-[#fafdfc] font-sans">
-      <div className="max-w-[1440px] mx-auto px-6">
+      <div className="max-w-[1640px] mx-auto px-5">
         
         {/* Title */}
         <div className="flex items-center justify-center gap-4 mb-10">
           <div className="h-[1px] bg-gradient-to-r from-transparent to-teal-200 w-16 md:w-32"></div>
-          <span className="text-[#0f766e] text-[11px] font-extrabold tracking-[0.2em] uppercase">Explore Insights by Topic</span>
+          <span className="text-[#0f766e] text-[11px] font-extrabold tracking-[0.2em] uppercase">{$t("BlogInsights__t31", "Explore Insights by Topic")}</span>
           <div className="h-[1px] bg-gradient-to-l from-transparent to-teal-200 w-16 md:w-32"></div>
         </div>
 
@@ -79,8 +83,8 @@ export default function BlogInsights() {
               <div className="absolute inset-0 bg-gradient-to-b from-[#eef8f6] from-10% via-transparent to-transparent z-10"></div>
               
               <img 
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" 
-                alt="Background Chart" 
+                src={$t("BlogInsights__t32", "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop")} 
+                alt={$t("BlogInsights__t33", "Background Chart")} 
                 className="w-full h-full object-cover object-right-bottom opacity-[0.15] mix-blend-multiply group-hover:scale-105 group-hover:opacity-[0.2] transition-all duration-700 grayscale origin-bottom-right" 
               />
             </div>
@@ -88,38 +92,33 @@ export default function BlogInsights() {
             <div className="relative z-10">
               <div className="bg-white/80 backdrop-blur-sm border border-teal-100 text-[#0f766e] text-[9px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-6 shadow-sm">
                 <Sparkles size={12} className="text-[#14b8a6]" />
-                Featured Insight
-              </div>
+                {$t("BlogInsights__t34", "Featured Insight")}</div>
 
-              <h3 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold text-[#0f2923] leading-[1.15] mb-5 tracking-tight max-w-[90%]">
-                The Search Is Changing. Is Your Business Ready?
-              </h3>
+              <h3 className="text-h3 font-extrabold text-[#0f2923] mb-5 tracking-tight max-w-[90%]">
+                {$t("BlogInsights__t35", "The Search Is Changing. Is Your Business Ready?")}</h3>
               
-              <p className="text-slate-600 text-[15px] leading-relaxed mb-8 max-w-[85%] relative z-10">
-                AI search, evolving SERPs, and changing user behavior are reshaping how businesses get discovered online.
-              </p>
+              <p className="text-body text-slate-600 mb-8 max-w-[85%] relative z-10">
+                {rich($t("BlogInsights__t36", "AI search, evolving SERPs, and changing user behavior are reshaping how businesses get discovered online."))}</p>
 
               <div className="flex items-center gap-6 text-xs text-slate-500 font-medium mb-10 relative z-10">
                 <div className="flex items-center gap-1.5">
                   <Calendar size={14} className="text-slate-400" />
-                  May 20, 2026
-                </div>
+                  {$t("BlogInsights__t37", "May 20, 2026")}</div>
                 <div className="flex items-center gap-1.5">
                   <Clock size={14} className="text-slate-400" />
-                  8 min read
-                </div>
+                  {$t("BlogInsights__t38", "8 min read")}</div>
                 <div className="flex items-center gap-2 border-l border-slate-200 pl-6 hidden sm:flex">
                   <div className="flex -space-x-2">
-                    <div className="w-6 h-6 rounded-full border border-white bg-slate-200 overflow-hidden"><img src="https://i.pravatar.cc/100?img=11" alt="Avatar" /></div>
-                    <div className="w-6 h-6 rounded-full border border-white bg-slate-300 overflow-hidden"><img src="https://i.pravatar.cc/100?img=12" alt="Avatar" /></div>
+                    <div className="w-6 h-6 rounded-full border border-white bg-slate-200 overflow-hidden"><img src={$t("BlogInsights__t39", "https://i.pravatar.cc/100?img=11")} alt={$t("BlogInsights__t40", "Avatar")} /></div>
+                    <div className="w-6 h-6 rounded-full border border-white bg-slate-300 overflow-hidden"><img src={$t("BlogInsights__t41", "https://i.pravatar.cc/100?img=12")} alt={$t("BlogInsights__t42", "Avatar")} /></div>
                   </div>
-                  <span className="text-[11px] font-bold text-slate-700">ProManage Team</span>
+                  <span className="text-[11px] font-bold text-slate-700">{$t("BlogInsights__t43", "ProManage Team")}</span>
                 </div>
               </div>
 
-              <button className="bg-[#1b7367] hover:bg-[#155a51] text-white px-6 py-3 rounded-lg text-[15px] font-serif font-bold flex items-center gap-2 transition-all relative z-10 shadow-md">
-                Read the Insight <ArrowRight size={16} />
-              </button>
+              <Link href={$t("BlogInsights__u1", "#all-articles")} className="bg-[#1b7367] hover:bg-[#155a51] text-white px-6 py-3 rounded-lg text-[15px] font-serif font-bold flex items-center gap-2 transition-all relative z-10 shadow-md">
+                {$t("BlogInsights__t44", "Read the Insight ")}<ArrowRight size={16} />
+              </Link>
             </div>
           </motion.div>
 
@@ -181,15 +180,13 @@ export default function BlogInsights() {
           {/* Left Text */}
           <div className="w-full lg:w-1/4 relative z-10 text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-100 pb-8 lg:pb-0 lg:pr-8">
             <div className="flex items-center justify-center lg:justify-start gap-2 mb-3">
-              <span className="text-[#0f766e] text-[9px] font-extrabold uppercase tracking-widest">What's Changing Right Now</span>
+              <span className="text-[#0f766e] text-[9px] font-extrabold uppercase tracking-widest">{$t("BlogInsights__t45", "What's Changing Right Now")}</span>
               <div className="h-[1px] bg-teal-100 w-8 hidden md:block"></div>
             </div>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-[#0f2923] leading-tight mb-3">
-              Stay Ahead of<br/>What's Next.
-            </h3>
-            <p className="text-sm text-slate-500 leading-relaxed mb-4">
-              Key shifts in search and digital that you should know.
-            </p>
+            <h3 className="text-h4 font-extrabold text-[#0f2923] mb-3">
+              {$t("BlogInsights__t46", "Stay Ahead of")}<br/>{$t("BlogInsights__t47", "What's Next.")}</h3>
+            <p className="text-small text-slate-500 mb-4">
+              {rich($t("BlogInsights__t48", "Key shifts in search and digital that you should know."))}</p>
             {/* Scribble underline graphic (css fallback) */}
             <svg width="60" height="12" viewBox="0 0 60 12" fill="none" className="mx-auto lg:mx-0 text-[#14b8a6]">
               <path d="M2 9.5C15.5 3.5 25.5 1.5 40 4.5C48 6.155 52 8.5 58 2.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -209,12 +206,12 @@ export default function BlogInsights() {
                   <circle cx="20" cy="19" r="1.5" fill="#14b8a6"/>
                   <circle cx="44" cy="45" r="1.5" fill="#14b8a6"/>
                   <path d="M42 30c0 5.523-4.477 10-10 10a9.96 9.96 0 0 1-4.7-1.173L22 40l1.173-5.3A9.96 9.96 0 0 1 22 30c0-5.523 4.477-10 10-10s10 4.477 10 10z" stroke="#0f2923" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  <text x="32" y="34.5" fontFamily="sans-serif" fontSize="11" fontWeight="800" fill="#0f2923" textAnchor="middle">AI</text>
+                  <text x="32" y="34.5" fontFamily="sans-serif" fontSize="11" fontWeight="800" fill="#0f2923" textAnchor="middle">{$t("BlogInsights__t49", "AI")}</text>
                 </svg>
               </div>
-              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">AI Search & Overviews</h5>
-              <p className="text-[11px] text-slate-500 leading-relaxed mb-3">AI Overviews, SGE and conversational search are here to stay.</p>
-              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">8 New Articles <ArrowRight size={12}/></div>
+              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{$t("BlogInsights__t50", "AI Search & Overviews")}</h5>
+              <p className="text-[11px] text-slate-500 leading-relaxed mb-3">{rich($t("BlogInsights__t51", "AI Overviews, SGE and conversational search are here to stay."))}</p>
+              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{$t("BlogInsights__t52", "8 New Articles ")}<ArrowRight size={12}/></div>
             </div>
 
             {/* Col 2 */}
@@ -233,9 +230,9 @@ export default function BlogInsights() {
                   <path d="M32 33v8M28 37h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">Ecommerce Discovery</h5>
-              <p className="text-[11px] text-slate-500 leading-relaxed mb-3">Product discovery is evolving beyond the traditional search box.</p>
-              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">12 New Articles <ArrowRight size={12}/></div>
+              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{$t("BlogInsights__t53", "Ecommerce Discovery")}</h5>
+              <p className="text-[11px] text-slate-500 leading-relaxed mb-3">{rich($t("BlogInsights__t54", "Product discovery is evolving beyond the traditional search box."))}</p>
+              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{$t("BlogInsights__t55", "12 New Articles ")}<ArrowRight size={12}/></div>
             </div>
 
             {/* Col 3 */}
@@ -251,9 +248,9 @@ export default function BlogInsights() {
                   </g>
                 </svg>
               </div>
-              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">Google Updates</h5>
-              <p className="text-[11px] text-slate-500 leading-relaxed mb-3">Core updates, spam updates and ranking changes explained.</p>
-              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">15 New Articles <ArrowRight size={12}/></div>
+              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{$t("BlogInsights__t56", "Google Updates")}</h5>
+              <p className="text-[11px] text-slate-500 leading-relaxed mb-3">{rich($t("BlogInsights__t57", "Core updates, spam updates and ranking changes explained."))}</p>
+              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{$t("BlogInsights__t58", "15 New Articles ")}<ArrowRight size={12}/></div>
             </div>
 
             {/* Col 4 */}
@@ -272,9 +269,9 @@ export default function BlogInsights() {
                   <circle cx="32" cy="28" r="4.5" fill="#f4fcfb"/>
                 </svg>
               </div>
-              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">Local Visibility</h5>
-              <p className="text-[11px] text-slate-500 leading-relaxed mb-3">Maps, reviews and local packs—opportunities you can't miss.</p>
-              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">9 New Articles <ArrowRight size={12}/></div>
+              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{$t("BlogInsights__t59", "Local Visibility")}</h5>
+              <p className="text-[11px] text-slate-500 leading-relaxed mb-3">{rich($t("BlogInsights__t60", "Maps, reviews and local packs—opportunities you can't miss."))}</p>
+              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{$t("BlogInsights__t61", "9 New Articles ")}<ArrowRight size={12}/></div>
             </div>
 
           </div>
@@ -282,8 +279,8 @@ export default function BlogInsights() {
           {/* Right Edge Telescope Graphic */}
           <div className="absolute right-[-20px] bottom-0 w-[180px] lg:w-[240px] pointer-events-none hidden lg:block z-0 mix-blend-multiply">
             <img 
-              src="/blog3.png" 
-              alt="Telescope" 
+              src={$t("BlogInsights__t62", "/blog3.png")} 
+              alt={$t("BlogInsights__t63", "Telescope")} 
               className="w-full h-auto object-contain object-right-bottom drop-shadow-xl"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />

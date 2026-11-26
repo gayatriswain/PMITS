@@ -21,6 +21,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { BrandIcon, Inner, LH2, LPill, LS, Panel, T, ease, heading } from "./LocalSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 type Channel = {
   title: string;
@@ -30,7 +32,7 @@ type Channel = {
   icon: React.ReactNode;
 };
 
-const CHANNELS: Channel[] = [
+const CHANNELS__cms: Channel[] = [
   { title: "Google Search", text: "Appear in local search & 3-pack results", chip: "More local visibility", ChipIcon: Search, icon: <BrandIcon name="google" className="h-10 w-10" /> },
   { title: "Google Maps", text: "Get discovered on Maps by local searchers", chip: "More map impressions", ChipIcon: MapPin, icon: <BrandIcon name="maps" className="h-11 w-11" /> },
   {
@@ -51,7 +53,7 @@ const CHANNELS: Channel[] = [
   { title: "AI & Directories", text: "Appear in AI results and top local directories", chip: "Future-ready discoverability", ChipIcon: Bot, icon: <Search className="h-11 w-11 text-amber-400" strokeWidth={2.6} /> },
 ];
 
-const WINS = [
+const WINS__cms = [
   { Icon: Eye, title: "Get Found More Often", text: "Show up when local customers are searching." },
   { Icon: Phone, title: "Drive More Calls & Visits", text: "Turn searches into real conversations & footfall." },
   { Icon: ShieldCheck, title: "Build Trust That Lasts", text: "Earn reviews & maintain a strong reputation." },
@@ -59,6 +61,9 @@ const WINS = [
 ];
 
 export default function LocalSeoEverywhere() {
+  const $t = useCmsText();
+  const CHANNELS = useCmsData("LocalSeoEverywhere__CHANNELS", CHANNELS__cms);
+  const WINS = useCmsData("LocalSeoEverywhere__WINS", WINS__cms);
   return (
     <Panel inner="!bg-white">
       {/* isometric city map with roads & pins at the sides (from the design assets) */}
@@ -67,14 +72,12 @@ export default function LocalSeoEverywhere() {
       </div>
       <Inner className="py-14 sm:py-16 lg:py-20 2xl:py-24">
         <div className="text-center">
-          <LPill>Be Found. Everywhere.</LPill>
+          <LPill>{$t("LocalSeoEverywhere__t1", "Be Found. Everywhere.")}</LPill>
           <LH2 className="mt-5" size="text-[clamp(30px,3.1vw,60px)]">
-            From One Location to
-            <br />
-            <T>Everywhere</T> Customers Search.
-          </LH2>
-          <p className="mx-auto mt-5 max-w-[640px] text-base leading-relaxed text-slate-600 sm:text-lg 2xl:text-[19px]">
-            We build and optimize your presence across all local discovery channels so your business shows up <b className="font-semibold text-[#0f766e]">where it matters most.</b>
+            {$t("LocalSeoEverywhere__t2", "From One Location to")}<br />
+            <T>{$t("LocalSeoEverywhere__t3", "Everywhere")}</T> {$t("LocalSeoEverywhere__t4", "Customers Search.")}</LH2>
+          <p className="text-body mx-auto mt-5 max-w-[640px] text-slate-600">
+            {rich($t("LocalSeoEverywhere__t5", "We build and optimize your presence across all local discovery channels so your business shows up "))}<b className="font-semibold text-[#0f766e]">{$t("LocalSeoEverywhere__t6", "where it matters most.")}</b>
           </p>
         </div>
 
@@ -96,7 +99,7 @@ export default function LocalSeoEverywhere() {
                   <span className="2xl:scale-[1.3]">{icon}</span>
                 </span>
                 <h3 className="mt-4 min-h-[2.6em] text-[15px] font-semibold leading-tight text-[#0b1b33] 2xl:text-[16.5px]">{title}</h3>
-                <p className="mt-1 flex-1 text-[13px] leading-relaxed text-slate-600 2xl:text-[14px]">{text}</p>
+                <p className="text-small mt-1 flex-1 text-slate-600">{text}</p>
                 <span className="mt-4 flex w-full items-center gap-2 rounded-xl bg-teal-50/70 px-3 py-2.5 text-left text-[12px] font-medium leading-tight text-[#0b1b33]">
                   <ChipIcon className="h-5 w-5 shrink-0 text-[#0f766e]" />
                   {chip}
@@ -125,10 +128,8 @@ export default function LocalSeoEverywhere() {
               <Target className="h-10 w-10" strokeWidth={1.6} />
               <span className="ai-anim absolute inset-0 rounded-full border border-white/30" style={{ animation: "aiPing 2.4s ease-out infinite" }} />
             </span>
-            <p className={`${heading.className} text-xl font-bold leading-snug 2xl:text-[24px]`}>
-              More Visibility.
-              <br /> More Customers.
-              <br /> More <span className="text-teal-200">Growth.</span>
+            <p className={`text-body ${heading.className} font-bold`}>
+              {rich($t("LocalSeoEverywhere__t7", "More Visibility."))}<br /> {rich($t("LocalSeoEverywhere__t8", "More Customers."))}<br /> {rich($t("LocalSeoEverywhere__t9", "More "))}<span className="text-teal-200">{$t("LocalSeoEverywhere__t10", "Growth.")}</span>
             </p>
           </div>
           <div className="grid gap-5 p-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:py-7">

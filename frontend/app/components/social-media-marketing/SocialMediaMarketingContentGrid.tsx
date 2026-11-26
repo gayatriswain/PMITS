@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 // Matches Tailwind's `sm` breakpoint (640px) — below it we're on a phone-sized viewport.
 function useIsMobile() {
@@ -61,9 +63,9 @@ function ArrowUpRightIcon() {
 // Until then each tile falls back to its gradient so nothing is hotlinked from anywhere else.
 type Tile = { views: string; from: string; to: string; video?: string };
 
-const VIDEO_SRCS = ["/video1.mp4", "/video2.mp4", "/video3.mp4", "/video4.mp4"];
+const VIDEO_SRCS__cms = ["/video1.mp4", "/video2.mp4", "/video3.mp4", "/video4.mp4"];
 
-const COLUMNS_BASE: Tile[][] = [
+const COLUMNS_BASE__cms: Tile[][] = [
   [
     { views: "1.2M views", from: "#f4a26b", to: "#c04f2c" },
     { views: "2.1M views", from: "#f0c9a0", to: "#c98a52" },
@@ -91,9 +93,7 @@ const COLUMNS_BASE: Tile[][] = [
 ];
 
 let videoCursor = 0;
-const COLUMNS: Tile[][] = COLUMNS_BASE.map((col) =>
-  col.map((tile) => ({ ...tile, video: VIDEO_SRCS[videoCursor++ % VIDEO_SRCS.length] }))
-);
+
 
 // Matches the reference's own numbers: perspective(1200px) rotateX(30deg) rotateZ(-2deg),
 // 250px-wide cards, 20px gap/radius. Each column loops its set twice and travels by exactly
@@ -152,7 +152,7 @@ function MarqueeColumn({ tiles, duration, direction }: { tiles: Tile[]; duration
   );
 }
 
-const PLATFORMS = [
+const PLATFORMS__cms = [
   {
     label: "Snapchat",
     href: "#",
@@ -208,6 +208,13 @@ const PLATFORMS = [
 ];
 
 export default function SocialMediaMarketingContentGrid() {
+  const $t = useCmsText();
+  const VIDEO_SRCS = useCmsData("SocialMediaMarketingContentGrid__VIDEO_SRCS", VIDEO_SRCS__cms);
+  const COLUMNS_BASE = useCmsData("SocialMediaMarketingContentGrid__COLUMNS_BASE", COLUMNS_BASE__cms);
+  const PLATFORMS = useCmsData("SocialMediaMarketingContentGrid__PLATFORMS", PLATFORMS__cms);
+  const COLUMNS = COLUMNS_BASE.map((col) =>
+  col.map((tile) => ({ ...tile, video: VIDEO_SRCS[videoCursor++ % VIDEO_SRCS.length] }))
+);
   const isMobile = useIsMobile();
   const columnSpeeds = isMobile ? MOBILE_COLUMN_SPEEDS : DESKTOP_COLUMN_SPEEDS;
 
@@ -226,41 +233,37 @@ export default function SocialMediaMarketingContentGrid() {
             variants={fadeUp}
             className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-1.5 text-[11px] font-semibold text-slate-500 shadow-sm mb-6"
           >
-            UGC &middot; Short-form &middot; Creator marketing
-          </motion.span>
+            {$t("SocialMediaMarketingContentGrid__t1", "UGC · Short-form · Creator marketing")}</motion.span>
 
           <motion.h2
             variants={fadeUp}
-            className="font-sans text-[38px] sm:text-6xl lg:text-[64px] font-black uppercase tracking-tight leading-[1.05]"
+            className="text-h2 font-sans font-black uppercase tracking-tight"
             style={{ color: NAVY }}
           >
-            <span className="block">Content That</span>
+            <span className="block">{$t("SocialMediaMarketingContentGrid__t2", "Content That")}</span>
             <span className="block">
-              St<OSlashIcon />ps The{" "}
+              {$t("SocialMediaMarketingContentGrid__t3", "St")}<OSlashIcon />{$t("SocialMediaMarketingContentGrid__t4", "ps The")}{" "}
               <span
                 className="inline-flex items-center rounded-full px-5 sm:px-7 py-0.5 sm:py-1 text-white"
                 style={{ backgroundColor: ACCENT }}
               >
-                Scroll.
-              </span>
+                {$t("SocialMediaMarketingContentGrid__t5", "Scroll.")}</span>
             </span>
           </motion.h2>
 
-          <motion.p variants={fadeUp} className="mt-6 max-w-lg text-sm md:text-[15px] text-slate-500 leading-relaxed">
-            We turn real people into your best sales team. Authentic UGC that stops the scroll, earns trust, and converts &mdash; built on data, not gut feelings.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body mt-6 max-w-lg text-slate-500">
+            {rich($t("SocialMediaMarketingContentGrid__t6", "We turn real people into your best sales team. Authentic UGC that stops the scroll, earns trust, and converts — built on data, not gut feelings."))}</motion.p>
 
           <motion.div variants={fadeUp} className="mt-8">
             <Link
-              href="/contact"
+              href={$t("SocialMediaMarketingContentGrid__t7", "/contact")}
               className="group inline-flex items-center gap-3 rounded-full border border-slate-900 bg-white pl-2 pr-5 py-2 text-[13px] font-bold transition-transform hover:-translate-y-0.5"
               style={{ color: NAVY }}
             >
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white transition-transform group-hover:rotate-45">
                 <ArrowUpRightIcon />
               </span>
-              Start growing
-            </Link>
+              {$t("SocialMediaMarketingContentGrid__t8", "Start growing")}</Link>
           </motion.div>
         </motion.div>
       </Container>
@@ -311,7 +314,7 @@ export default function SocialMediaMarketingContentGrid() {
           transition={{ duration: 0.6, ease: EASE }}
           className="relative z-10 mt-10 flex flex-col items-center text-center"
         >
-          <p className="text-[12px] font-medium text-slate-500 mb-4">Your audience is everywhere. So are we.</p>
+          <p className="text-caption font-medium text-slate-500 mb-4">{rich($t("SocialMediaMarketingContentGrid__t9", "Your audience is everywhere. So are we."))}</p>
           <div className="relative w-[40%] mx-auto overflow-hidden">
             <div className="flex w-max items-center gap-2.5 animate-ticker-x">
               {[...PLATFORMS, ...PLATFORMS].map((p, i) => (

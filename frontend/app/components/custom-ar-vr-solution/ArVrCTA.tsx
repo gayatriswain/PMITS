@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
+import { goToThankYou } from "@/lib/forms";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
@@ -28,7 +31,7 @@ const I = {
   strokeLinejoin: "round" as const,
 };
 
-const FEATURES = [
+const FEATURES__cms = [
   {
     title: "Strategic Partnership",
     text: "Aligned goals, shared success.",
@@ -121,7 +124,7 @@ const ORBIT = [
 ];
 
 // Simple wordmarks for the "trusted by" row
-const BRANDS = [
+const BRANDS__cms = [
   {
     name: "AUTOMAX",
     mark: (
@@ -163,6 +166,7 @@ const BRANDS = [
 type Status = "idle" | "submitting" | "success" | "error";
 
 function ConsultForm() {
+  const $t = useCmsText();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -175,7 +179,7 @@ function ConsultForm() {
       setMessage("Please enter a valid work email.");
       return;
     }
-    const honeypot = (new FormData(e.currentTarget).get("website") as string) ?? "";
+    const honeypot = (new FormData(e.currentTarget).get("pm_trap_field") as string) ?? "";
     setStatus("submitting");
     setMessage("");
     try {
@@ -194,6 +198,7 @@ function ConsultForm() {
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
       setStatus("success");
+      goToThankYou("ar-vr");
       setEmail("");
     } catch (err) {
       setStatus("error");
@@ -217,21 +222,20 @@ function ConsultForm() {
               <path d="M5 12.5l4.5 4.5L19 7.5" />
             </svg>
           </span>
-          Thank you! We&apos;ll get back to you shortly.
-        </div>
+          {$t("ArVrCTA__t1", "Thank you! We'll get back to you shortly.")}</div>
       ) : (
         <form onSubmit={onSubmit} noValidate className="flex flex-col gap-3 sm:flex-row">
           {/* Honeypot: hidden from real users */}
           <input
             type="text"
-            name="website"
+            name="pm_trap_field"
             tabIndex={-1}
-            autoComplete="off"
+            autoComplete="new-password"
             aria-hidden
             className="absolute -left-[9999px] h-0 w-0 opacity-0"
           />
           <label className="relative flex-1">
-            <span className="sr-only">Your work email</span>
+            <span className="sr-only">{$t("ArVrCTA__t2", "Your work email")}</span>
             <input
               type="email"
               value={email}
@@ -239,7 +243,7 @@ function ConsultForm() {
                 setEmail(e.target.value);
                 if (status === "error") setStatus("idle");
               }}
-              placeholder="Your Work Email"
+              placeholder={$t("ArVrCTA__t3", "Your Work Email")}
               autoComplete="email"
               aria-invalid={status === "error"}
               className={`h-12 w-full rounded-xl border bg-white/90 pl-4 pr-11 text-sm text-[#0f1535] outline-none transition placeholder:text-slate-500 focus:ring-4 ${
@@ -262,16 +266,16 @@ function ConsultForm() {
             disabled={status === "submitting"}
             className="inline-flex h-12 shrink-0 items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-[#6d4df0] to-[#4f46e5] px-6 text-sm font-semibold text-white shadow-[0_10px_24px_-6px_rgba(91,67,232,0.55)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {status === "submitting" ? "Sending..." : "Schedule a Consultation"}
+            {status === "submitting" ? $t("ArVrCTA__t4", "Sending...") : $t("ArVrCTA__t5", "Schedule a Consultation")}
             <span aria-hidden>→</span>
           </button>
         </form>
       )}
-      <p role="alert" className="min-h-[1.25rem] pt-1.5 text-xs text-red-500">
+      <p role="alert" className="text-caption min-h-[1.25rem] pt-1.5 text-red-500">
         {status === "error" ? message : ""}
       </p>
-      <p className="text-center text-[13px] text-slate-500 sm:text-left">
-        Prefer to talk now? Call us at{" "}
+      <p className="text-small text-center text-slate-500 sm:text-left">
+        {rich($t("ArVrCTA__t6", "Prefer to talk now? Call us at"))}{" "}
         <a
           href={`tel:${PHONE.replace(/[^+\d]/g, "")}`}
           className="font-semibold text-[#5b43e8] hover:underline"
@@ -284,6 +288,9 @@ function ConsultForm() {
 }
 
 export default function ArVrCTA() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("ArVrCTA__FEATURES", FEATURES__cms);
+  const BRANDS = useCmsData("ArVrCTA__BRANDS", BRANDS__cms);
   return (
     <section
       id="contact-form"
@@ -303,28 +310,24 @@ export default function ArVrCTA() {
               custom={0}
               className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
             >
-              Ready to make an impact?
-            </motion.span>
+              {$t("ArVrCTA__t7", "Ready to make an impact?")}</motion.span>
 
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="mt-4 text-4xl font-black leading-[1.1] tracking-tight text-[#0f1535] sm:text-5xl lg:text-[52px]"
+              className="text-h2 mt-4 font-black tracking-tight text-[#0f1535]"
             >
-              Let&apos;s build something that&apos;s real.{" "}
+              {$t("ArVrCTA__t8", "Let's build something that's real.")}{" "}
               <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-                Measurable. Remarkable.
-              </span>
+                {$t("ArVrCTA__t9", "Measurable. Remarkable.")}</span>
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
               custom={2}
-              className="mt-5 max-w-lg text-sm leading-relaxed text-slate-600 sm:text-[15px]"
+              className="text-body mt-5 max-w-lg text-slate-600"
             >
-              Ready to turn immersive ideas into real-world results? Partner with us to
-              create experiences that drive engagement, efficiency and growth.
-            </motion.p>
+              {rich($t("ArVrCTA__t10", "Ready to turn immersive ideas into real-world results? Partner with us to create experiences that drive engagement, efficiency and growth."))}</motion.p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               {FEATURES.map((f, i) => (
@@ -339,7 +342,7 @@ export default function ArVrCTA() {
                   </span>
                   <div>
                     <h3 className="text-[13.5px] font-bold leading-tight text-[#0f1535]">{f.title}</h3>
-                    <p className="mt-1 text-[12px] leading-snug text-slate-500">{f.text}</p>
+                    <p className="text-caption mt-1 text-slate-500">{f.text}</p>
                   </div>
                 </motion.div>
               ))}
@@ -371,8 +374,8 @@ export default function ArVrCTA() {
             />
 
             <Image
-              src="/Futuristic Lavender Archway Atrium.webp"
-              alt="Glowing archway opening onto a bright modern atrium"
+              src={$t("ArVrCTA__t11", "/Futuristic Lavender Archway Atrium.webp")}
+              alt={$t("ArVrCTA__t12", "Glowing archway opening onto a bright modern atrium")}
               width={1367}
               height={1150}
               sizes="(min-width: 1024px) 520px, 90vw"
@@ -387,15 +390,12 @@ export default function ArVrCTA() {
                   <path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" />
                 </svg>
               </span>
-              <p className="mt-2 text-[11px] font-bold leading-snug text-[#0f1535] sm:text-sm">
-                Your Next
-                <br />
-                Success Story
-                <br />
-                Starts Here
-              </p>
+              <p className="text-small mt-2 font-bold text-[#0f1535]">
+                {rich($t("ArVrCTA__t13", "Your Next"))}<br />
+                {rich($t("ArVrCTA__t14", "Success Story"))}<br />
+                {rich($t("ArVrCTA__t15", "Starts Here"))}</p>
               <a
-                href="#cta-form"
+                href={$t("ArVrCTA__t16", "#cta-form")}
                 aria-label="Get started"
                 className="mt-3 grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-[#7c5cf6] to-[#4f46e5] text-white shadow-[0_8px_20px_-4px_rgba(91,67,232,0.6)] transition hover:scale-105 sm:h-11 sm:w-11"
               >
@@ -439,11 +439,9 @@ export default function ArVrCTA() {
               </svg>
             </span>
             <div>
-              <h3 className="text-xl font-bold text-[#0f1535] sm:text-2xl">Ready to get started?</h3>
-              <p className="mt-1 max-w-sm text-[13px] leading-relaxed text-slate-600">
-                Let&apos;s discuss how we can create immersive solutions that drive real impact
-                for your business.
-              </p>
+              <h3 className="text-h5 font-bold text-[#0f1535]">{$t("ArVrCTA__t17", "Ready to get started?")}</h3>
+              <p className="text-small mt-1 max-w-sm text-slate-600">
+                {rich($t("ArVrCTA__t18", "Let's discuss how we can create immersive solutions that drive real impact for your business."))}</p>
             </div>
           </div>
 
@@ -452,7 +450,7 @@ export default function ArVrCTA() {
 
         {/* Trusted by */}
         <div className="mt-10 text-center">
-          <p className="text-xs text-slate-500">Trusted by forward-thinking brands across industries</p>
+          <p className="text-caption text-slate-500">{rich($t("ArVrCTA__t19", "Trusted by forward-thinking brands across industries"))}</p>
           <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-slate-400">
             {BRANDS.map((b) => (
               <li key={b.name} className="flex items-center gap-2">

@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 
 /* =========================================================================
    SCALE BOX: lays children out at a fixed design size and scales them to the available width
@@ -55,7 +56,7 @@ interface Step {
   w: number;
 }
 
-const steps: Step[] = [
+const steps__cms: Step[] = [
   {
     n: "01",
     title: "DISCOVER",
@@ -216,6 +217,7 @@ function CodeWindow({ className = "" }: { className?: string }) {
 }
 
 function ExpertsCard({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <div className={`flex items-center gap-4 rounded-2xl bg-white/85 backdrop-blur border border-white shadow-[0_16px_34px_-18px_rgba(15,35,80,0.25)] px-5 py-4 ${className}`}>
       <span className="w-12 h-12 rounded-xl bg-[#eaf6f6] border border-white shadow-[inset_0_0_0_1px_rgba(13,148,136,0.15)] text-[#0f8a83] flex items-center justify-center shrink-0">
@@ -224,18 +226,17 @@ function ExpertsCard({ className = "" }: { className?: string }) {
         </Icon>
       </span>
       <div className="text-left">
-        <div className="text-[14px] font-bold text-[#0c1e3d]">Core PHP Experts</div>
+        <div className="text-[14px] font-bold text-[#0c1e3d]">{$t("HireCorePhpNextStep__t1", "Core PHP Experts")}</div>
         <div className="mt-1 text-[11.5px] text-slate-500 leading-snug">
-          Clean code. Scalable solutions.
-          <br />
-          On-time delivery.
-        </div>
+          {$t("HireCorePhpNextStep__t2", "Clean code. Scalable solutions.")}<br />
+          {$t("HireCorePhpNextStep__t3", "On-time delivery.")}</div>
       </div>
     </div>
   );
 }
 
 function TalkBanner({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <motion.div
       className={`relative rounded-2xl bg-white border border-slate-100 shadow-[0_20px_44px_-20px_rgba(15,35,80,0.25)] overflow-hidden ${className}`}
@@ -263,18 +264,16 @@ function TalkBanner({ className = "" }: { className?: string }) {
             </Icon>
           </motion.span>
           <div className="text-left text-[18px] font-semibold leading-snug text-white">
-            Have a PHP project in mind?
-            <br />
-            <span className="text-[#3fd6cf] font-bold">Let&apos;s talk about it.</span>
+            {$t("HireCorePhpNextStep__t4", "Have a PHP project in mind?")}<br />
+            <span className="text-[#3fd6cf] font-bold">{$t("HireCorePhpNextStep__t5", "Let's talk about it.")}</span>
           </div>
         </div>
 
         <Link
-          href="#contact"
+          href={$t("HireCorePhpNextStep__t6", "#contact")}
           className="group inline-flex items-center justify-center gap-3 h-[46px] px-9 rounded-lg bg-[linear-gradient(90deg,#0f8a99,#1aa6a6)] text-white text-[13.5px] font-semibold shadow-[0_12px_24px_-10px_rgba(26,166,166,0.8)] hover:brightness-110 transition whitespace-nowrap"
         >
-          Let&apos;s Talk
-          <svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          {$t("HireCorePhpNextStep__t7", "Let's Talk")}<svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
@@ -314,12 +313,12 @@ function StepCard({ step, index }: { step: Step; index: number }) {
 }
 
 export default function HireCorePhpNextStep() {
+  const $t = useCmsText();
+  const steps = useCmsData("HireCorePhpNextStep__steps", steps__cms);
   const subtitle = (
     <>
-      A clear process. Zero guesswork.
-      <br />
-      We turn your idea into a scalable PHP solution.
-    </>
+      {$t("HireCorePhpNextStep__t8", "A clear process. Zero guesswork.")}<br />
+      {$t("HireCorePhpNextStep__t9", "We turn your idea into a scalable PHP solution.")}</>
   );
 
   return (
@@ -336,17 +335,15 @@ export default function HireCorePhpNextStep() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Your next step
-              </motion.div>
+                {$t("HireCorePhpNextStep__t10", "Your next step")}</motion.div>
               <motion.h2
                 className="absolute left-[77px] top-[62px] text-[56px] font-black tracking-tight leading-[1.08] text-[#0c1e3d] whitespace-nowrap"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                From First Call.
-                <br />
-                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">To First Commit.</span>
+                {$t("HireCorePhpNextStep__t11", "From First Call.")}<br />
+                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpNextStep__t12", "To First Commit.")}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[77px] top-[216px] text-[15px] leading-[1.55] text-slate-600"
@@ -420,7 +417,7 @@ export default function HireCorePhpNextStep() {
                 />
                 <span className="absolute -inset-[14px] rounded-full border border-dashed border-sky-300/70" />
                 <div className="absolute inset-[22px] rounded-full bg-[radial-gradient(circle_at_35%_30%,#17406b,#0a2038_65%,#071a31)] border border-sky-300/40 shadow-[0_26px_44px_-14px_rgba(7,22,43,0.7)] flex flex-col items-center justify-center text-center">
-                  <div className="text-[9.5px] font-bold tracking-[0.18em] text-sky-200/80">YOUR REQUIREMENT</div>
+                  <div className="text-[9.5px] font-bold tracking-[0.18em] text-sky-200/80">{$t("HireCorePhpNextStep__t13", "YOUR REQUIREMENT")}</div>
                   <span className="mt-2 w-11 h-11 rounded-full border border-sky-300/50 text-sky-100 flex items-center justify-center">
                     <Icon className="w-6 h-6">
                       <circle cx="12" cy="8" r="4" />
@@ -428,10 +425,8 @@ export default function HireCorePhpNextStep() {
                     </Icon>
                   </span>
                   <div className="mt-2.5 text-[12px] font-semibold text-white leading-snug">
-                    We start
-                    <br />
-                    with your goals.
-                  </div>
+                    {$t("HireCorePhpNextStep__t14", "We start")}<br />
+                    {$t("HireCorePhpNextStep__t15", "with your goals.")}</div>
                 </div>
               </motion.div>
 
@@ -456,7 +451,7 @@ export default function HireCorePhpNextStep() {
                       <path d="M4.500 16.500c-1.500 1.260-2 5-2 5s3.740-.5 5-2c.710-.840.700-2.130-.090-2.910a2.180 2.180 0 0 0-2.910-.090z" />
                       <path d="m12 15-3-3a22 22 0 0 1 2-3.950A12.880 12.880 0 0 1 22 2c0 2.720-.780 7.500-6 11a22.350 22.350 0 0 1-4 2z" />
                     </Icon>
-                    <span className="mt-1 text-[10px] font-bold tracking-[0.18em] text-[#0f6f78]">YOUR PRODUCT</span>
+                    <span className="mt-1 text-[10px] font-bold tracking-[0.18em] text-[#0f6f78]">{$t("HireCorePhpNextStep__t16", "YOUR PRODUCT")}</span>
                   </div>
                 </div>
               </div>
@@ -468,11 +463,10 @@ export default function HireCorePhpNextStep() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">Your next step</div>
+          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">{$t("HireCorePhpNextStep__t17", "Your next step")}</div>
           <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight leading-[1.08] text-[#0c1e3d]">
-            From First Call.
-            <br />
-            <span className="text-[#0f8a83]">To First Commit.</span>
+            {$t("HireCorePhpNextStep__t18", "From First Call.")}<br />
+            <span className="text-[#0f8a83]">{$t("HireCorePhpNextStep__t19", "To First Commit.")}</span>
           </h2>
           <p className="mt-4 text-sm sm:text-base text-slate-600">{subtitle}</p>
 
@@ -483,7 +477,7 @@ export default function HireCorePhpNextStep() {
           </div>
 
           <div className="mt-10 mx-auto w-[190px] h-[190px] rounded-full bg-[radial-gradient(circle_at_35%_30%,#17406b,#0a2038_65%,#071a31)] border border-sky-300/40 shadow-[0_26px_44px_-14px_rgba(7,22,43,0.7)] flex flex-col items-center justify-center text-center">
-            <div className="text-[9.5px] font-bold tracking-[0.18em] text-sky-200/80">YOUR REQUIREMENT</div>
+            <div className="text-[9.5px] font-bold tracking-[0.18em] text-sky-200/80">{$t("HireCorePhpNextStep__t20", "YOUR REQUIREMENT")}</div>
             <span className="mt-2 w-11 h-11 rounded-full border border-sky-300/50 text-sky-100 flex items-center justify-center">
               <Icon className="w-6 h-6">
                 <circle cx="12" cy="8" r="4" />
@@ -491,10 +485,8 @@ export default function HireCorePhpNextStep() {
               </Icon>
             </span>
             <div className="mt-2.5 text-[12px] font-semibold text-white leading-snug">
-              We start
-              <br />
-              with your goals.
-            </div>
+              {$t("HireCorePhpNextStep__t21", "We start")}<br />
+              {$t("HireCorePhpNextStep__t22", "with your goals.")}</div>
           </div>
 
           <div className="mt-8 space-y-4 max-w-md mx-auto">

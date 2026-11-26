@@ -7,6 +7,8 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import CountUp from "../shared/CountUp";
 import { CakeMark } from "./HireCakePhpExpertise";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -118,7 +120,7 @@ type Item = {
   mask: [number, number, number, number];
 };
 
-const ITEMS: Item[] = [
+const ITEMS__cms: Item[] = [
   // Left side: Content to the LEFT of icon (so text is completely exterior to orbit line)
   {
     title: "Experienced",
@@ -195,7 +197,7 @@ const ACCENT_DOTS = [
   { x: 460.4, y: 417.2 }, // between On-Time Delivery & Ongoing Support
 ];
 
-const COUNTRIES = ["USA", "UK", "Australia", "UAE", "India"];
+const COUNTRIES__cms = ["USA", "UK", "Australia", "UAE", "India"];
 
 /* ------------------------------ pieces ------------------------------ */
 function IconTile({ children }: { children: React.ReactNode }) {
@@ -271,6 +273,9 @@ function Plane() {
 
 /* ------------------------------ main section ------------------------------ */
 export default function HireCakePhpWhy() {
+  const $t = useCmsText();
+  const ITEMS = useCmsData("HireCakePhpWhy__ITEMS", ITEMS__cms);
+  const COUNTRIES = useCmsData("HireCakePhpWhy__COUNTRIES", COUNTRIES__cms);
   const reduce = useReducedMotion();
 
   // Pure circular SVG motion path for the spark animation (true round circle: r = ORBIT_R)
@@ -290,39 +295,33 @@ export default function HireCakePhpWhy() {
           >
             <motion.div variants={fadeUp} custom={0} className="flex items-center gap-2.5">
               <span className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: RED }}>
-                WHY PROMANAGE
-              </span>
+                {$t("HireCakePhpWhy__t1", "WHY PROMANAGE")}</span>
               <span className="h-[1.5px] w-6 opacity-60" style={{ background: RED }} />
             </motion.div>
 
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="mt-4 font-playfair text-[32px] font-bold leading-[1.14] tracking-tight sm:text-4xl xl:text-[42px]"
+              className="text-h2 mt-4 font-playfair font-bold tracking-tight"
               style={{ color: INK }}
             >
-              More than developers.
-              <br />
-              Your <span style={{ color: RED }}>CakePHP</span> partner.
-            </motion.h2>
+              {$t("HireCakePhpWhy__t2", "More than developers.")}<br />
+              {$t("HireCakePhpWhy__t3", "Your ")}<span style={{ color: RED }}>{$t("HireCakePhpWhy__t4", "CakePHP")}</span> {$t("HireCakePhpWhy__t5", "partner.")}</motion.h2>
 
             <motion.p
               variants={fadeUp}
               custom={2}
-              className="mt-4 max-w-[420px] text-[13.5px] leading-relaxed text-slate-600"
+              className="text-small mt-4 max-w-[420px] text-slate-600"
             >
-              We combine deep CakePHP expertise with a client-first approach to deliver secure, scalable and
-              high-performing applications.
-            </motion.p>
+              {rich($t("HireCakePhpWhy__t6", "We combine deep CakePHP expertise with a client-first approach to deliver secure, scalable and high-performing applications."))}</motion.p>
 
             <motion.div variants={fadeUp} custom={3} className="mt-6 flex flex-col items-start">
               <Link
-                href="#cakephp-contact"
+                href={$t("HireCakePhpWhy__t7", "#cakephp-contact")}
                 className="group inline-flex items-center gap-2 text-[13px] font-semibold transition-colors hover:opacity-90"
                 style={{ color: RED }}
               >
-                Hire a CakePHP Developer
-                <span className="transition-transform duration-300 group-hover:translate-x-1.5">{ic.arrow}</span>
+                {$t("HireCakePhpWhy__t8", "Hire a CakePHP Developer")}<span className="transition-transform duration-300 group-hover:translate-x-1.5">{ic.arrow}</span>
               </Link>
               <motion.span
                 className="mt-2 block h-[1.5px] w-8 origin-left"
@@ -438,11 +437,9 @@ export default function HireCakePhpWhy() {
                 <CakeMark />
               </span>
               <h3 className="mt-1 text-[13px] font-bold leading-tight" style={{ color: INK }}>
-                CakePHP
-              </h3>
+                {$t("HireCakePhpWhy__t9", "CakePHP")}</h3>
               <p className="mt-0.5 text-[9.5px] leading-snug text-slate-500">
-                The solid foundation for your next big idea.
-              </p>
+                {rich($t("HireCakePhpWhy__t10", "The solid foundation for your next big idea."))}</p>
             </motion.div>
 
             {/* Center: 3D Cake with glowing plate pedestal */}
@@ -466,7 +463,7 @@ export default function HireCakePhpWhy() {
               >
                 <Image
                   src={CAKE}
-                  alt="CakePHP 3D Architecture Cake"
+                  alt={$t("HireCakePhpWhy__t11", "CakePHP 3D Architecture Cake")}
                   width={612}
                   height={408}
                   sizes="195px"
@@ -487,16 +484,14 @@ export default function HireCakePhpWhy() {
           <div className="flex flex-col items-center text-center">
             <CakeMark />
             <h3 className="mt-2 text-[16px] font-bold" style={{ color: INK }}>
-              CakePHP
-            </h3>
-            <p className="mt-1 text-[12px] text-slate-500">
-              The solid foundation for your next big idea.
-            </p>
+              {$t("HireCakePhpWhy__t12", "CakePHP")}</h3>
+            <p className="text-caption mt-1 text-slate-500">
+              {rich($t("HireCakePhpWhy__t13", "The solid foundation for your next big idea."))}</p>
           </div>
           <div className="mx-auto mt-6 w-[250px]">
             <Image
               src={CAKE}
-              alt="CakePHP 3D Architecture Cake"
+              alt={$t("HireCakePhpWhy__t14", "CakePHP 3D Architecture Cake")}
               width={612}
               height={408}
               sizes="250px"
@@ -531,11 +526,9 @@ export default function HireCakePhpWhy() {
         >
           {/* Col 1: Global Clients */}
           <div>
-            <p className="text-[13.5px] font-semibold leading-snug" style={{ color: INK }}>
-              Working with clients
-              <br />
-              across the globe
-            </p>
+            <p className="text-small font-semibold" style={{ color: INK }}>
+              {rich($t("HireCakePhpWhy__t15", "Working with clients"))}<br />
+              {rich($t("HireCakePhpWhy__t16", "across the globe"))}</p>
             <ul className="mt-2.5 flex flex-wrap gap-x-3.5 gap-y-1.5">
               {COUNTRIES.map((c, i) => (
                 <motion.li
@@ -559,15 +552,15 @@ export default function HireCakePhpWhy() {
           {/* Col 2: Numbers */}
           <div className="flex items-center gap-7">
             {[
-              { n: 100, s: "+", l: "Projects Delivered", icon: ic.users },
-              { n: 15, s: "+", l: "Industries Served", icon: ic.briefcase },
+              { n: 100, s: "+", l: $t("HireCakePhpWhy__t17", "Projects Delivered"), icon: ic.users },
+              { n: 15, s: "+", l: $t("HireCakePhpWhy__t18", "Industries Served"), icon: ic.briefcase },
             ].map((s) => (
               <div key={s.l} className="flex items-center gap-3">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#fdeeee] text-[#d92b32]">
                   {s.icon}
                 </span>
                 <div>
-                  <p className="text-[22px] font-extrabold leading-none" style={{ color: INK }}>
+                  <p className="text-body font-extrabold" style={{ color: INK }}>
                     <CountUp to={s.n} suffix={s.s} />
                   </p>
                   <p className="mt-1 text-[10px] text-slate-500">{s.l}</p>
@@ -579,15 +572,14 @@ export default function HireCakePhpWhy() {
           {/* Col 3: Have a Project in Mind CTA */}
           <div className="relative overflow-hidden rounded-xl bg-[linear-gradient(110deg,#fff2f2_0%,#ffe8e8_100%)] px-5 py-4">
             <h3 className="font-playfair text-[15.5px] font-bold" style={{ color: INK }}>
-              Have a project in mind?
-            </h3>
-            <p className="mt-0.5 text-[11px] text-slate-500">Let&apos;s build something great together.</p>
+              {$t("HireCakePhpWhy__t19", "Have a project in mind?")}</h3>
+            <p className="mt-0.5 text-[11px] text-slate-500">{rich($t("HireCakePhpWhy__t20", "Let's build something great together."))}</p>
             <Link
-              href="#cakephp-contact"
+              href={$t("HireCakePhpWhy__t21", "#cakephp-contact")}
               className="group relative mt-3 inline-flex items-center gap-1.5 overflow-hidden rounded-lg px-4 py-2 text-[11.5px] font-semibold text-white shadow-[0_8px_18px_-6px_rgba(217,43,50,0.7)] transition-transform hover:-translate-y-0.5 active:scale-95"
               style={{ background: RED }}
             >
-              <span className="relative">Get In Touch</span>
+              <span className="relative">{$t("HireCakePhpWhy__t22", "Get In Touch")}</span>
               <span className="relative transition-transform duration-300 group-hover:translate-x-1">
                 {ic.arrow}
               </span>

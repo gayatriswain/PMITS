@@ -6,8 +6,10 @@ import Link from "next/link";
 import { motion, useInView, useMotionValue, useReducedMotion, useSpring, useTransform, type MotionValue } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, Eyebrow, Icon, IMG, ease, fadeUp, heading, type IconName } from "../shared/MagentoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const industries: { label: [string, string?]; icon: IconName; tint: string; color: string }[] = [
+const industries__cms: { label: [string, string?]; icon: IconName; tint: string; color: string }[] = [
   { label: ["Retail &", "eCommerce"], icon: "cart", tint: "bg-teal-50", color: "text-[#0d9488]" },
   { label: ["Healthcare"], icon: "health", tint: "bg-cyan-50", color: "text-[#0e7490]" },
   { label: ["Real Estate"], icon: "building", tint: "bg-violet-50", color: "text-violet-600" },
@@ -16,7 +18,7 @@ const industries: { label: [string, string?]; icon: IconName; tint: string; colo
 ];
 
 /* Floating chips on the full-bleed image panel (percent of the panel, from the design mock). */
-const chips: { text: [string, string]; icon: IconName; tint: string; pos: string; depth: number }[] = [
+const chips__cms: { text: [string, string]; icon: IconName; tint: string; pos: string; depth: number }[] = [
   { text: ["Magento Design and", "Development"], icon: "pen", tint: "bg-orange-50 text-orange-500", pos: "left-[21%] top-[12%]", depth: 10 },
   { text: ["Vast research and", "development"], icon: "search", tint: "bg-sky-50 text-sky-600", pos: "left-[5%] top-[28%]", depth: 14 },
   { text: ["Fair and honest", "quote upfront"], icon: "doc", tint: "bg-violet-50 text-violet-600", pos: "left-[2%] top-[38.5%]", depth: 8 },
@@ -26,7 +28,7 @@ const chips: { text: [string, string]; icon: IconName; tint: string; pos: string
   { text: ["Solid support", "round the clock"], icon: "headset", tint: "bg-orange-50 text-orange-600", pos: "right-[4%] top-[53%]", depth: -12 },
 ];
 
-const badges: { label: [string, string]; icon: IconName }[] = [
+const badges__cms: { label: [string, string]; icon: IconName }[] = [
   { label: ["Multi-Industry", "Experience"], icon: "diamond" },
   { label: ["Certified", "Developers"], icon: "users" },
   { label: ["Custom", "Solutions"], icon: "cog" },
@@ -34,6 +36,7 @@ const badges: { label: [string, string]; icon: IconName }[] = [
 ];
 
 function Badges({ className = "" }: { className?: string }) {
+  const badges = useCmsData("MagentoIndustry__badges", badges__cms);
   return (
     <motion.ul initial="hidden" whileInView="show" viewport={{ once: true }} className={className}>
       {badges.map((b, i) => (
@@ -54,7 +57,7 @@ function Badges({ className = "" }: { className?: string }) {
   );
 }
 
-function Chip({ c, i, mx, my, reduce }: { c: (typeof chips)[number]; i: number; mx: MotionValue<number>; my: MotionValue<number>; reduce: boolean | null }) {
+function Chip({ c, i, mx, my, reduce }: { c: (typeof chips__cms)[number]; i: number; mx: MotionValue<number>; my: MotionValue<number>; reduce: boolean | null }) {
   const x = useTransform(mx, (v) => v * c.depth);
   const y = useTransform(my, (v) => v * c.depth);
   return (
@@ -86,6 +89,9 @@ function Chip({ c, i, mx, my, reduce }: { c: (typeof chips)[number]; i: number; 
 }
 
 export default function MagentoIndustry() {
+  const $t = useCmsText();
+  const industries = useCmsData("MagentoIndustry__industries", industries__cms);
+  const chips = useCmsData("MagentoIndustry__chips", chips__cms);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.3 });
@@ -127,7 +133,7 @@ export default function MagentoIndustry() {
           transition={{ duration: 1.2, ease }}
           className="absolute inset-0 [mask-image:linear-gradient(to_right,transparent_0%,black_20%,black_100%),linear-gradient(to_bottom,transparent_0%,black_6%,black_92%,transparent_100%)] [mask-composite:intersect]"
         >
-          <Image src={IMG.showcase.src} alt="Magento storefront on laptop and phone" fill sizes="56vw" className="object-cover object-[50%_42%]" />
+          <Image src={IMG.showcase.src} alt={$t("MagentoIndustry__t1", "Magento storefront on laptop and phone")} fill sizes="56vw" className="object-cover object-[50%_42%]" />
         </motion.div>
         {/* soft white wash at the bottom so the badge row stays readable */}
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-[22%] bg-gradient-to-t from-white/85 to-transparent" />
@@ -141,8 +147,8 @@ export default function MagentoIndustry() {
           viewport={{ once: true }}
           transition={{ duration: 1.4, delay: 0.5, ease: "easeInOut" }}
         >
-          <text x="10" y="46" className="font-caveat" fontSize="32" fill="currentColor" transform="rotate(-10 10 46)">Industry Knowledge</text>
-          <text x="80" y="82" className="font-caveat" fontSize="32" fill="currentColor" transform="rotate(-10 80 82)">Real Impact</text>
+          <text x="10" y="46" className="font-caveat" fontSize="32" fill="currentColor" transform="rotate(-10 10 46)">{$t("MagentoIndustry__t2", "Industry Knowledge")}</text>
+          <text x="80" y="82" className="font-caveat" fontSize="32" fill="currentColor" transform="rotate(-10 80 82)">{$t("MagentoIndustry__t3", "Real Impact")}</text>
           <path d="M76 102 C140 92 210 78 296 48" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
         </motion.svg>
 
@@ -159,30 +165,22 @@ export default function MagentoIndustry() {
         <div className="grid items-center gap-12 lg:min-h-[680px] lg:grid-cols-[44%_1fr] lg:gap-10">
           {/* copy */}
           <div>
-            <Eyebrow variant="line" align="left" className="tracking-[0.3em]">Industry focused expertise</Eyebrow>
+            <Eyebrow variant="line" align="left" className="tracking-[0.3em]">{$t("MagentoIndustry__t4", "Industry focused expertise")}</Eyebrow>
             <motion.h2
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className={`${heading.className} mt-5 text-[34px] font-bold leading-[1.1] tracking-tight text-[#0c1e3d] sm:text-5xl`}
+              className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0c1e3d]`}
             >
-              Magento Developers Having
-              <br />
-              <span className="text-[#0d9488]">Industry Specific Expertise</span>
+              {$t("MagentoIndustry__t5", "Magento Developers Having")}<br />
+              <span className="text-[#0d9488]">{$t("MagentoIndustry__t6", "Industry Specific Expertise")}</span>
             </motion.h2>
             <motion.div variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-6 max-w-[600px] space-y-4 text-[15px] leading-relaxed text-slate-600">
               <p>
-                When you choose ProManage IT Solution over its competitors, you get a unique benefit of hiring certified Magento developers having
-                experience in your chosen niche. Yes, we have a team of very talented Magento developers coming from different backgrounds and
-                industries. What this means is that besides hiring Magento developers on an hourly, monthly, or contractual basis, you also get
-                industry specific experience in your Magento developers.
-              </p>
+                {rich($t("MagentoIndustry__t7", "When you choose ProManage IT Solution over its competitors, you get a unique benefit of hiring certified Magento developers having experience in your chosen niche. Yes, we have a team of very talented Magento developers coming from different backgrounds and industries. What this means is that besides hiring Magento developers on an hourly, monthly, or contractual basis, you also get industry specific experience in your Magento developers."))}</p>
               <p>
-                No task is too big or challenging for our Magento developers as they have tons of experience behind them. We design, development of
-                a mobile application, ecommerce portal, and upgrade of website from Magento 1 to Magento 2 is like another day in the office for
-                our experienced Magento developers.
-              </p>
+                {rich($t("MagentoIndustry__t8", "No task is too big or challenging for our Magento developers as they have tons of experience behind them. We design, development of a mobile application, ecommerce portal, and upgrade of website from Magento 1 to Magento 2 is like another day in the office for our experienced Magento developers."))}</p>
             </motion.div>
 
             {/* industries */}
@@ -214,7 +212,7 @@ export default function MagentoIndustry() {
                       {it.label[0]}
                       {it.label[1] && (<><br />{it.label[1]}</>)}
                     </span>
-                    <span className={`absolute bottom-1 right-2 text-xl font-bold transition-colors ${on ? "text-[#0d9488]/30" : "text-slate-200"}`}>0{i + 1}</span>
+                    <span className={`absolute bottom-1 right-2 text-xl font-bold transition-colors ${on ? "text-[#0d9488]/30" : "text-slate-200"}`}>{$t("MagentoIndustry__t9", "0")}{i + 1}</span>
                   </motion.button>
                 );
               })}
@@ -222,18 +220,17 @@ export default function MagentoIndustry() {
 
             <motion.div variants={fadeUp} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-8 flex flex-wrap items-center gap-6">
               <Link
-                href="#magento-proposal"
+                href={$t("MagentoIndustry__t10", "#magento-proposal")}
                 className="group inline-flex items-center gap-2 rounded-full bg-[#0b4f4c] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_14px_30px_-14px_rgba(11,79,76,0.8)] transition hover:-translate-y-0.5 hover:bg-[#0b5f5a]"
               >
-                Hire Magento Developers
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                {$t("MagentoIndustry__t11", "Hire Magento Developers")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link href="#magento-proposal" className="group inline-flex items-center gap-3 text-sm font-semibold text-[#0c1e3d]">
+              <Link href={$t("MagentoIndustry__t12", "#magento-proposal")} className="group inline-flex items-center gap-3 text-sm font-semibold text-[#0c1e3d]">
                 <span className="relative flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm">
                   {!reduce && <span className="absolute inset-0 animate-ping rounded-full border border-[#0d9488]/40 [animation-duration:2.4s]" />}
                   <Icon name="play" className="ml-0.5 h-4 w-4 text-[#0c1e3d]" />
                 </span>
-                <span className="border-b border-[#0c1e3d]/30 pb-1 transition-colors group-hover:border-[#0d9488] group-hover:text-[#0d9488]">Talk to Our Experts</span>
+                <span className="border-b border-[#0c1e3d]/30 pb-1 transition-colors group-hover:border-[#0d9488] group-hover:text-[#0d9488]">{$t("MagentoIndustry__t13", "Talk to Our Experts")}</span>
               </Link>
             </motion.div>
           </div>
@@ -241,7 +238,7 @@ export default function MagentoIndustry() {
           {/* visual — mobile / tablet only (desktop uses the full-bleed panel above) */}
           <div className="relative lg:hidden">
             <div className="relative mx-auto max-w-[560px] overflow-hidden rounded-[24px]">
-              <Image src={IMG.showcase.src} alt="Magento storefront on laptop and phone" width={IMG.showcase.w} height={IMG.showcase.h} sizes="90vw" className="h-auto w-full" />
+              <Image src={IMG.showcase.src} alt={$t("MagentoIndustry__t14", "Magento storefront on laptop and phone")} width={IMG.showcase.w} height={IMG.showcase.h} sizes="90vw" className="h-auto w-full" />
             </div>
             <Badges className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-0" />
           </div>

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ICONS (24px stroke paths)
@@ -48,14 +50,14 @@ const Icon = ({ d, className = "w-5 h-5" }: { d: string; className?: string }) =
    DATA
    ========================================================================= */
 
-const benefits = [
+const benefits__cms = [
   { icon: I.clock, title: "Save Time", desc: "Automate repetitive work and free up your team." },
   { icon: I.chart, title: "Boost Productivity", desc: "Your agent works 24/7— faster, smarter, tireless." },
   { icon: I.shield, title: "Reduce Errors", desc: "Consistent, accurate actions across every workflow." },
   { icon: I.bars, title: "Drive Growth", desc: "Better decisions. Better outcomes. Stronger business impact." },
 ];
 
-const b2b = [
+const b2b__cms = [
   { icon: I.users, label: "Sales & Lead Intelligence" },
   { icon: I.user, label: "HR & People Operations" },
   { icon: I.card, label: "Finance & Compliance Automation" },
@@ -64,7 +66,7 @@ const b2b = [
   { icon: I.doc, label: "Document & Knowledge Management" },
 ];
 
-const b2c = [
+const b2c__cms = [
   { icon: I.headset, label: "Smart Customer Support" },
   { icon: I.undo, label: "Returns & Refunds Automation" },
   { icon: I.star, label: "Personalized Product Recommendations" },
@@ -73,13 +75,13 @@ const b2c = [
   { icon: I.gift, label: "Loyalty & Rewards Management" },
 ];
 
-const ctaPoints = [
+const ctaPoints__cms = [
   { icon: I.shield, title: "Faster Implementation", desc: "Quick setup. Real results." },
   { icon: I.lock, title: "Enterprise-Grade Security", desc: "Your data, always protected." },
   { icon: I.chat, title: "Expert Support", desc: "We're with you, every step." },
 ];
 
-const proof = [
+const proof__cms = [
   { icon: I.trend, title: "Proven Results", desc: "Measurable impact across industries." },
   { icon: I.layers, title: "Scalable Solutions", desc: "Built to grow with your business." },
   { icon: I.cogs, title: "Flexible & Custom", desc: "Tailored to your unique needs." },
@@ -149,6 +151,7 @@ function hexPoints(cx: number, cy: number, r: number) {
 }
 
 function PlatformHub() {
+  const $t = useCmsText();
   return (
     <div className="relative flex flex-col items-center text-center">
       {/* rings + circuit traces */}
@@ -202,8 +205,8 @@ function PlatformHub() {
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       >
         <Image
-          src="/Ai-badge.webp"
-          alt="ProManage AI badge"
+          src={$t("AgenticAiPlatform__t1", "/Ai-badge.webp")}
+          alt={$t("AgenticAiPlatform__t2", "ProManage AI badge")}
           width={1254}
           height={1254}
           sizes="150px"
@@ -211,8 +214,8 @@ function PlatformHub() {
         />
       </motion.div>
 
-      <div className="relative mt-3 text-[16px] font-black leading-tight text-[#0b1f4a]">One platform.</div>
-      <div className="relative text-[16px] font-black leading-tight bg-gradient-to-r from-[#0f8a83] to-[#1b6fa8] bg-clip-text text-transparent">Infinite impact.</div>
+      <div className="relative mt-3 text-[16px] font-black leading-tight text-[#0b1f4a]">{$t("AgenticAiPlatform__t3", "One platform.")}</div>
+      <div className="relative text-[16px] font-black leading-tight bg-gradient-to-r from-[#0f8a83] to-[#1b6fa8] bg-clip-text text-transparent">{$t("AgenticAiPlatform__t4", "Infinite impact.")}</div>
     </div>
   );
 }
@@ -235,6 +238,12 @@ function Tag({ children, tone }: { children: React.ReactNode; tone: "teal" | "pu
    ========================================================================= */
 
 export default function AgenticAiPlatform() {
+  const $t = useCmsText();
+  const benefits = useCmsData("AgenticAiPlatform__benefits", benefits__cms);
+  const b2b = useCmsData("AgenticAiPlatform__b2b", b2b__cms);
+  const b2c = useCmsData("AgenticAiPlatform__b2c", b2c__cms);
+  const ctaPoints = useCmsData("AgenticAiPlatform__ctaPoints", ctaPoints__cms);
+  const proof = useCmsData("AgenticAiPlatform__proof", proof__cms);
   return (
     <section id="platform" className="relative w-full bg-[linear-gradient(180deg,#ffffff_0%,#f5f9fd_100%)] py-10 sm:py-14 font-sans overflow-hidden">
       <Container className="relative z-10 max-w-6xl">
@@ -247,16 +256,13 @@ export default function AgenticAiPlatform() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-sky-200 px-3 py-1 text-[9.5px] font-extrabold tracking-[0.14em] text-[#0f6f78] uppercase shadow-sm">
-            <span>#</span> Custom Agentic AI Solutions
-          </span>
-          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[44px] font-black tracking-tight leading-[1.12] text-[#0b1f4a]">
-            Intelligent Agents.{" "}
-            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1b6fa8] bg-clip-text text-transparent">Real Results.</span>
+            <span>#</span> {$t("AgenticAiPlatform__t5", "Custom Agentic AI Solutions")}</span>
+          <h2 className="text-h2 mt-4 font-black tracking-tight text-[#0b1f4a]">
+            {$t("AgenticAiPlatform__t6", "Intelligent Agents.")}{" "}
+            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1b6fa8] bg-clip-text text-transparent">{$t("AgenticAiPlatform__t7", "Real Results.")}</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
-            Custom-built AI agents that automate work, optimize operations,
-            <br className="hidden sm:inline" /> and deliver measurable impact across your business.
-          </p>
+          <p className="text-body mt-3 text-slate-600">
+            {rich($t("AgenticAiPlatform__t8", "Custom-built AI agents that automate work, optimize operations,"))}<br className="hidden sm:inline" /> {rich($t("AgenticAiPlatform__t9", "and deliver measurable impact across your business."))}</p>
         </motion.div>
 
         {/* Benefits row */}
@@ -291,11 +297,10 @@ export default function AgenticAiPlatform() {
         >
           {/* B2B */}
           <div>
-            <Tag tone="teal">Built for B2B</Tag>
+            <Tag tone="teal">{$t("AgenticAiPlatform__t10", "Built for B2B")}</Tag>
             <h3 className="mt-3 text-[17px] font-black leading-tight text-[#0b1f4a]">
-              Power Operations.
-              <br />
-              <span className="text-[#0f8a83]">Scale Smarter.</span>
+              {$t("AgenticAiPlatform__t11", "Power Operations.")}<br />
+              <span className="text-[#0f8a83]">{$t("AgenticAiPlatform__t12", "Scale Smarter.")}</span>
             </h3>
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3.5">
               {b2b.map((f) => (
@@ -308,11 +313,10 @@ export default function AgenticAiPlatform() {
 
           {/* B2C */}
           <div className="lg:pl-2">
-            <Tag tone="purple">Built for B2C</Tag>
+            <Tag tone="purple">{$t("AgenticAiPlatform__t13", "Built for B2C")}</Tag>
             <h3 className="mt-3 text-[17px] font-black leading-tight text-[#0b1f4a]">
-              Delight Customers.
-              <br />
-              <span className="text-[#7c4dff]">Build Loyalty.</span>
+              {$t("AgenticAiPlatform__t14", "Delight Customers.")}<br />
+              <span className="text-[#7c4dff]">{$t("AgenticAiPlatform__t15", "Build Loyalty.")}</span>
             </h3>
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3.5">
               {b2c.map((f) => (
@@ -340,8 +344,7 @@ export default function AgenticAiPlatform() {
               <Icon d={I.rocket} className="w-7 h-7" />
             </span>
             <div className="text-[14px] font-bold leading-snug">
-              Ready to transform your business with AI agents that deliver?
-            </div>
+              {rich($t("AgenticAiPlatform__t16", "Ready to transform your business with AI agents that deliver?"))}</div>
           </div>
 
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:border-l lg:border-white/15 lg:pl-6">
@@ -360,21 +363,19 @@ export default function AgenticAiPlatform() {
 
           <div className="flex flex-col items-center lg:items-start shrink-0">
             <Link
-              href="#contact"
+              href={$t("AgenticAiPlatform__t17", "#contact")}
               className="group inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg bg-white text-[#0b1f4a] text-[13px] font-bold shadow-md hover:shadow-lg transition"
             >
-              Book a Free Consultation
-              <Icon d={I.arrow} className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              {$t("AgenticAiPlatform__t18", "Book a Free Consultation")}<Icon d={I.arrow} className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
-            <span className="mt-2 text-[10px] text-white/70">No commitment. Just possibilities.</span>
+            <span className="mt-2 text-[10px] text-white/70">{$t("AgenticAiPlatform__t19", "No commitment. Just possibilities.")}</span>
           </div>
         </motion.div>
 
         {/* Trusted by */}
         <div className="mt-8 text-center">
           <div className="text-[10.5px] font-extrabold tracking-[0.16em] text-[#0f4a6a] uppercase">
-            Trusted by forward-thinking businesses worldwide
-          </div>
+            {$t("AgenticAiPlatform__t20", "Trusted by forward-thinking businesses worldwide")}</div>
           <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-5 items-center lg:divide-x divide-slate-200">
             {logos.map((l) => (
               <div key={l.name} className="flex items-center justify-center gap-2 text-[#0b2a4a] opacity-90">

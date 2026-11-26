@@ -5,8 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 
-const leftFeatures = [
+const leftFeatures__cms = [
   {
     id: "custom-dev",
     title: "Custom Development",
@@ -45,7 +46,7 @@ const leftFeatures = [
   },
 ];
 
-const rightFeatures = [
+const rightFeatures__cms = [
   {
     id: "perf-opt",
     title: "Performance Optimization",
@@ -127,7 +128,7 @@ const ROW_Y = [241, 335, 429];
 const LEFT_X = [69, 45, 31];
 const RIGHT_X = [735, 744, 759];
 
-type Feature = (typeof leftFeatures)[number];
+type Feature = (typeof leftFeatures__cms)[number];
 
 function FeatureRow({
   f,
@@ -176,13 +177,15 @@ function FeatureRow({
   );
 }
 
-const perks = [
+const perks__cms = [
   { a: "Flexible", b: "Engagements", d: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM23 21v-2a4 4 0 0 0-3-3.870M16 3.130a4 4 0 0 1 0 7.750" },
   { a: "Quick", b: "Onboarding", d: "M13 2 4 14h7l-1 8 9-12h-7Z" },
   { a: "Dedicated", b: "Support", d: "M3 18v-6a9 9 0 0 1 18 0v6M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3ZM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3Z" },
 ];
 
 function BottomBanner({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
+  const perks = useCmsData("HireCorePhpHero__perks", perks__cms);
   return (
     <motion.div
       className={`rounded-2xl bg-white/95 border border-slate-100 shadow-[0_16px_40px_-14px_rgba(15,35,80,0.12)] ${className}`}
@@ -198,28 +201,26 @@ function BottomBanner({ className = "" }: { className?: string }) {
             </svg>
           </span>
           <div className="text-left leading-snug text-[13.5px] font-bold">
-            <div className="text-[#0c1e3d]">Your product deserves</div>
-            <div className="text-[#0d9488]">the right PHP team.</div>
+            <div className="text-[#0c1e3d]">{$t("HireCorePhpHero__t1", "Your product deserves")}</div>
+            <div className="text-[#0d9488]">{$t("HireCorePhpHero__t2", "the right PHP team.")}</div>
           </div>
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
           <Link
-            href="#contact"
+            href={$t("HireCorePhpHero__t3", "#contact")}
             className="group inline-flex items-center justify-center gap-2 h-[38px] px-5 rounded-lg bg-[#0d8a94] text-white text-[12px] font-semibold shadow-md shadow-teal-600/25 hover:bg-[#0b7a84] transition-colors whitespace-nowrap"
           >
-            Hire PHP Developers
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+            {$t("HireCorePhpHero__t4", "Hire PHP Developers")}<svg viewBox="0 0 24 24" className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </Link>
           <Link
-            href="#contact"
+            href={$t("HireCorePhpHero__t5", "#contact")}
             className="inline-flex items-center justify-center gap-2 h-[38px] px-4 rounded-lg bg-white border border-slate-300 text-[#0c1e3d] text-[12px] font-semibold hover:bg-slate-50 transition-colors whitespace-nowrap"
           >
-            Talk to an Expert
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            {$t("HireCorePhpHero__t6", "Talk to an Expert")}<svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>
           </Link>
@@ -245,22 +246,23 @@ function BottomBanner({ className = "" }: { className?: string }) {
 }
 
 function Heading({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <h1 className={`font-black tracking-tight text-[#0c1e3d] ${className}`}>
-      Hire Core PHP
-      <br />
-      <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">Developers</span>
+      {$t("HireCorePhpHero__t7", "Hire Core PHP")}<br />
+      <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpHero__t8", "Developers")}</span>
     </h1>
   );
 }
 
 export default function HireCorePhpHero() {
+  const $t = useCmsText();
+  const leftFeatures = useCmsData("HireCorePhpHero__leftFeatures", leftFeatures__cms);
+  const rightFeatures = useCmsData("HireCorePhpHero__rightFeatures", rightFeatures__cms);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const subtitle = (
     <>
-      Bring in dedicated PHP experts who build,
-      <br className="hidden sm:inline" /> optimize and scale powerful web applications.
-    </>
+      {$t("HireCorePhpHero__t9", "Bring in dedicated PHP experts who build,")}<br className="hidden sm:inline" /> {$t("HireCorePhpHero__t10", "optimize and scale powerful web applications.")}</>
   );
 
   return (
@@ -280,8 +282,7 @@ export default function HireCorePhpHero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Core PHP Development
-              </motion.div>
+                {$t("HireCorePhpHero__t11", "Core PHP Development")}</motion.div>
               <motion.div
                 className="absolute inset-x-0 top-[38px] text-center"
                 initial={{ opacity: 0, y: 18 }}
@@ -351,7 +352,7 @@ export default function HireCorePhpHero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.25 }}
               >
-                <Image src="/core-php-base.png" alt="Core PHP platform" width={633} height={394} priority className="w-full h-auto select-none drop-shadow-[0_20px_36px_rgba(15,35,80,0.12)]" />
+                <Image src={$t("HireCorePhpHero__t12", "/core-php-base.png")} alt={$t("HireCorePhpHero__t13", "Core PHP platform")} width={633} height={394} priority className="w-full h-auto select-none drop-shadow-[0_20px_36px_rgba(15,35,80,0.12)]" />
               </motion.div>
 
               {/* Levitating badge */}
@@ -362,7 +363,7 @@ export default function HireCorePhpHero() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Image src="/core-php-badge.png" alt="Core PHP" width={523} height={477} priority className="w-full h-auto select-none drop-shadow-[0_18px_30px_rgba(14,116,144,0.4)]" />
+                <Image src={$t("HireCorePhpHero__t14", "/core-php-badge.png")} alt={$t("HireCorePhpHero__t15", "Core PHP")} width={523} height={477} priority className="w-full h-auto select-none drop-shadow-[0_18px_30px_rgba(14,116,144,0.4)]" />
               </motion.div>
 
               {/* Features */}
@@ -380,13 +381,13 @@ export default function HireCorePhpHero() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden text-center">
-          <div className="text-[11px] font-bold tracking-[0.22em] text-[#0f8a83] uppercase">Core PHP Development</div>
+          <div className="text-[11px] font-bold tracking-[0.22em] text-[#0f8a83] uppercase">{$t("HireCorePhpHero__t16", "Core PHP Development")}</div>
           <Heading className="mt-3 text-4xl sm:text-5xl leading-[1.08]" />
-          <p className="mt-4 mx-auto max-w-md text-sm sm:text-base text-slate-600">{subtitle}</p>
+          <p className="text-body mt-4 mx-auto max-w-md text-slate-600">{subtitle}</p>
 
           <div className="relative mt-8 mx-auto w-[300px] sm:w-[380px] h-[260px] sm:h-[310px]">
             <div className="absolute inset-x-0 bottom-0">
-              <Image src="/core-php-base.png" alt="Core PHP platform" width={633} height={394} className="w-full h-auto" />
+              <Image src={$t("HireCorePhpHero__t17", "/core-php-base.png")} alt={$t("HireCorePhpHero__t18", "Core PHP platform")} width={633} height={394} className="w-full h-auto" />
             </div>
             <motion.div
               className="absolute left-1/2 -translate-x-1/2 top-0 w-[130px] sm:w-[165px] origin-bottom"
@@ -394,7 +395,7 @@ export default function HireCorePhpHero() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Image src="/core-php-badge.png" alt="Core PHP" width={523} height={477} priority className="w-full h-auto drop-shadow-[0_14px_24px_rgba(14,116,144,0.4)]" />
+              <Image src={$t("HireCorePhpHero__t19", "/core-php-badge.png")} alt={$t("HireCorePhpHero__t20", "Core PHP")} width={523} height={477} priority className="w-full h-auto drop-shadow-[0_14px_24px_rgba(14,116,144,0.4)]" />
             </motion.div>
           </div>
 

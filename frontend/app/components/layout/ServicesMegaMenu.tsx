@@ -140,6 +140,33 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
 ];
 
 /** Flat list (kept for anything that still needs a plain array of links). */
+/* ------------------------------------------------------------------ */
+/*  CMS-driven menu (Navigation → "Services mega menu" in the CMS)       */
+/* ------------------------------------------------------------------ */
+
+/** Icon names the CMS may use, mapped to the lucide components already used by this menu. */
+const ICONS: Record<string, LucideIcon> = {
+  Bot, Cake, Code, Code2, Cpu, Film, Glasses, Globe, Hexagon, LayoutDashboard, MapPin, Package, PenTool, Server, Share2,
+  ShoppingBag, ShoppingCart, Smartphone, Sparkles, Star, Store, Target, TrendingUp, BadgeCheck,
+};
+const TONE_NAMES: Tone[] = ["teal", "indigo", "amber", "rose"];
+
+export type CmsNavItem = { label: string; href?: string; description?: string; icon?: string; badge?: string; accent?: string; children?: CmsNavItem[] };
+
+/** Convert the CMS menu tree (groups → items) into menu groups; null if it is empty or unusable. */
+export function groupsFromCms(items?: CmsNavItem[] | null): ServiceGroup[] | null {
+  if (!items?.length) return null;
+  const groups = items
+    .filter((g) => g.children?.length)
+    .map((g, i) => ({
+      title: g.label,
+      blurb: g.description ?? "",
+      tone: (TONE_NAMES.includes(g.accent as Tone) ? g.accent : TONE_NAMES[i % TONE_NAMES.length]) as Tone,
+      items: (g.children ?? []).filter((c) => c.href).map((c) => ({ label: c.label, href: c.href!, desc: c.description ?? "", icon: ICONS[c.icon ?? ""] ?? Globe, badge: c.badge || undefined })),
+    }));
+  return groups.length ? groups : null;
+}
+
 export const SERVICE_LINKS = SERVICE_GROUPS.flatMap((g) => g.items.map(({ label, href }) => ({ label, href })));
 
 /* ------------------------------------------------------------------ */
@@ -169,11 +196,11 @@ function ItemTile({ icon: Icon, tone, size = "md" }: { icon: LucideIcon; tone: T
 /* ------------------------------------------------------------------ */
 /*  Desktop mega panel                                                 */
 /* ------------------------------------------------------------------ */
-export function ServicesMegaPanel({ pathname, onNavigate }: { pathname: string; onNavigate: () => void }) {
+export function ServicesMegaPanel({ pathname, onNavigate, groups = SERVICE_GROUPS }: { pathname: string; onNavigate: () => void; groups?: ServiceGroup[] }) {
   return (
-    <div className="p-4">
-      <div className="grid grid-flow-col auto-cols-[220px] gap-x-3 xl:auto-cols-[244px]">
-        {SERVICE_GROUPS.map((g, gi) => {
+    <div className="p-5">
+      <div className="grid grid-flow-col auto-cols-[230px] gap-x-4 xl:auto-cols-[306px] 2xl:auto-cols-[330px]">
+        {groups.map((g, gi) => {
           const t = TONES[g.tone];
           return (
             <motion.div
@@ -204,11 +231,11 @@ export function ServicesMegaPanel({ pathname, onNavigate }: { pathname: string; 
                       >
                         <ItemTile icon={it.icon} tone={g.tone} />
                         <span className="min-w-0 flex-1">
-                          <span className={`block text-[13.5px] font-semibold leading-snug transition-colors ${active ? t.text : "text-zinc-800 group-hover:text-teal-700"}`}>
+                          <span className={`block text-[14.5px] font-semibold leading-snug transition-colors ${active ? t.text : "text-zinc-800 group-hover:text-teal-700"}`}>
                             {it.label}
                             {it.badge && <Badge>{it.badge}</Badge>}
                           </span>
-                          <span className="mt-px block text-[11px] leading-snug text-zinc-500">{it.desc}</span>
+                          <span className="mt-0.5 block text-[12px] leading-snug text-zinc-500">{it.desc}</span>
                         </span>
                         <ArrowUpRight className="mt-0.5 h-3.5 w-3.5 shrink-0 -translate-x-1 text-teal-600 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
                       </Link>
@@ -236,8 +263,8 @@ export function ServicesMegaPanel({ pathname, onNavigate }: { pathname: string; 
               <BadgeCheck className="h-[18px] w-[18px] text-teal-200" strokeWidth={1.8} />
             </span>
             <div>
-              <p className="text-[14px] font-semibold leading-tight">Not sure which service fits?</p>
-              <p className="mt-0.5 text-[12px] text-white/70">Get a free 30-minute consultation with our experts.</p>
+              <p className="text-small font-semibold">Not sure which service fits?</p>
+              <p className="text-caption mt-0.5 text-white/70">Get a free 30-minute consultation with our experts.</p>
             </div>
           </div>
 
@@ -259,7 +286,7 @@ export function ServicesMegaPanel({ pathname, onNavigate }: { pathname: string; 
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/quote"
+              href="/contact"
               onClick={onNavigate}
               className="inline-flex items-center gap-1.5 rounded-full border border-white/30 px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-white/10"
             >
@@ -275,10 +302,10 @@ export function ServicesMegaPanel({ pathname, onNavigate }: { pathname: string; 
 /* ------------------------------------------------------------------ */
 /*  Mobile / tablet list (inside the hamburger menu)                   */
 /* ------------------------------------------------------------------ */
-export function ServicesMobileList({ pathname, onNavigate }: { pathname: string; onNavigate: () => void }) {
+export function ServicesMobileList({ pathname, onNavigate, groups = SERVICE_GROUPS }: { pathname: string; onNavigate: () => void; groups?: ServiceGroup[] }) {
   return (
     <div className="space-y-5 pb-2 pl-1 pr-1 pt-2">
-      {SERVICE_GROUPS.map((g) => {
+      {groups.map((g) => {
         const t = TONES[g.tone];
         return (
           <div key={g.title}>

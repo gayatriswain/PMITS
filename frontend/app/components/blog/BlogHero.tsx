@@ -3,8 +3,12 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Search, FileText, Users, Calendar, Sparkles, Target, BarChart3, Lightbulb, ShieldCheck, ArrowRight, ShoppingCart, TrendingUp } from 'lucide-react';
+import { useCmsText } from "@/components/cms/SectionContent";
+import Link from "next/link";
+import { rich } from "@/components/cms/rich";
 
 export default function BlogHero() {
+  const $t = useCmsText();
   const cardRef = useRef<HTMLDivElement>(null);
   
   const x = useMotionValue(0);
@@ -47,7 +51,7 @@ export default function BlogHero() {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(15,118,110,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(15,118,110,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,#000_70%,transparent_100%)]"></div>
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-6 relative z-10 w-full">
+      <div className="max-w-[1640px] mx-auto relative z-10 w-full px-5">
         
         {/* Top Split Section */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center mb-16">
@@ -62,7 +66,7 @@ export default function BlogHero() {
             >
               <span className="w-6 h-[2px] bg-[#14b8a6]"></span>
               <span className="text-[#0f766e] text-[11px] font-bold tracking-[0.15em] uppercase flex items-center gap-1.5">
-                Promanage Insights <Sparkles size={12} className="text-[#14b8a6]" />
+                {$t("BlogHero__t1", "Promanage Insights ")}<Sparkles size={12} className="text-[#14b8a6]" />
               </span>
             </motion.div>
             
@@ -70,21 +74,20 @@ export default function BlogHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-[46px] lg:text-[64px] font-black text-[#0f2923] leading-[1.1] mb-6 tracking-tight"
+              className="text-h1 font-black text-[#0f2923] mb-6 tracking-tight"
             >
-              Ideas That Move <br />
-              <span className="text-[#0f766e]">Your Business</span> <br />
-              <span className="text-[#0f766e]">Forward.</span>
+              {$t("BlogHero__t2", "Ideas That Move ")}<br />
+              <span className="text-[#0f766e]">{$t("BlogHero__t3", "Your Business")}</span> <br />
+              <span className="text-[#0f766e]">{$t("BlogHero__t4", "Forward.")}</span>
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-[17px] text-slate-600 mb-10 leading-relaxed font-medium max-w-[460px]"
+              className="text-body text-slate-600 mb-10 font-medium max-w-[460px]"
             >
-              Practical insights on SEO, AI, ecommerce, websites, and digital growth—without the jargon.
-            </motion.p>
+              {rich($t("BlogHero__t5", "Practical insights on SEO, AI, ecommerce, websites, and digital growth—without the jargon."))}</motion.p>
             
             {/* Search Box */}
             <motion.div 
@@ -98,7 +101,7 @@ export default function BlogHero() {
               </div>
               <input 
                 type="text" 
-                placeholder="Search articles, topics or keywords..." 
+                placeholder={$t("BlogHero__t6", "Search articles, topics or keywords...")} 
                 className="w-full bg-white border border-slate-200 text-slate-800 text-[14px] rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:border-[#0f766e] focus:ring-1 focus:ring-[#0f766e] transition-all"
               />
             </motion.div>
@@ -111,7 +114,7 @@ export default function BlogHero() {
             >
               <div className="flex items-center gap-2 mb-4">
                 <Sparkles size={14} className="text-[#14b8a6]" />
-                <span className="text-[11px] font-bold text-[#0f766e] uppercase tracking-wider">Latest from the blog</span>
+                <span className="text-[11px] font-bold text-[#0f766e] uppercase tracking-wider">{$t("BlogHero__t7", "Latest from the blog")}</span>
               </div>
               
               <div className="flex flex-wrap items-center gap-6 md:gap-10">
@@ -120,8 +123,8 @@ export default function BlogHero() {
                     <FileText size={18} className="text-[#0f766e]" />
                   </div>
                   <div>
-                    <div className="font-bold text-[#0f2923] text-[15px]">250+</div>
-                    <div className="text-[11px] font-medium text-slate-500">In-depth Articles</div>
+                    <div className="font-bold text-[#0f2923] text-[15px]">{$t("BlogHero__t8", "250+")}</div>
+                    <div className="text-[11px] font-medium text-slate-500">{$t("BlogHero__t9", "In-depth Articles")}</div>
                   </div>
                 </div>
                 
@@ -130,8 +133,8 @@ export default function BlogHero() {
                     <Users size={18} className="text-[#0f766e]" />
                   </div>
                   <div>
-                    <div className="font-bold text-[#0f2923] text-[15px]">15K+</div>
-                    <div className="text-[11px] font-medium text-slate-500">Readers Monthly</div>
+                    <div className="font-bold text-[#0f2923] text-[15px]">{$t("BlogHero__t10", "15K+")}</div>
+                    <div className="text-[11px] font-medium text-slate-500">{$t("BlogHero__t11", "Readers Monthly")}</div>
                   </div>
                 </div>
                 
@@ -140,8 +143,8 @@ export default function BlogHero() {
                     <Calendar size={18} className="text-[#0f766e]" />
                   </div>
                   <div>
-                    <div className="font-bold text-[#0f2923] text-[15px]">Updated</div>
-                    <div className="text-[11px] font-medium text-slate-500">Every Week</div>
+                    <div className="font-bold text-[#0f2923] text-[15px]">{$t("BlogHero__t12", "Updated")}</div>
+                    <div className="text-[11px] font-medium text-slate-500">{$t("BlogHero__t13", "Every Week")}</div>
                   </div>
                 </div>
               </div>
@@ -182,24 +185,24 @@ export default function BlogHero() {
                   
                   {/* Left Content inside card */}
                   <div className="flex-1">
-                    <div className="bg-[#0f766e] text-white text-[9px] lg:text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full inline-block mb-4 shadow-sm">Featured Insight</div>
-                    <h3 className="text-xl lg:text-2xl font-bold text-[#0f2923] leading-[1.15] mb-3">How AI Search<br/>Is Changing<br/>SEO in 2026</h3>
-                    <p className="text-[11px] lg:text-xs text-slate-500 leading-relaxed mb-5">AI search, evolving SERPs, and changing user behavior are reshaping how businesses get discovered online.</p>
-                    <button className="text-[#0f766e] text-xs font-bold flex items-center gap-1.5 hover:gap-2.5 transition-all">Read Insight <ArrowRight size={14} /></button>
+                    <div className="bg-[#0f766e] text-white text-[9px] lg:text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full inline-block mb-4 shadow-sm">{$t("BlogHero__t14", "Featured Insight")}</div>
+                    <h3 className="text-h5 font-bold text-[#0f2923] mb-3">{$t("BlogHero__t15", "How AI Search")}<br/>{$t("BlogHero__t16", "Is Changing")}<br/>{$t("BlogHero__t17", "SEO in 2026")}</h3>
+                    <p className="text-caption text-slate-500 mb-5">{rich($t("BlogHero__t18", "AI search, evolving SERPs, and changing user behavior are reshaping how businesses get discovered online."))}</p>
+                    <Link href={$t("BlogHero__u1", "#all-articles")} className="text-[#0f766e] text-xs font-bold flex items-center gap-1.5 hover:gap-2.5 transition-all">{$t("BlogHero__t19", "Read Insight ")}<ArrowRight size={14} /></Link>
                   </div>
                   
                   {/* Right Hologram inside card */}
                   <div className="w-[120px] lg:w-[150px] h-[150px] lg:h-[180px] relative flex items-center justify-center shrink-0">
                     
                     {/* Small floating tags around hologram */}
-                    <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 3, repeat: Infinity }} className="absolute top-0 right-0 bg-[#e8f7f5] text-[#0f766e] text-[8px] font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm border border-teal-100/50 z-20">AI Overviews</motion.div>
-                    <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 4, repeat: Infinity }} className="absolute bottom-4 -left-6 bg-white text-slate-600 text-[8px] font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm border border-slate-100 z-20">Intent</motion.div>
-                    <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 3.5, repeat: Infinity }} className="absolute top-12 -left-4 bg-white text-slate-600 text-[8px] font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm border border-slate-100 z-20">Search</motion.div>
+                    <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 3, repeat: Infinity }} className="absolute top-0 right-0 bg-[#e8f7f5] text-[#0f766e] text-[8px] font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm border border-teal-100/50 z-20">{$t("BlogHero__t20", "AI Overviews")}</motion.div>
+                    <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 4, repeat: Infinity }} className="absolute bottom-4 -left-6 bg-white text-slate-600 text-[8px] font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm border border-slate-100 z-20">{$t("BlogHero__t21", "Intent")}</motion.div>
+                    <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 3.5, repeat: Infinity }} className="absolute top-12 -left-4 bg-white text-slate-600 text-[8px] font-bold px-2 py-1 rounded-full whitespace-nowrap shadow-sm border border-slate-100 z-20">{$t("BlogHero__t22", "Search")}</motion.div>
 
                     {/* Static Image replacing the SVG Hologram */}
                     <img 
-                      src="/Blog.png" 
-                      alt="AI Hologram Illustration" 
+                      src={$t("BlogHero__t23", "/Blog.png")} 
+                      alt={$t("BlogHero__t24", "AI Hologram Illustration")} 
                       className="w-[180%] h-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[45%] object-contain z-10"
                       onError={(e) => { e.currentTarget.src = "/blog-vector.svg"; }}
                     />
@@ -211,27 +214,27 @@ export default function BlogHero() {
               {/* Floating Widgets */}
               <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, delay: 0.5 }} className="absolute top-[5%] lg:top-[10%] left-[5%] lg:-left-[10%] bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] w-[90px] lg:w-[100px] h-[90px] lg:h-[100px] flex flex-col items-center justify-center border border-slate-50 z-20">
                 <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mb-1"><Search size={20} className="text-[#0f766e]" /></div>
-                <span className="text-[10px] font-bold text-[#0f2923]">SEO</span>
+                <span className="text-[10px] font-bold text-[#0f2923]">{$t("BlogHero__t25", "SEO")}</span>
               </motion.div>
 
               <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 5, repeat: Infinity, delay: 1 }} className="absolute bottom-[10%] left-0 lg:-left-[5%] bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] w-[90px] lg:w-[100px] h-[90px] lg:h-[100px] flex flex-col items-center justify-center border border-slate-50 z-20">
                 <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mb-1"><ShoppingCart size={20} className="text-[#0f766e]" /></div>
-                <span className="text-[10px] font-bold text-[#0f2923]">Ecommerce</span>
+                <span className="text-[10px] font-bold text-[#0f2923]">{$t("BlogHero__t26", "Ecommerce")}</span>
               </motion.div>
 
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4.5, repeat: Infinity, delay: 0.2 }} className="absolute top-[0%] lg:top-[5%] right-[5%] lg:-right-[5%] bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] w-[90px] lg:w-[100px] h-[90px] lg:h-[100px] flex flex-col items-center justify-center border border-slate-50 z-20">
                 <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mb-1"><Sparkles size={20} className="text-[#14b8a6]" /></div>
-                <span className="text-[10px] font-bold text-[#0f2923]">AI & GEO</span>
+                <span className="text-[10px] font-bold text-[#0f2923]">{$t("BlogHero__t27", "AI & GEO")}</span>
               </motion.div>
 
               <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5.5, repeat: Infinity, delay: 1.5 }} className="absolute bottom-[5%] lg:bottom-[15%] right-[0%] lg:-right-[10%] bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] w-[90px] lg:w-[100px] h-[90px] lg:h-[100px] flex flex-col items-center justify-center border border-slate-50 z-20">
                 <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mb-1"><TrendingUp size={20} className="text-[#0f766e]" /></div>
-                <span className="text-[10px] font-bold text-[#0f2923]">Digital Growth</span>
+                <span className="text-[10px] font-bold text-[#0f2923]">{$t("BlogHero__t28", "Digital Growth")}</span>
               </motion.div>
 
               {/* Handwriting Annotations */}
               <div className="absolute right-[-15%] top-1/2 transform -translate-y-1/2 hidden xl:flex flex-col items-center z-30">
-                <p className="font-handwriting text-[22px] text-[#0f766e] leading-tight text-center mb-2" style={{ textShadow: "1px 1px 2px rgba(15,118,110,0.1)" }}>Insights<br/>That Matters</p>
+                <p className="text-body font-handwriting text-[#0f766e] text-center mb-2" style={{ textShadow: "1px 1px 2px rgba(15,118,110,0.1)" }}>{rich($t("BlogHero__t29", "Insights"))}<br/>{rich($t("BlogHero__t30", "That Matters"))}</p>
                 {/* Hand drawn arrow pointing to Digital Growth */}
                 <svg width="40" height="40" viewBox="0 0 50 50" fill="none" className="transform -scale-x-100 rotate-45 text-[#0f766e]">
                   <path d="M5 5C15 20 30 40 45 45M45 45L30 40M45 45L40 30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -255,16 +258,16 @@ export default function BlogHero() {
             {/* Book Image */}
             <div className="shrink-0 relative w-48 md:w-[320px] flex items-end justify-start self-stretch">
                <img 
-                 src="/blog2.png" 
-                 alt="Knowledge Book" 
+                 src={$t("BlogHero__t31", "/blog2.png")} 
+                 alt={$t("BlogHero__t32", "Knowledge Book")} 
                  className="w-full h-auto object-contain object-bottom md:object-left-bottom mix-blend-multiply"
                  onError={(e) => { e.currentTarget.src = "/Blog.png"; }}
                />
             </div>
             
             <div className="flex-1 text-center md:text-left py-6 md:py-8 pl-6 md:pl-0">
-              <h3 className="text-xl md:text-[22px] font-extrabold text-[#0f2923] mb-2">Knowledge that drives growth.</h3>
-              <p className="text-slate-600 text-[13px] leading-relaxed">Actionable insights. Real strategies.<br className="hidden md:block"/> Better decisions.</p>
+              <h3 className="text-h5 font-extrabold text-[#0f2923] mb-2">{$t("BlogHero__t33", "Knowledge that drives growth.")}</h3>
+              <p className="text-small text-slate-600">{rich($t("BlogHero__t34", "Actionable insights. Real strategies."))}<br className="hidden md:block"/> {rich($t("BlogHero__t35", "Better decisions."))}</p>
             </div>
             
             <div className="flex flex-wrap md:flex-nowrap items-center justify-center gap-6 md:gap-0 flex-1 py-6 md:py-8">
@@ -273,28 +276,28 @@ export default function BlogHero() {
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center">
                   <Target size={22} className="text-[#14b8a6]" strokeWidth={1.5} />
                 </div>
-                <span className="text-[9px] font-bold text-[#0f2923] leading-tight uppercase tracking-wider">Practical<br/>Strategies</span>
+                <span className="text-[9px] font-bold text-[#0f2923] leading-tight uppercase tracking-wider">{$t("BlogHero__t36", "Practical")}<br/>{$t("BlogHero__t37", "Strategies")}</span>
               </div>
               
               <div className="flex flex-col items-center justify-center text-center gap-3 w-1/2 md:w-1/4 relative md:border-l md:border-slate-200">
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center">
                   <BarChart3 size={22} className="text-[#0f766e]" strokeWidth={1.5} />
                 </div>
-                <span className="text-[9px] font-bold text-[#0f2923] leading-tight uppercase tracking-wider">Data-Backed<br/>Insights</span>
+                <span className="text-[9px] font-bold text-[#0f2923] leading-tight uppercase tracking-wider">{$t("BlogHero__t38", "Data-Backed")}<br/>{$t("BlogHero__t39", "Insights")}</span>
               </div>
               
               <div className="flex flex-col items-center justify-center text-center gap-3 w-1/2 md:w-1/4 relative md:border-l md:border-slate-200">
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center">
                   <Lightbulb size={22} className="text-[#0f766e]" strokeWidth={1.5} />
                 </div>
-                <span className="text-[9px] font-bold text-[#0f2923] leading-tight uppercase tracking-wider">Easy to<br/>Implement</span>
+                <span className="text-[9px] font-bold text-[#0f2923] leading-tight uppercase tracking-wider">{$t("BlogHero__t40", "Easy to")}<br/>{$t("BlogHero__t41", "Implement")}</span>
               </div>
               
               <div className="flex flex-col items-center justify-center text-center gap-3 w-1/2 md:w-1/4 relative md:border-l md:border-slate-200">
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center">
                   <ShieldCheck size={22} className="text-[#14b8a6]" strokeWidth={1.5} />
                 </div>
-                <span className="text-[9px] font-bold text-[#0f2923] leading-tight uppercase tracking-wider">For Real<br/>Businesses</span>
+                <span className="text-[9px] font-bold text-[#0f2923] leading-tight uppercase tracking-wider">{$t("BlogHero__t42", "For Real")}<br/>{$t("BlogHero__t43", "Businesses")}</span>
               </div>
               
             </div>

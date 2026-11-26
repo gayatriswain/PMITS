@@ -3,6 +3,8 @@
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -195,16 +197,17 @@ function ValueItem({ v, i, side }: { v: Value; i: number; side: "left" | "right"
     >
       <IconDisc Icon={v.Icon} delay={delay + 0.2} side={side} />
       <div style={{ width: TEXT_W }} className="pt-1">
-        <h3 className="text-[19px] font-semibold" style={{ color: TEAL }}>
+        <h3 className="text-h6 font-semibold" style={{ color: TEAL }}>
           {v.title}
         </h3>
-        <p className="mt-3 text-[14.5px] leading-[1.75] text-slate-600">{v.desc}</p>
+        <p className="text-small mt-3 text-slate-600">{v.desc}</p>
       </div>
     </motion.div>
   );
 }
 
 function Hub() {
+  const $t = useCmsText();
   return (
     <div className="absolute" style={{ left: HUB.x - HUB_D / 2, top: HUB.y - HUB_D / 2, width: HUB_D, height: HUB_D }}>
       {/* slow-turning dashed outer ring and a soft solid one */}
@@ -242,11 +245,9 @@ function Hub() {
             <DiamondIcon size={44} color={TEAL} />
           </motion.span>
           <span className="mt-3 text-[18px] font-medium" style={{ color: INK }}>
-            Guided by
-          </span>
+            {$t("WhoWeAreValues__t1", "Guided by")}</span>
           <span className="text-[30px] font-bold leading-tight" style={{ color: TEAL }}>
-            Principles
-          </span>
+            {$t("WhoWeAreValues__t2", "Principles")}</span>
           <span className="mt-3 h-[3px] w-12 rounded-full" style={{ backgroundColor: TEAL }} />
         </motion.div>
       </motion.div>
@@ -322,16 +323,15 @@ function ValuesDiagram() {
 
 /* ---------- Small screens: the hub, then the values as a simple list ---------- */
 function ValuesList() {
+  const $t = useCmsText();
   return (
     <div>
       <div className="mx-auto flex h-[200px] w-[200px] flex-col items-center justify-center rounded-full bg-white shadow-[0_24px_50px_-20px_rgba(13,27,51,0.4),0_0_0_14px_rgba(255,255,255,0.7),0_0_0_15px_rgba(203,213,225,0.7)]">
         <DiamondIcon size={36} color={TEAL} />
         <span className="mt-2 text-[15px] font-medium" style={{ color: INK }}>
-          Guided by
-        </span>
+          {$t("WhoWeAreValues__t3", "Guided by")}</span>
         <span className="text-[24px] font-bold leading-tight" style={{ color: TEAL }}>
-          Principles
-        </span>
+          {$t("WhoWeAreValues__t4", "Principles")}</span>
       </div>
       <motion.ul
         variants={stagger}
@@ -359,6 +359,7 @@ function ValuesList() {
 }
 
 export default function WhoWeAreValues() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-[#f8fbfc] to-white py-16 lg:py-20">
       {/* faint flowing lines in the corners */}
@@ -386,16 +387,13 @@ export default function WhoWeAreValues() {
             className="pointer-events-none absolute left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-serif -top-6 text-[120px] italic leading-none text-slate-200/30"
             aria-hidden
           >
-            Values
-          </span>
-          <motion.h2 variants={fadeUp} className="relative text-[46px] font-bold tracking-tight sm:text-[58px]">
-            <span style={{ color: INK }}>Our </span>
-            <span style={{ color: TEAL }}>Values</span>
+            {$t("WhoWeAreValues__t5", "Values")}</span>
+          <motion.h2 variants={fadeUp} className="text-h2 relative font-bold tracking-tight">
+            <span style={{ color: INK }}>{$t("WhoWeAreValues__t6", "Our ")}</span>
+            <span style={{ color: TEAL }}>{$t("WhoWeAreValues__t7", "Values")}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="relative mt-4 text-[15.5px] leading-[1.8] text-slate-600">
-            Every choice we make is guided by our principles, which are based on honesty, quality, and a dedication to the success of our
-            clients.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body relative mt-4 text-slate-600">
+            {rich($t("WhoWeAreValues__t8", "Every choice we make is guided by our principles, which are based on honesty, quality, and a dedication to the success of our clients."))}</motion.p>
           <motion.span variants={fadeUp} className="mt-5 flex items-center justify-center gap-1.5" aria-hidden>
             <span className="h-[3px] w-7 rounded-full" style={{ backgroundColor: TEAL }} />
             <span className="h-[4px] w-[4px] rounded-full" style={{ backgroundColor: TEAL }} />

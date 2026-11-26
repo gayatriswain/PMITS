@@ -1,18 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
+import { submitEnquiry, goToThankYou } from "@/lib/forms";
+import Honeypot from "@/components/cms/Honeypot";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { DM_Serif_Display } from "next/font/google";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const dmSerif = DM_Serif_Display({
-  weight: ["400"],
-  subsets: ["latin"],
-  display: "swap",
-});
+const dmSerif = { className: "font-heading" }; // global font from app/layout.tsx
 
-const cards = [
+const cards__cms = [
   {
     num: "01",
     title: "Understand",
@@ -92,7 +91,7 @@ const cards = [
 ];
 
 /** Mimics `object-cover` for the 1802×873 artwork so % coordinates land on the same pixels as the image. */
-const coverBox: React.CSSProperties = {
+const coverBox__cms: React.CSSProperties = {
   position: "absolute",
   left: "50%",
   top: "50%",
@@ -101,7 +100,7 @@ const coverBox: React.CSSProperties = {
   transform: "translate(-50%, -50%)",
 };
 
-const trustBadges = [
+const trustBadges__cms = [
   {
     title: "Quick",
     sub: "Response",
@@ -135,6 +134,10 @@ const trustBadges = [
 ];
 
 export default function UiUxContactCTA() {
+  const $t = useCmsText();
+  const cards = useCmsData("UiUxContactCTA__cards", cards__cms);
+  const coverBox = useCmsData("UiUxContactCTA__coverBox", coverBox__cms);
+  const trustBadges = useCmsData("UiUxContactCTA__trustBadges", trustBadges__cms);
   const [sent, setSent] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -143,9 +146,22 @@ export default function UiUxContactCTA() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [hp, setHp] = useState("");
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    if (sending) return;
+    setSending(true);
+    setError("");
+    const r = await submitEnquiry("ui-ux-contact", { ...formData, hp });
+    setSending(false);
+    if (r.ok) {
+      setSent(true);
+      goToThankYou("ui-ux");
+    }
+    else setError(r.error);
   };
 
   return (
@@ -154,8 +170,8 @@ export default function UiUxContactCTA() {
       <div className="absolute inset-0 z-0 overflow-hidden [container-type:size]">
         <div style={coverBox}>
           <Image
-            src="/uiux.webp"
-            alt="ProManage UI/UX Pathway"
+            src={$t("UiUxContactCTA__t1", "/uiux.webp")}
+            alt={$t("UiUxContactCTA__t2", "ProManage UI/UX Pathway")}
             fill
             priority
             sizes="100vw"
@@ -227,36 +243,34 @@ export default function UiUxContactCTA() {
             >
               <span className="w-8 h-px bg-cyan-400/60" />
               <span className="text-[11px] font-bold tracking-[0.25em] text-cyan-300 uppercase">
-                LET&apos;S START A CONVERSATION
-              </span>
+                {$t("UiUxContactCTA__t3", "LET'S START A CONVERSATION")}</span>
               <span className="w-8 h-px bg-cyan-400/60" />
             </motion.div>
 
             {/* Main Headline */}
             <motion.h2
-              className="mt-5 text-4xl sm:text-6xl lg:text-[56px] font-normal tracking-tight leading-[1.05] text-white"
+              className="text-h2 mt-5 font-normal tracking-tight text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className={`${dmSerif.className} block`}>Have a project</span>
-              <span className={`${dmSerif.className} block`}>in mind?</span>
+              <span className={`${dmSerif.className} block`}>{$t("UiUxContactCTA__t4", "Have a project")}</span>
+              <span className={`${dmSerif.className} block`}>{$t("UiUxContactCTA__t5", "in mind?")}</span>
               <span className={`${dmSerif.className} block italic text-[#2dd4bf]`}>
-                It starts here.
-              </span>
+                {$t("UiUxContactCTA__t6", "It starts here.")}</span>
             </motion.h2>
 
             {/* Subtitle */}
             <motion.p
-              className="mt-4 text-[15px] sm:text-[16px] text-slate-300 leading-relaxed max-w-md font-normal"
+              className="text-body mt-4 text-slate-300 max-w-md font-normal"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Share your idea and let&apos;s turn it into an exceptional{" "}
-              <strong className="text-white font-semibold">digital experience.</strong>
+              {rich($t("UiUxContactCTA__t7", "Share your idea and let's turn it into an exceptional"))}{" "}
+              <strong className="text-white font-semibold">{$t("UiUxContactCTA__t8", "digital experience.")}</strong>
             </motion.p>
 
             {/* 3 Trust Badges */}
@@ -300,17 +314,13 @@ export default function UiUxContactCTA() {
 
           {/* Far Right Elegant Quote */}
           <div className="absolute right-2 bottom-12 text-right hidden xl:block pointer-events-none opacity-80">
-            <p className={`${dmSerif.className} text-[15px] italic text-slate-300 leading-snug`}>
-              Great
-              <br />
+            <p className={`text-body ${dmSerif.className} italic text-slate-300`}>
+              {rich($t("UiUxContactCTA__t9", "Great"))}<br />
               products
               <br />
-              begin with
-              <br />
-              a simple
-              <br />
-              conversation.
-            </p>
+              {rich($t("UiUxContactCTA__t10", "begin with"))}<br />
+              {rich($t("UiUxContactCTA__t11", "a simple"))}<br />
+              {rich($t("UiUxContactCTA__t12", "conversation."))}</p>
           </div>
         </div>
 
@@ -327,31 +337,27 @@ export default function UiUxContactCTA() {
               <span className="inline-flex w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-300 items-center justify-center text-2xl shadow-[0_0_20px_rgba(52,211,153,0.3)]">
                 ✓
               </span>
-              <h3 className={`${dmSerif.className} mt-3 text-2xl text-white font-normal`}>
-                Thank you! We&apos;ve received your project details.
-              </h3>
-              <p className="mt-1 text-sm text-slate-300">
-                Our design experts will reach out within 24 hours to schedule your consultation.
-              </p>
+              <h3 className={`text-h5 ${dmSerif.className} mt-3 text-white font-normal`}>
+                {$t("UiUxContactCTA__t13", "Thank you! We've received your project details.")}</h3>
+              <p className="text-small mt-1 text-slate-300">
+                {rich($t("UiUxContactCTA__t14", "Our design experts will reach out within 24 hours to schedule your consultation."))}</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <form onSubmit={handleSubmit} className="relative flex flex-col lg:flex-row items-center justify-between gap-6">
+              <Honeypot value={hp} onChange={setHp} />
               {/* Left Brand Element: Glowing 3D Speech Bubble with "P" */}
               <div className="flex items-center gap-4 shrink-0 w-full lg:w-auto">
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-cyan-400/25 via-slate-900 to-[#071329] border border-cyan-400 shadow-[0_0_25px_rgba(45,212,191,0.35)] flex items-center justify-center shrink-0">
                   <span className={`${dmSerif.className} text-2xl sm:text-3xl font-extrabold text-[#2dd4bf] drop-shadow-[0_0_10px_#2dd4bf]`}>
-                    P
-                  </span>
+                    {$t("UiUxContactCTA__t15", "P")}</span>
                 </div>
                 <div className="text-left leading-tight">
                   <div className={`${dmSerif.className} text-xl sm:text-2xl text-white font-normal`}>
-                    Tell us about
-                  </div>
+                    {$t("UiUxContactCTA__t16", "Tell us about")}</div>
                   <div className={`${dmSerif.className} text-xl sm:text-2xl text-[#2dd4bf] font-normal`}>
-                    your project
-                  </div>
+                    {$t("UiUxContactCTA__t17", "your project")}</div>
                   <div className="mt-1 text-[11px] text-slate-400">
-                    We&apos;ll get back to you within <strong className="text-white">24 hours.</strong>
+                    {$t("UiUxContactCTA__t18", "We'll get back to you within ")}<strong className="text-white">{$t("UiUxContactCTA__t19", "24 hours.")}</strong>
                   </div>
                 </div>
               </div>
@@ -369,7 +375,7 @@ export default function UiUxContactCTA() {
                     <input
                       type="text"
                       required
-                      placeholder="Your Name"
+                      placeholder={$t("UiUxContactCTA__t20", "Your Name")}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full bg-transparent text-[12.5px] text-white placeholder:text-slate-400 outline-none"
@@ -385,7 +391,7 @@ export default function UiUxContactCTA() {
                     <input
                       type="email"
                       required
-                      placeholder="Work Email"
+                      placeholder={$t("UiUxContactCTA__t21", "Work Email")}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full bg-transparent text-[12.5px] text-white placeholder:text-slate-400 outline-none"
@@ -403,7 +409,7 @@ export default function UiUxContactCTA() {
                     </svg>
                     <input
                       type="text"
-                      placeholder="Company"
+                      placeholder={$t("UiUxContactCTA__t22", "Company")}
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       className="w-full bg-transparent text-[12.5px] text-white placeholder:text-slate-400 outline-none"
@@ -420,7 +426,7 @@ export default function UiUxContactCTA() {
                     </svg>
                     <input
                       type="text"
-                      placeholder="Briefly describe your project or goal..."
+                      placeholder={$t("UiUxContactCTA__t23", "Briefly describe your project or goal...")}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full bg-transparent text-[12.5px] text-white placeholder:text-slate-400 outline-none"
@@ -430,9 +436,10 @@ export default function UiUxContactCTA() {
                   {/* Gradient Pill Button with Circular Arrow */}
                   <button
                     type="submit"
-                    className="w-full sm:w-auto h-12 px-6 rounded-full bg-[linear-gradient(90deg,#0ea5e9_0%,#14b8a6_50%,#0d9488_100%)] text-white text-[13px] font-bold flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(45,212,191,0.45)] hover:brightness-110 active:scale-95 transition-all cursor-pointer shrink-0"
+                    disabled={sending}
+                    className="disabled:opacity-70 w-full sm:w-auto h-12 px-6 rounded-full bg-[linear-gradient(90deg,#0ea5e9_0%,#14b8a6_50%,#0d9488_100%)] text-white text-[13px] font-bold flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(45,212,191,0.45)] hover:brightness-110 active:scale-95 transition-all cursor-pointer shrink-0"
                   >
-                    <span>Start the Conversation</span>
+                    <span>{sending ? $t("UiUxContactCTA__t24", "Sending...") : $t("UiUxContactCTA__t25", "Start the Conversation")}</span>
                     <span className="w-6 h-6 rounded-full bg-white text-[#0c1e3d] flex items-center justify-center">
                       <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
@@ -442,10 +449,11 @@ export default function UiUxContactCTA() {
                   </button>
                 </div>
 
+                {error && <p role="alert" className="text-caption text-center text-rose-300">{error}</p>}
+
                 {/* Subtext */}
                 <div className="text-center text-[11px] text-slate-400 pt-1">
-                  Free Consultation &bull; No Obligation &bull; Expert Guidance
-                </div>
+                  {$t("UiUxContactCTA__t26", "Free Consultation • No Obligation • Expert Guidance")}</div>
               </div>
             </form>
           )}

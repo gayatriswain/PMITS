@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
 import { display, heading } from "./MagentoShared";
+import { useCmsText } from "@/components/cms/SectionContent";
 
 export { display, heading };
 
@@ -79,6 +80,7 @@ export const fadeUp: Variants = {
 
 /** Keyframes used across the AI SEO sections (rendered once by the page). */
 export function AiSeoStyles() {
+  const $t = useCmsText();
   return (
     <style>{`
       @keyframes aiFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
@@ -134,7 +136,7 @@ export function H2({ children, className = "" }: { children: React.ReactNode; cl
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease }}
-      className={`${heading.className} text-[clamp(28px,2.2vw,44px)] font-bold leading-[1.12] tracking-[-0.02em] text-[#0b1b33] ${className}`}
+      className={`text-h2 ${heading.className} font-bold tracking-[-0.02em] text-[#0b1b33] ${className}`}
     >
       {children}
     </motion.h2>
@@ -332,11 +334,12 @@ export function Spark({ color = "#14a39a", className = "h-8 w-full", points = "0
 
 /** Serif-ish wordmarks of the sample clients ("Trusted by …" row). */
 export function ClientWordmarks({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   const marks = [
-    { big: "LUXE", small: "INTERIORS", serif: true, spread: true },
-    { big: "urban space", small: "DESIGNS", serif: false },
-    { big: "HOME NEST", small: "COLLECTION", serif: true },
-    { big: "DÉCOR", small: "CRAFT", serif: true, spread: true },
+    { big: $t("AiSeoShared__t2", "LUXE"), small: $t("AiSeoShared__t3", "INTERIORS"), serif: true, spread: true },
+    { big: $t("AiSeoShared__t4", "urban space"), small: $t("AiSeoShared__t5", "DESIGNS"), serif: false },
+    { big: $t("AiSeoShared__t6", "HOME NEST"), small: $t("AiSeoShared__t7", "COLLECTION"), serif: true },
+    { big: $t("AiSeoShared__t8", "DÉCOR"), small: $t("AiSeoShared__t9", "CRAFT"), serif: true, spread: true },
   ];
   return (
     <div className={`flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-[#4b5675] sm:gap-x-0 ${className}`}>
@@ -354,7 +357,7 @@ export function ClientWordmarks({ className = "" }: { className?: string }) {
         <span className="flex h-7 w-7 items-end justify-center rounded-full border-[1.5px] border-[#4b5675] pb-1">
           <span className="h-3.5 w-2.5 rounded-t-full border-[1.5px] border-b-0 border-[#4b5675]" />
         </span>
-        <span className="text-[17px] tracking-tight sm:text-lg 2xl:text-[23px]">studio oak</span>
+        <span className="text-[17px] tracking-tight sm:text-lg 2xl:text-[23px]">{$t("AiSeoShared__t10", "studio oak")}</span>
       </div>
     </div>
   );

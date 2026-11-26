@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import Container from "../shared/Container";
+import { getCmsPage, getNavigation, getSettings } from "@/lib/cms";
+import { clientLogos } from "../shared/TrustedBar";
 import {
   PhoneIcon,
   MailIcon,
@@ -24,14 +26,22 @@ const DARK_BG = "#0a1f33";
 const DARK_CARD = "#0d2b46";
 
 // every page on the site, grouped; "Industries" has no pages of its own yet, so its entries aren't links
+/** Built-in columns, used only when the CMS is unreachable (live columns: Admin → Navigation → footer). */
 const linkColumns: { title: string; links: { label: string; href?: string }[] }[] = [
   {
-    title: "Services",
+    title: "Web & App",
     links: [
       { label: "Website Development", href: "/web-software/website-development" },
       { label: "App Development", href: "/web-software/app-development" },
       { label: "Custom Development", href: "/web-software/custom-development" },
+      { label: "Custom CRM Solution", href: "/web-software/custom-crm-solution" },
       { label: "Shopify Web Design", href: "/web-software/shopify-web-design" },
+      { label: "Web Hosting", href: "/web-software/web-hosting" },
+    ],
+  },
+  {
+    title: "Development",
+    links: [
       { label: "WooCommerce Developers", href: "/hire-developer/hire-woocommerce-developers" },
       { label: "Core PHP Developers", href: "/hire-developer/hire-core-php-developers" },
       { label: "CakePHP Developers", href: "/hire-developer/hire-cakephp-developers" },
@@ -39,21 +49,15 @@ const linkColumns: { title: string; links: { label: string; href?: string }[] }[
       { label: "Shopify Developers", href: "/hire-developer/hire-shopify-developers" },
       { label: "Magento Developers", href: "/hire-developer/hire-magento-developers" },
       { label: "BigCommerce Developers", href: "/hire-developer/hire-bigcommerce-developers" },
-      { label: "Social Media Marketing", href: "/marketing-growth/social-media-marketing" },
-      { label: "Google Ads", href: "/marketing-growth/google-ads" },
-      { label: "Animation & Graphic Design", href: "/design-innovation/animation-and-graphic-design" },
-      { label: "Custom AR/VR Solution", href: "/design-innovation/custom-ar-vr-solution" },
     ],
   },
   {
-    title: "SEO & Hosting",
+    title: "SEO",
     links: [
       { label: "SEO Services", href: "/seo" },
       { label: "AI SEO", href: "/marketing-growth/ai-seo" },
       { label: "E-commerce SEO", href: "/marketing-growth/ecommerce-seo" },
       { label: "Local SEO", href: "/marketing-growth/local-seo" },
-      { label: "Hosting", href: "/hosting" },
-      { label: "Web Hosting", href: "/web-software/web-hosting" },
     ],
   },
   {
@@ -68,19 +72,6 @@ const linkColumns: { title: string; links: { label: string; href?: string }[] }[
       { label: "Contact Us", href: "/contact" },
     ],
   },
-  {
-    title: "Industries",
-    links: [
-      "Real Estate",
-      "Education",
-      "Healthcare",
-      "Manufacturing",
-      "IT & Technology",
-      "Retail & E-commerce",
-      "Hospitality",
-      "Startups & SMEs",
-    ].map((label) => ({ label })),
-  },
 ];
 
 const stats = [
@@ -89,46 +80,7 @@ const stats = [
   { icon: TrendingUpIcon, value: "98%", label: "Client Satisfaction Rate" },
 ];
 
-const clientLogos: { name: string; mark: "shield" | "wave" | "diamond" | "badge" | "text" }[] = [
-  { name: "MAX Healthcare", mark: "shield" },
-  { name: "AMAANAT HOSPITAL", mark: "text" },
-  { name: "the better india", mark: "wave" },
-  { name: "HomeLane", mark: "diamond" },
-  { name: "tynor", mark: "wave" },
-  { name: "policybazaar", mark: "badge" },
-  { name: "GAURS", mark: "text" },
-];
 
-function ClientMark({ mark }: { mark: "shield" | "wave" | "diamond" | "badge" | "text" }) {
-  if (mark === "text") return null;
-  if (mark === "shield") {
-    return (
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" />
-      </svg>
-    );
-  }
-  if (mark === "diamond") {
-    return (
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2 22 12 12 22 2 12Z" />
-      </svg>
-    );
-  }
-  if (mark === "badge") {
-    return (
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="9" r="6" />
-        <path d="m9 14-2 7 5-3 5 3-2-7" />
-      </svg>
-    );
-  }
-  return (
-    <svg width="16" height="14" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M1 8c2-6 4-6 6 0s4 6 6 0 4-6 6 0 4 6 4 0" />
-    </svg>
-  );
-}
 
 const socialLinks = [
   { icon: LinkedinIcon, href: "https://linkedin.com", label: "LinkedIn" },
@@ -159,7 +111,36 @@ function ContactRow({
   );
 }
 
-export default function Footer() {
+/** Columns, contact details and footer copy come from the CMS (Navigation "footer" + Settings). */
+export default async function Footer() {
+  const legalLinks = [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Refund Policy", href: "/refund" },
+  ];
+  const [nav, settings, ...legalPages] = await Promise.all([getNavigation("footer"), getSettings(), ...legalLinks.map((l) => getCmsPage(l.href))]);
+  // A legal link shows only once that page is published in the CMS (Admin → Pages), so it never leads to a 404.
+  const legal = legalLinks.map((l, i) => ({ ...l, label: legalPages[i]?.title || l.label })).filter((_, i) => legalPages[i]);
+  const columns = nav?.items?.length
+    ? nav.items.map((c) => ({ title: c.label, links: (c.children ?? []).map((l) => ({ label: l.label, href: l.href || undefined })) }))
+    : linkColumns;
+  const f = settings?.footer ?? {};
+  const socials = settings?.socials
+    ? socialLinks.map((sl) => ({ ...sl, href: settings.socials?.[sl.label.toLowerCase()] || "" })).filter((sl) => sl.href)
+    : socialLinks;
+  const statIcons = [UsersIcon, StarIcon, TrendingUpIcon];
+  const statList = f.stats?.filter((s) => s.value || s.label).length
+    ? f.stats.filter((s) => s.value || s.label).slice(0, 3).map((s, i) => ({ icon: statIcons[i], value: s.value ?? "", label: s.label ?? "" }))
+    : stats;
+  const logos = settings?.clientLogos?.filter((l) => l.image).length
+    ? settings.clientLogos.filter((l) => l.image).map((l) => {
+        const known = clientLogos.find((k) => k.src === l.image);
+        return known ? { ...known, name: l.name || known.name } : { name: l.name || "Client", src: l.image!, w: 150, h: 44, tall: false };
+      })
+    : clientLogos;
+  const phone = settings?.contactPhone || "+91 99999 88888";
+  const email = settings?.contactEmail || "hello@promanage.com";
+  const address = settings?.address || "Sector 62, Noida, Uttar Pradesh 201309, India";
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white">
       <Container className="pb-24 pt-16">
@@ -177,7 +158,7 @@ export default function Footer() {
 
             <Link href="/" className="inline-block">
               <Image
-                src="/pmits-text-logo4-2.webp"
+                src={settings?.footerLogo || "/pmits-text-logo4-2.webp"}
                 alt="ProManage IT Solutions"
                 width={315}
                 height={80}
@@ -185,31 +166,31 @@ export default function Footer() {
               />
             </Link>
 
-            <h3 className="mt-6 text-xl font-semibold leading-snug" style={{ color: NAVY }}>
-              Building Digital Experiences.
+            <h3 className="text-h6 mt-6 font-semibold" style={{ color: NAVY }}>
+              {f.headline || "Building Digital Experiences."}
               <br />
-              <span style={{ color: TEAL }}>Driving Real Growth.</span>
+              <span style={{ color: TEAL }}>{f.accent || "Driving Real Growth."}</span>
             </h3>
 
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-600">
-              We help businesses in India and beyond build powerful digital presence, attract more customers and
-              achieve measurable results that last.
+            <p className="text-small mt-4 max-w-xs text-slate-600">
+              {f.description ||
+                "We help businesses in India and beyond build powerful digital presence, attract more customers and achieve measurable results that last."}
             </p>
 
             <div className="mt-6 h-px w-12" style={{ backgroundColor: TEAL }} />
 
             <div className="mt-6 flex flex-col gap-2">
-              <ContactRow icon={PhoneIcon}>+91 99999 88888</ContactRow>
-              <ContactRow icon={MailIcon}>hello@promanage.com</ContactRow>
+              <ContactRow icon={PhoneIcon}><a href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="transition-colors hover:text-teal-700">{phone}</a></ContactRow>
+              <ContactRow icon={MailIcon}><a href={`mailto:${email}`} className="break-all transition-colors hover:text-teal-700">{email}</a></ContactRow>
               <ContactRow icon={PinIcon} align="start">
-                Sector 62, Noida, Uttar Pradesh 201309, India
+                {address}
               </ContactRow>
             </div>
 
             <div className="mt-8">
-              <p className="text-xs font-semibold tracking-[0.2em] text-slate-500">FOLLOW US</p>
+              <p className="text-caption font-semibold tracking-[0.2em] text-slate-500">FOLLOW US</p>
               <div className="mt-3 flex items-center gap-3">
-                {socialLinks.map(({ icon: Icon, href, label }) => (
+                {socials.map(({ icon: Icon, href, label }) => (
                   <a
                     key={label}
                     href={href}
@@ -227,7 +208,7 @@ export default function Footer() {
 
           {/* Link columns */}
           <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4">
-            {linkColumns.map((col) => (
+            {columns.map((col) => (
               <div key={col.title}>
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: TEAL }} />
@@ -294,27 +275,27 @@ export default function Footer() {
               >
                 <SendIcon />
               </span>
-              <h4 className="relative z-10 mt-6 text-xl font-semibold leading-snug" style={{ color: NAVY }}>
-                Let&apos;s Grow Your Business Together
+              <h4 className="text-h6 relative z-10 mt-6 font-semibold" style={{ color: NAVY }}>
+                {f.ctaTitle || "Let's Grow Your Business Together"}
               </h4>
-              <p className="relative z-10 mt-3 text-sm leading-relaxed text-slate-600">
-                Get expert strategies and digital solutions tailored to your business goals.
+              <p className="text-small relative z-10 mt-3 text-slate-600">
+                {f.ctaText || "Get expert strategies and digital solutions tailored to your business goals."}
               </p>
               <Link
-                href="/contact"
+                href={f.ctaHref || "/contact"}
                 className="relative z-10 mt-6 flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: TEAL }}
               >
-                Get a Free Consultation <ArrowIcon />
+                {f.ctaLabel || "Get a Free Consultation"} <ArrowIcon />
               </Link>
 
               <div className="flex-1" />
 
               <div className="relative z-10 mt-6 border-t border-teal-100 pt-5">
-                <p className="text-xs font-medium text-slate-500">Google Rating</p>
+                <p className="text-caption font-medium text-slate-500">Google Rating</p>
                 <div className="mt-1 flex items-center gap-2">
                   <span className="text-3xl font-bold" style={{ color: NAVY }}>
-                    4.8
+                    {f.googleRating || "4.8"}
                   </span>
                   <span className="flex items-center gap-0.5 text-amber-400">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -322,7 +303,7 @@ export default function Footer() {
                     ))}
                   </span>
                 </div>
-                <p className="mt-1 text-xs text-slate-500">(120+ Reviews)</p>
+                <p className="text-caption mt-1 text-slate-500">{f.reviewsText || "(120+ Reviews)"}</p>
               </div>
             </div>
           </div>
@@ -338,7 +319,7 @@ export default function Footer() {
               style={{ backgroundColor: DARK_CARD }}
             >
               <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-                {stats.map((stat, i) => (
+                {statList.map((stat, i) => (
                   <div key={stat.label} className="flex items-center gap-4">
                     <span
                       className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border"
@@ -347,29 +328,49 @@ export default function Footer() {
                       <stat.icon />
                     </span>
                     <div>
-                      <p className="text-xl font-bold text-white">{stat.value}</p>
-                      <p className="text-xs text-slate-300">{stat.label}</p>
+                      <p className="text-body font-bold text-white">{stat.value}</p>
+                      <p className="text-caption text-slate-300">{stat.label}</p>
                     </div>
-                    {i < stats.length - 1 && <span className="ml-2 hidden h-10 w-px bg-white/10 sm:block" />}
+                    {i < statList.length - 1 && <span className="ml-2 hidden h-10 w-px bg-white/10 sm:block" />}
                   </div>
                 ))}
               </div>
 
               <div className="hidden h-12 w-px bg-white/10 lg:block" />
 
-              <div>
-                <p className="text-xs font-semibold tracking-[0.1em] text-slate-300">
-                  TRUSTED BY 500+ BUSINESSES ACROSS <span style={{ color: TEAL }}>INDIA &amp; NCR</span>
+              <div className="min-w-0 flex-1">
+                <p className="text-caption font-semibold tracking-[0.1em] text-slate-300">
+                  {f.trustedText ?? "TRUSTED BY 500+ BUSINESSES ACROSS"}{" "}
+                  <span style={{ color: TEAL }}>{f.trustedAccent ?? "INDIA & NCR"}</span>
                 </p>
-                <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
-                  {clientLogos.map(({ name, mark }) => (
-                    <span key={name} className="flex items-center gap-1.5 text-sm font-bold text-slate-300/90">
-                      <span style={{ color: TEAL }}>
-                        <ClientMark mark={mark} />
-                      </span>
-                      {name}
-                    </span>
-                  ))}
+                {/* Same client logos and infinite marquee as the TrustedBar, shown in white on the dark band */}
+                <div
+                  className="relative mt-4 w-full min-w-0 overflow-hidden"
+                  style={{
+                    maskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
+                    WebkitMaskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
+                  }}
+                >
+                  <div className="animate-ticker-x flex w-max motion-reduce:animate-none" style={{ animationDuration: "32s" }}>
+                    {[0, 1].map((copy) => (
+                      <ul key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1 || undefined}>
+                        {logos.map((logo, li) => (
+                          <li key={`${li}-${logo.name}`} className="shrink-0 pr-3">
+                            <span className="flex h-14 w-[150px] items-center justify-center rounded-xl bg-white px-4 shadow-[0_6px_18px_-10px_rgba(0,0,0,0.5)]">
+                              <Image
+                                src={logo.src}
+                                alt={copy === 1 ? "" : logo.name}
+                                width={logo.w}
+                                height={logo.h}
+                                unoptimized={/^https?:/.test(logo.src)}
+                                className={`w-auto max-w-full transition duration-300 hover:scale-105 ${logo.tall ? "h-11" : "h-8"}`}
+                              />
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -428,25 +429,26 @@ export default function Footer() {
 
           <div className="mt-6 flex flex-col items-center gap-4 text-xs text-slate-400 sm:flex-row sm:justify-between">
             <div className="flex flex-col items-center gap-1 sm:flex-row sm:gap-4">
-              <span>© 2024 ProManage. All rights reserved.</span>
-              <span className="hidden sm:inline">|</span>
-              <span className="flex items-center gap-3">
-                <Link href="/privacy" className="hover:text-white">
-                  Privacy Policy
-                </Link>
-                <span>|</span>
-                <Link href="/terms" className="hover:text-white">
-                  Terms of Service
-                </Link>
-                <span>|</span>
-                <Link href="/refund" className="hover:text-white">
-                  Refund Policy
-                </Link>
-              </span>
+              <span>{f.copyright || "© 2024 ProManage. All rights reserved."}</span>
+              {legal.length > 0 && (
+                <>
+                  <span className="hidden sm:inline">|</span>
+                  <span className="flex items-center gap-3">
+                    {legal.map((l, i) => (
+                      <span key={l.href} className="flex items-center gap-3">
+                        {i > 0 && <span>|</span>}
+                        <Link href={l.href} className="hover:text-white">
+                          {l.label}
+                        </Link>
+                      </span>
+                    ))}
+                  </span>
+                </>
+              )}
             </div>
 
             <span className="flex items-center gap-1.5">
-              Made with <HeartIcon /> in Noida
+              Made with <HeartIcon /> in {f.madeIn || "Noida"}
             </span>
           </div>
         </Container>

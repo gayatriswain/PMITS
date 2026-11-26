@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 interface WhatYouGetItem {
   id: string;
@@ -13,7 +15,7 @@ interface WhatYouGetItem {
   icon: React.ReactNode;
 }
 
-const whatYouGet: WhatYouGetItem[] = [
+const whatYouGet__cms: WhatYouGetItem[] = [
   {
     id: "goals",
     title: "Focus on Your Goals",
@@ -78,7 +80,7 @@ interface ArcPod {
   icon: React.ReactNode;
 }
 
-const arcPods: ArcPod[] = [
+const arcPods__cms: ArcPod[] = [
   {
     id: "skilled",
     label: "SKILLED",
@@ -260,10 +262,12 @@ function ArcPodView({ pod, index, hovered, setHovered }: { pod: ArcPod; index: n
 }
 
 function WhatYouGetCard({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
+  const whatYouGet = useCmsData("HireCorePhpWhyHireFromUs__whatYouGet", whatYouGet__cms);
   return (
     <div className={`rounded-2xl bg-white/90 backdrop-blur border border-white shadow-[0_22px_46px_-22px_rgba(15,35,80,0.28)] p-5 ${className}`}>
       <h3 className="text-[16px] font-bold text-[#0c1e3d]">
-        What <span className="text-[#0f8a83]">You Get</span>
+        {$t("HireCorePhpWhyHireFromUs__t1", "What ")}<span className="text-[#0f8a83]">{$t("HireCorePhpWhyHireFromUs__t2", "You Get")}</span>
       </h3>
       <div className="mt-3 divide-y divide-slate-100">
         {whatYouGet.map((item, i) => (
@@ -288,6 +292,7 @@ function WhatYouGetCard({ className = "" }: { className?: string }) {
 }
 
 function CtaBanner({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <motion.div
       className={`relative rounded-2xl bg-white border border-slate-100 shadow-[0_24px_50px_-22px_rgba(7,22,43,0.55)] overflow-hidden flex flex-col lg:flex-row ${className}`}
@@ -312,30 +317,27 @@ function CtaBanner({ className = "" }: { className?: string }) {
             </svg>
           </motion.span>
           <div className="text-left text-[17px] font-bold leading-snug text-white">
-            Built around your business.
-            <br />
-            <span className="text-[#2fc6d3]">Designed for real impact.</span>
+            {$t("HireCorePhpWhyHireFromUs__t3", "Built around your business.")}<br />
+            <span className="text-[#2fc6d3]">{$t("HireCorePhpWhyHireFromUs__t4", "Designed for real impact.")}</span>
           </div>
         </div>
 
         <p className="relative text-left text-[11.5px] leading-relaxed text-slate-200/85 lg:border-l lg:border-white/20 lg:pl-6 max-w-[300px]">
-          Hire dedicated Core PHP developers and turn your ideas into powerful, scalable real-world solutions.
-        </p>
+          {rich($t("HireCorePhpWhyHireFromUs__t5", "Hire dedicated Core PHP developers and turn your ideas into powerful, scalable real-world solutions."))}</p>
       </div>
 
       {/* right half: white */}
       <div className="flex-1 flex items-center justify-center gap-5 px-6 py-5 lg:py-0">
         <Link
-          href="#contact"
+          href={$t("HireCorePhpWhyHireFromUs__t6", "#contact")}
           className="group inline-flex items-center justify-center gap-3 h-[46px] px-8 rounded-lg bg-[linear-gradient(90deg,#0f8a99,#1aa6a6)] text-white text-[13px] font-semibold shadow-[0_12px_24px_-10px_rgba(26,166,166,0.8)] hover:brightness-110 transition whitespace-nowrap"
         >
-          Hire Core PHP Developers
-          <svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          {$t("HireCorePhpWhyHireFromUs__t7", "Hire Core PHP Developers")}<svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
         </Link>
-        <Link href="#contact" aria-label="Chat with us" className="w-[46px] h-[46px] rounded-full bg-white text-[#0c1e3d] flex items-center justify-center shadow-[0_10px_22px_-8px_rgba(15,35,80,0.35)] border border-slate-100 hover:scale-105 transition-transform shrink-0">
+        <Link href={$t("HireCorePhpWhyHireFromUs__t8", "#contact")} aria-label="Chat with us" className="w-[46px] h-[46px] rounded-full bg-white text-[#0c1e3d] flex items-center justify-center shadow-[0_10px_22px_-8px_rgba(15,35,80,0.35)] border border-slate-100 hover:scale-105 transition-transform shrink-0">
           <svg viewBox="0 0 24 24" className="w-[19px] h-[19px]" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12Z" />
             <path d="M9 11h.01M12.5 11h.01M16 11h.01" />
@@ -347,12 +349,14 @@ function CtaBanner({ className = "" }: { className?: string }) {
 }
 
 export default function HireCorePhpWhyHireFromUs() {
+  const $t = useCmsText();
+  const arcPods = useCmsData("HireCorePhpWhyHireFromUs__arcPods", arcPods__cms);
   const [hoveredPod, setHoveredPod] = useState<string | null>(null);
   const subtitle = "Dedicated Core PHP expertise, aligned with your goals and focused on results.";
 
   return (
     <section id="why-hire-from-us" className="relative w-full overflow-hidden font-sans bg-[linear-gradient(180deg,#ffffff_0%,#f4f8fc_60%,#eff4fa_100%)] pt-10 sm:pt-14 pb-12 sm:pb-16">
-      <Container className="relative z-10 max-w-[1320px] w-full sm:px-10 lg:px-16">
+      <Container className="relative z-10 max-w-[1320px] w-full">
         {/* ======================= DESKTOP: fixed 1180 x 720 canvas, scaled ======================= */}
         <div className="hidden lg:block">
           <ScaleBox width={1180} height={720}>
@@ -364,17 +368,15 @@ export default function HireCorePhpWhyHireFromUs() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Why hire from us —
-              </motion.div>
+                {$t("HireCorePhpWhyHireFromUs__t9", "Why hire from us —")}</motion.div>
               <motion.h2
                 className="absolute left-[30px] top-[50px] text-[46px] font-black tracking-tight leading-[1.1] text-[#0c1e3d]"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                The Right Developer.
-                <br />
-                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">The Right Impact.</span>
+                {$t("HireCorePhpWhyHireFromUs__t10", "The Right Developer.")}<br />
+                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpWhyHireFromUs__t11", "The Right Impact.")}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[30px] top-[176px] w-[330px] text-[14px] leading-[1.55] text-slate-600"
@@ -440,7 +442,7 @@ export default function HireCorePhpWhyHireFromUs() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <Image src="/core-php3.png" alt="Core PHP developer" width={435} height={432} priority className="w-full h-auto select-none drop-shadow-[0_20px_30px_rgba(15,35,80,0.12)]" />
+                <Image src={$t("HireCorePhpWhyHireFromUs__t12", "/core-php3.png")} alt={$t("HireCorePhpWhyHireFromUs__t13", "Core PHP developer")} width={435} height={432} priority className="w-full h-auto select-none drop-shadow-[0_20px_30px_rgba(15,35,80,0.12)]" />
               </motion.div>
 
               {arcPods.map((pod, i) => (
@@ -454,18 +456,17 @@ export default function HireCorePhpWhyHireFromUs() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">Why hire from us —</div>
-          <h2 className="mt-3 text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] text-[#0c1e3d]">
-            The Right Developer.
-            <br />
-            <span className="text-[#0f8a83]">The Right Impact.</span>
+          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">{$t("HireCorePhpWhyHireFromUs__t14", "Why hire from us —")}</div>
+          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0c1e3d]">
+            {$t("HireCorePhpWhyHireFromUs__t15", "The Right Developer.")}<br />
+            <span className="text-[#0f8a83]">{$t("HireCorePhpWhyHireFromUs__t16", "The Right Impact.")}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-600 max-w-md">{subtitle}</p>
+          <p className="text-body mt-4 text-slate-600 max-w-md">{subtitle}</p>
           <div className="mt-5 w-11 h-[3px] rounded-full bg-[#0f8a83]" />
 
           <div className="relative mt-8 mx-auto max-w-[360px]">
             <div className="absolute inset-0 rounded-full bg-sky-100/70 blur-2xl" />
-            <Image src="/core-php3.png" alt="Core PHP developer" width={435} height={432} className="relative w-full h-auto" />
+            <Image src={$t("HireCorePhpWhyHireFromUs__t17", "/core-php3.png")} alt={$t("HireCorePhpWhyHireFromUs__t18", "Core PHP developer")} width={435} height={432} className="relative w-full h-auto" />
           </div>
 
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">

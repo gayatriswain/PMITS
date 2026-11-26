@@ -3,25 +3,28 @@
 import React, { useEffect, useState } from "react";
 import { Search, ShoppingBag, Code, Pen, Star, Link2, CheckCircle2 } from "lucide-react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import { useCmsText } from "@/components/cms/SectionContent";
+import Link from "next/link";
+import { rich } from "@/components/cms/rich";
 
 export default function EcommerceSeoProcessSection() {
+  const $t = useCmsText();
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 relative z-10">
+      <div className="max-w-[1640px] mx-auto relative z-10 px-5">
         
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-px w-8 bg-slate-300"></div>
-            <span className="text-[13px] font-bold text-[#0f766e] tracking-[0.2em] uppercase">What We Do</span>
+            <span className="text-[13px] font-bold text-[#0f766e] tracking-[0.2em] uppercase">{$t("EcommerceSeoProcessSection__t1", "What We Do")}</span>
             <div className="h-px w-8 bg-slate-300"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#132a43] leading-tight mb-4 tracking-tight">
-            End-to-End SEO for <span className="text-[#0f766e]">Ecommerce Growth.</span>
+          <h2 className="text-h2 font-extrabold text-[#132a43] mb-4 tracking-tight">
+            {$t("EcommerceSeoProcessSection__t2", "End-to-End SEO for ")}<span className="text-[#0f766e]">{$t("EcommerceSeoProcessSection__t3", "Ecommerce Growth.")}</span>
           </h2>
-          <p className="text-slate-500 text-lg">
-            A complete SEO system that drives visibility, traffic and revenue—consistently.
-          </p>
+          <p className="text-body text-slate-500">
+            {rich($t("EcommerceSeoProcessSection__t4", "A complete SEO system that drives visibility, traffic and revenue—consistently."))}</p>
         </div>
 
         {/* 3-Column Grid */}
@@ -31,20 +34,20 @@ export default function EcommerceSeoProcessSection() {
           <div className="w-full xl:w-[35%] flex flex-col gap-6 z-10">
             <ProcessCard 
               number="01" 
-              title="Search Intent" 
-              desc="We uncover what your buyers search, compare and want to buy."
+              title={$t("EcommerceSeoProcessSection__t5", "Search Intent")} 
+              desc={$t("EcommerceSeoProcessSection__t6", "We uncover what your buyers search, compare and want to buy.")}
               ui={<SearchIntentUI />}
             />
             <ProcessCard 
               number="03" 
-              title="Technical SEO" 
-              desc="We fix technical issues and build a fast, crawlable, future-proof store."
+              title={$t("EcommerceSeoProcessSection__t7", "Technical SEO")} 
+              desc={$t("EcommerceSeoProcessSection__t8", "We fix technical issues and build a fast, crawlable, future-proof store.")}
               ui={<TechnicalSeoUI />}
             />
             <ProcessCard 
               number="05" 
-              title="Schema & Rich Results" 
-              desc="We implement schema that earns rich results and boosts CTR."
+              title={$t("EcommerceSeoProcessSection__t9", "Schema & Rich Results")} 
+              desc={$t("EcommerceSeoProcessSection__t10", "We implement schema that earns rich results and boosts CTR.")}
               ui={<SchemaUI />}
             />
           </div>
@@ -155,15 +158,14 @@ export default function EcommerceSeoProcessSection() {
               </div>
 
               {/* Center Image */}
-              <img src="/e-commerce1.png" alt="Ecommerce SEO Process" className="w-[45%] h-[45%] object-contain relative z-10 drop-shadow-2xl" 
+              <img src={$t("EcommerceSeoProcessSection__t11", "/e-commerce1.png")} alt={$t("EcommerceSeoProcessSection__t12", "Ecommerce SEO Process")} className="w-[45%] h-[45%] object-contain relative z-10 drop-shadow-2xl" 
                 onError={(e) => {
                   e.currentTarget.src = 'https://placehold.co/400x400/transparent/0f766e?text=Cart+Image';
                 }}
               />
               
               <div className="absolute bottom-[20px] left-1/2 -translate-x-1/2 text-[#0f766e] text-[10px] md:text-[11px] font-bold text-center tracking-widest leading-relaxed whitespace-nowrap z-20 bg-white/95 px-5 py-2.5 rounded-full shadow-md border border-slate-100">
-                BETTER VISIBILITY<br/>MORE TRAFFIC<br/>HIGHER REVENUE
-              </div>
+                {$t("EcommerceSeoProcessSection__t13", "BETTER VISIBILITY")}<br/>{$t("EcommerceSeoProcessSection__t14", "MORE TRAFFIC")}<br/>{$t("EcommerceSeoProcessSection__t15", "HIGHER REVENUE")}</div>
 
               {/* Orbiting Icons (Desktop Only) */}
               <div className="hidden xl:block absolute inset-0 pointer-events-none">
@@ -182,20 +184,20 @@ export default function EcommerceSeoProcessSection() {
           <div className="w-full xl:w-[35%] flex flex-col gap-6 z-10">
             <ProcessCard 
               number="02" 
-              title="Product & Category SEO" 
-              desc="We optimize product and category pages that rank higher & convert better."
+              title={$t("EcommerceSeoProcessSection__t16", "Product & Category SEO")} 
+              desc={$t("EcommerceSeoProcessSection__t17", "We optimize product and category pages that rank higher & convert better.")}
               ui={<ProductSeoUI />}
             />
             <ProcessCard 
               number="04" 
-              title="Content That Drives Traffic" 
-              desc="We create content that answers, ranks and moves buyers forward."
+              title={$t("EcommerceSeoProcessSection__t18", "Content That Drives Traffic")} 
+              desc={$t("EcommerceSeoProcessSection__t19", "We create content that answers, ranks and moves buyers forward.")}
               ui={<ContentSeoUI />}
             />
             <ProcessCard 
               number="06" 
-              title="Authority & Link Building" 
-              desc="We build relevant authority that strengthens rankings and long-term growth."
+              title={$t("EcommerceSeoProcessSection__t20", "Authority & Link Building")} 
+              desc={$t("EcommerceSeoProcessSection__t21", "We build relevant authority that strengthens rankings and long-term growth.")}
               ui={<LinkBuildingUI />}
             />
           </div>
@@ -204,16 +206,16 @@ export default function EcommerceSeoProcessSection() {
         {/* Features Row */}
         <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 mb-6">
           <div className="md:w-1/4">
-            <h4 className="font-bold text-[#132a43] text-xl leading-tight">
-              Everything works<br/>together. That's the<br/><span className="text-[#0f766e]">Promanage advantage.</span>
+            <h4 className="text-h6 font-bold text-[#132a43]">
+              {$t("EcommerceSeoProcessSection__t22", "Everything works")}<br/>{$t("EcommerceSeoProcessSection__t23", "together. That's the")}<br/><span className="text-[#0f766e]">{$t("EcommerceSeoProcessSection__t24", "Promanage advantage.")}</span>
             </h4>
           </div>
           
           <div className="md:w-3/4 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <FeatureItem icon="🎯" title="Integrated Strategy" desc="All SEO areas aligned for maximum impact." />
-            <FeatureItem icon="📊" title="Data-Driven Decisions" desc="We act on data, not guesswork." />
-            <FeatureItem icon="📋" title="Transparent Reporting" desc="Clear insights. Real results." />
-            <FeatureItem icon="👤" title="Ecommerce Specialists" desc="We understand stores, customers and conversions." />
+            <FeatureItem icon="🎯" title={$t("EcommerceSeoProcessSection__t25", "Integrated Strategy")} desc={$t("EcommerceSeoProcessSection__t26", "All SEO areas aligned for maximum impact.")} />
+            <FeatureItem icon="📊" title={$t("EcommerceSeoProcessSection__t27", "Data-Driven Decisions")} desc={$t("EcommerceSeoProcessSection__t28", "We act on data, not guesswork.")} />
+            <FeatureItem icon="📋" title={$t("EcommerceSeoProcessSection__t29", "Transparent Reporting")} desc={$t("EcommerceSeoProcessSection__t30", "Clear insights. Real results.")} />
+            <FeatureItem icon="👤" title={$t("EcommerceSeoProcessSection__t31", "Ecommerce Specialists")} desc={$t("EcommerceSeoProcessSection__t32", "We understand stores, customers and conversions.")} />
           </div>
         </div>
 
@@ -228,15 +230,14 @@ export default function EcommerceSeoProcessSection() {
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 3.86-12A22 22 0 0 1 12 15z"/><path d="m15 12-3-3a22 22 0 0 1 12-3.86A22 22 0 0 1 15 12z"/></svg>
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">Ready to Grow Your Store?</h3>
-              <p className="text-teal-50 text-sm md:text-base opacity-90">Let's build the SEO foundation that drives traffic, ranks and real revenue.</p>
+              <h3 className="text-h4 font-bold mb-2">{$t("EcommerceSeoProcessSection__t33", "Ready to Grow Your Store?")}</h3>
+              <p className="text-body text-teal-50 opacity-90">{rich($t("EcommerceSeoProcessSection__t34", "Let's build the SEO foundation that drives traffic, ranks and real revenue."))}</p>
             </div>
           </div>
           
-          <button className="bg-white text-[#0f766e] font-bold px-8 py-4 rounded-xl flex items-center gap-2 hover:bg-slate-50 transition-colors shrink-0 relative z-10 shadow-lg">
-            Get My Free SEO Strategy
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </button>
+          <Link href={$t("EcommerceSeoProcessSection__u1", "/contact")} className="bg-white text-[#0f766e] font-bold px-8 py-4 rounded-xl flex items-center gap-2 hover:bg-slate-50 transition-colors shrink-0 relative z-10 shadow-lg">
+            {$t("EcommerceSeoProcessSection__t35", "Get My Free SEO Strategy")}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </Link>
         </div>
 
       </div>
@@ -297,19 +298,20 @@ function FeatureItem({ icon, title, desc }: { icon: string, title: string, desc:
 // Mini UIs
 
 function SearchIntentUI() {
+  const $t = useCmsText();
   return (
     <div className="w-full bg-white rounded-xl p-3 shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col h-full justify-between border border-slate-50">
       <div>
         <div className="bg-white rounded-[2rem] border border-slate-100 p-1.5 px-2.5 flex items-center justify-between mb-2 shadow-sm">
-          <span className="text-[7.5px] font-medium text-[#132a43] truncate">best noise cancelling headphones</span>
+          <span className="text-[7.5px] font-medium text-[#132a43] truncate">{$t("EcommerceSeoProcessSection__t36", "best noise cancelling headphones")}</span>
           <Search size={8} className="text-slate-400 shrink-0 ml-1.5" />
         </div>
-        <div className="text-[7.5px] font-bold text-[#132a43] mb-1">People also search for</div>
+        <div className="text-[7.5px] font-bold text-[#132a43] mb-1">{$t("EcommerceSeoProcessSection__t37", "People also search for")}</div>
         <div className="flex gap-1 overflow-hidden flex-wrap mb-2">
           <span className="bg-[#ecfdf5] text-[#0f766e] px-1.5 py-0.5 rounded-full text-[6.5px] font-bold whitespace-nowrap">wireless</span>
           <span className="bg-[#ecfdf5] text-[#0f766e] px-1.5 py-0.5 rounded-full text-[6.5px] font-bold whitespace-nowrap">bluetooth</span>
-          <span className="bg-[#ecfdf5] text-[#0f766e] px-1.5 py-0.5 rounded-full text-[6.5px] font-bold whitespace-nowrap">over ear</span>
-          <span className="bg-[#ecfdf5] text-[#0f766e] px-1.5 py-0.5 rounded-full text-[6.5px] font-bold whitespace-nowrap">noise cancelling</span>
+          <span className="bg-[#ecfdf5] text-[#0f766e] px-1.5 py-0.5 rounded-full text-[6.5px] font-bold whitespace-nowrap">{$t("EcommerceSeoProcessSection__t38", "over ear")}</span>
+          <span className="bg-[#ecfdf5] text-[#0f766e] px-1.5 py-0.5 rounded-full text-[6.5px] font-bold whitespace-nowrap">{$t("EcommerceSeoProcessSection__t39", "noise cancelling")}</span>
         </div>
       </div>
       
@@ -357,25 +359,27 @@ function SearchIntentUI() {
 }
 
 function ProductSeoUI() {
+  const $t = useCmsText();
   return (
     <div className="w-full bg-white rounded-lg p-2 border border-slate-100 shadow-sm flex items-center gap-3">
       <div className="w-10 h-10 bg-slate-100 rounded-md overflow-hidden shrink-0">
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="Headphones" className="w-full h-full object-cover" />
+        <img src={$t("EcommerceSeoProcessSection__t40", "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80")} alt={$t("EcommerceSeoProcessSection__t41", "Headphones")} className="w-full h-full object-cover" />
       </div>
       <div className="flex-1">
         <div className="h-1.5 w-full bg-slate-200 rounded mb-1"></div>
         <div className="flex items-center gap-0.5 mb-1">
           {[1,2,3,4,5].map(i => <Starey key={i} width="8" />)}
-          <span className="text-[5.5px] text-slate-400 ml-1">(128)</span>
+          <span className="text-[5.5px] text-slate-400 ml-1">{$t("EcommerceSeoProcessSection__t42", "(128)")}</span>
         </div>
-        <div className="font-bold text-[8.5px] text-[#132a43] mb-1">$59.99</div>
-        <div className="bg-[#0f766e] text-white text-[6.5px] font-bold text-center py-0.5 rounded">Add to cart</div>
+        <div className="font-bold text-[8.5px] text-[#132a43] mb-1">{$t("EcommerceSeoProcessSection__t43", "$59.99")}</div>
+        <div className="bg-[#0f766e] text-white text-[6.5px] font-bold text-center py-0.5 rounded">{$t("EcommerceSeoProcessSection__t44", "Add to cart")}</div>
       </div>
     </div>
   );
 }
 
 function TechnicalSeoUI() {
+  const $t = useCmsText();
   const [count, setCount] = useState(0);
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -398,7 +402,7 @@ function TechnicalSeoUI() {
 
   return (
     <div ref={ref} className="w-full bg-white rounded-2xl p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center border border-slate-50">
-      <div className="text-[12px] font-bold text-[#1e293b] mb-4">Site Speed</div>
+      <div className="text-[12px] font-bold text-[#1e293b] mb-4">{$t("EcommerceSeoProcessSection__t45", "Site Speed")}</div>
       
       {/* Semi-Circle Dial */}
       <div className="relative w-40 h-24 flex flex-col items-center justify-end overflow-visible mb-1 mt-1">
@@ -417,9 +421,9 @@ function TechnicalSeoUI() {
         </svg>
         <div className="text-center flex flex-col items-center z-10 relative mt-4">
           <div className="text-[28px] font-extrabold text-[#117664] leading-none flex items-baseline gap-1">
-            {count}<span className="text-[12px] text-[#475569] font-bold">/100</span>
+            {count}<span className="text-[12px] text-[#475569] font-bold">{$t("EcommerceSeoProcessSection__t46", "/100")}</span>
           </div>
-          <div className="text-[12px] font-bold text-[#117664] mt-1.5">Excellent</div>
+          <div className="text-[12px] font-bold text-[#117664] mt-1.5">{$t("EcommerceSeoProcessSection__t47", "Excellent")}</div>
         </div>
       </div>
     </div>
@@ -427,18 +431,19 @@ function TechnicalSeoUI() {
 }
 
 function ContentSeoUI() {
+  const $t = useCmsText();
   return (
     <div className="w-full bg-white rounded-lg p-2 border border-slate-100 shadow-sm flex items-start gap-2.5">
       <div className="w-7 h-7 bg-slate-100 rounded flex-shrink-0 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=50&q=80" alt="Product" className="w-full h-full object-cover" />
+        <img src={$t("EcommerceSeoProcessSection__t48", "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=50&q=80")} alt={$t("EcommerceSeoProcessSection__t49", "Product")} className="w-full h-full object-cover" />
       </div>
       <div className="flex-1">
         <div className="h-1 w-3/4 bg-slate-200 rounded mb-1"></div>
         <div className="h-1 w-1/2 bg-slate-200 rounded mb-1.5"></div>
         <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-1"><CheckCircle2 size={7} className="text-[#0f766e]" /><span className="text-[6.5px] font-bold text-slate-600">Buying Guide</span></div>
-          <div className="flex items-center gap-1"><CheckCircle2 size={7} className="text-[#0f766e]" /><span className="text-[6.5px] font-bold text-slate-600">Comparison</span></div>
-          <div className="flex items-center gap-1"><CheckCircle2 size={7} className="text-[#0f766e]" /><span className="text-[6.5px] font-bold text-slate-600">Use Cases</span></div>
+          <div className="flex items-center gap-1"><CheckCircle2 size={7} className="text-[#0f766e]" /><span className="text-[6.5px] font-bold text-slate-600">{$t("EcommerceSeoProcessSection__t50", "Buying Guide")}</span></div>
+          <div className="flex items-center gap-1"><CheckCircle2 size={7} className="text-[#0f766e]" /><span className="text-[6.5px] font-bold text-slate-600">{$t("EcommerceSeoProcessSection__t51", "Comparison")}</span></div>
+          <div className="flex items-center gap-1"><CheckCircle2 size={7} className="text-[#0f766e]" /><span className="text-[6.5px] font-bold text-slate-600">{$t("EcommerceSeoProcessSection__t52", "Use Cases")}</span></div>
         </div>
       </div>
     </div>
@@ -446,6 +451,7 @@ function ContentSeoUI() {
 }
 
 function SchemaUI() {
+  const $t = useCmsText();
   return (
     <motion.div 
       className="w-full bg-white rounded-xl p-3.5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-slate-50"
@@ -477,22 +483,22 @@ function SchemaUI() {
           </motion.div>
         ))}
       </div>
-      <div className="text-[#1a0dab] text-[10.5px] font-medium leading-snug mb-1 hover:underline cursor-pointer">Wireless Headphones |<br/>Active Noise Cancelling</div>
-      <div className="text-[9px] text-slate-600 mb-1.5">$59.99 • <span className="text-[#0f766e] font-medium">In stock</span></div>
+      <div className="text-[#1a0dab] text-[10.5px] font-medium leading-snug mb-1 hover:underline cursor-pointer">{$t("EcommerceSeoProcessSection__t53", "Wireless Headphones |")}<br/>{$t("EcommerceSeoProcessSection__t54", "Active Noise Cancelling")}</div>
+      <div className="text-[9px] text-slate-600 mb-1.5">{$t("EcommerceSeoProcessSection__t55", "$59.99 • ")}<span className="text-[#0f766e] font-medium">{$t("EcommerceSeoProcessSection__t56", "In stock")}</span></div>
       <div className="flex items-center gap-1 text-[8px] text-slate-500 font-medium">
         <div className="flex gap-0.5">
           {[1,2,3,4,5].map(i => <Starey key={i} fill="#cbd5e1" width="8" />)} 
         </div>
-        (128)
-      </div>
+        {$t("EcommerceSeoProcessSection__t57", "(128)")}</div>
     </motion.div>
   );
 }
 
 function LinkBuildingUI() {
+  const $t = useCmsText();
   return (
     <div className="w-full bg-white rounded-2xl p-5 pb-0 shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col border border-slate-50 relative overflow-hidden h-full min-h-[160px]">
-      <div className="text-[12px] font-bold text-[#1e293b] mb-4 text-left w-full z-10 relative">Domain Authority</div>
+      <div className="text-[12px] font-bold text-[#1e293b] mb-4 text-left w-full z-10 relative">{$t("EcommerceSeoProcessSection__t58", "Domain Authority")}</div>
       
       <div className="flex items-center justify-center gap-4 mb-8 z-10 relative">
         {/* Circle 42 */}
@@ -508,7 +514,7 @@ function LinkBuildingUI() {
               transition={{ duration: 1, ease: "easeOut" }}
             />
           </svg>
-          <span className="text-[20px] font-black text-[#0f172a] leading-none tracking-tight">42</span>
+          <span className="text-[20px] font-black text-[#0f172a] leading-none tracking-tight">{$t("EcommerceSeoProcessSection__t59", "42")}</span>
         </div>
         
         <span className="text-[13px] font-bold text-[#334155] mt-1 z-10 px-1">to</span>
@@ -526,7 +532,7 @@ function LinkBuildingUI() {
               transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
             />
           </svg>
-          <span className="text-[24px] font-black text-[#0f172a] leading-none tracking-tight">68</span>
+          <span className="text-[24px] font-black text-[#0f172a] leading-none tracking-tight">{$t("EcommerceSeoProcessSection__t60", "68")}</span>
         </div>
       </div>
 

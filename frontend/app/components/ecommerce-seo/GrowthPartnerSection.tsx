@@ -3,6 +3,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Lock, User, Target, Search, ShoppingCart, ShieldCheck } from 'lucide-react';
+import { useCmsText } from "@/components/cms/SectionContent";
+import Link from "next/link";
+import { rich } from "@/components/cms/rich";
 
 // Custom Animated Icons
 const StoreIcon = () => (
@@ -125,24 +128,24 @@ const ClarityIcon = () => (
 );
 
 export default function GrowthPartnerSection() {
+  const $t = useCmsText();
   return (
     <section className="pt-8 pb-8 bg-white relative overflow-hidden font-sans">
-      <div className="max-w-[1440px] mx-auto px-6 relative z-10">
+      <div className="max-w-[1640px] mx-auto relative z-10 px-5">
         
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-px w-8 bg-[#0f766e]/30"></div>
-            <span className="text-[11px] font-bold text-[#0f766e] tracking-[0.15em] uppercase">Your Growth Partner</span>
+            <span className="text-[11px] font-bold text-[#0f766e] tracking-[0.15em] uppercase">{$t("GrowthPartnerSection__t1", "Your Growth Partner")}</span>
             <div className="h-px w-8 bg-[#0f766e]/30"></div>
           </div>
-          <h2 className="text-4xl md:text-[46px] font-black text-[#0f2923] leading-[1.1] mb-5 tracking-tight">
-            You Bring the Store.<br/>
-            <span className="text-[#0f766e]">We'll Find the Growth.</span>
+          <h2 className="text-h2 font-black text-[#0f2923] mb-5 tracking-tight">
+            {$t("GrowthPartnerSection__t2", "You Bring the Store.")}<br/>
+            <span className="text-[#0f766e]">{$t("GrowthPartnerSection__t3", "We'll Find the Growth.")}</span>
           </h2>
-          <p className="text-slate-500 text-[15px] max-w-lg mx-auto leading-relaxed">
-            Share your store with us. We'll analyze what's holding your organic growth back and show you the biggest opportunities.
-          </p>
+          <p className="text-body text-slate-500 max-w-lg mx-auto">
+            {rich($t("GrowthPartnerSection__t4", "Share your store with us. We'll analyze what's holding your organic growth back and show you the biggest opportunities."))}</p>
         </div>
 
         {/* 3 Steps Container */}
@@ -194,26 +197,26 @@ export default function GrowthPartnerSection() {
               <div className="absolute inset-0 top-[20px] bg-gradient-to-b from-transparent via-[#e8f7f5]/40 to-[#e8f7f5] rounded-b-[40px] -z-10"></div>
               
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-[#e8f7f5] text-[#0f766e] font-black text-xs flex items-center justify-center mb-3">01</div>
+                <div className="w-8 h-8 rounded-full bg-[#e8f7f5] text-[#0f766e] font-black text-xs flex items-center justify-center mb-3">{$t("GrowthPartnerSection__t5", "01")}</div>
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.06)] border-[4px] border-white p-2">
                   <StoreIcon />
                 </div>
               </div>
               
               <div className="text-center px-4 pt-20 pb-8 h-full flex flex-col items-center">
-                <h3 className="text-[17px] font-bold text-[#0f2923] mb-2">You Share</h3>
-                <p className="text-[13px] text-slate-500 leading-relaxed mb-6">Share your store URL<br/>and a few details.</p>
+                <h3 className="text-[17px] font-bold text-[#0f2923] mb-2">{$t("GrowthPartnerSection__t6", "You Share")}</h3>
+                <p className="text-small text-slate-500 mb-6">{rich($t("GrowthPartnerSection__t7", "Share your store URL"))}<br/>{rich($t("GrowthPartnerSection__t8", "and a few details."))}</p>
                 
                 {/* UI Card */}
                 <div className="w-full max-w-[260px] bg-white rounded-[14px] p-3 shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100 flex flex-col gap-3 mt-auto">
                   <div className="bg-[#f8fafc] rounded-md border border-slate-200 p-1.5 flex items-center gap-2">
                     <Lock size={12} className="text-[#0f766e]" />
-                    <span className="text-[10px] font-medium text-slate-600">https://yourstore.com</span>
+                    <span className="text-[10px] font-medium text-slate-600">{$t("GrowthPartnerSection__t9", "https://yourstore.com")}</span>
                     <Search size={12} className="text-slate-400 ml-auto" />
                   </div>
                   <div className="flex gap-3 pb-1">
                     <div className="w-16 h-16 bg-[#f1f5f9] rounded-md flex items-center justify-center shrink-0">
-                      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="Headphones" className="w-full h-full object-cover rounded-md" />
+                      <img src={$t("GrowthPartnerSection__t10", "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80")} alt={$t("GrowthPartnerSection__t11", "Headphones")} className="w-full h-full object-cover rounded-md" />
                     </div>
                     <div className="flex-1 flex flex-col justify-center gap-2">
                       <div className="w-full h-[4px] bg-slate-200 rounded-full"></div>
@@ -238,32 +241,32 @@ export default function GrowthPartnerSection() {
               <div className="absolute inset-0 top-[20px] bg-gradient-to-b from-transparent via-[#f1f5f9]/40 to-[#f1f5f9] rounded-b-[40px] -z-10"></div>
               
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-[#0f766e] text-white font-black text-xs flex items-center justify-center mb-3 shadow-md">02</div>
+                <div className="w-8 h-8 rounded-full bg-[#0f766e] text-white font-black text-xs flex items-center justify-center mb-3 shadow-md">{$t("GrowthPartnerSection__t12", "02")}</div>
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.06)] border-[4px] border-white p-2">
                   <AnalyzeIcon />
                 </div>
               </div>
               
               <div className="text-center px-2 pt-20 pb-8 h-full flex flex-col items-center">
-                <h3 className="text-[17px] font-bold text-[#0f2923] mb-2">We Analyze</h3>
-                <p className="text-[13px] text-slate-500 leading-relaxed mb-6">Our SEO experts dive deep into your<br/>site, data and competitors.</p>
+                <h3 className="text-[17px] font-bold text-[#0f2923] mb-2">{$t("GrowthPartnerSection__t13", "We Analyze")}</h3>
+                <p className="text-small text-slate-500 mb-6">{rich($t("GrowthPartnerSection__t14", "Our SEO experts dive deep into your"))}<br/>{rich($t("GrowthPartnerSection__t15", "site, data and competitors."))}</p>
                 
                 <div className="flex flex-col gap-3.5 text-left w-full max-w-[260px] mt-auto mb-4 pl-2">
                   <div className="flex items-center gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-[#0f766e] flex items-center justify-center shrink-0"><Check size={10} className="text-white stroke-[3]" /></div>
-                    <span className="text-[11px] font-bold text-[#0f2923]">Search intent & keyword gaps</span>
+                    <span className="text-[11px] font-bold text-[#0f2923]">{$t("GrowthPartnerSection__t16", "Search intent & keyword gaps")}</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-[#0f766e] flex items-center justify-center shrink-0"><Check size={10} className="text-white stroke-[3]" /></div>
-                    <span className="text-[11px] font-bold text-[#0f2923]">Product & category opportunities</span>
+                    <span className="text-[11px] font-bold text-[#0f2923]">{$t("GrowthPartnerSection__t17", "Product & category opportunities")}</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-[#0f766e] flex items-center justify-center shrink-0"><Check size={10} className="text-white stroke-[3]" /></div>
-                    <span className="text-[11px] font-bold text-[#0f2923]">Technical SEO & site health</span>
+                    <span className="text-[11px] font-bold text-[#0f2923]">{$t("GrowthPartnerSection__t18", "Technical SEO & site health")}</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-[#0f766e] flex items-center justify-center shrink-0"><Check size={10} className="text-white stroke-[3]" /></div>
-                    <span className="text-[11px] font-bold text-[#0f2923]">Content & conversion insights</span>
+                    <span className="text-[11px] font-bold text-[#0f2923]">{$t("GrowthPartnerSection__t19", "Content & conversion insights")}</span>
                   </div>
                 </div>
               </div>
@@ -281,19 +284,19 @@ export default function GrowthPartnerSection() {
               <div className="absolute inset-0 top-[20px] bg-gradient-to-b from-transparent via-[#fffaf0]/40 to-[#fffaf0] rounded-b-[40px] -z-10"></div>
               
               <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full bg-[#e8f7f5] text-[#0f766e] font-black text-xs flex items-center justify-center mb-3">03</div>
+                <div className="w-8 h-8 rounded-full bg-[#e8f7f5] text-[#0f766e] font-black text-xs flex items-center justify-center mb-3">{$t("GrowthPartnerSection__t20", "03")}</div>
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.06)] border-[4px] border-white p-2">
                   <ClarityIcon />
                 </div>
               </div>
               
               <div className="text-center px-4 pt-20 pb-8 h-full flex flex-col items-center">
-                <h3 className="text-[17px] font-bold text-[#0f2923] mb-2">You Get Clarity</h3>
-                <p className="text-[13px] text-slate-500 leading-relaxed mb-6">We deliver a clear, prioritized plan<br/>to grow your traffic and revenue.</p>
+                <h3 className="text-[17px] font-bold text-[#0f2923] mb-2">{$t("GrowthPartnerSection__t21", "You Get Clarity")}</h3>
+                <p className="text-small text-slate-500 mb-6">{rich($t("GrowthPartnerSection__t22", "We deliver a clear, prioritized plan"))}<br/>{rich($t("GrowthPartnerSection__t23", "to grow your traffic and revenue."))}</p>
                 
                 {/* UI Card */}
                 <div className="w-full max-w-[260px] bg-white rounded-[14px] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100 flex flex-col gap-4 text-left mt-auto">
-                  <div className="text-[11px] font-bold text-[#0f2923]">Your Growth Opportunities</div>
+                  <div className="text-[11px] font-bold text-[#0f2923]">{$t("GrowthPartnerSection__t24", "Your Growth Opportunities")}</div>
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex-1 flex flex-col gap-3">
                       <div className="flex items-center gap-2.5"><div className="w-2.5 h-2.5 rounded-full bg-[#99f6e4] shrink-0"></div><div className="h-2 w-[80%] bg-slate-100 rounded-full"></div></div>
@@ -352,13 +355,13 @@ export default function GrowthPartnerSection() {
           viewport={{ once: true }}
           className="bg-white rounded-[16px] border border-slate-100 p-5 md:px-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col md:flex-row items-center justify-between gap-6 mb-8 relative z-10"
         >
-          <TrustMarker icon={<ShieldCheck size={18} strokeWidth={2} />} title="No Obligation" desc="100% free. No pressure ever." />
+          <TrustMarker icon={<ShieldCheck size={18} strokeWidth={2} />} title={$t("GrowthPartnerSection__t25", "No Obligation")} desc={$t("GrowthPartnerSection__t26", "100% free. No pressure ever.")} />
           <div className="hidden md:block w-px h-10 bg-slate-100"></div>
-          <TrustMarker icon={<Lock size={18} strokeWidth={2} />} title="Your Data is Safe" desc="We respect your privacy. Always." />
+          <TrustMarker icon={<Lock size={18} strokeWidth={2} />} title={$t("GrowthPartnerSection__t27", "Your Data is Safe")} desc={$t("GrowthPartnerSection__t28", "We respect your privacy. Always.")} />
           <div className="hidden md:block w-px h-10 bg-slate-100"></div>
-          <TrustMarker icon={<User size={18} strokeWidth={2} />} title="Expert Review" desc="Real humans. Real insights." />
+          <TrustMarker icon={<User size={18} strokeWidth={2} />} title={$t("GrowthPartnerSection__t29", "Expert Review")} desc={$t("GrowthPartnerSection__t30", "Real humans. Real insights.")} />
           <div className="hidden md:block w-px h-10 bg-slate-100"></div>
-          <TrustMarker icon={<Target size={18} strokeWidth={2} />} title="Actionable Plan" desc="Clear next steps that drive growth." />
+          <TrustMarker icon={<Target size={18} strokeWidth={2} />} title={$t("GrowthPartnerSection__t31", "Actionable Plan")} desc={$t("GrowthPartnerSection__t32", "Clear next steps that drive growth.")} />
         </motion.div>
 
         {/* CTA */}
@@ -369,10 +372,9 @@ export default function GrowthPartnerSection() {
           transition={{ delay: 0.2 }}
           className="flex justify-center relative z-10"
         >
-          <button className="bg-white border-2 border-[#0f766e] text-[#0f766e] font-bold px-8 py-3 rounded-xl flex items-center gap-2 hover:bg-[#0f766e] hover:text-white transition-colors group text-[15px]">
-            See What You Can Improve
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </button>
+          <Link href={$t("GrowthPartnerSection__u1", "/contact")} className="bg-white border-2 border-[#0f766e] text-[#0f766e] font-bold px-8 py-3 rounded-xl flex items-center gap-2 hover:bg-[#0f766e] hover:text-white transition-colors group text-[15px]">
+            {$t("GrowthPartnerSection__t33", "See What You Can Improve")}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </Link>
         </motion.div>
 
       </div>

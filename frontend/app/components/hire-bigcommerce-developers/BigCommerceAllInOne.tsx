@@ -4,12 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { animate, motion, useReducedMotion } from "framer-motion";
 import { BC, Icon, ScreenOverlay, Sneaker, Swoosh, ease, fadeUp, heading, useSeen, useWidth, type IconName } from "./BigCommerceShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* Monitor screen corners in the image's natural pixels (TL, TR, BR, BL). */
 const MON_QUAD: [[number, number], [number, number], [number, number], [number, number]] = [[445, 292], [1085, 252], [1068, 856], [400, 830]];
 const IW = BC.monitor.w, IH = BC.monitor.h;
 
-const points: { title: string; text: string; icon: IconName }[] = [
+const points__cms: { title: string; text: string; icon: IconName }[] = [
   { title: "Everything You Need to Sell Online", text: "Storefront, checkout, payments, shipping, and more.", icon: "store" },
   { title: "Built for Growth", text: "From startups to global brands, scale without limits.", icon: "chart" },
   { title: "Easy to Use", text: "No complex setup. Launch and manage with ease.", icon: "bolt" },
@@ -17,7 +19,7 @@ const points: { title: string; text: string; icon: IconName }[] = [
 ];
 
 /* Tiles around the monitor: [x, y] = top-left in image pixels, side for connector direction. */
-const tiles: { label: [string, string]; icon: IconName; x: number; y: number; side: "l" | "r" }[] = [
+const tiles__cms: { label: [string, string]; icon: IconName; x: number; y: number; side: "l" | "r" }[] = [
   { label: ["Beautiful", "Storefronts"], icon: "store", x: 190, y: 285, side: "l" },
   { label: ["Secure", "Payments"], icon: "lock", x: 190, y: 505, side: "l" },
   { label: ["Shipping", "Made Easy"], icon: "rocket", x: 190, y: 720, side: "l" },
@@ -27,7 +29,7 @@ const tiles: { label: [string, string]; icon: IconName; x: number; y: number; si
 ];
 const TILE_W = 128, TILE_H = 150;
 
-const menu: { label: string; icon: IconName }[] = [
+const menu__cms: { label: string; icon: IconName }[] = [
   { label: "Home", icon: "store" },
   { label: "Products", icon: "briefcase" },
   { label: "Orders", icon: "cart" },
@@ -50,6 +52,8 @@ function useCount(to: number, start: boolean, delay = 0) {
 }
 
 function Dashboard({ seen }: { seen: boolean }) {
+  const $t = useCmsText();
+  const menu = useCmsData("BigCommerceAllInOne__menu", menu__cms);
   const reduce = useReducedMotion();
   const [active, setActive] = useState(0);
   useEffect(() => {
@@ -61,9 +65,9 @@ function Dashboard({ seen }: { seen: boolean }) {
   const orders = useCount(1248, seen, 0.75);
   const customers = useCount(3682, seen, 0.9);
   const stat = [
-    { label: "Total Sales", value: `$${sales.toLocaleString("en-US")}`, d: "↑ 23%", path: "M0 30 L12 24 L22 27 L34 16 L46 20 L58 10 L70 14 L84 4" },
-    { label: "Orders", value: orders.toLocaleString("en-US"), d: "↑ 18%", path: "M0 28 L14 26 L24 18 L36 22 L48 12 L60 16 L72 8 L84 10" },
-    { label: "Customers", value: customers.toLocaleString("en-US"), d: "↑ 31%", path: "M0 32 L12 28 L26 22 L38 24 L50 14 L62 12 L74 8 L84 2" },
+    { label: $t("BigCommerceAllInOne__t1", "Total Sales"), value: `$${sales.toLocaleString("en-US")}`, d: "↑ 23%", path: "M0 30 L12 24 L22 27 L34 16 L46 20 L58 10 L70 14 L84 4" },
+    { label: $t("BigCommerceAllInOne__t2", "Orders"), value: orders.toLocaleString("en-US"), d: "↑ 18%", path: "M0 28 L14 26 L24 18 L36 22 L48 12 L60 16 L72 8 L84 10" },
+    { label: $t("BigCommerceAllInOne__t3", "Customers"), value: customers.toLocaleString("en-US"), d: "↑ 31%", path: "M0 32 L12 28 L26 22 L38 24 L50 14 L62 12 L74 8 L84 2" },
   ];
   return (
     <div className="flex h-full w-full bg-[#f6f8fc] font-sans">
@@ -84,23 +88,22 @@ function Dashboard({ seen }: { seen: boolean }) {
       {/* main */}
       <div className="flex flex-1 flex-col px-6 py-5">
         <div className="flex items-center justify-between">
-          <p className={`${heading.className} text-lg font-bold tracking-tight text-[#0d1b45]`}>
-            <span className="font-extrabold">BIG</span>COMMERCE
-          </p>
+          <p className={`text-body ${heading.className} font-bold tracking-tight text-[#0d1b45]`}>
+            <span className="font-extrabold">{$t("BigCommerceAllInOne__t4", "BIG")}</span>{rich($t("BigCommerceAllInOne__t5", "COMMERCE"))}</p>
           <div className="flex items-center gap-5 text-[13px] text-slate-600">
-            {["Products", "Orders", "Customers", "Analytics"].map((t) => <span key={t}>{t}</span>)}
+            {[$t("BigCommerceAllInOne__t6", "Products"), $t("BigCommerceAllInOne__t7", "Orders"), $t("BigCommerceAllInOne__t8", "Customers"), $t("BigCommerceAllInOne__t9", "Analytics")].map((t) => <span key={t}>{t}</span>)}
             <span className="relative text-[#0d1b45]">
               <Icon name="cart" className="h-6 w-6" />
-              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#2348e6] text-[10px] font-bold text-white">3</span>
+              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#2348e6] text-[10px] font-bold text-white">{$t("BigCommerceAllInOne__t10", "3")}</span>
             </span>
           </div>
         </div>
         <div className="mt-6 flex gap-4">
           <div className="flex-1">
-            <p className={`${heading.className} text-[34px] font-bold leading-[1.1] text-[#0d1b45]`}>Your Store.</p>
-            <p className={`${heading.className} text-[34px] font-bold leading-[1.1] text-[#0d6fa0]`}>Your Way.</p>
-            <p className="mt-3 text-[13px] leading-relaxed text-slate-500">Powerful features. Seamless operations.<br />Endless opportunities.</p>
-            <span className="mt-4 inline-flex items-center gap-2 rounded-md bg-[#0d6f8a] px-4 py-2 text-[13px] font-semibold text-white">Start Selling →</span>
+            <p className={`${heading.className} text-[34px] font-bold leading-[1.1] text-[#0d1b45]`}>{rich($t("BigCommerceAllInOne__t11", "Your Store."))}</p>
+            <p className={`${heading.className} text-[34px] font-bold leading-[1.1] text-[#0d6fa0]`}>{rich($t("BigCommerceAllInOne__t12", "Your Way."))}</p>
+            <p className="text-small mt-3 text-slate-500">{rich($t("BigCommerceAllInOne__t13", "Powerful features. Seamless operations."))}<br />{rich($t("BigCommerceAllInOne__t14", "Endless opportunities."))}</p>
+            <span className="mt-4 inline-flex items-center gap-2 rounded-md bg-[#0d6f8a] px-4 py-2 text-[13px] font-semibold text-white">{$t("BigCommerceAllInOne__t15", "Start Selling →")}</span>
           </div>
           <div className="w-[200px] rounded-xl bg-white p-3 shadow-sm">
             <div className="flex h-[120px] items-center justify-center rounded-lg bg-gradient-to-br from-slate-50 to-slate-100">
@@ -109,16 +112,16 @@ function Dashboard({ seen }: { seen: boolean }) {
               </motion.div>
             </div>
             <div className="mt-2 flex items-center justify-between">
-              <span className="text-[15px] font-bold text-[#0d1b45]">$129.99</span>
-              <span className="text-[12px] font-semibold text-[#2348e6]">Add to Cart</span>
+              <span className="text-[15px] font-bold text-[#0d1b45]">{$t("BigCommerceAllInOne__t16", "$129.99")}</span>
+              <span className="text-[12px] font-semibold text-[#2348e6]">{$t("BigCommerceAllInOne__t17", "Add to Cart")}</span>
             </div>
           </div>
         </div>
         <div className="mt-5 grid flex-1 grid-cols-3 gap-3">
           {stat.map((s, i) => (
             <div key={s.label} className="rounded-xl bg-white p-3 shadow-sm">
-              <p className="text-[12px] text-slate-500">{s.label}</p>
-              <p className={`${heading.className} mt-1 text-[22px] font-bold text-[#0d1b45]`}>{s.value}</p>
+              <p className="text-caption text-slate-500">{s.label}</p>
+              <p className={`text-body ${heading.className} mt-1 font-bold text-[#0d1b45]`}>{s.value}</p>
               <p className="text-[11px] font-semibold text-emerald-600">{s.d}</p>
               <svg viewBox="0 0 84 34" className="mt-1 h-10 w-full" aria-hidden>
                 <motion.path
@@ -140,6 +143,9 @@ function Dashboard({ seen }: { seen: boolean }) {
 }
 
 export default function BigCommerceAllInOne() {
+  const $t = useCmsText();
+  const points = useCmsData("BigCommerceAllInOne__points", points__cms);
+  const tiles = useCmsData("BigCommerceAllInOne__tiles", tiles__cms);
   const reduce = useReducedMotion();
   const [boxRef, boxW] = useWidth<HTMLDivElement>();
   const stageRef = useRef<HTMLDivElement>(null);
@@ -148,37 +154,31 @@ export default function BigCommerceAllInOne() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#f3f6fd] via-[#f5f8fe] to-[#eaf0fb] py-12 sm:py-16">
       <svg aria-hidden className="pointer-events-none absolute -left-24 bottom-0 hidden h-[420px] w-[420px] text-white lg:block" viewBox="0 0 200 200"><circle cx="60" cy="140" r="120" fill="currentColor" opacity="0.6" /></svg>
-      <div className="relative mx-auto w-full max-w-[1440px] px-6">
+      <div className="relative mx-auto w-full max-w-[1640px] px-5">
         <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-6">
           {/* copy */}
           <div>
-            <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.25em] text-[#0d8f9a]">
-              <span className="h-px w-8 bg-[#0d8f9a]" /> Simple. Powerful. Built for growth.
-            </motion.p>
+            <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-caption flex items-center gap-3 font-semibold uppercase tracking-[0.25em] text-[#0d8f9a]">
+              <span className="h-px w-8 bg-[#0d8f9a]" /> {rich($t("BigCommerceAllInOne__t18", "Simple. Powerful. Built for growth."))}</motion.p>
             <motion.h2
               variants={fadeUp}
               custom={1}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className={`${heading.className} mt-5 text-[38px] font-bold leading-[1.08] tracking-tight text-[#0b1a4a] sm:text-5xl xl:text-[56px]`}
+              className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
             >
-              Everything You Need
-              <br />
-              to Sell More.
-              <br />
+              {$t("BigCommerceAllInOne__t19", "Everything You Need")}<br />
+              {$t("BigCommerceAllInOne__t20", "to Sell More.")}<br />
               <span className="bg-gradient-to-r from-[#2348e6] to-[#0d8f9a] bg-clip-text text-transparent">
-                All in{" "}
+                {$t("BigCommerceAllInOne__t21", "All in")}{" "}
                 <span className="relative inline-block">
-                  One
-                  <Swoosh className="-bottom-2 left-0 h-3 w-full" color="#0d8f9a" />
+                  {$t("BigCommerceAllInOne__t22", "One")}<Swoosh className="-bottom-2 left-0 h-3 w-full" color="#0d8f9a" />
                 </span>{" "}
-                Place.
-              </span>
+                {$t("BigCommerceAllInOne__t23", "Place.")}</span>
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-6 max-w-[440px] text-[15px] leading-relaxed text-slate-600">
-              BigCommerce is the <span className="font-semibold text-[#2348e6]">all-in-one ecommerce platform</span> that helps you build, run, and grow a better online business — without limits.
-            </motion.p>
+            <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-6 max-w-[440px] text-slate-600">
+              {rich($t("BigCommerceAllInOne__t24", "BigCommerce is the "))}<span className="font-semibold text-[#2348e6]">{$t("BigCommerceAllInOne__t25", "all-in-one ecommerce platform")}</span> {rich($t("BigCommerceAllInOne__t26", "that helps you build, run, and grow a better online business — without limits."))}</motion.p>
             <ul className="mt-8 max-w-[480px] divide-y divide-slate-200">
               {points.map((p, i) => (
                 <motion.li key={p.title} variants={fadeUp} custom={2.5 + i * 0.5} initial="hidden" whileInView="show" viewport={{ once: true }} className="group flex items-start gap-5 py-4">
@@ -204,7 +204,7 @@ export default function BigCommerceAllInOne() {
                 className="absolute inset-0"
               >
                 <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_52%_52%_at_50%_50%,black_78%,transparent_100%)]">
-                  <Image src={BC.monitor.src} alt="BigCommerce dashboard on a monitor" fill sizes="(min-width:1024px) 760px, 92vw" className="object-contain" />
+                  <Image src={BC.monitor.src} alt={$t("BigCommerceAllInOne__t27", "BigCommerce dashboard on a monitor")} fill sizes="(min-width:1024px) 760px, 92vw" className="object-contain" />
                 </div>
                 <ScreenOverlay imgW={IW} quad={MON_QUAD} boxW={680} boxH={600} scale={boxW} className="rounded-[14px]">
                   <Dashboard seen={seen} />

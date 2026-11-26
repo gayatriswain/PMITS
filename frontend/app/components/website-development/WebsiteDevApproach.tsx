@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -474,7 +476,7 @@ function LaunchIcon() {
 
 /* ------------------------------------------------------------------ */
 
-const STEPS = [
+const STEPS__cms = [
   {
     title: "Understand Your Business",
     text: "We dive deep into your vision, challenges, target audience and goals.",
@@ -528,6 +530,8 @@ function Chevron() {
 }
 
 export default function WebsiteDevApproach() {
+  const $t = useCmsText();
+  const STEPS = useCmsData("WebsiteDevApproach__STEPS", STEPS__cms);
   return (
     <section className="relative w-full bg-[#F5F7F8] pt-16 pb-6 lg:pt-20 lg:pb-8 overflow-hidden">
       <Container className="flex flex-col gap-10 lg:gap-8">
@@ -540,44 +544,40 @@ export default function WebsiteDevApproach() {
           className="flex flex-col items-center text-center max-w-3xl mx-auto"
         >
           <p className="text-[11px] font-bold tracking-[0.15em] uppercase mb-2" style={{ color: TEAL }}>
-            Our Approach
-          </p>
+            {rich($t("WebsiteDevApproach__t1", "Our Approach"))}</p>
           <div className="w-8 h-[2px] mb-6" style={{ backgroundColor: "#d4a54a" }} />
 
-          <h2 className="font-serif text-2xl md:text-[30px] leading-[1.2] font-semibold tracking-tight mb-6">
-            <span style={{ color: NAVY }}>Most Agencies <br className="sm:hidden" />Start With a Design.</span>
+          <h2 className="text-h2 font-serif font-semibold tracking-tight mb-6">
+            <span style={{ color: NAVY }}>{$t("WebsiteDevApproach__t2", "Most Agencies ")}<br className="sm:hidden" />{$t("WebsiteDevApproach__t3", "Start With a Design.")}</span>
             <br />
-            <span className="block mt-2" style={{ color: DEEP_TEAL }}>We Start With <br className="sm:hidden" />Your Business.</span>
+            <span className="block mt-2" style={{ color: DEEP_TEAL }}>{$t("WebsiteDevApproach__t4", "We Start With ")}<br className="sm:hidden" />{$t("WebsiteDevApproach__t5", "Your Business.")}</span>
           </h2>
 
           <div className="w-8 h-[2px] mb-6" style={{ backgroundColor: "#d4a54a" }} />
 
-          <p className="text-sm text-slate-600 leading-relaxed mb-8 max-w-xl">
-            We take time to understand your business, your audience and your goals. Then we create a website strategy that drives real, measurable results.
-          </p>
+          <p className="text-small text-slate-600 mb-8 max-w-xl">
+            {rich($t("WebsiteDevApproach__t6", "We take time to understand your business, your audience and your goals. Then we create a website strategy that drives real, measurable results."))}</p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contact"
+              href={$t("WebsiteDevApproach__t7", "/contact")}
               className="inline-flex shrink-0 items-center gap-2 px-4 py-3 rounded-lg text-white text-[13px] font-semibold whitespace-nowrap shadow-lg shadow-teal-900/20 transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Let&apos;s Build Your Success Story
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              {$t("WebsiteDevApproach__t8", "Let's Build Your Success Story")}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
             </Link>
 
-            <Link href="/portfolio" className="inline-flex shrink-0 items-center gap-2 group">
+            <Link href={$t("WebsiteDevApproach__t9", "/portfolio")} className="inline-flex shrink-0 items-center gap-2 group">
               <span className="flex items-center justify-center w-10 h-10 rounded-full border border-slate-200 bg-white shadow-sm group-hover:bg-teal-50 transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill={NAVY} className="ml-0.5">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
               </span>
               <span className="text-[13px] font-semibold leading-tight whitespace-nowrap" style={{ color: NAVY }}>
-                See Our Process in Action
-              </span>
+                {$t("WebsiteDevApproach__t10", "See Our Process in Action")}</span>
             </Link>
           </div>
         </motion.div>
@@ -629,12 +629,10 @@ export default function WebsiteDevApproach() {
               className="absolute left-1/2 top-[10px] -translate-x-1/2 -translate-y-1/2 px-4 bg-[#F5F7F8] text-[11px] font-bold tracking-[0.15em] uppercase whitespace-nowrap"
               style={{ color: TEAL }}
             >
-              Our Proven 5-Step Approach
-            </p>
+              {rich($t("WebsiteDevApproach__t11", "Our Proven 5-Step Approach"))}</p>
           </div>
           <p className="lg:hidden text-center text-[11px] font-bold tracking-[0.15em] uppercase mb-6" style={{ color: TEAL }}>
-            Our Proven 5-Step Approach
-          </p>
+            {rich($t("WebsiteDevApproach__t12", "Our Proven 5-Step Approach"))}</p>
 
           <motion.div
             variants={listVariants}
@@ -664,7 +662,7 @@ export default function WebsiteDevApproach() {
                   <h3 className="text-[15px] font-bold leading-snug mb-3 min-h-[2.75em] flex items-center" style={{ color: NAVY }}>
                     {title}
                   </h3>
-                  <p className="text-xs text-slate-500 leading-relaxed mb-5">{text}</p>
+                  <p className="text-caption text-slate-500 mb-5">{text}</p>
                   <span className="mt-auto w-8 h-[2px] rounded-full" style={{ backgroundColor: TEAL }} />
                 </motion.div>
                 {i < STEPS.length - 1 && <Chevron />}

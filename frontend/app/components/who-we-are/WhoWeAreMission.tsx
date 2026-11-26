@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import ProposalLink from "./ProposalLink";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -86,7 +87,7 @@ const RING_R = 300;
 // labelLift raises a label clear of the ring where the ring runs right past it
 type Node = { Icon: (p: IconProps) => React.ReactElement; label: string; angle: number; labelLift?: number };
 // angles in degrees, clockwise from 3 o'clock (screen y points down)
-const NODES: Node[] = [
+const NODES__cms: Node[] = [
   { Icon: RocketIcon, label: "Action", angle: 160 },
   { Icon: EyeIcon, label: "Vision", angle: -158 },
   { Icon: KnightIcon, label: "Strategy", angle: -112, labelLift: 44 },
@@ -96,7 +97,7 @@ const NODES: Node[] = [
 ];
 const NODE_D = 88;
 // little beads on the ring, halfway between neighbouring nodes
-const BEADS = NODES.slice(1).map((n, i) => (n.angle + (i === 0 ? NODES[0].angle - 360 : NODES[i].angle)) / 2);
+
 
 const at = (deg: number, r = RING_R) => ({
   x: HUB.x + r * Math.cos((deg * Math.PI) / 180),
@@ -108,6 +109,9 @@ const ARC_TO = at(152);
 const ARC_D = `M${ARC_FROM.x} ${ARC_FROM.y} A${RING_R} ${RING_R} 0 1 0 ${ARC_TO.x} ${ARC_TO.y}`;
 
 function MissionWheel() {
+  const $t = useCmsText();
+  const NODES = useCmsData("WhoWeAreMission__NODES", NODES__cms);
+  const BEADS = NODES.slice(1).map((n, i) => (n.angle + (i === 0 ? NODES[0].angle - 360 : NODES[i].angle)) / 2);
   return (
     <>
       {/* ring: a soft glow under a crisp line, drawn on as it scrolls in */}
@@ -180,8 +184,7 @@ function MissionWheel() {
           <span className="absolute inset-[8px] rounded-full border-2" style={{ borderColor: `${TEAL}33` }} />
           <TargetIcon size={62} color={TEAL} />
           <span className="mt-2 text-[34px] font-semibold tracking-[0.1em]" style={{ color: INK }}>
-            MISSION
-          </span>
+            {$t("WhoWeAreMission__t1", "MISSION")}</span>
           <span className="mt-3 h-[3px] w-12 rounded-full" style={{ backgroundColor: TEAL }} />
         </motion.div>
       </motion.div>
@@ -241,6 +244,7 @@ function useCoverFit() {
 
 // the photo always keeps its full shape; the copy beside it stretches to match its height
 function MissionVisual() {
+  const $t = useCmsText();
   const { ref, fit } = useCoverFit();
   return (
     <div
@@ -250,8 +254,8 @@ function MissionVisual() {
     >
       {/* beside the copy, the photo melts into the page on its right; the wheel sits outside the mask so it stays crisp */}
       <Image
-        src="/who-we-are2.webp"
-        alt="An open hand held out over a city skyline"
+        src={$t("WhoWeAreMission__t2", "/who-we-are2.webp")}
+        alt={$t("WhoWeAreMission__t3", "An open hand held out over a city skyline")}
         fill
         sizes="(min-width: 1024px) 40vw, 100vw"
         className="object-cover lg:[-webkit-mask-image:linear-gradient(to_right,#000_55%,transparent)] lg:[mask-image:linear-gradient(to_right,#000_55%,transparent)]"
@@ -293,6 +297,7 @@ function Dots({ cols, rows, className = "" }: { cols: number; rows: number; clas
 }
 
 function MissionCopy() {
+  const $t = useCmsText();
   return (
     <motion.div
       variants={stagger}
@@ -305,10 +310,9 @@ function MissionCopy() {
 
       <motion.div variants={fadeUp} className="text-center">
         <p className={`${caveat.className} text-[30px] leading-none`} style={{ color: TEAL }}>
-          Driven by Purpose
-        </p>
-        <p className="mt-1 text-[19px] font-bold" style={{ color: INK }}>
-          Focused on <span style={{ color: TEAL }}>Impact</span>
+          {rich($t("WhoWeAreMission__t4", "Driven by Purpose"))}</p>
+        <p className="text-body mt-1 font-bold" style={{ color: INK }}>
+          {rich($t("WhoWeAreMission__t5", "Focused on "))}<span style={{ color: TEAL }}>{$t("WhoWeAreMission__t6", "Impact")}</span>
         </p>
       </motion.div>
 
@@ -316,11 +320,10 @@ function MissionCopy() {
         <span className="absolute -top-8 left-0 font-serif text-[90px] leading-none sm:left-4" style={{ color: `${TEAL}55` }} aria-hidden>
           &ldquo;
         </span>
-        <h2 className="text-[46px] font-bold leading-tight tracking-tight sm:text-[58px]">
-          <span style={{ color: INK }}>Our </span>
+        <h2 className="text-h2 font-bold tracking-tight">
+          <span style={{ color: INK }}>{$t("WhoWeAreMission__t7", "Our ")}</span>
           <span className="relative inline-block" style={{ color: TEAL }}>
-            Mission
-            <svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" aria-hidden>
+            {$t("WhoWeAreMission__t8", "Mission")}<svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" aria-hidden>
               <path d="M3 9C60 3 140 1 197 6" stroke={TEAL} strokeWidth="3" strokeLinecap="round" />
             </svg>
           </span>
@@ -332,28 +335,18 @@ function MissionCopy() {
         className="relative mt-10 overflow-hidden rounded-2xl bg-white py-7 pl-8 pr-7 shadow-[0_24px_50px_-28px_rgba(13,27,51,0.4)] ring-1 ring-slate-100"
       >
         <span className="absolute inset-y-6 left-0 w-[3px] rounded-r-full" style={{ background: `linear-gradient(180deg, ${TEAL}, #5eead4)` }} />
-        <p className="text-[14.5px] leading-[1.8] text-slate-600">
-          Our mission is to provide companies with specialised digital solutions that boost operational effectiveness, build brand
-          awareness, and enable quantitative growth. By providing end-to-end services that are scalable, secure, and
-          performance-focused, such as software solutions, SEO, digital marketing, and site design and development, we hope to close the
-          gap between technology and business objectives.
-        </p>
-        <p className="mt-5 text-[14.5px] leading-[1.8] text-slate-600">
-          We help our clients feel confident in the digital change process by providing strategic advice, implementing plans based on
-          data, and continuously seeking ways to improve. At the core of everything we do is our commitment to transparency, customer
-          satisfaction, and creating long-term value.
-        </p>
+        <p className="text-small text-slate-600">
+          {rich($t("WhoWeAreMission__t9", "Our mission is to provide companies with specialised digital solutions that boost operational effectiveness, build brand awareness, and enable quantitative growth. By providing end-to-end services that are scalable, secure, and performance-focused, such as software solutions, SEO, digital marketing, and site design and development, we hope to close the gap between technology and business objectives."))}</p>
+        <p className="text-small mt-5 text-slate-600">
+          {rich($t("WhoWeAreMission__t10", "We help our clients feel confident in the digital change process by providing strategic advice, implementing plans based on data, and continuously seeking ways to improve. At the core of everything we do is our commitment to transparency, customer satisfaction, and creating long-term value."))}</p>
       </motion.div>
 
       <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-3">
         <div className="relative flex items-center">
-          <p className={`${caveat.className} -rotate-6 text-center text-[20px] leading-[1.05]`} style={{ color: DEEP_TEAL }}>
-            Let&apos;s build
-            <br />
-            something impactful
-            <br />
-            together!
-          </p>
+          <p className={`text-body ${caveat.className} -rotate-6 text-center`} style={{ color: DEEP_TEAL }}>
+            {rich($t("WhoWeAreMission__t11", "Let's build"))}<br />
+            {rich($t("WhoWeAreMission__t12", "something impactful"))}<br />
+            {rich($t("WhoWeAreMission__t13", "together!"))}</p>
           {/* hand-drawn arrow from the note to the button */}
           <svg className="ml-1 hidden sm:block" width="44" height="34" viewBox="0 0 56 40" fill="none" aria-hidden>
             <path d="M3 8c10 22 26 26 46 20" stroke={DEEP_TEAL} strokeWidth="2" strokeLinecap="round" />

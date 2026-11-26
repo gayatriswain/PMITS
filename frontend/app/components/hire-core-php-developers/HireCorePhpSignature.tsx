@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 
 /* =========================================================================
    SCALE BOX: lays children out at a fixed design size and scales them to the available width
@@ -43,7 +44,7 @@ const arrow = (
   </svg>
 );
 
-const steps = [
+const steps__cms = [
   {
     n: "01",
     title: "BUILD",
@@ -80,7 +81,7 @@ const steps = [
   },
 ];
 
-const perks = [
+const perks__cms = [
   {
     title: "Expert Guidance",
     desc: "Work with experienced PHP professionals.",
@@ -135,6 +136,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 /* Light glass editor window: teal disc and frosted slab sit behind it, php tile in front */
 function LightCodeWindow({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <div className={`relative ${className}`} style={{ perspective: 1200 }}>
       {/* thin rings top-left, teal disc top-right, both behind the window */}
@@ -177,7 +179,7 @@ function LightCodeWindow({ className = "" }: { className?: string }) {
                 <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
               </div>
-              <span className="font-mono text-[13px] font-semibold text-[#2dd4bf]">&lt;?php</span>
+              <span className="font-mono text-[13px] font-semibold text-[#2dd4bf]">{$t("HireCorePhpSignature__t1", "<?php")}</span>
             </div>
 
             {/* code */}
@@ -226,25 +228,25 @@ function LightCodeWindow({ className = "" }: { className?: string }) {
 }
 
 function CtaCard({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <div className={`rounded-2xl bg-white border border-slate-100 shadow-[0_22px_44px_-22px_rgba(15,35,80,0.28)] px-7 py-6 text-center ${className}`}>
-      <div className="text-[20px] font-extrabold text-[#0c1e3d]">Let&apos;s Build What&apos;s Next.</div>
+      <div className="text-[20px] font-extrabold text-[#0c1e3d]">{$t("HireCorePhpSignature__t2", "Let's Build What's Next.")}</div>
       <Link
-        href="#contact"
+        href={$t("HireCorePhpSignature__t3", "#contact")}
         className="group mt-4 flex items-center justify-center gap-3 h-[46px] rounded-lg bg-[linear-gradient(90deg,#0f8a99,#1aa6a6)] text-white text-[13.5px] font-semibold shadow-[0_12px_24px_-10px_rgba(26,166,166,0.8)] hover:brightness-110 transition"
       >
-        Talk to a Core PHP Expert
-        {arrow}
+        {$t("HireCorePhpSignature__t4", "Talk to a Core PHP Expert")}{arrow}
       </Link>
-      <Link href="#what-you-can-build" className="group mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-[#0c1e3d] hover:text-[#0f8a83] transition-colors">
-        Explore Our Expertise
-        <span className="text-[#0f8a83]">{arrow}</span>
+      <Link href={$t("HireCorePhpSignature__t5", "#what-you-can-build")} className="group mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-[#0c1e3d] hover:text-[#0f8a83] transition-colors">
+        {$t("HireCorePhpSignature__t6", "Explore Our Expertise")}<span className="text-[#0f8a83]">{arrow}</span>
       </Link>
     </div>
   );
 }
 
 function PerksBar({ className = "" }: { className?: string }) {
+  const perks = useCmsData("HireCorePhpSignature__perks", perks__cms);
   return (
     <motion.div
       className={`rounded-3xl bg-white border border-slate-100 shadow-[0_22px_44px_-22px_rgba(15,35,80,0.25)] px-8 py-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 sm:divide-x divide-slate-100 items-center ${className}`}
@@ -269,17 +271,17 @@ function PerksBar({ className = "" }: { className?: string }) {
 }
 
 export default function HireCorePhpSignature() {
+  const $t = useCmsText();
+  const steps = useCmsData("HireCorePhpSignature__steps", steps__cms);
   const subtitle = (
     <>
-      Core PHP expertise for businesses
-      <br />
-      that need technology to work harder.
-    </>
+      {$t("HireCorePhpSignature__t7", "Core PHP expertise for businesses")}<br />
+      {$t("HireCorePhpSignature__t8", "that need technology to work harder.")}</>
   );
 
   return (
     <section id="signature" className="relative w-full overflow-hidden font-sans bg-[linear-gradient(180deg,#fbfdff_0%,#f3f8fc_55%,#eef4fa_100%)] pt-10 sm:pt-14 pb-12 sm:pb-16">
-      <Container className="relative z-10 max-w-[1320px] w-full sm:px-10 lg:px-16">
+      <Container className="relative z-10 max-w-[1320px] w-full">
         {/* ======================= DESKTOP: fixed 1100 x 690 canvas, scaled ======================= */}
         <div className="hidden lg:block">
           <ScaleBox width={1100} height={690}>
@@ -291,7 +293,7 @@ export default function HireCorePhpSignature() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="text-[12px] font-bold tracking-[0.22em] text-[#0f6f8f] uppercase">The ProManage Signature</div>
+                <div className="text-[12px] font-bold tracking-[0.22em] text-[#0f6f8f] uppercase">{$t("HireCorePhpSignature__t9", "The ProManage Signature")}</div>
                 <div className="mt-3 w-9 h-[2px] rounded-full bg-[#0f8a83]" />
               </motion.div>
               <motion.h2
@@ -300,9 +302,9 @@ export default function HireCorePhpSignature() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <span className="text-[#0c1e3d]">BUILT TO MOVE</span>
+                <span className="text-[#0c1e3d]">{$t("HireCorePhpSignature__t10", "BUILT TO MOVE")}</span>
                 <br />
-                <span className="bg-gradient-to-r from-[#0f6f8f] to-[#1aa6a6] bg-clip-text text-transparent">BUSINESS FORWARD.</span>
+                <span className="bg-gradient-to-r from-[#0f6f8f] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpSignature__t11", "BUSINESS FORWARD.")}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[50px] top-[206px] text-[15px] leading-[1.55] text-slate-600"
@@ -380,14 +382,14 @@ export default function HireCorePhpSignature() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.22em] text-[#0f6f8f] uppercase">The ProManage Signature</div>
+          <div className="text-[11.5px] font-bold tracking-[0.22em] text-[#0f6f8f] uppercase">{$t("HireCorePhpSignature__t12", "The ProManage Signature")}</div>
           <div className="mt-3 w-9 h-[2px] rounded-full bg-[#0f8a83]" />
-          <h2 className="mt-5 text-4xl sm:text-5xl font-black tracking-tight leading-[1.1]">
-            <span className="text-[#0c1e3d]">BUILT TO MOVE</span>
+          <h2 className="text-h2 mt-5 font-black tracking-tight">
+            <span className="text-[#0c1e3d]">{$t("HireCorePhpSignature__t13", "BUILT TO MOVE")}</span>
             <br />
-            <span className="text-[#0f6f8f]">BUSINESS FORWARD.</span>
+            <span className="text-[#0f6f8f]">{$t("HireCorePhpSignature__t14", "BUSINESS FORWARD.")}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-600">{subtitle}</p>
+          <p className="text-body mt-4 text-slate-600">{subtitle}</p>
 
           <CtaCard className="mt-6 max-w-sm" />
 

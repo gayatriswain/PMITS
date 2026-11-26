@@ -3,6 +3,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -56,7 +58,7 @@ function SearchBar({ query }: { query: string }) {
         <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z" />
         <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
       </svg>
-      <p className="flex-1 min-w-0 text-[12px] text-slate-700 truncate font-medium">{query}</p>
+      <p className="text-caption flex-1 min-w-0 text-slate-700 truncate font-medium">{query}</p>
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#4285f4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
         <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
@@ -67,6 +69,7 @@ function SearchBar({ query }: { query: string }) {
 }
 
 export default function SeoTransformation() {
+  const $t = useCmsText();
   return (
     <section className="relative py-[50px] bg-white overflow-hidden">
       <Container>
@@ -75,16 +78,14 @@ export default function SeoTransformation() {
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-px bg-teal-600/30" />
             <span className="text-[10px] lg:text-[11px] font-bold tracking-[0.15em] text-teal-800 uppercase">
-              REAL STRATEGIES. REAL RESULTS. REAL GROWTH.
-            </span>
+              {$t("SeoTransformation__t1", "REAL STRATEGIES. REAL RESULTS. REAL GROWTH.")}</span>
             <div className="w-12 h-px bg-teal-600/30" />
           </div>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-center leading-tight mb-3 text-[#132a43]">
-            From Invisible to <span className="text-[#0f5c56]">Industry Leader.</span>
+          <h2 className="text-h2 font-serif font-bold text-center mb-3 text-[#132a43]">
+            {$t("SeoTransformation__t2", "From Invisible to ")}<span className="text-[#0f5c56]">{$t("SeoTransformation__t3", "Industry Leader.")}</span>
           </h2>
-          <p className="text-slate-500 text-[15px] md:text-lg text-center max-w-2xl">
-            See what happens when your business gets the visibility it deserves.
-          </p>
+          <p className="text-body text-slate-500 text-center max-w-2xl">
+            {rich($t("SeoTransformation__t4", "See what happens when your business gets the visibility it deserves."))}</p>
         </div>
 
         {/* Main Transformation Area */}
@@ -93,8 +94,7 @@ export default function SeoTransformation() {
           {/* Left Panel: BEFORE */}
           <div className="flex-1 bg-white rounded-[24px] border border-red-100 shadow-[0_8px_30px_rgba(239,68,68,0.06)] relative pt-10 pb-5 px-5 lg:px-6 flex flex-col">
             <div className="absolute top-0 left-6 -translate-y-1/2 bg-red-50 border border-red-100 text-red-600 text-[10px] font-bold px-3 py-1 rounded-full tracking-wider">
-              BEFORE PROMANAGE SEO
-            </div>
+              {$t("SeoTransformation__t5", "BEFORE PROMANAGE SEO")}</div>
             
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-5 flex-1 mb-8">
               {/* Search Results */}
@@ -107,17 +107,16 @@ export default function SeoTransformation() {
                         {num}
                       </div>
                       <div className="flex-1">
-                        <div className="text-[12px] font-semibold text-slate-700 leading-none mb-1">Competitor {String.fromCharCode(64 + num)}</div>
+                        <div className="text-[12px] font-semibold text-slate-700 leading-none mb-1">{$t("SeoTransformation__t6", "Competitor ")}{String.fromCharCode(64 + num)}</div>
                         <div className="h-1 rounded-full bg-slate-100 w-[60%]" />
                       </div>
                     </div>
                   ))}
                   <div className="flex items-center gap-2.5 bg-red-50/50 p-1.5 -mx-1.5 rounded-lg border border-red-100/50">
                     <div className="w-6 h-6 rounded bg-red-500 text-white flex items-center justify-center text-[10px] font-bold shrink-0">
-                      8
-                    </div>
+                      {$t("SeoTransformation__t7", "8")}</div>
                     <div className="flex-1">
-                      <div className="text-[12px] font-bold text-red-600 leading-none">Your Business</div>
+                      <div className="text-[12px] font-bold text-red-600 leading-none">{$t("SeoTransformation__t8", "Your Business")}</div>
                     </div>
                   </div>
                 </div>
@@ -142,9 +141,8 @@ export default function SeoTransformation() {
                     <line x1="50" y1="40" x2="70" y2="60" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
-                <p className="text-center text-[13px] text-slate-500 font-medium leading-relaxed px-2">
-                  Your business is<br />hard to find.<br />Customers choose<br />your competitors.
-                </p>
+                <p className="text-small text-center text-slate-500 font-medium px-2">
+                  {rich($t("SeoTransformation__t9", "Your business is"))}<br />{rich($t("SeoTransformation__t10", "hard to find."))}<br />{rich($t("SeoTransformation__t11", "Customers choose"))}<br />{rich($t("SeoTransformation__t12", "your competitors."))}</p>
               </div>
             </div>
 
@@ -157,8 +155,8 @@ export default function SeoTransformation() {
                   </svg>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="text-[12px] font-bold text-red-950 mb-0.5">Low Visibility</div>
-                  <div className="text-[10px] text-slate-500 leading-snug">Buried in search results</div>
+                  <div className="text-[12px] font-bold text-red-950 mb-0.5">{$t("SeoTransformation__t13", "Low Visibility")}</div>
+                  <div className="text-[10px] text-slate-500 leading-snug">{$t("SeoTransformation__t14", "Buried in search results")}</div>
                 </div>
               </div>
               <div className="hidden sm:block w-px bg-red-100 self-stretch" />
@@ -172,8 +170,8 @@ export default function SeoTransformation() {
                   </svg>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="text-[12px] font-bold text-red-950 mb-0.5">Few Enquiries</div>
-                  <div className="text-[10px] text-slate-500 leading-snug">Missing potential customers</div>
+                  <div className="text-[12px] font-bold text-red-950 mb-0.5">{$t("SeoTransformation__t15", "Few Enquiries")}</div>
+                  <div className="text-[10px] text-slate-500 leading-snug">{$t("SeoTransformation__t16", "Missing potential customers")}</div>
                 </div>
               </div>
               <div className="hidden sm:block w-px bg-red-100 self-stretch" />
@@ -185,8 +183,8 @@ export default function SeoTransformation() {
                   </svg>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="text-[12px] font-bold text-red-950 mb-0.5">Slow Growth</div>
-                  <div className="text-[10px] text-slate-500 leading-snug">Competitors taking all the opportunities</div>
+                  <div className="text-[12px] font-bold text-red-950 mb-0.5">{$t("SeoTransformation__t17", "Slow Growth")}</div>
+                  <div className="text-[10px] text-slate-500 leading-snug">{$t("SeoTransformation__t18", "Competitors taking all the opportunities")}</div>
                 </div>
               </div>
             </div>
@@ -195,12 +193,12 @@ export default function SeoTransformation() {
           {/* Middle Transition Column */}
           <div className="flex flex-col items-center justify-center py-2 lg:py-0 shrink-0 lg:w-40 xl:w-48">
             <div className="text-center mb-3">
-              <div className="text-[10px] font-bold text-[#0f5c56] tracking-wider mb-0.5">THE PROMANAGE<br />TRANSFORMATION</div>
+              <div className="text-[10px] font-bold text-[#0f5c56] tracking-wider mb-0.5">{$t("SeoTransformation__t19", "THE PROMANAGE")}<br />{$t("SeoTransformation__t20", "TRANSFORMATION")}</div>
             </div>
             
             <div className="text-center mb-4">
-              <div className="text-xl font-bold text-[#0f5c56] leading-tight">6 MONTHS</div>
-              <div className="text-[10px] font-bold text-[#0f5c56] tracking-wider">OF STRATEGIC SEO</div>
+              <div className="text-xl font-bold text-[#0f5c56] leading-tight">{$t("SeoTransformation__t21", "6 MONTHS")}</div>
+              <div className="text-[10px] font-bold text-[#0f5c56] tracking-wider">{$t("SeoTransformation__t22", "OF STRATEGIC SEO")}</div>
             </div>
 
             <div className="relative w-full h-12 mb-6 text-[#51a79d] hidden lg:block">
@@ -219,7 +217,7 @@ export default function SeoTransformation() {
             </div>
 
             <div className="flex flex-col gap-2.5 w-full max-w-[180px]">
-              {["Data-Driven Strategy", "Technical Excellence", "Content That Converts", "Authority Building", "Continuous Optimization"].map((text) => (
+              {[$t("SeoTransformation__t23", "Data-Driven Strategy"), $t("SeoTransformation__t24", "Technical Excellence"), $t("SeoTransformation__t25", "Content That Converts"), $t("SeoTransformation__t26", "Authority Building"), $t("SeoTransformation__t27", "Continuous Optimization")].map((text) => (
                 <div key={text} className="flex items-center gap-2">
                   <div className="w-3.5 h-3.5 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0">
                     <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -235,8 +233,7 @@ export default function SeoTransformation() {
           {/* Right Panel: AFTER */}
           <div className="flex-[1.2] bg-white rounded-[24px] border border-teal-100 shadow-[0_12px_40px_rgba(20,184,166,0.12)] relative pt-10 pb-5 px-5 lg:px-6 flex flex-col">
             <div className="absolute top-0 right-6 lg:left-6 lg:right-auto -translate-y-1/2 bg-teal-50 border border-teal-100 text-[#0f5c56] text-[10px] font-bold px-3 py-1 rounded-full tracking-wider">
-              AFTER PROMANAGE SEO (6 MONTHS)
-            </div>
+              {$t("SeoTransformation__t28", "AFTER PROMANAGE SEO (6 MONTHS)")}</div>
             
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-5 flex-1 mb-8">
               {/* Search Results */}
@@ -247,8 +244,7 @@ export default function SeoTransformation() {
                   {/* Rank 1 (Active) */}
                   <div className="flex items-center gap-3 bg-white p-2.5 md:p-3 rounded-xl shadow-[0_4px_20px_rgba(20,184,166,0.15)] ring-1 ring-teal-300 relative z-10 -mx-2 md:-mx-3">
                     <div className="w-7 h-7 rounded-md bg-[#0f5c56] text-white flex items-center justify-center text-[12px] font-bold shrink-0">
-                      1
-                    </div>
+                      {$t("SeoTransformation__t29", "1")}</div>
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
                         <svg viewBox="0 0 40 40" width="16" height="16" aria-hidden>
@@ -261,7 +257,7 @@ export default function SeoTransformation() {
                           <path d="M6 4 H24 C31 4 35 8.5 35 15 C35 21.5 31 26 24 26 H17 V36 H6 Z M17 13 V17 H23 C24.5 17 25 16 25 15 C25 14 24.5 13 23 13 Z" fill="url(#seo-logo-sm2)" />
                           <path d="M6 26 L17 17 V36 H6 Z" fill="#0b3b35" opacity="0.55" />
                         </svg>
-                        <div className="text-[13px] font-bold text-[#132a43] leading-none">Your Business</div>
+                        <div className="text-[13px] font-bold text-[#132a43] leading-none">{$t("SeoTransformation__t30", "Your Business")}</div>
                         <div className="flex gap-0.5">
                           {[1, 2, 3, 4, 5].map((i) => (
                             <svg key={i} width="9" height="9" viewBox="0 0 24 24" fill="#f59e0b">
@@ -269,7 +265,7 @@ export default function SeoTransformation() {
                             </svg>
                           ))}
                         </div>
-                        <span className="text-[9px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded ml-auto">Top Result</span>
+                        <span className="text-[9px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded ml-auto">{$t("SeoTransformation__t31", "Top Result")}</span>
                       </div>
                       <div className="h-1 rounded-full bg-teal-400 w-[60%] mb-1" />
                       <div className="h-1 rounded-full bg-slate-200 w-[85%]" />
@@ -283,7 +279,7 @@ export default function SeoTransformation() {
                         {num + 1}
                       </div>
                       <div className="flex-1">
-                        <div className="text-[12px] font-semibold text-slate-700 leading-none mb-1">Competitor {String.fromCharCode(64 + num)}</div>
+                        <div className="text-[12px] font-semibold text-slate-700 leading-none mb-1">{$t("SeoTransformation__t32", "Competitor ")}{String.fromCharCode(64 + num)}</div>
                         <div className="h-1 rounded-full bg-slate-100 w-[60%]" />
                       </div>
                     </div>
@@ -332,9 +328,8 @@ export default function SeoTransformation() {
                     <path d="M70 45 L73 51 L80 52 L75 57 L76 64 L70 60 L64 64 L65 57 L60 52 L67 51 Z" fill="#10b981" />
                   </svg>
                 </div>
-                <p className="text-center text-[13px] text-[#132a43] font-bold leading-relaxed px-2">
-                  You're visible. You're trusted. You're the obvious choice.
-                </p>
+                <p className="text-small text-center text-[#132a43] font-bold px-2">
+                  {rich($t("SeoTransformation__t33", "You're visible. You're trusted. You're the obvious choice."))}</p>
               </div>
             </div>
 
@@ -350,8 +345,8 @@ export default function SeoTransformation() {
                   <div className="text-[14px] font-bold text-[#0f5c56] leading-none mb-1">
                     <DecimalCounter value={3.6} suffix="X" />
                   </div>
-                  <div className="text-[10px] font-bold text-slate-700 leading-tight mb-0.5">More Calls</div>
-                  <div className="text-[9px] text-slate-500 leading-tight">From organic search</div>
+                  <div className="text-[10px] font-bold text-slate-700 leading-tight mb-0.5">{$t("SeoTransformation__t34", "More Calls")}</div>
+                  <div className="text-[9px] text-slate-500 leading-tight">{$t("SeoTransformation__t35", "From organic search")}</div>
                 </div>
               </div>
               <div className="hidden sm:block w-px bg-teal-100 self-stretch" />
@@ -366,8 +361,8 @@ export default function SeoTransformation() {
                   <div className="text-[14px] font-bold text-[#0f5c56] leading-none mb-1">
                     <DecimalCounter value={4.2} suffix="X" />
                   </div>
-                  <div className="text-[10px] font-bold text-slate-700 leading-tight mb-0.5">More Enquiries</div>
-                  <div className="text-[9px] text-slate-500 leading-tight">High-quality leads</div>
+                  <div className="text-[10px] font-bold text-slate-700 leading-tight mb-0.5">{$t("SeoTransformation__t36", "More Enquiries")}</div>
+                  <div className="text-[9px] text-slate-500 leading-tight">{$t("SeoTransformation__t37", "High-quality leads")}</div>
                 </div>
               </div>
               <div className="hidden sm:block w-px bg-teal-100 self-stretch" />
@@ -384,8 +379,8 @@ export default function SeoTransformation() {
                   <div className="text-[14px] font-bold text-[#0f5c56] leading-none mb-1">
                     <DecimalCounter value={2.8} suffix="X" />
                   </div>
-                  <div className="text-[10px] font-bold text-slate-700 leading-tight mb-0.5">More Revenue</div>
-                  <div className="text-[9px] text-slate-500 leading-tight">Organic traffic value</div>
+                  <div className="text-[10px] font-bold text-slate-700 leading-tight mb-0.5">{$t("SeoTransformation__t38", "More Revenue")}</div>
+                  <div className="text-[9px] text-slate-500 leading-tight">{$t("SeoTransformation__t39", "Organic traffic value")}</div>
                 </div>
               </div>
               <div className="hidden sm:block w-px bg-teal-100 self-stretch" />
@@ -401,9 +396,9 @@ export default function SeoTransformation() {
                   </svg>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="text-[14px] font-bold text-[#0f5c56] leading-none mb-1">Industry Leader</div>
-                  <div className="text-[10px] font-bold text-slate-700 leading-tight mb-0.5">Dominating your</div>
-                  <div className="text-[9px] text-slate-500 leading-tight">local market</div>
+                  <div className="text-[14px] font-bold text-[#0f5c56] leading-none mb-1">{$t("SeoTransformation__t40", "Industry Leader")}</div>
+                  <div className="text-[10px] font-bold text-slate-700 leading-tight mb-0.5">{$t("SeoTransformation__t41", "Dominating your")}</div>
+                  <div className="text-[9px] text-slate-500 leading-tight">{$t("SeoTransformation__t42", "local market")}</div>
                 </div>
               </div>
             </div>

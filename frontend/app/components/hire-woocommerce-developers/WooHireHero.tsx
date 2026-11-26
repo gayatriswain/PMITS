@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["500", "600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -121,13 +122,13 @@ const ChartUpIcon = ({ size = 22, color = TEAL }: IconProps) => (
 
 /* A simple purple "Woo" speech-bubble badge */
 export function WooBadge({ className = "", text = "text-[26px]" }: { className?: string; text?: string }) {
+  const $t = useCmsText();
   return (
     <span
       className={`relative inline-flex items-center justify-center rounded-[10px] font-extrabold tracking-tight text-white ${text} ${className}`}
       style={{ backgroundColor: WOO_PURPLE }}
     >
-      Woo
-      <span
+      {$t("WooHireHero__t1", "Woo")}<span
         className="absolute -bottom-[7px] left-[22%] h-0 w-0 border-l-[7px] border-r-[3px] border-t-[8px] border-l-transparent border-r-transparent"
         style={{ borderTopColor: WOO_PURPLE }}
       />
@@ -135,21 +136,21 @@ export function WooBadge({ className = "", text = "text-[26px]" }: { className?:
   );
 }
 
-const FEATURES = [
+const FEATURES__cms = [
   { Icon: CodeWindowIcon, label: ["Custom WooCommerce", "Development"] },
   { Icon: GaugeIcon, label: ["Performance", "Optimization"] },
   { Icon: PlugIcon, label: ["Theme & Plugin", "Customization"] },
   { Icon: ShieldIcon, label: ["Secure & Scalable", "Solutions"] },
 ];
 
-const STATS = [
+const STATS__cms = [
   { Icon: TrophyIcon, value: "10+", label: "Years of Experience" },
   { Icon: StoreIcon, value: "250+", label: "WooCommerce Stores Built" },
   { Icon: SmileIcon, value: "98%", label: "Client Satisfaction" },
   { Icon: HeadsetIcon, value: "24/7", label: "Support & Maintenance" },
 ];
 
-const CHECKS = ["More Sales", "Better UX", "Faster Stores", "Full Support"];
+const CHECKS__cms = ["More Sales", "Better UX", "Faster Stores", "Full Support"];
 
 /* ---------- Right-side visual: laid out on a 760×570 canvas, scaled to fit ---------- */
 const CANVAS_W = 760;
@@ -170,6 +171,8 @@ const CARD1_DELAY = 1.2;
 const CARD2_DELAY = CARD1_DELAY + RISE.duration;
 
 function HeroVisual() {
+  const $t = useCmsText();
+  const CHECKS = useCmsData("WooHireHero__CHECKS", CHECKS__cms);
   const { ref, scale } = useFitScale(CANVAS_W);
   return (
     <div ref={ref} className="relative w-full" style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}>
@@ -190,7 +193,7 @@ function HeroVisual() {
           transition={{ duration: 0.9, ease: EASE }}
           className="absolute left-0 top-[8px] w-[760px]"
         >
-          <Image src="/woo-comm-image2.png" alt="" width={1477} height={1065} priority sizes="760px" className="h-auto w-full"
+          <Image src={$t("WooHireHero__t2", "/woo-comm-image2.png")} alt="" width={1477} height={1065} priority sizes="760px" className="h-auto w-full"
             style={{
               // the photo has a white backdrop; fade its rectangular edges into the section
               maskImage:
@@ -218,15 +221,11 @@ function HeroVisual() {
               style={{ transform: "perspective(700px) rotateY(24deg) rotateX(7deg) rotateZ(-2deg)", transformOrigin: "left center" }}
             >
               <WooBadge className="h-[36px] w-[64px]" text="text-[20px]" />
-              <p className={`${caveat.className} mt-3 text-[17px] font-semibold leading-[1.05]`} style={{ color: NAVY }}>
-                Better
-                <br />
-                Stores
-                <br />
-                Bigger
-                <br />
-                Possibilities
-              </p>
+              <p className={`text-body ${caveat.className} mt-3 font-semibold`} style={{ color: NAVY }}>
+                {rich($t("WooHireHero__t3", "Better"))}<br />
+                {rich($t("WooHireHero__t4", "Stores"))}<br />
+                {rich($t("WooHireHero__t5", "Bigger"))}<br />
+                {rich($t("WooHireHero__t6", "Possibilities"))}</p>
               <svg className="absolute right-4 bottom-11" width="26" height="23" viewBox="0 0 34 30" fill="none" aria-hidden>
                 <path d="M3 26C10 24 22 18 28 6" stroke={NAVY} strokeWidth="1.8" strokeLinecap="round" />
                 <path d="M22 8l6-3 1 7" stroke={NAVY} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -266,8 +265,8 @@ function HeroVisual() {
           className="absolute left-[118px] top-[76px] w-[590px]"
         >
           <Image
-            src="/woo-comm-image1.png"
-            alt="WooCommerce developer building an online store"
+            src={$t("WooHireHero__t7", "/woo-comm-image1.png")}
+            alt={$t("WooHireHero__t8", "WooCommerce developer building an online store")}
             width={588}
             height={424}
             priority
@@ -279,12 +278,9 @@ function HeroVisual() {
         {/* Handwritten note */}
         <div className="absolute left-[572px] top-[24px] w-[160px] text-center">
           <p className={`${caveat.className} text-[24px] font-semibold leading-[1.05] -rotate-[8deg]`} style={{ color: NAVY }}>
-            Let&apos;s Build
-            <br />
-            Something Great
-            <br />
-            Together
-          </p>
+            {rich($t("WooHireHero__t9", "Let's Build"))}<br />
+            {rich($t("WooHireHero__t10", "Something Great"))}<br />
+            {rich($t("WooHireHero__t11", "Together"))}</p>
           <svg className="mx-auto mt-1" width="60" height="44" viewBox="0 0 60 44" fill="none" aria-hidden>
             <path d="M40 2C46 18 34 30 16 38" stroke={NAVY} strokeWidth="1.6" strokeLinecap="round" />
             <path d="M22 31l-7 7 9 2" stroke={NAVY} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -294,12 +290,10 @@ function HeroVisual() {
         {/* "Your Vision" card */}
         <motion.div {...float(1.4, 6)} className="absolute left-[4px] top-[392px]">
           <div className="flex items-end gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-[0_20px_40px_-18px_rgba(15,40,60,0.35)] border border-slate-100">
-            <p className="text-[13px] leading-snug" style={{ color: NAVY }}>
-              Your Vision
-              <br />
-              Our Development
-              <br />
-              <span className="font-bold" style={{ color: DEEP_TEAL }}>Real Results</span>
+            <p className="text-small" style={{ color: NAVY }}>
+              {rich($t("WooHireHero__t12", "Your Vision"))}<br />
+              {rich($t("WooHireHero__t13", "Our Development"))}<br />
+              <span className="font-bold" style={{ color: DEEP_TEAL }}>{$t("WooHireHero__t14", "Real Results")}</span>
             </p>
             <ChartUpIcon />
           </div>
@@ -317,9 +311,9 @@ function HeroVisual() {
               <WooBadge className="h-[24px] w-[36px]" text="text-[11.5px]" />
             </span>
             <div className="leading-tight">
-              <p className="text-[11px] text-slate-500">Trusted by</p>
-              <p className="text-[23px] font-extrabold" style={{ color: NAVY }}>500+</p>
-              <p className="text-[10.5px] text-slate-500">Businesses Worldwide</p>
+              <p className="text-[11px] text-slate-500">{rich($t("WooHireHero__t15", "Trusted by"))}</p>
+              <p className="text-[23px] font-extrabold" style={{ color: NAVY }}>{rich($t("WooHireHero__t16", "500+"))}</p>
+              <p className="text-[10.5px] text-slate-500">{rich($t("WooHireHero__t17", "Businesses Worldwide"))}</p>
             </div>
             <div className="ml-1 flex -space-x-2">
               {["#f3d2b6", "#d9b08f", "#c69676"].map((c) => (
@@ -337,6 +331,9 @@ function HeroVisual() {
 }
 
 export default function WooHireHero() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("WooHireHero__FEATURES", FEATURES__cms);
+  const STATS = useCmsData("WooHireHero__STATS", STATS__cms);
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-br from-white via-[#f7fbfb] to-[#eef7f6] pt-10 pb-10 lg:pt-14">
       {/* dotted accent */}
@@ -358,30 +355,25 @@ export default function WooHireHero() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-teal-100">
                 <CartIcon />
               </span>
-              WooCommerce Experts You Can Rely On
-            </motion.span>
+              {$t("WooHireHero__t18", "WooCommerce Experts You Can Rely On")}</motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-5 text-[40px] sm:text-[50px] lg:text-[56px] font-extrabold leading-[1.08] tracking-tight"
-              style={{ color: NAVY, fontFamily: "var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif" }}
+              className="text-h1 mt-5 font-extrabold tracking-tight"
+              style={{ color: NAVY, fontFamily: "var(--font-heading)" }}
             >
-              Dedicated
-              <br />
+              {$t("WooHireHero__t19", "Dedicated")}<br />
               <span className="relative inline-block" style={{ color: TEAL }}>
-                WooCommerce
-                <svg className="pointer-events-none absolute -bottom-2 left-[30%] h-3 w-[70%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                {$t("WooHireHero__t20", "WooCommerce")}<svg className="pointer-events-none absolute -bottom-2 left-[30%] h-3 w-[70%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <path d="M2 9C60 3 130 2 198 5" fill="none" stroke={TEAL} strokeWidth="3.5" strokeLinecap="round" />
                 </svg>
               </span>
               <br />
-              Developers
-            </motion.h1>
+              {$t("WooHireHero__t21", "Developers")}</motion.h1>
 
-            <motion.p variants={fadeUp} className="mt-6 max-w-[480px] text-[15px] sm:text-base leading-relaxed text-slate-500">
-              We build high-performance, scalable and feature-rich WooCommerce stores that{" "}
-              <span className="font-semibold" style={{ color: TEAL }}>drive sales</span> and deliver exceptional shopping experiences.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[480px] text-slate-500">
+              {rich($t("WooHireHero__t22", "We build high-performance, scalable and feature-rich WooCommerce stores that"))}{" "}
+              <span className="font-semibold" style={{ color: TEAL }}>{$t("WooHireHero__t23", "drive sales")}</span> {rich($t("WooHireHero__t24", "and deliver exceptional shopping experiences."))}</motion.p>
 
             <motion.ul variants={fadeUp} className="mt-7 grid max-w-[460px] grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               {FEATURES.map((f) => (
@@ -400,32 +392,31 @@ export default function WooHireHero() {
 
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href="/contact"
+                href={$t("WooHireHero__t25", "/contact")}
                 className="group inline-flex items-center gap-4 rounded-full py-2 pl-2 pr-7 text-[15px] font-semibold text-white shadow-[0_15px_30px_-12px_rgba(13,148,136,0.7)] transition hover:-translate-y-0.5"
                 style={{ background: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL})` }}
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
                   <ArrowIcon />
                 </span>
-                Get My Free Proposal
-              </Link>
+                {$t("WooHireHero__t26", "Get My Free Proposal")}</Link>
               <Link
-                href="#how-we-work"
+                href={$t("WooHireHero__t27", "#how-we-work")}
                 className="group inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white py-2 pl-2 pr-6 transition hover:border-teal-300"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-teal-200 transition-transform group-hover:scale-105">
                   <PlayIcon />
                 </span>
                 <span className="leading-tight">
-                  <span className="block text-[14px] font-semibold" style={{ color: NAVY }}>See How We Work</span>
-                  <span className="block text-[11.5px] text-slate-500">Watch 2-min video</span>
+                  <span className="block text-[14px] font-semibold" style={{ color: NAVY }}>{$t("WooHireHero__t28", "See How We Work")}</span>
+                  <span className="block text-[11.5px] text-slate-500">{$t("WooHireHero__t29", "Watch 2-min video")}</span>
                 </span>
               </Link>
             </motion.div>
           </motion.div>
 
           {/* Right — on desktop it bleeds past the container to the viewport's right edge */}
-          <div className="relative lg:mr-[calc(-1*(max(0px,(100vw-1440px)/2)+1.5rem))]">
+          <div className="relative lg:mr-[calc(-1*(max(0px,(100vw-1640px)/2)+1.25rem))]">
             <HeroVisual />
           </div>
         </div>
@@ -445,7 +436,7 @@ export default function WooHireHero() {
               <s.Icon />
               <div className="leading-tight">
                 <p className="text-[24px] font-extrabold" style={{ color: NAVY }}>{s.value}</p>
-                <p className="text-[12.5px] text-slate-500">{s.label}</p>
+                <p className="text-caption text-slate-500">{s.label}</p>
               </div>
             </div>
           ))}

@@ -3,22 +3,21 @@
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { HomeIcon, GridIcon, BarChartUpIcon, UsersIcon, GearIcon } from "../shared/icons";
 import { Counter } from "../shared/useCountUp";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#12a883";
 
-const statTiles = [
+const statTiles__cms = [
   { label: "Website Traffic", target: 215 },
   { label: "Leads Generated", target: 180 },
   { label: "Keywords Ranked", target: 120 },
 ];
 
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+const months__cms = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 const values = [5, 42, 35, 68, 60, 95, 88, 140, 130, 195, 205, 215];
-const chartData = values.map((value, i) => ({
-  month: i % 2 === 0 ? months[i / 2] : "",
-  value,
-}));
+
 
 const sidebarIcons = [
   { Icon: HomeIcon, active: false },
@@ -31,7 +30,7 @@ const sidebarIcons = [
 function StatTile({ label, target }: { label: string; target: number }) {
   return (
     <div className="rounded-xl bg-slate-50 p-3">
-      <p className="text-sm font-bold" style={{ color: TEAL }}>
+      <p className="text-small font-bold" style={{ color: TEAL }}>
         <Counter target={target} prefix="+" suffix="%" />
       </p>
       <p className="mt-1 text-[10px] leading-tight text-slate-500">{label}</p>
@@ -40,6 +39,13 @@ function StatTile({ label, target }: { label: string; target: number }) {
 }
 
 export default function GrowthDashboardCard() {
+  const $t = useCmsText();
+  const statTiles = useCmsData("GrowthDashboardCard__statTiles", statTiles__cms);
+  const months = useCmsData("GrowthDashboardCard__months", months__cms);
+  const chartData = values.map((value, i) => ({
+  month: i % 2 === 0 ? months[i / 2] : "",
+  value,
+}));
   return (
     <div className="lg:[perspective:650px]">
       <div className="relative">
@@ -80,7 +86,7 @@ export default function GrowthDashboardCard() {
           {/* Main panel */}
           <div className="flex-1 p-5">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-bold text-black">Your Business Growth</p>
+              <p className="text-small font-bold text-black">{rich($t("GrowthDashboardCard__t1", "Your Business Growth"))}</p>
               <span
                 className="flex h-8 w-8 items-center justify-center rounded-lg"
                 style={{ backgroundColor: "#e6f6f4", color: TEAL }}
@@ -97,7 +103,7 @@ export default function GrowthDashboardCard() {
 
             <div className="relative mt-5 rounded-xl bg-slate-50 p-4 pt-3">
               <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-slate-500">Growth Overview</p>
+                <p className="text-caption font-semibold text-slate-500">{rich($t("GrowthDashboardCard__t2", "Growth Overview"))}</p>
                 <span
                   className="rounded-full px-2.5 py-1 text-[11px] font-bold text-white shadow-md"
                   style={{ backgroundColor: TEAL }}
@@ -158,8 +164,8 @@ export default function GrowthDashboardCard() {
           <path d="M4 22c3-10 12-14 20-10" />
           <path d="M18 9l6 3-2 6" />
         </svg>
-        <p className="max-w-[220px] text-xs italic leading-relaxed text-slate-600">
-          We turn ideas into <span className="font-medium" style={{ color: TEAL }}>digital growth engines.</span>
+        <p className="text-caption max-w-[220px] italic text-slate-600">
+          {rich($t("GrowthDashboardCard__t3", "We turn ideas into "))}<span className="font-medium" style={{ color: TEAL }}>{$t("GrowthDashboardCard__t4", "digital growth engines.")}</span>
         </p>
       </div>
     </div>

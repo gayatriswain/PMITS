@@ -3,6 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion, type MotionProps } from "framer-motion";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const ENTRY_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 // Last element (conversion card) finishes entering at 1.3s + 1.2s
@@ -30,14 +32,15 @@ function bottomPanelMotion(delay: number, xOut: number): MotionProps {
 }
 
 export default function WebsiteDevHeroVisual() {
+  const $t = useCmsText();
   return (
     <div className="relative w-full max-w-[560px] lg:w-[145%] lg:max-w-none lg:shrink-0 lg:mr-0 lg:-ml-[45%] h-[400px] lg:h-[480px] flex items-end justify-center perspective-[1000px] mx-auto">
       <div className="absolute inset-0 w-full h-full origin-bottom scale-[0.75] sm:scale-[0.8] lg:scale-[0.85] flex items-end justify-center">
         {/* BASE PLATFORM IMAGE */}
         <div className="absolute z-0 w-[135%] lg:w-[90%] bottom-[-15%] lg:bottom-[-20%] h-[200px] lg:h-[250px] pointer-events-none left-1/2 -translate-x-1/2">
           <Image
-            src="/website-dev.png"
-            alt="Base Platform"
+            src={$t("WebsiteDevHeroVisual__t1", "/website-dev.png")}
+            alt={$t("WebsiteDevHeroVisual__t2", "Base Platform")}
             fill
             className="object-contain lg:object-fill object-bottom"
             priority
@@ -66,34 +69,31 @@ export default function WebsiteDevHeroVisual() {
                   <div className="w-5 h-5 rounded bg-[#eff8f7] flex items-center justify-center border border-[#d6efee]">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-[#0d827f]" strokeWidth="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                   </div>
-                  <span className="text-[9px] font-bold text-slate-800">Your Brand</span>
+                  <span className="text-[9px] font-bold text-slate-800">{$t("WebsiteDevHeroVisual__t3", "Your Brand")}</span>
                 </div>
                 <div className="hidden sm:flex items-center gap-4 text-[8px] font-bold text-slate-600">
-                  <span className="text-slate-900">Home</span>
-                  <span>About</span>
-                  <span>Services</span>
-                  <span>Work</span>
-                  <span>Contact</span>
+                  <span className="text-slate-900">{$t("WebsiteDevHeroVisual__t4", "Home")}</span>
+                  <span>{$t("WebsiteDevHeroVisual__t5", "About")}</span>
+                  <span>{$t("WebsiteDevHeroVisual__t6", "Services")}</span>
+                  <span>{$t("WebsiteDevHeroVisual__t7", "Work")}</span>
+                  <span>{$t("WebsiteDevHeroVisual__t8", "Contact")}</span>
                 </div>
                 <div className="bg-[#0d827f] text-white text-[8px] font-bold px-3 py-1.5 rounded-full shadow-sm shadow-[#0d827f]/20">
-                  Get Started
-                </div>
+                  {$t("WebsiteDevHeroVisual__t9", "Get Started")}</div>
               </div>
               {/* Content */}
               <div className="flex h-[calc(100%-3rem)] p-6 gap-5">
                 <div className="flex-[1.1] flex flex-col justify-start pt-4 md:pt-8">
-                  <h2 className="text-[#132a43] text-xl md:text-2xl font-extrabold leading-tight mb-3 font-sans tracking-tight">
-                    A Website<br />That Works<br />As Hard As<br /><span className="text-[#0d827f]">You Do</span>
+                  <h2 className="text-h5 text-[#132a43] font-extrabold mb-3 font-sans tracking-tight">
+                    {$t("WebsiteDevHeroVisual__t10", "A Website")}<br />{$t("WebsiteDevHeroVisual__t11", "That Works")}<br />{$t("WebsiteDevHeroVisual__t12", "As Hard As")}<br /><span className="text-[#0d827f]">{$t("WebsiteDevHeroVisual__t13", "You Do")}</span>
                   </h2>
                   <p className="text-[9px] font-medium text-slate-500 mb-4 max-w-[150px] leading-relaxed">
-                    Custom websites built for performance, built for growth, built for you.
-                  </p>
+                    {rich($t("WebsiteDevHeroVisual__t14", "Custom websites built for performance, built for growth, built for you."))}</p>
                   <div className="bg-[#0d827f] text-white text-[9px] font-bold px-4 py-2 rounded-full self-start shadow-md shadow-[#0d827f]/30">
-                    Get Started
-                  </div>
+                    {$t("WebsiteDevHeroVisual__t15", "Get Started")}</div>
                 </div>
                 <div className="flex-[0.9] relative rounded-2xl overflow-hidden shadow-inner ring-1 ring-black/5">
-                  <Image src="/image1.jpg" alt="Website Content" fill className="object-cover" />
+                  <Image src={$t("WebsiteDevHeroVisual__t16", "/image1.jpg")} alt={$t("WebsiteDevHeroVisual__t17", "Website Content")} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#132a43]/70 via-transparent to-transparent" />
                 </div>
               </div>
@@ -107,7 +107,7 @@ export default function WebsiteDevHeroVisual() {
                 {...bottomPanelMotion(0.5, -16)}
                 className="relative pointer-events-auto origin-bottom w-[225px] h-[135px] bg-gradient-to-br from-[#1a2332] to-[#0f1520] rounded-[1.25rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5),0_15px_20px_-10px_rgba(0,0,0,0.4),5px_0px_0px_0px_#2a3649,inset_0_1px_1px_rgba(255,255,255,0.15),inset_1px_0_1px_rgba(255,255,255,0.1)] ring-1 ring-white/10 p-4 flex flex-col"
               >
-                <p className="text-white text-[10px] font-bold mb-3 tracking-tight">Clean Code. Better Results.</p>
+                <p className="text-white text-[10px] font-bold mb-3 tracking-tight">{rich($t("WebsiteDevHeroVisual__t18", "Clean Code. Better Results."))}</p>
 
                 {/* Realistic Code Syntax Lines */}
                 <div className="flex flex-col gap-1.5 mt-0.5 w-full opacity-90">
@@ -234,7 +234,7 @@ export default function WebsiteDevHeroVisual() {
                 className="relative pointer-events-auto origin-bottom w-[190px] h-[125px] bg-gradient-to-br from-[#0d8580] to-[#075955] rounded-[1.25rem] shadow-[0_30px_60px_-15px_rgba(11,122,117,0.3),0_15px_20px_-10px_rgba(0,0,0,0.2),5px_0px_0px_0px_#043e3b,inset_0_1px_1px_rgba(255,255,255,0.4),inset_1px_0_1px_rgba(255,255,255,0.2)] ring-1 ring-white/20 p-4"
               >
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-white text-[10px] font-bold tracking-wide">Mobile</span>
+                  <span className="text-white text-[10px] font-bold tracking-wide">{$t("WebsiteDevHeroVisual__t19", "Mobile")}</span>
                   <span className="w-3.5 h-3.5 rounded-full bg-[#1abc9c] flex items-center justify-center shadow-inner">
                     <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white" strokeWidth="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   </span>
@@ -242,7 +242,7 @@ export default function WebsiteDevHeroVisual() {
 
                 {/* Feature points */}
                 <ul className="flex flex-col gap-1.5">
-                  {['Fast Performance', 'SEO Optimized', 'Secure & Scalable', 'Built for Growth'].map((text, i) => (
+                  {[$t("WebsiteDevHeroVisual__t20", 'Fast Performance'), $t("WebsiteDevHeroVisual__t21", 'SEO Optimized'), $t("WebsiteDevHeroVisual__t22", 'Secure & Scalable'), $t("WebsiteDevHeroVisual__t23", 'Built for Growth')].map((text, i) => (
                     <li key={i} className="flex items-center gap-1.5">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-[#5eead4]" strokeWidth="4"><polyline points="20 6 9 17 4 12"></polyline></svg>
                       <span className="text-[8px] font-bold text-white">{text}</span>
@@ -264,7 +264,7 @@ export default function WebsiteDevHeroVisual() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2.3 }}
                 className="w-full bg-gradient-to-br from-white to-slate-50 rounded-[1.25rem] shadow-[10px_15px_30px_-10px_rgba(0,0,0,0.15),3px_0px_0px_0px_#e2e8f0,inset_0_1px_1px_rgba(255,255,255,1)] ring-1 ring-slate-200/60 p-3 flex flex-col items-center"
               >
-                <p className="text-[10px] font-bold text-slate-700 mb-2.5 w-full text-left">Performance</p>
+                <p className="text-[10px] font-bold text-slate-700 mb-2.5 w-full text-left">{rich($t("WebsiteDevHeroVisual__t24", "Performance"))}</p>
                 <div className="relative w-[64px] h-[64px] flex items-center justify-center">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path className="text-slate-100" strokeWidth="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -272,7 +272,7 @@ export default function WebsiteDevHeroVisual() {
                   </svg>
                   <div className="absolute text-[15px] font-extrabold text-[#132a43] tracking-tighter">98%</div>
                 </div>
-                <p className="text-[9px] font-bold text-slate-400 mt-2.5">Site Score</p>
+                <p className="text-[9px] font-bold text-slate-400 mt-2.5">{rich($t("WebsiteDevHeroVisual__t25", "Site Score"))}</p>
               </motion.div>
             </motion.div>
 
@@ -288,8 +288,8 @@ export default function WebsiteDevHeroVisual() {
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
                 className="w-full bg-gradient-to-br from-white to-slate-50 rounded-[1.25rem] shadow-[10px_15px_30px_-10px_rgba(0,0,0,0.15),3px_0px_0px_0px_#e2e8f0,inset_0_1px_1px_rgba(255,255,255,1)] ring-1 ring-slate-200/60 p-3"
               >
-                <p className="text-[10px] font-bold text-slate-700 mb-1.5">Conversion Rate</p>
-                <p className="text-lg font-extrabold text-[#0d827f] mb-2.5 tracking-tight">+200%</p>
+                <p className="text-[10px] font-bold text-slate-700 mb-1.5">{rich($t("WebsiteDevHeroVisual__t26", "Conversion Rate"))}</p>
+                <p className="text-body font-extrabold text-[#0d827f] mb-2.5 tracking-tight">{rich($t("WebsiteDevHeroVisual__t27", "+200%"))}</p>
                 <svg className="w-full h-7" viewBox="0 0 100 30" preserveAspectRatio="none">
                   <path d="M0,25 Q10,25 20,20 T40,22 T60,15 T80,10 T100,2" fill="none" stroke="#0d827f" strokeWidth="2.5" strokeLinecap="round" />
                   <circle cx="100" cy="2" r="3" fill="#0d827f" />

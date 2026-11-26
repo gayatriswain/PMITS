@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -77,7 +78,7 @@ const ArrowIcon = ({ size = 16, color = "#fff" }: IconProps) => (
   </svg>
 );
 
-const PERKS = [
+const PERKS__cms = [
   { Icon: BulbIcon, title: "Innovate", desc: "Solve real-world challenges" },
   { Icon: GrowIcon, title: "Grow", desc: "Learn, unlearn and level up" },
   { Icon: TeamIcon, title: "Collaborate", desc: "Together, we go further" },
@@ -85,7 +86,7 @@ const PERKS = [
 ];
 
 // team avatars as coloured initials, overlapping like a stack
-const AVATARS = [
+const AVATARS__cms = [
   { initials: "AS", bg: "linear-gradient(135deg,#0f766e,#14b8a6)" },
   { initials: "RK", bg: "linear-gradient(135deg,#1e3a8a,#3b82f6)" },
   { initials: "PM", bg: "linear-gradient(135deg,#9a3412,#f97316)" },
@@ -93,6 +94,8 @@ const AVATARS = [
 ];
 
 function TeamStack() {
+  const $t = useCmsText();
+  const AVATARS = useCmsData("CareerHero__AVATARS", AVATARS__cms);
   return (
     <div className="flex items-center gap-5">
       <div className="flex -space-x-1.5">
@@ -110,15 +113,15 @@ function TeamStack() {
         </span>
       </div>
       <span className="h-10 w-px bg-slate-200" />
-      <p className="max-w-[230px] text-[14px] leading-snug text-slate-600">
-        Join <span className="font-bold" style={{ color: INK }}>100+</span> passionate problem solvers building digital solutions that matter.
-      </p>
+      <p className="text-small max-w-[230px] text-slate-600">
+        {rich($t("CareerHero__t1", "Join "))}<span className="font-bold" style={{ color: INK }}>{$t("CareerHero__t2", "100+")}</span> {rich($t("CareerHero__t3", "passionate problem solvers building digital solutions that matter."))}</p>
     </div>
   );
 }
 
 /* Dark teal disc over the photo's left edge, with a slow-turning dashed ring */
 function IdeaBadge() {
+  const $t = useCmsText();
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.7 }}
@@ -143,15 +146,12 @@ function IdeaBadge() {
         style={{ background: "radial-gradient(circle at 35% 25%, #1c5a63, #0c3a42 60%, #082a31)" }}
       >
         <RocketIcon size={30} />
-        <p className="mt-3 text-[18px] font-semibold leading-snug text-white sm:text-[20px]">
-          Great ideas
+        <p className="text-body mt-3 font-semibold text-white">
+          {rich($t("CareerHero__t4", "Great ideas"))}<br />
+          {rich($t("CareerHero__t5", "start here."))}<br />
+          {rich($t("CareerHero__t6", "Big "))}<span className="text-teal-300">impact</span>
           <br />
-          start here.
-          <br />
-          Big <span className="text-teal-300">impact</span>
-          <br />
-          starts with you.
-        </p>
+          {rich($t("CareerHero__t7", "starts with you."))}</p>
         <span className="mt-3 h-[2px] w-10 rounded-full bg-teal-300" />
       </motion.div>
     </motion.div>
@@ -159,6 +159,7 @@ function IdeaBadge() {
 }
 
 function PerksBar() {
+  const PERKS = useCmsData("CareerHero__PERKS", PERKS__cms);
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -189,6 +190,7 @@ const PHOTO_W = 1376;
 const PHOTO_H = 768;
 
 export default function CareerHero() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full overflow-hidden bg-white">
       {/* the whole photo, half the screen wide and flush with its right edge, with the idea badge on
@@ -202,8 +204,8 @@ export default function CareerHero() {
           style={{ aspectRatio: `${PHOTO_W} / ${PHOTO_H}` }}
         >
           <Image
-            src="/career1.webp"
-            alt="The ProManage team working together round a laptop in the office"
+            src={$t("CareerHero__t8", "/career1.webp")}
+            alt={$t("CareerHero__t9", "The ProManage team working together round a laptop in the office")}
             fill
             priority
             sizes="(min-width: 1024px) 50vw, 100vw"
@@ -223,31 +225,27 @@ export default function CareerHero() {
         {/* the copy keeps to the left; the section is just tall enough for the photo and the perks bar under it */}
         <div className="grid grid-cols-1 items-center lg:min-h-[calc(clamp(480px,40vw,620px)+90px)] lg:grid-cols-[minmax(0,1fr)_52%]">
           <motion.div variants={stagger} initial="hidden" animate="show" className="relative z-10 flex flex-col justify-center pb-14 pt-4 lg:py-10">
-            <motion.p variants={fadeUp} className="text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: TEAL }}>
-              Careers at ProManage
-            </motion.p>
-            <motion.h1 variants={fadeUp} className="mt-4 text-[46px] font-bold leading-[1.05] tracking-tight sm:text-[60px]" style={{ color: INK }}>
-              Your next chapter
-            </motion.h1>
+            <motion.p variants={fadeUp} className="text-small font-bold uppercase tracking-[0.12em]" style={{ color: TEAL }}>
+              {rich($t("CareerHero__t10", "Careers at ProManage"))}</motion.p>
+            <motion.h1 variants={fadeUp} className="text-h1 mt-4 font-bold tracking-tight" style={{ color: INK }}>
+              {$t("CareerHero__t11", "Your next chapter")}</motion.h1>
             <motion.p variants={fadeUp} className={`${caveat.className} relative -mt-1 inline-block self-start text-[52px] font-bold leading-tight sm:text-[68px]`} style={{ color: TEAL }}>
-              could start here.
-              <svg className="pointer-events-none absolute -bottom-1 left-0 h-3 w-full" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden>
+              {rich($t("CareerHero__t12", "could start here."))}<svg className="pointer-events-none absolute -bottom-1 left-0 h-3 w-full" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden>
                 <path d="M4 8C90 2 220 2 296 6" fill="none" stroke={TEAL} strokeWidth="3" strokeLinecap="round" />
               </svg>
             </motion.p>
-            <motion.p variants={fadeUp} className="mt-6 max-w-[460px] text-[17px] leading-[1.6] text-slate-600">
-              Work with people who turn <span className="font-semibold" style={{ color: TEAL }}>ideas</span> into technology—and technology into{" "}
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[460px] text-slate-600">
+              {rich($t("CareerHero__t13", "Work with people who turn "))}<span className="font-semibold" style={{ color: TEAL }}>ideas</span> {rich($t("CareerHero__t14", "into technology—and technology into"))}{" "}
               <span className="font-semibold" style={{ color: TEAL }}>impact</span>.
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-9">
               <Link
-                href="#open-positions"
+                href={$t("CareerHero__t15", "#open-positions")}
                 className="group inline-flex items-center gap-6 rounded-full py-2.5 pl-7 pr-2.5 text-[15px] font-semibold text-white shadow-[0_18px_34px_-14px_rgba(15,92,86,0.8)] transition hover:-translate-y-0.5"
                 style={{ background: `linear-gradient(90deg, #0c3a42, ${DEEP_TEAL})` }}
               >
-                Explore Open Positions
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
+                {$t("CareerHero__t16", "Explore Open Positions")}<span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
                   <ArrowIcon size={16} color={DEEP_TEAL} />
                 </span>
               </Link>

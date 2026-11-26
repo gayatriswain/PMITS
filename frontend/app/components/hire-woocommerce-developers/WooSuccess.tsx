@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import DottedMap from "dotted-map/without-countries";
 import Container from "../shared/Container";
@@ -10,8 +9,10 @@ import { useFitScale } from "../shared/useFitScale";
 import { WooBadge } from "./WooHireHero";
 import { Handbag } from "./WooPowered";
 import { Hoodie, Plant, Sneaker } from "../shared/WooWhyHire";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -131,8 +132,8 @@ function GrowthCard({ label, value, delay }: { label: string; value: string; del
       className="flex w-[160px] items-end justify-between rounded-2xl bg-white px-4 py-3 shadow-[0_20px_40px_-20px_rgba(15,40,60,0.4)] ring-1 ring-slate-100"
     >
       <div>
-        <p className="text-[12px] font-semibold" style={{ color: NAVY }}>{label}</p>
-        <p className="mt-0.5 text-[22px] font-extrabold" style={{ color: TEAL }}>{value}</p>
+        <p className="text-caption font-semibold" style={{ color: NAVY }}>{label}</p>
+        <p className="text-body mt-0.5 font-extrabold" style={{ color: TEAL }}>{value}</p>
       </div>
       <TrendIcon />
     </motion.div>
@@ -140,6 +141,7 @@ function GrowthCard({ label, value, delay }: { label: string; value: string; del
 }
 
 function TopVisual() {
+  const $t = useCmsText();
   const { ref, scale } = useFitScale(TOP_W);
   return (
     <div ref={ref} className="relative w-full" style={{ aspectRatio: `${TOP_W} / ${TOP_H}` }}>
@@ -172,7 +174,7 @@ function TopVisual() {
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1">
                     <WooBadge className="h-[18px] w-[34px] rounded-[5px]" text="text-[10px]" />
-                    <span className="text-[11px] font-extrabold tracking-tight" style={{ color: NAVY }}>COMMERCE</span>
+                    <span className="text-[11px] font-extrabold tracking-tight" style={{ color: NAVY }}>{$t("WooSuccess__t1", "COMMERCE")}</span>
                   </span>
                   <svg {...base(13, "#64748b", 2)}><path d="M3 4h2.5l2.2 11h10.8l2-8H7" /></svg>
                 </div>
@@ -211,8 +213,8 @@ function TopVisual() {
           <CartIcon size={30} />
         </motion.span>
 
-        <div className="absolute left-[452px] top-[66px]"><GrowthCard label="Traffic" value="+146%" delay={0.45} /></div>
-        <div className="absolute left-[452px] top-[178px]"><GrowthCard label="Sales" value="+230%" delay={0.6} /></div>
+        <div className="absolute left-[452px] top-[66px]"><GrowthCard label={$t("WooSuccess__t2", "Traffic")} value={$t("WooSuccess__t3", "+146%")} delay={0.45} /></div>
+        <div className="absolute left-[452px] top-[178px]"><GrowthCard label={$t("WooSuccess__t4", "Sales")} value={$t("WooSuccess__t5", "+230%")} delay={0.6} /></div>
       </div>
     </div>
   );
@@ -233,7 +235,7 @@ const MAP_SVG_URI = `data:image/svg+xml;utf8,${encodeURIComponent(
 // Layout around the hub (fractions of the map box), matching the reference design.
 const HUB_C = { x: MAP_W * 0.5, y: MAP_H * 0.45 };
 // Sample portraits for the mockup — replace with your own team/client photos in /public.
-const PEOPLE = [
+const PEOPLE__cms = [
   { x: 0.14, y: 0.3, src: "https://randomuser.me/api/portraits/women/44.jpg", name: "Client" },
   { x: 0.49, y: 0.06, src: "https://randomuser.me/api/portraits/men/32.jpg", name: "Client" },
   { x: 0.77, y: 0.3, src: "https://randomuser.me/api/portraits/women/65.jpg", name: "Client" },
@@ -262,6 +264,7 @@ function Person({ src, name }: { src: string; name: string }) {
 }
 
 function MapVisual() {
+  const PEOPLE = useCmsData("WooSuccess__PEOPLE", PEOPLE__cms);
   const { ref, scale } = useFitScale(MAP_W);
   return (
     <div ref={ref} className="relative w-full" style={{ aspectRatio: `${MAP_W} / ${MAP_H}` }}>
@@ -359,27 +362,25 @@ const Hl = ({ children, color = TEAL }: { children: React.ReactNode; color?: str
 );
 
 export default function WooSuccess() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full overflow-hidden bg-white py-14 sm:py-16 lg:py-20">
       <Container>
         {/* Top row */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-10 items-center">
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
-            <motion.p variants={fadeUp} className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.18em]" style={{ color: TEAL }}>
-              Built for growth. Backed by experts.
-              <span className="h-px w-10 bg-teal-300" />
+            <motion.p variants={fadeUp} className="text-caption flex items-center gap-2 font-bold uppercase tracking-[0.18em]" style={{ color: TEAL }}>
+              {rich($t("WooSuccess__t6", "Built for growth. Backed by experts."))}<span className="h-px w-10 bg-teal-300" />
             </motion.p>
             <motion.h2
               variants={fadeUp}
-              className="mt-4 text-[36px] sm:text-[46px] lg:text-[52px] font-extrabold leading-[1.08] tracking-tight"
+              className="text-h2 mt-4 font-extrabold tracking-tight"
               style={{ color: NAVY }}
             >
-              Your Success,
-              <br />
-              Our{" "}
+              {$t("WooSuccess__t7", "Your Success,")}<br />
+              {$t("WooSuccess__t8", "Our")}{" "}
               <span className="relative inline-block" style={{ color: DEEP_TEAL }}>
-                Commitment.
-                <svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                {$t("WooSuccess__t9", "Commitment.")}<svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <motion.path
                     d="M3 9C60 3 140 2 197 6"
                     fill="none"
@@ -398,23 +399,18 @@ export default function WooSuccess() {
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-teal-100 bg-teal-50">
                   <ShieldIcon />
                 </span>
-                <p className="text-[14px] leading-[1.8] text-slate-600">
-                  There are many WooCommerce developers available on the web. These developers claim to have expertise on this
-                  WordPress plugin for ecommerce. However, making tall claims is one thing and providing support in your
-                  WooCommerce journey is another thing. But when you hire developers from ProManage IT Solution, you can{" "}
-                  <Hl>relax and breathe easy.</Hl>
+                <p className="text-small text-slate-600">
+                  {rich($t("WooSuccess__t10", "There are many WooCommerce developers available on the web. These developers claim to have expertise on this WordPress plugin for ecommerce. However, making tall claims is one thing and providing support in your WooCommerce journey is another thing. But when you hire developers from ProManage IT Solution, you can"))}{" "}
+                  <Hl>{$t("WooSuccess__t11", "relax and breathe easy.")}</Hl>
                 </p>
               </motion.li>
               <motion.li variants={fadeUp} className="relative flex gap-5">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-purple-100 bg-purple-50">
                   <AwardIcon />
                 </span>
-                <p className="text-[14px] leading-[1.8] text-slate-600">
-                  This is because our past track record in WooCommerce development is there for everyone to see and compare
-                  with other companies. You will be happy with the efforts of our WooCommerce developers when you see a{" "}
-                  <Hl color={PURPLE}>large amount of traffic</Hl> coming to your website and <Hl color={PURPLE}>sales generated</Hl> by
-                  the online store.
-                </p>
+                <p className="text-small text-slate-600">
+                  {rich($t("WooSuccess__t12", "This is because our past track record in WooCommerce development is there for everyone to see and compare with other companies. You will be happy with the efforts of our WooCommerce developers when you see a"))}{" "}
+                  <Hl color={PURPLE}>{$t("WooSuccess__t13", "large amount of traffic")}</Hl> {rich($t("WooSuccess__t14", "coming to your website and "))}<Hl color={PURPLE}>{$t("WooSuccess__t15", "sales generated")}</Hl> {rich($t("WooSuccess__t16", "by the online store."))}</p>
               </motion.li>
             </ol>
           </motion.div>
@@ -434,13 +430,8 @@ export default function WooSuccess() {
             <span className="flex h-[96px] w-[96px] shrink-0 items-center justify-center rounded-full bg-white shadow-[0_15px_35px_-20px_rgba(13,94,86,0.45)]">
               <StoreGlobeIcon />
             </span>
-            <p className="text-[14.5px] leading-[1.85] text-slate-700">
-              <span className="font-bold" style={{ color: NAVY }}>Why share your profits</span> from business with giant ecommerce
-              platforms like Amazon or Shopify when you can <Hl>create and run your own online store</Hl> and also attract
-              customers to it? WooCommerce is an open source plugin for ecommerce platform. Give ProManage IT Solution a chance
-              to become a <Hl color={PURPLE}>silent partner</Hl> in your WooCommerce journey. Our WooCommerce development services
-              are <Hl>loved by clients</Hl> in diverse industries across the globe.
-            </p>
+            <p className="text-small text-slate-700">
+              <span className="font-bold" style={{ color: NAVY }}>{$t("WooSuccess__t17", "Why share your profits")}</span> {rich($t("WooSuccess__t18", "from business with giant ecommerce platforms like Amazon or Shopify when you can "))}<Hl>{$t("WooSuccess__t19", "create and run your own online store")}</Hl> {rich($t("WooSuccess__t20", "and also attract customers to it? WooCommerce is an open source plugin for ecommerce platform. Give ProManage IT Solution a chance to become a "))}<Hl color={PURPLE}>{$t("WooSuccess__t21", "silent partner")}</Hl> {rich($t("WooSuccess__t22", "in your WooCommerce journey. Our WooCommerce development services are "))}<Hl>{$t("WooSuccess__t23", "loved by clients")}</Hl> {rich($t("WooSuccess__t24", "in diverse industries across the globe."))}</p>
           </div>
           <div className="mx-auto w-full max-w-[460px]">
             <MapVisual />
@@ -458,27 +449,23 @@ export default function WooSuccess() {
           <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-purple-50">
             <RocketIcon />
           </span>
-          <p className="text-[19px] sm:text-[21px] font-bold text-center md:text-left" style={{ color: NAVY }}>
-            Let&apos;s Build Something{" "}
+          <p className="text-body font-bold text-center md:text-left" style={{ color: NAVY }}>
+            {rich($t("WooSuccess__t25", "Let's Build Something"))}{" "}
             <span className={`${caveat.className} relative inline-block text-[30px]`} style={{ color: PURPLE }}>
-              Amazing
-              <svg className="pointer-events-none absolute -bottom-1 left-0 h-2 w-full" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
+              {$t("WooSuccess__t26", "Amazing")}<svg className="pointer-events-none absolute -bottom-1 left-0 h-2 w-full" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
                 <path d="M2 6C30 2 70 2 98 4" fill="none" stroke={PURPLE} strokeWidth="2.5" strokeLinecap="round" />
               </svg>
             </span>{" "}
-            Together!
-          </p>
+            {rich($t("WooSuccess__t27", "Together!"))}</p>
           <span className="hidden md:block h-10 w-px bg-slate-200" />
-          <p className="flex-1 text-center md:text-left text-[13px] leading-snug text-slate-600">
-            Partner with us for a successful WooCommerce journey.
-          </p>
+          <p className="text-small flex-1 text-center md:text-left text-slate-600">
+            {rich($t("WooSuccess__t28", "Partner with us for a successful WooCommerce journey."))}</p>
           <Link
-            href="/contact"
+            href={$t("WooSuccess__t29", "/contact")}
             className="group inline-flex shrink-0 items-center gap-4 rounded-full py-2 pl-7 pr-2 text-[15px] font-semibold text-white shadow-[0_18px_35px_-14px_rgba(91,58,140,0.7)] transition hover:-translate-y-0.5"
             style={{ background: `linear-gradient(90deg, ${PURPLE}, ${TEAL})` }}
           >
-            Get Started Today
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
+            {$t("WooSuccess__t30", "Get Started Today")}<span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
               <ArrowIcon />
             </span>
           </Link>

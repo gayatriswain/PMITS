@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
+import { goToThankYou } from "@/lib/forms";
 
 const RED = "#d92b32";
 const INK = "#0f1a2e";
@@ -13,7 +16,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /* ------------------------------ 3 Options Data ------------------------------ */
-const PROJECT_TYPES = [
+const PROJECT_TYPES__cms = [
   {
     id: "project",
     label1: "I have",
@@ -50,7 +53,7 @@ const PROJECT_TYPES = [
 ];
 
 /* ------------------------------ Left 3 Mini Features ------------------------------ */
-const MINI_FEATURES = [
+const MINI_FEATURES__cms = [
   {
     title: "Secure",
     sub: "by default",
@@ -85,7 +88,7 @@ const MINI_FEATURES = [
 ];
 
 /* ------------------------------ Bottom Process Steps ------------------------------ */
-const PROCESS_STEPS = [
+const PROCESS_STEPS__cms = [
   {
     title: "Understand",
     sub: "your goals",
@@ -133,6 +136,10 @@ const PROCESS_STEPS = [
 ];
 
 export default function HireCakePhpStartProject() {
+  const $t = useCmsText();
+  const PROJECT_TYPES = useCmsData("HireCakePhpStartProject__PROJECT_TYPES", PROJECT_TYPES__cms);
+  const MINI_FEATURES = useCmsData("HireCakePhpStartProject__MINI_FEATURES", MINI_FEATURES__cms);
+  const PROCESS_STEPS = useCmsData("HireCakePhpStartProject__PROCESS_STEPS", PROCESS_STEPS__cms);
   const reduce = useReducedMotion();
   const [projectType, setProjectType] = useState<string>("project");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -169,6 +176,7 @@ export default function HireCakePhpStartProject() {
       });
       if (!res.ok) throw new Error("Submission failed");
       setStatus("success");
+      goToThankYou("hire-cakephp");
       setFeedback("Thank you! Our CakePHP expert will contact you within 24 hours.");
       form.reset();
     } catch {
@@ -189,29 +197,24 @@ export default function HireCakePhpStartProject() {
           <div className="flex flex-col items-start">
             <div className="flex items-center gap-2.5">
               <span className="text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: RED }}>
-                CAKEPHP EXPERTISE
-              </span>
+                {$t("HireCakePhpStartProject__t1", "CAKEPHP EXPERTISE")}</span>
               <span className="h-[1.5px] w-7 opacity-60" style={{ background: RED }} />
             </div>
 
             <h2
-              className="mt-4 text-[42px] font-black leading-[1.04] tracking-tight sm:text-5xl lg:text-[50px] xl:text-[54px]"
+              className="text-h2 mt-4 font-black tracking-tight"
               style={{ color: INK }}
             >
-              Build it.
+              {$t("HireCakePhpStartProject__t2", "Build it.")}<br />
+              {$t("HireCakePhpStartProject__t3", "The ")}<span style={{ color: RED }}>right</span>
               <br />
-              The <span style={{ color: RED }}>right</span>
-              <br />
-              way.
-            </h2>
+              {$t("HireCakePhpStartProject__t4", "way.")}</h2>
 
-            <p className="mt-4 max-w-[320px] text-[13.5px] leading-relaxed text-slate-600">
-              Premium CakePHP development that&apos;s{" "}
+            <p className="text-small mt-4 max-w-[320px] text-slate-600">
+              {rich($t("HireCakePhpStartProject__t5", "Premium CakePHP development that's"))}{" "}
               <span className="font-semibold" style={{ color: RED }}>
-                secure, scalable
-              </span>{" "}
-              and built to grow your ideas.
-            </p>
+                {$t("HireCakePhpStartProject__t6", "secure, scalable")}</span>{" "}
+              {rich($t("HireCakePhpStartProject__t7", "and built to grow your ideas."))}</p>
 
             <span
               className="mt-3 block h-[2px] w-8 origin-left"
@@ -245,19 +248,19 @@ export default function HireCakePhpStartProject() {
                   <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
                 </div>
                 <div className="flex items-center gap-1.5 text-[12px] font-bold">
-                  <span className="text-[#0f1a2e]">Cake</span>
-                  <span className="text-[#d92b32]">PHP</span>
+                  <span className="text-[#0f1a2e]">{$t("HireCakePhpStartProject__t8", "Cake")}</span>
+                  <span className="text-[#d92b32]">{$t("HireCakePhpStartProject__t9", "PHP")}</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-[#d92b32]" />
                 </div>
               </div>
               <pre className="mt-3.5 font-mono text-[11.5px] leading-[1.65] text-slate-700">
                 <code>
-                  <span className="mr-3 select-none text-slate-300">1</span>  <span className="text-[#0066cc]">class</span> <span className="font-semibold text-[#0f1a2e]">UsersController</span> <span className="text-[#0066cc]">extends</span> <span className="font-semibold text-[#0f1a2e]">AppController</span> &#123;{"\n"}
-                  <span className="mr-3 select-none text-slate-300">2</span>      <span className="text-[#0066cc]">public function</span> <span className="text-[#7c3aed]">index</span>() &#123;{"\n"}
-                  <span className="mr-3 select-none text-slate-300">3</span>          <span className="text-[#0f1a2e]">$users</span> = <span className="text-[#0f1a2e]">$this</span>-&gt;Users-&gt;<span className="text-[#0066cc]">find</span>(<span className="font-medium text-[#d92b32]">&apos;all&apos;</span>);{"\n"}
-                  <span className="mr-3 select-none text-slate-300">4</span>          <span className="text-[#0f1a2e]">$this</span>-&gt;<span className="text-[#0066cc]">set</span>(<span className="text-[#0066cc]">compact</span>(<span className="font-medium text-[#d92b32]">&apos;users&apos;</span>));{"\n"}
-                  <span className="mr-3 select-none text-slate-300">5</span>      &#125;{"\n"}
-                  <span className="mr-3 select-none text-slate-300">6</span>  &#125;
+                  <span className="mr-3 select-none text-slate-300">{$t("HireCakePhpStartProject__t10", "1")}</span>  <span className="text-[#0066cc]">class</span> <span className="font-semibold text-[#0f1a2e]">{$t("HireCakePhpStartProject__t11", "UsersController")}</span> <span className="text-[#0066cc]">extends</span> <span className="font-semibold text-[#0f1a2e]">{$t("HireCakePhpStartProject__t12", "AppController")}</span> &#123;{"\n"}
+                  <span className="mr-3 select-none text-slate-300">{$t("HireCakePhpStartProject__t13", "2")}</span>      <span className="text-[#0066cc]">{$t("HireCakePhpStartProject__t14", "public function")}</span> <span className="text-[#7c3aed]">index</span>() &#123;{"\n"}
+                  <span className="mr-3 select-none text-slate-300">{$t("HireCakePhpStartProject__t15", "3")}</span>          <span className="text-[#0f1a2e]">{$t("HireCakePhpStartProject__t16", "$users")}</span> = <span className="text-[#0f1a2e]">{$t("HireCakePhpStartProject__t17", "$this")}</span>{$t("HireCakePhpStartProject__t18", "->Users->")}<span className="text-[#0066cc]">find</span>(<span className="font-medium text-[#d92b32]">{$t("HireCakePhpStartProject__t19", "'all'")}</span>);{"\n"}
+                  <span className="mr-3 select-none text-slate-300">{$t("HireCakePhpStartProject__t20", "4")}</span>          <span className="text-[#0f1a2e]">{$t("HireCakePhpStartProject__t21", "$this")}</span>-&gt;<span className="text-[#0066cc]">set</span>(<span className="text-[#0066cc]">compact</span>(<span className="font-medium text-[#d92b32]">{$t("HireCakePhpStartProject__t22", "'users'")}</span>));{"\n"}
+                  <span className="mr-3 select-none text-slate-300">{$t("HireCakePhpStartProject__t23", "5")}</span>      &#125;{"\n"}
+                  <span className="mr-3 select-none text-slate-300">{$t("HireCakePhpStartProject__t24", "6")}</span>  &#125;
                 </code>
               </pre>
             </div>
@@ -307,7 +310,7 @@ export default function HireCakePhpStartProject() {
               >
                 <Image
                   src={PEDESTAL}
-                  alt="CakePHP logo"
+                  alt={$t("HireCakePhpStartProject__t25", "CakePHP logo")}
                   width={390}
                   height={378}
                   sizes="220px"
@@ -326,7 +329,7 @@ export default function HireCakePhpStartProject() {
                   <path d="m9 12 2 2 4-4" />
                 </svg>
               </span>
-              <span className="text-[10px] font-extrabold tracking-wider text-[#0f1a2e]">SECURE</span>
+              <span className="text-[10px] font-extrabold tracking-wider text-[#0f1a2e]">{$t("HireCakePhpStartProject__t26", "SECURE")}</span>
             </div>
 
             {/* Bottom: SCALABLE (Horizontal Pill Card) */}
@@ -338,7 +341,7 @@ export default function HireCakePhpStartProject() {
                   <polyline points="2 12 12 17 22 12" />
                 </svg>
               </span>
-              <span className="text-[11px] font-extrabold tracking-wider text-[#0f1a2e]">SCALABLE</span>
+              <span className="text-[11px] font-extrabold tracking-wider text-[#0f1a2e]">{$t("HireCakePhpStartProject__t27", "SCALABLE")}</span>
             </div>
 
             {/* Right: FAST (Vertical Square Card) */}
@@ -348,7 +351,7 @@ export default function HireCakePhpStartProject() {
                   <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                 </svg>
               </span>
-              <span className="text-[10px] font-extrabold tracking-wider text-[#0f1a2e]">FAST</span>
+              <span className="text-[10px] font-extrabold tracking-wider text-[#0f1a2e]">{$t("HireCakePhpStartProject__t28", "FAST")}</span>
             </div>
           </div>
 
@@ -365,13 +368,12 @@ export default function HireCakePhpStartProject() {
               </span>
             </div>
 
-            <h3 className="text-center font-bold text-[22px] sm:text-[24px]" style={{ color: INK }}>
-              Start your <span style={{ color: RED }}>project</span>
+            <h3 className="text-h5 text-center font-bold" style={{ color: INK }}>
+              {$t("HireCakePhpStartProject__t29", "Start your ")}<span style={{ color: RED }}>project</span>
             </h3>
 
             <p className="mt-2 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-              WHAT BRINGS YOU HERE?
-            </p>
+              {rich($t("HireCakePhpStartProject__t30", "WHAT BRINGS YOU HERE?"))}</p>
 
             {/* 3 Selectable Options */}
             <div className="mt-3.5 grid grid-cols-3 gap-2">
@@ -425,7 +427,7 @@ export default function HireCakePhpStartProject() {
                   type="text"
                   name="name"
                   required
-                  placeholder="Full Name"
+                  placeholder={$t("HireCakePhpStartProject__t31", "Full Name")}
                   className="w-full rounded-xl border border-slate-200/80 bg-slate-50/50 py-2.5 pl-9 pr-3 text-[12px] text-slate-800 placeholder-slate-400 transition-all focus:border-[#d92b32] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#d92b32]"
                 />
               </div>
@@ -441,7 +443,7 @@ export default function HireCakePhpStartProject() {
                   type="email"
                   name="email"
                   required
-                  placeholder="Email Address"
+                  placeholder={$t("HireCakePhpStartProject__t32", "Email Address")}
                   className="w-full rounded-xl border border-slate-200/80 bg-slate-50/50 py-2.5 pl-9 pr-3 text-[12px] text-slate-800 placeholder-slate-400 transition-all focus:border-[#d92b32] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#d92b32]"
                 />
               </div>
@@ -450,7 +452,7 @@ export default function HireCakePhpStartProject() {
                 <textarea
                   name="message"
                   rows={2}
-                  placeholder="Tell us a little about your project..."
+                  placeholder={$t("HireCakePhpStartProject__t33", "Tell us a little about your project...")}
                   className="w-full resize-none rounded-xl border border-slate-200/80 bg-slate-50/50 p-2.5 pr-8 text-[12px] text-slate-800 placeholder-slate-400 transition-all focus:border-[#d92b32] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#d92b32]"
                 />
                 <span className="pointer-events-none absolute right-3 top-3 text-slate-400">
@@ -472,7 +474,7 @@ export default function HireCakePhpStartProject() {
                 disabled={status === "loading"}
                 className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#d92b32] to-[#b91c22] py-3 text-[13px] font-bold text-white shadow-[0_12px_24px_-6px_rgba(217,43,50,0.65)] transition-all hover:opacity-95 active:scale-[0.99] disabled:opacity-60"
               >
-                <span>{status === "loading" ? "Submitting..." : "Let's Build It"}</span>
+                <span>{status === "loading" ? $t("HireCakePhpStartProject__t34", "Submitting...") : $t("HireCakePhpStartProject__t35", "Let's Build It")}</span>
                 <span>→</span>
               </button>
             </form>
@@ -483,7 +485,7 @@ export default function HireCakePhpStartProject() {
                 <rect x="4" y="11" width="16" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0110 0v4" />
               </svg>
-              <span>No spam. Just real conversations.</span>
+              <span>{$t("HireCakePhpStartProject__t36", "No spam. Just real conversations.")}</span>
             </div>
           </div>
         </div>
@@ -494,14 +496,11 @@ export default function HireCakePhpStartProject() {
             {/* Left Block */}
             <div className="flex items-center justify-between gap-6 px-6 py-4.5 lg:py-3.5 lg:pl-8 shrink-0">
               <div className="text-left">
-                <p className="text-[13.5px] font-bold leading-[1.25] text-[#0f1a2e]">
-                  From concept
-                  <br />
-                  to code.
-                </p>
-                <p className="mt-1 text-[12px] font-bold text-[#d92b32]">
-                  We own the journey.
-                </p>
+                <p className="text-small font-bold text-[#0f1a2e]">
+                  {rich($t("HireCakePhpStartProject__t37", "From concept"))}<br />
+                  {rich($t("HireCakePhpStartProject__t38", "to code."))}</p>
+                <p className="text-caption mt-1 font-bold text-[#d92b32]">
+                  {rich($t("HireCakePhpStartProject__t39", "We own the journey."))}</p>
               </div>
               <span aria-hidden className="hidden h-9 w-px bg-slate-200/90 lg:block" />
             </div>
@@ -515,7 +514,7 @@ export default function HireCakePhpStartProject() {
                       {step.icon}
                     </span>
                     <div className="text-left leading-tight">
-                      <p className="text-[12px] font-bold text-[#0f1a2e]">
+                      <p className="text-caption font-bold text-[#0f1a2e]">
                         {step.title}
                       </p>
                       <p className="mt-0.5 whitespace-pre-line text-[10px] leading-[1.3] text-slate-500">
@@ -539,18 +538,16 @@ export default function HireCakePhpStartProject() {
             {/* Right Dark Red Card */}
             <div className="relative flex items-center justify-between gap-5 overflow-hidden bg-[radial-gradient(ellipse_at_top_left,#ff2d3d_0%,#9e111a_42%,#2e0408_100%)] px-6 py-4.5 text-white lg:min-w-[275px] lg:rounded-l-[22px] lg:px-7 lg:py-3.5">
               <div className="flex flex-col text-left">
-                <p className="text-[12px] font-medium leading-[1.3] text-white/95">
-                  Your idea deserves
-                </p>
-                <p className="text-[12px] font-medium leading-[1.3] text-white/95">
+                <p className="text-caption font-medium text-white/95">
+                  {rich($t("HireCakePhpStartProject__t40", "Your idea deserves"))}</p>
+                <p className="text-caption font-medium text-white/95">
                   the <span className="font-bold text-[#ff5a5f]">right</span> technology
                 </p>
-                <p className="text-[12px] font-medium leading-[1.3] text-white/95">
-                  partner.
-                </p>
+                <p className="text-caption font-medium text-white/95">
+                  {rich($t("HireCakePhpStartProject__t41", "partner."))}</p>
               </div>
               <Link
-                href="#start-project"
+                href={$t("HireCakePhpStartProject__t42", "#start-project")}
                 aria-label="Start your project"
                 className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/25 bg-black/20 text-white/90 shadow-sm transition-transform hover:scale-105 hover:bg-black/35"
               >

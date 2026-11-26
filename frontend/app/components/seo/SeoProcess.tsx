@@ -3,6 +3,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import Link from "next/link";
+import { rich } from "@/components/cms/rich";
 
 // Helper for sequential animations
 const drawVariants: any = {
@@ -18,7 +21,7 @@ const drawVariants: any = {
 };
 
 // --- Process Cards Data & SVGs ---
-const processSteps = [
+const processSteps__cms = [
   {
     num: "01",
     title: "Research & Audit",
@@ -164,6 +167,8 @@ const processSteps = [
 ];
 
 export default function SeoProcess() {
+  const $t = useCmsText();
+  const processSteps = useCmsData("SeoProcess__processSteps", processSteps__cms);
   return (
     <section className="relative pt-20 pb-10 lg:pt-24 lg:pb-12 bg-white overflow-hidden">
       <Container>
@@ -175,17 +180,15 @@ export default function SeoProcess() {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
               </svg>
-              OUR PROVEN SEO PROCESS
-            </span>
+              {$t("SeoProcess__t1", "OUR PROVEN SEO PROCESS")}</span>
             <div className="w-12 h-px bg-teal-600/30" />
           </div>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold leading-[1.15] mb-5 text-[#132a43]">
-            A Strategy. A Process.<br/>
-            <span className="text-[#0f5c56]">Real, Measurable Results<span className="text-amber-400">.</span></span>
+          <h2 className="text-h2 font-serif font-bold mb-5 text-[#132a43]">
+            {$t("SeoProcess__t2", "A Strategy. A Process.")}<br/>
+            <span className="text-[#0f5c56]">{$t("SeoProcess__t3", "Real, Measurable Results")}<span className="text-amber-400">.</span></span>
           </h2>
-          <p className="text-slate-500 text-[15px] md:text-lg">
-            We follow a data-driven SEO process built around your business goals to deliver consistent visibility and long-term growth.
-          </p>
+          <p className="text-body text-slate-500">
+            {rich($t("SeoProcess__t4", "We follow a data-driven SEO process built around your business goals to deliver consistent visibility and long-term growth."))}</p>
         </div>
 
         {/* Process Cards Row */}
@@ -207,7 +210,7 @@ export default function SeoProcess() {
                   <h3 className="font-bold text-[#132a43] text-lg mb-2 leading-tight pr-4">
                     {step.title}
                   </h3>
-                  <p className="text-slate-500 text-[13px] leading-relaxed mb-6">
+                  <p className="text-small text-slate-500 mb-6">
                     {step.desc}
                   </p>
 
@@ -267,8 +270,8 @@ export default function SeoProcess() {
               </svg>
             </div>
             <div>
-              <div className="text-[13px] font-bold text-[#132a43] mb-0.5">Data-Driven Decisions</div>
-              <div className="text-[11px] text-slate-500 leading-snug">Every action backed by data, not guesswork.</div>
+              <div className="text-[13px] font-bold text-[#132a43] mb-0.5">{$t("SeoProcess__t5", "Data-Driven Decisions")}</div>
+              <div className="text-[11px] text-slate-500 leading-snug">{$t("SeoProcess__t6", "Every action backed by data, not guesswork.")}</div>
             </div>
           </div>
 
@@ -282,8 +285,8 @@ export default function SeoProcess() {
               </svg>
             </div>
             <div>
-              <div className="text-[13px] font-bold text-[#132a43] mb-0.5">Transparent Reporting</div>
-              <div className="text-[11px] text-slate-500 leading-snug">Clear reports that show what matters most.</div>
+              <div className="text-[13px] font-bold text-[#132a43] mb-0.5">{$t("SeoProcess__t7", "Transparent Reporting")}</div>
+              <div className="text-[11px] text-slate-500 leading-snug">{$t("SeoProcess__t8", "Clear reports that show what matters most.")}</div>
             </div>
           </div>
 
@@ -296,8 +299,8 @@ export default function SeoProcess() {
               </svg>
             </div>
             <div>
-              <div className="text-[13px] font-bold text-[#132a43] mb-0.5">Ethical & White-Hat SEO</div>
-              <div className="text-[11px] text-slate-500 leading-snug">Safe, sustainable & Google-approved strategies.</div>
+              <div className="text-[13px] font-bold text-[#132a43] mb-0.5">{$t("SeoProcess__t9", "Ethical & White-Hat SEO")}</div>
+              <div className="text-[11px] text-slate-500 leading-snug">{$t("SeoProcess__t10", "Safe, sustainable & Google-approved strategies.")}</div>
             </div>
           </div>
 
@@ -311,8 +314,8 @@ export default function SeoProcess() {
               </svg>
             </div>
             <div>
-              <div className="text-[13px] font-bold text-[#132a43] mb-0.5">Continuous Improvement</div>
-              <div className="text-[11px] text-slate-500 leading-snug">We adapt, optimize & scale as you grow.</div>
+              <div className="text-[13px] font-bold text-[#132a43] mb-0.5">{$t("SeoProcess__t11", "Continuous Improvement")}</div>
+              <div className="text-[11px] text-slate-500 leading-snug">{$t("SeoProcess__t12", "We adapt, optimize & scale as you grow.")}</div>
             </div>
           </div>
 
@@ -354,13 +357,12 @@ export default function SeoProcess() {
               </svg>
             </div>
             <div>
-              <h3 className="font-serif text-[26px] leading-[1.2] font-bold text-white mb-1">
-                A Process That Drives<br />
-                <span className="text-[#14b8a6]">Visibility. Traffic. </span><span className="text-amber-400">Revenue.</span>
+              <h3 className="text-h5 font-serif font-bold text-white mb-1">
+                {$t("SeoProcess__t13", "A Process That Drives")}<br />
+                <span className="text-[#14b8a6]">{$t("SeoProcess__t14", "Visibility. Traffic. ")}</span><span className="text-amber-400">{$t("SeoProcess__t15", "Revenue.")}</span>
               </h3>
-              <p className="text-slate-300 text-[13px]">
-                Let's build your growth story together.
-              </p>
+              <p className="text-small text-slate-300">
+                {rich($t("SeoProcess__t16", "Let's build your growth story together."))}</p>
             </div>
           </div>
 
@@ -369,19 +371,17 @@ export default function SeoProcess() {
           {/* Right Content */}
           <div className="flex flex-col gap-4 relative z-10 lg:w-1/2 lg:items-start pl-0 lg:pl-4">
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
-              <button className="w-full sm:w-auto px-6 py-3.5 bg-amber-400 hover:bg-amber-500 text-[#132a43] font-bold text-[14px] rounded-lg transition-colors flex items-center justify-center gap-2">
-                Get My Free SEO Strategy
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <Link href={$t("SeoProcess__u2", "/contact")} className="w-full sm:w-auto px-6 py-3.5 bg-amber-400 hover:bg-amber-500 text-[#132a43] font-bold text-[14px] rounded-lg transition-colors flex items-center justify-center gap-2">
+                {$t("SeoProcess__t17", "Get My Free SEO Strategy")}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
                 </svg>
-              </button>
-              <button className="w-full sm:w-auto px-6 py-3.5 border border-slate-600 hover:border-slate-400 text-white font-medium text-[14px] rounded-lg transition-colors flex items-center justify-center gap-2">
+              </Link>
+              <Link href={$t("SeoProcess__u1", "/contact")} className="w-full sm:w-auto px-6 py-3.5 border border-slate-600 hover:border-slate-400 text-white font-medium text-[14px] rounded-lg transition-colors flex items-center justify-center gap-2">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                Schedule a Call
-              </button>
+                {$t("SeoProcess__t18", "Schedule a Call")}</Link>
             </div>
             
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-5 gap-y-2 text-[11px] text-slate-300">
@@ -391,24 +391,21 @@ export default function SeoProcess() {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                Free SEO Audit
-              </div>
+                {$t("SeoProcess__t19", "Free SEO Audit")}</div>
               <div className="flex items-center gap-1.5">
                 <div className="w-3.5 h-3.5 rounded-full border border-teal-500/50 flex items-center justify-center text-teal-400">
                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                No Obligation
-              </div>
+                {$t("SeoProcess__t20", "No Obligation")}</div>
               <div className="flex items-center gap-1.5">
                 <div className="w-3.5 h-3.5 rounded-full border border-teal-500/50 flex items-center justify-center text-teal-400">
                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                100% Confidential
-              </div>
+                {$t("SeoProcess__t21", "100% Confidential")}</div>
             </div>
           </div>
         </div>

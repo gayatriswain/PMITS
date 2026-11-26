@@ -18,8 +18,12 @@ import {
 import { AreaChart, Area, ResponsiveContainer } from 'recharts';
 import Image from 'next/image';
 import Container from '../shared/Container';
+import { useCmsText } from "@/components/cms/SectionContent";
+import Link from "next/link";
+import { rich } from "@/components/cms/rich";
 
 export default function WebHostingSpeed() {
+  const $t = useCmsText();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -86,31 +90,30 @@ export default function WebHostingSpeed() {
             className="flex flex-col justify-center"
           >
             <div className="inline-flex items-center gap-1 text-[#0f766e] text-[12px] font-bold tracking-wider uppercase mb-4">
-              Built For Speed <Zap size={14} className="fill-[#0f766e]" />
+              {$t("WebHostingSpeed__t1", "Built For Speed ")}<Zap size={14} className="fill-[#0f766e]" />
             </div>
             
-            <h2 className="text-[36px] md:text-[44px] font-black text-[#0f2923] leading-[1.1] mb-6">
-              Every Second <br/>
-              <span className="text-[#0f766e]">Matters.</span>
+            <h2 className="text-h2 font-black text-[#0f2923] mb-6">
+              {$t("WebHostingSpeed__t2", "Every Second ")}<br/>
+              <span className="text-[#0f766e]">{$t("WebHostingSpeed__t3", "Matters.")}</span>
             </h2>
             
-            <p className="text-slate-600 text-[15px] leading-relaxed mb-8 pr-4">
-              Our optimized infrastructure ensures your website loads faster and keeps visitors engaged.
-            </p>
+            <p className="text-body text-slate-600 mb-8 pr-4">
+              {rich($t("WebHostingSpeed__t4", "Our optimized infrastructure ensures your website loads faster and keeps visitors engaged."))}</p>
 
             <div className="bg-white rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 flex items-center gap-4 mb-6">
               <div className="w-10 h-10 rounded-full bg-[#0f766e] flex items-center justify-center shrink-0">
                 <CloudLightning className="text-white" size={20} />
               </div>
-              <span className="font-bold text-[#0f2923] text-[15px]">High performance servers</span>
+              <span className="font-bold text-[#0f2923] text-[15px]">{$t("WebHostingSpeed__t5", "High performance servers")}</span>
             </div>
 
             <ul className="space-y-4">
               {[
-                "LiteSpeed & advanced caching",
-                "CDN for global delivery",
-                "Optimized database & PHP",
-                "Image & asset optimization"
+                $t("WebHostingSpeed__t6", "LiteSpeed & advanced caching"),
+                $t("WebHostingSpeed__t7", "CDN for global delivery"),
+                $t("WebHostingSpeed__t8", "Optimized database & PHP"),
+                $t("WebHostingSpeed__t9", "Image & asset optimization")
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <CheckCircle2 size={18} className="text-[#0f766e] shrink-0" />
@@ -130,13 +133,13 @@ export default function WebHostingSpeed() {
           >
             {/* Delivery Process Card */}
             <motion.div variants={itemVariants} className="bg-white rounded-2xl p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-slate-100">
-              <h4 className="font-bold text-[#0f2923] text-[15px] mb-8">How We Deliver Speed</h4>
+              <h4 className="font-bold text-[#0f2923] text-[15px] mb-8">{$t("WebHostingSpeed__t10", "How We Deliver Speed")}</h4>
               <div className="flex items-center justify-between text-[#0f766e]">
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-14 h-14 rounded-full bg-[#f8fdfc] flex items-center justify-center border border-[#e2f8f5]">
                     <MonitorSmartphone size={24} className="text-[#0f766e] stroke-[1.5]" />
                   </div>
-                  <span className="text-[13px] font-bold text-[#0f2923]">Request</span>
+                  <span className="text-[13px] font-bold text-[#0f2923]">{$t("WebHostingSpeed__t11", "Request")}</span>
                 </div>
                 <ArrowRight size={18} className="text-[#a7f3d0]" />
                 
@@ -144,7 +147,7 @@ export default function WebHostingSpeed() {
                   <div className="w-14 h-14 rounded-full bg-[#f8fdfc] flex items-center justify-center border border-[#e2f8f5]">
                     <Server size={24} className="text-[#0f766e] stroke-[1.5]" />
                   </div>
-                  <span className="text-[13px] font-bold text-[#0f2923]">Server</span>
+                  <span className="text-[13px] font-bold text-[#0f2923]">{$t("WebHostingSpeed__t12", "Server")}</span>
                 </div>
                 <ArrowRight size={18} className="text-[#a7f3d0]" />
                 
@@ -152,7 +155,7 @@ export default function WebHostingSpeed() {
                   <div className="w-14 h-14 rounded-full bg-[#f8fdfc] flex items-center justify-center border border-[#e2f8f5]">
                     <FileText size={24} className="text-[#0f766e] stroke-[1.5]" />
                   </div>
-                  <span className="text-[13px] font-bold text-[#0f2923]">Content</span>
+                  <span className="text-[13px] font-bold text-[#0f2923]">{$t("WebHostingSpeed__t13", "Content")}</span>
                 </div>
                 <ArrowRight size={18} className="text-[#a7f3d0]" />
                 
@@ -160,7 +163,7 @@ export default function WebHostingSpeed() {
                   <div className="w-14 h-14 rounded-full bg-[#10b981] flex items-center justify-center shadow-[0_4px_15px_rgba(16,185,129,0.3)]">
                     <CheckCircle2 size={28} className="text-white" />
                   </div>
-                  <span className="text-[13px] font-bold text-[#0f2923]">Page Ready</span>
+                  <span className="text-[13px] font-bold text-[#0f2923]">{$t("WebHostingSpeed__t14", "Page Ready")}</span>
                 </div>
               </div>
             </motion.div>
@@ -206,24 +209,23 @@ export default function WebHostingSpeed() {
                   
                   {/* Main badge */}
                   <div className="bg-[#10b981] text-white text-[10px] font-black px-4 py-1 rounded-[4px] uppercase tracking-wider relative z-10">
-                    Up To
-                  </div>
+                    {$t("WebHostingSpeed__t15", "Up To")}</div>
                   
                   {/* Right tail */}
                   <div className="mt-2 w-2 h-4 bg-[#047857] rounded-r-[3px] -ml-1"></div>
                 </div>
 
-                <span ref={speedRef38} className="text-[44px] font-black text-[#0f766e] leading-none mt-3 z-20">0.0x</span>
-                <span className="text-[15px] font-bold text-[#0f766e] mt-1 z-20">Faster</span>
+                <span ref={speedRef38} className="text-[44px] font-black text-[#0f766e] leading-none mt-3 z-20">{$t("WebHostingSpeed__t16", "0.0x")}</span>
+                <span className="text-[15px] font-bold text-[#0f766e] mt-1 z-20">{$t("WebHostingSpeed__t17", "Faster")}</span>
               </div>
 
               <div className="grid grid-cols-2 gap-12 md:gap-20 h-full relative z-10 px-2 md:px-4">
                 {/* Left Side (Red) */}
                 <div className="flex flex-col justify-between pr-8 md:pr-12 pb-2 border-b border-transparent">
-                  <span className="text-[13px] text-slate-500 font-medium">Without Optimization</span>
+                  <span className="text-[13px] text-slate-500 font-medium">{$t("WebHostingSpeed__t18", "Without Optimization")}</span>
                   <div className="mt-5">
-                    <div className="text-[36px] font-black text-[#0f2923] leading-none">5.6<span className="text-[20px] ml-1">s</span></div>
-                    <span className="text-[12px] text-slate-500 font-medium mt-1 block">Average Load Time</span>
+                    <div className="text-[36px] font-black text-[#0f2923] leading-none">{$t("WebHostingSpeed__t19", "5.6")}<span className="text-[20px] ml-1">s</span></div>
+                    <span className="text-[12px] text-slate-500 font-medium mt-1 block">{$t("WebHostingSpeed__t20", "Average Load Time")}</span>
                   </div>
                   {/* Recharts Red Chart */}
                   <div className="h-14 mt-6 -ml-2 -mb-2 opacity-90">
@@ -256,10 +258,10 @@ export default function WebHostingSpeed() {
 
                 {/* Right Side (Green) */}
                 <div className="flex flex-col justify-between pl-8 md:pl-12 pb-2 border-b border-transparent text-right">
-                  <span className="text-[13px] font-bold text-[#0f766e]">With ProManage Hosting</span>
+                  <span className="text-[13px] font-bold text-[#0f766e]">{$t("WebHostingSpeed__t21", "With ProManage Hosting")}</span>
                   <div className="mt-5">
-                    <div className="text-[36px] font-black text-[#0f766e] leading-none">1.8<span className="text-[20px] ml-1">s</span></div>
-                    <span className="text-[12px] text-slate-500 font-medium mt-1 block">Average Load Time</span>
+                    <div className="text-[36px] font-black text-[#0f766e] leading-none">{$t("WebHostingSpeed__t22", "1.8")}<span className="text-[20px] ml-1">s</span></div>
+                    <span className="text-[12px] text-slate-500 font-medium mt-1 block">{$t("WebHostingSpeed__t23", "Average Load Time")}</span>
                   </div>
                   {/* Recharts Green Chart */}
                   <div className="h-14 mt-6 -mr-2 -mb-2 opacity-90">
@@ -328,10 +330,10 @@ export default function WebHostingSpeed() {
                     // Convert angle to radians (SVG 0 is 3 o'clock, clockwise)
                     const rad = (angle * Math.PI) / 180;
                     
-                    const x1 = 50 + innerRadius * Math.cos(rad);
-                    const y1 = 50 + innerRadius * Math.sin(rad);
-                    const x2 = 50 + outerRadius * Math.cos(rad);
-                    const y2 = 50 + outerRadius * Math.sin(rad);
+                    const x1 = +(50 + innerRadius * Math.cos(rad)).toFixed(3);
+                    const y1 = +(50 + innerRadius * Math.sin(rad)).toFixed(3);
+                    const x2 = +(50 + outerRadius * Math.cos(rad)).toFixed(3);
+                    const y2 = +(50 + outerRadius * Math.sin(rad)).toFixed(3);
 
                     return (
                       <line 
@@ -399,16 +401,15 @@ export default function WebHostingSpeed() {
                 <div className="absolute inset-0 flex flex-col items-center justify-center pt-2">
                   <Zap size={22} className="fill-[#10b981] text-[#10b981] mb-1 drop-shadow-sm" />
                   <div className="text-[52px] font-black text-[#0f766e] leading-none tracking-tight">
-                    <span ref={speedRef18}>5.0</span><span className="text-[28px]">s</span>
+                    <span ref={speedRef18}>{$t("WebHostingSpeed__t24", "5.0")}</span><span className="text-[28px]">s</span>
                   </div>
-                  <span className="text-[16px] font-black text-[#0f2923] tracking-widest mt-1">FAST</span>
+                  <span className="text-[16px] font-black text-[#0f2923] tracking-widest mt-1">{$t("WebHostingSpeed__t25", "FAST")}</span>
                 </div>
               </div>
 
-              <p className="text-[15px] text-[#0f2923] font-medium leading-relaxed mt-2">
-                Good for visitors.<br />
-                Great for business.
-              </p>
+              <p className="text-body text-[#0f2923] font-medium mt-2">
+                {rich($t("WebHostingSpeed__t26", "Good for visitors."))}<br />
+                {rich($t("WebHostingSpeed__t27", "Great for business."))}</p>
             </div>
           </motion.div>
         </div>
@@ -477,8 +478,8 @@ export default function WebHostingSpeed() {
                       
                       {/* Stats */}
                       <div className="flex flex-col justify-center">
-                        <div className="text-[7px] font-black text-[#64748b] uppercase tracking-wider">Your Site Speed</div>
-                        <div className="text-[10px] font-bold text-[#10b981] leading-tight">Good</div>
+                        <div className="text-[7px] font-black text-[#64748b] uppercase tracking-wider">{$t("WebHostingSpeed__t28", "Your Site Speed")}</div>
+                        <div className="text-[10px] font-bold text-[#10b981] leading-tight">{$t("WebHostingSpeed__t29", "Good")}</div>
                         <div className="text-[24px] font-black text-[#0f2923] leading-none tracking-tight">1.8s</div>
                       </div>
                     </div>
@@ -523,12 +524,11 @@ export default function WebHostingSpeed() {
 
             {/* Center Form */}
             <div className="flex flex-col justify-center">
-              <h3 className="text-[28px] md:text-[32px] font-black text-[#0f2923] mb-2 leading-tight">
-                Check Your <span className="text-[#0f766e]">Website Speed</span>
+              <h3 className="text-h4 font-black text-[#0f2923] mb-2">
+                {$t("WebHostingSpeed__t30", "Check Your ")}<span className="text-[#0f766e]">{$t("WebHostingSpeed__t31", "Website Speed")}</span>
               </h3>
-              <p className="text-slate-600 text-[14px] mb-8">
-                See how your site performs and discover opportunities to make it faster.
-              </p>
+              <p className="text-small text-slate-600 mb-8">
+                {rich($t("WebHostingSpeed__t32", "See how your site performs and discover opportunities to make it faster."))}</p>
 
               {/* Inline Input & Button */}
               <div className="flex p-1.5 bg-white rounded-full border border-slate-200 shadow-[0_8px_30px_rgba(0,0,0,0.04)] mb-8 w-full xl:max-w-3xl">
@@ -536,28 +536,28 @@ export default function WebHostingSpeed() {
                   <Globe className="text-slate-400 shrink-0" size={18} />
                   <input 
                     type="text" 
-                    placeholder="Enter your website URL (e.g., yoursite.com)" 
+                    placeholder={$t("WebHostingSpeed__t33", "Enter your website URL (e.g., yoursite.com)")} 
                     className="w-full h-12 pl-3 pr-4 bg-transparent border-none focus:outline-none text-[14px] text-slate-700 placeholder-slate-400"
                   />
                 </div>
-                <button className="h-12 px-6 sm:px-8 bg-[#0f766e] hover:bg-[#0d645e] transition-colors text-white text-[14px] font-bold rounded-full flex items-center justify-center gap-2 shrink-0">
-                  Check My Speed <ChevronRight size={16} />
-                </button>
+                <Link href={$t("WebHostingSpeed__u1", "/contact")} className="h-12 px-6 sm:px-8 bg-[#0f766e] hover:bg-[#0d645e] transition-colors text-white text-[14px] font-bold rounded-full flex items-center justify-center gap-2 shrink-0">
+                  {$t("WebHostingSpeed__t34", "Check My Speed ")}<ChevronRight size={16} />
+                </Link>
               </div>
 
               {/* Feature Pills */}
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-2 bg-[#e2f8f5] px-3 py-1.5 rounded-full">
                   <Zap size={14} className="text-[#0f766e] fill-[#0f766e]" />
-                  <span className="text-[12px] font-bold text-[#0f2923]">Instant Results</span>
+                  <span className="text-[12px] font-bold text-[#0f2923]">{$t("WebHostingSpeed__t35", "Instant Results")}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#e2f8f5] px-3 py-1.5 rounded-full">
                   <Activity size={14} className="text-[#0f766e]" />
-                  <span className="text-[12px] font-bold text-[#0f2923]">Performance Score</span>
+                  <span className="text-[12px] font-bold text-[#0f2923]">{$t("WebHostingSpeed__t36", "Performance Score")}</span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#e2f8f5] px-3 py-1.5 rounded-full">
                   <Lightbulb size={14} className="text-[#0f766e] fill-[#0f766e]" />
-                  <span className="text-[12px] font-bold text-[#0f2923]">Actionable Insights</span>
+                  <span className="text-[12px] font-bold text-[#0f2923]">{$t("WebHostingSpeed__t37", "Actionable Insights")}</span>
                 </div>
               </div>
             </div>

@@ -1,0 +1,1499 @@
+[
+  {
+    "path": "/__global",
+    "file": "components/cms/global-sections.data.ts",
+    "title": "Global sections",
+    "description": "Content shared by every page that shows these sections.",
+    "reorderable": false,
+    "global": true,
+    "sections": [
+      {
+        "key": "trusted-bar",
+        "component": "TrustedBar",
+        "label": "Client logos (Trusted by…)",
+        "carousel": true
+      },
+      {
+        "key": "projects-carousel",
+        "component": "ProjectsCarousel",
+        "label": "Featured projects slider",
+        "carousel": true
+      },
+      {
+        "key": "client-stories",
+        "component": "ClientStories",
+        "label": "Client stories slider",
+        "carousel": true
+      },
+      {
+        "key": "why-choose-us",
+        "component": "WhyChooseUs",
+        "label": "Why choose us",
+        "carousel": false
+      },
+      {
+        "key": "cta-section",
+        "component": "CtaSection",
+        "label": "Call to action banner",
+        "carousel": false
+      },
+      {
+        "key": "website-dev-comparison",
+        "component": "WebsiteDevComparison",
+        "label": "Us vs others comparison",
+        "carousel": false
+      }
+    ]
+  },
+  {
+    "path": "/",
+    "file": "app/page.tsx",
+    "title": "",
+    "description": "",
+    "reorderable": false,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "HomeHero",
+        "label": "Home Hero"
+      },
+      {
+        "key": "growth-dashboard-card",
+        "component": "GrowthDashboardCard",
+        "label": "Growth Dashboard Card"
+      },
+      {
+        "key": "projects-carousel",
+        "component": "ProjectsCarousel",
+        "label": "Projects Carousel"
+      },
+      {
+        "key": "core-expertise",
+        "component": "CoreExpertise",
+        "label": "Core Expertise"
+      },
+      {
+        "key": "trusted-bar",
+        "component": "TrustedBar",
+        "label": "Trusted Bar"
+      },
+      {
+        "key": "why-choose-us",
+        "component": "WhyChooseUs",
+        "label": "Why Choose Us"
+      },
+      {
+        "key": "services-showcase",
+        "component": "ServicesShowcase",
+        "label": "Services Showcase"
+      },
+      {
+        "key": "client-stories",
+        "component": "ClientStories",
+        "label": "Client Stories"
+      },
+      {
+        "key": "our-work",
+        "component": "OurWork",
+        "label": "Our Work"
+      },
+      {
+        "key": "about-bento",
+        "component": "AboutBento",
+        "label": "About Bento"
+      },
+      {
+        "key": "faq-section",
+        "component": "FAQSection",
+        "label": "FAQ Section"
+      },
+      {
+        "key": "cta-section",
+        "component": "CtaSection",
+        "label": "Cta Section"
+      }
+    ]
+  },
+  {
+    "path": "/blog",
+    "file": "app/blog/page.tsx",
+    "title": "Blog & Insights | ProManage",
+    "description": "Practical insights on SEO, AI, ecommerce, websites, and digital growth.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "BlogHero",
+        "label": "Blog Hero"
+      },
+      {
+        "key": "insights",
+        "component": "BlogInsights",
+        "label": "Blog Insights"
+      },
+      {
+        "key": "grid",
+        "component": "BlogGrid",
+        "label": "Blog Grid"
+      }
+    ]
+  },
+  {
+    "path": "/career",
+    "file": "app/career/page.tsx",
+    "title": "Careers | ProManage",
+    "description": "Careers at ProManage IT Solution — work with people who turn ideas into technology, and technology into impact.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "CareerHero",
+        "label": "Career Hero"
+      },
+      {
+        "key": "why-love",
+        "component": "CareerWhyLove",
+        "label": "Career Why Love"
+      },
+      {
+        "key": "life",
+        "component": "CareerLife",
+        "label": "Career Life"
+      },
+      {
+        "key": "how-we-work",
+        "component": "CareerHowWeWork",
+        "label": "Career How We Work"
+      },
+      {
+        "key": "open-positions",
+        "component": "CareerOpenPositions",
+        "label": "Career Open Positions"
+      },
+      {
+        "key": "send-profile",
+        "component": "CareerSendProfile",
+        "label": "Career Send Profile"
+      }
+    ]
+  },
+  {
+    "path": "/contact",
+    "file": "app/contact/page.tsx",
+    "title": "Contact Us | ProManage",
+    "description": "Get in touch with ProManage IT Solution for websites, apps, SEO and digital marketing.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "ContactHero",
+        "label": "Contact Hero"
+      },
+      {
+        "key": "why-choose-us",
+        "component": "WhyChooseUs",
+        "label": "Why Choose Us"
+      },
+      {
+        "key": "faq-section",
+        "component": "FAQSection",
+        "label": "FAQ Section"
+      }
+    ]
+  },
+  {
+    "path": "/design-innovation/animation-and-graphic-design",
+    "file": "app/design-innovation/animation-and-graphic-design/page.tsx",
+    "title": "Animation & Graphic Design Services | ProManage",
+    "description": "Design That Speaks. Animation That Moves. We create powerful 2D/3D animations and stunning graphic designs that captivate your audience and elevate your brand.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "graphic-design-hero",
+        "component": "AnimationGraphicDesignHero",
+        "label": "Animation Graphic Design Hero"
+      },
+      {
+        "key": "visual-communication-solutions",
+        "component": "VisualCommunicationSolutions",
+        "label": "Visual Communication Solutions"
+      },
+      {
+        "key": "creative-partnership-section",
+        "component": "CreativePartnershipSection",
+        "label": "Creative Partnership Section"
+      },
+      {
+        "key": "process",
+        "component": "AnimationProcess",
+        "label": "Animation Process"
+      },
+      {
+        "key": "impact-showcase",
+        "component": "AnimationImpactShowcase",
+        "label": "Animation Impact Showcase"
+      },
+      {
+        "key": "our-work",
+        "component": "AnimationOurWork",
+        "label": "Animation Our Work"
+      }
+    ]
+  },
+  {
+    "path": "/design-innovation/custom-agentic-ai-solution",
+    "file": "app/design-innovation/custom-agentic-ai-solution/page.tsx",
+    "title": "Custom Agentic AI Solution | ProManage",
+    "description": "AI that thinks. AI that acts. We build intelligent AI agents that understand your business, make decisions and take action — automatically.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "AgenticAiHero",
+        "label": "Agentic Ai Hero"
+      },
+      {
+        "key": "workflow",
+        "component": "AgenticAiWorkflow",
+        "label": "Agentic Ai Workflow"
+      },
+      {
+        "key": "live-action",
+        "component": "AgenticAiLiveAction",
+        "label": "Agentic Ai Live Action"
+      },
+      {
+        "key": "features",
+        "component": "AgenticAiFeatures",
+        "label": "Agentic Ai Features"
+      },
+      {
+        "key": "platform",
+        "component": "AgenticAiPlatform",
+        "label": "Agentic Ai Platform"
+      },
+      {
+        "key": "cta",
+        "component": "AgenticAiCTA",
+        "label": "Agentic Ai CTA"
+      }
+    ]
+  },
+  {
+    "path": "/design-innovation/custom-ar-vr-solution",
+    "file": "app/design-innovation/custom-ar-vr-solution/page.tsx",
+    "title": "Custom AR/VR Solutions | ProManage",
+    "description": "Step Into. Experience. Transform. We create immersive AR/VR experiences that connect imagination with real-world impact.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "ArVrHero",
+        "label": "Ar Vr Hero"
+      },
+      {
+        "key": "solutions",
+        "component": "ArVrSolutions",
+        "label": "Ar Vr Solutions"
+      },
+      {
+        "key": "cta",
+        "component": "ArVrCTA",
+        "label": "Ar Vr CTA"
+      },
+      {
+        "key": "approach",
+        "component": "ArVrApproach",
+        "label": "Ar Vr Approach"
+      },
+      {
+        "key": "showcase",
+        "component": "ArVrShowcase",
+        "label": "Ar Vr Showcase"
+      },
+      {
+        "key": "why",
+        "component": "ArVrWhy",
+        "label": "Ar Vr Why"
+      },
+      {
+        "key": "results",
+        "component": "ArVrResults",
+        "label": "Ar Vr Results"
+      },
+      {
+        "key": "contact",
+        "component": "ArVrContact",
+        "label": "Ar Vr Contact"
+      }
+    ]
+  },
+  {
+    "path": "/design-innovation/ui-ux-design",
+    "file": "app/design-innovation/ui-ux-design/page.tsx",
+    "title": "UI/UX Design Services | ProManage",
+    "description": "We design digital experiences that are intuitive, meaningful and built to deliver real business results.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "UiUxHero",
+        "label": "Ui Ux Hero"
+      },
+      {
+        "key": "approach",
+        "component": "UiUxApproach",
+        "label": "Ui Ux Approach"
+      },
+      {
+        "key": "what-we-do",
+        "component": "UiUxWhatWeDo",
+        "label": "Ui Ux What We Do"
+      },
+      {
+        "key": "why-us",
+        "component": "UiUxWhyUs",
+        "label": "Ui Ux Why Us"
+      },
+      {
+        "key": "client-stories",
+        "component": "UiUxClientStories",
+        "label": "Ui Ux Client Stories"
+      },
+      {
+        "key": "contact-cta",
+        "component": "UiUxContactCTA",
+        "label": "Ui Ux Contact CTA"
+      }
+    ]
+  },
+  {
+    "path": "/hire-developer/hire-aspnet-developers",
+    "file": "app/hire-developer/hire-aspnet-developers/page.tsx",
+    "title": "Hire ASP.NET Developers | ProManage",
+    "description": "Hire skilled ASP.NET developers to build secure, scalable and high-performance web applications that drive your business forward.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "HireAspNetHero",
+        "label": "Hire Asp Net Hero"
+      },
+      {
+        "key": "build",
+        "component": "HireAspNetBuild",
+        "label": "Hire Asp Net Build"
+      },
+      {
+        "key": "expertise",
+        "component": "HireAspNetExpertise",
+        "label": "Hire Asp Net Expertise"
+      },
+      {
+        "key": "why-us",
+        "component": "HireAspNetWhyUs",
+        "label": "Hire Asp Net Why Us"
+      },
+      {
+        "key": "process",
+        "component": "HireAspNetProcess",
+        "label": "Hire Asp Net Process"
+      },
+      {
+        "key": "cta",
+        "component": "HireAspNetCta",
+        "label": "Hire Asp Net Cta"
+      },
+      {
+        "key": "success-stories",
+        "component": "HireAspNetStories",
+        "label": "Hire Asp Net Stories"
+      },
+      {
+        "key": "innovation",
+        "component": "HireAspNetInnovation",
+        "label": "Hire Asp Net Innovation"
+      },
+      {
+        "key": "contact",
+        "component": "HireAspNetContact",
+        "label": "Hire Asp Net Contact"
+      }
+    ]
+  },
+  {
+    "path": "/hire-developer/hire-bigcommerce-developers",
+    "file": "app/hire-developer/hire-bigcommerce-developers/page.tsx",
+    "title": "Hire BigCommerce Developers | ProManage IT Solution",
+    "description": "End-to-end BigCommerce development: custom storefronts, theme customization, apps & integrations, checkout, performance and ongoing support from dedicated BigCommerce developers.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "BigCommerceHero",
+        "label": "Big Commerce Hero"
+      },
+      {
+        "key": "trusted",
+        "component": "BigCommerceTrusted",
+        "label": "Big Commerce Trusted"
+      },
+      {
+        "key": "features",
+        "component": "BigCommerceFeatures",
+        "label": "Big Commerce Features"
+      },
+      {
+        "key": "all-in-one",
+        "component": "BigCommerceAllInOne",
+        "label": "Big Commerce All In One"
+      },
+      {
+        "key": "benefits",
+        "component": "BigCommerceBenefits",
+        "label": "Big Commerce Benefits"
+      },
+      {
+        "key": "growth",
+        "component": "BigCommerceGrowth",
+        "label": "Big Commerce Growth"
+      },
+      {
+        "key": "impact",
+        "component": "BigCommerceImpact",
+        "label": "Big Commerce Impact"
+      },
+      {
+        "key": "contact",
+        "component": "BigCommerceContact",
+        "label": "Big Commerce Contact"
+      }
+    ]
+  },
+  {
+    "path": "/hire-developer/hire-cakephp-developers",
+    "file": "app/hire-developer/hire-cakephp-developers/page.tsx",
+    "title": "Hire CakePHP Developers | ProManage",
+    "description": "Hire dedicated CakePHP developers to build secure, high-performance web applications that help your business rise.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "HireCakePhpHero",
+        "label": "Hire Cake Php Hero"
+      },
+      {
+        "key": "expertise",
+        "component": "HireCakePhpExpertise",
+        "label": "Hire Cake Php Expertise"
+      },
+      {
+        "key": "hire-options",
+        "component": "HireCakePhpHireOptions",
+        "label": "Hire Cake Php Hire Options"
+      },
+      {
+        "key": "process",
+        "component": "HireCakePhpProcess",
+        "label": "Hire Cake Php Process"
+      },
+      {
+        "key": "results",
+        "component": "HireCakePhpResults",
+        "label": "Hire Cake Php Results"
+      },
+      {
+        "key": "work",
+        "component": "HireCakePhpWork",
+        "label": "Hire Cake Php Work"
+      },
+      {
+        "key": "why",
+        "component": "HireCakePhpWhy",
+        "label": "Hire Cake Php Why"
+      },
+      {
+        "key": "engagement",
+        "component": "HireCakePhpEngagement",
+        "label": "Hire Cake Php Engagement"
+      },
+      {
+        "key": "final-step",
+        "component": "HireCakePhpFinalStep",
+        "label": "Hire Cake Php Final Step"
+      },
+      {
+        "key": "start-project",
+        "component": "HireCakePhpStartProject",
+        "label": "Hire Cake Php Start Project"
+      }
+    ]
+  },
+  {
+    "path": "/hire-developer/hire-core-php-developers",
+    "file": "app/hire-developer/hire-core-php-developers/page.tsx",
+    "title": "Hire Core PHP Developers | ProManage",
+    "description": "Bring in dedicated PHP experts who build, optimize and scale powerful web applications.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "HireCorePhpHero",
+        "label": "Hire Core Php Hero"
+      },
+      {
+        "key": "approach",
+        "component": "HireCorePhpApproach",
+        "label": "Hire Core Php Approach"
+      },
+      {
+        "key": "why-it-matters",
+        "component": "HireCorePhpWhyItMatters",
+        "label": "Hire Core Php Why It Matters"
+      },
+      {
+        "key": "solutions",
+        "component": "HireCorePhpSolutions",
+        "label": "Hire Core Php Solutions"
+      },
+      {
+        "key": "why-choose-us",
+        "component": "HireCorePhpWhyChooseUs",
+        "label": "Hire Core Php Why Choose Us"
+      },
+      {
+        "key": "case-study",
+        "component": "HireCorePhpCaseStudy",
+        "label": "Hire Core Php Case Study"
+      },
+      {
+        "key": "what-you-can-build",
+        "component": "HireCorePhpWhatYouCanBuild",
+        "label": "Hire Core Php What You Can Build"
+      },
+      {
+        "key": "why-hire-from-us",
+        "component": "HireCorePhpWhyHireFromUs",
+        "label": "Hire Core Php Why Hire From Us"
+      },
+      {
+        "key": "next-step",
+        "component": "HireCorePhpNextStep",
+        "label": "Hire Core Php Next Step"
+      },
+      {
+        "key": "signature",
+        "component": "HireCorePhpSignature",
+        "label": "Hire Core Php Signature"
+      }
+    ]
+  },
+  {
+    "path": "/hire-developer/hire-magento-developers",
+    "file": "app/hire-developer/hire-magento-developers/page.tsx",
+    "title": "Hire Magento Developers | ProManage IT Solution",
+    "description": "Hire dedicated, certified Magento developers for store development, customization, extensions, integrations, upgrades, performance optimization and ongoing support.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "MagentoHero",
+        "label": "Magento Hero"
+      },
+      {
+        "key": "services",
+        "component": "MagentoServices",
+        "label": "Magento Services"
+      },
+      {
+        "key": "industry",
+        "component": "MagentoIndustry",
+        "label": "Magento Industry"
+      },
+      {
+        "key": "expertise",
+        "component": "MagentoExpertise",
+        "label": "Magento Expertise"
+      },
+      {
+        "key": "why-us",
+        "component": "MagentoWhyUs",
+        "label": "Magento Why Us"
+      },
+      {
+        "key": "process",
+        "component": "MagentoProcess",
+        "label": "Magento Process"
+      },
+      {
+        "key": "engage",
+        "component": "MagentoEngage",
+        "label": "Magento Engage"
+      },
+      {
+        "key": "outcome",
+        "component": "MagentoOutcome",
+        "label": "Magento Outcome"
+      },
+      {
+        "key": "proposal",
+        "component": "MagentoProposal",
+        "label": "Magento Proposal"
+      }
+    ]
+  },
+  {
+    "path": "/hire-developer/hire-shopify-developers",
+    "file": "app/hire-developer/hire-shopify-developers/page.tsx",
+    "title": "Hire Shopify Developers | ProManage",
+    "description": "Power up your online business using the skills of industry-certified Shopify developers having diverse experiences and deep eCommerce insights.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "HireShopifyHero",
+        "label": "Hire Shopify Hero"
+      },
+      {
+        "key": "shopify-expertise",
+        "component": "ShopifyExpertise",
+        "label": "Shopify Expertise"
+      },
+      {
+        "key": "what-to-expect",
+        "component": "HireShopifyExpect",
+        "label": "Hire Shopify Expect"
+      },
+      {
+        "key": "solutions",
+        "component": "HireShopifySolutions",
+        "label": "Hire Shopify Solutions"
+      },
+      {
+        "key": "contact",
+        "component": "HireShopifyContact",
+        "label": "Hire Shopify Contact"
+      }
+    ]
+  },
+  {
+    "path": "/hire-developer/hire-woocommerce-developers",
+    "file": "app/hire-developer/hire-woocommerce-developers/page.tsx",
+    "title": "Hire WooCommerce Developers | ProManage",
+    "description": "Hire dedicated WooCommerce developers to build high-performance, scalable stores that drive sales.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hire-hero",
+        "component": "WooHireHero",
+        "label": "Woo Hire Hero"
+      },
+      {
+        "key": "intro",
+        "component": "WooIntro",
+        "label": "Woo Intro"
+      },
+      {
+        "key": "why",
+        "component": "WooWhy",
+        "label": "Woo Why"
+      },
+      {
+        "key": "powered",
+        "component": "WooPowered",
+        "label": "Woo Powered"
+      },
+      {
+        "key": "why-hire",
+        "component": "WooWhyHire",
+        "label": "Woo Why Hire"
+      },
+      {
+        "key": "commitment",
+        "component": "WooCommitment",
+        "label": "Woo Commitment"
+      },
+      {
+        "key": "expertise",
+        "component": "WooExpertise",
+        "label": "Woo Expertise"
+      },
+      {
+        "key": "success",
+        "component": "WooSuccess",
+        "label": "Woo Success"
+      },
+      {
+        "key": "proposal",
+        "component": "WooProposal",
+        "label": "Woo Proposal"
+      }
+    ]
+  },
+  {
+    "path": "/hosting",
+    "file": "app/hosting/page.tsx",
+    "title": "",
+    "description": "",
+    "reorderable": false,
+    "sections": [
+      {
+        "key": "content",
+        "component": "HostingContent",
+        "label": "Hosting Content"
+      }
+    ]
+  },
+  {
+    "path": "/location",
+    "file": "app/location/page.tsx",
+    "title": "",
+    "description": "",
+    "reorderable": false,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "LocationHero",
+        "label": "Location Hero"
+      },
+      {
+        "key": "services",
+        "component": "LocationServices",
+        "label": "Location Services"
+      },
+      {
+        "key": "trusted-bar",
+        "component": "TrustedBar",
+        "label": "Trusted Bar"
+      },
+      {
+        "key": "industries-we-empower",
+        "component": "IndustriesWeEmpower",
+        "label": "Industries We Empower"
+      },
+      {
+        "key": "recent-success-stories",
+        "component": "RecentSuccessStories",
+        "label": "Recent Success Stories"
+      },
+      {
+        "key": "why-choose-us",
+        "component": "WhyChooseUs",
+        "label": "Why Choose Us"
+      },
+      {
+        "key": "client-stories",
+        "component": "ClientStories",
+        "label": "Client Stories"
+      },
+      {
+        "key": "faq-section",
+        "component": "FAQSection",
+        "label": "FAQ Section"
+      },
+      {
+        "key": "cta-section",
+        "component": "CtaSection",
+        "label": "Cta Section"
+      }
+    ]
+  },
+  {
+    "path": "/marketing-growth/ai-seo",
+    "file": "app/marketing-growth/ai-seo/page.tsx",
+    "title": "AI SEO Agent - Always Optimizing | Promanage",
+    "description": "Powered by multiple AI agents that work together to grow your visibility, rankings and revenue across Google, AI Overviews, ChatGPT, Gemini and every search experience.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "AiSeoHero",
+        "label": "Ai Seo Hero"
+      },
+      {
+        "key": "rank-everywhere",
+        "component": "AiSeoRankEverywhere",
+        "label": "Ai Seo Rank Everywhere"
+      },
+      {
+        "key": "team",
+        "component": "AiSeoTeam",
+        "label": "Ai Seo Team"
+      },
+      {
+        "key": "experts",
+        "component": "AiSeoExperts",
+        "label": "Ai Seo Experts"
+      },
+      {
+        "key": "difference",
+        "component": "AiSeoDifference",
+        "label": "Ai Seo Difference"
+      },
+      {
+        "key": "never-stops",
+        "component": "AiSeoNeverStops",
+        "label": "Ai Seo Never Stops"
+      },
+      {
+        "key": "proof",
+        "component": "AiSeoProof",
+        "label": "Ai Seo Proof"
+      },
+      {
+        "key": "strategy",
+        "component": "AiSeoStrategy",
+        "label": "Ai Seo Strategy"
+      }
+    ]
+  },
+  {
+    "path": "/marketing-growth/ecommerce-seo",
+    "file": "app/marketing-growth/ecommerce-seo/page.tsx",
+    "title": "E-Commerce SEO Services | ProManage",
+    "description": "E-commerce SEO that gets your products found by the right shoppers and turns searches into sales.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "EcommerceSeoHero",
+        "label": "Ecommerce Seo Hero"
+      },
+      {
+        "key": "layers",
+        "component": "EcommerceSeoLayers",
+        "label": "Ecommerce Seo Layers"
+      },
+      {
+        "key": "ecosystem",
+        "component": "EcommerceSeoEcosystem",
+        "label": "Ecommerce Seo Ecosystem"
+      },
+      {
+        "key": "results",
+        "component": "EcommerceSeoResults",
+        "label": "Ecommerce Seo Results"
+      },
+      {
+        "key": "process-section",
+        "component": "EcommerceSeoProcessSection",
+        "label": "Ecommerce Seo Process Section"
+      },
+      {
+        "key": "growth-partner-section",
+        "component": "GrowthPartnerSection",
+        "label": "Growth Partner Section"
+      },
+      {
+        "key": "lead-form-section",
+        "component": "LeadFormSection",
+        "label": "Lead Form Section"
+      }
+    ]
+  },
+  {
+    "path": "/marketing-growth/google-ads",
+    "file": "app/marketing-growth/google-ads/page.tsx",
+    "title": "Google Ads | ProManage",
+    "description": "We create high-performing Google Ads campaigns that put your business at the top of search results—driving qualified leads, more calls, and real revenue.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "GoogleAdsHero",
+        "label": "Google Ads Hero"
+      },
+      {
+        "key": "ecosystem",
+        "component": "GoogleAdsEcosystem",
+        "label": "Google Ads Ecosystem"
+      },
+      {
+        "key": "intent",
+        "component": "GoogleAdsIntent",
+        "label": "Google Ads Intent"
+      },
+      {
+        "key": "funnel",
+        "component": "GoogleAdsFunnel",
+        "label": "Google Ads Funnel"
+      },
+      {
+        "key": "performance",
+        "component": "GoogleAdsPerformance",
+        "label": "Google Ads Performance"
+      },
+      {
+        "key": "case-study",
+        "component": "GoogleAdsCaseStudy",
+        "label": "Google Ads Case Study"
+      },
+      {
+        "key": "cta",
+        "component": "GoogleAdsCta",
+        "label": "Google Ads Cta"
+      },
+      {
+        "key": "bottom-banner",
+        "component": "GoogleAdsBottomBanner",
+        "label": "Google Ads Bottom Banner"
+      },
+      {
+        "key": "client-stories",
+        "component": "ClientStories",
+        "label": "Client Stories"
+      },
+      {
+        "key": "faq-section",
+        "component": "FAQSection",
+        "label": "FAQ Section"
+      }
+    ]
+  },
+  {
+    "path": "/marketing-growth/local-seo",
+    "file": "app/marketing-growth/local-seo/page.tsx",
+    "title": "Local SEO Services - Be Found. Get Chosen. Grow Locally. | ProManage",
+    "description": "Local SEO that drives real customers: Google Business Profile optimization, local keywords, citations, reviews and location pages so nearby customers find and choose you.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "LocalSeoHero",
+        "label": "Local Seo Hero"
+      },
+      {
+        "key": "journey",
+        "component": "LocalSeoJourney",
+        "label": "Local Seo Journey"
+      },
+      {
+        "key": "dominate",
+        "component": "LocalSeoDominate",
+        "label": "Local Seo Dominate"
+      },
+      {
+        "key": "everywhere",
+        "component": "LocalSeoEverywhere",
+        "label": "Local Seo Everywhere"
+      },
+      {
+        "key": "optimize",
+        "component": "LocalSeoOptimize",
+        "label": "Local Seo Optimize"
+      },
+      {
+        "key": "results",
+        "component": "LocalSeoResults",
+        "label": "Local Seo Results"
+      },
+      {
+        "key": "contact",
+        "component": "LocalSeoContact",
+        "label": "Local Seo Contact"
+      }
+    ]
+  },
+  {
+    "path": "/marketing-growth/social-media-marketing",
+    "file": "app/marketing-growth/social-media-marketing/page.tsx",
+    "title": "Social Media Marketing | ProManage",
+    "description": "We create content, campaigns, and brand experiences that transform businesses into brands people notice, remember, and trust.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "SocialMediaMarketingHero",
+        "label": "Social Media Marketing Hero"
+      },
+      {
+        "key": "content-grid",
+        "component": "SocialMediaMarketingContentGrid",
+        "label": "Social Media Marketing Content Grid"
+      },
+      {
+        "key": "brand-compare",
+        "component": "SocialMediaMarketingBrandCompare",
+        "label": "Social Media Marketing Brand Compare"
+      },
+      {
+        "key": "content-types",
+        "component": "SocialMediaMarketingContentTypes",
+        "label": "Social Media Marketing Content Types"
+      },
+      {
+        "key": "benefits",
+        "component": "SocialMediaMarketingBenefits",
+        "label": "Social Media Marketing Benefits"
+      },
+      {
+        "key": "case-study",
+        "component": "SocialMediaMarketingCaseStudy",
+        "label": "Social Media Marketing Case Study"
+      },
+      {
+        "key": "final-cta",
+        "component": "SocialMediaMarketingFinalCTA",
+        "label": "Social Media Marketing Final CTA"
+      }
+    ]
+  },
+  {
+    "path": "/seo",
+    "file": "app/seo/page.tsx",
+    "title": "SEO Services | ProManage",
+    "description": "Premium SEO services that put your business at the top of search — more visibility, more traffic and more revenue.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "SeoHero",
+        "label": "Seo Hero"
+      },
+      {
+        "key": "opportunity",
+        "component": "SeoOpportunity",
+        "label": "Seo Opportunity"
+      },
+      {
+        "key": "transformation",
+        "component": "SeoTransformation",
+        "label": "Seo Transformation"
+      },
+      {
+        "key": "process",
+        "component": "SeoProcess",
+        "label": "Seo Process"
+      },
+      {
+        "key": "ecosystem",
+        "component": "SeoEcosystem",
+        "label": "Seo Ecosystem"
+      },
+      {
+        "key": "growth-framework",
+        "component": "SeoGrowthFramework",
+        "label": "Seo Growth Framework"
+      },
+      {
+        "key": "website-dev-comparison",
+        "component": "WebsiteDevComparison",
+        "label": "Website Dev Comparison"
+      },
+      {
+        "key": "faq-section",
+        "component": "FAQSection",
+        "label": "FAQ Section"
+      }
+    ]
+  },
+  {
+    "path": "/testimonials",
+    "file": "app/testimonials/page.tsx",
+    "title": "Client Testimonials | ProManage",
+    "description": "Real feedback from ProManage clients. Real relationships, and real results that drive businesses forward.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "TestimonialsHero",
+        "label": "Testimonials Hero"
+      },
+      {
+        "key": "awards",
+        "component": "TestimonialsAwards",
+        "label": "Testimonials Awards"
+      },
+      {
+        "key": "client-stories",
+        "component": "ClientStories",
+        "label": "Client Stories"
+      },
+      {
+        "key": "platforms",
+        "component": "TestimonialsPlatforms",
+        "label": "Testimonials Platforms"
+      },
+      {
+        "key": "strategy",
+        "component": "TestimonialsStrategy",
+        "label": "Testimonials Strategy"
+      }
+    ]
+  },
+  {
+    "path": "/thank-you",
+    "file": "app/thank-you/page.tsx",
+    "title": "",
+    "description": "",
+    "reorderable": true,
+    "sections": []
+  },
+  {
+    "path": "/web-software/app-development",
+    "file": "app/web-software/app-development/page.tsx",
+    "title": "App Development | ProManage",
+    "description": "We design and develop intuitive, high-performance mobile apps that engage users, streamline operations and help your business grow.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "AppDevHero",
+        "label": "App Dev Hero"
+      },
+      {
+        "key": "showcase",
+        "component": "AppDevShowcase",
+        "label": "App Dev Showcase"
+      },
+      {
+        "key": "services",
+        "component": "AppDevServices",
+        "label": "App Dev Services"
+      },
+      {
+        "key": "process",
+        "component": "AppDevProcess",
+        "label": "App Dev Process"
+      },
+      {
+        "key": "website-dev-comparison",
+        "component": "WebsiteDevComparison",
+        "label": "Website Dev Comparison"
+      },
+      {
+        "key": "website-dev-strategy-cta",
+        "component": "WebsiteDevStrategyCta",
+        "label": "Website Dev Strategy Cta"
+      },
+      {
+        "key": "faq-section",
+        "component": "FAQSection",
+        "label": "FAQ Section"
+      }
+    ]
+  },
+  {
+    "path": "/web-software/custom-crm-solution",
+    "file": "app/web-software/custom-crm-solution/page.tsx",
+    "title": "Custom CRM Solution | ProManage",
+    "description": "A CRM built around your business. We build custom CRM software that adapts to the way you work — connecting leads, conversations and data in one intelligent system.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "CustomCrmHero",
+        "label": "Custom Crm Hero"
+      },
+      {
+        "key": "challenge",
+        "component": "CustomCrmChallenge",
+        "label": "Custom Crm Challenge"
+      },
+      {
+        "key": "features",
+        "component": "CustomCrmFeatures",
+        "label": "Custom Crm Features"
+      },
+      {
+        "key": "smart-tools",
+        "component": "CustomCrmSmartTools",
+        "label": "Custom Crm Smart Tools"
+      },
+      {
+        "key": "industries",
+        "component": "CustomCrmIndustries",
+        "label": "Custom Crm Industries"
+      },
+      {
+        "key": "built-around",
+        "component": "CustomCrmBuiltAround",
+        "label": "Custom Crm Built Around"
+      },
+      {
+        "key": "start-journey",
+        "component": "CustomCrmStartJourney",
+        "label": "Custom Crm Start Journey"
+      }
+    ]
+  },
+  {
+    "path": "/web-software/custom-development",
+    "file": "app/web-software/custom-development/page.tsx",
+    "title": "Custom Development Services | ProManage",
+    "description": "We build fully custom web applications and software solutions designed around your business, your workflow, and your future.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "CustomDevHero",
+        "label": "Custom Dev Hero"
+      },
+      {
+        "key": "features",
+        "component": "CustomDevFeatures",
+        "label": "Custom Dev Features"
+      },
+      {
+        "key": "what-we-build",
+        "component": "CustomDevWhatWeBuild",
+        "label": "Custom Dev What We Build"
+      },
+      {
+        "key": "growth-partner",
+        "component": "CustomDevGrowthPartner",
+        "label": "Custom Dev Growth Partner"
+      },
+      {
+        "key": "our-work",
+        "component": "CustomDevOurWork",
+        "label": "Custom Dev Our Work"
+      },
+      {
+        "key": "start-project",
+        "component": "CustomDevStartProject",
+        "label": "Custom Dev Start Project"
+      }
+    ]
+  },
+  {
+    "path": "/web-software/shopify-web-design",
+    "file": "app/web-software/shopify-web-design/page.tsx",
+    "title": "Shopify Web Design | ProManage",
+    "description": "We design fast, intuitive Shopify stores that turn product discovery into confident purchases.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "web-design-hero",
+        "component": "ShopifyWebDesignHero",
+        "label": "Shopify Web Design Hero"
+      },
+      {
+        "key": "web-design-journey",
+        "component": "ShopifyWebDesignJourney",
+        "label": "Shopify Web Design Journey"
+      },
+      {
+        "key": "product-design",
+        "component": "ShopifyProductDesign",
+        "label": "Shopify Product Design"
+      },
+      {
+        "key": "store-architecture",
+        "component": "ShopifyStoreArchitecture",
+        "label": "Shopify Store Architecture"
+      },
+      {
+        "key": "mobile-experience",
+        "component": "ShopifyMobileExperience",
+        "label": "Shopify Mobile Experience"
+      },
+      {
+        "key": "what-we-offer",
+        "component": "ShopifyWhatWeOffer",
+        "label": "Shopify What We Offer"
+      },
+      {
+        "key": "cta-banner",
+        "component": "ShopifyCTABanner",
+        "label": "Shopify CTA Banner"
+      },
+      {
+        "key": "results-and-form",
+        "component": "ShopifyResultsAndForm",
+        "label": "Shopify Results And Form"
+      }
+    ]
+  },
+  {
+    "path": "/web-software/web-hosting",
+    "file": "app/web-software/web-hosting/page.tsx",
+    "title": "Web Hosting | ProManage",
+    "description": "Supercharge your business with premium web hosting.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "WebHostingHero",
+        "label": "Web Hosting Hero"
+      },
+      {
+        "key": "features",
+        "component": "WebHostingFeatures",
+        "label": "Web Hosting Features"
+      },
+      {
+        "key": "speed",
+        "component": "WebHostingSpeed",
+        "label": "Web Hosting Speed"
+      },
+      {
+        "key": "security",
+        "component": "WebHostingSecurity",
+        "label": "Web Hosting Security"
+      },
+      {
+        "key": "scale",
+        "component": "WebHostingScale",
+        "label": "Web Hosting Scale"
+      },
+      {
+        "key": "results",
+        "component": "WebHostingResults",
+        "label": "Web Hosting Results"
+      },
+      {
+        "key": "responsibility",
+        "component": "WebHostingResponsibility",
+        "label": "Web Hosting Responsibility"
+      }
+    ]
+  },
+  {
+    "path": "/web-software/website-development",
+    "file": "app/web-software/website-development/page.tsx",
+    "title": "",
+    "description": "",
+    "reorderable": false,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "WebsiteDevHero",
+        "label": "Website Dev Hero"
+      },
+      {
+        "key": "hero-visual",
+        "component": "WebsiteDevHeroVisual",
+        "label": "Website Dev Hero Visual"
+      },
+      {
+        "key": "trusted-bar",
+        "component": "TrustedBar",
+        "label": "Trusted Bar"
+      },
+      {
+        "key": "transformations",
+        "component": "WebsiteDevTransformations",
+        "label": "Website Dev Transformations"
+      },
+      {
+        "key": "approach",
+        "component": "WebsiteDevApproach",
+        "label": "Website Dev Approach"
+      },
+      {
+        "key": "growth-journey",
+        "component": "WebsiteDevGrowthJourney",
+        "label": "Website Dev Growth Journey"
+      },
+      {
+        "key": "comparison",
+        "component": "WebsiteDevComparison",
+        "label": "Website Dev Comparison"
+      },
+      {
+        "key": "growth-plan",
+        "component": "WebsiteDevGrowthPlan",
+        "label": "Website Dev Growth Plan"
+      },
+      {
+        "key": "strategy-cta",
+        "component": "WebsiteDevStrategyCta",
+        "label": "Website Dev Strategy Cta"
+      },
+      {
+        "key": "faq-section",
+        "component": "FAQSection",
+        "label": "FAQ Section"
+      }
+    ]
+  },
+  {
+    "path": "/who-we-are",
+    "file": "app/who-we-are/page.tsx",
+    "title": "Who We Are | ProManage",
+    "description": "ProManage IT Solution — a global IT agency serving clients across 75+ cities. Solutions today, success tomorrow.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "WhoWeAreHero",
+        "label": "Who We Are Hero"
+      },
+      {
+        "key": "solve",
+        "component": "WhoWeAreSolve",
+        "label": "Who We Are Solve"
+      },
+      {
+        "key": "approach",
+        "component": "WhoWeAreApproach",
+        "label": "Who We Are Approach"
+      },
+      {
+        "key": "mission",
+        "component": "WhoWeAreMission",
+        "label": "Who We Are Mission"
+      },
+      {
+        "key": "vision",
+        "component": "WhoWeAreVision",
+        "label": "Who We Are Vision"
+      },
+      {
+        "key": "values",
+        "component": "WhoWeAreValues",
+        "label": "Who We Are Values"
+      },
+      {
+        "key": "woo-proposal",
+        "component": "WooProposal",
+        "label": "Woo Proposal"
+      }
+    ]
+  },
+  {
+    "path": "/why-choose-us",
+    "file": "app/why-choose-us/page.tsx",
+    "title": "Why Choose Us | ProManage",
+    "description": "Strategy. Design. Technology. Growth. Everything aligned to deliver real results that matter to you.",
+    "reorderable": true,
+    "sections": [
+      {
+        "key": "hero",
+        "component": "WhyChooseUsHero",
+        "label": "Why Choose Us Hero"
+      },
+      {
+        "key": "benefits",
+        "component": "WhyChooseUsBenefits",
+        "label": "Why Choose Us Benefits"
+      },
+      {
+        "key": "how-we-work-process",
+        "component": "HowWeWorkProcess",
+        "label": "How We Work Process"
+      },
+      {
+        "key": "approach",
+        "component": "WhyChooseUsApproach",
+        "label": "Why Choose Us Approach"
+      },
+      {
+        "key": "value",
+        "component": "WhyChooseUsValue",
+        "label": "Why Choose Us Value"
+      },
+      {
+        "key": "future-ready",
+        "component": "WhyChooseUsFutureReady",
+        "label": "Why Choose Us Future Ready"
+      },
+      {
+        "key": "proposal-form",
+        "component": "WhyChooseUsProposalForm",
+        "label": "Why Choose Us Proposal Form"
+      }
+    ]
+  }
+]

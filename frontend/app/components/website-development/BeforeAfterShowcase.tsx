@@ -4,6 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import { CartIcon, BriefcaseIcon, HeartIcon, HomeIcon, ChevronLeftIcon, ChevronRightIcon } from "../shared/icons";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -85,7 +86,7 @@ type Project = {
   stats: Stat[];
 };
 
-const categories = [
+const categories__cms = [
   { id: "ecommerce", label: "Ecommerce", Icon: CartIcon },
   { id: "corporate", label: "Corporate", Icon: BriefcaseIcon },
   { id: "healthcare", label: "Healthcare", Icon: HeartIcon },
@@ -94,7 +95,7 @@ const categories = [
   { id: "realestate", label: "Real Estate", Icon: HomeIcon },
 ] as const;
 
-const projects: Project[] = [
+const projects__cms: Project[] = [
   // Ecommerce
   {
     id: "organic-harvest",
@@ -284,6 +285,9 @@ const projects: Project[] = [
 ];
 
 export default function BeforeAfterShowcase() {
+  const $t = useCmsText();
+  const categories = useCmsData("BeforeAfterShowcase__categories", categories__cms);
+  const projects = useCmsData("BeforeAfterShowcase__projects", projects__cms);
   const [categoryId, setCategoryId] = useState<string>(categories[0].id);
   const [projectId, setProjectId] = useState<string>(projects[0].id);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -358,8 +362,7 @@ export default function BeforeAfterShowcase() {
         <div className="w-full xl:w-[340px] bg-[#fafafa] border-t xl:border-t-0 xl:border-l border-slate-100 p-8 flex flex-col justify-center relative z-20">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-[10px] font-bold tracking-[0.15em] text-[#132a43] uppercase">
-              {selectedProject.name} · The Results
-            </span>
+              {selectedProject.name} {$t("BeforeAfterShowcase__t1", "· The Results")}</span>
           </div>
           <div className="h-px w-full bg-slate-200 mb-6" />
 
@@ -370,7 +373,7 @@ export default function BeforeAfterShowcase() {
                   <stat.Icon />
                 </div>
                 <div>
-                  <h3 className="text-[24px] font-black text-[#0b3b35] leading-none mb-1">{stat.value}</h3>
+                  <h3 className="text-h5 font-black text-[#0b3b35] mb-1">{stat.value}</h3>
                   <p className="text-[11px] font-bold text-slate-800 mb-0.5 leading-snug">{stat.label}</p>
                   <p className="text-[9px] text-slate-500 font-medium">{stat.sub}</p>
                 </div>
@@ -404,7 +407,7 @@ export default function BeforeAfterShowcase() {
                   <Image src={p.thumb} alt={p.name} fill className="object-cover object-top" sizes="220px" />
                 </div>
                 <div className="bg-white px-3 py-2">
-                  <p className="truncate text-xs font-bold" style={{ color: NAVY }}>
+                  <p className="text-caption truncate font-bold" style={{ color: NAVY }}>
                     {p.name}
                   </p>
                   <p className="truncate text-[10px] text-slate-400">{p.tag}</p>

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -55,7 +57,7 @@ const TargetIcon = ({ size = 22, color = DEEP_TEAL }: IconProps) => (
   </svg>
 );
 
-const REASONS = [
+const REASONS__cms = [
   {
     Icon: RocketIcon,
     lead: "Build with",
@@ -122,6 +124,8 @@ function Divider() {
 }
 
 export default function CareerWhyLove() {
+  const $t = useCmsText();
+  const REASONS = useCmsData("CareerWhyLove__REASONS", REASONS__cms);
   return (
     <section className="relative w-full overflow-hidden bg-white">
       <Container className="relative z-10 pt-16 lg:pt-20">
@@ -134,28 +138,26 @@ export default function CareerWhyLove() {
         >
           <motion.p
             variants={fadeUp}
-            className="flex items-center justify-center gap-4 text-[13px] font-semibold uppercase tracking-[0.14em]"
+            className="text-small flex items-center justify-center gap-4 font-semibold uppercase tracking-[0.14em]"
             style={{ color: DEEP_TEAL }}
           >
             <span className="flex items-center" aria-hidden>
               <span className="h-px w-16 bg-gradient-to-r from-transparent to-teal-500" />
               <span className="h-[5px] w-[5px] rounded-full" style={{ backgroundColor: TEAL }} />
             </span>
-            Why People Love
-            <span className="flex items-center" aria-hidden>
+            {rich($t("CareerWhyLove__t1", "Why People Love"))}<span className="flex items-center" aria-hidden>
               <span className="h-[5px] w-[5px] rounded-full" style={{ backgroundColor: TEAL }} />
               <span className="h-px w-16 bg-gradient-to-l from-transparent to-teal-500" />
             </span>
           </motion.p>
-          <motion.h2 variants={fadeUp} className="mt-3 text-[40px] font-bold tracking-tight sm:text-[52px]">
-            <span style={{ color: INK }}>Working at </span>
-            <span style={{ color: TEAL }}>ProManage</span>
+          <motion.h2 variants={fadeUp} className="text-h2 mt-3 font-bold tracking-tight">
+            <span style={{ color: INK }}>{$t("CareerWhyLove__t2", "Working at ")}</span>
+            <span style={{ color: TEAL }}>{$t("CareerWhyLove__t3", "ProManage")}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="mt-4 text-[16px] leading-[1.75] text-slate-600">
-            We&apos;re more than a workplace — we&apos;re a community of thinkers, builders, and dreamers who{" "}
-            <span className="font-medium" style={{ color: TEAL }}>grow together</span> and{" "}
-            <span className="font-medium" style={{ color: TEAL }}>create impact</span> every day.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body mt-4 text-slate-600">
+            {rich($t("CareerWhyLove__t4", "We're more than a workplace — we're a community of thinkers, builders, and dreamers who"))}{" "}
+            <span className="font-medium" style={{ color: TEAL }}>{$t("CareerWhyLove__t5", "grow together")}</span> and{" "}
+            <span className="font-medium" style={{ color: TEAL }}>{$t("CareerWhyLove__t6", "create impact")}</span> {rich($t("CareerWhyLove__t7", "every day."))}</motion.p>
         </motion.div>
 
         <div className="mx-auto mt-12 flex max-w-[960px] flex-col items-stretch gap-12 md:flex-row md:gap-6">
@@ -170,11 +172,11 @@ export default function CareerWhyLove() {
                 className="group flex flex-1 flex-col items-center text-center"
               >
                 <ReasonIcon Icon={r.Icon} delay={0.4 + i * 0.15} />
-                <h3 className="mt-5 text-[20px] font-bold" style={{ color: INK }}>
+                <h3 className="text-h6 mt-5 font-bold" style={{ color: INK }}>
                   {r.lead} <span style={{ color: TEAL }}>{r.accent}</span>
                 </h3>
                 <span className="mt-3 h-[2px] w-8 rounded-full" style={{ backgroundColor: TEAL }} />
-                <p className="mt-4 max-w-[250px] text-[14px] leading-[1.75] text-slate-600">{r.desc}</p>
+                <p className="text-small mt-4 max-w-[250px] text-slate-600">{r.desc}</p>
               </motion.div>
             </div>
           ))}
@@ -191,8 +193,8 @@ export default function CareerWhyLove() {
         style={{ aspectRatio: "1376 / 768" }}
       >
         <Image
-          src="/career2.png"
-          alt="ProManage teammates chatting on sofas in the office lounge under a 'Teamwork makes the dream work' sign"
+          src={$t("CareerWhyLove__t8", "/career2.png")}
+          alt={$t("CareerWhyLove__t9", "ProManage teammates chatting on sofas in the office lounge under a 'Teamwork makes the dream work' sign")}
           fill
           sizes="100vw"
           className="object-cover"

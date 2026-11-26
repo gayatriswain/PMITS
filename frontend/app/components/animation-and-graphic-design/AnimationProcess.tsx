@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    PROCESS STEP ICONS (Exact Match with Reference)
@@ -112,7 +114,7 @@ function StarStatIcon() {
    PROCESS STEPS DATA
    ========================================================================= */
 
-const processSteps = [
+const processSteps__cms = [
   {
     step: "01",
     title: "Discover & Understand",
@@ -196,6 +198,8 @@ const processSteps = [
    ========================================================================= */
 
 export default function AnimationProcess() {
+  const $t = useCmsText();
+  const processSteps = useCmsData("AnimationProcess__processSteps", processSteps__cms);
   return (
     <section className="relative w-full bg-[#fbfcfd] py-16 sm:py-24 overflow-hidden">
       
@@ -216,27 +220,24 @@ export default function AnimationProcess() {
             {/* Badge: OUR PROCESS */}
             <div className="inline-block mb-3">
               <span className="text-xs font-black tracking-widest text-[#0d9488] uppercase block">
-                OUR PROCESS
-              </span>
+                {$t("AnimationProcess__t1", "OUR PROCESS")}</span>
               <div className="w-14 h-1 bg-[#0d9488] rounded-full mt-1.5" />
             </div>
 
             {/* Headline: Exactly 2 lines */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[50px] font-black tracking-tight leading-[1.12] text-slate-900 mb-4 font-sans">
-              Our Process. <br />
-              <span>Your Vision, </span>
+            <h2 className="text-h2 font-black tracking-tight text-slate-900 mb-4 font-sans">
+              {$t("AnimationProcess__t2", "Our Process. ")}<br />
+              <span>{$t("AnimationProcess__t3", "Your Vision, ")}</span>
               <span className="bg-gradient-to-r from-[#0284c7] via-[#6366f1] to-[#7c3aed] bg-clip-text text-transparent">
-                Perfectly Crafted.
-              </span>
+                {$t("AnimationProcess__t4", "Perfectly Crafted.")}</span>
             </h2>
 
             {/* Subtitle with colored emphasis words */}
-            <p className="text-slate-500 text-sm sm:text-base leading-relaxed font-normal max-w-xl">
-              A collaborative approach that ensures{" "}
+            <p className="text-body text-slate-500 font-normal max-w-xl">
+              {rich($t("AnimationProcess__t5", "A collaborative approach that ensures"))}{" "}
               <span className="font-semibold text-[#0d9488]">creativity</span>,{" "}
               <span className="font-semibold text-[#0284c7]">clarity</span> and{" "}
-              <span className="font-semibold text-[#7c3aed]">results</span> at every step.
-            </p>
+              <span className="font-semibold text-[#7c3aed]">results</span> {rich($t("AnimationProcess__t6", "at every step."))}</p>
           </div>
 
           {/* Top-Right: 3D Infinity Ribbon Artwork (animation-graphic-design3) */}
@@ -255,8 +256,8 @@ export default function AnimationProcess() {
             {/* Floating 3D Infinity Ribbon Image */}
             <div className="relative w-full max-w-[480px] h-[250px] sm:h-[290px] lg:h-[310px] z-10">
               <Image
-                src="/animation-graphic-design3.png"
-                alt="3D Infinity Ribbon Motion Loop"
+                src={$t("AnimationProcess__t7", "/animation-graphic-design3.png")}
+                alt={$t("AnimationProcess__t8", "3D Infinity Ribbon Motion Loop")}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 480px"
@@ -349,7 +350,7 @@ export default function AnimationProcess() {
                     <h3 className="font-bold text-slate-900 text-[15px] sm:text-[15.5px] leading-snug mb-2 tracking-tight">
                       {step.title}
                     </h3>
-                    <p className="text-slate-500 text-xs sm:text-[12.5px] leading-relaxed font-normal">
+                    <p className="text-caption text-slate-500 font-normal">
                       {step.description}
                     </p>
                   </motion.div>
@@ -375,27 +376,24 @@ export default function AnimationProcess() {
               <div className="text-3xl text-purple-600 font-serif leading-none mb-2 font-black select-none">
                 “
               </div>
-              <p className="text-slate-700 text-xs sm:text-[13px] leading-relaxed font-medium mb-4">
-                They transformed our ideas into visuals that truly represent our brand. The animation and design quality is outstanding!
-              </p>
+              <p className="text-small text-slate-700 font-medium mb-4">
+                {rich($t("AnimationProcess__t9", "They transformed our ideas into visuals that truly represent our brand. The animation and design quality is outstanding!"))}</p>
               
               {/* Author Info */}
               <div className="flex items-center gap-3">
                 <div className="relative w-11 h-11 rounded-full overflow-hidden border border-slate-200 shadow-sm flex-shrink-0">
                   <Image
-                    src="/ravi-sharma-avatar.jpg"
-                    alt="Ravi Sharma"
+                    src={$t("AnimationProcess__t10", "/ravi-sharma-avatar.jpg")}
+                    alt={$t("AnimationProcess__t11", "Ravi Sharma")}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 text-sm leading-tight">
-                    Ravi Sharma
-                  </h4>
+                    {$t("AnimationProcess__t12", "Ravi Sharma")}</h4>
                   <p className="text-[11px] text-slate-400 font-normal">
-                    Founder, WellnessKart
-                  </p>
+                    {rich($t("AnimationProcess__t13", "Founder, WellnessKart"))}</p>
                 </div>
               </div>
             </div>
@@ -409,11 +407,9 @@ export default function AnimationProcess() {
                   <BriefcaseStatIcon />
                 </div>
                 <span className="text-2xl sm:text-[26px] font-black text-slate-900 tracking-tight leading-none">
-                  500+
-                </span>
+                  {$t("AnimationProcess__t14", "500+")}</span>
                 <span className="text-[11px] font-semibold text-slate-500 mt-1">
-                  Projects Completed
-                </span>
+                  {$t("AnimationProcess__t15", "Projects Completed")}</span>
                 <div className="w-8 h-0.5 bg-teal-500 rounded-full mt-2" />
               </div>
 
@@ -423,11 +419,9 @@ export default function AnimationProcess() {
                   <UsersStatIcon />
                 </div>
                 <span className="text-2xl sm:text-[26px] font-black text-slate-900 tracking-tight leading-none">
-                  100+
-                </span>
+                  {$t("AnimationProcess__t16", "100+")}</span>
                 <span className="text-[11px] font-semibold text-slate-500 mt-1">
-                  Happy Clients
-                </span>
+                  {$t("AnimationProcess__t17", "Happy Clients")}</span>
                 <div className="w-8 h-0.5 bg-blue-500 rounded-full mt-2" />
               </div>
 
@@ -437,11 +431,9 @@ export default function AnimationProcess() {
                   <GlobeStatIcon />
                 </div>
                 <span className="text-2xl sm:text-[26px] font-black text-slate-900 tracking-tight leading-none">
-                  10+
-                </span>
+                  {$t("AnimationProcess__t18", "10+")}</span>
                 <span className="text-[11px] font-semibold text-slate-500 mt-1">
-                  Industries Served
-                </span>
+                  {$t("AnimationProcess__t19", "Industries Served")}</span>
                 <div className="w-8 h-0.5 bg-purple-500 rounded-full mt-2" />
               </div>
 
@@ -451,11 +443,9 @@ export default function AnimationProcess() {
                   <StarStatIcon />
                 </div>
                 <span className="text-2xl sm:text-[26px] font-black text-slate-900 tracking-tight leading-none">
-                  4.9/5
-                </span>
+                  {$t("AnimationProcess__t20", "4.9/5")}</span>
                 <span className="text-[11px] font-semibold text-slate-500 mt-0.5">
-                  Client Rating
-                </span>
+                  {$t("AnimationProcess__t21", "Client Rating")}</span>
                 <div className="text-amber-400 text-xs mt-1">
                   ★★★★★
                 </div>
@@ -482,23 +472,21 @@ export default function AnimationProcess() {
             <div className="absolute top-0 right-0 w-44 h-44 bg-purple-600/20 rounded-full blur-[60px] pointer-events-none" />
 
             <div>
-              <h3 className="text-lg sm:text-xl font-bold leading-tight mb-1 text-white">
-                Let&apos;s Create Something
-              </h3>
-              <p className="text-lg sm:text-xl font-black leading-tight mb-2.5">
-                <span className="text-[#2dd4bf]">Extraordinary</span>{" "}
-                <span className="text-white">Together.</span>
+              <h3 className="text-h6 font-bold mb-1 text-white">
+                {$t("AnimationProcess__t22", "Let's Create Something")}</h3>
+              <p className="text-body font-black mb-2.5">
+                <span className="text-[#2dd4bf]">{$t("AnimationProcess__t23", "Extraordinary")}</span>{" "}
+                <span className="text-white">{$t("AnimationProcess__t24", "Together.")}</span>
               </p>
-              <p className="text-slate-400 text-xs sm:text-[12.5px] leading-relaxed mb-6 font-normal">
-                Have a project in mind? Let&apos;s bring your ideas to life.
-              </p>
+              <p className="text-caption text-slate-400 mb-6 font-normal">
+                {rich($t("AnimationProcess__t25", "Have a project in mind? Let's bring your ideas to life."))}</p>
 
               {/* CTA Button */}
               <Link
-                href="#contact-form"
+                href={$t("AnimationProcess__t26", "#contact-form")}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs shadow-md transition-all duration-200 hover:-translate-y-0.5 w-fit"
               >
-                <span>Start Your Project</span>
+                <span>{$t("AnimationProcess__t27", "Start Your Project")}</span>
                 <span className="text-sm font-black text-purple-700">→</span>
               </Link>
             </div>
@@ -508,10 +496,9 @@ export default function AnimationProcess() {
               <svg className="w-4 h-4 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              <span>Prefer to talk?</span>
-              <Link href="tel:+15551234567" className="underline text-slate-200 hover:text-white font-medium">
-                Schedule a Call
-              </Link>
+              <span>{$t("AnimationProcess__t28", "Prefer to talk?")}</span>
+              <Link href={$t("AnimationProcess__t29", "tel:+15551234567")} className="underline text-slate-200 hover:text-white font-medium">
+                {$t("AnimationProcess__t30", "Schedule a Call")}</Link>
             </div>
 
           </div>

@@ -1,10 +1,11 @@
 "use client";
 
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const INK = "#0d1b33";
 const TEAL = "#0e7490";
@@ -67,21 +68,28 @@ const TrendIcon = ({ size = 22, color = TEAL }: IconProps) => (
 );
 
 /* Platform marks, drawn as simple lettermarks in each platform's colours */
-const ClutchMark = () => (
+const ClutchMark = () => {
+  const $t = useCmsText();
+  return ((
   <span className="flex h-full w-full items-center justify-center rounded-full bg-[#17313b] text-[15px] font-bold tracking-tight text-white">
-    Clutch
-  </span>
-);
-const GoodFirmsMark = () => (
+    {$t("TestimonialsPlatforms__t1", "Clutch")}</span>
+));
+};
+const GoodFirmsMark = () => {
+  const $t = useCmsText();
+  return ((
   <span className="flex h-full w-full items-center justify-center rounded-full bg-white">
-    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d6af2] text-[22px] font-black leading-none text-white">F</span>
+    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d6af2] text-[22px] font-black leading-none text-white">{$t("TestimonialsPlatforms__t2", "F")}</span>
   </span>
-);
-const UpworkMark = () => (
+));
+};
+const UpworkMark = () => {
+  const $t = useCmsText();
+  return ((
   <span className="flex h-full w-full items-center justify-center rounded-full bg-white text-[24px] font-bold tracking-tight text-[#14a800]">
-    Up
-  </span>
-);
+    {$t("TestimonialsPlatforms__t3", "Up")}</span>
+));
+};
 const TrustpilotMark = () => (
   <span className="flex h-full w-full items-center justify-center rounded-full bg-white">
     <StarIcon size={30} color="#00b67a" />
@@ -99,14 +107,14 @@ type Platform = {
 };
 
 // placeholder figures from the design: swap in the real profile links and ratings before launch
-const PLATFORMS: Platform[] = [
+const PLATFORMS__cms: Platform[] = [
   { name: "Clutch", Mark: ClutchMark, score: "5.0", sub: "50+ reviews", accent: "#17313b", href: "https://clutch.co", stars: "five" },
   { name: "GoodFirms", Mark: GoodFirmsMark, score: "4.9", sub: "35+ reviews", accent: "#1d6af2", href: "https://www.goodfirms.co", stars: "five" },
   { name: "Upwork", Mark: UpworkMark, score: "100%", sub: "Job Success Score", accent: "#14a800", href: "https://www.upwork.com", stars: "one" },
   { name: "Trustpilot", Mark: TrustpilotMark, score: "4.8", sub: "80+ reviews", accent: "#00b67a", href: "https://www.trustpilot.com", stars: "five" },
 ];
 
-const STATS = [
+const STATS__cms = [
   { Icon: UsersIcon, value: "10K+", label: "Happy Clients" },
   { Icon: StarLineIcon, value: "4.8", suffix: "/5", label: "Average Rating" },
   { Icon: TrendIcon, value: "98%", label: "Client Satisfaction" },
@@ -114,6 +122,7 @@ const STATS = [
 ];
 
 function PlatformCard({ p, i }: { p: Platform; i: number }) {
+  const $t = useCmsText();
   return (
     <motion.li
       initial={{ opacity: 0, y: 36 }}
@@ -127,7 +136,7 @@ function PlatformCard({ p, i }: { p: Platform; i: number }) {
         <p.Mark />
       </span>
       <div className="h-full rounded-2xl border-t-[3px] bg-white px-5 pb-5 pt-14 shadow-[0_22px_44px_-26px_rgba(13,27,51,0.45)] ring-1 ring-slate-100" style={{ borderTopColor: p.accent }}>
-        <h3 className="text-[19px] font-semibold" style={{ color: INK }}>
+        <h3 className="text-h6 font-semibold" style={{ color: INK }}>
           {p.name}
         </h3>
         <p className="mt-3 flex items-center gap-2">
@@ -138,7 +147,7 @@ function PlatformCard({ p, i }: { p: Platform; i: number }) {
             {p.stars === "five" ? Array.from({ length: 5 }).map((_, k) => <StarIcon key={k} size={15} />) : <StarIcon size={20} color="#14a800" />}
           </span>
         </p>
-        <p className="mt-2 text-[13px] text-slate-500">{p.sub}</p>
+        <p className="text-small mt-2 text-slate-500">{p.sub}</p>
         <a
           href={p.href}
           target="_blank"
@@ -146,7 +155,7 @@ function PlatformCard({ p, i }: { p: Platform; i: number }) {
           className="mt-5 flex items-center justify-between rounded-lg border border-slate-200 px-3.5 py-2.5 text-[12.5px] font-medium transition-colors hover:bg-slate-50"
           style={{ color: p.accent === "#17313b" ? INK : p.accent }}
         >
-          View on {p.name}
+          {$t("TestimonialsPlatforms__t4", "View on ")}{p.name}
           <ExternalIcon size={14} color={p.accent === "#17313b" ? INK : p.accent} />
         </a>
       </div>
@@ -171,6 +180,9 @@ function Bubble({ children, className, tilt, delay }: { children: React.ReactNod
 }
 
 export default function TestimonialsPlatforms() {
+  const $t = useCmsText();
+  const PLATFORMS = useCmsData("TestimonialsPlatforms__PLATFORMS", PLATFORMS__cms);
+  const STATS = useCmsData("TestimonialsPlatforms__STATS", STATS__cms);
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#f6f9fc] via-white to-[#f6f9fc] py-16 lg:py-20">
       {/* faint dotted arc sweeping over the cards */}
@@ -182,23 +194,20 @@ export default function TestimonialsPlatforms() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,330px)_1fr] lg:gap-8">
           {/* left copy, with the stars bubble under it */}
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} className="relative lg:pb-28">
-            <motion.p variants={fadeUp} className="flex items-center gap-2 text-[12.5px] font-semibold uppercase tracking-[0.12em]" style={{ color: TEAL }}>
+            <motion.p variants={fadeUp} className="text-caption flex items-center gap-2 font-semibold uppercase tracking-[0.12em]" style={{ color: TEAL }}>
               <ChatIcon size={17} />
-              Loved Across Platforms
-            </motion.p>
-            <motion.h2 variants={fadeUp} className="mt-4 text-[40px] font-bold leading-[1.1] tracking-tight sm:text-[48px]">
+              {rich($t("TestimonialsPlatforms__t5", "Loved Across Platforms"))}</motion.p>
+            <motion.h2 variants={fadeUp} className="text-h2 mt-4 font-bold tracking-tight">
               <span className="block" style={{ color: INK }}>
-                Reviews That
-              </span>
-              <span style={{ color: TEAL }}>Speak for Us</span>
+                {$t("TestimonialsPlatforms__t6", "Reviews That")}</span>
+              <span style={{ color: TEAL }}>{$t("TestimonialsPlatforms__t7", "Speak for Us")}</span>
             </motion.h2>
             <motion.svg variants={fadeUp} className="mt-2" width="180" height="12" viewBox="0 0 180 12" fill="none" aria-hidden>
               <path d="M3 9C60 3 120 2 177 5" stroke={TEAL} strokeWidth="2.5" strokeLinecap="round" />
             </motion.svg>
-            <motion.p variants={fadeUp} className="mt-5 text-[15px] leading-[1.7] text-slate-600">
-              Real feedback from real platforms.
-              <br />
-              See why businesses trust and recommend <span className="font-semibold" style={{ color: TEAL }}>ProManage IT Solutions.</span>
+            <motion.p variants={fadeUp} className="text-body mt-5 text-slate-600">
+              {rich($t("TestimonialsPlatforms__t8", "Real feedback from real platforms."))}<br />
+              {rich($t("TestimonialsPlatforms__t9", "See why businesses trust and recommend "))}<span className="font-semibold" style={{ color: TEAL }}>{$t("TestimonialsPlatforms__t10", "ProManage IT Solutions.")}</span>
             </motion.p>
 
             <Bubble className="left-[10%] top-[calc(100%-80px)] hidden lg:block" tilt="perspective(700px) rotateY(18deg) rotateZ(-8deg)" delay={0.6}>
@@ -269,8 +278,7 @@ export default function TestimonialsPlatforms() {
           className={`${caveat.className} relative mx-auto mt-8 w-fit text-[26px]`}
           style={{ color: INK }}
         >
-          Trusted by businesses. Loved by clients.
-          <svg className="absolute -bottom-1 right-0 h-2 w-1/2" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
+          {rich($t("TestimonialsPlatforms__t11", "Trusted by businesses. Loved by clients."))}<svg className="absolute -bottom-1 right-0 h-2 w-1/2" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
             <path d="M2 6C30 2 70 1 98 4" stroke={TEAL} strokeWidth="1.8" strokeLinecap="round" fill="none" />
           </svg>
         </motion.p>

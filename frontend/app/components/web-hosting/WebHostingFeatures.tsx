@@ -5,9 +5,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Clock, Rocket, Shield, Server, Headphones, ShieldCheck, CloudLightning, HelpCircle } from 'lucide-react';
 import Container from '../shared/Container';
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 // Data for the radial features
-const radialFeatures = [
+const radialFeatures__cms = [
   {
     id: 1,
     title: "Unexpected downtime?",
@@ -62,7 +64,7 @@ const radialFeatures = [
 ];
 
 // Data for bottom features
-const bottomFeatures = [
+const bottomFeatures__cms = [
   {
     icon: <Rocket size={24} className="text-[#0f766e]" strokeWidth={1.5} />,
     title: "Blazing Fast",
@@ -86,6 +88,9 @@ const bottomFeatures = [
 ];
 
 export default function WebHostingFeatures() {
+  const $t = useCmsText();
+  const radialFeatures = useCmsData("WebHostingFeatures__radialFeatures", radialFeatures__cms);
+  const bottomFeatures = useCmsData("WebHostingFeatures__bottomFeatures", bottomFeatures__cms);
   return (
     <section className="pt-36 pb-24 bg-white overflow-x-hidden relative">
       <Container>
@@ -95,20 +100,19 @@ export default function WebHostingFeatures() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[32px] md:text-[40px] font-black text-[#0f2923] leading-[1.2] mb-4"
+            className="text-h2 font-black text-[#0f2923] mb-4"
           >
-            Hosting That Keeps<br />
-            <span className="text-[#0f766e]">Your Website Performing</span>
+            {$t("WebHostingFeatures__t1", "Hosting That Keeps")}<br />
+            <span className="text-[#0f766e]">{$t("WebHostingFeatures__t2", "Your Website Performing")}</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[16px] text-slate-600 font-medium"
+            className="text-body text-slate-600 font-medium"
           >
-            Powerful infrastructure, real human support, and enterprise-grade security — so you can focus on growing your business.
-          </motion.p>
+            {rich($t("WebHostingFeatures__t3", "Powerful infrastructure, real human support, and enterprise-grade security — so you can focus on growing your business."))}</motion.p>
         </div>
 
         {/* Center Illustration with Radial Features */}
@@ -126,8 +130,8 @@ export default function WebHostingFeatures() {
             className="relative z-10 w-full h-[450px] flex items-center justify-center mix-blend-multiply"
           >
             <Image 
-              src="/web-hosting-2.png" 
-              alt="Website Hosting Dashboard"
+              src={$t("WebHostingFeatures__t4", "/web-hosting-2.png")} 
+              alt={$t("WebHostingFeatures__t5", "Website Hosting Dashboard")}
               fill
               className="object-contain drop-shadow-2xl"
               priority
@@ -155,7 +159,7 @@ export default function WebHostingFeatures() {
                 {/* Text */}
                 <div className={`${feature.align}`}>
                   <h4 className="text-[14px] font-bold text-[#0f766e] mb-1">{feature.title}</h4>
-                  <p className="text-[12px] text-slate-600 leading-tight font-medium">{feature.desc}</p>
+                  <p className="text-caption text-slate-600 font-medium">{feature.desc}</p>
                 </div>
               </div>
             </motion.div>
@@ -170,7 +174,7 @@ export default function WebHostingFeatures() {
             viewport={{ once: true }}
             className="relative w-full h-[250px] mix-blend-multiply"
           >
-            <Image src="/web-hosting-2.png" alt="Dashboard" fill className="object-contain" />
+            <Image src={$t("WebHostingFeatures__t6", "/web-hosting-2.png")} alt={$t("WebHostingFeatures__t7", "Dashboard")} fill className="object-contain" />
           </motion.div>
           
           {radialFeatures.map(f => (
@@ -180,7 +184,7 @@ export default function WebHostingFeatures() {
                 </div>
                 <div>
                   <h4 className="text-[14px] font-bold text-[#0f766e] mb-1">{f.title}</h4>
-                  <p className="text-[13px] text-slate-600 font-medium">{f.desc}</p>
+                  <p className="text-small text-slate-600 font-medium">{f.desc}</p>
                 </div>
              </div>
           ))}
@@ -201,7 +205,7 @@ export default function WebHostingFeatures() {
                 </div>
                 <div>
                   <h4 className="text-[15px] font-bold text-[#0f2923] mb-1">{item.title}</h4>
-                  <p className="text-[13px] text-slate-500 leading-relaxed font-medium">{item.desc}</p>
+                  <p className="text-small text-slate-500 font-medium">{item.desc}</p>
                 </div>
               </div>
             ))}

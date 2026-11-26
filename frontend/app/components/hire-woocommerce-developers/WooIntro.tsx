@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat } from "next/font/google";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { WooBadge } from "./WooHireHero";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["500", "600"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -55,6 +56,7 @@ const BLOB =
 const SALES_BARS = [28, 42, 36, 58, 76];
 
 function IntroVisual() {
+  const $t = useCmsText();
   const { ref, scale } = useFitScale(CANVAS_W);
   return (
     <div ref={ref} className="relative w-full" style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}>
@@ -80,8 +82,8 @@ function IntroVisual() {
           <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-[#eef3f5] to-slate-200" />
           <div className="absolute left-[20px] top-[48px] w-[560px]">
             <Image
-              src="/woo-comm-image1.png"
-              alt="WooCommerce developer working on an online store"
+              src={$t("WooIntro__t1", "/woo-comm-image1.png")}
+              alt={$t("WooIntro__t2", "WooCommerce developer working on an online store")}
               width={588}
               height={424}
               sizes="560px"
@@ -116,18 +118,14 @@ function IntroVisual() {
           transition={{ duration: 0.6, ease: EASE, delay: 0.45 }}
           className="absolute left-[78px] top-[84px] w-[150px] rounded-xl border border-slate-100 bg-white px-3.5 py-3 shadow-[0_18px_35px_-18px_rgba(15,40,60,0.4)]"
         >
-          <p className="flex items-start gap-2 text-[12px] font-bold leading-tight" style={{ color: NAVY }}>
+          <p className="text-caption flex items-start gap-2 font-bold" style={{ color: NAVY }}>
             <span className="mt-px"><CartIcon /></span>
-            Built For
-            <br />
-            Performance
-          </p>
+            {rich($t("WooIntro__t3", "Built For"))}<br />
+            {rich($t("WooIntro__t4", "Performance"))}</p>
           <div className="mt-2 flex items-end justify-between gap-2">
             <p className="text-[10px] leading-snug text-slate-500">
-              High speed. Better
-              <br />
-              experience. More sales.
-            </p>
+              {rich($t("WooIntro__t5", "High speed. Better"))}<br />
+              {rich($t("WooIntro__t6", "experience. More sales."))}</p>
             <TrendIcon size={16} />
           </div>
         </motion.div>
@@ -140,11 +138,11 @@ function IntroVisual() {
           transition={{ duration: 0.7, ease: EASE, delay: 0.6 }}
           className="absolute left-[340px] top-[322px] w-[220px] rounded-2xl border border-slate-100 bg-white px-4 py-3.5 shadow-[0_25px_45px_-18px_rgba(15,40,60,0.45)]"
         >
-          <p className="text-[11px] font-medium text-slate-500">Sales This Month</p>
+          <p className="text-[11px] font-medium text-slate-500">{rich($t("WooIntro__t7", "Sales This Month"))}</p>
           <div className="mt-1 flex items-end justify-between">
             <div>
-              <p className="text-[22px] font-extrabold leading-none" style={{ color: NAVY }}>$48,750</p>
-              <p className="mt-1.5 text-[13px] font-bold" style={{ color: TEAL }}>+28.5%</p>
+              <p className="text-body font-extrabold" style={{ color: NAVY }}>{rich($t("WooIntro__t8", "$48,750"))}</p>
+              <p className="text-small mt-1.5 font-bold" style={{ color: TEAL }}>{rich($t("WooIntro__t9", "+28.5%"))}</p>
             </div>
             <div className="flex h-[78px] items-end gap-1.5">
               {SALES_BARS.map((h, i) => (
@@ -167,6 +165,7 @@ function IntroVisual() {
 }
 
 export default function WooIntro() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full overflow-hidden bg-white pt-14 sm:pt-16 lg:pt-20 pb-6 sm:pb-8">
       <Container>
@@ -188,56 +187,45 @@ export default function WooIntro() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-teal-100">
                 <CartIcon size={12} />
               </span>
-              WooCommerce Experts You Can Trust
-            </span>
+              {$t("WooIntro__t10", "WooCommerce Experts You Can Trust")}</span>
 
             <h2
-              className="mt-5 text-[34px] sm:text-[42px] lg:text-[46px] font-extrabold leading-[1.12] tracking-tight"
+              className="text-h2 mt-5 font-extrabold tracking-tight"
               style={{ color: NAVY }}
             >
-              Dedicated
+              {$t("WooIntro__t11", "Dedicated")}<br />
+              <span style={{ color: TEAL }}>{$t("WooIntro__t12", "Woo-Commerce")}</span>
               <br />
-              <span style={{ color: TEAL }}>Woo-Commerce</span>
-              <br />
-              Developers
-            </h2>
+              {$t("WooIntro__t13", "Developers")}</h2>
             <span className="mt-5 block h-[3px] w-14 rounded-full" style={{ backgroundColor: TEAL }} />
 
-            <p className="mt-6 max-w-[520px] text-[14.5px] leading-[1.8] text-slate-600">
-              Do you have a WordPress website that you want to convert into an online store? Have you heard a lot about
-              ecommerce plugin WooCommerce and have a desire to use it to add ecommerce functionality to your website? If
-              yes, then you have come to the right place.
-            </p>
-            <p className="mt-4 max-w-[520px] text-[14.5px] leading-[1.8] text-slate-600">
-              We are <span className="font-semibold" style={{ color: TEAL }}>ProManage IT Solution</span>, the most respected
-              name in the world of WooCommerce.
-            </p>
+            <p className="text-small mt-6 max-w-[520px] text-slate-600">
+              {rich($t("WooIntro__t14", "Do you have a WordPress website that you want to convert into an online store? Have you heard a lot about ecommerce plugin WooCommerce and have a desire to use it to add ecommerce functionality to your website? If yes, then you have come to the right place."))}</p>
+            <p className="text-small mt-4 max-w-[520px] text-slate-600">
+              {rich($t("WooIntro__t15", "We are "))}<span className="font-semibold" style={{ color: TEAL }}>{$t("WooIntro__t16", "ProManage IT Solution")}</span>{rich($t("WooIntro__t17", ", the most respected name in the world of WooCommerce."))}</p>
 
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <Link
-                href="/contact"
+                href={$t("WooIntro__t18", "/contact")}
                 className="group inline-flex items-center gap-4 rounded-full py-2 pl-2 pr-7 text-[13.5px] font-bold uppercase tracking-[0.06em] text-white shadow-[0_15px_30px_-12px_rgba(13,148,136,0.7)] transition hover:-translate-y-0.5"
                 style={{ background: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL})` }}
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
                   <ArrowIcon />
                 </span>
-                Get My Free Proposal
-              </Link>
+                {$t("WooIntro__t19", "Get My Free Proposal")}</Link>
               <div className="flex items-center gap-2.5">
                 <svg width="30" height="14" viewBox="0 0 30 14" fill="none" aria-hidden>
                   <path d="M2 7h26M7 2 2 7l5 5M23 2l5 5-5 5" stroke={NAVY} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <p className={`${caveat.className} text-[19px] leading-[1.1]`} style={{ color: NAVY }}>
-                  Let&apos;s build your store
-                  <br />
+                <p className={`text-body ${caveat.className} `} style={{ color: NAVY }}>
+                  {rich($t("WooIntro__t20", "Let's build your store"))}<br />
                   the{" "}
                   <span className="relative inline-block">
                     right
                     <span className="absolute -bottom-0.5 left-0 h-[2px] w-full rounded-full" style={{ backgroundColor: TEAL }} />
                   </span>{" "}
-                  way!
-                </p>
+                  {rich($t("WooIntro__t21", "way!"))}</p>
               </div>
             </div>
           </motion.div>

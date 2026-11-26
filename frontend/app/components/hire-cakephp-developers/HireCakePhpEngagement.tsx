@@ -7,6 +7,9 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import DottedMap from "dotted-map/without-countries";
 import Container from "../shared/Container";
 import WORLD_DOT_MAP from "../shared/worldDotMap";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
+import { goToThankYou } from "@/lib/forms";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -50,7 +53,7 @@ const Tick = () => (
 );
 
 /* ------------------------------ data ------------------------------ */
-const PERKS = [
+const PERKS__cms = [
   {
     label: "No Hidden Costs",
     icon: (
@@ -80,7 +83,7 @@ const PERKS = [
   },
 ];
 
-const CHIPS = [
+const CHIPS__cms = [
   {
     label: "CakePHP\nExperts",
     pos: "left-[4%] top-[8%]",
@@ -107,7 +110,7 @@ const CHIPS = [
   },
 ];
 
-const MODELS = [
+const MODELS__cms = [
   {
     num: "01",
     title: "Dedicated Developer",
@@ -155,13 +158,13 @@ const MODELS = [
   },
 ];
 
-const PROMISES = [
+const PROMISES__cms = [
   { t: "No obligation, just expert advice", icon: (<svg {...I} className="h-4 w-4"><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8-7.5 9.5-4.3-1.5-7.5-5-7.5-9.5V6L12 3z" /><path d="M8.8 12.2l2.2 2.2 4.2-4.4" /></svg>) },
   { t: "Strictly confidential information", icon: (<svg {...I} className="h-4 w-4"><circle cx="12" cy="12" r="3" /><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" /></svg>) },
   { t: "We respect your time", icon: (<svg {...I} className="h-4 w-4"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg>) },
 ];
 
-const SELECT = ["Dedicated Developer", "Dedicated Team", "Project-Based", "Not sure yet"];
+const SELECT__cms = ["Dedicated Developer", "Dedicated Team", "Project-Based", "Not sure yet"];
 
 /* ------------------------------ form ------------------------------ */
 type Status = "idle" | "submitting" | "success" | "error";
@@ -179,6 +182,9 @@ const inputCls =
   "w-full rounded-md border border-[#eddcdc] bg-white py-2.5 pl-9 pr-3 text-[12.5px] text-slate-700 outline-none transition-[border-color,box-shadow] placeholder:text-slate-400 focus:border-[#d92b32] focus:shadow-[0_0_0_3px_rgba(217,43,50,0.12)]";
 
 function ContactForm() {
+  const $t = useCmsText();
+  const PROMISES = useCmsData("HireCakePhpEngagement__PROMISES", PROMISES__cms);
+  const SELECT = useCmsData("HireCakePhpEngagement__SELECT", SELECT__cms);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
@@ -216,13 +222,14 @@ function ContactForm() {
       const res = await fetch(`${API_URL}/api/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idea, email, source: "hire-cakephp-developers", website: get("website") }),
+        body: JSON.stringify({ idea, email, source: "hire-cakephp-developers", website: get("pm_trap_field") }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
       setStatus("success");
+      goToThankYou("hire-cakephp");
       form.reset();
     } catch (err) {
       setStatus("error");
@@ -237,27 +244,27 @@ function ContactForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="contents">
       {/* honeypot: real users never see this */}
-      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
+      <input type="text" name="pm_trap_field" tabIndex={-1} autoComplete="new-password" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
 
       <div>
         <div className="grid gap-3 sm:grid-cols-2">
           <Field icon={<svg {...I} className="h-4 w-4"><circle cx="12" cy="8.5" r="3.5" /><path d="M5 20c.5-3.5 3.3-5.5 7-5.5s6.5 2 7 5.5" /></svg>}>
-            <input name="name" placeholder="Full Name" autoComplete="name" className={inputCls} />
+            <input name="name" placeholder={$t("HireCakePhpEngagement__t1", "Full Name")} autoComplete="name" className={inputCls} />
           </Field>
           <Field icon={<svg {...I} className="h-4 w-4"><rect x="3.5" y="5.5" width="17" height="13" rx="2" /><path d="M4 7l8 6 8-6" /></svg>}>
-            <input name="email" type="email" placeholder="Work Email" autoComplete="email" className={inputCls} />
+            <input name="email" type="email" placeholder={$t("HireCakePhpEngagement__t2", "Work Email")} autoComplete="email" className={inputCls} />
           </Field>
           <Field icon={<svg {...I} className="h-4 w-4"><rect x="4.5" y="4" width="15" height="16.5" rx="1.5" /><path d="M8.5 8h2M13.5 8h2M8.5 12h2M13.5 12h2M10 20.5v-3h4v3" /></svg>}>
-            <input name="company" placeholder="Company Name" autoComplete="organization" className={inputCls} />
+            <input name="company" placeholder={$t("HireCakePhpEngagement__t3", "Company Name")} autoComplete="organization" className={inputCls} />
           </Field>
           <Field icon={<svg {...I} className="h-4 w-4"><path d="M6.5 4h3l1.5 4-2 1.3a10 10 0 005.7 5.7L16 13l4 1.5v3a2 2 0 01-2.2 2A15 15 0 014.5 6.2 2 2 0 016.5 4z" /></svg>}>
-            <input name="phone" type="tel" placeholder="Phone Number" autoComplete="tel" className={inputCls} />
+            <input name="phone" type="tel" placeholder={$t("HireCakePhpEngagement__t4", "Phone Number")} autoComplete="tel" className={inputCls} />
           </Field>
         </div>
         <div className="mt-3">
           <Field icon={<svg {...I} className="h-4 w-4"><circle cx="12" cy="12" r="8.5" /><path d="M12 8v4l2.5 1.5" /></svg>}>
             <select name="hire" defaultValue="" className={`${inputCls} appearance-none text-slate-500`}>
-              <option value="" disabled>I want to hire for</option>
+              <option value="" disabled>{$t("HireCakePhpEngagement__t5", "I want to hire for")}</option>
               {SELECT.map((s) => (
                 <option key={s} value={s}>{s}</option>
               ))}
@@ -269,11 +276,11 @@ function ContactForm() {
           name="project"
           rows={3}
           maxLength={300}
-          placeholder="Tell us about your project..."
+          placeholder={$t("HireCakePhpEngagement__t6", "Tell us about your project...")}
           className="mt-3 w-full resize-none rounded-md border border-[#eddcdc] bg-white px-3.5 py-2.5 text-[12.5px] text-slate-700 outline-none transition-[border-color,box-shadow] placeholder:text-slate-400 focus:border-[#d92b32] focus:shadow-[0_0_0_3px_rgba(217,43,50,0.12)]"
         />
         <p role="status" aria-live="polite" className={`mt-2 min-h-[1.25rem] text-[12px] font-medium ${status === "error" ? "text-[#d92b32]" : "text-emerald-600"}`}>
-          {status === "success" ? "Thank you! We'll get back to you within 24 hours." : message}
+          {status === "success" ? $t("HireCakePhpEngagement__t7", "Thank you! We'll get back to you within 24 hours.") : message}
         </p>
       </div>
 
@@ -302,6 +309,7 @@ function ContactForm() {
 }
 
 function SubmitButton({ sending }: { sending: boolean }) {
+  const $t = useCmsText();
   return (
     <button
       type="submit"
@@ -310,7 +318,7 @@ function SubmitButton({ sending }: { sending: boolean }) {
       style={{ background: RED }}
     >
       <span aria-hidden className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-      <span className="relative">{sending ? "Sending…" : "Get Free Consultation"}</span>
+      <span className="relative">{sending ? $t("HireCakePhpEngagement__t8", "Sending…") : $t("HireCakePhpEngagement__t9", "Get Free Consultation")}</span>
       <span className="relative transition-transform duration-300 group-hover:translate-x-1"><Arrow /></span>
     </button>
   );
@@ -318,6 +326,10 @@ function SubmitButton({ sending }: { sending: boolean }) {
 
 /* ------------------------------ section ------------------------------ */
 export default function HireCakePhpEngagement() {
+  const $t = useCmsText();
+  const PERKS = useCmsData("HireCakePhpEngagement__PERKS", PERKS__cms);
+  const CHIPS = useCmsData("HireCakePhpEngagement__CHIPS", CHIPS__cms);
+  const MODELS = useCmsData("HireCakePhpEngagement__MODELS", MODELS__cms);
   const reduce = useReducedMotion();
 
   return (
@@ -332,22 +344,18 @@ export default function HireCakePhpEngagement() {
               className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
               style={{ color: RED }}
             >
-              Engagement Models
-              <i aria-hidden className="h-px w-9" style={{ background: RED, opacity: 0.45 }} />
+              {$t("HireCakePhpEngagement__t10", "Engagement Models")}<i aria-hidden className="h-px w-9" style={{ background: RED, opacity: 0.45 }} />
             </motion.span>
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="mt-5 font-playfair text-[34px] font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[50px]"
+              className="text-h2 mt-5 font-playfair font-bold tracking-tight"
               style={{ color: INK }}
             >
-              Hire the way
-              <br />
-              your <span style={{ color: RED }}>project</span> needs.
-            </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="mt-4 max-w-sm text-[14.5px] leading-relaxed text-slate-600">
-              Flexible engagement models to match your goals, timeline and budget.
-            </motion.p>
+              {$t("HireCakePhpEngagement__t11", "Hire the way")}<br />
+              your <span style={{ color: RED }}>project</span> {$t("HireCakePhpEngagement__t12", "needs.")}</motion.h2>
+            <motion.p variants={fadeUp} custom={2} className="text-small mt-4 max-w-sm text-slate-600">
+              {rich($t("HireCakePhpEngagement__t13", "Flexible engagement models to match your goals, timeline and budget."))}</motion.p>
             <motion.ul variants={fadeUp} custom={3} className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
               {PERKS.map((p) => (
                 <li key={p.label} className="flex items-center gap-2 text-[12px] font-medium text-slate-700">
@@ -455,8 +463,7 @@ export default function HireCakePhpEngagement() {
                   animate={reduce ? undefined : { y: [0, -2, 0] }}
                   transition={{ duration: 2.4, repeat: Infinity }}
                 >
-                  Most Popular
-                </motion.span>
+                  {$t("HireCakePhpEngagement__t14", "Most Popular")}</motion.span>
               )}
               <div className="flex gap-5">
                 <span className="grid h-[64px] w-[64px] shrink-0 place-items-center rounded-full border border-[#f3d3d5] bg-[#fff4f4] text-[#d92b32] transition-colors duration-300 group-hover:bg-[#d92b32] group-hover:text-white">
@@ -466,8 +473,8 @@ export default function HireCakePhpEngagement() {
                   <span className="text-[26px] font-light leading-none text-slate-300 transition-colors group-hover:text-[#e9a3a6]" style={m.popular ? { color: RED } : undefined}>
                     {m.num}
                   </span>
-                  <h3 className="mt-1 font-playfair text-[19px] font-bold leading-tight" style={{ color: INK }}>{m.title}</h3>
-                  <p className="mt-2 text-[12.5px] leading-relaxed text-slate-500">{m.text}</p>
+                  <h3 className="text-h6 mt-1 font-playfair font-bold" style={{ color: INK }}>{m.title}</h3>
+                  <p className="text-caption mt-2 text-slate-500">{m.text}</p>
                 </div>
               </div>
               <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-2.5">
@@ -478,7 +485,7 @@ export default function HireCakePhpEngagement() {
                   </li>
                 ))}
               </ul>
-              <Link href="#cakephp-form" className="group/l mt-auto inline-flex items-center gap-2 pt-6 text-[12.5px] font-semibold" style={{ color: RED }}>
+              <Link href={$t("HireCakePhpEngagement__t15", "#cakephp-form")} className="group/l mt-auto inline-flex items-center gap-2 pt-6 text-[12.5px] font-semibold" style={{ color: RED }}>
                 {m.cta}
                 <span className="transition-transform duration-300 group-hover/l:translate-x-1.5"><Arrow cls="h-3.5 w-3.5" /></span>
               </Link>
@@ -516,18 +523,16 @@ export default function HireCakePhpEngagement() {
 
           <div className="relative grid gap-8 lg:grid-cols-[0.8fr_1.25fr_0.85fr] lg:gap-10">
             <div>
-              <h3 className="font-playfair text-[24px] font-bold leading-[1.2] sm:text-[27px]" style={{ color: INK }}>
-                Ready to build something
-                <br />
-                amazing with <span style={{ color: RED }}>CakePHP?</span>
+              <h3 className="text-h5 font-playfair font-bold" style={{ color: INK }}>
+                {$t("HireCakePhpEngagement__t16", "Ready to build something")}<br />
+                {$t("HireCakePhpEngagement__t17", "amazing with ")}<span style={{ color: RED }}>{$t("HireCakePhpEngagement__t18", "CakePHP?")}</span>
               </h3>
-              <p className="mt-3 max-w-[260px] text-[12.5px] leading-relaxed text-slate-500">
-                Let&apos;s discuss your idea and create a solution that drives real impact.
-              </p>
+              <p className="text-caption mt-3 max-w-[260px] text-slate-500">
+                {rich($t("HireCakePhpEngagement__t19", "Let's discuss your idea and create a solution that drives real impact."))}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {[
-                  { t: "Response within", b: "24 Hours", icon: (<svg {...I}><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg>) },
-                  { t: "Free Consultation", b: "& Project Estimate", icon: (<svg {...I}><path d="M4 6.5a2 2 0 012-2h8a2 2 0 012 2V11a2 2 0 01-2 2H9l-3 2.5V13a2 2 0 01-2-2V6.5z" /><path d="M17 9h1a2 2 0 012 2v4a2 2 0 01-2 2h-.5v2.5L14.5 17H11" /></svg>) },
+                  { t: $t("HireCakePhpEngagement__t20", "Response within"), b: $t("HireCakePhpEngagement__t21", "24 Hours"), icon: (<svg {...I}><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg>) },
+                  { t: $t("HireCakePhpEngagement__t22", "Free Consultation"), b: $t("HireCakePhpEngagement__t23", "& Project Estimate"), icon: (<svg {...I}><path d="M4 6.5a2 2 0 012-2h8a2 2 0 012 2V11a2 2 0 01-2 2H9l-3 2.5V13a2 2 0 01-2-2V6.5z" /><path d="M17 9h1a2 2 0 012 2v4a2 2 0 01-2 2h-.5v2.5L14.5 17H11" /></svg>) },
                 ].map((c) => (
                   <div key={c.t} className="flex items-center gap-2.5 rounded-lg bg-white/80 px-3 py-2 ring-1 ring-[#f3dcdc]">
                     <span className="grid h-8 w-8 place-items-center rounded-full bg-[#fdeeee] text-[#d92b32]">{c.icon}</span>

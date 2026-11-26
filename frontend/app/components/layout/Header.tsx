@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Container from "../shared/Container";
-import { ServicesMegaPanel, ServicesMobileList } from "./ServicesMegaMenu";
+import { groupsFromCms, ServicesMegaPanel, ServicesMobileList, type CmsNavItem } from "./ServicesMegaMenu";
 import {
   PhoneIcon,
   MailIcon,
@@ -21,7 +21,7 @@ import {
   CloseIcon,
 } from "../shared/icons";
 
-const navLinks = [
+const DEFAULT_LINKS: { label: string; href: string; dropdown?: boolean }[] = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services", dropdown: true },
   { label: "Portfolio", href: "/portfolio" },
@@ -33,8 +33,28 @@ const navLinks = [
 
 const BRAND = "#0b3b35";
 
-export default function Header() {
+export type HeaderCms = {
+  header?: CmsNavItem[] | null;
+  services?: CmsNavItem[] | null;
+  topBar?: Record<string, string | undefined> | null;
+  cta?: { label?: string; href?: string } | null;
+  logo?: string | null;
+};
+
+const telHref = (phone: string) => `tel:${phone.replace(/[^+\d]/g, "")}`;
+
+/** Menu, top bar and CTA come from the CMS (Navigation + Settings); built-in values are the fallback. */
+export default function Header({ cms }: { cms?: HeaderCms } = {}) {
   const pathname = usePathname();
+  const navLinks = cms?.header?.length
+    ? cms.header.map((i) => ({ label: i.label, href: i.href || "/", dropdown: i.href === "/services" || i.label.toLowerCase() === "services" }))
+    : DEFAULT_LINKS;
+  const groups = groupsFromCms(cms?.services) ?? undefined;
+  const tb = cms?.topBar ?? {};
+  const phone = tb.phone || "(555) 123-4567";
+  const email = tb.email || "hello@promanage.com";
+  const cta = { label: cms?.cta?.label || "Get Free Quote", href: cms?.cta?.href || "/contact" };
+  const logo = cms?.logo || "/pmits-text-logo4-2.webp";
   // "open" is stored as the path it was opened on, so navigating anywhere closes both menus without an effect
   const [mobileOpenAt, setMobileOpenAt] = useState<string | null>(null);
   const [servicesOpenAt, setServicesOpenAt] = useState<string | null>(null);
@@ -94,22 +114,22 @@ export default function Header() {
       <div className="hidden text-white lg:block" style={{ backgroundColor: BRAND }}>
         <Container className="flex items-center justify-between py-2 text-xs">
           <div className="flex items-center gap-4">
-            <a href="tel:+15551234567" className="flex items-center gap-1.5 text-white/90 transition-colors hover:text-white">
-              <PhoneIcon /> (555) 123-4567
+            <a href={telHref(phone)} className="flex items-center gap-1.5 text-white/90 transition-colors hover:text-white">
+              <PhoneIcon /> {phone}
             </a>
             <span className="h-3 w-px bg-white/20" />
-            <a href="mailto:hello@promanage.com" className="flex items-center gap-1.5 text-white/90 transition-colors hover:text-white">
-              <MailIcon /> hello@promanage.com
+            <a href={`mailto:${email}`} className="flex items-center gap-1.5 text-white/90 transition-colors hover:text-white">
+              <MailIcon /> {email}
             </a>
             <span className="h-3 w-px bg-white/20" />
             <span className="flex items-center gap-1.5 text-white/90">
-              <PinIcon /> New York, NY
+              <PinIcon /> {tb.location || "New York, NY"}
             </span>
           </div>
 
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 text-white/90">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" /> We&apos;re online now!
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" /> {tb.onlineText || "We're online now!"}
             </span>
             <span className="flex items-center gap-1">
               <span className="flex items-center gap-0.5 text-amber-400">
@@ -117,16 +137,16 @@ export default function Header() {
                   <StarIcon key={i} />
                 ))}
               </span>
-              <span className="text-white/90">4.9/5 (200+ reviews)</span>
+              <span className="text-white/90">{tb.ratingText || "4.9/5 (200+ reviews)"}</span>
             </span>
             <span className="flex items-center gap-1.5 text-white/90">
-              <ClockIcon /> Free 30-min consultation
+              <ClockIcon /> {tb.consultationText || "Free 30-min consultation"}
             </span>
             <Link
-              href="/contact"
+              href={tb.chatHref || "/contact"}
               className="flex items-center gap-1.5 rounded-full border border-white/30 px-3 py-1 transition-colors hover:bg-white/10"
             >
-              <ChatIcon /> Live Chat
+              <ChatIcon /> {tb.chatLabel || "Live Chat"}
             </Link>
           </div>
         </Container>
@@ -137,7 +157,7 @@ export default function Header() {
         <Container className="flex items-center justify-between py-4">
           <Link href="/" className="shrink-0">
             <Image
-              src="/pmits-text-logo4-2.webp"
+              src={logo}
               alt="ProManage IT Solutions"
               width={215}
               height={60}
@@ -183,7 +203,7 @@ export default function Header() {
                         className="absolute left-1/2 top-full z-50 w-max max-w-[calc(100vw-2rem)] -translate-x-1/2 pt-2"
                       >
                         <div className="rounded-2xl border border-black/5 bg-white shadow-[0_30px_60px_-24px_rgba(11,59,53,0.4)]">
-                          <ServicesMegaPanel pathname={pathname} onNavigate={closeAll} />
+                          <ServicesMegaPanel pathname={pathname} onNavigate={closeAll} groups={groups} />
                         </div>
                       </motion.div>
                     )}
@@ -203,11 +223,11 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/quote"
+              href={cta.href}
               className="hidden items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 lg:flex"
               style={{ backgroundColor: BRAND }}
             >
-              <BoltIcon /> Get Free Quote <ArrowIcon />
+              <BoltIcon /> {cta.label} <ArrowIcon />
             </Link>
             <button
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-black/10 text-zinc-700 lg:hidden"
@@ -247,7 +267,7 @@ export default function Header() {
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                       >
-                        <ServicesMobileList pathname={pathname} onNavigate={closeAll} />
+                        <ServicesMobileList pathname={pathname} onNavigate={closeAll} groups={groups} />
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -265,21 +285,21 @@ export default function Header() {
             )}
 
             <div className="mt-3 flex flex-col gap-2 border-t border-black/5 pt-3 text-sm text-zinc-600">
-              <a href="tel:+15551234567" className="flex items-center gap-2">
-                <PhoneIcon /> (555) 123-4567
+              <a href={telHref(phone)} className="flex items-center gap-2">
+                <PhoneIcon /> {phone}
               </a>
-              <a href="mailto:hello@promanage.com" className="flex items-center gap-2">
-                <MailIcon /> hello@promanage.com
+              <a href={`mailto:${email}`} className="flex items-center gap-2">
+                <MailIcon /> {email}
               </a>
             </div>
 
             <Link
-              href="/quote"
+              href={cta.href}
               className="mt-3 flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
               style={{ backgroundColor: BRAND }}
               onClick={() => setMobileOpen(false)}
             >
-              <BoltIcon /> Get Free Quote
+              <BoltIcon /> {cta.label}
             </Link>
           </nav>
           </Container>

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -27,9 +29,9 @@ const CheckCircleIcon = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
-const TRUST_BADGES = ["30-min strategy call", "No obligation", "Growth-focused approach"];
+const TRUST_BADGES__cms = ["30-min strategy call", "No obligation", "Growth-focused approach"];
 
-const HIGHLIGHTS = ["New In", "Merch", "Story", "Reviews", "Events"];
+const HIGHLIGHTS__cms = ["New In", "Merch", "Story", "Reviews", "Events"];
 // Product creatives already in /public. 7 images so that, together, the phone's display + all 6
 // peek cards behind it (7 visible slots total) each show a distinct photo with no repeats,
 // however the slideshow's `activeIndex` happens to line them up.
@@ -42,7 +44,7 @@ const GRID_IMAGES = [
   "/product6.webp",
   "/product7.webp",
 ];
-const POST_TILES = [...GRID_IMAGES, "/content-lifestyle.jpg", "/content-ugc.jpg"];
+const POST_TILES__cms = [...GRID_IMAGES, "/content-lifestyle.jpg", "/content-ugc.jpg"];
 
 // A coded (not photographed) phone screen showing a generic Instagram-profile-style layout —
 // placeholder "yourbrand" text with a real (already-licensed) image grid for the posts.
@@ -55,6 +57,9 @@ function ProfileScreen({
   onTapHero: () => void;
   zoomTransitionS: number;
 }) {
+  const $t = useCmsText();
+  const HIGHLIGHTS = useCmsData("SocialMediaMarketingFinalCTA__HIGHLIGHTS", HIGHLIGHTS__cms);
+  const POST_TILES = useCmsData("SocialMediaMarketingFinalCTA__POST_TILES", POST_TILES__cms);
   return (
     <div className="flex h-full flex-col px-3 pt-8 pb-2 text-[9px]">
       <div className="flex items-center justify-between mb-3">
@@ -67,9 +72,9 @@ function ProfileScreen({
       </div>
 
       <div className="flex items-center gap-2.5 mb-2.5">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white font-bold text-[11px]" style={{ backgroundColor: NAVY }}>B</span>
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white font-bold text-[11px]" style={{ backgroundColor: NAVY }}>{$t("SocialMediaMarketingFinalCTA__t1", "B")}</span>
         <div className="flex flex-1 justify-between text-center">
-          {[["872", "Posts"], ["28.6K", "Followers"], ["129", "Following"]].map(([n, l]) => (
+          {[[$t("SocialMediaMarketingFinalCTA__t2", "872"), $t("SocialMediaMarketingFinalCTA__t3", "Posts")], [$t("SocialMediaMarketingFinalCTA__t4", "28.6K"), $t("SocialMediaMarketingFinalCTA__t5", "Followers")], [$t("SocialMediaMarketingFinalCTA__t6", "129"), $t("SocialMediaMarketingFinalCTA__t7", "Following")]].map(([n, l]) => (
             <div key={l}>
               <p className="font-bold leading-tight" style={{ color: NAVY }}>{n}</p>
               <p className="text-slate-400 text-[7px] leading-tight">{l}</p>
@@ -79,8 +84,8 @@ function ProfileScreen({
       </div>
 
       <div className="flex gap-1.5 mb-3">
-        <span className="flex-1 rounded-md py-1 text-center font-semibold text-white text-[8px]" style={{ backgroundColor: TEAL }}>Follow</span>
-        <span className="flex-1 rounded-md border border-slate-300 py-1 text-center font-semibold text-[8px]" style={{ color: NAVY }}>Message</span>
+        <span className="flex-1 rounded-md py-1 text-center font-semibold text-white text-[8px]" style={{ backgroundColor: TEAL }}>{$t("SocialMediaMarketingFinalCTA__t8", "Follow")}</span>
+        <span className="flex-1 rounded-md border border-slate-300 py-1 text-center font-semibold text-[8px]" style={{ color: NAVY }}>{$t("SocialMediaMarketingFinalCTA__t9", "Message")}</span>
       </div>
 
       <div className="flex justify-between mb-3">
@@ -158,6 +163,8 @@ function useIsMobile() {
 }
 
 export default function SocialMediaMarketingFinalCTA() {
+  const $t = useCmsText();
+  const TRUST_BADGES = useCmsData("SocialMediaMarketingFinalCTA__TRUST_BADGES", TRUST_BADGES__cms);
   const isDesktop = useIsDesktop();
   const isMobile = useIsMobile();
   const [zoomed, setZoomed] = useState(false);
@@ -206,30 +213,25 @@ export default function SocialMediaMarketingFinalCTA() {
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
             <span className="w-6 h-[2px]" style={{ backgroundColor: TEAL }} />
             <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              Ready To Own Attention?
-            </span>
+              {$t("SocialMediaMarketingFinalCTA__t10", "Ready To Own Attention?")}</span>
           </motion.div>
 
-          <motion.h2 variants={fadeUp} className="font-serif text-3xl md:text-[42px] leading-tight font-bold" style={{ color: NAVY }}>
-            The Next Brand
-            <br />
-            Everyone Talks About
-            <br />
-            Could Be <span style={{ color: TEAL }}>Yours.</span>
+          <motion.h2 variants={fadeUp} className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
+            {$t("SocialMediaMarketingFinalCTA__t11", "The Next Brand")}<br />
+            {$t("SocialMediaMarketingFinalCTA__t12", "Everyone Talks About")}<br />
+            {$t("SocialMediaMarketingFinalCTA__t13", "Could Be ")}<span style={{ color: TEAL }}>{$t("SocialMediaMarketingFinalCTA__t14", "Yours.")}</span>
           </motion.h2>
 
-          <motion.p variants={fadeUp} className="text-sm md:text-base text-slate-600 leading-relaxed mt-4 max-w-md">
-            Let&apos;s build a social media presence that gets attention, builds trust and drives real business results.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body text-slate-600 mt-4 max-w-md">
+            {rich($t("SocialMediaMarketingFinalCTA__t15", "Let's build a social media presence that gets attention, builds trust and drives real business results."))}</motion.p>
 
           <motion.div variants={fadeUp} className="mt-7">
             <Link
-              href="/contact"
+              href={$t("SocialMediaMarketingFinalCTA__t16", "/contact")}
               className="group inline-flex items-center gap-2.5 rounded-lg px-6 py-3.5 text-[14px] font-semibold text-white shadow-lg shadow-teal-900/15 transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Let&apos;s Grow Your Brand
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+              {$t("SocialMediaMarketingFinalCTA__t17", "Let's Grow Your Brand")}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>

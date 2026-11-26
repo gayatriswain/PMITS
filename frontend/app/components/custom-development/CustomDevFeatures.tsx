@@ -2,40 +2,44 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Puzzle, Link, Sliders, BarChart, Send, ShieldCheck, Lock, CheckCircle, Network, Palette, Settings, Database, BrainCircuit, LayoutList } from 'lucide-react';
+import { Puzzle, Link as LinkIcon, Sliders, BarChart, Send, ShieldCheck, Lock, CheckCircle, Network, Palette, Settings, Database, BrainCircuit, LayoutList } from 'lucide-react';
 import Image from 'next/image';
+import { useCmsText } from "@/components/cms/SectionContent";
+import NextLink from "next/link";
+import { rich } from "@/components/cms/rich";
 
 const CustomDevFeatures = () => {
+  const $t = useCmsText();
   const features = [
     {
       icon: <Puzzle className="w-6 h-6 text-teal-600" />,
-      title: "Custom Features",
-      desc: "Only the features you need, built the way your business works."
+      title: $t("CustomDevFeatures__t1", "Custom Features"),
+      desc: $t("CustomDevFeatures__t2", "Only the features you need, built the way your business works.")
     },
     {
-      icon: <Link className="w-6 h-6 text-teal-600" />,
-      title: "Custom Design",
-      desc: "UI/UX that reflects your brand and delivers a seamless experience."
+      icon: <LinkIcon className="w-6 h-6 text-teal-600" />,
+      title: $t("CustomDevFeatures__t3", "Custom Design"),
+      desc: $t("CustomDevFeatures__t4", "UI/UX that reflects your brand and delivers a seamless experience.")
     },
     {
       icon: <Sliders className="w-6 h-6 text-teal-600" />,
-      title: "Custom Workflows",
-      desc: "Automate and streamline processes built around your operations."
+      title: $t("CustomDevFeatures__t5", "Custom Workflows"),
+      desc: $t("CustomDevFeatures__t6", "Automate and streamline processes built around your operations.")
     },
     {
       icon: <Network className="w-6 h-6 text-teal-600" />,
-      title: "Seamless Integrations",
-      desc: "Connect with any system, API, or third-party tool you already use."
+      title: $t("CustomDevFeatures__t7", "Seamless Integrations"),
+      desc: $t("CustomDevFeatures__t8", "Connect with any system, API, or third-party tool you already use.")
     },
     {
       icon: <Settings className="w-6 h-6 text-teal-600" />,
-      title: "Complete Control",
-      desc: "Own your data, your logic, your rules—full flexibility at every level."
+      title: $t("CustomDevFeatures__t9", "Complete Control"),
+      desc: $t("CustomDevFeatures__t10", "Own your data, your logic, your rules—full flexibility at every level.")
     },
     {
       icon: <BarChart className="w-6 h-6 text-teal-600" />,
-      title: "Built to Scale",
-      desc: "Future-ready architecture that grows with your business goals."
+      title: $t("CustomDevFeatures__t11", "Built to Scale"),
+      desc: $t("CustomDevFeatures__t12", "Future-ready architecture that grows with your business goals.")
     }
   ];
 
@@ -46,20 +50,17 @@ const CustomDevFeatures = () => {
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h3 className="text-teal-600 font-bold tracking-[0.15em] uppercase text-xs mb-4">
-            Custom isn't extra. It's everything.
-          </h3>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-[1.15]">
-            Design It. Build It. Scale It.<br/>
+            {$t("CustomDevFeatures__t13", "Custom isn't extra. It's everything.")}</h3>
+          <h2 className="text-h2 font-extrabold text-slate-900 mb-6">
+            {$t("CustomDevFeatures__t14", "Design It. Build It. Scale It.")}<br/>
             <span className="text-teal-600 relative inline-block mt-2">
-              Exactly How You Want.
-              <svg className="absolute w-full h-[12px] -bottom-1 left-0 text-teal-500 opacity-60" viewBox="0 0 200 12" preserveAspectRatio="none">
+              {$t("CustomDevFeatures__t15", "Exactly How You Want.")}<svg className="absolute w-full h-[12px] -bottom-1 left-0 text-teal-500 opacity-60" viewBox="0 0 200 12" preserveAspectRatio="none">
                 <path d="M 0,8 Q 100,0 200,8 L 200,12 Q 100,4 0,12 Z" fill="currentColor"/>
               </svg>
             </span>
           </h2>
-          <p className="text-slate-500 text-lg">
-            Every business is different. That's why we give you complete freedom to customize every part of your software—your way.
-          </p>
+          <p className="text-body text-slate-500">
+            {rich($t("CustomDevFeatures__t16", "Every business is different. That's why we give you complete freedom to customize every part of your software—your way."))}</p>
         </div>
 
         {/* Main Grid Layout */}
@@ -68,11 +69,10 @@ const CustomDevFeatures = () => {
           {/* Left Column (Hero Card with 3D Graphic) */}
           <div className="lg:col-span-1 bg-white rounded-[32px] p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col relative overflow-hidden">
             <div className="mb-8 z-10 relative">
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-2">You Imagine.</h3>
-              <h3 className="text-2xl font-extrabold text-teal-600 mb-4">We Make It Real.</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                From the smallest feature to the big picture architecture—we give you the power to customize every element.
-              </p>
+              <h3 className="text-h5 font-extrabold text-slate-900 mb-2">{$t("CustomDevFeatures__t17", "You Imagine.")}</h3>
+              <h3 className="text-h5 font-extrabold text-teal-600 mb-4">{$t("CustomDevFeatures__t18", "We Make It Real.")}</h3>
+              <p className="text-small text-slate-500">
+                {rich($t("CustomDevFeatures__t19", "From the smallest feature to the big picture architecture—we give you the power to customize every element."))}</p>
             </div>
             
             {/* Minimalized 3D Graphic inside the card */}
@@ -221,10 +221,10 @@ const CustomDevFeatures = () => {
                 className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-100 flex flex-col hover:shadow-md transition-shadow"
               >
                 <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4 border border-teal-100/50">
-                  {React.cloneElement(item.icon as React.ReactElement, { className: 'w-5 h-5 text-teal-600' })}
+                  {React.cloneElement(item.icon as React.ReactElement<{ className?: string }>, { className: 'w-5 h-5 text-teal-600' })}
                 </div>
                 <h4 className="text-[17px] font-bold text-slate-900 mb-2">{item.title}</h4>
-                <p className="text-slate-500 text-[13px] leading-relaxed">
+                <p className="text-small text-slate-500">
                   {item.desc}
                 </p>
               </motion.div>
@@ -241,10 +241,9 @@ const CustomDevFeatures = () => {
               <Send className="w-5 h-5 text-white ml-[-2px]" />
             </div>
             <div>
-              <h4 className="text-lg font-bold text-slate-900 mb-1">Have something specific in mind?</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Tell us what you want to build. We'll turn it into a solution that fits your vision perfectly.
-              </p>
+              <h4 className="text-lg font-bold text-slate-900 mb-1">{$t("CustomDevFeatures__t20", "Have something specific in mind?")}</h4>
+              <p className="text-small text-slate-500">
+                {rich($t("CustomDevFeatures__t21", "Tell us what you want to build. We'll turn it into a solution that fits your vision perfectly."))}</p>
             </div>
           </div>
 
@@ -252,39 +251,38 @@ const CustomDevFeatures = () => {
           <div className="flex flex-wrap justify-center xl:justify-start gap-x-8 gap-y-4">
             <div className="flex flex-col items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-teal-600" />
-              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Free Strategy Session</span>
+              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{$t("CustomDevFeatures__t22", "Free Strategy Session")}</span>
             </div>
             <div className="w-[1px] h-8 bg-slate-100 hidden sm:block"></div>
             <div className="flex flex-col items-center gap-2">
               <Lock className="w-5 h-5 text-teal-600" />
-              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">No Obligation</span>
+              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{$t("CustomDevFeatures__t23", "No Obligation")}</span>
             </div>
             <div className="w-[1px] h-8 bg-slate-100 hidden sm:block"></div>
             <div className="flex flex-col items-center gap-2">
               <CheckCircle className="w-5 h-5 text-teal-600" />
-              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">100% Confidential</span>
+              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{$t("CustomDevFeatures__t24", "100% Confidential")}</span>
             </div>
           </div>
 
           {/* Banner Right (CTA) */}
           <div className="flex flex-col items-center xl:items-end gap-4">
-            <button className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-3.5 rounded-full font-semibold transition-colors flex items-center gap-3">
-              Start Your Project
-              <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+            <NextLink href={$t("CustomDevFeatures__u1", "/contact")} className="bg-teal-700 hover:bg-teal-800 text-white px-6 py-3.5 rounded-full font-semibold transition-colors flex items-center gap-3">
+              {$t("CustomDevFeatures__t25", "Start Your Project")}<div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
                 <svg className="w-3.5 h-3.5 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-            </button>
+            </NextLink>
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
                 {[1,2,3,4].map((i) => (
                   <div key={i} className="w-6 h-6 rounded-full bg-slate-200 border-2 border-white overflow-hidden">
-                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" className="w-full h-full object-cover" />
+                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt={$t("CustomDevFeatures__t26", "User")} className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
-              <span className="text-xs font-semibold text-slate-500">Trusted by 500+ businesses</span>
+              <span className="text-xs font-semibold text-slate-500">{$t("CustomDevFeatures__t27", "Trusted by 500+ businesses")}</span>
             </div>
           </div>
 

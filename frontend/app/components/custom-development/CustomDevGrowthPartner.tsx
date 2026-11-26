@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -106,7 +108,7 @@ const CurvedArrowIcon = () => (
   </svg>
 );
 
-const FEATURES = [
+const FEATURES__cms = [
   { Icon: TargetIcon, title: "Business-First Mindset", desc: "We understand your goals, challenges, and vision before writing a single line of code." },
   { Icon: PuzzleIcon, title: "Tailored to You", desc: "Every feature, workflow, and design is customized for the way you work." },
   { Icon: CollabIcon, title: "Transparent & Collaborative", desc: "You're part of every decision, every step, with clear communication." },
@@ -114,7 +116,7 @@ const FEATURES = [
   { Icon: HeadsetIcon, title: "Long-Term Support", desc: "We're with you beyond launch—optimizing, evolving, and supporting your growth." },
 ];
 
-const TRUST_BADGES = [
+const TRUST_BADGES__cms = [
   { Icon: TeamIcon, label: "Expert Team" },
   { Icon: ClockIcon, label: "On-Time Delivery" },
   { Icon: ShieldIcon, label: "Secure & Reliable" },
@@ -122,6 +124,9 @@ const TRUST_BADGES = [
 ];
 
 export default function CustomDevGrowthPartner() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("CustomDevGrowthPartner__FEATURES", FEATURES__cms);
+  const TRUST_BADGES = useCmsData("CustomDevGrowthPartner__TRUST_BADGES", TRUST_BADGES__cms);
   return (
     <section className="relative w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden">
       <Container>
@@ -136,16 +141,13 @@ export default function CustomDevGrowthPartner() {
               className="w-full"
             >
               <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full" style={{ backgroundColor: "#e6f6f4", color: TEAL }}>
-                <StarIcon /> Why Businesses Choose ProManage
-              </span>
-              <h2 className="mt-4 font-serif text-3xl sm:text-4xl md:text-[42px] font-bold leading-tight" style={{ color: NAVY }}>
-                More Than Code.
-                <br />
-                <span style={{ color: TEAL }}>A True Growth Partner.</span>
+                <StarIcon /> {$t("CustomDevGrowthPartner__t1", "Why Businesses Choose ProManage")}</span>
+              <h2 className="text-h2 mt-4 font-serif font-bold" style={{ color: NAVY }}>
+                {$t("CustomDevGrowthPartner__t2", "More Than Code.")}<br />
+                <span style={{ color: TEAL }}>{$t("CustomDevGrowthPartner__t3", "A True Growth Partner.")}</span>
               </h2>
-              <p className="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-md">
-                We go beyond development to deliver long-term value through partnership, transparency, and results.
-              </p>
+              <p className="text-body mt-4 text-slate-500 max-w-md">
+                {rich($t("CustomDevGrowthPartner__t4", "We go beyond development to deliver long-term value through partnership, transparency, and results."))}</p>
             </motion.div>
 
             <motion.ul
@@ -166,7 +168,7 @@ export default function CustomDevGrowthPartner() {
                 </span>
                 <div>
                   <h3 className="text-[13.5px] font-bold" style={{ color: NAVY }}>{f.title}</h3>
-                  <p className="text-[12px] text-slate-500 leading-snug mt-0.5">{f.desc}</p>
+                  <p className="text-caption text-slate-500 mt-0.5">{f.desc}</p>
                 </div>
               </motion.li>
             ))}
@@ -181,7 +183,7 @@ export default function CustomDevGrowthPartner() {
             transition={{ duration: 0.7, ease: EASE }}
             className="hidden lg:block relative self-start mx-auto w-full max-w-[880px] aspect-[938/1136]"
           >
-            <Image src="/shopify-vision.png" alt="Your Vision, Our Expertise, Your Software, Real Business Impact" fill sizes="880px" className="object-contain" priority={false} />
+            <Image src={$t("CustomDevGrowthPartner__t5", "/shopify-vision.png")} alt={$t("CustomDevGrowthPartner__t6", "Your Vision, Our Expertise, Your Software, Real Business Impact")} fill sizes="880px" className="object-contain" priority={false} />
           </motion.div>
 
           {/* Right: annotation + testimonial */}
@@ -194,17 +196,15 @@ export default function CustomDevGrowthPartner() {
           >
             <div className="flex items-start gap-2">
               <CurvedArrowIcon />
-              <p className="font-serif italic text-lg leading-snug max-w-[180px]" style={{ color: TEAL }}>
-                A Partnership That Drives Real Growth
-              </p>
+              <p className="text-body font-serif italic max-w-[180px]" style={{ color: TEAL }}>
+                {rich($t("CustomDevGrowthPartner__t7", "A Partnership That Drives Real Growth"))}</p>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_15px_35px_-20px_rgba(15,40,60,0.25)] p-5 max-w-[260px]">
               <div className="font-serif text-3xl leading-none mb-1" style={{ color: TEAL, opacity: 0.4 }}>&ldquo;</div>
-              <p className="text-[13px] text-slate-600 italic leading-relaxed -mt-3">
-                They didn&apos;t just deliver software. They helped us transform the way we work and grow.
-              </p>
-              <p className="text-[12px] font-semibold mt-3" style={{ color: NAVY }}>– Happy Client</p>
+              <p className="text-small text-slate-600 italic -mt-3">
+                {rich($t("CustomDevGrowthPartner__t8", "They didn't just deliver software. They helped us transform the way we work and grow."))}</p>
+              <p className="text-caption font-semibold mt-3" style={{ color: NAVY }}>{rich($t("CustomDevGrowthPartner__t9", "– Happy Client"))}</p>
             </div>
           </motion.div>
         </div>
@@ -246,8 +246,8 @@ export default function CustomDevGrowthPartner() {
               </span>
             </div>
             <div className="min-w-0">
-              <h3 className="text-[15px] font-bold leading-snug" style={{ color: NAVY }}>Let&apos;s build something extraordinary together.</h3>
-              <p className="text-[12.5px] text-slate-500 mt-1 leading-snug">Your vision + our expertise = software that drives real results.</p>
+              <h3 className="text-[15px] font-bold leading-snug" style={{ color: NAVY }}>{$t("CustomDevGrowthPartner__t10", "Let's build something extraordinary together.")}</h3>
+              <p className="text-caption text-slate-500 mt-1">{rich($t("CustomDevGrowthPartner__t11", "Your vision + our expertise = software that drives real results."))}</p>
             </div>
           </div>
 
@@ -264,12 +264,11 @@ export default function CustomDevGrowthPartner() {
 
           <div className="flex flex-col items-center xl:items-end gap-2.5 shrink-0 w-full xl:w-auto">
             <Link
-              href="/contact"
+              href={$t("CustomDevGrowthPartner__t12", "/contact")}
               className="group inline-flex items-center gap-3 rounded-full pl-5 pr-1.5 py-1.5 text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Start Your Project
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
+              {$t("CustomDevGrowthPartner__t13", "Start Your Project")}<span className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
                 <ArrowIcon />
               </span>
             </Link>
@@ -279,7 +278,7 @@ export default function CustomDevGrowthPartner() {
                   <span key={i} className="h-6 w-6 rounded-full ring-2 ring-white bg-slate-200" />
                 ))}
               </div>
-              <span className="text-[11px] text-slate-500 whitespace-nowrap">Trusted by 500+ businesses</span>
+              <span className="text-[11px] text-slate-500 whitespace-nowrap">{$t("CustomDevGrowthPartner__t14", "Trusted by 500+ businesses")}</span>
             </div>
           </div>
         </motion.div>

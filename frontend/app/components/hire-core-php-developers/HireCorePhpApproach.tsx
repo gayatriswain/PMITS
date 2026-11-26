@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 interface StepItem {
   number: string;
@@ -12,7 +14,7 @@ interface StepItem {
   icon: React.ReactNode;
 }
 
-const steps: StepItem[] = [
+const steps__cms: StepItem[] = [
   {
     number: "01",
     title: "Understand",
@@ -318,7 +320,7 @@ const steps: StepItem[] = [
   },
 ];
 
-const stats = [
+const stats__cms = [
   {
     value: "100+",
     label: "Projects Delivered",
@@ -387,6 +389,9 @@ function HexStep({ step, index }: { step: StepItem; index: number }) {
 }
 
 export default function HireCorePhpApproach() {
+  const $t = useCmsText();
+  const steps = useCmsData("HireCorePhpApproach__steps", steps__cms);
+  const stats = useCmsData("HireCorePhpApproach__stats", stats__cms);
   return (
     <section id="our-approach" className="relative w-full overflow-hidden font-sans bg-[linear-gradient(180deg,#f8fafc_0%,#f4f7fb_60%,#eef3f8_100%)] py-12 sm:py-16">
       {/* soft flowing wave lines on both sides */}
@@ -410,7 +415,7 @@ export default function HireCorePhpApproach() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-[11px] font-bold tracking-[0.26em] text-[#0f8a83] uppercase">Our Approach</div>
+          <div className="text-[11px] font-bold tracking-[0.26em] text-[#0f8a83] uppercase">{$t("HireCorePhpApproach__t1", "Our Approach")}</div>
           <div className="mt-2 flex items-center justify-center gap-3 text-slate-300">
             <span className="w-16 h-px bg-gradient-to-r from-transparent to-slate-300" />
             <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-[#0f8a83]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -418,10 +423,9 @@ export default function HireCorePhpApproach() {
             </svg>
             <span className="w-16 h-px bg-gradient-to-l from-transparent to-slate-300" />
           </div>
-          <h2 className="mt-5 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.08] text-[#0c1e3d]">
-            From Idea to Impact.
-            <br />
-            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">We Build It Right.</span>
+          <h2 className="text-h2 mt-5 font-black tracking-tight text-[#0c1e3d]">
+            {$t("HireCorePhpApproach__t2", "From Idea to Impact.")}<br />
+            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpApproach__t3", "We Build It Right.")}</span>
           </h2>
           <motion.div
             className="mt-5 mx-auto h-[2px] rounded-full bg-[#0f8a83]"
@@ -430,10 +434,8 @@ export default function HireCorePhpApproach() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           />
-          <p className="mt-5 text-[14.5px] sm:text-[15.5px] text-slate-600 leading-relaxed">
-            A proven process that ensures your project is
-            <br className="hidden sm:inline" /> delivered with precision, performance and scale in mind.
-          </p>
+          <p className="text-body mt-5 text-slate-600">
+            {rich($t("HireCorePhpApproach__t4", "A proven process that ensures your project is"))}<br className="hidden sm:inline" /> {rich($t("HireCorePhpApproach__t5", "delivered with precision, performance and scale in mind."))}</p>
         </motion.div>
 
         {/* ---------------- STEPS ---------------- */}
@@ -482,28 +484,26 @@ export default function HireCorePhpApproach() {
           <div className="flex items-center gap-4 shrink-0">
             <span className="w-[3px] h-12 rounded-full bg-[#0f8a83]" />
             <div className="text-left text-[16px] font-bold leading-snug">
-              <div className="text-[#0c1e3d]">We don&apos;t just deliver projects.</div>
-              <div className="text-[#0f8a83]">We build long-term success.</div>
+              <div className="text-[#0c1e3d]">{$t("HireCorePhpApproach__t6", "We don't just deliver projects.")}</div>
+              <div className="text-[#0f8a83]">{$t("HireCorePhpApproach__t7", "We build long-term success.")}</div>
             </div>
           </div>
 
           <div className="flex items-center gap-3 flex-wrap justify-center">
             <Link
-              href="#contact"
+              href={$t("HireCorePhpApproach__t8", "#contact")}
               className="group inline-flex items-center justify-center gap-2 h-[44px] px-6 rounded-lg bg-[#0d8a94] text-white text-[13px] font-semibold shadow-md shadow-teal-600/25 hover:bg-[#0b7a84] transition-colors whitespace-nowrap"
             >
-              Hire PHP Developers
-              <svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              {$t("HireCorePhpApproach__t9", "Hire PHP Developers")}<svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </Link>
             <Link
-              href="#contact"
+              href={$t("HireCorePhpApproach__t10", "#contact")}
               className="inline-flex items-center justify-center gap-2 h-[44px] px-5 rounded-lg bg-white border border-slate-300 text-[#0c1e3d] text-[13px] font-semibold hover:bg-slate-50 transition-colors whitespace-nowrap"
             >
-              Talk to an Expert
-              <svg viewBox="0 0 24 24" className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              {$t("HireCorePhpApproach__t11", "Talk to an Expert")}<svg viewBox="0 0 24 24" className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
             </Link>

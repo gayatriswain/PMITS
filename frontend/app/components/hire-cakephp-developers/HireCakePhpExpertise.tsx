@@ -5,6 +5,8 @@ import { motion, useInView, type Variants } from "framer-motion";
 import DottedMap from "dotted-map/without-countries";
 import Container from "../shared/Container";
 import WORLD_DOT_MAP from "../shared/worldDotMap";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -28,7 +30,7 @@ const I = {
 };
 
 /* ---------------------------------- cards ---------------------------------- */
-const CARDS = [
+const CARDS__cms = [
   {
     title: "Custom Development",
     text: "Build tailored web applications using the full power of CakePHP.",
@@ -95,7 +97,7 @@ const CARDS = [
 ];
 
 /* ---------------------------------- stats ---------------------------------- */
-const STATS = [
+const STATS__cms = [
   {
     value: 15,
     suffix: "+",
@@ -200,6 +202,9 @@ const PINS = [
 ];
 
 export default function HireCakePhpExpertise() {
+  const $t = useCmsText();
+  const CARDS = useCmsData("HireCakePhpExpertise__CARDS", CARDS__cms);
+  const STATS = useCmsData("HireCakePhpExpertise__STATS", STATS__cms);
   return (
     <section
       id="expertise"
@@ -210,16 +215,13 @@ export default function HireCakePhpExpertise() {
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: RED }}>
             <i aria-hidden className="h-1.5 w-1.5 rounded-full" style={{ background: RED }} />
-            CakePHP Expertise
-          </span>
-          <h2 className="mt-4 font-serif text-[34px] font-bold leading-[1.12] tracking-tight text-[#0f1a2e] sm:text-5xl lg:text-[50px]">
-            More than Developers.
-            <br />
-            <span style={{ color: RED }}>A Complete CakePHP Partner.</span>
+            {$t("HireCakePhpExpertise__t1", "CakePHP Expertise")}</span>
+          <h2 className="text-h2 mt-4 font-serif font-bold tracking-tight text-[#0f1a2e]">
+            {$t("HireCakePhpExpertise__t2", "More than Developers.")}<br />
+            <span style={{ color: RED }}>{$t("HireCakePhpExpertise__t3", "A Complete CakePHP Partner.")}</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-            We combine deep CakePHP expertise with proven engineering practices to deliver secure, scalable and future-ready web applications.
-          </p>
+          <p className="text-body mx-auto mt-4 max-w-xl text-slate-600">
+            {rich($t("HireCakePhpExpertise__t4", "We combine deep CakePHP expertise with proven engineering practices to deliver secure, scalable and future-ready web applications."))}</p>
         </div>
 
         {/* 6 cards */}
@@ -248,8 +250,7 @@ export default function HireCakePhpExpertise() {
             <div className="flex flex-col items-center gap-1.5 lg:px-2">
               <CakeMark />
               <span className="text-[22px] font-extrabold leading-none tracking-tight" style={{ color: RED }}>
-                CakePHP
-              </span>
+                {$t("HireCakePhpExpertise__t5", "CakePHP")}</span>
             </div>
 
             <ul className="grid grid-cols-2 gap-y-5 sm:grid-cols-4">
@@ -259,7 +260,7 @@ export default function HireCakePhpExpertise() {
                   <p className="mt-2.5 text-[26px] font-extrabold leading-none text-[#0f1a2e]">
                     <CountUp value={s.value} suffix={s.suffix} />
                   </p>
-                  <p className="mt-2 text-[12px] font-bold text-[#0f1a2e]">{s.title}</p>
+                  <p className="text-caption mt-2 font-bold text-[#0f1a2e]">{s.title}</p>
                   <p className="mt-1 max-w-[150px] text-[10.5px] leading-snug text-slate-500">{s.text}</p>
                 </li>
               ))}

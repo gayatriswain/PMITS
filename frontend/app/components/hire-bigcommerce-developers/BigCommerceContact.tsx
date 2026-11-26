@@ -5,20 +5,23 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, BC, BrandRow, Icon, ScreenOverlay, ease, fadeUp, heading, useWidth, type IconName } from "./BigCommerceShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
+import { goToThankYou } from "@/lib/forms";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const IW = BC.office.w, IH = BC.office.h;
 const LID_QUAD: [[number, number], [number, number], [number, number], [number, number]] = [[298, 600], [628, 582], [696, 832], [400, 836]];
 
-const perks: { icon: IconName; title: string; sub: string }[] = [
+const perks__cms: { icon: IconName; title: string; sub: string }[] = [
   { icon: "bolt", title: "Quick Response", sub: "Within 24 hours" },
   { icon: "users", title: "Free Consultation", sub: "No commitment" },
   { icon: "shieldCheck", title: "Tailored Solutions", sub: "For your business" },
 ];
 
 /* Placeholder brand names — replace with real client logos. */
-const brands = [
+const brands__cms = [
   { name: "NORTHPEAK", style: "font-black tracking-wider text-lg" },
   { name: "CLAYMORE", style: "font-semibold tracking-[0.3em] text-base" },
   { name: "LUMEA", style: "font-extrabold text-xl" },
@@ -29,6 +32,7 @@ const brands = [
 
 /** Quote form. `fill` stretches it to its parent's height (used on the photo's glass panel). */
 function QuoteForm({ fill = false }: { fill?: boolean }) {
+  const $t = useCmsText();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -65,6 +69,7 @@ function QuoteForm({ fill = false }: { fill?: boolean }) {
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
       setStatus("sent");
+      goToThankYou("hire-bigcommerce");
       setName("");
       setEmail("");
       setPhone("");
@@ -87,46 +92,45 @@ function QuoteForm({ fill = false }: { fill?: boolean }) {
               <motion.circle cx="40" cy="40" r="36" stroke="#2348e6" strokeWidth="4" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.7 }} />
               <motion.path d="m25 41 10 10 20-22" stroke="#0d8f9a" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.6, duration: 0.5 }} />
             </svg>
-            <h3 className={`${heading.className} mt-5 text-2xl font-bold text-[#0b1a4a]`}>Thanks — we’re on it!</h3>
-            <p className="mt-2 text-sm text-slate-600">Our BigCommerce team will reply within 24 hours.</p>
-            <button type="button" onClick={() => setStatus("idle")} className="mt-5 text-sm font-semibold text-[#2348e6] hover:underline">Send another request</button>
+            <h3 className={`text-h5 ${heading.className} mt-5 font-bold text-[#0b1a4a]`}>{$t("BigCommerceContact__t1", "Thanks — we’re on it!")}</h3>
+            <p className="text-small mt-2 text-slate-600">{rich($t("BigCommerceContact__t2", "Our BigCommerce team will reply within 24 hours."))}</p>
+            <button type="button" onClick={() => setStatus("idle")} className="mt-5 text-sm font-semibold text-[#2348e6] hover:underline">{$t("BigCommerceContact__t3", "Send another request")}</button>
           </motion.div>
         ) : (
           <motion.form key="f" onSubmit={submit} noValidate initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-1 flex-col">
-            <span className="w-fit rounded-full border border-[#0d8f9a]/30 bg-[#0d8f9a]/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#0d8f9a]">Free consultation</span>
-            <h3 className={`${heading.className} mt-4 text-[28px] font-bold leading-tight text-[#0b1a4a] xl:mt-3 xl:text-[25px] 2xl:mt-4 2xl:text-[32px]`}>
-              Let’s Talk About
-              <br />
-              <span className="text-[#2348e6]">Your Goals</span>
+            <span className="w-fit rounded-full border border-[#0d8f9a]/30 bg-[#0d8f9a]/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#0d8f9a]">{$t("BigCommerceContact__t4", "Free consultation")}</span>
+            <h3 className={`text-h5 ${heading.className} mt-4 font-bold text-[#0b1a4a] xl:mt-3 2xl:mt-4`}>
+              {$t("BigCommerceContact__t5", "Let’s Talk About")}<br />
+              <span className="text-[#2348e6]">{$t("BigCommerceContact__t6", "Your Goals")}</span>
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-slate-600">Share a few details and our team will get back to you with the best solution for your business.</p>
+            <p className="text-small mt-3 text-slate-600">{rich($t("BigCommerceContact__t7", "Share a few details and our team will get back to you with the best solution for your business."))}</p>
             <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
             <div className="mt-5 flex flex-1 flex-col gap-3">
               <label className="block">
-                <span className="sr-only">Your name</span>
+                <span className="sr-only">{$t("BigCommerceContact__t8", "Your name")}</span>
                 <span className={`${field} ${err.name ? "border-rose-300" : "border-slate-200"}`}>
                   <Icon name="user" className="h-4 w-4 text-slate-400" />
-                  <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your Name *" autoComplete="name" className={input} />
+                  <input value={name} onChange={(e) => setName(e.target.value)} placeholder={$t("BigCommerceContact__t9", "Your Name *")} autoComplete="name" className={input} />
                 </span>
                 {err.name && <span className="mt-1 block text-[11px] text-rose-500">{err.name}</span>}
               </label>
               <label className="block">
-                <span className="sr-only">Your email address</span>
+                <span className="sr-only">{$t("BigCommerceContact__t10", "Your email address")}</span>
                 <span className={`${field} ${err.email ? "border-rose-300" : "border-slate-200"}`}>
                   <Icon name="mail" className="h-4 w-4 text-slate-400" />
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your Email Address *" autoComplete="email" className={input} />
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={$t("BigCommerceContact__t11", "Your Email Address *")} autoComplete="email" className={input} />
                 </span>
                 {err.email && <span className="mt-1 block text-[11px] text-rose-500">{err.email}</span>}
               </label>
               <label className="block">
-                <span className="sr-only">Phone number (optional)</span>
+                <span className="sr-only">{$t("BigCommerceContact__t12", "Phone number (optional)")}</span>
                 <span className={`${field} border-slate-200`}>
                   <Icon name="phone" className="h-4 w-4 text-slate-400" />
-                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone Number (optional)" autoComplete="tel" className={input} />
+                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={$t("BigCommerceContact__t13", "Phone Number (optional)")} autoComplete="tel" className={input} />
                 </span>
               </label>
               <label className={`flex flex-col ${fill ? "flex-1" : ""}`}>
-                <span className="sr-only">Tell us about your store (optional)</span>
+                <span className="sr-only">{$t("BigCommerceContact__t14", "Tell us about your store (optional)")}</span>
                 <span className={`${field} flex-1 items-start border-slate-200 pt-3.5`}>
                   <Icon name="docText" className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
                   <textarea
@@ -134,13 +138,13 @@ function QuoteForm({ fill = false }: { fill?: boolean }) {
                     onChange={(e) => setMessage(e.target.value)}
                     maxLength={350}
                     rows={3}
-                    placeholder="Tell us about your store or project (optional)"
+                    placeholder={$t("BigCommerceContact__t15", "Tell us about your store or project (optional)")}
                     className="h-full min-h-[72px] w-full resize-none xl:min-h-[56px] 2xl:min-h-[72px] bg-transparent pb-3 text-sm text-[#0b1a4a] placeholder:text-slate-400 focus:outline-none"
                   />
                 </span>
               </label>
             </div>
-            {err.server && <p className="mt-3 text-sm text-rose-600" role="alert">{err.server}</p>}
+            {err.server && <p className="text-small mt-3 text-rose-600" role="alert">{err.server}</p>}
             <button
               type="submit"
               disabled={status === "sending"}
@@ -148,14 +152,13 @@ function QuoteForm({ fill = false }: { fill?: boolean }) {
             >
               <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 skew-x-[-20deg] bg-white/25 transition-[left] duration-700 group-hover:left-[120%]" />
               {status === "sending" ? (
-                <><span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" /> Sending…</>
+                <><span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" /> {$t("BigCommerceContact__t16", "Sending…")}</>
               ) : (
-                <>Get My Free Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>
+                <>{$t("BigCommerceContact__t17", "Get My Free Quote ")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>
               )}
             </button>
-            <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-500">
-              <Icon name="lock" className="h-3.5 w-3.5" /> Your information is safe with us.
-            </p>
+            <p className="text-caption mt-3 flex items-center justify-center gap-1.5 text-slate-500">
+              <Icon name="lock" className="h-3.5 w-3.5" /> {rich($t("BigCommerceContact__t18", "Your information is safe with us."))}</p>
           </motion.form>
         )}
       </AnimatePresence>
@@ -164,11 +167,12 @@ function QuoteForm({ fill = false }: { fill?: boolean }) {
 }
 
 function StatCards() {
+  const $t = useCmsText();
   const reduce = useReducedMotion();
   const cards = [
-    { icon: "trend" as IconName, label: "More Traffic", value: "+320%", pos: "left-[37%] top-[19%]" },
-    { icon: "chart" as IconName, label: "Higher Revenue", value: "+248%", pos: "left-[50.5%] top-[29%]" },
-    { icon: "check" as IconName, label: "Stronger Brand", value: "★★★★★", pos: "left-[48.5%] top-[42%]" },
+    { icon: "trend" as IconName, label: $t("BigCommerceContact__t19", "More Traffic"), value: $t("BigCommerceContact__t20", "+320%"), pos: "left-[37%] top-[19%]" },
+    { icon: "chart" as IconName, label: $t("BigCommerceContact__t21", "Higher Revenue"), value: $t("BigCommerceContact__t22", "+248%"), pos: "left-[50.5%] top-[29%]" },
+    { icon: "check" as IconName, label: $t("BigCommerceContact__t23", "Stronger Brand"), value: "★★★★★", pos: "left-[48.5%] top-[42%]" },
   ];
   return (
     <>
@@ -221,12 +225,15 @@ function StatCards() {
 }
 
 export default function BigCommerceContact() {
+  const $t = useCmsText();
+  const perks = useCmsData("BigCommerceContact__perks", perks__cms);
+  const brands = useCmsData("BigCommerceContact__brands", brands__cms);
   const [coverRef, coverW] = useWidth<HTMLDivElement>();
 
   const copy = (
     <div className="max-w-[520px]">
-      <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.3em] text-[#2348e6]">
-        <span className="h-px w-8 bg-[#2348e6]" /> <span>Let’s build your <span className="font-extrabold">success</span></span> <span className="h-px w-8 bg-[#2348e6]" />
+      <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-caption flex items-center gap-3 font-semibold uppercase tracking-[0.3em] text-[#2348e6]">
+        <span className="h-px w-8 bg-[#2348e6]" /> <span>{$t("BigCommerceContact__t24", "Let’s build your ")}<span className="font-extrabold">success</span></span> <span className="h-px w-8 bg-[#2348e6]" />
       </motion.p>
       <motion.h2
         variants={fadeUp}
@@ -234,17 +241,14 @@ export default function BigCommerceContact() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className={`${heading.className} mt-5 text-[40px] font-bold leading-[1.05] tracking-tight text-[#0b1a4a] sm:text-[54px] xl:text-[clamp(50px,3.6vw,72px)]`}
+        className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
       >
-        Your Next Big
+        {$t("BigCommerceContact__t25", "Your Next Big")}<br />
+        <span className="bg-gradient-to-r from-[#2348e6] via-[#1f8fd6] to-[#14b1a0] bg-clip-text text-transparent">{$t("BigCommerceContact__t26", "Growth Story")}</span>
         <br />
-        <span className="bg-gradient-to-r from-[#2348e6] via-[#1f8fd6] to-[#14b1a0] bg-clip-text text-transparent">Growth Story</span>
-        <br />
-        Starts Here.
-      </motion.h2>
-      <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-5 max-w-[420px] text-base leading-relaxed text-slate-600">
-        Tell us a little about your goals, and we’ll create a custom solution to help you grow — faster.
-      </motion.p>
+        {$t("BigCommerceContact__t27", "Starts Here.")}</motion.h2>
+      <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-5 max-w-[420px] text-slate-600">
+        {rich($t("BigCommerceContact__t28", "Tell us a little about your goals, and we’ll create a custom solution to help you grow — faster."))}</motion.p>
       <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
         {perks.map((p, i) => (
           <motion.li key={p.title} variants={fadeUp} custom={2.5 + i * 0.4} initial="hidden" whileInView="show" viewport={{ once: true }} className="flex items-center gap-2.5">
@@ -270,28 +274,24 @@ export default function BigCommerceContact() {
             {/* laptop lid + mug branding */}
             <ScreenOverlay imgW={IW} quad={LID_QUAD} boxW={360} boxH={240} scale={coverW}>
               <div className="flex h-full w-full flex-col items-center justify-center text-center text-slate-500/80">
-                <p className={`${heading.className} text-[40px] font-semibold leading-none`}>ProManage</p>
-                <p className="mt-2 text-[26px] tracking-wide">IT Solutions</p>
+                <p className={`${heading.className} text-[40px] font-semibold leading-none`}>{rich($t("BigCommerceContact__t29", "ProManage"))}</p>
+                <p className="mt-2 text-[26px] tracking-wide">{rich($t("BigCommerceContact__t30", "IT Solutions"))}</p>
               </div>
             </ScreenOverlay>
             <p className="font-caveat absolute -rotate-[4deg] text-[1.05cqw] leading-[1.05] text-slate-700" style={{ left: `${(772 / IW) * 100}%`, top: `${(712 / IH) * 100}%` }}>
-              Better
-              <br />
-              Ideas.
-              <br />
-              Bigger
-              <br />
-              Impact.
-            </p>
+              {rich($t("BigCommerceContact__t31", "Better"))}<br />
+              {rich($t("BigCommerceContact__t32", "Ideas."))}<br />
+              {rich($t("BigCommerceContact__t33", "Bigger"))}<br />
+              {rich($t("BigCommerceContact__t34", "Impact."))}</p>
             <StatCards />
             {/* glass panel spans x 1095–1555, y 100–715 of the photo: the form fills it (and may grow past it on short screens) */}
             <div className="absolute flex flex-col" style={{ left: `${(1093 / IW) * 100}%`, top: `${(100 / IH) * 100}%`, width: `${(464 / IW) * 100}%`, minHeight: `${(615 / IH) * 100}%` }}>
               <QuoteForm fill />
             </div>
             <svg viewBox="0 0 160 110" className="absolute w-[7.5%] text-[#2348e6]" style={{ left: `${(1575 / IW) * 100}%`, top: `${(75 / IH) * 100}%` }} aria-label="Let's grow together">
-              <text x="10" y="30" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-12 10 30)">Let’s</text>
-              <text x="14" y="58" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-12 14 58)">Grow</text>
-              <text x="18" y="86" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-12 18 86)">Together</text>
+              <text x="10" y="30" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-12 10 30)">{$t("BigCommerceContact__t35", "Let’s")}</text>
+              <text x="14" y="58" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-12 14 58)">{$t("BigCommerceContact__t36", "Grow")}</text>
+              <text x="18" y="86" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-12 18 86)">{$t("BigCommerceContact__t37", "Together")}</text>
               <path d="M40 100 C 20 104, 8 98, 4 88" stroke="currentColor" strokeWidth="1.6" fill="none" />
             </svg>
           </div>
@@ -319,15 +319,11 @@ export default function BigCommerceContact() {
       <Container className="relative pb-12 pt-8 xl:pt-14">
         <div className="flex flex-col items-center gap-6 border-t border-slate-200/70 pt-8 lg:flex-row lg:gap-10">
           <p className="shrink-0 text-center text-[11px] font-bold uppercase leading-relaxed tracking-[0.25em] text-slate-500 lg:border-r lg:border-slate-200 lg:pr-10 lg:text-left">
-            Trusted by
-            <br className="hidden lg:block" /> innovative brands
-          </p>
+            {rich($t("BigCommerceContact__t38", "Trusted by"))}<br className="hidden lg:block" /> {rich($t("BigCommerceContact__t39", "innovative brands"))}</p>
           <BrandRow brands={brands} className="flex-1 lg:justify-between xl:!gap-x-6" />
           <p className="font-caveat shrink-0 -rotate-6 text-2xl leading-tight text-[#2348e6]">
-            Real Businesses.
-            <br />
-            Real Growth.
-          </p>
+            {rich($t("BigCommerceContact__t40", "Real Businesses."))}<br />
+            {rich($t("BigCommerceContact__t41", "Real Growth."))}</p>
         </div>
       </Container>
     </section>

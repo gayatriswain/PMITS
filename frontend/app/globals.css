@@ -7,13 +7,34 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-playfair);
-  --font-playfair: var(--font-playfair);
+  /* Typography: Plus Jakarta Sans for headings, Inter for everything else (see the type system below). */
+  --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --font-caveat: var(--font-caveat);
-  --font-heading: var(--font-sans);
-  --font-subheading: var(--font-geist-sans);
+  --font-subheading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  /* Responsive type scale -> text-h1 … text-caption utilities (values switch at 768px / 1280px). */
+  --text-h1: var(--fs-h1);
+  --text-h1--line-height: 1.1;
+  --text-h2: var(--fs-h2);
+  --text-h2--line-height: 1.15;
+  --text-h3: var(--fs-h3);
+  --text-h3--line-height: 1.2;
+  --text-h4: var(--fs-h4);
+  --text-h4--line-height: 1.25;
+  --text-h5: var(--fs-h5);
+  --text-h5--line-height: 1.3;
+  --text-h6: var(--fs-h6);
+  --text-h6--line-height: 1.4;
+  --text-body: var(--fs-body);
+  --text-body--line-height: 1.7;
+  --text-small: var(--fs-small);
+  --text-small--line-height: 1.5;
+  --text-caption: var(--fs-caption);
+  --text-caption--line-height: 1.5;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -52,33 +73,101 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-body {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+/* ==========================================================================
+   Global typography system
+   Headings: Plus Jakarta Sans (--font-jakarta)   Body: Inter (--font-inter)
+   Both are loaded once in app/layout.tsx via next/font (display: swap).
+
+   Scale (mobile <768px / tablet 768-1279px / desktop 1280px+, line-height):
+     h1 40/56/72 1.1   h2 32/44/56 1.15   h3 28/36/40 1.2   h4 24/28/32 1.25
+     h5 20/22/24 1.3   h6 18/18/20 1.4    body 16/17/18 1.7
+     small 13/14/14 1.5   caption 12 1.5
+   Utilities: text-h1 … text-h6, text-body, text-small, text-caption,
+              font-heading, font-body (generated from @theme below).
+   ========================================================================== */
+:root {
+  --fs-h1: 40px;
+  --fs-h2: 32px;
+  --fs-h3: 28px;
+  --fs-h4: 24px;
+  --fs-h5: 20px;
+  --fs-h6: 18px;
+  --fs-body: 16px;
+  --fs-small: 13px;
+  --fs-caption: 12px;
 }
 
-/* Global type system: h1 = Playfair, sub-headings = Geist, body copy = Inter,
-   buttons = serif. Applies site-wide so new pages inherit it automatically. */
-h1 {
-  font-family: var(--font-playfair), serif;
+@media (min-width: 768px) {
+  :root {
+    --fs-h1: 56px;
+    --fs-h2: 44px;
+    --fs-h3: 36px;
+    --fs-h4: 28px;
+    --fs-h5: 22px;
+    --fs-h6: 18px;
+    --fs-body: 17px;
+    --fs-small: 14px;
+  }
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+@media (min-width: 1280px) {
+  :root {
+    --fs-h1: 72px;
+    --fs-h2: 56px;
+    --fs-h3: 40px;
+    --fs-h4: 32px;
+    --fs-h5: 24px;
+    --fs-h6: 20px;
+    --fs-body: 18px;
+  }
 }
 
-button {
-  font-family: inherit;
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* in-page links (#section) land below the sticky header */
+    scroll-padding-top: 96px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+  }
+
+  /* Family, weight and line-height for every heading. Sizes come from the text-h* utilities
+     (or a component's own size class), so headings that inherit a small size inside cards,
+     buttons or labels are not blown up. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+  h1, h2 { font-weight: 700; }
+  h3, h4, h5, h6 { font-weight: 600; }
+  h1 { line-height: 1.1; }
+  h2 { line-height: 1.15; }
+  h3 { line-height: 1.2; }
+  h4 { line-height: 1.25; }
+  h5 { line-height: 1.3; }
+  h6 { line-height: 1.4; }
+
+  button, input, select, textarea {
+    font-family: inherit;
+  }
+}
+
+/* Older font names used by some components now point at the global fonts. */
+:root {
+  --font-playfair: var(--font-jakarta);
+  --font-geist-sans: var(--font-inter);
 }
 
 .font-playfair {
-  font-family: var(--font-playfair), Georgia, serif !important;
+  font-family: var(--font-heading) !important;
 }
 
-.font-caveat {
+.font-caveat,
+.font-handwriting {
   font-family: var(--font-caveat), cursive, sans-serif !important;
 }
 
@@ -305,4 +394,35 @@ button {
   html {
     @apply font-sans;
   }
+}
+
+/* Rich text coming from the CMS editor (blog articles, builder text blocks). */
+.cms-prose { color: #334155; font-size: var(--fs-body); line-height: 1.7; }
+.cms-prose > * + * { margin-top: 1.15em; }
+.cms-prose h2 { font-family: var(--font-heading); color: #0f2333; font-size: var(--fs-h4); line-height: 1.25; font-weight: 700; margin-top: 2em; }
+.cms-prose h3 { font-family: var(--font-heading); color: #0f2333; font-size: var(--fs-h5); line-height: 1.3; font-weight: 600; margin-top: 1.7em; }
+.cms-prose h4 { font-family: var(--font-heading); color: #0f2333; font-size: var(--fs-h6); line-height: 1.4; font-weight: 600; margin-top: 1.5em; }
+.cms-prose a { color: #0f766e; text-decoration: underline; text-underline-offset: 3px; }
+.cms-prose a:hover { color: #0b3b35; }
+.cms-prose strong { color: #0f2333; font-weight: 700; }
+.cms-prose ul { list-style: disc; padding-left: 1.4em; }
+.cms-prose ol { list-style: decimal; padding-left: 1.4em; }
+.cms-prose li + li { margin-top: 0.4em; }
+.cms-prose li::marker { color: #0d9488; }
+.cms-prose blockquote { border-left: 3px solid #0d9488; background: #f0fdfa; padding: 0.9em 1.2em; border-radius: 0 0.75rem 0.75rem 0; color: #0f2333; font-style: italic; }
+.cms-prose img { border-radius: 1rem; max-width: 100%; height: auto; }
+.cms-prose pre { background: #0f172a; color: #e2e8f0; padding: 1em 1.2em; border-radius: 0.75rem; overflow-x: auto; font-size: 0.9em; }
+.cms-prose code { background: #f1f5f9; padding: 0.15em 0.35em; border-radius: 0.3em; font-size: 0.9em; }
+.cms-prose pre code { background: none; padding: 0; }
+.cms-prose hr { border-color: #e2e8f0; margin: 2.2em 0; }
+.cms-prose table { width: 100%; border-collapse: collapse; font-size: 0.95em; display: block; overflow-x: auto; }
+.cms-prose th, .cms-prose td { border: 1px solid #e2e8f0; padding: 0.55em 0.8em; text-align: left; }
+.cms-prose th { background: #f8fafc; color: #0f2333; }
+
+/* Soft edges for artwork on light backgrounds (fades the image border into the section). */
+.edge-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent), linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent), linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
+  mask-composite: intersect;
 }

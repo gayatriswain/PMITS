@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const RealEstateIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -56,7 +58,7 @@ const RetailIcon = () => (
   </svg>
 );
 
-const industries = [
+const industries__cms = [
   {
     title: "Real Estate",
     description: "High-performing websites that generate quality leads and close more deals.",
@@ -89,9 +91,12 @@ const industries = [
   },
 ];
 
-const extendedIndustries = Array(20).fill(industries).flat();
+
 
 export default function IndustriesWeEmpower() {
+  const $t = useCmsText();
+  const industries = useCmsData("IndustriesWeEmpower__industries", industries__cms);
+  const extendedIndustries = Array(20).fill(industries).flat();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -136,16 +141,15 @@ export default function IndustriesWeEmpower() {
   return (
     <section className="py-12 md:py-16 relative overflow-hidden bg-white">
 
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6">
+      <div className="relative z-10 mx-auto w-full max-w-[1640px] px-5">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-2xl">
-            <h4 className="text-[#0D9488] font-bold tracking-widest text-xs sm:text-sm uppercase mb-3">INDUSTRIES WE EMPOWER</h4>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A] leading-tight mb-4 font-serif">
-              Helping Businesses Across <br className="hidden md:block" /> Every Industry <span className="text-[#0D9488]">in Noida</span>
+            <h4 className="text-[#0D9488] font-bold tracking-widest text-xs sm:text-sm uppercase mb-3">{$t("IndustriesWeEmpower__t1", "INDUSTRIES WE EMPOWER")}</h4>
+            <h2 className="text-h2 font-extrabold text-[#0F172A] mb-4 font-serif">
+              {$t("IndustriesWeEmpower__t2", "Helping Businesses Across ")}<br className="hidden md:block" /> {$t("IndustriesWeEmpower__t3", "Every Industry ")}<span className="text-[#0D9488]">{$t("IndustriesWeEmpower__t4", "in Noida")}</span>
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base max-w-md">
-              We create customized digital solutions for businesses of all sizes and industries.
-            </p>
+            <p className="text-body text-gray-600 max-w-md">
+              {rich($t("IndustriesWeEmpower__t5", "We create customized digital solutions for businesses of all sizes and industries."))}</p>
           </div>
           <div className="flex gap-4 mt-6 md:mt-0">
             <button 
@@ -190,7 +194,7 @@ export default function IndustriesWeEmpower() {
                 </div>
                 <h3 className="text-lg font-bold text-[#0F172A]">{item.title}</h3>
               </div>
-              <p className="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+              <p className="text-small text-gray-500 mb-8 flex-grow">
                 {item.description}
               </p>
               <div className="w-8 h-1 bg-[#0D9488] rounded-full mt-auto"></div>
@@ -198,11 +202,11 @@ export default function IndustriesWeEmpower() {
           ))}
         </div>
       </div>
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{__html: $t("IndustriesWeEmpower__t6", `
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
-      `}} />
+      `)}} />
     </section>
   );
 }

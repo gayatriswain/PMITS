@@ -5,7 +5,7 @@ import Container from "./Container";
 import { useInView } from "./useInView";
 import { ChatIcon, PlusIcon } from "./icons";
 
-const NAVY = "#132a43";
+const INK = "#111827";
 
 const faqs = [
   {
@@ -49,74 +49,87 @@ const faqs = [
 function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   const { ref, inView } = useInView<HTMLDivElement>();
+  const id = `faq-${index}`;
 
   return (
     <div
       ref={ref}
-      className="overflow-hidden rounded-xl bg-slate-50 transition-all duration-700 ease-out"
+      className={`overflow-hidden rounded-[20px] transition-[background-color,box-shadow,opacity,transform] duration-500 ease-out ${
+        open ? "bg-white shadow-[0_12px_30px_-18px_rgba(15,23,42,0.25)] ring-1 ring-slate-200/70" : "bg-[#f1f3f6] hover:bg-[#ebeef2]"
+      }`}
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0)" : "translateY(28px)",
-        transitionDelay: inView ? `${Math.min(index, 6) * 70}ms` : "0ms",
+        transform: inView ? "translateY(0)" : "translateY(20px)",
+        transitionDelay: inView ? `${Math.min(index, 6) * 60}ms` : "0ms",
       }}
     >
       <button
         type="button"
+        id={`${id}-q`}
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-4 p-5 text-left font-sans"
+        aria-controls={`${id}-a`}
+        className="flex min-h-[60px] w-full items-center justify-between gap-6 px-5 py-4 text-left font-sans sm:px-6"
       >
-        <span className="text-sm font-semibold sm:text-base" style={{ color: NAVY }}>
+        <span className="text-[15px] font-medium leading-snug" style={{ color: INK }}>
           {q}
         </span>
         <span
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-slate-200 transition-transform duration-300"
-          style={{ color: NAVY, transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
+          className="flex h-5 w-5 shrink-0 items-center justify-center text-slate-500 transition-transform duration-300"
+          style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
+          aria-hidden
         >
-          <PlusIcon />
+          <PlusIcon className="h-4 w-4" />
         </span>
       </button>
       <div
+        id={`${id}-a`}
+        role="region"
+        aria-labelledby={`${id}-q`}
         className="grid transition-all duration-300 ease-out"
         style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
       >
         <div className="overflow-hidden">
-          <p className="px-5 pb-5 text-sm leading-relaxed text-slate-500">{a}</p>
+          <p className="text-small px-5 pb-5 leading-relaxed text-slate-500 sm:px-6">{a}</p>
         </div>
       </div>
     </div>
   );
 }
 
-export default function FAQSection() {
+export type FAQContent = { eyebrow?: string; heading?: string; intro?: string; items?: { question?: string; answer?: string }[] };
+
+/**
+ * Shared FAQ: sticky intro on the left, accordion on the right. Used by the coded pages and by FAQ
+ * blocks on CMS-built pages. `content` comes from the CMS; anything missing falls back to the copy
+ * above (an intentionally empty intro is hidden).
+ */
+export default function FAQSection({ content }: { content?: FAQContent } = {}) {
+  const list = content?.items?.filter((i) => i.question && i.answer).map((i) => ({ q: i.question!, a: i.answer! }));
+  const items = list && list.length ? list : faqs;
+  const intro = content?.intro ?? "We've gathered all the important info right here. Explore our FAQs and find the answers you need.";
   return (
-    <section className="bg-white py-16 lg:py-20">
+    <section className="bg-[#f9fafb] py-16 lg:py-24">
       <Container>
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[380px_1fr] lg:items-start lg:gap-16">
+        <div className="mx-auto grid max-w-[1120px] grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:items-start lg:gap-16 xl:gap-24">
           <div className="lg:sticky lg:top-28">
-            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 shadow-sm">
-              <span
-                className="flex h-5 w-5 items-center justify-center rounded-full text-white"
-                style={{ backgroundColor: NAVY }}
-              >
+            <span className="inline-flex items-center gap-2 text-xs font-medium" style={{ color: INK }}>
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#111827] text-white [&_svg]:h-3 [&_svg]:w-3">
                 <ChatIcon />
               </span>
-              Frequently Asked Questions
+              {content?.eyebrow || "Frequently Asked Questions"}
             </span>
 
-            <h2 className="mt-5 text-3xl font-bold leading-snug sm:text-4xl" style={{ color: NAVY }}>
-              FAQ It Up! Your curiosity meets our expertise—let&apos;s clear things up!
+            <h2 className="text-h3 font-heading mt-4 max-w-[460px] font-semibold leading-[1.12] tracking-[-0.025em]" style={{ color: INK }}>
+              {content?.heading || "FAQ It Up! Your curiosity meets our expertise—let's clear things up!"}
             </h2>
 
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
-              We&apos;ve gathered all the important info right here. Explore our FAQs and find the
-              answers you need.
-            </p>
+            {intro && <p className="text-small mt-4 max-w-[360px] leading-relaxed text-slate-500">{intro}</p>}
           </div>
 
-          <div className="flex flex-col gap-4">
-            {faqs.map((item, i) => (
-              <FAQItem key={item.q} q={item.q} a={item.a} index={i} />
+          <div className="flex flex-col gap-3">
+            {items.map((item, i) => (
+              <FAQItem key={`${i}-${item.q}`} q={item.q} a={item.a} index={i} />
             ))}
           </div>
         </div>

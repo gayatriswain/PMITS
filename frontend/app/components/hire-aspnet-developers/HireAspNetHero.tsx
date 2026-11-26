@@ -4,14 +4,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { Plus_Jakarta_Sans } from "next/font/google";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const display = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  display: "swap",
-});
+const display = { className: "font-heading" }; // global font from app/layout.tsx
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const TEAL = "#0d8a91";
@@ -31,6 +28,7 @@ const wordV: Variants = {
 /*  Tech icons (right cards)                                           */
 /* ------------------------------------------------------------------ */
 function CsIcon() {
+  const $t = useCmsText();
   return (
     <svg viewBox="0 0 48 48" className="h-11 w-11" aria-hidden>
       <defs>
@@ -41,7 +39,7 @@ function CsIcon() {
       </defs>
       <path d="M24 3l17.5 10v22L24 45 6.5 35V13z" fill="url(#csG)" />
       <path d="M24 3l17.5 10L24 23 6.5 13z" fill="#fff" opacity="0.18" />
-      <text x="24" y="31" textAnchor="middle" fontSize="16" fontWeight="800" fill="#fff" fontFamily="Inter, Arial, sans-serif">C#</text>
+      <text x="24" y="31" textAnchor="middle" fontSize="16" fontWeight="800" fill="#fff" fontFamily="Inter, Arial, sans-serif">{$t("HireAspNetHero__t1", "C#")}</text>
     </svg>
   );
 }
@@ -91,17 +89,63 @@ function AzureIcon() {
   );
 }
 
-const CARDS = [
-  { label: "C#", icon: <CsIcon />, pos: { top: 0, left: 24 }, tilt: { rotate: 3, rotateY: -16, rotateX: 4 } },
-  { label: "ASP.NET\nCore", icon: <CoreIcon />, pos: { top: 112, left: 0 }, tilt: { rotate: -3, rotateY: -14, rotateX: 4 } },
-  { label: "SQL Server", icon: <SqlIcon />, pos: { top: 216, left: 44 }, tilt: { rotate: 4, rotateY: -18, rotateX: 3 } },
-  { label: "Azure", icon: <AzureIcon />, pos: { top: 322, left: -6 }, tilt: { rotate: -4, rotateY: -14, rotateX: 4 } },
+const CARDS__cms = [
+  { label: "C#", icon: <CsIcon />, pos: { top: 0, left: 62 }, tilt: { rotateY: -24, rotateX: 9, rotateZ: 3 } },
+  { label: "ASP.NET\nCore", icon: <CoreIcon />, pos: { top: 132, left: 10 }, tilt: { rotateY: -20, rotateX: 8, rotateZ: -3 } },
+  { label: "SQL Server", icon: <SqlIcon />, pos: { top: 256, left: 70 }, tilt: { rotateY: -26, rotateX: 9, rotateZ: 4 } },
+  { label: "Azure", icon: <AzureIcon />, pos: { top: 382, left: 16 }, tilt: { rotateY: -20, rotateX: 8, rotateZ: -4 } },
 ];
+
+/* ------------------------------------------------------------------ */
+/*  3D glass tile (front face + real side/bottom faces)                */
+/* ------------------------------------------------------------------ */
+const TILE = 124; // face size (px)
+const DEPTH = 24; // slab thickness (px)
+
+function GlassTile({ children, tilt }: { children: React.ReactNode; tilt: { rotateY: number; rotateX: number; rotateZ: number } }) {
+  const face = "absolute rounded-[24px]";
+  return (
+    <div className="relative" style={{ width: TILE, height: TILE, perspective: 900 }}>
+      {/* soft contact shadow */}
+      <span aria-hidden className="absolute -bottom-6 left-[12%] h-8 w-[86%] rounded-[50%] bg-[radial-gradient(ellipse,rgba(40,80,130,0.28),transparent_70%)] blur-md" />
+      <div
+        className="relative h-full w-full"
+        style={{ transformStyle: "preserve-3d", transform: `rotateY(${tilt.rotateY}deg) rotateX(${tilt.rotateX}deg) rotateZ(${tilt.rotateZ}deg)` }}
+      >
+        {/* back face */}
+        <span aria-hidden className={`${face} inset-0 bg-[#dbe6f1]/70`} style={{ transform: `translateZ(${-DEPTH / 2}px)` }} />
+        {/* right edge */}
+        <span
+          aria-hidden
+          className="absolute top-[10px] rounded-[6px] bg-[linear-gradient(180deg,#ffffff_0%,#d5e2ef_45%,#b9cde0_100%)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.8)]"
+          style={{ left: TILE - DEPTH / 2, width: DEPTH, height: TILE - 20, transform: "rotateY(90deg)" }}
+        />
+        {/* bottom edge */}
+        <span
+          aria-hidden
+          className="absolute left-[10px] rounded-[6px] bg-[linear-gradient(90deg,#e9f0f7_0%,#c6d6e6_60%,#b3c7db_100%)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.7)]"
+          style={{ top: TILE - DEPTH / 2, height: DEPTH, width: TILE - 20, transform: "rotateX(-90deg)" }}
+        />
+        {/* front glass face */}
+        <div
+          className={`${face} inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden border border-white/90 ring-1 ring-[#9fdbe6]/40 bg-[linear-gradient(145deg,rgba(255,255,255,0.97)_0%,rgba(242,247,252,0.92)_45%,rgba(222,233,244,0.88)_100%)] text-center shadow-[inset_0_2px_0_rgba(255,255,255,1),inset_0_-10px_22px_rgba(150,180,210,0.25),inset_10px_0_18px_rgba(255,255,255,0.6)]`}
+          style={{ transform: `translateZ(${DEPTH / 2}px)` }}
+        >
+          {/* glossy reflection */}
+          <span aria-hidden className="pointer-events-none absolute -left-1/4 -top-1/2 h-[120%] w-[70%] rotate-[28deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.75),transparent)]" />
+          <span aria-hidden className="pointer-events-none absolute inset-x-3 top-1 h-px bg-white" />
+          <span className="relative">{children}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* ------------------------------------------------------------------ */
 /*  Podium with the glass </> (public/aspnet-podium.png)                       */
 /* ------------------------------------------------------------------ */
 function Podium({ reduce }: { reduce: boolean }) {
+  const $t = useCmsText();
   return (
     <div className="relative mx-auto aspect-[762/328] w-[min(540px,94vw)]">
       {/* cyan glow on the floor */}
@@ -135,8 +179,8 @@ function Podium({ reduce }: { reduce: boolean }) {
           transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
-            src="/aspnet-podium.png"
-            alt="Glass code symbol on a glowing podium"
+            src={$t("HireAspNetHero__t2", "/aspnet-podium.png")}
+            alt={$t("HireAspNetHero__t3", "Glass code symbol on a glowing podium")}
             width={762}
             height={328}
             sizes="(min-width: 640px) 540px, 94vw"
@@ -154,7 +198,7 @@ function Podium({ reduce }: { reduce: boolean }) {
 /* ------------------------------------------------------------------ */
 const fi = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, className: "h-[22px] w-[22px]" };
 
-const FEATURES = [
+const FEATURES__cms = [
   { a: "Secure & Reliable", b: "Applications", icon: (<svg {...fi}><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8-7.5 9.5-4.3-1.5-7.5-5-7.5-9.5V6L12 3z" /><path d="M8.8 12.2l2.2 2.2 4.2-4.4" /></svg>) },
   { a: "Scalable for", b: "Growth", icon: (<svg {...fi}><path d="M12 3c3.5 2 5 5.5 4.5 9.5L12 17l-4.5-4.5C7 8.5 8.5 5 12 3z" /><circle cx="12" cy="9.5" r="1.6" /><path d="M7.5 14.5L5 17l3-.5M16.5 14.5L19 17l-3-.5M10.5 19.5L12 22l1.5-2.5" /></svg>) },
   { a: "On-Time", b: "Delivery", icon: (<svg {...fi}><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg>) },
@@ -172,6 +216,9 @@ const SPARKS = [
 /*  Section                                                            */
 /* ------------------------------------------------------------------ */
 export default function HireAspNetHero() {
+  const $t = useCmsText();
+  const CARDS = useCmsData("HireAspNetHero__CARDS", CARDS__cms);
+  const FEATURES = useCmsData("HireAspNetHero__FEATURES", FEATURES__cms);
   const reduce = !!useReducedMotion();
 
   return (
@@ -185,7 +232,7 @@ export default function HireAspNetHero() {
         transition={reduce ? { duration: 0 } : { duration: 26, repeat: Infinity, ease: "easeInOut" }}
       >
         <Image
-          src="/aspnet-bg.webp"
+          src={$t("HireAspNetHero__t4", "/aspnet-bg.webp")}
           alt=""
           fill
           priority
@@ -220,27 +267,29 @@ export default function HireAspNetHero() {
 
       {/* ------------------------- content ------------------------- */}
       <Container className="relative z-10 max-w-[1400px]">
-        {/* tech cards: anchored to the container edge, never the viewport edge */}
-        <div aria-hidden className="pointer-events-none absolute right-6 top-2 z-[2] hidden h-[450px] w-[150px] lg:block">
+        {/* tech cards: thick 3D glass tiles, anchored to the container edge */}
+        <div aria-hidden className="pointer-events-none absolute right-2 top-0 z-[2] hidden h-[520px] w-[200px] lg:block xl:right-6">
           {CARDS.map((c, i) => (
             <motion.div
-              key={c.label}
+              key={i}
               className="absolute"
               style={c.pos}
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 + i * 0.12, ease: EASE }}
             >
               <motion.div
-                className="flex h-[102px] w-[102px] flex-col items-center justify-center gap-1.5 rounded-[22px] border border-white/80 bg-gradient-to-br from-white/75 via-white/45 to-white/25 text-center shadow-[0_26px_40px_-18px_rgba(30,70,120,0.4),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl"
-                style={{ transformPerspective: 800, ...c.tilt }}
                 animate={reduce ? undefined : { y: [0, i % 2 ? 7 : -7, 0] }}
                 transition={{ duration: 5 + i * 0.6, repeat: Infinity, ease: "easeInOut" }}
               >
-                {c.icon}
-                <span className="whitespace-pre-line text-[9.5px] font-semibold leading-tight" style={{ color: NAVY }}>
-                  {c.label}
-                </span>
+                <GlassTile tilt={c.tilt}>
+                  <span className="flex flex-col items-center gap-2">
+                    <span className="scale-[1.25]">{c.icon}</span>
+                    <span className="mt-1 whitespace-pre-line text-[12px] font-semibold leading-tight" style={{ color: NAVY }}>
+                      {c.label}
+                    </span>
+                  </span>
+                </GlassTile>
               </motion.div>
             </motion.div>
           ))}
@@ -253,17 +302,16 @@ export default function HireAspNetHero() {
               <span style={{ color: TEAL }} className="font-mono text-[13px] font-black tracking-tighter">
                 &lt;/&gt;
               </span>
-              ASP.NET Development
-            </motion.span>
+              {$t("HireAspNetHero__t5", "ASP.NET Development")}</motion.span>
             <motion.i variants={fadeUp} custom={0} aria-hidden className="h-px w-8 bg-[#0d8a91]/50 sm:w-14" />
           </motion.div>
 
-          <h1 className={`${display.className} mt-5 text-[44px] font-extrabold leading-[1.06] tracking-[-0.02em] sm:text-[62px] lg:text-[76px]`} aria-label="Hire ASP.NET Developers">
+          <h1 className={`text-h1 ${display.className} mt-5 font-extrabold tracking-[-0.02em]`} aria-label="Hire ASP.NET Developers">
             <motion.span initial="hidden" animate="show" className="block">
               {[
-                { w: "Hire", c: NAVY },
-                { w: "ASP.NET", c: "" },
-                { w: "Developers", c: NAVY },
+                { w: $t("HireAspNetHero__t6", "Hire"), c: NAVY },
+                { w: $t("HireAspNetHero__t7", "ASP.NET"), c: "" },
+                { w: $t("HireAspNetHero__t8", "Developers"), c: NAVY },
               ].map((x, i) => (
                 <span key={x.w} className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
                   <motion.span variants={wordV} custom={i} className="block will-change-transform">
@@ -285,32 +333,29 @@ export default function HireAspNetHero() {
             animate="show"
             variants={fadeUp}
             custom={5}
-            className="mt-5 max-w-[600px] text-[15px] leading-relaxed text-slate-600 sm:text-[16px]"
+            className="text-body mt-5 max-w-[600px] text-slate-600"
           >
-            Skilled ASP.NET developers to build secure, scalable and high-performance web applications that
-            drive your business forward.
-          </motion.p>
+            {rich($t("HireAspNetHero__t9", "Skilled ASP.NET developers to build secure, scalable and high-performance web applications that drive your business forward."))}</motion.p>
 
           <motion.div initial="hidden" animate="show" variants={fadeUp} custom={6} className="mt-7 flex flex-wrap items-center justify-center gap-3.5">
             <Link
-              href="#contact"
+              href={$t("HireAspNetHero__t10", "#aspnet-contact")}
               className="group relative inline-flex h-12 items-center gap-3 overflow-hidden rounded-lg px-7 text-[14px] font-semibold text-white shadow-[0_16px_30px_-12px_rgba(13,138,145,0.8)] transition-all hover:-translate-y-0.5 active:scale-95"
               style={{ background: "linear-gradient(180deg,#139aa1,#0c7f87)" }}
             >
               <span aria-hidden className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              <span className="relative">Hire ASP.NET Developers</span>
+              <span className="relative">{$t("HireAspNetHero__t11", "Hire ASP.NET Developers")}</span>
               <svg viewBox="0 0 24 24" className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <line x1="4" y1="12" x2="20" y2="12" />
                 <polyline points="14 6 20 12 14 18" />
               </svg>
             </Link>
             <Link
-              href="#contact"
+              href={$t("HireAspNetHero__t12", "/contact")}
               className="group inline-flex h-12 items-center gap-3 rounded-lg border bg-white/60 px-7 text-[14px] font-semibold backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white active:scale-95"
               style={{ borderColor: "#5fc0c4", color: TEAL }}
             >
-              Talk to an Expert
-              <svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              {$t("HireAspNetHero__t13", "Talk to an Expert")}<svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <line x1="4" y1="12" x2="20" y2="12" />
                 <polyline points="14 6 20 12 14 18" />
               </svg>
@@ -347,7 +392,7 @@ export default function HireAspNetHero() {
           animate="show"
           variants={fadeUp}
           custom={9}
-          className="mt-1 flex items-center justify-center gap-3 text-[12px] text-slate-600"
+          className="text-caption mt-1 flex items-center justify-center gap-3 text-slate-600"
         >
           <span aria-hidden className="hidden h-px w-20 bg-gradient-to-r from-transparent to-[#0d8a91]/50 sm:block" />
           <span className="flex gap-0.5 text-[11px]" style={{ color: TEAL }} aria-hidden>
@@ -357,8 +402,7 @@ export default function HireAspNetHero() {
               </motion.span>
             ))}
           </span>
-          Trusted by <strong className="font-semibold" style={{ color: NAVY }}>200+</strong> Businesses Worldwide
-          <span aria-hidden className="hidden h-px w-20 bg-gradient-to-l from-transparent to-[#0d8a91]/50 sm:block" />
+          {rich($t("HireAspNetHero__t14", "Trusted by "))}<strong className="font-semibold" style={{ color: NAVY }}>{$t("HireAspNetHero__t15", "200+")}</strong> {rich($t("HireAspNetHero__t16", "Businesses Worldwide"))}<span aria-hidden className="hidden h-px w-20 bg-gradient-to-l from-transparent to-[#0d8a91]/50 sm:block" />
         </motion.p>
       </Container>
 

@@ -18,21 +18,23 @@ import {
 } from "lucide-react";
 import CountUp from "../shared/CountUp";
 import { AI, BrandIcon, H2, Hl, Pill, Sparkle, ease, heading, type Brand, Inner, Panel } from "../shared/AiSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const BEFORE = [
+const BEFORE__cms = [
   { Icon: TrendingDown, title: "Low Visibility", text: "Hard to find on Google and not shown in AI results." },
   { Icon: CircleHelp, title: "Not AI-Recommended", text: "Your brand is missing in AI overviews and answers." },
   { Icon: FileWarning, title: "Scattered Content", text: "Content isn't structured for topics or user intent." },
   { Icon: ShieldAlert, title: "Low Authority", text: "AI doesn't recognize or trust your brand." },
 ];
-const AFTER = [
+const AFTER__cms = [
   { Icon: TrendingUp, title: "Increased Visibility", text: "Higher rankings across Google, AI Overviews & more." },
   { Icon: Star, title: "AI Recommends You", text: "Your brand is cited in AI answers and suggestions." },
   { Icon: Waypoints, title: "Topical Authority", text: "Structured content that builds trust and relevance." },
   { Icon: ShieldCheck, title: "High Trust & Authority", text: "AI understands, trusts and recommends your brand." },
 ];
 
-const PLATFORMS: { brand: Brand; name: string; sub: string }[] = [
+const PLATFORMS__cms: { brand: Brand; name: string; sub: string }[] = [
   { brand: "chatgpt", name: "ChatGPT", sub: "Answers & Recommendations" },
   { brand: "gemini", name: "Google Gemini", sub: "AI Overviews & Summaries" },
   { brand: "google", name: "Google Search", sub: "Rankings & Rich Results" },
@@ -43,7 +45,7 @@ const PLATFORMS: { brand: Brand; name: string; sub: string }[] = [
   { brand: "voice", name: "Voice Search", sub: "Smart Speakers & Assistants" },
 ];
 
-const STATS = [
+const STATS__cms = [
   { Icon: TrendingUp, to: 180, suffix: "%+", title: "Increase in Organic Traffic", text: "Drive more qualified visitors that convert.", c: "text-teal-600", bg: "bg-teal-50" },
   { Icon: Search, to: 200, suffix: "%+", title: "Growth in Keyword Rankings", text: "Rank higher for the keywords that matter most.", c: "text-violet-600", bg: "bg-violet-50" },
   { Icon: Crown, to: 250, suffix: "%+", title: "AI Visibility Boost", text: "Be seen in AI Overviews, answers and recommendations.", c: "text-blue-600", bg: "bg-blue-50" },
@@ -51,6 +53,9 @@ const STATS = [
 ];
 
 function Column({ kind }: { kind: "before" | "after" }) {
+  const $t = useCmsText();
+  const BEFORE = useCmsData("AiSeoDifference__BEFORE", BEFORE__cms);
+  const AFTER = useCmsData("AiSeoDifference__AFTER", AFTER__cms);
   const before = kind === "before";
   const rows = before ? BEFORE : AFTER;
   return (
@@ -64,7 +69,7 @@ function Column({ kind }: { kind: "before" | "after" }) {
       }`}
     >
       <p className={`py-3 text-center text-xs font-bold uppercase tracking-wide ${before ? "bg-rose-50 text-[#0b1b33]" : "bg-teal-50 text-[#0f766e]"}`}>
-        {before ? "Before AI SEO" : "After AI SEO"}
+        {before ? $t("AiSeoDifference__t1", "Before AI SEO") : $t("AiSeoDifference__t2", "After AI SEO")}
       </p>
       <ul className="divide-y divide-slate-100 px-4">
         {rows.map(({ Icon, title, text }, i) => (
@@ -91,6 +96,9 @@ function Column({ kind }: { kind: "before" | "after" }) {
 }
 
 export default function AiSeoDifference() {
+  const $t = useCmsText();
+  const PLATFORMS = useCmsData("AiSeoDifference__PLATFORMS", PLATFORMS__cms);
+  const STATS = useCmsData("AiSeoDifference__STATS", STATS__cms);
   return (
     <Panel inner="!bg-white">
       <Inner className="py-14 sm:py-16 lg:py-20 2xl:py-24">
@@ -107,18 +115,16 @@ export default function AiSeoDifference() {
               >
                 <div className="relative aspect-[0.86]">
                   <span aria-hidden className="absolute -inset-[18%] rounded-full bg-[radial-gradient(closest-side,#e8effd_55%,rgba(232,239,253,0))]" />
-                  <Image src={AI.robotPresent} alt="AI SEO robot presenting results" fill sizes="(min-width:1536px) 340px, 260px" className="ai-float object-contain"
+                  <Image src={AI.robotPresent} alt={$t("AiSeoDifference__t3", "AI SEO robot presenting results")} fill sizes="(min-width:1536px) 340px, 260px" className="ai-float object-contain"
                     style={{ maskImage: "radial-gradient(62% 60% at 50% 46%, #000 72%, transparent 100%)", WebkitMaskImage: "radial-gradient(62% 60% at 50% 46%, #000 72%, transparent 100%)" }} />
                 </div>
               </motion.div>
               <div className="min-w-0 md:row-start-1 md:col-start-2">
-                <Pill>Transform Your Visibility</Pill>
+                <Pill>{$t("AiSeoDifference__t4", "Transform Your Visibility")}</Pill>
                 <H2 className="mt-4 !text-[clamp(26px,1.65vw,32px)] xl:whitespace-nowrap">
-                  See the Difference <Hl>AI SEO</Hl> Makes
-                </H2>
-                <p className="mt-3 max-w-md text-[15px] leading-relaxed text-slate-600">
-                  From traditional SEO to AI-powered visibility. We help your business get recommended everywhere people search.
-                </p>
+                  {$t("AiSeoDifference__t5", "See the Difference ")}<Hl>{$t("AiSeoDifference__t6", "AI SEO")}</Hl> {$t("AiSeoDifference__t7", "Makes")}</H2>
+                <p className="text-body mt-3 max-w-md text-slate-600">
+                  {rich($t("AiSeoDifference__t8", "From traditional SEO to AI-powered visibility. We help your business get recommended everywhere people search."))}</p>
               </div>
               <div className="relative grid gap-4 sm:grid-cols-2 sm:gap-7 md:col-span-2 md:col-start-1 lg:col-span-1 lg:col-start-2">
                 <Column kind="before" />
@@ -142,11 +148,10 @@ export default function AiSeoDifference() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease }}
-                className={`${heading.className} text-2xl font-bold text-[#0b1b33] sm:text-[26px]`}
+                className={`text-h5 ${heading.className} font-bold text-[#0b1b33]`}
               >
-                AI Platforms We <Hl>Optimize</Hl> For
-              </motion.h3>
-              <p className="mt-2 max-w-xs text-sm text-slate-500">Be visible where your customers and AI are searching.</p>
+                {$t("AiSeoDifference__t9", "AI Platforms We ")}<Hl>{$t("AiSeoDifference__t10", "Optimize")}</Hl> {$t("AiSeoDifference__t11", "For")}</motion.h3>
+              <p className="text-small mt-2 max-w-xs text-slate-500">{rich($t("AiSeoDifference__t12", "Be visible where your customers and AI are searching."))}</p>
               <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 xl:gap-2.5">
                 {PLATFORMS.map((p, i) => (
                   <motion.div
@@ -201,12 +206,11 @@ export default function AiSeoDifference() {
           <div className="mt-8 flex items-center justify-center gap-4 text-[11px] font-medium uppercase tracking-[0.3em] text-slate-500 sm:gap-6">
             <span className="hidden h-px w-16 bg-slate-200 sm:block" />
             <span className="flex items-center gap-1.5">
-              <Sparkle className="h-3 w-3 text-[#0b1b33]" /> AI Powered.
-            </span>
+              <Sparkle className="h-3 w-3 text-[#0b1b33]" /> {$t("AiSeoDifference__t13", "AI Powered.")}</span>
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-[#1e3a8a]">
               <Sparkle className="ai-anim h-5 w-5" />
             </span>
-            <span>Human Driven.</span>
+            <span>{$t("AiSeoDifference__t14", "Human Driven.")}</span>
             <span className="hidden h-px w-16 bg-slate-200 sm:block" />
           </div>
         </div>

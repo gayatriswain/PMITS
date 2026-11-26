@@ -20,8 +20,10 @@ import {
 } from "lucide-react";
 import CountUp from "../shared/CountUp";
 import { CtaButton, Hl, Pill, Spark, ease, heading, Inner, Panel } from "../shared/AiSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const FEED = [
+const FEED__cms = [
   { Icon: Search, title: "New keyword opportunity found", sub: "High-intent keyword with strong potential", t: "2m ago" },
   { Icon: Sparkles, title: "AI Overview opportunity detected", sub: "Your content is eligible for AI Overview", t: "Now" },
   { Icon: ArrowUpDown, title: "Competitor ranking changed", sub: "Tracking position shift in key results", t: "3m ago" },
@@ -31,14 +33,14 @@ const FEED = [
   { Icon: FileText, title: "Content gap discovered", sub: "New topic opportunity identified", t: "1m ago" },
 ];
 
-const IMPACT = [
+const IMPACT__cms = [
   { to: 18, suffix: " +", label: "Improvements Today", c: "#14a39a", bg: "from-teal-50", fg: "text-teal-600" },
   { to: 2438, suffix: "", label: "Keywords Monitored", c: "#2563eb", bg: "from-blue-50", fg: "text-blue-600" },
   { to: 24, suffix: "", label: "Content Optimized", c: "#8b5cf6", bg: "from-violet-50", fg: "text-violet-600" },
   { to: 186, suffix: "%", label: "AI Visibility (30 Days)", c: "#14a39a", bg: "from-emerald-50", fg: "text-teal-600", arrow: true },
 ];
 
-const RESULTS = [
+const RESULTS__cms = [
   { Icon: BarChart3, title: "More Visibility", sub: "Across Search & AI", c: "bg-teal-50 text-teal-600" },
   { Icon: Target, title: "Stronger Rankings", sub: "Sustainable Growth", c: "bg-blue-50 text-blue-600" },
   { Icon: Users, title: "More Qualified Traffic", sub: "Better Business Outcomes", c: "bg-violet-50 text-violet-600" },
@@ -50,6 +52,8 @@ const card = "rounded-2xl border border-slate-100 bg-white shadow-[0_20px_50px_-
 
 /** Live feed: shows 7 rows, rotating a new one in at the top every couple of seconds. */
 function LiveFeed() {
+  const $t = useCmsText();
+  const FEED = useCmsData("AiSeoNeverStops__FEED", FEED__cms);
   const reduce = useReducedMotion();
   const [start, setStart] = useState(0);
   useEffect(() => {
@@ -66,8 +70,7 @@ function LiveFeed() {
             <span className="ai-anim absolute inset-0 rounded-full bg-emerald-400" style={{ animation: "aiPing 1.6s ease-out infinite" }} />
             <span className="relative h-2 w-2 rounded-full bg-emerald-500" />
           </span>
-          Live AI Activity
-          <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold normal-case text-emerald-600">● Live</span>
+          {rich($t("AiSeoNeverStops__t1", "Live AI Activity"))}<span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold normal-case text-emerald-600">{$t("AiSeoNeverStops__t2", "● Live")}</span>
         </p>
         <ChevronDown className="h-4 w-4 text-slate-400" />
       </div>
@@ -95,9 +98,8 @@ function LiveFeed() {
         </AnimatePresence>
       </ul>
       <div className="mt-3 flex justify-center">
-        <a href="#ai-seo-strategy" className="inline-flex items-center gap-2 rounded-full border border-teal-100 px-4 py-1.5 text-xs font-semibold text-[#0f766e] transition hover:bg-teal-50">
-          View All Activity →
-        </a>
+        <a href={$t("AiSeoNeverStops__t3", "#ai-seo-strategy")} className="inline-flex items-center gap-2 rounded-full border border-teal-100 px-4 py-1.5 text-xs font-semibold text-[#0f766e] transition hover:bg-teal-50">
+          {$t("AiSeoNeverStops__t4", "View All Activity →")}</a>
       </div>
     </div>
   );
@@ -105,6 +107,7 @@ function LiveFeed() {
 
 /** Glowing "AI SEO in action" core with orbiting rings and particles. */
 function Core() {
+  const $t = useCmsText();
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[360px] 2xl:max-w-[430px]">
       <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(45,212,191,.28),rgba(125,211,252,.12)_45%,transparent_70%)]" />
@@ -124,26 +127,25 @@ function Core() {
       <span className="ai-anim absolute inset-[28%] rounded-full bg-teal-300/30" style={{ animation: "aiPing 3s ease-out infinite" }} />
       <div className="absolute inset-[27%] flex flex-col items-center justify-center rounded-full border border-white bg-gradient-to-b from-white to-teal-50 text-center shadow-[0_0_60px_rgba(45,212,191,.45),inset_0_0_30px_rgba(45,212,191,.25)]">
         <BrainCircuit className="h-9 w-9 text-[#0f766e] sm:h-10 sm:w-10" strokeWidth={1.6} />
-        <p className={`${heading.className} mt-1 text-2xl font-extrabold leading-none text-[#0b1b33] sm:text-[28px]`}>AI SEO</p>
-        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#0f766e]">In Action</p>
+        <p className={`${heading.className} mt-1 text-2xl font-extrabold leading-none text-[#0b1b33] sm:text-[28px]`}>{rich($t("AiSeoNeverStops__t5", "AI SEO"))}</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#0f766e]">{rich($t("AiSeoNeverStops__t6", "In Action"))}</p>
         <p className="mt-1.5 hidden text-[10px] leading-snug text-slate-500 sm:block">
-          Learning. Analyzing.
-          <br /> Optimizing. Growing.
-        </p>
+          {rich($t("AiSeoNeverStops__t7", "Learning. Analyzing."))}<br /> {rich($t("AiSeoNeverStops__t8", "Optimizing. Growing."))}</p>
       </div>
     </div>
   );
 }
 
 function GrowthChart() {
+  const $t = useCmsText();
   const traffic = "0,78 12,70 22,72 34,62 44,63 56,50 66,52 78,40 88,38 100,28";
   const ai = "0,82 14,80 26,76 38,70 50,66 62,58 74,48 84,36 92,24 100,12";
   return (
     <div className={`${card} p-4 sm:p-5`}>
       <div className="flex items-center justify-between">
-        <p className="text-[13px] font-bold text-[#0b1b33]">Your Growth, Powered by AI</p>
+        <p className="text-small font-bold text-[#0b1b33]">{rich($t("AiSeoNeverStops__t9", "Your Growth, Powered by AI"))}</p>
         <span className="flex items-center gap-1 text-[11px] text-slate-500">
-          30 Days <ChevronDown className="h-3 w-3" />
+          {$t("AiSeoNeverStops__t10", "30 Days ")}<ChevronDown className="h-3 w-3" />
         </span>
       </div>
       <div className="relative mt-3 flex gap-2">
@@ -183,41 +185,40 @@ function GrowthChart() {
             transition={{ delay: 1.4, duration: 0.5 }}
             className="absolute right-3 top-0 rounded-lg border border-teal-100 bg-teal-50/90 px-2.5 py-1 text-center"
           >
-            <span className={`${heading.className} block text-base font-bold leading-none text-[#0f766e]`}>↑ 186%</span>
-            <span className="text-[9.5px] text-slate-500">Growth</span>
+            <span className={`${heading.className} block text-base font-bold leading-none text-[#0f766e]`}>{$t("AiSeoNeverStops__t11", "↑ 186%")}</span>
+            <span className="text-[9.5px] text-slate-500">{$t("AiSeoNeverStops__t12", "Growth")}</span>
           </motion.span>
         </div>
       </div>
       <div className="mt-3 flex gap-4 text-[10.5px] text-slate-500">
         <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-teal-500" /> Organic Traffic
-        </span>
+          <span className="h-1.5 w-1.5 rounded-full bg-teal-500" /> {$t("AiSeoNeverStops__t13", "Organic Traffic")}</span>
         <span className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" /> AI Visibility
-        </span>
+          <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" /> {$t("AiSeoNeverStops__t14", "AI Visibility")}</span>
       </div>
     </div>
   );
 }
 
 export default function AiSeoNeverStops() {
+  const $t = useCmsText();
+  const IMPACT = useCmsData("AiSeoNeverStops__IMPACT", IMPACT__cms);
+  const RESULTS = useCmsData("AiSeoNeverStops__RESULTS", RESULTS__cms);
   return (
     <Panel inner="bg-gradient-to-b !from-[#f6f8fb] !to-[#f1f7f7]">
       <Inner className="!max-w-[1360px] py-14 sm:py-16 lg:py-20 2xl:py-24">
         <div className="text-center">
-          <Pill>AI That Never Stops</Pill>
+          <Pill>{$t("AiSeoNeverStops__t15", "AI That Never Stops")}</Pill>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease }}
-            className={`${heading.className} mt-5 text-[32px] font-extrabold leading-[1.08] tracking-[-0.03em] text-[#0b1b33] sm:text-5xl lg:text-[56px]`}
+            className={`text-h2 ${heading.className} mt-5 font-extrabold tracking-[-0.03em] text-[#0b1b33]`}
           >
-            AI <Hl>Never Stops</Hl> Optimizing.
-          </motion.h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-slate-600 sm:text-base">
-            Thousands of micro-improvements happen every day—so your business stays ahead in search and AI-powered experiences.
-          </p>
+            {$t("AiSeoNeverStops__t16", "AI ")}<Hl>{$t("AiSeoNeverStops__t17", "Never Stops")}</Hl> {$t("AiSeoNeverStops__t18", "Optimizing.")}</motion.h2>
+          <p className="text-body mx-auto mt-4 max-w-lg text-slate-600">
+            {rich($t("AiSeoNeverStops__t19", "Thousands of micro-improvements happen every day—so your business stays ahead in search and AI-powered experiences."))}</p>
         </div>
 
         <div className="mt-10 grid items-center gap-6 lg:grid-cols-[1fr_0.85fr_1.2fr] lg:gap-5 2xl:gap-8">
@@ -235,7 +236,7 @@ export default function AiSeoNeverStops() {
             <Core />
             <div className={`${card} mx-auto mt-2 flex w-fit max-w-full items-center gap-2 px-4 py-3`}>
               <span className="h-2 w-2 shrink-0 rounded-full bg-teal-500" />
-              <span className="flex-1 whitespace-nowrap text-[11px] font-medium text-[#0b1b33]">Analyzing. Optimizing. Ranking. Always.</span>
+              <span className="flex-1 whitespace-nowrap text-[11px] font-medium text-[#0b1b33]">{$t("AiSeoNeverStops__t20", "Analyzing. Optimizing. Ranking. Always.")}</span>
               <svg viewBox="0 0 60 16" className="h-4 w-12 text-teal-500" aria-hidden>
                 <path
                   d="M0 8h14l3-6 4 12 4-10 3 4h32"
@@ -253,11 +254,10 @@ export default function AiSeoNeverStops() {
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8, ease }} className="space-y-5">
             <div className={`${card} p-4 sm:p-5`}>
               <div className="flex items-center justify-between">
-                <p className="flex items-center gap-2 text-[13px] font-bold text-[#0b1b33]">
-                  <CalendarDays className="h-4 w-4 text-slate-500" /> Today&apos;s Impact
-                </p>
+                <p className="text-small flex items-center gap-2 font-bold text-[#0b1b33]">
+                  <CalendarDays className="h-4 w-4 text-slate-500" /> {rich($t("AiSeoNeverStops__t21", "Today's Impact"))}</p>
                 <span className="flex items-center gap-1 text-[11px] text-slate-500">
-                  Today <ChevronDown className="h-3 w-3" />
+                  {$t("AiSeoNeverStops__t22", "Today ")}<ChevronDown className="h-3 w-3" />
                 </span>
               </div>
               <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
@@ -285,7 +285,7 @@ export default function AiSeoNeverStops() {
           transition={{ duration: 0.7, ease }}
           className={`${card} mt-8 grid gap-4 p-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[auto_repeat(5,1fr)] lg:items-center lg:gap-0`}
         >
-          <p className="text-sm font-medium text-slate-600 sm:col-span-full lg:col-span-1 lg:pr-6">The Results You Get</p>
+          <p className="text-small font-medium text-slate-600 sm:col-span-full lg:col-span-1 lg:pr-6">{rich($t("AiSeoNeverStops__t23", "The Results You Get"))}</p>
           {RESULTS.map(({ Icon, title, sub, c }, i) => (
             <div key={title} className={`group flex items-center gap-3 lg:px-4 ${i ? "lg:border-l lg:border-slate-100" : ""}`}>
               <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${c}`}>
@@ -313,14 +313,13 @@ export default function AiSeoNeverStops() {
           />
           <Sparkles className="relative h-9 w-9 shrink-0 text-[#14a39a]" strokeWidth={1.6} />
           <div className="relative flex-1">
-            <p className={`${heading.className} text-lg font-bold text-[#0b1b33] sm:text-xl`}>Your AI SEO Team Is Working Right Now</p>
-            <p className="mt-1 text-sm text-slate-500">Let our AI agents and SEO experts build more visibility, authority, and growth—every single day.</p>
+            <p className={`text-body ${heading.className} font-bold text-[#0b1b33]`}>{rich($t("AiSeoNeverStops__t24", "Your AI SEO Team Is Working Right Now"))}</p>
+            <p className="text-small mt-1 text-slate-500">{rich($t("AiSeoNeverStops__t25", "Let our AI agents and SEO experts build more visibility, authority, and growth—every single day."))}</p>
           </div>
           <div className="relative flex flex-col gap-3 sm:flex-row">
-            <CtaButton>Get Your AI SEO Strategy</CtaButton>
-            <CtaButton variant="ghost" href="#how-it-works" className="!border-slate-200 !text-[#0b1b33]">
-              See How It Works
-            </CtaButton>
+            <CtaButton>{$t("AiSeoNeverStops__t26", "Get Your AI SEO Strategy")}</CtaButton>
+            <CtaButton variant="ghost" href={$t("AiSeoNeverStops__t27", "#how-it-works")} className="!border-slate-200 !text-[#0b1b33]">
+              {$t("AiSeoNeverStops__t28", "See How It Works")}</CtaButton>
           </div>
         </motion.div>
       </Inner>

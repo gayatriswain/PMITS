@@ -1,10 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
+import { submitEnquiry, goToThankYou } from "@/lib/forms";
+import Honeypot from "@/components/cms/Honeypot";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { logos } from "./AgenticAiPlatform";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const stroke = {
   fill: "none",
@@ -39,12 +43,12 @@ const D = {
   clock: "M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z",
 };
 
-const points = [
+const points__cms = [
   { icon: D.bolt, title: "Smarter Operations", desc: "Automate. Optimize. Scale." },
   { icon: D.shield, title: "Real Business Impact", desc: "Measurable results that matter." },
 ];
 
-const stats = [
+const stats__cms = [
   { icon: D.users, value: "500+", label: "Businesses Empowered", bg: "#0f8a83" },
   { icon: D.chart, value: "90%+", label: "Increase in Productivity", bg: "#3b6bf0" },
   { icon: D.clock, value: "70%+", label: "Time Saved on Manual Tasks", bg: "#7c4dff" },
@@ -52,11 +56,33 @@ const stats = [
 ];
 
 export default function AgenticAiCTA() {
+  const $t = useCmsText();
+  const points = useCmsData("AgenticAiCTA__points", points__cms);
+  const stats = useCmsData("AgenticAiCTA__stats", stats__cms);
   const [sent, setSent] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [hp, setHp] = useState("");
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    if (sending) return;
+    const fd = new FormData(e.currentTarget);
+    setSending(true);
+    setError("");
+    const r = await submitEnquiry("agentic-ai-cta", {
+      email: String(fd.get("email") || ""),
+      message: String(fd.get("message") || ""),
+      service: "Custom Agentic AI Solution",
+      hp,
+    });
+    setSending(false);
+    if (r.ok) {
+      setSent(true);
+      goToThankYou("agentic-ai");
+    }
+    else setError(r.error);
   };
 
   return (
@@ -73,17 +99,14 @@ export default function AgenticAiCTA() {
           >
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-sky-200/80 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.12em] text-[#1b6fa8] uppercase shadow-sm">
               <Sparkle className="w-3.5 h-3.5" />
-              Your advantage. Our intelligence.
-            </span>
-            <h2 className="mt-6 text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.06] text-[#0b1f4a]">
-              Ready to
-              <br />
-              Lead with <span className="text-[#1b8fd6]">AI?</span>
+              {$t("AgenticAiCTA__t1", "Your advantage. Our intelligence.")}</span>
+            <h2 className="text-h2 mt-6 font-black tracking-tight text-[#0b1f4a]">
+              {$t("AgenticAiCTA__t2", "Ready to")}<br />
+              {$t("AgenticAiCTA__t3", "Lead with ")}<span className="text-[#1b8fd6]">{$t("AgenticAiCTA__t4", "AI?")}</span>
             </h2>
             <div className="mt-5 w-12 h-[3.5px] rounded-full bg-[#1b8fd6]" />
-            <p className="mt-5 text-[15px] sm:text-[16px] text-slate-600 leading-relaxed max-w-[440px]">
-              One conversation can unlock endless possibilities for your business.
-            </p>
+            <p className="text-body mt-5 text-slate-600 max-w-[440px]">
+              {rich($t("AgenticAiCTA__t5", "One conversation can unlock endless possibilities for your business."))}</p>
 
             <div className="relative mt-8 space-y-4 max-w-[440px]">
               <span className="absolute left-[-14px] top-5 bottom-5 w-px bg-sky-200" />
@@ -130,8 +153,8 @@ export default function AgenticAiCTA() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               <Image
-                src="/AI.webp"
-                alt="ProManage AI agent"
+                src={$t("AgenticAiCTA__t6", "/AI.webp")}
+                alt={$t("AgenticAiCTA__t7", "ProManage AI agent")}
                 width={1411}
                 height={1115}
                 priority
@@ -155,40 +178,43 @@ export default function AgenticAiCTA() {
               <Sparkle className="w-4 h-4" />
             </span>
 
-            <h3 className="text-[23px] sm:text-[25px] font-black leading-tight text-[#0b1f4a] pr-10">
-              Let&apos;s build your
-              <br />
-              <span className="text-[#1b8fd6]">AI advantage.</span>
+            <h3 className="text-h5 font-black text-[#0b1f4a] pr-10">
+              {$t("AgenticAiCTA__t8", "Let's build your")}<br />
+              <span className="text-[#1b8fd6]">{$t("AgenticAiCTA__t9", "AI advantage.")}</span>
             </h3>
-            <p className="mt-2.5 text-[12.5px] text-slate-500">Share your goal — we&apos;ll take it from there.</p>
+            <p className="text-caption mt-2.5 text-slate-500">{rich($t("AgenticAiCTA__t10", "Share your goal — we'll take it from there."))}</p>
 
             {sent ? (
               <div className="mt-6 rounded-xl bg-emerald-50 border border-emerald-100 px-4 py-6 text-center text-sm text-emerald-700 font-semibold">
-                Thank you! Our team will reach out shortly.
-              </div>
+                {$t("AgenticAiCTA__t11", "Thank you! Our team will reach out shortly.")}</div>
             ) : (
-              <form onSubmit={onSubmit} className="mt-5 space-y-3">
+              <form onSubmit={onSubmit} className="relative mt-5 space-y-3">
+                <Honeypot value={hp} onChange={setHp} />
                 <label className="flex items-center gap-2.5 h-12 rounded-xl border border-slate-200/90 bg-white px-3.5 text-slate-400 focus-within:border-[#1b8fd6] focus-within:ring-2 focus-within:ring-sky-100 transition-all">
                   <Icon d={D.mail} className="w-4 h-4 shrink-0 text-slate-400" />
                   <input
                     type="email"
+                    name="email"
                     required
-                    placeholder="Work Email*"
+                    placeholder={$t("AgenticAiCTA__t12", "Work Email*")}
                     className="w-full bg-transparent text-[13px] text-[#0b1f4a] placeholder:text-slate-400 outline-none"
                   />
                 </label>
                 <label className="flex items-start gap-2.5 h-[92px] rounded-xl border border-slate-200/90 bg-white px-3.5 py-3 text-slate-400 focus-within:border-[#1b8fd6] focus-within:ring-2 focus-within:ring-sky-100 transition-all">
                   <Icon d={D.chat} className="w-4 h-4 shrink-0 mt-0.5 text-slate-400" />
                   <textarea
-                    placeholder="What's your biggest challenge right now?"
+                    name="message"
+                    placeholder={$t("AgenticAiCTA__t13", "What's your biggest challenge right now?")}
                     className="w-full h-full resize-none bg-transparent text-[13px] text-[#0b1f4a] placeholder:text-slate-400 outline-none"
                   />
                 </label>
+                {error && <p role="alert" className="text-caption text-rose-600">{error}</p>}
                 <button
                   type="submit"
-                  className="group w-full h-12 rounded-full bg-[linear-gradient(90deg,#2563eb_0%,#1b8fd6_50%,#0ea5e9_100%)] text-white text-[13.5px] font-bold flex items-center justify-center gap-2 shadow-[0_12px_24px_-8px_rgba(37,99,235,0.6)] hover:brightness-105 active:scale-[0.99] transition cursor-pointer"
+                  disabled={sending}
+                  className="disabled:opacity-70 group w-full h-12 rounded-full bg-[linear-gradient(90deg,#2563eb_0%,#1b8fd6_50%,#0ea5e9_100%)] text-white text-[13.5px] font-bold flex items-center justify-center gap-2 shadow-[0_12px_24px_-8px_rgba(37,99,235,0.6)] hover:brightness-105 active:scale-[0.99] transition cursor-pointer"
                 >
-                  Get Expert Insights
+                  {sending ? $t("AgenticAiCTA__t14", "Sending...") : $t("AgenticAiCTA__t15", "Get Expert Insights")}
                   <Icon d={D.arrow} className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </form>
@@ -196,16 +222,14 @@ export default function AgenticAiCTA() {
 
             <div className="mt-4 flex items-center gap-1.5 text-[11px] text-slate-500">
               <Icon d={D.lock} className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-              Your information is safe with us. No spam. Ever.
-            </div>
+              {$t("AgenticAiCTA__t16", "Your information is safe with us. No spam. Ever.")}</div>
           </motion.div>
         </div>
 
         {/* ---------------- TRUSTED BY ---------------- */}
         <div className="mt-10 rounded-2xl bg-white/70 border border-slate-100 px-5 py-5 text-center">
           <div className="text-[10px] font-semibold tracking-[0.2em] text-slate-500 uppercase">
-            Trusted by innovative businesses worldwide
-          </div>
+            {$t("AgenticAiCTA__t17", "Trusted by innovative businesses worldwide")}</div>
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-4 items-center lg:divide-x divide-slate-200">
             {logos.map((l) => (
               <div key={l.name} className="flex items-center justify-center gap-2 text-[#0b2a4a] opacity-90">

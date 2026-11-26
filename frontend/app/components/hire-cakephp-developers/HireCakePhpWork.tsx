@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { animate, motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -75,11 +77,12 @@ function Laptop({ children }: { children: React.ReactNode }) {
 /*  Mock screens                                                       */
 /* ------------------------------------------------------------------ */
 function StoreScreen() {
-  const nav = ["Women", "Men", "Kids", "Beauty", "Sale"];
+  const $t = useCmsText();
+  const nav = [$t("HireCakePhpWork__t1", "Women"), $t("HireCakePhpWork__t2", "Men"), $t("HireCakePhpWork__t3", "Kids"), $t("HireCakePhpWork__t4", "Beauty"), $t("HireCakePhpWork__t5", "Sale")];
   return (
     <div className="relative h-full w-full bg-[#f4f3f1] text-[#222]" style={{ fontSize: cq(2) }}>
       <div className="flex items-center justify-between" style={{ padding: `${cq(2)} ${cq(4)}` }}>
-        <span className="font-bold tracking-[0.3em]" style={{ fontSize: cq(2.6) }}>LUXORA</span>
+        <span className="font-bold tracking-[0.3em]" style={{ fontSize: cq(2.6) }}>{$t("HireCakePhpWork__t6", "LUXORA")}</span>
         <span className="flex text-[#555]" style={{ gap: cq(2.2) }}>
           {nav.map((n) => (
             <span key={n}>{n}</span>
@@ -94,7 +97,7 @@ function StoreScreen() {
 
       {/* hero */}
       <div className="absolute right-0 overflow-hidden" style={{ top: cq(7), width: "52%", height: cq(34) }}>
-        <Image src="/case-luxera.jpg" alt="" fill sizes="200px" className="origin-[55%_58%] scale-[1.25] object-cover" style={{ objectPosition: "50% 58%" }} />
+        <Image src={$t("HireCakePhpWork__t7", "/case-luxera.jpg")} alt="" fill sizes="200px" className="origin-[55%_58%] scale-[1.25] object-cover" style={{ objectPosition: "50% 58%" }} />
         <motion.div
           aria-hidden
           className="absolute inset-0 bg-gradient-to-r from-[#f4f3f1] via-transparent to-transparent"
@@ -109,14 +112,11 @@ function StoreScreen() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          New
-          <br />
-          Collection
-        </motion.p>
-        <p className="text-[#666]" style={{ marginTop: cq(1.6), fontSize: cq(1.9) }}>Spring / Summer 2024</p>
+          {rich($t("HireCakePhpWork__t8", "New"))}<br />
+          {rich($t("HireCakePhpWork__t9", "Collection"))}</motion.p>
+        <p className="text-[#666]" style={{ marginTop: cq(1.6), fontSize: cq(1.9) }}>{rich($t("HireCakePhpWork__t10", "Spring / Summer 2024"))}</p>
         <span className="inline-block rounded-sm bg-[#111] text-white" style={{ marginTop: cq(2.4), padding: `${cq(1.1)} ${cq(2.8)}`, fontSize: cq(1.8) }}>
-          Shop Now
-        </span>
+          {$t("HireCakePhpWork__t11", "Shop Now")}</span>
       </div>
 
       {/* products */}
@@ -144,19 +144,19 @@ function StoreScreen() {
 }
 
 function EduScreen() {
-  const side = ["Dashboard", "Courses", "Live Classes", "Assignments", "Students", "Reports", "Settings"];
+  const $t = useCmsText();
+  const side = [$t("HireCakePhpWork__t12", "Dashboard"), $t("HireCakePhpWork__t13", "Courses"), $t("HireCakePhpWork__t14", "Live Classes"), $t("HireCakePhpWork__t15", "Assignments"), $t("HireCakePhpWork__t16", "Students"), $t("HireCakePhpWork__t17", "Reports"), $t("HireCakePhpWork__t18", "Settings")];
   const courses = [
-    { n: "Web Development", w: 88, c: "#10b981", ic: "#e0f2f1" },
-    { n: "UI / UX Design", w: 62, c: "#3b82f6", ic: "#e0ecff" },
-    { n: "Database Systems", w: 75, c: "#14b8a6", ic: "#dcf5ee" },
+    { n: $t("HireCakePhpWork__t19", "Web Development"), w: 88, c: "#10b981", ic: "#e0f2f1" },
+    { n: $t("HireCakePhpWork__t20", "UI / UX Design"), w: 62, c: "#3b82f6", ic: "#e0ecff" },
+    { n: $t("HireCakePhpWork__t21", "Database Systems"), w: 75, c: "#14b8a6", ic: "#dcf5ee" },
   ];
   return (
     <div className="flex h-full w-full bg-[#f6f8fb] text-[#1f2937]" style={{ fontSize: cq(1.8) }}>
       <div className="h-full shrink-0 border-r border-slate-200 bg-white" style={{ width: cq(17), padding: cq(2) }}>
         <p className="flex items-center font-bold text-[#0d9488]" style={{ gap: cq(1), fontSize: cq(2.2), marginBottom: cq(2.4) }}>
           <span className="rounded-sm bg-[#0d9488]" style={{ width: cq(2.2), height: cq(2.2) }} />
-          Learnova
-        </p>
+          {rich($t("HireCakePhpWork__t22", "Learnova"))}</p>
         {side.map((s, i) => (
           <p key={s} className={`rounded ${i === 0 ? "bg-[#e6f4f2] font-semibold text-[#0d9488]" : "text-slate-500"}`} style={{ padding: `${cq(0.9)} ${cq(1.2)}`, marginBottom: cq(0.5) }}>
             {s}
@@ -164,13 +164,13 @@ function EduScreen() {
         ))}
       </div>
       <div className="flex-1" style={{ padding: `${cq(2.4)} ${cq(2.8)}` }}>
-        <p className="font-bold" style={{ fontSize: cq(3.4) }}>Hello, Alex</p>
-        <p className="text-slate-400" style={{ fontSize: cq(1.6), marginBottom: cq(2) }}>Welcome back to your dashboard</p>
+        <p className="font-bold" style={{ fontSize: cq(3.4) }}>{rich($t("HireCakePhpWork__t23", "Hello, Alex"))}</p>
+        <p className="text-slate-400" style={{ fontSize: cq(1.6), marginBottom: cq(2) }}>{rich($t("HireCakePhpWork__t24", "Welcome back to your dashboard"))}</p>
         <div className="grid grid-cols-3" style={{ gap: cq(1.6) }}>
           {[
-            { l: "Enrolled Courses", v: 12 },
-            { l: "Active Students", v: 860 },
-            { l: "Live Classes", v: 8 },
+            { l: $t("HireCakePhpWork__t25", "Enrolled Courses"), v: 12 },
+            { l: $t("HireCakePhpWork__t26", "Active Students"), v: 860 },
+            { l: $t("HireCakePhpWork__t27", "Live Classes"), v: 8 },
           ].map((s) => (
             <div key={s.l} className="rounded-md border border-slate-200 bg-white" style={{ padding: cq(1.6) }}>
               <p className="text-slate-500" style={{ fontSize: cq(1.5) }}>{s.l}</p>
@@ -180,7 +180,7 @@ function EduScreen() {
         </div>
         <div className="grid grid-cols-[1.6fr_1fr]" style={{ marginTop: cq(2), gap: cq(1.6) }}>
           <div className="rounded-md border border-slate-200 bg-white" style={{ padding: cq(1.6) }}>
-            <p className="font-semibold" style={{ marginBottom: cq(1.2) }}>Recent Courses</p>
+            <p className="font-semibold" style={{ marginBottom: cq(1.2) }}>{rich($t("HireCakePhpWork__t28", "Recent Courses"))}</p>
             {courses.map((c, i) => (
               <div key={c.n} className="flex items-center" style={{ gap: cq(1.4), marginBottom: cq(1.2) }}>
                 <span className="shrink-0 rounded" style={{ width: cq(4), height: cq(4), background: c.ic, boxShadow: `inset 0 0 0 ${cq(0.5)} ${c.c}33` }} />
@@ -192,7 +192,7 @@ function EduScreen() {
             ))}
           </div>
           <div className="rounded-md border border-slate-200 bg-white" style={{ padding: cq(1.6) }}>
-            <p className="font-semibold" style={{ marginBottom: cq(1) }}>April 2024</p>
+            <p className="font-semibold" style={{ marginBottom: cq(1) }}>{rich($t("HireCakePhpWork__t29", "April 2024"))}</p>
             <div className="grid grid-cols-7 text-center text-slate-500" style={{ gap: cq(0.5), fontSize: cq(1.3) }}>
               {Array.from({ length: 28 }).map((_, i) => (
                 <span key={i} className={i === 18 ? "rounded-full bg-[#0d9488] font-bold text-white" : ""}>{(i % 30) + 1}</span>
@@ -206,20 +206,20 @@ function EduScreen() {
 }
 
 function HealthScreen() {
-  const side = ["Dashboard", "Patients", "Appointments", "Doctors", "Billing", "Reports", "Settings"];
+  const $t = useCmsText();
+  const side = [$t("HireCakePhpWork__t30", "Dashboard"), $t("HireCakePhpWork__t31", "Patients"), $t("HireCakePhpWork__t32", "Appointments"), $t("HireCakePhpWork__t33", "Doctors"), $t("HireCakePhpWork__t34", "Billing"), $t("HireCakePhpWork__t35", "Reports"), $t("HireCakePhpWork__t36", "Settings")];
   const rows = [
-    { n: "John Doe", d: "General Checkup", s: "Confirmed", ok: true },
-    { n: "Sarah Smith", d: "Cardiology Consult", s: "Completed", ok: true },
-    { n: "Robert Brown", d: "Cardiology", s: "Confirmed", ok: true },
-    { n: "Emily Davis", d: "Dermatology", s: "Pending", ok: false },
+    { n: $t("HireCakePhpWork__t37", "John Doe"), d: "General Checkup", s: $t("HireCakePhpWork__t38", "Confirmed"), ok: true },
+    { n: $t("HireCakePhpWork__t39", "Sarah Smith"), d: "Cardiology Consult", s: $t("HireCakePhpWork__t40", "Completed"), ok: true },
+    { n: $t("HireCakePhpWork__t41", "Robert Brown"), d: "Cardiology", s: $t("HireCakePhpWork__t42", "Confirmed"), ok: true },
+    { n: $t("HireCakePhpWork__t43", "Emily Davis"), d: "Dermatology", s: $t("HireCakePhpWork__t44", "Pending"), ok: false },
   ];
   return (
     <div className="flex h-full w-full bg-[#f5f7f9] text-[#1f2937]" style={{ fontSize: cq(1.8) }}>
       <div className="h-full shrink-0 border-r border-slate-200 bg-white" style={{ width: cq(17), padding: cq(2) }}>
         <p className="flex items-center font-bold text-[#0f766e]" style={{ gap: cq(1), fontSize: cq(2.1), marginBottom: cq(2.4) }}>
           <span className="rounded-full bg-[#14b8a6]" style={{ width: cq(2.2), height: cq(2.2) }} />
-          MediCare+
-        </p>
+          {rich($t("HireCakePhpWork__t45", "MediCare+"))}</p>
         {side.map((s, i) => (
           <p key={s} className={`rounded ${i === 0 ? "bg-[#e4f3f1] font-semibold text-[#0f766e]" : "text-slate-500"}`} style={{ padding: `${cq(0.9)} ${cq(1.2)}`, marginBottom: cq(0.5) }}>
             {s}
@@ -227,13 +227,13 @@ function HealthScreen() {
         ))}
       </div>
       <div className="flex-1" style={{ padding: `${cq(2.4)} ${cq(2.8)}` }}>
-        <p className="font-bold" style={{ fontSize: cq(2.8), marginBottom: cq(1.6) }}>Patients Overview</p>
+        <p className="font-bold" style={{ fontSize: cq(2.8), marginBottom: cq(1.6) }}>{rich($t("HireCakePhpWork__t46", "Patients Overview"))}</p>
         <div className="grid grid-cols-4" style={{ gap: cq(1.4) }}>
           {[
-            { l: "Total Patients", n: <Count to={2350} /> },
-            { l: "Appointments", n: <Count to={320} /> },
-            { l: "Completed", n: <Count to={285} /> },
-            { l: "Revenue", n: <Count to={8.45} prefix="₹" suffix="L" decimals={2} /> },
+            { l: $t("HireCakePhpWork__t47", "Total Patients"), n: <Count to={2350} /> },
+            { l: $t("HireCakePhpWork__t48", "Appointments"), n: <Count to={320} /> },
+            { l: $t("HireCakePhpWork__t49", "Completed"), n: <Count to={285} /> },
+            { l: $t("HireCakePhpWork__t50", "Revenue"), n: <Count to={8.45} prefix="₹" suffix="L" decimals={2} /> },
           ].map((s) => (
             <div key={s.l} className="rounded-md border border-slate-200 bg-white" style={{ padding: cq(1.4) }}>
               <p className="text-slate-500" style={{ fontSize: cq(1.3) }}>{s.l}</p>
@@ -242,7 +242,7 @@ function HealthScreen() {
           ))}
         </div>
         <div className="rounded-md border border-slate-200 bg-white" style={{ marginTop: cq(2), padding: cq(1.6) }}>
-          <p className="font-semibold" style={{ marginBottom: cq(1.2) }}>Recent Appointments</p>
+          <p className="font-semibold" style={{ marginBottom: cq(1.2) }}>{rich($t("HireCakePhpWork__t51", "Recent Appointments"))}</p>
           {rows.map((r, i) => (
             <motion.div
               key={r.n}
@@ -272,7 +272,7 @@ function HealthScreen() {
 /* ------------------------------------------------------------------ */
 const ico = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.7, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, className: "h-6 w-6" };
 
-const WORK = [
+const WORK__cms = [
   {
     title: "E-Commerce",
     sub: "CakePHP Development",
@@ -313,6 +313,8 @@ const WORK = [
 /*  section                                                            */
 /* ------------------------------------------------------------------ */
 export default function HireCakePhpWork() {
+  const $t = useCmsText();
+  const WORK = useCmsData("HireCakePhpWork__WORK", WORK__cms);
   const reduce = useReducedMotion();
 
   return (
@@ -392,18 +394,16 @@ export default function HireCakePhpWork() {
               className="inline-block text-[11px] font-bold uppercase tracking-[0.24em]"
               style={{ color: RED }}
             >
-              Our Work
-            </motion.span>
+              {$t("HireCakePhpWork__t52", "Our Work")}</motion.span>
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="mt-4 font-playfair text-[34px] font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[52px]"
+              className="text-h2 mt-4 font-playfair font-bold tracking-tight"
               style={{ color: INK }}
             >
-              Built with <span style={{ color: RED }}>CakePHP.</span>
+              {$t("HireCakePhpWork__t53", "Built with ")}<span style={{ color: RED }}>{$t("HireCakePhpWork__t54", "CakePHP.")}</span>
               <br />
-              Built to perform.
-            </motion.h2>
+              {$t("HireCakePhpWork__t55", "Built to perform.")}</motion.h2>
             <motion.span
               variants={fadeUp}
               custom={2}
@@ -439,7 +439,7 @@ export default function HireCakePhpWork() {
                   <h3 className="font-playfair text-[17px] font-bold leading-tight" style={{ color: INK }}>
                     {w.title}
                   </h3>
-                  <p className="mt-1.5 flex items-center gap-2 text-[12px] text-slate-500">
+                  <p className="text-caption mt-1.5 flex items-center gap-2 text-slate-500">
                     <span className="h-px w-5 shrink-0 transition-all duration-300 group-hover:w-8" style={{ background: RED }} />
                     <span className="truncate">{w.sub}</span>
                   </p>
@@ -462,12 +462,12 @@ export default function HireCakePhpWork() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Link
-            href="/portfolio"
+            href={$t("HireCakePhpWork__t56", "/portfolio")}
             className="group relative inline-flex items-center gap-3 overflow-hidden rounded-lg border bg-white px-8 py-3.5 text-[13.5px] font-semibold transition-colors duration-300 hover:text-white active:scale-95"
             style={{ borderColor: RED, color: RED }}
           >
             <span aria-hidden className="absolute inset-0 origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" style={{ background: RED }} />
-            <span className="relative">View More Case Studies</span>
+            <span className="relative">{$t("HireCakePhpWork__t57", "View More Case Studies")}</span>
             <svg viewBox="0 0 24 24" className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <line x1="4" y1="12" x2="20" y2="12" />
               <polyline points="14 6 20 12 14 18" />

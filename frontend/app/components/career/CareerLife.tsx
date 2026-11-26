@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -88,7 +89,7 @@ type Moment = {
   zoom?: number;
   focus?: string;
 };
-const MOMENTS: Moment[] = [
+const MOMENTS__cms: Moment[] = [
   { Icon: TeamIcon, title: "Collaborate", desc: "We believe the best ideas come together.", src: "/career1.webp", position: "65% 50%", zoom: 1.15 },
   { Icon: PartyIcon, title: "Celebrate", desc: "Milestones, big or small, we celebrate together.", src: "/career2.png", zoom: 4, focus: "40% 100%" },
   { Icon: CreateIcon, title: "Create", desc: "A space to think, design and build your best work.", src: "/career1.webp", zoom: 2.4, focus: "33% 61%" },
@@ -135,7 +136,7 @@ function MomentCard({ m, i }: { m: Moment; i: number }) {
         {m.title}
       </h3>
       <span className="mt-2.5 h-[2px] w-7 rounded-full" style={{ backgroundColor: TEAL }} />
-      <p className="mt-3 max-w-[180px] text-[13px] leading-[1.65] text-slate-600">{m.desc}</p>
+      <p className="text-small mt-3 max-w-[180px] text-slate-600">{m.desc}</p>
     </motion.li>
   );
 }
@@ -164,6 +165,8 @@ function Wave() {
 }
 
 export default function CareerLife() {
+  const $t = useCmsText();
+  const MOMENTS = useCmsData("CareerLife__MOMENTS", MOMENTS__cms);
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-[#f7fbfb] to-white py-16 lg:py-20">
       {/* soft background swoops and dot grids */}
@@ -183,25 +186,22 @@ export default function CareerLife() {
           viewport={{ once: true, amount: 0.4 }}
           className="mx-auto max-w-[760px] text-center"
         >
-          <motion.p variants={fadeUp} className="text-[13px] font-semibold uppercase tracking-[0.16em]" style={{ color: TEAL }}>
-            Life at ProManage
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-small font-semibold uppercase tracking-[0.16em]" style={{ color: TEAL }}>
+            {rich($t("CareerLife__t1", "Life at ProManage"))}</motion.p>
           <motion.span variants={fadeUp} className="mx-auto mt-2 block h-[2px] w-10 rounded-full" style={{ backgroundColor: TEAL }} />
-          <motion.h2 variants={fadeUp} className="mt-4 text-[38px] font-bold leading-tight tracking-tight sm:text-[52px]" style={{ color: INK }}>
-            More Than a Workplace,
-          </motion.h2>
+          <motion.h2 variants={fadeUp} className="text-h2 mt-4 font-bold tracking-tight" style={{ color: INK }}>
+            {$t("CareerLife__t2", "More Than a Workplace,")}</motion.h2>
           <motion.p variants={fadeUp} className={`${caveat.className} relative mx-auto inline-block text-[44px] font-bold leading-tight sm:text-[58px]`} style={{ color: TEAL }}>
-            It&apos;s Our Way of Life.
-            <svg className="pointer-events-none absolute -bottom-1 left-[15%] h-3 w-[75%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+            {rich($t("CareerLife__t3", "It's Our Way of Life."))}<svg className="pointer-events-none absolute -bottom-1 left-[15%] h-3 w-[75%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
               <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={TEAL} strokeWidth="2.5" strokeLinecap="round" />
             </svg>
           </motion.p>
-          <motion.p variants={fadeUp} className="mx-auto mt-6 max-w-[560px] text-[16px] leading-[1.75] text-slate-600">
-            At ProManage, we believe great work happens in an environment where people feel{" "}
+          <motion.p variants={fadeUp} className="text-body mx-auto mt-6 max-w-[560px] text-slate-600">
+            {rich($t("CareerLife__t4", "At ProManage, we believe great work happens in an environment where people feel"))}{" "}
             <span className="font-medium" style={{ color: TEAL }}>valued</span>,{" "}
-            <span className="font-medium" style={{ color: TEAL }}>inspired</span>, and{" "}
+            <span className="font-medium" style={{ color: TEAL }}>inspired</span>{rich($t("CareerLife__t5", ", and"))}{" "}
             <span className="font-medium" style={{ color: TEAL }}>empowered</span> to{" "}
-            <span className="font-medium" style={{ color: TEAL }}>grow together</span>.
+            <span className="font-medium" style={{ color: TEAL }}>{$t("CareerLife__t6", "grow together")}</span>.
           </motion.p>
         </motion.div>
 
@@ -225,12 +225,10 @@ export default function CareerLife() {
             <HeartIcon size={26} color={TEAL} />
           </motion.span>
           <p className={`${caveat.className} mt-1 text-[34px] font-bold leading-none`} style={{ color: TEAL }}>
-            Stronger Together.
-          </p>
-          <p className="mt-2 flex items-center gap-3 text-[15px] tracking-[0.04em]" style={{ color: DEEP_TEAL }}>
+            {rich($t("CareerLife__t7", "Stronger Together."))}</p>
+          <p className="text-body mt-2 flex items-center gap-3 tracking-[0.04em]" style={{ color: DEEP_TEAL }}>
             <span className="h-[4px] w-[4px] rounded-full" style={{ backgroundColor: TEAL }} />
-            Better every day.
-            <span className="h-[4px] w-[4px] rounded-full" style={{ backgroundColor: TEAL }} />
+            {rich($t("CareerLife__t8", "Better every day."))}<span className="h-[4px] w-[4px] rounded-full" style={{ backgroundColor: TEAL }} />
           </p>
         </motion.div>
       </Container>

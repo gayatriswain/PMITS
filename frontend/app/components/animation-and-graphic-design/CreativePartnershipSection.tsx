@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    FEATURE ICONS
@@ -131,6 +133,7 @@ function StarStatIcon() {
    ========================================================================= */
 
 export default function CreativePartnershipSection() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full bg-white py-14 sm:py-20 lg:py-24 overflow-hidden">
       
@@ -145,8 +148,8 @@ export default function CreativePartnershipSection() {
       <div className="hidden lg:block absolute left-0 top-[310px] xl:top-[330px] 2xl:top-[350px] w-[62%] xl:w-[66%] 2xl:w-[68%] h-[380px] xl:h-[440px] 2xl:h-[480px] pointer-events-none z-10">
         <div className="relative w-full h-full">
           <Image
-            src="/animation-graphic-design2-seamless.png"
-            alt="Creative Motion Wave Artwork"
+            src={$t("CreativePartnershipSection__t1", "/animation-graphic-design2-seamless.png")}
+            alt={$t("CreativePartnershipSection__t2", "Creative Motion Wave Artwork")}
             fill
             priority
             sizes="65vw"
@@ -174,16 +177,15 @@ export default function CreativePartnershipSection() {
               {/* Badge: + WHY CHOOSE US */}
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white shadow-sm border border-slate-200/90 text-[11px] font-black tracking-widest text-slate-700 uppercase mb-5">
                 <span className="text-[#0d9488] font-bold text-xs">+</span>
-                <span>WHY CHOOSE US</span>
+                <span>{$t("CreativePartnershipSection__t3", "WHY CHOOSE US")}</span>
               </div>
 
               {/* Headline: More Than Design. A Creative Partnership. */}
-              <h2 className="text-4xl sm:text-5xl lg:text-[50px] xl:text-[54px] font-black tracking-tight leading-[1.08] text-slate-900 mb-4 font-sans">
-                More Than Design. <br />
-                A <span className="text-[#06b6d4]">Creative</span>{" "}
+              <h2 className="text-h2 font-black tracking-tight text-slate-900 mb-4 font-sans">
+                {$t("CreativePartnershipSection__t4", "More Than Design. ")}<br />
+                {$t("CreativePartnershipSection__t5", "A ")}<span className="text-[#06b6d4]">{$t("CreativePartnershipSection__t6", "Creative")}</span>{" "}
                 <span className="relative inline-block text-[#7c3aed]">
-                  Partnership.
-                  {/* Purple brush underline sweep */}
+                  {$t("CreativePartnershipSection__t7", "Partnership.")}{/* Purple brush underline sweep */}
                   <svg className="absolute -bottom-1.5 left-0 w-full h-3.5 text-[#7c3aed] pointer-events-none" viewBox="0 0 100 12" preserveAspectRatio="none">
                     <path d="M2 9 C 30 2, 70 2, 98 9" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
                   </svg>
@@ -191,16 +193,15 @@ export default function CreativePartnershipSection() {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-slate-500 text-sm sm:text-base leading-relaxed font-normal max-w-lg mb-6">
-                We don’t just create visuals — we craft experiences that make your brand look exceptional and stay memorable.
-              </p>
+              <p className="text-body text-slate-500 font-normal max-w-lg mb-6">
+                {rich($t("CreativePartnershipSection__t8", "We don’t just create visuals — we craft experiences that make your brand look exceptional and stay memorable."))}</p>
             </div>
 
             {/* Mobile wave fallback (screen-touching on mobile) */}
             <div className="lg:hidden relative w-screen -ml-4 sm:-ml-8 h-[260px] sm:h-[320px] my-6 overflow-hidden">
               <Image
-                src="/animation-graphic-design2-seamless.png"
-                alt="Creative Motion Wave Artwork"
+                src={$t("CreativePartnershipSection__t9", "/animation-graphic-design2-seamless.png")}
+                alt={$t("CreativePartnershipSection__t10", "Creative Motion Wave Artwork")}
                 fill
                 priority
                 className="object-contain object-left select-none pointer-events-none"
@@ -233,11 +234,9 @@ export default function CreativePartnershipSection() {
                 <PenToolCircleIcon />
               </div>
               <h3 className="font-black text-[#0f172a] text-[15.5px] sm:text-[16.5px] leading-tight mb-2 tracking-tight">
-                Strategy-Led Creativity
-              </h3>
-              <p className="text-slate-500 text-[12px] sm:text-[12.5px] leading-relaxed max-w-[245px] font-normal">
-                Designs backed by purpose, not just pixels — aligned with your business goals.
-              </p>
+                {$t("CreativePartnershipSection__t11", "Strategy-Led Creativity")}</h3>
+              <p className="text-caption text-slate-500 max-w-[245px] font-normal">
+                {rich($t("CreativePartnershipSection__t12", "Designs backed by purpose, not just pixels — aligned with your business goals."))}</p>
             </motion.div>
 
             {/* Card 2: Emotive Animations */}
@@ -255,11 +254,9 @@ export default function CreativePartnershipSection() {
                 <PlayScreenCircleIcon />
               </div>
               <h3 className="font-black text-[#0f172a] text-[15.5px] sm:text-[16.5px] leading-tight mb-2 tracking-tight">
-                Emotive Animations
-              </h3>
-              <p className="text-slate-500 text-[12px] sm:text-[12.5px] leading-relaxed max-w-[245px] font-normal">
-                Motion that tells your story, captures attention and drives action.
-              </p>
+                {$t("CreativePartnershipSection__t13", "Emotive Animations")}</h3>
+              <p className="text-caption text-slate-500 max-w-[245px] font-normal">
+                {rich($t("CreativePartnershipSection__t14", "Motion that tells your story, captures attention and drives action."))}</p>
             </motion.div>
 
             {/* Card 3: Premium, Modern Aesthetics */}
@@ -277,11 +274,9 @@ export default function CreativePartnershipSection() {
                 <DiamondCircleIcon />
               </div>
               <h3 className="font-black text-[#0f172a] text-[15.5px] sm:text-[16.5px] leading-tight mb-2 tracking-tight">
-                Premium, Modern Aesthetics
-              </h3>
-              <p className="text-slate-500 text-[12px] sm:text-[12.5px] leading-relaxed max-w-[245px] font-normal">
-                Clean, polished and on-brand visuals that make a lasting impression.
-              </p>
+                {$t("CreativePartnershipSection__t15", "Premium, Modern Aesthetics")}</h3>
+              <p className="text-caption text-slate-500 max-w-[245px] font-normal">
+                {rich($t("CreativePartnershipSection__t16", "Clean, polished and on-brand visuals that make a lasting impression."))}</p>
             </motion.div>
 
             {/* Card 4: End-to-End Support */}
@@ -299,11 +294,9 @@ export default function CreativePartnershipSection() {
                 <LayersCircleIcon />
               </div>
               <h3 className="font-black text-[#0f172a] text-[15.5px] sm:text-[16.5px] leading-tight mb-2 tracking-tight">
-                End-to-End Support
-              </h3>
-              <p className="text-slate-500 text-[12px] sm:text-[12.5px] leading-relaxed max-w-[245px] font-normal">
-                Concept to final deliverable — we handle everything, seamlessly.
-              </p>
+                {$t("CreativePartnershipSection__t17", "End-to-End Support")}</h3>
+              <p className="text-caption text-slate-500 max-w-[245px] font-normal">
+                {rich($t("CreativePartnershipSection__t18", "Concept to final deliverable — we handle everything, seamlessly."))}</p>
             </motion.div>
 
             {/* Card 5: Focus on Results */}
@@ -321,11 +314,9 @@ export default function CreativePartnershipSection() {
                 <TargetCircleIcon />
               </div>
               <h3 className="font-black text-[#0f172a] text-[15.5px] sm:text-[16.5px] leading-tight mb-2 tracking-tight">
-                Focus on Results
-              </h3>
-              <p className="text-slate-500 text-[12px] sm:text-[12.5px] leading-relaxed max-w-[245px] font-normal">
-                Visuals that engage your audience, strengthen brand trust and boost growth.
-              </p>
+                {$t("CreativePartnershipSection__t19", "Focus on Results")}</h3>
+              <p className="text-caption text-slate-500 max-w-[245px] font-normal">
+                {rich($t("CreativePartnershipSection__t20", "Visuals that engage your audience, strengthen brand trust and boost growth."))}</p>
             </motion.div>
 
             {/* Card 6: A Dedicated Creative Team */}
@@ -343,11 +334,9 @@ export default function CreativePartnershipSection() {
                 <HeartCircleIcon />
               </div>
               <h3 className="font-black text-[#0f172a] text-[15.5px] sm:text-[16.5px] leading-tight mb-2 tracking-tight">
-                A Dedicated Creative Team
-              </h3>
-              <p className="text-slate-500 text-[12px] sm:text-[12.5px] leading-relaxed max-w-[245px] font-normal">
-                Passionate designers and animators who treat your brand like our own.
-              </p>
+                {$t("CreativePartnershipSection__t21", "A Dedicated Creative Team")}</h3>
+              <p className="text-caption text-slate-500 max-w-[245px] font-normal">
+                {rich($t("CreativePartnershipSection__t22", "Passionate designers and animators who treat your brand like our own."))}</p>
             </motion.div>
 
           </div>
@@ -369,11 +358,9 @@ export default function CreativePartnershipSection() {
             {/* Callout: CREATING IMPACT, One Frame at a Time */}
             <div className="w-full lg:w-auto lg:pr-6 text-center lg:text-left flex-shrink-0">
               <span className="text-[10px] font-black uppercase tracking-[0.22em] text-slate-400 block mb-0.5">
-                CREATING IMPACT,
-              </span>
+                {$t("CreativePartnershipSection__t23", "CREATING IMPACT,")}</span>
               <span className="text-xl sm:text-[22px] font-extrabold italic text-transparent bg-clip-text bg-gradient-to-r from-[#0d9488] via-[#06b6d4] to-[#7c3aed] block leading-tight font-serif">
-                One Frame at a Time.
-              </span>
+                {$t("CreativePartnershipSection__t24", "One Frame at a Time.")}</span>
               {/* Subtle underline sweep */}
               <svg className="w-28 h-2 text-[#0d9488]/80 mt-1 mx-auto lg:mx-0" viewBox="0 0 100 8" preserveAspectRatio="none">
                 <path d="M2 6 C 35 1, 65 1, 98 6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
@@ -386,11 +373,9 @@ export default function CreativePartnershipSection() {
                 <UsersStatIcon />
               </div>
               <span className="text-2xl sm:text-[28px] font-black text-slate-900 tracking-tight leading-none">
-                500+
-              </span>
+                {$t("CreativePartnershipSection__t25", "500+")}</span>
               <span className="text-[11.5px] font-semibold text-slate-500 mt-1">
-                Projects Delivered
-              </span>
+                {$t("CreativePartnershipSection__t26", "Projects Delivered")}</span>
             </div>
 
             {/* Stat 2: 100+ Happy Clients */}
@@ -399,11 +384,9 @@ export default function CreativePartnershipSection() {
                 <SmileyStatIcon />
               </div>
               <span className="text-2xl sm:text-[28px] font-black text-slate-900 tracking-tight leading-none">
-                100+
-              </span>
+                {$t("CreativePartnershipSection__t27", "100+")}</span>
               <span className="text-[11.5px] font-semibold text-slate-500 mt-1">
-                Happy Clients
-              </span>
+                {$t("CreativePartnershipSection__t28", "Happy Clients")}</span>
             </div>
 
             {/* Stat 3: 10+ Industries Served */}
@@ -412,11 +395,9 @@ export default function CreativePartnershipSection() {
                 <GlobeStatIcon />
               </div>
               <span className="text-2xl sm:text-[28px] font-black text-slate-900 tracking-tight leading-none">
-                10+
-              </span>
+                {$t("CreativePartnershipSection__t29", "10+")}</span>
               <span className="text-[11.5px] font-semibold text-slate-500 mt-1">
-                Industries Served
-              </span>
+                {$t("CreativePartnershipSection__t30", "Industries Served")}</span>
             </div>
 
             {/* Stat 4: 4.9/5 Client Rating */}
@@ -425,11 +406,9 @@ export default function CreativePartnershipSection() {
                 <StarStatIcon />
               </div>
               <span className="text-2xl sm:text-[28px] font-black text-slate-900 tracking-tight leading-none">
-                4.9/5
-              </span>
+                {$t("CreativePartnershipSection__t31", "4.9/5")}</span>
               <span className="text-[11.5px] font-semibold text-slate-500 mt-0.5">
-                Client Rating
-              </span>
+                {$t("CreativePartnershipSection__t32", "Client Rating")}</span>
               <div className="text-amber-400 text-xs mt-1 tracking-wider">
                 ★★★★★
               </div>
@@ -439,18 +418,16 @@ export default function CreativePartnershipSection() {
             <div className="w-full lg:w-auto pt-4 lg:pt-0 lg:pl-6 flex flex-col items-center lg:items-end justify-center flex-shrink-0">
               <div className="text-center lg:text-right mb-2.5">
                 <p className="text-[11.5px] font-bold text-slate-800 leading-tight">
-                  Let&apos;s Create Something
-                </p>
-                <p className="text-[14px] font-extrabold italic text-transparent bg-clip-text bg-gradient-to-r from-[#0d9488] to-[#7c3aed] leading-tight">
-                  Extraordinary Together.
-                </p>
+                  {rich($t("CreativePartnershipSection__t33", "Let's Create Something"))}</p>
+                <p className="text-small font-extrabold italic text-transparent bg-clip-text bg-gradient-to-r from-[#0d9488] to-[#7c3aed]">
+                  {rich($t("CreativePartnershipSection__t34", "Extraordinary Together."))}</p>
                 <div className="w-20 h-0.5 bg-gradient-to-r from-teal-400 to-purple-400 rounded-full mt-1 ml-auto hidden lg:block opacity-75" />
               </div>
               <Link
-                href="#contact-form"
+                href={$t("CreativePartnershipSection__t35", "#contact-form")}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#052b36] via-[#0d2347] to-[#581c87] hover:opacity-95 text-white font-bold text-xs tracking-wide shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
               >
-                <span>Start Your Project</span>
+                <span>{$t("CreativePartnershipSection__t36", "Start Your Project")}</span>
                 <span className="text-sm">→</span>
               </Link>
             </div>

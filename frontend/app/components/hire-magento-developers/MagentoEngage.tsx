@@ -6,15 +6,17 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, DotGrid, Emblem, Eyebrow, Icon, IMG, ease, fadeUp, heading, type IconName } from "../shared/MagentoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 type Model = { n: string; title: string; tag: string; points: string[]; icon: IconName; featured?: boolean };
-const models: Model[] = [
+const models__cms: Model[] = [
   { n: "01", title: "Project-Based", tag: "For defined needs.", icon: "clipboard", points: ["Clear scope & deliverables", "Fixed timeline & budget", "Ideal for short-term projects"] },
   { n: "02", title: "Dedicated Developer", tag: "For ongoing progress.", icon: "devLaptop", featured: true, points: ["Work with one dedicated expert", "Flexible hours & priority support", "Best for continuous development"] },
   { n: "03", title: "Development Team", tag: "For big ambitions.", icon: "team", points: ["Multi-expert team on demand", "Scalable to match your growth", "Ideal for complex projects"] },
 ];
 
-const helpSteps: { text: [string, string]; icon: IconName }[] = [
+const helpSteps__cms: { text: [string, string]; icon: IconName }[] = [
   { text: ["Share your", "requirements"], icon: "chat" },
   { text: ["We recommend the", "best engagement"], icon: "target" },
   { text: ["You focus on growth,", "we handle the rest"], icon: "rocket" },
@@ -81,6 +83,7 @@ function Pedestal({ m, i }: { m: Model; i: number }) {
 }
 
 function ModelCard({ m, i, active, onEnter }: { m: Model; i: number; active: boolean; onEnter: () => void }) {
+  const $t = useCmsText();
   const reduce = useReducedMotion();
   const orange = !!m.featured;
   const side = i === 0 ? "left" : i === 2 ? "right" : "center";
@@ -116,7 +119,7 @@ function ModelCard({ m, i, active, onEnter }: { m: Model; i: number; active: boo
             </span>
           )}
           <div className={`${side === "left" ? "lg:pl-[22%]" : side === "right" ? "lg:pl-[2%]" : ""} ${orange ? "text-center" : "text-center lg:text-left"}`}>
-            <h3 className={`${heading.className} text-lg font-bold uppercase tracking-wide text-[#0c1e3d] xl:text-xl`}>{m.title}</h3>
+            <h3 className={`text-h6 ${heading.className} font-bold uppercase tracking-wide text-[#0c1e3d]`}>{m.title}</h3>
             <p className={`mt-1 text-sm font-medium xl:text-[15px] ${orange ? "text-orange-500" : "text-[#0d9488]"}`}>{m.tag}</p>
             <ul className={`mt-5 space-y-2.5 ${orange ? "mx-auto w-fit text-left" : "mx-auto w-fit text-left lg:mx-0"}`}>
               {m.points.map((p, k) => (
@@ -137,7 +140,7 @@ function ModelCard({ m, i, active, onEnter }: { m: Model; i: number; active: boo
           {orange && (
             <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 overflow-hidden rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-7 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-[0_10px_22px_-6px_rgba(249,115,22,0.8)]">
               <span className="mag-anim pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,transparent_30%,rgba(255,255,255,0.5)_50%,transparent_70%)] bg-[length:200%_100%]" style={{ animation: "magShine 2.8s linear infinite" }} />
-              <span className="relative">Most Popular</span>
+              <span className="relative">{$t("MagentoEngage__t1", "Most Popular")}</span>
             </span>
           )}
         </div>
@@ -147,6 +150,9 @@ function ModelCard({ m, i, active, onEnter }: { m: Model; i: number; active: boo
 }
 
 export default function MagentoEngage() {
+  const $t = useCmsText();
+  const models = useCmsData("MagentoEngage__models", models__cms);
+  const helpSteps = useCmsData("MagentoEngage__helpSteps", helpSteps__cms);
   const reduce = useReducedMotion();
   const [active, setActive] = useState(1);
 
@@ -159,18 +165,17 @@ export default function MagentoEngage() {
 
       <Container className="relative">
         <div className="text-center">
-          <Eyebrow>Flexible engagement</Eyebrow>
+          <Eyebrow>{$t("MagentoEngage__t2", "Flexible engagement")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-5xl font-bold tracking-tight text-[#0c1e3d] sm:text-6xl`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0c1e3d]`}
           >
-            Engage{" "}
+            {$t("MagentoEngage__t3", "Engage")}{" "}
             <span className="relative inline-block text-[#0d9488]">
-              your way
-              <svg aria-hidden className="absolute -bottom-3 left-0 w-full" viewBox="0 0 220 18" preserveAspectRatio="none" fill="none">
+              {$t("MagentoEngage__t4", "your way")}<svg aria-hidden className="absolute -bottom-3 left-0 w-full" viewBox="0 0 220 18" preserveAspectRatio="none" fill="none">
                 <motion.path
                   d="M4 12 C 60 2, 150 2, 216 10"
                   stroke="#0b5f5a"
@@ -185,9 +190,8 @@ export default function MagentoEngage() {
             </span>
             <span className="text-[#0d9488]">.</span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mx-auto mt-6 max-w-[460px] text-base text-slate-600 sm:text-lg">
-            Different needs. Different goals. Choose the engagement model that fits your project best.
-          </motion.p>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mx-auto mt-6 max-w-[460px] text-slate-600">
+            {rich($t("MagentoEngage__t5", "Different needs. Different goals. Choose the engagement model that fits your project best."))}</motion.p>
         </div>
 
         <div className="relative mx-auto mt-12 max-w-[1180px] sm:mt-14">
@@ -281,8 +285,8 @@ export default function MagentoEngage() {
               ))}
             </div>
             <div className="flex-1 text-center lg:text-left">
-              <h3 className={`${heading.className} text-2xl font-semibold`}>Not sure which fits?</h3>
-              <p className={`${heading.className} text-xl font-medium text-[#2dd4bf]`}>We’ll help you find the right setup.</p>
+              <h3 className={`text-h5 ${heading.className} font-semibold`}>{$t("MagentoEngage__t6", "Not sure which fits?")}</h3>
+              <p className={`text-body ${heading.className} font-medium text-[#2dd4bf]`}>{rich($t("MagentoEngage__t7", "We’ll help you find the right setup."))}</p>
               <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-3 lg:flex-nowrap lg:justify-start">
                 {helpSteps.map((h) => (
                   <li key={h.text[0]} className="flex items-center gap-2.5 text-left text-xs leading-snug text-slate-300">
@@ -297,12 +301,11 @@ export default function MagentoEngage() {
               </ul>
             </div>
             <Link
-              href="#magento-proposal"
+              href={$t("MagentoEngage__t8", "#magento-proposal")}
               className="group relative inline-flex shrink-0 items-center gap-3 overflow-hidden rounded-xl border border-cyan-300/60 bg-gradient-to-r from-[#0e7490] to-[#0d9488] px-7 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-[0_0_30px_-6px_rgba(45,212,191,0.7)] transition hover:-translate-y-0.5"
             >
               <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 skew-x-[-20deg] bg-white/25 transition-[left] duration-700 group-hover:left-[120%]" />
-              Let’s find the right setup
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {$t("MagentoEngage__t9", "Let’s find the right setup")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </motion.div>

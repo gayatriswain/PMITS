@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ANIMATION SERVICES ICONS (Teal #0d9488)
@@ -158,6 +160,7 @@ function PrintDigitalIcon() {
    ========================================================================= */
 
 export default function VisualCommunicationSolutions() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full bg-[#fbfcfd] py-20 sm:py-28 overflow-hidden">
       
@@ -175,25 +178,20 @@ export default function VisualCommunicationSolutions() {
           {/* Top Tag: WHAT WE DO */}
           <div className="inline-block mb-4">
             <span className="text-[11px] sm:text-[12px] font-black tracking-[0.25em] text-[#0d9488] uppercase block">
-              WHAT WE DO
-            </span>
+              {$t("VisualCommunicationSolutions__t1", "WHAT WE DO")}</span>
             <div className="w-8 h-[2.5px] bg-[#0d9488] rounded-full mx-auto mt-1.5" />
           </div>
 
           {/* Main Title: Complete Visual Communication Solutions */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-black tracking-tight leading-[1.12] mb-4 text-[#0f2333]">
-            Complete <span className="text-[#0284c7]">Visual</span> <br className="hidden sm:inline" />
+          <h2 className="text-h2 font-black tracking-tight mb-4 text-[#0f2333]">
+            {$t("VisualCommunicationSolutions__t2", "Complete ")}<span className="text-[#0284c7]">{$t("VisualCommunicationSolutions__t3", "Visual")}</span> <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0d9488] via-[#0284c7] to-[#7c3aed]">
-              Communication
-            </span>{" "}
-            Solutions
-          </h2>
+              {$t("VisualCommunicationSolutions__t4", "Communication")}</span>{" "}
+            {$t("VisualCommunicationSolutions__t5", "Solutions")}</h2>
 
           {/* Subtitle */}
-          <p className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-normal">
-            We combine creativity, technology and storytelling to deliver visuals
-            that are not only beautiful but also effective.
-          </p>
+          <p className="text-body text-slate-500 max-w-xl mx-auto font-normal">
+            {rich($t("VisualCommunicationSolutions__t6", "We combine creativity, technology and storytelling to deliver visuals that are not only beautiful but also effective."))}</p>
         </div>
 
         {/* Dual Cards Grid with Center Isometric Connector */}
@@ -216,13 +214,11 @@ export default function VisualCommunicationSolutions() {
                   <ScreenPlayBadgeIcon />
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
-                    Animation Services
-                  </h3>
+                  <h3 className="text-h5 font-black text-slate-900 tracking-tight">
+                    {$t("VisualCommunicationSolutions__t7", "Animation Services")}</h3>
                   <div className="w-8 h-[2.5px] bg-[#0d9488] rounded-full mt-2 mb-2" />
-                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed font-normal max-w-md">
-                    Engaging animations that simplify complex ideas, showcase products and create memorable brand experiences.
-                  </p>
+                  <p className="text-small text-slate-500 font-normal max-w-md">
+                    {rich($t("VisualCommunicationSolutions__t8", "Engaging animations that simplify complex ideas, showcase products and create memorable brand experiences."))}</p>
                 </div>
               </div>
 
@@ -238,8 +234,7 @@ export default function VisualCommunicationSolutions() {
                       <Cube3dIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      2D &amp; 3D Animation
-                    </span>
+                      {$t("VisualCommunicationSolutions__t9", "2D & 3D Animation")}</span>
                   </div>
 
                   {/* 2. Product Animation */}
@@ -248,8 +243,7 @@ export default function VisualCommunicationSolutions() {
                       <ProductCubeIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Product Animation
-                    </span>
+                      {$t("VisualCommunicationSolutions__t10", "Product Animation")}</span>
                   </div>
 
                   {/* 3. Explainer Videos */}
@@ -258,8 +252,7 @@ export default function VisualCommunicationSolutions() {
                       <PlayVideoIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Explainer Videos
-                    </span>
+                      {$t("VisualCommunicationSolutions__t11", "Explainer Videos")}</span>
                   </div>
 
                   {/* 4. Character Animation */}
@@ -268,8 +261,7 @@ export default function VisualCommunicationSolutions() {
                       <CharacterIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Character Animation
-                    </span>
+                      {$t("VisualCommunicationSolutions__t12", "Character Animation")}</span>
                   </div>
 
                   {/* 5. Motion Graphics */}
@@ -278,8 +270,7 @@ export default function VisualCommunicationSolutions() {
                       <WaveformIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Motion Graphics
-                    </span>
+                      {$t("VisualCommunicationSolutions__t13", "Motion Graphics")}</span>
                   </div>
 
                   {/* 6. GIF & Lottie Animation */}
@@ -288,8 +279,7 @@ export default function VisualCommunicationSolutions() {
                       <LottieSpinIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      GIF &amp; Lottie Animation
-                    </span>
+                      {$t("VisualCommunicationSolutions__t14", "GIF & Lottie Animation")}</span>
                   </div>
 
                 </div>
@@ -307,8 +297,8 @@ export default function VisualCommunicationSolutions() {
                       }}
                     >
                       <Image
-                        src="/animation-card-visual.jpg"
-                        alt="Animation Services 3D Visual"
+                        src={$t("VisualCommunicationSolutions__t15", "/animation-card-visual.jpg")}
+                        alt={$t("VisualCommunicationSolutions__t16", "Animation Services 3D Visual")}
                         fill
                         sizes="(max-width: 768px) 100vw, 320px"
                         className="object-contain select-none pointer-events-none"
@@ -332,10 +322,10 @@ export default function VisualCommunicationSolutions() {
             {/* Bottom Link: Explore Animation */}
             <div className="pt-5 border-t border-slate-100 mt-2">
               <Link
-                href="#contact-form"
+                href={$t("VisualCommunicationSolutions__t17", "#contact-form")}
                 className="group inline-flex items-center gap-2 text-sm font-bold text-[#0d9488] hover:text-[#0b7a70] transition-colors"
               >
-                <span>Explore Animation</span>
+                <span>{$t("VisualCommunicationSolutions__t18", "Explore Animation")}</span>
                 <span className="text-base font-normal transition-transform duration-200 group-hover:translate-x-1.5">
                   →
                 </span>
@@ -360,13 +350,11 @@ export default function VisualCommunicationSolutions() {
                   <PenToolBadgeIcon />
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
-                    Graphic Design Services
-                  </h3>
+                  <h3 className="text-h5 font-black text-slate-900 tracking-tight">
+                    {$t("VisualCommunicationSolutions__t19", "Graphic Design Services")}</h3>
                   <div className="w-8 h-[2.5px] bg-[#7c3aed] rounded-full mt-2 mb-2" />
-                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed font-normal max-w-md">
-                    Creative designs that build strong brand identity, communicate clearly and leave a lasting impression.
-                  </p>
+                  <p className="text-small text-slate-500 font-normal max-w-md">
+                    {rich($t("VisualCommunicationSolutions__t20", "Creative designs that build strong brand identity, communicate clearly and leave a lasting impression."))}</p>
                 </div>
               </div>
 
@@ -382,8 +370,7 @@ export default function VisualCommunicationSolutions() {
                       <DiamondBrandIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Brand Identity Design
-                    </span>
+                      {$t("VisualCommunicationSolutions__t21", "Brand Identity Design")}</span>
                   </div>
 
                   {/* 2. Packaging Design */}
@@ -392,8 +379,7 @@ export default function VisualCommunicationSolutions() {
                       <PackagingIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Packaging Design
-                    </span>
+                      {$t("VisualCommunicationSolutions__t22", "Packaging Design")}</span>
                   </div>
 
                   {/* 3. Marketing Collateral */}
@@ -402,8 +388,7 @@ export default function VisualCommunicationSolutions() {
                       <MarketingBrochureIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Marketing Collateral
-                    </span>
+                      {$t("VisualCommunicationSolutions__t23", "Marketing Collateral")}</span>
                   </div>
 
                   {/* 4. Presentation Design */}
@@ -412,8 +397,7 @@ export default function VisualCommunicationSolutions() {
                       <PresentationSlidesIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Presentation Design
-                    </span>
+                      {$t("VisualCommunicationSolutions__t24", "Presentation Design")}</span>
                   </div>
 
                   {/* 5. Social Media Graphics */}
@@ -422,8 +406,7 @@ export default function VisualCommunicationSolutions() {
                       <SocialMediaPostIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Social Media Graphics
-                    </span>
+                      {$t("VisualCommunicationSolutions__t25", "Social Media Graphics")}</span>
                   </div>
 
                   {/* 6. Print & Digital Design */}
@@ -432,8 +415,7 @@ export default function VisualCommunicationSolutions() {
                       <PrintDigitalIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      Print &amp; Digital Design
-                    </span>
+                      {$t("VisualCommunicationSolutions__t26", "Print & Digital Design")}</span>
                   </div>
 
                 </div>
@@ -451,8 +433,8 @@ export default function VisualCommunicationSolutions() {
                       }}
                     >
                       <Image
-                        src="/graphic-design-card-visual.jpg"
-                        alt="Graphic Design Services Stationery Visual"
+                        src={$t("VisualCommunicationSolutions__t27", "/graphic-design-card-visual.jpg")}
+                        alt={$t("VisualCommunicationSolutions__t28", "Graphic Design Services Stationery Visual")}
                         fill
                         sizes="(max-width: 768px) 100vw, 320px"
                         className="object-contain select-none pointer-events-none"
@@ -476,10 +458,10 @@ export default function VisualCommunicationSolutions() {
             {/* Bottom Link: Explore Graphic Design */}
             <div className="pt-5 border-t border-slate-100 mt-2">
               <Link
-                href="#contact-form"
+                href={$t("VisualCommunicationSolutions__t29", "#contact-form")}
                 className="group inline-flex items-center gap-2 text-sm font-bold text-[#7c3aed] hover:text-[#6d28d9] transition-colors"
               >
-                <span>Explore Graphic Design</span>
+                <span>{$t("VisualCommunicationSolutions__t30", "Explore Graphic Design")}</span>
                 <span className="text-base font-normal transition-transform duration-200 group-hover:translate-x-1.5">
                   →
                 </span>
@@ -517,11 +499,9 @@ export default function VisualCommunicationSolutions() {
             </div>
             <div>
               <h4 className="text-base sm:text-[17px] font-black text-slate-900 tracking-tight leading-tight">
-                Have a project in mind?
-              </h4>
-              <p className="text-slate-500 text-xs sm:text-[13px] leading-snug mt-0.5">
-                Let&apos;s create something amazing together.
-              </p>
+                {$t("VisualCommunicationSolutions__t31", "Have a project in mind?")}</h4>
+              <p className="text-small text-slate-500 mt-0.5">
+                {rich($t("VisualCommunicationSolutions__t32", "Let's create something amazing together."))}</p>
             </div>
           </div>
 
@@ -539,10 +519,10 @@ export default function VisualCommunicationSolutions() {
 
           {/* Right: Dark Teal Pill Button */}
           <Link
-            href="#contact-form"
+            href={$t("VisualCommunicationSolutions__t33", "#contact-form")}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#0a4d47] hover:bg-[#073833] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md shadow-teal-950/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shrink-0"
           >
-            <span>Get in Touch</span>
+            <span>{$t("VisualCommunicationSolutions__t34", "Get in Touch")}</span>
             <span className="text-base font-normal">→</span>
           </Link>
         </motion.div>

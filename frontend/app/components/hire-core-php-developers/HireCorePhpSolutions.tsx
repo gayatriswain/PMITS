@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 interface SolutionCard {
   step: string;
@@ -13,7 +15,7 @@ interface SolutionCard {
   icon: React.ReactNode;
 }
 
-const solutions: SolutionCard[] = [
+const solutions__cms: SolutionCard[] = [
   {
     step: "01",
     title: "Custom Web Applications",
@@ -83,6 +85,8 @@ const solutions: SolutionCard[] = [
 ];
 
 export default function HireCorePhpSolutions() {
+  const $t = useCmsText();
+  const solutions = useCmsData("HireCorePhpSolutions__solutions", solutions__cms);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
@@ -101,34 +105,30 @@ export default function HireCorePhpSolutions() {
               transition={{ duration: 0.5 }}
             >
               <span className="text-[11.5px] sm:text-[12.5px] font-bold tracking-[0.24em] text-[#0d9488] uppercase">
-                BUILT FOR YOUR BUSINESS
-              </span>
+                {$t("HireCorePhpSolutions__t1", "BUILT FOR YOUR BUSINESS")}</span>
             </motion.div>
 
             {/* Heading */}
             <motion.h2
-              className="mt-3 text-3xl sm:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.12] text-[#0c1e3d]"
+              className="text-h2 mt-3 font-black tracking-tight text-[#0c1e3d]"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Whatever Your Challenge,
-              <br />
-              <span className="text-[#0d9488]">We Have the Solution.</span>
+              {$t("HireCorePhpSolutions__t2", "Whatever Your Challenge,")}<br />
+              <span className="text-[#0d9488]">{$t("HireCorePhpSolutions__t3", "We Have the Solution.")}</span>
             </motion.h2>
 
             {/* Subtitle */}
             <motion.p
-              className="mt-4 text-[14px] sm:text-[16px] text-slate-600 leading-relaxed font-normal max-w-lg"
+              className="text-body mt-4 text-slate-600 font-normal max-w-lg"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Our Core PHP experts build tailored solutions to solve real
-              business problems.
-            </motion.p>
+              {rich($t("HireCorePhpSolutions__t4", "Our Core PHP experts build tailored solutions to solve real business problems."))}</motion.p>
 
             {/* Teal Horizontal Divider Accent Line */}
             <motion.div
@@ -150,8 +150,8 @@ export default function HireCorePhpSolutions() {
           >
             <div className="relative w-full max-w-[640px] flex items-center justify-center">
               <Image
-                src="/core-php-2.png"
-                alt="Core PHP Developer solving complex challenges"
+                src={$t("HireCorePhpSolutions__t5", "/core-php-2.png")}
+                alt={$t("HireCorePhpSolutions__t6", "Core PHP Developer solving complex challenges")}
                 width={800}
                 height={560}
                 priority
@@ -255,7 +255,7 @@ export default function HireCorePhpSolutions() {
                   </h3>
 
                   {/* Card Description */}
-                  <p className="mt-2.5 text-[12px] sm:text-[12.5px] text-slate-500 leading-relaxed font-normal">
+                  <p className="text-caption mt-2.5 text-slate-500 font-normal">
                     {item.desc}
                   </p>
                 </motion.div>
@@ -285,11 +285,10 @@ export default function HireCorePhpSolutions() {
             {/* Text Copy */}
             <div className="text-left leading-snug">
               <div className="text-[15px] sm:text-[16.5px] font-bold text-[#0c1e3d]">
-                Your challenges.
-              </div>
+                {$t("HireCorePhpSolutions__t7", "Your challenges.")}</div>
               <div className="text-[15px] sm:text-[16.5px] font-bold">
-                <span className="text-[#0d9488]">Our expertise. </span>
-                <span className="text-[#0c1e3d]">Real results.</span>
+                <span className="text-[#0d9488]">{$t("HireCorePhpSolutions__t8", "Our expertise. ")}</span>
+                <span className="text-[#0c1e3d]">{$t("HireCorePhpSolutions__t9", "Real results.")}</span>
               </div>
             </div>
           </div>
@@ -298,10 +297,10 @@ export default function HireCorePhpSolutions() {
           <div className="flex items-center gap-3.5 flex-wrap justify-center">
             {/* Dark Navy Button: Hire Core PHP Developers → */}
             <Link
-              href="#contact"
+              href={$t("HireCorePhpSolutions__t10", "#contact")}
               className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-xl bg-[#061325] text-white text-[13px] sm:text-[13.5px] font-bold hover:bg-[#0f2340] active:scale-95 transition-all shadow-md cursor-pointer"
             >
-              <span>Hire Core PHP Developers</span>
+              <span>{$t("HireCorePhpSolutions__t11", "Hire Core PHP Developers")}</span>
               <svg
                 viewBox="0 0 24 24"
                 className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform"
@@ -318,10 +317,10 @@ export default function HireCorePhpSolutions() {
 
             {/* White Outlined Button: Talk to an Expert 💬 */}
             <Link
-              href="#contact"
+              href={$t("HireCorePhpSolutions__t12", "#contact")}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white border border-slate-200/90 hover:border-slate-300 hover:bg-slate-50 text-[#0d9488] text-[13px] sm:text-[13.5px] font-bold transition-all active:scale-95 cursor-pointer shadow-sm"
             >
-              <span>Talk to an Expert</span>
+              <span>{$t("HireCorePhpSolutions__t13", "Talk to an Expert")}</span>
               <svg
                 viewBox="0 0 24 24"
                 className="w-4 h-4 text-[#0d9488]"

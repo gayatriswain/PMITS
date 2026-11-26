@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 // Opening inside ARVR-frame.png (fractions of the image box)
 const LENS_CENTER_Y = 0.556;
@@ -74,6 +76,7 @@ function videoRect(g: Geo, p: number) {
 }
 
 export default function ArVrHero() {
+  const $t = useCmsText();
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -228,7 +231,7 @@ export default function ArVrHero() {
     <section ref={trackRef} className="relative w-full h-[600vh] bg-[#eef0ff]">
       <div ref={stageRef} className="sticky top-0 w-full h-screen overflow-hidden">
         <Image
-          src="/ARVR-bg.webp"
+          src={$t("ArVrHero__t1", "/ARVR-bg.webp")}
           alt=""
           fill
           priority
@@ -249,36 +252,31 @@ export default function ArVrHero() {
         >
           <Container className="flex flex-col items-center text-center pt-5 sm:pt-6">
             <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.28em] text-[#6d5ef5] uppercase mb-3">
-              Custom Solutions for AR/VR
-            </span>
+              {$t("ArVrHero__t2", "Custom Solutions for AR/VR")}</span>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-[38px] xl:text-[44px] font-black text-[#0f1535] tracking-tight leading-[1.1] font-sans">
-              Step Into. Experience.
-              <br />
+            <h1 className="text-h1 font-black text-[#0f1535] tracking-tight font-sans">
+              {$t("ArVrHero__t3", "Step Into. Experience.")}<br />
               <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-                Transform.
-              </span>
+                {$t("ArVrHero__t4", "Transform.")}</span>
             </h1>
 
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-              We create immersive AR/VR experiences that connect imagination
-              with real-world impact.
-            </p>
+            <p className="text-small mt-2 max-w-2xl text-slate-600">
+              {rich($t("ArVrHero__t5", "We create immersive AR/VR experiences that connect imagination with real-world impact."))}</p>
 
             <div className="mt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <Link
-                href="#contact-form"
+                href={$t("ArVrHero__t6", "#contact-form")}
                 className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-2.5 rounded-full bg-[#5b43e8] hover:bg-[#4a35cc] text-white font-semibold text-sm shadow-[0_8px_20px_-4px_rgba(91,67,232,0.45)] transition-colors duration-200"
               >
-                <span>Explore Our Work</span>
+                <span>{$t("ArVrHero__t7", "Explore Our Work")}</span>
                 <span aria-hidden>→</span>
               </Link>
               <Link
-                href="#showreel"
+                href={$t("ArVrHero__t8", "#showreel")}
                 className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-2.5 rounded-full text-[#0f1535] hover:text-[#5b43e8] font-semibold text-sm transition-colors duration-200"
               >
                 <span aria-hidden className="text-[#5b43e8]">▶</span>
-                <span>Watch Showreel</span>
+                <span>{$t("ArVrHero__t9", "Watch Showreel")}</span>
               </Link>
             </div>
           </Container>
@@ -323,8 +321,8 @@ export default function ArVrHero() {
             className="will-change-transform"
           >
             <Image
-              src="/ARVR-frame.png"
-              alt="VR headset frame"
+              src={$t("ArVrHero__t10", "/ARVR-frame.png")}
+              alt={$t("ArVrHero__t11", "VR headset frame")}
               width={2146}
               height={733}
               priority

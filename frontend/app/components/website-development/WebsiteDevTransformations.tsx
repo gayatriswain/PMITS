@@ -1,8 +1,12 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from '../shared/Container';
 import BeforeAfterShowcase from './BeforeAfterShowcase';
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -10,6 +14,7 @@ const GOLD = "#b58e3a";
 const DARK = "#0b3b35";
 
 export default function WebsiteDevTransformations() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full bg-white overflow-hidden py-8 lg:py-10">
       {/* Background Dot Pattern (Top Left) */}
@@ -28,26 +33,23 @@ export default function WebsiteDevTransformations() {
                 </svg>
               </span>
               <span className="text-[10px] font-bold tracking-widest text-[#0d9488] uppercase pr-2">
-                Real Results, Real Growth
-              </span>
+                {$t("WebsiteDevTransformations__t1", "Real Results, Real Growth")}</span>
             </div>
 
             {/* Heading */}
-            <h2 className="font-serif text-4xl md:text-[52px] font-bold leading-[1.1] mb-3 tracking-tight">
-              <span style={{ color: NAVY }}>Real Businesses.</span><br />
-              <span style={{ color: GOLD }}>Real Transformations.</span>
+            <h2 className="text-h2 font-serif font-bold mb-3 tracking-tight">
+              <span style={{ color: NAVY }}>{$t("WebsiteDevTransformations__t2", "Real Businesses.")}</span><br />
+              <span style={{ color: GOLD }}>{$t("WebsiteDevTransformations__t3", "Real Transformations.")}</span>
             </h2>
 
             {/* Subheading */}
-            <p className="text-sm md:text-[15px] text-slate-700 max-w-[28rem] leading-[1.6] font-medium mb-3">
-              We don&apos;t just build websites. We build digital experiences that turn businesses into industry leaders.
-            </p>
+            <p className="text-body text-slate-700 max-w-[28rem] font-medium mb-3">
+              {rich($t("WebsiteDevTransformations__t4", "We don't just build websites. We build digital experiences that turn businesses into industry leaders."))}</p>
 
             {/* Imagine Text */}
             <div className="relative inline-block mt-0 mb-4">
               <span className="font-serif italic text-[22px] md:text-[26px] tracking-wide" style={{ color: TEAL }}>
-                Imagine your business here next.
-              </span>
+                {$t("WebsiteDevTransformations__t5", "Imagine your business here next.")}</span>
               <svg className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-[115%] h-3" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
                 <path d="M5 10 Q 100 -2 195 10 Q 100 2 5 10 Z" fill={GOLD} />
               </svg>
@@ -79,17 +81,14 @@ export default function WebsiteDevTransformations() {
                 </div>
                 <div className="pt-0.5">
                   <h4 className="text-[14px] font-bold text-slate-900 leading-snug mb-1.5">
-                    Curious what we can do for your business?
-                  </h4>
+                    {$t("WebsiteDevTransformations__t6", "Curious what we can do for your business?")}</h4>
                   <p className="text-[11px] text-slate-500 leading-relaxed font-medium pr-2">
-                    Let&apos;s discuss your goals in a free strategy call.
-                  </p>
+                    {rich($t("WebsiteDevTransformations__t7", "Let's discuss your goals in a free strategy call."))}</p>
                 </div>
               </div>
 
-              <Link href="/contact" className="flex items-center justify-center gap-2 w-full bg-[#0b3b35] hover:bg-[#132a43] text-white text-[12px] font-semibold py-3 px-4 rounded-lg transition-colors">
-                Book Free Strategy Call
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <Link href={$t("WebsiteDevTransformations__t8", "/contact")} className="flex items-center justify-center gap-2 w-full bg-[#0b3b35] hover:bg-[#132a43] text-white text-[12px] font-semibold py-3 px-4 rounded-lg transition-colors">
+                {$t("WebsiteDevTransformations__t9", "Book Free Strategy Call")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14"></path>
                   <path d="M12 5l7 7-7 7"></path>
                 </svg>
@@ -101,13 +100,13 @@ export default function WebsiteDevTransformations() {
               <div className="flex -space-x-2">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-slate-200 overflow-hidden relative">
-                     <Image src="/image1.jpg" alt="User" fill className="object-cover" />
+                     <Image src={$t("WebsiteDevTransformations__t10", "/image1.jpg")} alt={$t("WebsiteDevTransformations__t11", "User")} fill className="object-cover" />
                   </div>
                 ))}
               </div>
               <p className="text-[10px] font-bold text-slate-700 leading-tight">
-                50+ businesses<br/>
-                <span className="text-slate-400 font-medium">transformed with ProManage</span>
+                {rich($t("WebsiteDevTransformations__t12", "50+ businesses"))}<br/>
+                <span className="text-slate-400 font-medium">{$t("WebsiteDevTransformations__t13", "transformed with ProManage")}</span>
               </p>
             </div>
 
@@ -125,19 +124,18 @@ export default function WebsiteDevTransformations() {
             {/* Quote + Text */}
             <div className="flex items-start gap-3 sm:gap-4 max-w-[320px]">
               <div className="text-[#cca651] text-4xl sm:text-5xl font-serif leading-none mt-1 sm:mt-2 shrink-0">“</div>
-              <p className="text-[12px] sm:text-[13px] font-medium text-slate-700 leading-relaxed">
-                ProManage didn&apos;t just redesign our website, they transformed our entire digital presence. The results speak for themselves.
-              </p>
+              <p className="text-small font-medium text-slate-700">
+                {rich($t("WebsiteDevTransformations__t14", "ProManage didn't just redesign our website, they transformed our entire digital presence. The results speak for themselves."))}</p>
             </div>
             
             {/* Author */}
             <div className="flex items-center gap-3 shrink-0">
               <div className="w-10 h-10 rounded-full overflow-hidden relative bg-slate-200">
-                 <Image src="/image1.jpg" alt="Rahul Mehta" fill className="object-cover" />
+                 <Image src={$t("WebsiteDevTransformations__t15", "/image1.jpg")} alt={$t("WebsiteDevTransformations__t16", "Rahul Mehta")} fill className="object-cover" />
               </div>
               <div>
-                 <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">Rahul Mehta</h4>
-                 <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-tight">Founder, Organic Harvest</p>
+                 <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">{$t("WebsiteDevTransformations__t17", "Rahul Mehta")}</h4>
+                 <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-tight">{rich($t("WebsiteDevTransformations__t18", "Founder, Organic Harvest"))}</p>
               </div>
             </div>
           </div>
@@ -150,21 +148,18 @@ export default function WebsiteDevTransformations() {
           <div className="flex-1 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 xl:pl-10">
             <div className="flex flex-col gap-1.5 max-w-[300px]">
                <h3 className="text-[15px] sm:text-[16px] font-bold text-[#132a43] leading-snug">
-                 What could your business look like with the right website?
-               </h3>
-               <p className="text-[11px] sm:text-[12px] text-slate-500 font-medium">
-                 Let&apos;s build something that drives real results for you.
-               </p>
+                 {$t("WebsiteDevTransformations__t19", "What could your business look like with the right website?")}</h3>
+               <p className="text-caption text-slate-500 font-medium">
+                 {rich($t("WebsiteDevTransformations__t20", "Let's build something that drives real results for you."))}</p>
             </div>
             
             <div className="flex flex-col items-start sm:items-end gap-2 shrink-0">
-              <Link href="/success-stories" className="bg-[#0b3b35] hover:bg-[#132a43] text-white text-[12px] font-semibold py-3 px-5 rounded-lg transition-colors flex items-center gap-2 shadow-sm">
-                See More Success Stories
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              <Link href={$t("WebsiteDevTransformations__t21", "/testimonials")} className="bg-[#0b3b35] hover:bg-[#132a43] text-white text-[12px] font-semibold py-3 px-5 rounded-lg transition-colors flex items-center gap-2 shadow-sm">
+                {$t("WebsiteDevTransformations__t22", "See More Success Stories")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
               </Link>
               <div className="flex items-center gap-1.5 text-[#0d9488]/80 sm:mr-1 mt-0.5">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 15c0-4.4 3.6-8 8-8s8 3.6 8 8"></path><polyline points="17 11 21 15 17 19"></polyline></svg>
-                <span className="text-[9px] font-bold tracking-wide">Explore more transformations</span>
+                <span className="text-[9px] font-bold tracking-wide">{$t("WebsiteDevTransformations__t23", "Explore more transformations")}</span>
               </div>
             </div>
           </div>

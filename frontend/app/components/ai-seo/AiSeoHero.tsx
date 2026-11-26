@@ -5,8 +5,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { BarChart3, Brain, Clock3, Crown, Globe2, Search, TrendingUp } from "lucide-react";
 import CountUp from "../shared/CountUp";
 import { AI, BrandIcon, ClientWordmarks, CtaButton, Inner, Panel, Pill, Sparkle, ease, fadeUp, heading, oval, type Brand } from "../shared/AiSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const AGENTS: { brand: Brand; title: string; sub: string; pos: string; delay: number }[] = [
+const AGENTS__cms: { brand: Brand; title: string; sub: string; pos: string; delay: number }[] = [
   { brand: "chatgpt", title: "ChatGPT", sub: "Content Strategy & Optimization", pos: "left-[6%] top-[11%]", delay: 0.35 },
   { brand: "claude", title: "Claude", sub: "Content Creation & Enhancement", pos: "left-[74%] top-[11%]", delay: 0.45 },
   { brand: "gemini", title: "Google Gemini", sub: "Search Insights & Intelligence", pos: "left-[0%] top-[38%]", delay: 0.55 },
@@ -15,14 +17,14 @@ const AGENTS: { brand: Brand; title: string; sub: string; pos: string; delay: nu
   { brand: "more", title: "And More…", sub: "New AI Models & Future Agents", pos: "left-[80%] top-[67%]", delay: 0.85 },
 ];
 
-const STATS = [
+const STATS__cms = [
   { Icon: TrendingUp, to: 180, suffix: "%", label: "Organic Traffic", arrow: true },
   { Icon: BarChart3, to: 145, suffix: "%", label: "Keyword Rankings", arrow: true },
   { Icon: Search, to: 200, suffix: "%", label: "AI Visibility", arrow: true },
   { Icon: Crown, to: 3, suffix: "", label: "More Keywords", prefix: "Top " },
 ];
 
-const FEATURES = [
+const FEATURES__cms = [
   { Icon: Brain, title: "AI-Powered Insights", text: "Deep analysis across multiple AI models and search engines." },
   { Icon: Clock3, title: "24/7 Optimization", text: "Your AI agents never stop testing and improving." },
   { Icon: Globe2, title: "Future-Ready GEO", text: "Optimized for AI Overviews, ChatGPT, Gemini & beyond." },
@@ -46,6 +48,10 @@ function AgentCard({ brand, title, sub, className = "" }: { brand: Brand; title:
 }
 
 export default function AiSeoHero() {
+  const $t = useCmsText();
+  const AGENTS = useCmsData("AiSeoHero__AGENTS", AGENTS__cms);
+  const STATS = useCmsData("AiSeoHero__STATS", STATS__cms);
+  const FEATURES = useCmsData("AiSeoHero__FEATURES", FEATURES__cms);
   const reduce = useReducedMotion();
   return (
     <Panel>
@@ -60,36 +66,32 @@ export default function AiSeoHero() {
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.69fr)_minmax(0,1fr)] lg:gap-0">
           {/* copy */}
           <div className="relative z-10 text-center lg:text-left">
-            <Pill>AI SEO &amp; GEO Services</Pill>
+            <Pill>{$t("AiSeoHero__t1", "AI SEO & GEO Services")}</Pill>
             <motion.h1
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease }}
-              className={`${heading.className} mt-6 text-[clamp(40px,4.25vw,84px)] font-bold leading-[1.02] tracking-[-0.025em] text-[#0b1b33]`}
+              className={`text-h1 ${heading.className} mt-6 font-bold tracking-[-0.025em] text-[#0b1b33]`}
             >
-              Your <span className="bg-gradient-to-r from-[#0f766e] to-[#14a39a] bg-clip-text text-transparent">AI SEO</span>
-              <br /> Agent. Always
-              <br /> Optimizing.
-            </motion.h1>
+              {$t("AiSeoHero__t2", "Your ")}<span className="bg-gradient-to-r from-[#0f766e] to-[#14a39a] bg-clip-text text-transparent">{$t("AiSeoHero__t3", "AI SEO")}</span>
+              <br /> {$t("AiSeoHero__t4", "Agent. Always")}<br /> {$t("AiSeoHero__t5", "Optimizing.")}</motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease }}
-              className="mx-auto mt-6 max-w-[460px] text-base leading-relaxed text-slate-600 sm:text-lg 2xl:text-[19px] lg:mx-0"
+              className="text-body mx-auto mt-6 max-w-[460px] text-slate-600 lg:mx-0"
             >
-              Powered by multiple AI agents that work together to grow your visibility, rankings and revenue across{" "}
-              <span className="font-semibold text-[#0f766e]">every search</span> experience.
-            </motion.p>
+              {rich($t("AiSeoHero__t6", "Powered by multiple AI agents that work together to grow your visibility, rankings and revenue across"))}{" "}
+              <span className="font-semibold text-[#0f766e]">{$t("AiSeoHero__t7", "every search")}</span> {rich($t("AiSeoHero__t8", "experience."))}</motion.p>
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25, ease }}
               className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start 2xl:gap-4"
             >
-              <CtaButton className="2xl:min-w-[280px] 2xl:py-4 2xl:text-[17px]">Get AI SEO Strategy</CtaButton>
-              <CtaButton variant="ghost" href="#how-it-works" className="!border-slate-300 !text-[#0b1b33] 2xl:min-w-[240px] 2xl:py-4 2xl:text-[17px]">
-                See How It Works
-              </CtaButton>
+              <CtaButton className="2xl:min-w-[280px] 2xl:py-4 2xl:text-[17px]">{$t("AiSeoHero__t9", "Get AI SEO Strategy")}</CtaButton>
+              <CtaButton variant="ghost" href={$t("AiSeoHero__t10", "#how-it-works")} className="!border-slate-300 !text-[#0b1b33] 2xl:min-w-[240px] 2xl:py-4 2xl:text-[17px]">
+                {$t("AiSeoHero__t11", "See How It Works")}</CtaButton>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -97,7 +99,7 @@ export default function AiSeoHero() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="mt-8 flex items-center justify-center gap-4 lg:justify-start"
             >
-              <Image src={AI.avatars} alt="Happy ProManage clients" width={200} height={66} className="h-12 w-auto 2xl:h-14" />
+              <Image src={AI.avatars} alt={$t("AiSeoHero__t12", "Happy ProManage clients")} width={200} height={66} className="h-12 w-auto 2xl:h-14" />
               <div className="text-left">
                 <div className="flex gap-0.5 text-amber-400">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -106,7 +108,7 @@ export default function AiSeoHero() {
                     </svg>
                   ))}
                 </div>
-                <p className="mt-1 text-sm text-slate-500 2xl:text-[15px]">Trusted by 100+ businesses</p>
+                <p className="text-small mt-1 text-slate-500">{rich($t("AiSeoHero__t13", "Trusted by 100+ businesses"))}</p>
               </div>
             </motion.div>
           </div>
@@ -122,7 +124,7 @@ export default function AiSeoHero() {
               <div className="absolute left-[-18%] top-[-2%] aspect-[1.697] w-[136%] md:top-[-4%]">
                 <Image
                   src={AI.robotDesk}
-                  alt="AI SEO agent robot working on a laptop"
+                  alt={$t("AiSeoHero__t14", "AI SEO agent robot working on a laptop")}
                   fill
                   priority
                   sizes="(min-width: 1024px) 1200px, 130vw"
@@ -134,8 +136,8 @@ export default function AiSeoHero() {
                   aria-hidden
                   className={`${heading.className} absolute left-[28.7%] top-[66%] flex w-[22%] flex-col items-center text-center text-[clamp(9px,1.25vw,24px)] font-bold leading-[1.05] tracking-wide text-[#8ff3ff] [text-shadow:0_0_12px_rgba(56,232,255,.9)]`}
                 >
-                  <span className="ai-anim" style={{ animation: "aiBlink 3s ease-in-out infinite" }}>AI SEO</span>
-                  <span className="text-[0.82em]">AGENT</span>
+                  <span className="ai-anim" style={{ animation: "aiBlink 3s ease-in-out infinite" }}>{$t("AiSeoHero__t15", "AI SEO")}</span>
+                  <span className="text-[0.82em]">{$t("AiSeoHero__t16", "AGENT")}</span>
                 </span>
               </div>
               {/* speech bubble */}
@@ -146,9 +148,8 @@ export default function AiSeoHero() {
                 className="absolute left-[48%] top-0 -translate-x-1/2"
               >
                 <div className="ai-float relative whitespace-nowrap rounded-2xl bg-white px-4 py-2.5 text-center text-[11px] font-medium leading-snug text-slate-700 shadow-[0_16px_36px_-20px_rgba(15,40,80,.4)] sm:text-[13px] 2xl:px-6 2xl:py-3.5 2xl:text-[15px]">
-                  Analyzing. Optimizing.
-                  <br />
-                  Growing your business <span className="font-bold text-[#0f766e]">24/7</span>
+                  {$t("AiSeoHero__t17", "Analyzing. Optimizing.")}<br />
+                  {$t("AiSeoHero__t18", "Growing your business ")}<span className="font-bold text-[#0f766e]">{$t("AiSeoHero__t19", "24/7")}</span>
                   <span className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-white" />
                 </div>
                 <span className="mx-auto mt-2 block h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
@@ -228,8 +229,7 @@ export default function AiSeoHero() {
         {/* trusted row */}
         <div className="mt-10 text-center">
           <p className="flex items-center justify-center gap-2 text-[11px] font-medium uppercase tracking-[0.25em] text-slate-500">
-            <Sparkle className="h-3 w-3 text-[#0f766e]" /> Trusted by businesses growing through AI search
-          </p>
+            <Sparkle className="h-3 w-3 text-[#0f766e]" /> {rich($t("AiSeoHero__t20", "Trusted by businesses growing through AI search"))}</p>
           <ClientWordmarks className="mt-6" />
         </div>
       </Inner>

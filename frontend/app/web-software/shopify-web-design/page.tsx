@@ -7,24 +7,37 @@ import ShopifyMobileExperience from "../../components/shopify-web-design/Shopify
 import ShopifyWhatWeOffer from "../../components/shopify-web-design/ShopifyWhatWeOffer";
 import ShopifyCTABanner from "../../components/shopify-web-design/ShopifyCTABanner";
 import ShopifyResultsAndForm from "../../components/shopify-web-design/ShopifyResultsAndForm";
+import { cmsMetadata } from "../../../lib/seo";
+import CmsSections from "../../../components/cms/CmsSections";
+import JsonLd from "../../../components/cms/JsonLd";
 
-export const metadata: Metadata = {
+const staticMetadata: Metadata = {
   title: "Shopify Web Design | ProManage",
   description:
     "We design fast, intuitive Shopify stores that turn product discovery into confident purchases.",
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return cmsMetadata("/web-software/shopify-web-design", staticMetadata);
+}
+
 export default function ShopifyWebDesignPage() {
   return (
     <div className="relative overflow-x-clip">
-      <ShopifyWebDesignHero />
-      <ShopifyWebDesignJourney />
-      <ShopifyProductDesign />
-      <ShopifyStoreArchitecture />
-      <ShopifyMobileExperience />
-      <ShopifyWhatWeOffer />
-      <ShopifyCTABanner />
-      <ShopifyResultsAndForm />
+      <JsonLd path="/web-software/shopify-web-design" />
+      <CmsSections
+        path="/web-software/shopify-web-design"
+        sections={[
+          ["web-design-hero", <ShopifyWebDesignHero key="web-design-hero" />],
+          ["web-design-journey", <ShopifyWebDesignJourney key="web-design-journey" />],
+          ["product-design", <ShopifyProductDesign key="product-design" />],
+          ["store-architecture", <ShopifyStoreArchitecture key="store-architecture" />],
+          ["mobile-experience", <ShopifyMobileExperience key="mobile-experience" />],
+          ["what-we-offer", <ShopifyWhatWeOffer key="what-we-offer" />],
+          ["cta-banner", <ShopifyCTABanner key="cta-banner" />],
+          ["results-and-form", <ShopifyResultsAndForm key="results-and-form" />],
+        ]}
+      />
     </div>
   );
 }

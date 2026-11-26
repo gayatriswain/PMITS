@@ -3,6 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#1b8a80";
@@ -23,7 +25,7 @@ const iconProps = {
   strokeLinejoin: "round" as const,
 };
 
-const FEATURES = [
+const FEATURES__cms = [
   {
     title: "Right Strategy",
     text: "A website built around your business goals.",
@@ -78,6 +80,8 @@ const FEATURES = [
 ];
 
 export default function WebsiteDevGrowthJourney() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("WebsiteDevGrowthJourney__FEATURES", FEATURES__cms);
   return (
     <section className="relative w-full bg-[#F5F7F8] pt-6 pb-14 lg:pt-8 lg:pb-20 overflow-hidden">
       <Container>
@@ -100,9 +104,8 @@ export default function WebsiteDevGrowthJourney() {
           ))}
           <div className="sm:col-span-2 lg:col-span-1 lg:ml-4 rounded-xl bg-[#F1F4F6] p-4">
             <span className="block font-serif text-2xl leading-none mb-1" style={{ color: TEAL }}>&ldquo;</span>
-            <p className="text-[12px] text-slate-600 leading-relaxed">
-              We build websites that don&apos;t just look good — they grow your business.
-            </p>
+            <p className="text-caption text-slate-600">
+              {rich($t("WebsiteDevGrowthJourney__t1", "We build websites that don't just look good — they grow your business."))}</p>
           </div>
         </motion.div>
 

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -167,7 +169,7 @@ function LinkBuildingArt() {
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
 
-const PILLARS = [
+const PILLARS__cms = [
   {
     num: "01",
     title: "Keyword Research & Strategy",
@@ -223,7 +225,7 @@ const PILLARS = [
   },
 ];
 
-const FEATURES = [
+const FEATURES__cms = [
   "Technical SEO Audit & Website Health",
   "Keyword & Competitor Research",
   "On-Page SEO Optimization",
@@ -234,7 +236,7 @@ const FEATURES = [
   "Performance Tracking & Monthly Reporting",
 ];
 
-const STATS = [
+const STATS__cms = [
   {
     target: 200,
     suffix: "+",
@@ -310,6 +312,7 @@ function DottedRule() {
 }
 
 function Stats() {
+  const STATS = useCmsData("SeoGrowthFramework__STATS", STATS__cms);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -328,7 +331,7 @@ function Stats() {
         >
           <span className="shrink-0 w-12 h-12 rounded-full bg-[#F1F4F6] flex items-center justify-center">{stat.icon}</span>
           <div>
-            <p className="text-xl font-bold tabular-nums leading-none mb-1" style={{ color: DEEP_TEAL }}>
+            <p className="text-body font-bold tabular-nums mb-1" style={{ color: DEEP_TEAL }}>
               {inView ? <Counter target={stat.target} suffix={stat.suffix} /> : `0${stat.suffix}`}
             </p>
             <p className="text-[11px] text-slate-500">{stat.label}</p>
@@ -340,6 +343,9 @@ function Stats() {
 }
 
 export default function SeoGrowthFramework() {
+  const $t = useCmsText();
+  const PILLARS = useCmsData("SeoGrowthFramework__PILLARS", PILLARS__cms);
+  const FEATURES = useCmsData("SeoGrowthFramework__FEATURES", FEATURES__cms);
   return (
     <section className="relative w-full bg-white py-12 lg:py-16 overflow-x-clip">
       <Container>
@@ -355,19 +361,16 @@ export default function SeoGrowthFramework() {
             <div className="flex items-center gap-4 mb-3">
               <DottedRule />
               <p className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-                Our Complete SEO Framework
-              </p>
+                {rich($t("SeoGrowthFramework__t1", "Our Complete SEO Framework"))}</p>
               <DottedRule />
             </div>
-            <h2 className="font-serif text-3xl md:text-[44px] leading-tight font-semibold mb-3" style={{ color: NAVY }}>
-              Complete SEO Solutions
-              <br />
-              That Drive <span style={{ color: TEAL }}>Real Growth</span>
+            <h2 className="text-h2 font-serif font-semibold mb-3" style={{ color: NAVY }}>
+              {$t("SeoGrowthFramework__t2", "Complete SEO Solutions")}<br />
+              {$t("SeoGrowthFramework__t3", "That Drive ")}<span style={{ color: TEAL }}>{$t("SeoGrowthFramework__t4", "Real Growth")}</span>
               <span style={{ color: GOLD }}>.</span>
             </h2>
-            <p className="text-sm md:text-base text-slate-600 max-w-xl leading-relaxed">
-              From strategy to execution, we cover every aspect of SEO to increase your visibility, attract the right audience and deliver measurable business results.
-            </p>
+            <p className="text-body text-slate-600 max-w-xl">
+              {rich($t("SeoGrowthFramework__t5", "From strategy to execution, we cover every aspect of SEO to increase your visibility, attract the right audience and deliver measurable business results."))}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,2fr)] gap-5">
@@ -438,8 +441,7 @@ export default function SeoGrowthFramework() {
                   className="text-[10px] font-bold tracking-[0.25em] uppercase whitespace-nowrap [writing-mode:vertical-rl] rotate-180"
                   style={{ color: TEAL }}
                 >
-                  Our Core Focus
-                </span>
+                  {$t("SeoGrowthFramework__t6", "Our Core Focus")}</span>
                 <motion.span
                   className="w-px flex-1 origin-top"
                   style={{ backgroundColor: `${TEAL}80` }}
@@ -453,20 +455,18 @@ export default function SeoGrowthFramework() {
 
               {/* Content */}
               <div className="relative pt-[184px] pb-10 pl-14 pr-5">
-                <h3 className="font-serif text-xl md:text-[22px] leading-[1.25] font-semibold mb-4">
-                  <span style={{ color: NAVY }}>SEO Solutions</span>
+                <h3 className="text-h5 font-serif font-semibold mb-4">
+                  <span style={{ color: NAVY }}>{$t("SeoGrowthFramework__t7", "SEO Solutions")}</span>
                   <br />
-                  <span style={{ color: TEAL }}>That Grow Your Business</span>
+                  <span style={{ color: TEAL }}>{$t("SeoGrowthFramework__t8", "That Grow Your Business")}</span>
                 </h3>
                 <span className="block w-8 h-[2px] mb-6" style={{ backgroundColor: GOLD }} />
 
-                <p className="text-[13px] text-slate-600 leading-relaxed mb-5">
-                  Not every business needs the same SEO strategy. We build a customized SEO roadmap based on your industry, competition, target audience, and business goals to increase visibility, generate qualified leads, and deliver sustainable growth.
-                </p>
+                <p className="text-small text-slate-600 mb-5">
+                  {rich($t("SeoGrowthFramework__t9", "Not every business needs the same SEO strategy. We build a customized SEO roadmap based on your industry, competition, target audience, and business goals to increase visibility, generate qualified leads, and deliver sustainable growth."))}</p>
 
-                <p className="text-[12px] font-bold uppercase tracking-wide mb-3" style={{ color: NAVY }}>
-                  What&apos;s Included:
-                </p>
+                <p className="text-caption font-bold uppercase tracking-wide mb-3" style={{ color: NAVY }}>
+                  {rich($t("SeoGrowthFramework__t10", "What's Included:"))}</p>
                 <motion.ul
                   variants={listVariants}
                   initial="hidden"
@@ -488,23 +488,21 @@ export default function SeoGrowthFramework() {
 
                 <div className="flex flex-wrap items-center gap-3">
                   <Link
-                    href="/contact"
+                    href={$t("SeoGrowthFramework__t11", "/contact")}
                     className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-lg text-white text-[12px] font-semibold whitespace-nowrap shadow-lg shadow-teal-900/20 transition-transform hover:-translate-y-0.5"
                     style={{ backgroundColor: DEEP_TEAL }}
                   >
-                    Get My SEO Strategy
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    {$t("SeoGrowthFramework__t12", "Get My SEO Strategy")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14" />
                       <path d="M12 5l7 7-7 7" />
                     </svg>
                   </Link>
                   <Link
-                    href="/success-stories"
+                    href={$t("SeoGrowthFramework__t13", "/testimonials")}
                     className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-lg border text-[12px] font-semibold whitespace-nowrap"
                     style={{ borderColor: `${DEEP_TEAL}55`, color: DEEP_TEAL }}
                   >
-                    View SEO Results
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    {$t("SeoGrowthFramework__t14", "View SEO Results")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M4 20 V15 M9 20 V11 M14 20 V13 M19 20 V7" />
                     </svg>
                   </Link>
@@ -535,7 +533,7 @@ export default function SeoGrowthFramework() {
                       {icon}
                     </motion.span>
                     <div className="pt-1">
-                      <h3 className="font-serif text-lg md:text-xl leading-tight font-semibold" style={{ color: NAVY }}>
+                      <h3 className="text-h6 font-serif font-semibold" style={{ color: NAVY }}>
                         {title}
                       </h3>
                     </div>
@@ -544,19 +542,18 @@ export default function SeoGrowthFramework() {
                     </span>
                   </div>
 
-                  <p className="text-[12px] font-bold mb-3" style={{ color: TEAL }}>
+                  <p className="text-caption font-bold mb-3" style={{ color: TEAL }}>
                     {highlight}
                   </p>
 
-                  <p className="relative z-10 text-[13px] text-slate-600 leading-relaxed max-w-[64%] mb-6">{text}</p>
+                  <p className="text-small relative z-10 text-slate-600 max-w-[64%] mb-6">{text}</p>
 
                   <Link
-                    href="/contact"
+                    href={$t("SeoGrowthFramework__t15", "/contact")}
                     className="relative z-10 mt-auto inline-flex items-center gap-2 text-[13px] font-semibold self-start"
                     style={{ color: DEEP_TEAL }}
                   >
-                    Learn More
-                    <motion.svg
+                    {$t("SeoGrowthFramework__t16", "Learn More")}<motion.svg
                       variants={{ hover: { x: 5 } }}
                       width="16"
                       height="16"

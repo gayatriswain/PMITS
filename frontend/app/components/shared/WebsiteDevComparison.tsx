@@ -5,6 +5,8 @@ import Image from "next/image";
 import { motion, useInView, type Variants } from "framer-motion";
 import { Counter } from "./useCountUp";
 import Container from "./Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -100,7 +102,7 @@ const HeartIcon = ({ color = "#fff", size = 18 }: IconProps) => (
   </svg>
 );
 
-const ROWS = [
+const ROWS__cms = [
   {
     label: "Focus",
     theirs: "Looks Good",
@@ -196,7 +198,7 @@ const SMOOTH = [0.65, 0, 0.35, 1] as [number, number, number, number];
 
 /* ---------------- Stats strip ---------------- */
 
-const STATS = [
+const STATS__cms = [
   {
     target: 200,
     suffix: "+",
@@ -249,6 +251,8 @@ const STATS = [
 ];
 
 function StatsStrip() {
+  const $t = useCmsText();
+  const STATS = useCmsData("WebsiteDevComparison__STATS", STATS__cms);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -276,12 +280,11 @@ function StatsStrip() {
             <svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke={GOLD} strokeWidth="1.5" strokeLinecap="round" aria-hidden>
               <path d="M1 7 L4 1 M6 7 L8 1 M10 7 L13 3" />
             </svg>
-            Don&apos;t just build websites.
-          </p>
-          <p className="font-serif text-xl leading-[1.15] font-semibold">
-            <span style={{ color: NAVY }}>We build</span>
+            {rich($t("WebsiteDevComparison__t1", "Don't just build websites."))}</p>
+          <p className="text-body font-serif font-semibold">
+            <span style={{ color: NAVY }}>{$t("WebsiteDevComparison__t2", "We build")}</span>
             <br />
-            <span style={{ color: DEEP_TEAL }}>growth engines.</span>
+            <span style={{ color: DEEP_TEAL }}>{$t("WebsiteDevComparison__t3", "growth engines.")}</span>
           </p>
         </div>
       </div>
@@ -303,6 +306,8 @@ function StatsStrip() {
 }
 
 export default function WebsiteDevComparison() {
+  const $t = useCmsText();
+  const ROWS = useCmsData("WebsiteDevComparison__ROWS", ROWS__cms);
   // 0 idle · 1 left card fades in (centred) · 2 slides left while right card + VS enter
   const [stage, setStage] = useState(0);
   const [shift, setShift] = useState("50%");
@@ -311,7 +316,7 @@ export default function WebsiteDevComparison() {
     <section className="relative w-full bg-[#F7F9F8] py-8 lg:py-10 overflow-hidden">
       {/* Background artwork — full width, never cropped (section is at least as tall as the image) */}
       <Image
-        src="/diff-section.png"
+        src={$t("WebsiteDevComparison__t4", "/diff-section.png")}
         alt=""
         width={1740}
         height={904}
@@ -331,15 +336,14 @@ export default function WebsiteDevComparison() {
           <div className="flex items-center gap-3 mb-4">
             <span className="w-10 h-[2px]" style={{ backgroundColor: GOLD }} />
             <p className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              Built Different. Built To Perform.
-            </p>
+              {rich($t("WebsiteDevComparison__t5", "Built Different. Built To Perform."))}</p>
           </div>
 
-          <h2 className="font-serif text-4xl md:text-[52px] leading-[1.1] font-bold tracking-tight">
-            <span style={{ color: NAVY }}>Not All Websites </span>
+          <h2 className="text-h2 font-serif font-bold tracking-tight">
+            <span style={{ color: NAVY }}>{$t("WebsiteDevComparison__t6", "Not All Websites ")}</span>
             <br className="md:hidden" />
-            <span style={{ color: NAVY }}>Are </span>
-            <span style={{ color: DEEP_TEAL }}>Built The Same.</span>
+            <span style={{ color: NAVY }}>{$t("WebsiteDevComparison__t7", "Are ")}</span>
+            <span style={{ color: DEEP_TEAL }}>{$t("WebsiteDevComparison__t8", "Built The Same.")}</span>
           </h2>
 
           {/* brush underline */}
@@ -356,10 +360,9 @@ export default function WebsiteDevComparison() {
             />
           </svg>
 
-          <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-            Most agencies deliver what&apos;s expected.
-            <br />
-            We deliver what drives <span className="font-bold" style={{ color: DEEP_TEAL }}>real results.</span>
+          <p className="text-body text-slate-600">
+            {rich($t("WebsiteDevComparison__t9", "Most agencies deliver what's expected."))}<br />
+            {rich($t("WebsiteDevComparison__t10", "We deliver what drives "))}<span className="font-bold" style={{ color: DEEP_TEAL }}>{$t("WebsiteDevComparison__t11", "real results.")}</span>
           </p>
         </motion.div>
 
@@ -373,7 +376,7 @@ export default function WebsiteDevComparison() {
             setStage(1);
           }}
           viewport={{ once: true, amount: 0.35 }}
-          className="relative w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-0 items-stretch"
+          className="relative w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-0 items-stretch"
         >
           {/* Most Agencies */}
           <motion.div
@@ -397,7 +400,7 @@ export default function WebsiteDevComparison() {
             className="relative z-10 h-full flex flex-col bg-[#F3F5F7] rounded-2xl md:mr-3 border border-slate-200/70 overflow-hidden shadow-[0_20px_50px_-25px_rgba(15,40,60,0.25)]"
           >
             <div className={`${HEADER_H} flex items-center justify-center border-b border-slate-200/80`}>
-              <h3 className="text-base font-bold" style={{ color: NAVY }}>Most Agencies</h3>
+              <h3 className="text-base font-bold" style={{ color: NAVY }}>{$t("WebsiteDevComparison__t12", "Most Agencies")}</h3>
             </div>
             <motion.ul
               variants={rowsVariants}
@@ -436,7 +439,7 @@ export default function WebsiteDevComparison() {
               className={`${HEADER_H} flex items-center justify-center`}
               style={{ background: `linear-gradient(135deg, ${TEAL} 0%, ${DEEP_TEAL} 100%)` }}
             >
-              <h3 className="text-base font-bold text-white">ProManage Approach</h3>
+              <h3 className="text-base font-bold text-white">{$t("WebsiteDevComparison__t13", "ProManage Approach")}</h3>
             </div>
             <motion.ul
               variants={rightRowsVariants}
@@ -480,8 +483,7 @@ export default function WebsiteDevComparison() {
               className="w-14 h-14 rounded-full flex items-center justify-center text-white text-base font-extrabold ring-4 ring-white"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              VS
-            </motion.span>
+              {$t("WebsiteDevComparison__t14", "VS")}</motion.span>
           </motion.div>
         </motion.div>
 

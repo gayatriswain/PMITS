@@ -5,6 +5,8 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { CakeMark } from "./HireCakePhpExpertise";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -31,7 +33,7 @@ const I = {
   className: "h-6 w-6",
 };
 
-const STEPS = [
+const STEPS__cms = [
   {
     title: "Discovery",
     text: "We understand your business, goals and technical requirements.",
@@ -97,7 +99,7 @@ const STEPS = [
   },
 ];
 
-const PRINCIPLES = [
+const PRINCIPLES__cms = [
   {
     title: "Goal-Oriented",
     text: "Every step aligned with your business objectives.",
@@ -179,6 +181,9 @@ function Wave({ last }: { last?: boolean }) {
 }
 
 export default function HireCakePhpProcess() {
+  const $t = useCmsText();
+  const STEPS = useCmsData("HireCakePhpProcess__STEPS", STEPS__cms);
+  const PRINCIPLES = useCmsData("HireCakePhpProcess__PRINCIPLES", PRINCIPLES__cms);
   return (
     <section
       id="process"
@@ -198,8 +203,7 @@ export default function HireCakePhpProcess() {
               style={{ color: RED }}
             >
               <i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
-              Our CakePHP Development Process
-              <i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
+              {$t("HireCakePhpProcess__t1", "Our CakePHP Development Process")}<i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
             </span>
             <svg viewBox="0 0 24 20" className="h-4 w-5" aria-hidden>
               <path d="M2 8v5c0 2 4.5 3.5 10 3.5S22 15 22 13V8" fill="#d92b32" />
@@ -210,18 +214,16 @@ export default function HireCakePhpProcess() {
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="mt-4 font-playfair text-[34px] font-bold leading-[1.12] tracking-tight text-[#0f1a2e] sm:text-5xl lg:text-[50px]"
+            className="text-h2 mt-4 font-playfair font-bold tracking-tight text-[#0f1a2e]"
           >
-            A process as solid as <span style={{ color: RED }}>Cake.</span>
+            {$t("HireCakePhpProcess__t2", "A process as solid as ")}<span style={{ color: RED }}>{$t("HireCakePhpProcess__t3", "Cake.")}</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-[15px]"
+            className="text-body mx-auto mt-4 max-w-xl text-slate-600"
           >
-            We follow a proven methodology to deliver secure, scalable and high-performance
-            CakePHP applications.
-          </motion.p>
+            {rich($t("HireCakePhpProcess__t4", "We follow a proven methodology to deliver secure, scalable and high-performance CakePHP applications."))}</motion.p>
         </motion.div>
 
         {/* Steps */}
@@ -302,15 +304,12 @@ export default function HireCakePhpProcess() {
               </span>
               <span aria-hidden className="hidden h-16 w-px bg-[#eadada] sm:block" />
               <div>
-                <h3 className="font-playfair text-[20px] font-bold leading-tight text-[#0f1a2e]">
-                  Built with process.
-                  <br />
-                  <span style={{ color: RED }}>Delivered with perfection.</span>
+                <h3 className="text-h6 font-playfair font-bold text-[#0f1a2e]">
+                  {$t("HireCakePhpProcess__t5", "Built with process.")}<br />
+                  <span style={{ color: RED }}>{$t("HireCakePhpProcess__t6", "Delivered with perfection.")}</span>
                 </h3>
                 <p className="mt-2 max-w-[260px] text-[11px] leading-relaxed text-slate-500">
-                  Our structured approach ensures quality at every step and results that drive your
-                  business forward.
-                </p>
+                  {rich($t("HireCakePhpProcess__t7", "Our structured approach ensures quality at every step and results that drive your business forward."))}</p>
               </div>
             </div>
 

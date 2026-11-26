@@ -5,22 +5,24 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, Emblem, Eyebrow, Icon, ease, fadeUp, heading, type IconName } from "../shared/MagentoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const outcomes: { n: string; title: string; text: string; icon: IconName }[] = [
+const outcomes__cms: { n: string; title: string; text: string; icon: IconName }[] = [
   { n: "01", title: "Faster Stores", text: "Optimized performance for speed that converts.", icon: "gauge" },
   { n: "02", title: "Smoother Journeys", text: "Seamless experiences that keep customers coming back.", icon: "cart" },
   { n: "03", title: "Smarter Operations", text: "Custom features and integrations that reduce manual work.", icon: "puzzle" },
   { n: "04", title: "Ready to Scale", text: "A future-ready architecture that grows with your business.", icon: "rocket" },
 ];
 
-const doGet: { do: [string, string, IconName]; get: [string, string, IconName] }[] = [
+const doGet__cms: { do: [string, string, IconName]; get: [string, string, IconName] }[] = [
   { do: ["Clean & Scalable Code", "Built for performance, security and flexibility.", "code"], get: ["Better Performance", "Faster load times and smooth store performance.", "trend"] },
   { do: ["Custom Development", "Features built around your business goals.", "puzzle"], get: ["Happier Customers", "Better experience, higher trust and repeat sales.", "users"] },
   { do: ["Seamless Integrations", "Connect tools, automate workflows and save time.", "sliders"], get: ["More Efficiency", "Less manual work and operational bottlenecks.", "clock"] },
   { do: ["Reliable Support", "Proactive maintenance and quick issue resolution.", "shieldCheck"], get: ["Sustainable Growth", "A store that’s ready for more traffic, products and markets.", "chart"] },
 ];
 
-function OutcomeNode({ o, i }: { o: (typeof outcomes)[number]; i: number }) {
+function OutcomeNode({ o, i }: { o: (typeof outcomes__cms)[number]; i: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -36,12 +38,15 @@ function OutcomeNode({ o, i }: { o: (typeof outcomes)[number]; i: number }) {
         <Icon name={o.icon} className="h-7 w-7" />
       </div>
       <h3 className={`${heading.className} mt-4 text-sm font-bold uppercase tracking-wide text-[#0c1e3d]`}>{o.title}</h3>
-      <p className="mt-1 max-w-[180px] text-[13px] leading-relaxed text-slate-500">{o.text}</p>
+      <p className="text-small mt-1 max-w-[180px] text-slate-500">{o.text}</p>
     </motion.div>
   );
 }
 
 export default function MagentoOutcome() {
+  const $t = useCmsText();
+  const outcomes = useCmsData("MagentoOutcome__outcomes", outcomes__cms);
+  const doGet = useCmsData("MagentoOutcome__doGet", doGet__cms);
   const reduce = useReducedMotion();
   const [row, setRow] = useState<number | null>(null);
 
@@ -51,21 +56,19 @@ export default function MagentoOutcome() {
         <div className="relative mx-auto max-w-[1180px] overflow-hidden rounded-[28px] bg-white px-6 py-10 shadow-[0_30px_70px_-50px_rgba(12,30,61,0.4)] sm:px-10 lg:px-14 lg:py-14">
           {/* heading */}
           <div className="max-w-[480px] lg:max-w-[400px] xl:max-w-[480px]">
-            <Eyebrow variant="line" align="left" className="tracking-[0.12em]">The outcome</Eyebrow>
+            <Eyebrow variant="line" align="left" className="tracking-[0.12em]">{$t("MagentoOutcome__t1", "The outcome")}</Eyebrow>
             <motion.h2
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className={`${heading.className} mt-5 text-[40px] font-semibold leading-[1.05] tracking-tight text-[#0c1e3d] sm:text-[50px] lg:text-[44px] xl:text-[50px]`}
+              className={`text-h2 ${heading.className} mt-5 font-semibold tracking-tight text-[#0c1e3d]`}
             >
-              Real impact.
-              <br />
-              Measurable <span className="font-playfair italic text-[#0d9488]">growth.</span>
+              {$t("MagentoOutcome__t2", "Real impact.")}<br />
+              {$t("MagentoOutcome__t3", "Measurable ")}<span className="font-playfair italic text-[#0d9488]">{$t("MagentoOutcome__t4", "growth.")}</span>
             </motion.h2>
-            <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-5 max-w-[370px] text-[15px] leading-relaxed text-slate-600">
-              When expert Magento developers build your store the right way, everything starts working better.
-            </motion.p>
+            <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-5 max-w-[370px] text-slate-600">
+              {rich($t("MagentoOutcome__t5", "When expert Magento developers build your store the right way, everything starts working better."))}</motion.p>
           </div>
 
           {/* timeline */}
@@ -128,8 +131,8 @@ export default function MagentoOutcome() {
             className="relative mt-12 rounded-2xl border border-slate-200/80 px-5 pb-6 pt-8 sm:px-8"
             onMouseLeave={() => setRow(null)}
           >
-            <span className="absolute -top-3 left-[18%] rounded-md bg-[#0c1e3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">What we do</span>
-            <span className="absolute -top-3 right-[18%] rounded-md bg-[#0d9488] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white md:right-auto md:left-[62%]">What you get</span>
+            <span className="absolute -top-3 left-[18%] rounded-md bg-[#0c1e3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">{$t("MagentoOutcome__t6", "What we do")}</span>
+            <span className="absolute -top-3 right-[18%] rounded-md bg-[#0d9488] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white md:right-auto md:left-[62%]">{$t("MagentoOutcome__t7", "What you get")}</span>
 
             <div className="grid gap-0 md:grid-cols-[1fr_80px_1fr]">
               <ul className="divide-y divide-slate-100">
@@ -210,27 +213,23 @@ export default function MagentoOutcome() {
                 </svg>
                 <Emblem sizes="48px" className="w-[46px]" />
               </div>
-              <h3 className={`${heading.className} text-2xl font-semibold leading-tight lg:max-w-[230px] lg:border-r lg:border-white/15 lg:pr-8`}>
-                See what your Magento store <span className="text-[#2dd4bf]">could improve.</span>
+              <h3 className={`text-h5 ${heading.className} font-semibold lg:max-w-[230px] lg:border-r lg:border-white/15 lg:pr-8`}>
+                {$t("MagentoOutcome__t8", "See what your Magento store ")}<span className="text-[#2dd4bf]">{$t("MagentoOutcome__t9", "could improve.")}</span>
               </h3>
-              <p className="max-w-[260px] text-sm leading-relaxed text-slate-300">
-                Tell us about your store and our Magento experts will review it and show you what’s possible.
-              </p>
+              <p className="text-small max-w-[260px] text-slate-300">
+                {rich($t("MagentoOutcome__t10", "Tell us about your store and our Magento experts will review it and show you what’s possible."))}</p>
               <div className="flex flex-col items-center gap-2 lg:ml-auto">
                 <div className="flex flex-wrap justify-center gap-3">
-                  <Link href="#magento-proposal" className="group inline-flex items-center gap-2 rounded-lg bg-[#0d9488] px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:bg-[#0fa597]">
-                    Tell Us Your Challenge
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <Link href={$t("MagentoOutcome__t11", "#magento-proposal")} className="group inline-flex items-center gap-2 rounded-lg bg-[#0d9488] px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:bg-[#0fa597]">
+                    {$t("MagentoOutcome__t12", "Tell Us Your Challenge")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
-                  <Link href="#magento-proposal" className="inline-flex items-center gap-2 rounded-lg border border-white/40 px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-white hover:bg-white/5">
+                  <Link href={$t("MagentoOutcome__t13", "#magento-proposal")} className="inline-flex items-center gap-2 rounded-lg border border-white/40 px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-white hover:bg-white/5">
                     <Icon name="calendar" className="h-4 w-4" />
-                    Book a Consultation
-                  </Link>
+                    {$t("MagentoOutcome__t14", "Book a Consultation")}</Link>
                 </div>
-                <p className="flex items-center gap-1.5 text-xs text-slate-300">
+                <p className="text-caption flex items-center gap-1.5 text-slate-300">
                   <Icon name="shieldCheck" className="h-4 w-4 text-[#2dd4bf]" />
-                  No obligation. 100% confidential.
-                </p>
+                  {rich($t("MagentoOutcome__t15", "No obligation. 100% confidential."))}</p>
               </div>
             </div>
           </motion.div>

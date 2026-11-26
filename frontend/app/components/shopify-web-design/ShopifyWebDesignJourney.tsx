@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -273,7 +275,7 @@ const BarChartIcon = ({ size = 16, color = TEAL }: IconProps) => (
   </svg>
 );
 
-const STEPS = [
+const STEPS__cms = [
   {
     n: "01",
     title: "LAND",
@@ -308,7 +310,7 @@ const STEPS = [
   },
 ];
 
-const REVIEW_FEATURES = [
+const REVIEW_FEATURES__cms = [
   { label: "Free Expert Review", Icon: TagIcon },
   { label: "Actionable Insights", Icon: ClockIcon },
   { label: "Increase Sales & Conversions", Icon: BarChartIcon },
@@ -327,6 +329,9 @@ function Chevron() {
 }
 
 export default function ShopifyWebDesignJourney() {
+  const $t = useCmsText();
+  const STEPS = useCmsData("ShopifyWebDesignJourney__STEPS", STEPS__cms);
+  const REVIEW_FEATURES = useCmsData("ShopifyWebDesignJourney__REVIEW_FEATURES", REVIEW_FEATURES__cms);
   return (
     <section className="relative w-full bg-white py-10 sm:py-12 lg:py-14 overflow-hidden">
       <Container>
@@ -347,15 +352,14 @@ export default function ShopifyWebDesignJourney() {
 
           <div className="inline-flex items-center gap-1.5 mb-4">
             <svg width="14" height="14" viewBox="0 0 24 24" fill={TEAL}><path d="M12 2c0 4.5 4.5 9 9 9-4.5 0-9 4.5-9 9 0-4.5-4.5-9-9-9 4.5 0 9-4.5 9-9z" /></svg>
-            <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>The Shopper Journey</span>
+            <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>{$t("ShopifyWebDesignJourney__t1", "The Shopper Journey")}</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-[42px] leading-tight font-bold" style={{ color: NAVY }}>
-            Your Store Shouldn&apos;t Make <span style={{ color: TEAL }}>Customers Think.</span>
+          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
+            {$t("ShopifyWebDesignJourney__t2", "Your Store Shouldn't Make ")}<span style={{ color: TEAL }}>{$t("ShopifyWebDesignJourney__t3", "Customers Think.")}</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-500 leading-relaxed mt-4 max-w-lg mx-auto">
-            We remove friction at every step of the buying journey—so customers can find what they need, trust your store, and buy with confidence.
-          </p>
+          <p className="text-body text-slate-500 mt-4 max-w-lg mx-auto">
+            {rich($t("ShopifyWebDesignJourney__t4", "We remove friction at every step of the buying journey—so customers can find what they need, trust your store, and buy with confidence."))}</p>
         </motion.div>
 
         {/* Steps */}
@@ -387,12 +391,12 @@ export default function ShopifyWebDesignJourney() {
                   </h3>
 
                   {/* Question — bold dark */}
-                  <p className="text-[14px] font-bold leading-snug text-center" style={{ color: NAVY }}>
+                  <p className="text-small font-bold text-center" style={{ color: NAVY }}>
                     {step.q}
                   </p>
 
                   {/* Description — gray */}
-                  <p className="text-[12.5px] text-slate-400 leading-relaxed mt-2 text-center flex-1">
+                  <p className="text-caption text-slate-400 mt-2 text-center flex-1">
                     {step.desc}
                   </p>
 
@@ -436,16 +440,15 @@ export default function ShopifyWebDesignJourney() {
           className="mt-10 lg:mt-12 rounded-2xl bg-[#f7fbfa] border border-slate-100 p-6 sm:p-8 flex flex-col lg:flex-row items-center gap-8"
         >
           <div className="relative shrink-0 flex h-32 w-32 items-center justify-center">
-            <img src="/shopify2.png" alt="Shopify" className="w-full h-full object-contain" />
+            <img src={$t("ShopifyWebDesignJourney__t5", "/shopify2.png")} alt={$t("ShopifyWebDesignJourney__t6", "Shopify")} className="w-full h-full object-contain" />
           </div>
 
           <div className="flex-1 text-center lg:text-left">
-            <h3 className="text-lg sm:text-xl font-bold" style={{ color: NAVY }}>
-              Not sure what&apos;s holding <span style={{ color: TEAL }}>your store back?</span>
+            <h3 className="text-h6 font-bold" style={{ color: NAVY }}>
+              {$t("ShopifyWebDesignJourney__t7", "Not sure what's holding ")}<span style={{ color: TEAL }}>{$t("ShopifyWebDesignJourney__t8", "your store back?")}</span>
             </h3>
-            <p className="text-sm text-slate-500 mt-1.5 max-w-md mx-auto lg:mx-0">
-              Get a free Shopify store review and see exactly where you&apos;re losing sales.
-            </p>
+            <p className="text-small text-slate-500 mt-1.5 max-w-md mx-auto lg:mx-0">
+              {rich($t("ShopifyWebDesignJourney__t9", "Get a free Shopify store review and see exactly where you're losing sales."))}</p>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 mt-4">
               {REVIEW_FEATURES.map((f) => (
                 <span key={f.label} className="flex items-center gap-2.5">
@@ -460,12 +463,11 @@ export default function ShopifyWebDesignJourney() {
 
           <div className="flex flex-col items-center gap-3 shrink-0">
             <Link
-              href="/contact"
+              href={$t("ShopifyWebDesignJourney__t10", "/contact")}
               className="group inline-flex items-center gap-2.5 rounded-lg px-6 py-3.5 text-[14px] font-semibold text-white shadow-[0_15px_30px_-12px_rgba(15,92,86,0.6)] transition-transform hover:-translate-y-0.5 whitespace-nowrap"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Get Free Store Review
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+              {$t("ShopifyWebDesignJourney__t11", "Get Free Store Review")}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
@@ -476,7 +478,7 @@ export default function ShopifyWebDesignJourney() {
                   <span key={i} className="h-6 w-6 rounded-full ring-2 ring-white bg-slate-200" />
                 ))}
               </div>
-              <span className="text-[11px] text-slate-500">Loved by 100+ store owners</span>
+              <span className="text-[11px] text-slate-500">{$t("ShopifyWebDesignJourney__t12", "Loved by 100+ store owners")}</span>
             </div>
           </div>
         </motion.div>

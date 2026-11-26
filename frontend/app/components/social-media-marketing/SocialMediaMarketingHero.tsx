@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -36,13 +38,13 @@ function PlayIcon({ size = 9 }: { size?: number }) {
   );
 }
 
-const STATS = [
+const STATS__cms = [
   { value: "4.9 Rating", sub: "From 150+ Reviews" },
   { value: "300+", sub: "Brands Served" },
   { value: "50M+", sub: "Impressions Generated" },
 ];
 
-const PLATFORMS = [
+const PLATFORMS__cms = [
   {
     label: "Instagram",
     icon: (
@@ -107,6 +109,9 @@ const PLATFORMS = [
 ];
 
 export default function SocialMediaMarketingHero() {
+  const $t = useCmsText();
+  const STATS = useCmsData("SocialMediaMarketingHero__STATS", STATS__cms);
+  const PLATFORMS = useCmsData("SocialMediaMarketingHero__PLATFORMS", PLATFORMS__cms);
   return (
     <section className="relative w-full bg-white pt-10 pb-14 lg:pt-14 lg:pb-20 overflow-x-clip">
       <Container className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -115,45 +120,40 @@ export default function SocialMediaMarketingHero() {
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
             <span className="w-8 h-[3px] rounded-full" style={{ backgroundColor: TEAL }} />
             <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              Creative Social Media Marketing
-            </span>
+              {$t("SocialMediaMarketingHero__t1", "Creative Social Media Marketing")}</span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-5xl lg:text-[54px] leading-[1.12] font-bold tracking-tight mb-6">
-            <span className="block" style={{ color: NAVY }}>Every Day,</span>
-            <span className="block" style={{ color: NAVY }}>Millions Scroll.</span>
+          <motion.h1 variants={fadeUp} className="text-h1 font-serif font-bold tracking-tight mb-6">
+            <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingHero__t2", "Every Day,")}</span>
+            <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingHero__t3", "Millions Scroll.")}</span>
             <span className="block" style={{ color: NAVY }}>
-              Make Sure They{" "}
-              <span className="font-serif italic" style={{ color: TEAL }}>Stop</span> For You.
-            </span>
+              {$t("SocialMediaMarketingHero__t4", "Make Sure They")}{" "}
+              <span className="font-serif italic" style={{ color: TEAL }}>{$t("SocialMediaMarketingHero__t5", "Stop")}</span> {$t("SocialMediaMarketingHero__t6", "For You.")}</span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="text-sm md:text-base text-slate-600 leading-relaxed max-w-lg mb-8">
-            We create content, campaigns, and brand experiences that transform businesses into brands people notice, remember, and trust.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body text-slate-600 max-w-lg mb-8">
+            {rich($t("SocialMediaMarketingHero__t7", "We create content, campaigns, and brand experiences that transform businesses into brands people notice, remember, and trust."))}</motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-9">
             <Link
-              href="/contact"
+              href={$t("SocialMediaMarketingHero__t8", "/contact")}
               className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-lg text-white text-[14px] font-semibold shadow-[0_15px_30px_-12px_rgba(15,92,86,0.7)] transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Let&apos;s Build Your Brand
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+              {$t("SocialMediaMarketingHero__t9", "Let's Build Your Brand")}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
             </Link>
             <Link
-              href="/portfolio"
+              href={$t("SocialMediaMarketingHero__t10", "/portfolio")}
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-lg bg-white border border-slate-300 text-[14px] font-semibold transition-colors hover:border-slate-400"
               style={{ color: NAVY }}
             >
               <span className="w-6 h-6 rounded-full border-[1.5px] flex items-center justify-center" style={{ borderColor: NAVY }}>
                 <PlayIcon />
               </span>
-              See Our Campaigns
-            </Link>
+              {$t("SocialMediaMarketingHero__t11", "See Our Campaigns")}</Link>
           </motion.div>
 
           {/* Trust row */}
@@ -162,7 +162,7 @@ export default function SocialMediaMarketingHero() {
               <div className="flex -space-x-2.5">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="h-8 w-8 rounded-full ring-2 ring-white overflow-hidden relative bg-slate-200">
-                    <Image src="/image1.jpg" alt="Client" fill className="object-cover" />
+                    <Image src={$t("SocialMediaMarketingHero__t12", "/image1.jpg")} alt={$t("SocialMediaMarketingHero__t13", "Client")} fill className="object-cover" />
                   </div>
                 ))}
               </div>
@@ -172,7 +172,7 @@ export default function SocialMediaMarketingHero() {
                     <StarIcon key={i} />
                   ))}
                 </div>
-                <p className="text-[12px] font-semibold leading-snug" style={{ color: NAVY }}>{STATS[0].value}</p>
+                <p className="text-caption font-semibold" style={{ color: NAVY }}>{STATS[0].value}</p>
                 <p className="text-[11px] text-slate-500 leading-snug">{STATS[0].sub}</p>
               </div>
             </div>
@@ -180,14 +180,14 @@ export default function SocialMediaMarketingHero() {
             <span className="hidden sm:block w-px h-10 bg-slate-200" aria-hidden />
 
             <div>
-              <p className="text-[15px] font-bold leading-snug" style={{ color: DEEP_TEAL }}>{STATS[1].value}</p>
+              <p className="text-body font-bold" style={{ color: DEEP_TEAL }}>{STATS[1].value}</p>
               <p className="text-[11px] text-slate-500 leading-snug">{STATS[1].sub}</p>
             </div>
 
             <span className="hidden sm:block w-px h-10 bg-slate-200" aria-hidden />
 
             <div>
-              <p className="text-[15px] font-bold leading-snug" style={{ color: DEEP_TEAL }}>{STATS[2].value}</p>
+              <p className="text-body font-bold" style={{ color: DEEP_TEAL }}>{STATS[2].value}</p>
               <p className="text-[11px] text-slate-500 leading-snug">{STATS[2].sub}</p>
             </div>
           </motion.div>
@@ -195,8 +195,7 @@ export default function SocialMediaMarketingHero() {
           {/* Platforms */}
           <motion.div variants={fadeUp}>
             <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">
-              We create impact across every platform
-            </p>
+              {rich($t("SocialMediaMarketingHero__t14", "We create impact across every platform"))}</p>
             <div className="flex flex-wrap items-center gap-3">
               {PLATFORMS.map((p) => (
                 <span

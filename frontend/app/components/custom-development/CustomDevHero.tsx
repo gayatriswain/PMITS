@@ -97,8 +97,11 @@ const TrustItem = ({ icon, title, sub }: any) => (
 );
 
 import Image from 'next/image';
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const CentralIsometric = () => {
+  const $t = useCmsText();
   return (
     <div className="relative w-full max-w-sm sm:max-w-md aspect-square flex items-center justify-center perspective-[1200px] -mt-6 sm:mt-0">
       {/* Background Orbits Mask Wrapper to fade only from the top */}
@@ -245,7 +248,7 @@ const CentralIsometric = () => {
             {/* Mathematically precise isometric contour for a rounded square */}
             <path id="curve" d="M 10,20 L 115,72 Q 150,90 185,72 L 290,20" fill="transparent" />
             <text className="text-[10px] sm:text-[10.5px] font-bold tracking-[0.4em] fill-teal-800 uppercase" style={{ filter: 'drop-shadow(0px 1px 0px rgba(255,255,255,0.7))' }}>
-              <textPath href="#curve" startOffset="50%" textAnchor="middle">Built Exactly Your Way</textPath>
+              <textPath href="#curve" startOffset="50%" textAnchor="middle">{$t("CustomDevHero__t1", "Built Exactly Your Way")}</textPath>
             </text>
           </svg>
         </div>
@@ -255,6 +258,7 @@ const CentralIsometric = () => {
 };
 
 export default function CustomDevHero() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full bg-[#f8fafc] pt-20 pb-16 overflow-hidden">
       {/* Decorative background gradients */}
@@ -272,27 +276,25 @@ export default function CustomDevHero() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white shadow-sm border border-teal-100 text-[10px] font-bold tracking-widest text-teal-700 uppercase mb-6"
           >
-            <span className="text-teal-500 font-black text-sm">&lt;/&gt;</span> CUSTOM DEVELOPMENT
-          </motion.div>
+            <span className="text-teal-500 font-black text-sm">&lt;/&gt;</span> {$t("CustomDevHero__t2", "CUSTOM DEVELOPMENT")}</motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-slate-800 tracking-tight leading-[1.15] mb-6"
+            className="text-h1 font-extrabold text-slate-800 tracking-tight mb-6"
           >
-            Your Vision, Our Code.<br />
-            100% Custom. <span className="text-teal-600 relative inline-block">100% Yours.<svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-300 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 8 Q 50 0 100 8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg></span>
+            {$t("CustomDevHero__t3", "Your Vision, Our Code.")}<br />
+            {$t("CustomDevHero__t4", "100% Custom. ")}<span className="text-teal-600 relative inline-block">{$t("CustomDevHero__t5", "100% Yours.")}<svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-300 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 8 Q 50 0 100 8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg></span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto font-medium"
+            className="text-body text-slate-500 max-w-2xl mx-auto font-medium"
           >
-            We build fully custom web applications and software solutions designed around your business, your workflow, and your future.
-          </motion.p>
+            {rich($t("CustomDevHero__t6", "We build fully custom web applications and software solutions designed around your business, your workflow, and your future."))}</motion.p>
         </div>
 
         {/* Orbit Layout Section */}
@@ -305,9 +307,9 @@ export default function CustomDevHero() {
 
           {/* Left Features */}
           <div className="flex flex-col gap-6 sm:gap-6 w-full lg:w-[320px] relative z-10">
-            <FeatureBox align="left" icon={PuzzleIcon} delay={2.0} title="Custom Features" desc="Only the features you need, built the way you want." />
-            <FeatureBox align="left" icon={LayoutIcon} delay={2.4} title="Custom Design" desc="Pixel-perfect UI/UX that represents your brand." />
-            <FeatureBox align="left" icon={SitemapIcon} delay={2.8} title="Custom Workflows" desc="Built around your process, not the other way around." />
+            <FeatureBox align="left" icon={PuzzleIcon} delay={2.0} title={$t("CustomDevHero__t7", "Custom Features")} desc={$t("CustomDevHero__t8", "Only the features you need, built the way you want.")} />
+            <FeatureBox align="left" icon={LayoutIcon} delay={2.4} title={$t("CustomDevHero__t9", "Custom Design")} desc={$t("CustomDevHero__t10", "Pixel-perfect UI/UX that represents your brand.")} />
+            <FeatureBox align="left" icon={SitemapIcon} delay={2.8} title={$t("CustomDevHero__t11", "Custom Workflows")} desc={$t("CustomDevHero__t12", "Built around your process, not the other way around.")} />
           </div>
 
           {/* Central Graphic */}
@@ -317,9 +319,9 @@ export default function CustomDevHero() {
 
           {/* Right Features */}
           <div className="flex flex-col gap-6 sm:gap-6 w-full lg:w-[320px] relative z-10 items-end lg:items-start">
-            <FeatureBox align="right" icon={LinkIcon} delay={2.2} title="Seamless Integrations" desc="Connect with any system, API, or third-party tools." />
-            <FeatureBox align="right" icon={SlidersIcon} delay={2.6} title="Complete Control" desc="Full flexibility to customize, manage, and extend." />
-            <FeatureBox align="right" icon={ChartIcon} delay={3.0} title="Built to Scale" desc="Future-ready architecture that grows with your business." />
+            <FeatureBox align="right" icon={LinkIcon} delay={2.2} title={$t("CustomDevHero__t13", "Seamless Integrations")} desc={$t("CustomDevHero__t14", "Connect with any system, API, or third-party tools.")} />
+            <FeatureBox align="right" icon={SlidersIcon} delay={2.6} title={$t("CustomDevHero__t15", "Complete Control")} desc={$t("CustomDevHero__t16", "Full flexibility to customize, manage, and extend.")} />
+            <FeatureBox align="right" icon={ChartIcon} delay={3.0} title={$t("CustomDevHero__t17", "Built to Scale")} desc={$t("CustomDevHero__t18", "Future-ready architecture that grows with your business.")} />
           </div>
         </div>
 
@@ -332,11 +334,11 @@ export default function CustomDevHero() {
           className="mt-16 sm:mt-24 w-full bg-white rounded-3xl p-6 sm:py-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-slate-100 relative z-20"
         >
           <div className="flex flex-col sm:flex-row flex-wrap justify-center sm:justify-between items-center sm:items-start gap-y-8 gap-x-4 sm:divide-x sm:divide-slate-100">
-            <TrustItem icon={<ShieldIcon />} title="100% Custom Built" sub="Built For You, Not for Everyone" />
-            <TrustItem icon={<LockIcon />} title="Secure & Reliable" sub="Enterprise Grade Security" />
-            <TrustItem icon={<LayersIcon />} title="Modern & Scalable" sub="Future-Ready Architecture" />
-            <TrustItem icon={<GrowthIcon />} title="Built to Growth" sub="Long-Term Success" />
-            <TrustItem icon={<UsersIcon />} title="Trusted Partner" sub="We Grow With You" />
+            <TrustItem icon={<ShieldIcon />} title={$t("CustomDevHero__t19", "100% Custom Built")} sub="Built For You, Not for Everyone" />
+            <TrustItem icon={<LockIcon />} title={$t("CustomDevHero__t20", "Secure & Reliable")} sub="Enterprise Grade Security" />
+            <TrustItem icon={<LayersIcon />} title={$t("CustomDevHero__t21", "Modern & Scalable")} sub="Future-Ready Architecture" />
+            <TrustItem icon={<GrowthIcon />} title={$t("CustomDevHero__t22", "Built to Growth")} sub="Long-Term Success" />
+            <TrustItem icon={<UsersIcon />} title={$t("CustomDevHero__t23", "Trusted Partner")} sub="We Grow With You" />
           </div>
         </motion.div>
 

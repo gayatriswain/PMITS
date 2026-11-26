@@ -3,20 +3,20 @@
 import React from "react";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
-import { Oswald, Plus_Jakarta_Sans } from "next/font/google";
+import { useCmsText } from "@/components/cms/SectionContent";
 
 /* ------------------------------------------------------------------ */
 /* Fonts & tokens shared by every Magento* section                    */
 /* ------------------------------------------------------------------ */
 
 /** Condensed display face for the hero headline. */
-export const display = Oswald({ subsets: ["latin"], weight: ["500", "600", "700"], display: "swap" });
+export const display = { className: "font-heading" }; // global font from app/layout.tsx
 /**
  * Geometric sans used for section headings (matches the mock).
  * Was Outfit, but Turbopack's next/font loader currently fails on the multi-query font URLs
  * Google serves for Outfit ("next/font/google queries have exactly one entry").
  */
-export const heading = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], display: "swap" });
+export const heading = { className: "font-heading" }; // global font from app/layout.tsx
 
 export const TEAL = "#0d9488";
 export const TEAL_DARK = "#0b5f5a";
@@ -68,6 +68,7 @@ export function useSeen(ref: React.RefObject<Element | null>, amount = 0.15, onc
 
 /** Keyframes shared by the Magento sections — rendered once by the page. */
 export function MagentoStyles() {
+  const $t = useCmsText();
   return (
     <style>{`
       @keyframes magFlow { to { stroke-dashoffset: -48; } }
@@ -136,10 +137,11 @@ function Diamond() {
 
 /** Magento emblem image (transparent). */
 export function Emblem({ className = "", priority = false, sizes = "200px" }: { className?: string; priority?: boolean; sizes?: string }) {
+  const $t = useCmsText();
   return (
     <Image
       src={IMG.emblem.src}
-      alt="Magento"
+      alt={$t("MagentoShared__t2", "Magento")}
       width={IMG.emblem.w}
       height={IMG.emblem.h}
       priority={priority}

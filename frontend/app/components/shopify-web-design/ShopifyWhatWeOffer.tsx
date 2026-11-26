@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 // --- Premium Animated 2D Illustration Components ---
 
@@ -158,23 +160,24 @@ const HeadsetIcon = ({ isHovered }: { isHovered: boolean }) => (
 );
 
 export default function ShopifyWhatWeOffer() {
+  const $t = useCmsText();
   const OFFERS = [
-    { id: "01", title: "Custom Shopify\nDesign", desc: "Unique, conversion-focused designs that reflect your brand and drive results.", icon: PaintbrushIcon },
-    { id: "02", title: "Theme\nCustomization", desc: "Premium themes customized to fit your business needs perfectly.", icon: ThemeIcon },
-    { id: "03", title: "Conversion-Focused\nUX", desc: "Designed to guide customers, build trust and increase conversions.", icon: UserHeartIcon },
-    { id: "04", title: "Product & Collection\nArchitecture", desc: "Smart structure that helps customers find and buy easily.", icon: ShoppingBagIcon },
-    { id: "05", title: "Shopify App\nIntegration", desc: "Powerful integrations to extend your store's functionality.", icon: AppIntegrationIcon },
-    { id: "06", title: "Performance\nOptimization", desc: "Faster store speeds for better experience and higher rankings.", icon: SpeedometerIcon },
-    { id: "07", title: "Shopify SEO\nFoundations", desc: "SEO-ready structure to help your store get discovered.", icon: SeoIcon },
-    { id: "08", title: "Ongoing Support\n& Growth", desc: "Continuous support to help your store grow and scale.", icon: HeadsetIcon },
+    { id: "01", title: $t("ShopifyWhatWeOffer__t1", "Custom Shopify\nDesign"), desc: $t("ShopifyWhatWeOffer__t2", "Unique, conversion-focused designs that reflect your brand and drive results."), icon: PaintbrushIcon },
+    { id: "02", title: $t("ShopifyWhatWeOffer__t3", "Theme\nCustomization"), desc: $t("ShopifyWhatWeOffer__t4", "Premium themes customized to fit your business needs perfectly."), icon: ThemeIcon },
+    { id: "03", title: $t("ShopifyWhatWeOffer__t5", "Conversion-Focused\nUX"), desc: $t("ShopifyWhatWeOffer__t6", "Designed to guide customers, build trust and increase conversions."), icon: UserHeartIcon },
+    { id: "04", title: $t("ShopifyWhatWeOffer__t7", "Product & Collection\nArchitecture"), desc: $t("ShopifyWhatWeOffer__t8", "Smart structure that helps customers find and buy easily."), icon: ShoppingBagIcon },
+    { id: "05", title: $t("ShopifyWhatWeOffer__t9", "Shopify App\nIntegration"), desc: $t("ShopifyWhatWeOffer__t10", "Powerful integrations to extend your store's functionality."), icon: AppIntegrationIcon },
+    { id: "06", title: $t("ShopifyWhatWeOffer__t11", "Performance\nOptimization"), desc: $t("ShopifyWhatWeOffer__t12", "Faster store speeds for better experience and higher rankings."), icon: SpeedometerIcon },
+    { id: "07", title: $t("ShopifyWhatWeOffer__t13", "Shopify SEO\nFoundations"), desc: $t("ShopifyWhatWeOffer__t14", "SEO-ready structure to help your store get discovered."), icon: SeoIcon },
+    { id: "08", title: $t("ShopifyWhatWeOffer__t15", "Ongoing Support\n& Growth"), desc: $t("ShopifyWhatWeOffer__t16", "Continuous support to help your store grow and scale."), icon: HeadsetIcon },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
   };
@@ -191,7 +194,7 @@ export default function ShopifyWhatWeOffer() {
           className="text-center mb-16"
         >
           <div className="flex flex-col items-center justify-center gap-2 mb-4">
-            <span className="text-[12px] font-black tracking-widest text-[#0d9488] uppercase">What We Offer</span>
+            <span className="text-[12px] font-black tracking-widest text-[#0d9488] uppercase">{$t("ShopifyWhatWeOffer__t17", "What We Offer")}</span>
             <div className="flex items-center gap-1 opacity-60">
               <span className="w-4 h-[1.5px] bg-[#0d9488]" />
               <span className="w-1.5 h-1.5 rounded-full bg-[#0d9488]" />
@@ -199,12 +202,11 @@ export default function ShopifyWhatWeOffer() {
             </div>
           </div>
           
-          <h2 className="text-[36px] md:text-[48px] font-black leading-[1.1] text-[#0f2333] mb-4">
-            More Than a <span className="text-[#0d9488]">Beautiful Store.</span>
+          <h2 className="text-h2 font-black text-[#0f2333] mb-4">
+            {$t("ShopifyWhatWeOffer__t18", "More Than a ")}<span className="text-[#0d9488]">{$t("ShopifyWhatWeOffer__t19", "Beautiful Store.")}</span>
           </h2>
-          <p className="text-[15px] md:text-[18px] text-slate-500 font-medium">
-            We design high-performing Shopify stores that attract, engage and convert.
-          </p>
+          <p className="text-body text-slate-500 font-medium">
+            {rich($t("ShopifyWhatWeOffer__t20", "We design high-performing Shopify stores that attract, engage and convert."))}</p>
         </motion.div>
 
         {/* Timeline Grid */}
@@ -263,7 +265,7 @@ export default function ShopifyWhatWeOffer() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[12px] text-slate-500 font-medium leading-relaxed px-2">
+                  <p className="text-caption text-slate-500 font-medium px-2">
                     {offer.desc}
                   </p>
                 </motion.div>

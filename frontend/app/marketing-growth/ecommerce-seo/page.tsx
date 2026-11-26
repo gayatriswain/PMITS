@@ -8,23 +8,36 @@ import EcommerceSeoResults from "../../components/ecommerce-seo/EcommerceSeoResu
 import EcommerceSeoProcessSection from "../../components/ecommerce-seo/EcommerceSeoProcessSection";
 import GrowthPartnerSection from "../../components/ecommerce-seo/GrowthPartnerSection";
 import LeadFormSection from "../../components/ecommerce-seo/LeadFormSection";
+import { cmsMetadata } from "../../../lib/seo";
+import CmsSections from "../../../components/cms/CmsSections";
+import JsonLd from "../../../components/cms/JsonLd";
 
-export const metadata: Metadata = {
+const staticMetadata: Metadata = {
   title: "E-Commerce SEO Services | ProManage",
   description:
     "E-commerce SEO that gets your products found by the right shoppers and turns searches into sales.",
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return cmsMetadata("/marketing-growth/ecommerce-seo", staticMetadata);
+}
+
 export default function EcommerceSeoPage() {
   return (
     <main className="min-h-screen bg-[#fafdfc]">
-      <EcommerceSeoHero />
-      <EcommerceSeoLayers />
-      <EcommerceSeoEcosystem />
-      <EcommerceSeoResults />
-      <EcommerceSeoProcessSection />
-      <GrowthPartnerSection />
-      <LeadFormSection />
+      <JsonLd path="/marketing-growth/ecommerce-seo" />
+      <CmsSections
+        path="/marketing-growth/ecommerce-seo"
+        sections={[
+          ["hero", <EcommerceSeoHero key="hero" />],
+          ["layers", <EcommerceSeoLayers key="layers" />],
+          ["ecosystem", <EcommerceSeoEcosystem key="ecosystem" />],
+          ["results", <EcommerceSeoResults key="results" />],
+          ["process-section", <EcommerceSeoProcessSection key="process-section" />],
+          ["growth-partner-section", <GrowthPartnerSection key="growth-partner-section" />],
+          ["lead-form-section", <LeadFormSection key="lead-form-section" />],
+        ]}
+      />
     </main>
   );
 }

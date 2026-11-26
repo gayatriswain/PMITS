@@ -1,8 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { submitEnquiry, goToThankYou } from "@/lib/forms";
+import Honeypot from "@/components/cms/Honeypot";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    PROJECT SHOWCASE DATA FOR CAROUSEL & 3D FAN
@@ -19,7 +23,7 @@ interface ProjectItem {
   description: string;
 }
 
-const showcaseProjects: ProjectItem[] = [
+const showcaseProjects__cms: ProjectItem[] = [
   {
     id: "3d-explainer",
     category: "3D Animation",
@@ -107,6 +111,8 @@ const showcaseProjects: ProjectItem[] = [
    ========================================================================= */
 
 export default function AnimationImpactShowcase() {
+  const $t = useCmsText();
+  const showcaseProjects = useCmsData("AnimationImpactShowcase__showcaseProjects", showcaseProjects__cms);
   // Form State
   const [formData, setFormData] = useState({
     name: "",
@@ -120,6 +126,7 @@ export default function AnimationImpactShowcase() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [hp, setHp] = useState("");
 
   // Modal State for Project Inspection
   const [activeModalProject, setActiveModalProject] = useState<ProjectItem | null>(null);
@@ -170,19 +177,29 @@ export default function AnimationImpactShowcase() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim()) {
       setErrorMsg("Please fill in your name and work email.");
       return;
     }
+    if (isSubmitting) return;
     setErrorMsg("");
     setIsSubmitting(true);
-
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const r = await submitEnquiry("animation-project", {
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      service: formData.service || "Animation & Graphic Design",
+      message: formData.projectDetails,
+      hp,
+    });
+    setIsSubmitting(false);
+    if (r.ok) {
       setSubmitted(true);
-    }, 1200);
+      goToThankYou("animation");
+    }
+    else setErrorMsg(r.error);
   };
 
   const resetForm = () => {
@@ -228,18 +245,16 @@ export default function AnimationImpactShowcase() {
                   {/* Badge: LET'S CREATE IMPACT */}
                   <div className="inline-block mb-3.5">
                     <span className="text-[11px] font-black tracking-[0.22em] text-[#0d9488] uppercase block">
-                      LET&apos;S CREATE IMPACT
-                    </span>
+                      {$t("AnimationImpactShowcase__t1", "LET'S CREATE IMPACT")}</span>
                     <div className="w-9 h-[2px] bg-[#00bcd4] rounded-full mt-1.5" />
                   </div>
 
                   {/* Main Headline with Serif Typography */}
-                  <h2 className="font-playfair font-black text-slate-900 text-3xl sm:text-4xl lg:text-[40px] xl:text-[46px] leading-[1.08] tracking-tight mb-4">
-                    Extraordinary <br />
-                    <span>Designs.</span> <br />
+                  <h2 className="text-h2 font-playfair font-black text-slate-900 tracking-tight mb-4">
+                    {$t("AnimationImpactShowcase__t2", "Extraordinary ")}<br />
+                    <span>{$t("AnimationImpactShowcase__t3", "Designs.")}</span> <br />
                     <span className="font-playfair italic font-black bg-gradient-to-r from-[#00b4d8] via-[#0284c7] to-[#7c3aed] bg-clip-text text-transparent inline-block relative">
-                      Real Results.
-                      {/* Fluid Brush Underline */}
+                      {$t("AnimationImpactShowcase__t4", "Real Results.")}{/* Fluid Brush Underline */}
                       <svg
                         className="absolute -bottom-2 left-0 w-full h-3.5 pointer-events-none"
                         viewBox="0 0 240 14"
@@ -264,9 +279,8 @@ export default function AnimationImpactShowcase() {
                   </h2>
 
                   {/* Subtitle */}
-                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed font-normal max-w-md mb-6 mt-3">
-                    We turn ideas into powerful visual experiences that connect, engage and drive real business growth.
-                  </p>
+                  <p className="text-small text-slate-500 font-normal max-w-md mb-6 mt-3">
+                    {rich($t("AnimationImpactShowcase__t5", "We turn ideas into powerful visual experiences that connect, engage and drive real business growth."))}</p>
 
                   {/* 4 Value Props: Bold Creativity, Strategic Design, Seamless Execution, Real Impact */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2 xl:grid-cols-4 gap-2.5 sm:gap-3 pt-4 border-t border-slate-100">
@@ -279,11 +293,9 @@ export default function AnimationImpactShowcase() {
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-900 text-xs leading-tight mb-0.5">
-                        Bold Creativity
-                      </h4>
+                        {$t("AnimationImpactShowcase__t6", "Bold Creativity")}</h4>
                       <p className="text-[10px] text-slate-400 leading-snug">
-                        Ideas that stand out and spark emotion.
-                      </p>
+                        {rich($t("AnimationImpactShowcase__t7", "Ideas that stand out and spark emotion."))}</p>
                     </div>
 
                     {/* 2. Strategic Design */}
@@ -296,11 +308,9 @@ export default function AnimationImpactShowcase() {
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-900 text-xs leading-tight mb-0.5">
-                        Strategic Design
-                      </h4>
+                        {$t("AnimationImpactShowcase__t8", "Strategic Design")}</h4>
                       <p className="text-[10px] text-slate-400 leading-snug">
-                        Purpose-driven visuals that deliver results.
-                      </p>
+                        {rich($t("AnimationImpactShowcase__t9", "Purpose-driven visuals that deliver results."))}</p>
                     </div>
 
                     {/* 3. Seamless Execution */}
@@ -313,11 +323,9 @@ export default function AnimationImpactShowcase() {
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-900 text-xs leading-tight mb-0.5">
-                        Seamless Execution
-                      </h4>
+                        {$t("AnimationImpactShowcase__t10", "Seamless Execution")}</h4>
                       <p className="text-[10px] text-slate-400 leading-snug">
-                        Pixel-perfect designs with flawless delivery.
-                      </p>
+                        {rich($t("AnimationImpactShowcase__t11", "Pixel-perfect designs with flawless delivery."))}</p>
                     </div>
 
                     {/* 4. Real Impact */}
@@ -330,11 +338,9 @@ export default function AnimationImpactShowcase() {
                         </svg>
                       </div>
                       <h4 className="font-bold text-slate-900 text-xs leading-tight mb-0.5">
-                        Real Impact
-                      </h4>
+                        {$t("AnimationImpactShowcase__t12", "Real Impact")}</h4>
                       <p className="text-[10px] text-slate-400 leading-snug">
-                        Designs that engage, convert and grow.
-                      </p>
+                        {rich($t("AnimationImpactShowcase__t13", "Designs that engage, convert and grow."))}</p>
                     </div>
 
                   </div>
@@ -347,8 +353,8 @@ export default function AnimationImpactShowcase() {
                 {/* Top Annotation: Handwritten Script with Doodle Arrow */}
                 <div className="absolute -top-5 left-0 sm:left-2 z-20 pointer-events-none select-none">
                   <div className="font-caveat text-base sm:text-lg font-bold text-slate-700 leading-tight">
-                    Crafted with <span className="text-[#0d9488]">creativity.</span> <br />
-                    Powered by <span className="text-[#7c3aed]">strategy.</span>
+                    {$t("AnimationImpactShowcase__t14", "Crafted with ")}<span className="text-[#0d9488]">{$t("AnimationImpactShowcase__t15", "creativity.")}</span> <br />
+                    {$t("AnimationImpactShowcase__t16", "Powered by ")}<span className="text-[#7c3aed]">{$t("AnimationImpactShowcase__t17", "strategy.")}</span>
                   </div>
                   {/* Hand-drawn curly arrow pointing down to EV card */}
                   <svg className="w-9 h-9 text-slate-600 -ml-1 mt-0.5" viewBox="0 0 50 50" fill="none">
@@ -452,8 +458,8 @@ export default function AnimationImpactShowcase() {
                     onClick={() => setActiveModalProject(showcaseProjects[0])}
                   >
                     <Image
-                      src="/ev-charger-showcase.jpg"
-                      alt="EV Charger Explainer Animation"
+                      src={$t("AnimationImpactShowcase__t18", "/ev-charger-showcase.jpg")}
+                      alt={$t("AnimationImpactShowcase__t19", "EV Charger Explainer Animation")}
                       fill
                       unoptimized
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -471,8 +477,8 @@ export default function AnimationImpactShowcase() {
                     onClick={() => setActiveModalProject(showcaseProjects[1])}
                   >
                     <Image
-                      src="/herbal-tea-packaging.jpg"
-                      alt="Naturova Herbal Tea Packaging"
+                      src={$t("AnimationImpactShowcase__t20", "/herbal-tea-packaging.jpg")}
+                      alt={$t("AnimationImpactShowcase__t21", "Naturova Herbal Tea Packaging")}
                       fill
                       unoptimized
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -486,8 +492,8 @@ export default function AnimationImpactShowcase() {
                     onClick={() => setActiveModalProject(showcaseProjects[3])}
                   >
                     <Image
-                      src="/verdant-branding-showcase.jpg"
-                      alt="Verdant Reality Brand Identity"
+                      src={$t("AnimationImpactShowcase__t22", "/verdant-branding-showcase.jpg")}
+                      alt={$t("AnimationImpactShowcase__t23", "Verdant Reality Brand Identity")}
                       fill
                       unoptimized
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -501,8 +507,8 @@ export default function AnimationImpactShowcase() {
                     onClick={() => setActiveModalProject(showcaseProjects[2])}
                   >
                     <Image
-                      src="/saas-dashboard-showcase.jpg"
-                      alt="SaaS Analytics Dashboard UI"
+                      src={$t("AnimationImpactShowcase__t24", "/saas-dashboard-showcase.jpg")}
+                      alt={$t("AnimationImpactShowcase__t25", "SaaS Analytics Dashboard UI")}
                       fill
                       unoptimized
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -518,14 +524,11 @@ export default function AnimationImpactShowcase() {
                     className="absolute bottom-[4%] right-[8%] z-30 w-[96px] h-[96px] sm:w-[110px] sm:h-[110px] rounded-full bg-gradient-to-br from-white via-sky-50 to-indigo-100 backdrop-blur-2xl border-2 border-white shadow-[0_15px_35px_rgba(34,211,238,0.4),0_0_20px_rgba(99,102,241,0.25)] text-center flex flex-col items-center justify-center select-none"
                   >
                     <span className="text-xl sm:text-2xl font-black text-slate-900 leading-none tracking-tight">
-                      200+
-                    </span>
+                      {$t("AnimationImpactShowcase__t26", "200+")}</span>
                     <span className="text-[9.5px] sm:text-[10.5px] font-bold text-slate-700 tracking-tight leading-tight mt-1">
-                      Projects
-                    </span>
+                      {$t("AnimationImpactShowcase__t27", "Projects")}</span>
                     <span className="text-[9.5px] sm:text-[10.5px] font-bold text-slate-700 tracking-tight leading-tight">
-                      Delivered
-                    </span>
+                      {$t("AnimationImpactShowcase__t28", "Delivered")}</span>
                   </motion.div>
 
                 </div>
@@ -540,8 +543,7 @@ export default function AnimationImpactShowcase() {
               {/* Subheading Badge & Desktop Navigation */}
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[11.5px] font-black tracking-widest text-[#0d9488] uppercase">
-                  — A GLIMPSE OF WHAT WE CREATE
-                </span>
+                  {$t("AnimationImpactShowcase__t29", "— A GLIMPSE OF WHAT WE CREATE")}</span>
               </div>
 
               {/* Carousel Track with Floating Arrow Buttons (auto-play pauses on hover / touch) */}
@@ -675,20 +677,18 @@ export default function AnimationImpactShowcase() {
               <div className="flex items-center justify-between mb-2.5">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-700 text-[10.5px] font-black tracking-wider uppercase">
                   <span>✦</span>
-                  <span>START YOUR PROJECT</span>
+                  <span>{$t("AnimationImpactShowcase__t30", "START YOUR PROJECT")}</span>
                 </span>
                 <span className="text-cyan-500 text-lg select-none">✨</span>
               </div>
 
               {/* Form Heading: Serif + Script Accent */}
               <div className="mb-1.5">
-                <h3 className="font-playfair font-black text-slate-900 text-2xl sm:text-[27px] leading-tight">
-                  Let&apos;s Build Something
-                </h3>
+                <h3 className="text-h5 font-playfair font-black text-slate-900">
+                  {$t("AnimationImpactShowcase__t31", "Let's Build Something")}</h3>
                 <div className="inline-block relative">
                   <span className="font-caveat font-bold text-4xl sm:text-[44px] leading-none bg-gradient-to-r from-[#00b4d8] via-[#0284c7] to-[#7c3aed] bg-clip-text text-transparent">
-                    Amazing
-                  </span>
+                    {$t("AnimationImpactShowcase__t32", "Amazing")}</span>
                   {/* Cute wavy underline under Amazing */}
                   <svg className="absolute -bottom-1 left-0 w-full h-2.5 pointer-events-none" viewBox="0 0 120 10" fill="none">
                     <path
@@ -702,9 +702,9 @@ export default function AnimationImpactShowcase() {
               </div>
 
               {/* Subtitle */}
-              <p className="text-slate-500 text-xs leading-relaxed mb-5 mt-1">
-                Share a few details and we&apos;ll get back to you within{" "}
-                <span className="font-bold text-[#0284c7]">24 hours.</span>
+              <p className="text-caption text-slate-500 mb-5 mt-1">
+                {rich($t("AnimationImpactShowcase__t33", "Share a few details and we'll get back to you within"))}{" "}
+                <span className="font-bold text-[#0284c7]">{$t("AnimationImpactShowcase__t34", "24 hours.")}</span>
               </p>
 
               {/* Error Message */}
@@ -720,19 +720,18 @@ export default function AnimationImpactShowcase() {
                   <div className="w-14 h-14 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center text-2xl font-bold mb-3 shadow-inner">
                     ✓
                   </div>
-                  <h4 className="text-lg font-black text-slate-900 mb-1">Inquiry Received!</h4>
-                  <p className="text-xs text-slate-500 max-w-xs mb-5">
-                    Thank you, <span className="font-semibold text-slate-800">{formData.name}</span>. Our creative director will email you back within 24 hours.
-                  </p>
+                  <h4 className="text-lg font-black text-slate-900 mb-1">{$t("AnimationImpactShowcase__t35", "Inquiry Received!")}</h4>
+                  <p className="text-caption text-slate-500 max-w-xs mb-5">
+                    {rich($t("AnimationImpactShowcase__t36", "Thank you, "))}<span className="font-semibold text-slate-800">{formData.name}</span>{rich($t("AnimationImpactShowcase__t37", ". Our creative director will email you back within 24 hours."))}</p>
                   <button
                     onClick={resetForm}
                     className="text-xs font-bold text-teal-600 hover:text-teal-700 underline cursor-pointer"
                   >
-                    Send another inquiry
-                  </button>
+                    {$t("AnimationImpactShowcase__t38", "Send another inquiry")}</button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-3">
+                <form onSubmit={handleSubmit} className="relative space-y-3">
+                  <Honeypot value={hp} onChange={setHp} />
                   
                   {/* Row 1: Name & Work Email (stacked) with Line Art Icons */}
                   <div className="grid grid-cols-1 gap-3">
@@ -742,7 +741,7 @@ export default function AnimationImpactShowcase() {
                       <input
                         type="text"
                         required
-                        placeholder="Your Name*"
+                        placeholder={$t("AnimationImpactShowcase__t39", "Your Name*")}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full pl-3.5 pr-8 py-2.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-slate-800 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100 transition-all"
@@ -759,7 +758,7 @@ export default function AnimationImpactShowcase() {
                       <input
                         type="email"
                         required
-                        placeholder="Work Email*"
+                        placeholder={$t("AnimationImpactShowcase__t40", "Work Email*")}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full pl-3.5 pr-8 py-2.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-slate-800 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100 transition-all"
@@ -777,7 +776,7 @@ export default function AnimationImpactShowcase() {
                   <div className="relative">
                     <input
                       type="text"
-                      placeholder="Company Name"
+                      placeholder={$t("AnimationImpactShowcase__t41", "Company Name")}
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       className="w-full pl-3.5 pr-8 py-2.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-slate-800 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100 transition-all"
@@ -803,14 +802,13 @@ export default function AnimationImpactShowcase() {
                       className="w-full pl-3.5 pr-8 py-2.5 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-slate-800 text-xs focus:outline-none focus:bg-white focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100 transition-all appearance-none cursor-pointer"
                     >
                       <option value="" disabled>
-                        What do you need help with?
-                      </option>
-                      <option value="3D Animation & Motion Graphics">3D Animation &amp; Motion Graphics</option>
-                      <option value="2D Explainer & SaaS Videos">2D Explainer &amp; SaaS Videos</option>
-                      <option value="Brand Identity & Graphic Design">Brand Identity &amp; Graphic Design</option>
-                      <option value="UI/UX & Interactive Product Visuals">UI/UX &amp; Interactive Product Visuals</option>
-                      <option value="Packaging & Print Collaterals">Packaging &amp; Print Collaterals</option>
-                      <option value="Full-Spectrum Creative Retainer">Full-Spectrum Creative Retainer</option>
+                        {$t("AnimationImpactShowcase__t42", "What do you need help with?")}</option>
+                      <option value="3D Animation & Motion Graphics">{$t("AnimationImpactShowcase__t43", "3D Animation & Motion Graphics")}</option>
+                      <option value="2D Explainer & SaaS Videos">{$t("AnimationImpactShowcase__t44", "2D Explainer & SaaS Videos")}</option>
+                      <option value="Brand Identity & Graphic Design">{$t("AnimationImpactShowcase__t45", "Brand Identity & Graphic Design")}</option>
+                      <option value="UI/UX & Interactive Product Visuals">{$t("AnimationImpactShowcase__t46", "UI/UX & Interactive Product Visuals")}</option>
+                      <option value="Packaging & Print Collaterals">{$t("AnimationImpactShowcase__t47", "Packaging & Print Collaterals")}</option>
+                      <option value="Full-Spectrum Creative Retainer">{$t("AnimationImpactShowcase__t48", "Full-Spectrum Creative Retainer")}</option>
                     </select>
                     {/* Outline Chevron Icon */}
                     <svg className="w-3.5 h-3.5 text-slate-400 absolute right-3 top-3 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -822,15 +820,14 @@ export default function AnimationImpactShowcase() {
                   <div className="relative">
                     <textarea
                       rows={3}
-                      placeholder="Tell us about your project"
+                      placeholder={$t("AnimationImpactShowcase__t49", "Tell us about your project")}
                       value={formData.projectDetails}
                       onChange={handleTextChange}
                       className="w-full px-3.5 pt-2.5 pb-6 rounded-xl bg-[#f8fafc] border border-slate-200/90 text-slate-800 text-xs placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100 transition-all resize-none"
                     />
                     {/* Live Character Count */}
                     <span className="absolute right-3 bottom-2 text-[10px] font-semibold text-slate-400">
-                      {charCount}/500
-                    </span>
+                      {charCount}{$t("AnimationImpactShowcase__t50", "/500")}</span>
                   </div>
 
                   {/* High-Impact Gradient Submit Button */}
@@ -847,7 +844,7 @@ export default function AnimationImpactShowcase() {
                     </div>
 
                     <span className="font-bold text-white text-xs sm:text-sm font-sans">
-                      {isSubmitting ? "Sending..." : "Get My Free Quote"}
+                      {isSubmitting ? $t("AnimationImpactShowcase__t51", "Sending...") : $t("AnimationImpactShowcase__t52", "Get My Free Quote")}
                     </span>
 
                     {/* Right Arrow */}
@@ -865,7 +862,7 @@ export default function AnimationImpactShowcase() {
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
-                <span>100% Privacy Guaranteed. No spam, ever.</span>
+                <span>{$t("AnimationImpactShowcase__t53", "100% Privacy Guaranteed. No spam, ever.")}</span>
               </div>
 
             </div>
@@ -886,31 +883,26 @@ export default function AnimationImpactShowcase() {
               {/* Stat 1: 200+ */}
               <div className="flex flex-col items-center">
                 <span className="text-2xl sm:text-[28px] font-playfair font-black text-slate-900 tracking-tight leading-none">
-                  200+
-                </span>
+                  {$t("AnimationImpactShowcase__t54", "200+")}</span>
                 <span className="text-[10.5px] font-semibold text-slate-400 mt-1">
-                  Projects Delivered
-                </span>
+                  {$t("AnimationImpactShowcase__t55", "Projects Delivered")}</span>
               </div>
 
               {/* Stat 2: 50+ */}
               <div className="flex flex-col items-center sm:border-l border-slate-100">
                 <span className="text-2xl sm:text-[28px] font-playfair font-black text-slate-900 tracking-tight leading-none">
-                  50+
-                </span>
+                  {$t("AnimationImpactShowcase__t56", "50+")}</span>
                 <span className="text-[10.5px] font-semibold text-slate-400 mt-1">
-                  Happy Clients
-                </span>
+                  {$t("AnimationImpactShowcase__t57", "Happy Clients")}</span>
               </div>
 
               {/* Stat 3: 4.9/5 */}
               <div className="flex flex-col items-center sm:border-l border-slate-100">
                 <span className="text-2xl sm:text-[28px] font-playfair font-black text-slate-900 tracking-tight leading-none">
-                  4.9<span className="text-base text-slate-400 font-normal">/5</span>
+                  {$t("AnimationImpactShowcase__t58", "4.9")}<span className="text-base text-slate-400 font-normal">{$t("AnimationImpactShowcase__t59", "/5")}</span>
                 </span>
                 <span className="text-[10.5px] font-semibold text-slate-400 mt-0.5">
-                  Client Rating
-                </span>
+                  {$t("AnimationImpactShowcase__t60", "Client Rating")}</span>
                 <div className="text-amber-400 text-[10px] mt-0.5">
                   ★★★★★
                 </div>
@@ -922,8 +914,7 @@ export default function AnimationImpactShowcase() {
                   98%
                 </span>
                 <span className="text-[10.5px] font-semibold text-slate-400 mt-1">
-                  Repeat Business
-                </span>
+                  {$t("AnimationImpactShowcase__t61", "Repeat Business")}</span>
               </div>
 
             </div>
@@ -978,10 +969,9 @@ export default function AnimationImpactShowcase() {
                   </svg>
                 </div>
                 <div className="flex items-start gap-1.5 sm:gap-2 mt-3">
-                  <span className="text-base sm:text-lg font-black text-[#0d9488] leading-none">01</span>
+                  <span className="text-base sm:text-lg font-black text-[#0d9488] leading-none">{$t("AnimationImpactShowcase__t62", "01")}</span>
                   <p className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-800 leading-tight">
-                    We Review <br /> Your Requirements
-                  </p>
+                    {rich($t("AnimationImpactShowcase__t63", "We Review "))}<br /> {rich($t("AnimationImpactShowcase__t64", "Your Requirements"))}</p>
                 </div>
               </div>
 
@@ -994,10 +984,9 @@ export default function AnimationImpactShowcase() {
                   </svg>
                 </div>
                 <div className="flex items-start gap-1.5 sm:gap-2 mt-3">
-                  <span className="text-base sm:text-lg font-black text-[#7c3aed] leading-none">02</span>
+                  <span className="text-base sm:text-lg font-black text-[#7c3aed] leading-none">{$t("AnimationImpactShowcase__t65", "02")}</span>
                   <p className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-800 leading-tight">
-                    Get a Custom <br /> Plan &amp; Quote
-                  </p>
+                    {rich($t("AnimationImpactShowcase__t66", "Get a Custom "))}<br /> {rich($t("AnimationImpactShowcase__t67", "Plan & Quote"))}</p>
                 </div>
               </div>
 
@@ -1010,10 +999,9 @@ export default function AnimationImpactShowcase() {
                   </svg>
                 </div>
                 <div className="flex items-start gap-1.5 sm:gap-2 mt-3">
-                  <span className="text-base sm:text-lg font-black text-[#2563eb] leading-none">03</span>
+                  <span className="text-base sm:text-lg font-black text-[#2563eb] leading-none">{$t("AnimationImpactShowcase__t68", "03")}</span>
                   <p className="text-[10.5px] sm:text-[11.5px] font-bold text-slate-800 leading-tight">
-                    We Bring Your <br /> Vision to Life
-                  </p>
+                    {rich($t("AnimationImpactShowcase__t69", "We Bring Your "))}<br /> {rich($t("AnimationImpactShowcase__t70", "Vision to Life"))}</p>
                 </div>
               </div>
 
@@ -1069,7 +1057,7 @@ export default function AnimationImpactShowcase() {
                   <span className="inline-block px-3 py-1 rounded-full bg-[#00bcd4] text-white text-[11px] font-extrabold tracking-wider uppercase mb-1">
                     {activeModalProject.category}
                   </span>
-                  <h3 className="text-2xl font-bold text-white tracking-tight">
+                  <h3 className="text-h5 font-bold text-white tracking-tight">
                     {activeModalProject.title}
                   </h3>
                 </div>
@@ -1077,23 +1065,21 @@ export default function AnimationImpactShowcase() {
 
               {/* Modal Body */}
               <div className="p-6 sm:p-8">
-                <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                <p className="text-small text-slate-600 mb-6">
                   {activeModalProject.description}
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 pb-6 border-b border-slate-100">
                   <div>
                     <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-                      Client
-                    </span>
+                      {$t("AnimationImpactShowcase__t71", "Client")}</span>
                     <span className="text-sm font-bold text-slate-800">
                       {activeModalProject.client}
                     </span>
                   </div>
                   <div>
                     <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-                      Production Timeline
-                    </span>
+                      {$t("AnimationImpactShowcase__t72", "Production Timeline")}</span>
                     <span className="text-sm font-bold text-slate-800">
                       {activeModalProject.timeline}
                     </span>
@@ -1103,8 +1089,7 @@ export default function AnimationImpactShowcase() {
                 {/* Deliverables */}
                 <div className="mt-5">
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                    Key Deliverables:
-                  </span>
+                    {$t("AnimationImpactShowcase__t73", "Key Deliverables:")}</span>
                   <div className="flex flex-wrap gap-2">
                     {activeModalProject.deliverables.map((item, idx) => (
                       <span
@@ -1127,8 +1112,7 @@ export default function AnimationImpactShowcase() {
                     }}
                     className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#00bcd4] to-[#0288d1] text-white text-xs font-bold shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all cursor-pointer"
                   >
-                    Start a Project Like This →
-                  </button>
+                    {$t("AnimationImpactShowcase__t74", "Start a Project Like This →")}</button>
                 </div>
               </div>
             </motion.div>

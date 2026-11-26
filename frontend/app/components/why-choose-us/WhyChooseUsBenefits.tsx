@@ -4,6 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -98,16 +100,16 @@ const GlobeIcon = ({ size = 22, color = TEAL }: IconProps) => (
   </svg>
 );
 
-const LEFT_CARDS = [
+const LEFT_CARDS__cms = [
   { Icon: TargetIcon, title: "Business First", desc: <>We start with your <b style={{ color: TEAL }}>goals</b> and build with <b style={{ color: TEAL }}>purpose</b>.</> },
   { Icon: PuzzleIcon, title: "Custom Solutions", desc: <>Solutions <b style={{ color: TEAL }}>tailored</b> to your brand, audience and market.</> },
 ];
-const RIGHT_CARDS = [
+const RIGHT_CARDS__cms = [
   { Icon: ChartIcon, title: "Results That Matter", desc: <>We focus on performance that drives <b style={{ color: TEAL }}>real growth</b>.</> },
   { Icon: HandshakeIcon, title: "Long-Term Partner", desc: <>We grow <b style={{ color: TEAL }}>with you,</b> beyond launch and delivery.</> },
 ];
 
-const STATS = [
+const STATS__cms = [
   { Icon: UsersIcon, value: 250, suffix: "+", label: "Businesses Served", sub: "Across the globe" },
   { Icon: RocketIcon, value: 500, suffix: "+", label: "Projects Delivered", sub: "With measurable impact" },
   { Icon: StarIcon, value: 50, suffix: "+", label: "Experts & Innovators", sub: "Passionate problem solvers" },
@@ -116,21 +118,21 @@ const STATS = [
 
 function Hexagon({ Icon }: { Icon: (p: IconProps) => React.ReactElement }) {
   return (
-    <div className="relative h-[72px] w-[72px] shrink-0 flex-none group">
+    <div className="relative h-[92px] w-[84px] shrink-0 flex-none group">
       <div className="absolute inset-0 drop-shadow-[0_8px_16px_rgba(13,148,136,0.12)] transition-transform duration-300 group-hover:-translate-y-1">
-        <svg className="h-full w-full" viewBox="0 0 64 64" fill="none">
+        <svg className="h-full w-full" viewBox="0 0 64 70" fill="none">
           {/* Flat-topped regular hexagon with softly rounded corners via strokeLinejoin */}
           <polygon 
-            points="18,8 46,8 60,32 46,56 18,56 4,32" 
+            points="32,3 59,18.5 59,51.5 32,67 5,51.5 5,18.5" 
             fill="white" 
-            stroke="#ccfbf1" 
+            stroke="#e2e8f0" 
             strokeWidth="2.5" 
             strokeLinejoin="round" 
           />
         </svg>
       </div>
       <div className="absolute inset-0 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1">
-        <Icon size={28} color={TEAL} />
+        <Icon size={30} color={TEAL} />
       </div>
     </div>
   );
@@ -141,14 +143,18 @@ function BenefitCard({ Icon, title, desc, align }: { Icon: (p: IconProps) => Rea
     <div className={`flex items-start gap-4 ${align === "right" ? "lg:flex-row-reverse" : ""}`}>
       <Hexagon Icon={Icon} />
       <div>
-        <h3 className="text-[17px] font-bold leading-tight" style={{ color: NAVY }}>{title}</h3>
-        <p className="mt-1.5 text-[14px] text-slate-500 leading-snug max-w-[230px]">{desc}</p>
+        <h3 className="text-[18px] font-bold leading-tight" style={{ color: NAVY }}>{title}</h3>
+        <p className="text-small mt-1.5 text-slate-500 max-w-[230px]">{desc}</p>
       </div>
     </div>
   );
 }
 
 export default function WhyChooseUsBenefits() {
+  const $t = useCmsText();
+  const LEFT_CARDS = useCmsData("WhyChooseUsBenefits__LEFT_CARDS", LEFT_CARDS__cms);
+  const RIGHT_CARDS = useCmsData("WhyChooseUsBenefits__RIGHT_CARDS", RIGHT_CARDS__cms);
+  const STATS = useCmsData("WhyChooseUsBenefits__STATS", STATS__cms);
   return (
     <section className="relative w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden">
       <Container>
@@ -157,20 +163,18 @@ export default function WhyChooseUsBenefits() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="text-center max-w-2xl mx-auto mb-8"
+          className="text-center max-w-[900px] mx-auto mb-10"
         >
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-            Why Choose Us?
-          </span>
+          <span className="inline-flex items-center gap-1.5 text-[13px] font-bold tracking-[0.16em] uppercase" style={{ color: TEAL }}>
+            {$t("WhyChooseUsBenefits__t1", "Why Choose Us?")}</span>
           <span className="block mx-auto mt-2 h-[3px] w-10 rounded-full" style={{ backgroundColor: TEAL }} />
-          <h2 className="mt-4 text-2xl sm:text-3xl lg:text-[34px] font-extrabold leading-tight" style={{ color: NAVY }}>
-            Because You Deserve More
-            <br />
-            Than Just a <span style={{ color: TEAL }}>Service Provider.</span>
+          <h2 className="text-h2 font-heading mt-5 font-bold leading-[1.12] tracking-[-0.025em]" style={{ color: NAVY }}>
+            {$t("WhyChooseUsBenefits__t2", "Because You Deserve More")}<br />
+            {$t("WhyChooseUsBenefits__t3", "Than Just a ")}<span style={{ color: TEAL }}>{$t("WhyChooseUsBenefits__t4", "Service Provider.")}</span>
           </h2>
-          <p className="mt-4 text-sm text-slate-500 leading-relaxed">
-            We combine strategy, creativity, and technology to build digital solutions that drive growth, engagement, and{" "}
-            <span className="font-semibold" style={{ color: TEAL }}>real business impact.</span>
+          <p className="text-body mx-auto mt-5 max-w-[620px] text-slate-600">
+            {rich($t("WhyChooseUsBenefits__t5", "We combine strategy, creativity, and technology to build digital solutions that drive growth, engagement, and"))}{" "}
+            <span className="font-semibold" style={{ color: TEAL }}>{$t("WhyChooseUsBenefits__t6", "real business impact.")}</span>
           </p>
         </motion.div>
 
@@ -233,17 +237,17 @@ export default function WhyChooseUsBenefits() {
             </svg>
 
             {/* Center image */}
-            <div className="absolute rounded-full overflow-hidden shadow-xl" style={{ inset: "19%" }}>
+            <div className="absolute rounded-full overflow-hidden shadow-[0_20px_50px_-20px_rgba(15,23,42,0.35)] ring-8 ring-white" style={{ inset: "19%" }}>
               <div className="relative h-full w-full">
-                <Image src="/growth_doorway.jpg" alt="Growth doorway" fill sizes="240px" className="object-cover" priority />
+                <Image src={$t("WhyChooseUsBenefits__t7", "/why-choose-us/benefits-laptop.webp")} alt={$t("WhyChooseUsBenefits__t8", "Laptop showing a growth dashboard")} fill sizes="260px" className="object-cover" />
               </div>
             </div>
 
             {/* TOP-LEFT – 01 Understand */}
             <div className="absolute" style={{ left: '21.4%', top: '21.4%' }}>
               <div className="absolute text-center flex flex-col items-center justify-center -translate-y-1/2" style={{ right: '36px' }}>
-                <p className="text-[20px] font-extrabold leading-tight" style={{ color: TEAL }}>01</p>
-                <p className="text-[14px] font-bold mt-0.5 leading-tight" style={{ color: NAVY }}>Understand</p>
+                <p className="text-body font-extrabold" style={{ color: TEAL }}>{rich($t("WhyChooseUsBenefits__t9", "01"))}</p>
+                <p className="text-small font-bold mt-0.5" style={{ color: NAVY }}>{rich($t("WhyChooseUsBenefits__t10", "Understand"))}</p>
               </div>
               <div
                 className="absolute flex items-center justify-center rounded-full bg-white shadow-[0_8px_20px_rgba(13,148,136,0.15)] h-[52px] w-[52px] shrink-0 -translate-x-1/2 -translate-y-1/2"
@@ -256,8 +260,8 @@ export default function WhyChooseUsBenefits() {
             {/* TOP-RIGHT – 02 Strategize */}
             <div className="absolute" style={{ left: '78.6%', top: '21.4%' }}>
               <div className="absolute text-center flex flex-col items-center justify-center -translate-y-1/2" style={{ left: '36px' }}>
-                <p className="text-[20px] font-extrabold leading-tight" style={{ color: TEAL }}>02</p>
-                <p className="text-[14px] font-bold mt-0.5 leading-tight" style={{ color: NAVY }}>Strategize</p>
+                <p className="text-body font-extrabold" style={{ color: TEAL }}>{rich($t("WhyChooseUsBenefits__t11", "02"))}</p>
+                <p className="text-small font-bold mt-0.5" style={{ color: NAVY }}>{rich($t("WhyChooseUsBenefits__t12", "Strategize"))}</p>
               </div>
               <div
                 className="absolute flex items-center justify-center rounded-full bg-white shadow-[0_8px_20px_rgba(13,148,136,0.15)] h-[52px] w-[52px] shrink-0 -translate-x-1/2 -translate-y-1/2"
@@ -270,8 +274,8 @@ export default function WhyChooseUsBenefits() {
             {/* BOTTOM-LEFT – 03 Design */}
             <div className="absolute" style={{ left: '21.4%', top: '78.6%' }}>
               <div className="absolute text-center flex flex-col items-center justify-center -translate-y-1/2" style={{ right: '36px' }}>
-                <p className="text-[20px] font-extrabold leading-tight" style={{ color: TEAL }}>03</p>
-                <p className="text-[14px] font-bold mt-0.5 leading-tight" style={{ color: NAVY }}>Design</p>
+                <p className="text-body font-extrabold" style={{ color: TEAL }}>{rich($t("WhyChooseUsBenefits__t13", "03"))}</p>
+                <p className="text-small font-bold mt-0.5" style={{ color: NAVY }}>{rich($t("WhyChooseUsBenefits__t14", "Design"))}</p>
               </div>
               <div
                 className="absolute flex items-center justify-center rounded-full bg-white shadow-[0_8px_20px_rgba(13,148,136,0.15)] h-[52px] w-[52px] shrink-0 -translate-x-1/2 -translate-y-1/2"
@@ -284,8 +288,8 @@ export default function WhyChooseUsBenefits() {
             {/* BOTTOM-RIGHT – 04 Deliver */}
             <div className="absolute" style={{ left: '78.6%', top: '78.6%' }}>
               <div className="absolute text-center flex flex-col items-center justify-center -translate-y-1/2" style={{ left: '36px' }}>
-                <p className="text-[20px] font-extrabold leading-tight" style={{ color: TEAL }}>04</p>
-                <p className="text-[14px] font-bold mt-0.5 leading-tight" style={{ color: NAVY }}>Deliver</p>
+                <p className="text-body font-extrabold" style={{ color: TEAL }}>{rich($t("WhyChooseUsBenefits__t15", "04"))}</p>
+                <p className="text-small font-bold mt-0.5" style={{ color: NAVY }}>{rich($t("WhyChooseUsBenefits__t16", "Deliver"))}</p>
               </div>
               <div
                 className="absolute flex items-center justify-center rounded-full bg-white shadow-[0_8px_20px_rgba(13,148,136,0.15)] h-[52px] w-[52px] shrink-0 -translate-x-1/2 -translate-y-1/2"
@@ -318,10 +322,10 @@ export default function WhyChooseUsBenefits() {
                 <s.Icon />
               </span>
               <div>
-                <p className="text-xl font-extrabold" style={{ color: NAVY }}>
+                <p className="text-body font-extrabold" style={{ color: NAVY }}>
                   <Counter target={s.value} suffix={s.suffix} />
                 </p>
-                <p className="text-[12px] font-semibold text-slate-600">{s.label}</p>
+                <p className="text-caption font-semibold text-slate-600">{s.label}</p>
                 <p className="text-[11px] text-slate-400">{s.sub}</p>
               </div>
             </div>

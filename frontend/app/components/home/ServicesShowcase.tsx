@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Container from "../shared/Container";
 import { PlusIcon, TagIcon, ArrowIcon, CheckIcon } from "../shared/icons";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -14,7 +16,7 @@ type Service = {
   details: string[];
 };
 
-const services: Service[] = [
+const services__cms: Service[] = [
   {
     title: "Web Design and Development",
     description:
@@ -96,14 +98,15 @@ const services: Service[] = [
 ];
 
 function ServiceCard({ service }: { service: Service }) {
+  const $t = useCmsText();
   const [open, setOpen] = useState(false);
 
   return (
     <div className="rounded-2xl bg-slate-50 p-6 lg:p-8">
-      <h3 className="text-xl font-bold" style={{ color: NAVY }}>
+      <h3 className="text-h6 font-bold" style={{ color: NAVY }}>
         {service.title}
       </h3>
-      <p className="mt-3 text-sm leading-relaxed text-slate-600">{service.description}</p>
+      <p className="text-small mt-3 text-slate-600">{service.description}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         {service.tags.map((tag) => (
           <span
@@ -122,7 +125,7 @@ function ServiceCard({ service }: { service: Service }) {
         aria-expanded={open}
         className="mt-6 flex w-full items-center justify-between rounded-xl bg-white px-4 py-3 font-sans text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100"
       >
-        {open ? "Hide Details" : "View Details"}
+        {open ? $t("ServicesShowcase__t1", "Hide Details") : $t("ServicesShowcase__t2", "View Details")}
         <span
           className="transition-transform duration-300 ease-out"
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
@@ -137,7 +140,7 @@ function ServiceCard({ service }: { service: Service }) {
       >
         <div className="overflow-hidden">
           <div className="mt-4 rounded-xl border border-slate-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">What&apos;s Included</p>
+            <p className="text-caption font-semibold uppercase tracking-wide text-slate-400">{rich($t("ServicesShowcase__t3", "What's Included"))}</p>
             <ul className="mt-3 flex flex-col gap-2.5">
               {service.details.map((detail) => (
                 <li key={detail} className="flex items-start gap-2 text-sm text-slate-600">
@@ -156,6 +159,8 @@ function ServiceCard({ service }: { service: Service }) {
 }
 
 export default function ServicesShowcase() {
+  const $t = useCmsText();
+  const services = useCmsData("ServicesShowcase__services", services__cms);
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [revealed, setRevealed] = useState<boolean[]>(() => services.map(() => false));
@@ -214,16 +219,15 @@ export default function ServicesShowcase() {
             className="inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            OUR SERVICES
-          </span>
-          <h2 className="mt-4 text-3xl font-bold leading-snug sm:text-4xl" style={{ color: NAVY }}>
-            Services designed to help your brand{" "}
-            <span style={{ color: TEAL }}>shine brighter.</span>
+            {$t("ServicesShowcase__t4", "OUR SERVICES")}</span>
+          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>
+            {$t("ServicesShowcase__t5", "Services designed to help your brand")}{" "}
+            <span style={{ color: TEAL }}>{$t("ServicesShowcase__t6", "shine brighter.")}</span>
           </h2>
         </div>
 
         {/* Left nav (sticky, scrollspy-highlighted) + right cards that scroll normally */}
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-8 lg:grid-cols-[260px_1fr] lg:gap-10">
+        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-[300px_1fr] lg:gap-10">
           <div className="hidden lg:block">
             <div className="sticky top-32 flex flex-col gap-3">
               {services.map((s, i) => (

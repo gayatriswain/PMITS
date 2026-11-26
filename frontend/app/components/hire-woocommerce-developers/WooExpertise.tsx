@@ -1,12 +1,13 @@
 "use client";
 
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { WooBadge } from "./WooHireHero";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -43,15 +44,18 @@ const ThemeIcon = ({ size = 30, color = DEEP_TEAL }: IconProps) => (
     <path d="m21.5 3-6 7-1.5.5.5-1.5 6-7Z" />
   </svg>
 );
-const SupportIcon = ({ size = 30, color = DEEP_TEAL }: IconProps) => (
+const SupportIcon = ({ size = 30, color = DEEP_TEAL }: IconProps) => {
+  const $t = useCmsText();
+  return ((
   <svg {...base(size, color)}>
     <path d="M4 13v-1a8 8 0 0 1 16 0v1" />
     <rect x="2.5" y="12" width="4" height="6" rx="1.5" />
     <rect x="17.5" y="12" width="4" height="6" rx="1.5" />
     <path d="M19.5 18a3 3 0 0 1-3 3H14" />
-    <text x="12" y="15.5" textAnchor="middle" fontSize="6.5" fontWeight="700" fill={color} stroke="none">24</text>
+    <text x="12" y="15.5" textAnchor="middle" fontSize="6.5" fontWeight="700" fill={color} stroke="none">{$t("WooExpertise__t1", "24")}</text>
   </svg>
-);
+));
+};
 const WebAppIcon = ({ size = 30, color = DEEP_TEAL }: IconProps) => (
   <svg {...base(size, color)}>
     <rect x="2.5" y="3.5" width="17" height="14" rx="1.5" />
@@ -60,15 +64,18 @@ const WebAppIcon = ({ size = 30, color = DEEP_TEAL }: IconProps) => (
     <path d="M18.5 14.8v1.2M18.5 21v1.2M14.8 18.5H16M21 18.5h1.2" />
   </svg>
 );
-const PsdIcon = ({ size = 30, color = DEEP_TEAL }: IconProps) => (
+const PsdIcon = ({ size = 30, color = DEEP_TEAL }: IconProps) => {
+  const $t = useCmsText();
+  return ((
   <svg {...base(size, color)}>
     <path d="M13.5 2.5H5a1 1 0 0 0-1 1v17a1 1 0 0 0 1 1h8" />
     <path d="M13.5 2.5 18 7v3M13.5 2.5V7H18" />
-    <text x="8.5" y="14" textAnchor="middle" fontSize="5" fontWeight="800" fill={color} stroke="none">PSD</text>
+    <text x="8.5" y="14" textAnchor="middle" fontSize="5" fontWeight="800" fill={color} stroke="none">{$t("WooExpertise__t2", "PSD")}</text>
     <rect x="13" y="13" width="9" height="8" rx="1" />
     <path d="m13.5 20 3-3 2 2 1.5-1.5 2 2" />
   </svg>
-);
+));
+};
 const PluginIcon = ({ size = 30, color = DEEP_TEAL }: IconProps) => (
   <svg {...base(size, color)}>
     <path d="M4 8h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4h-4a2 2 0 1 0-4 0H4v-4a2 2 0 1 0 0-4Z" />
@@ -126,7 +133,7 @@ const HeadsetIcon = ({ size = 34, color = DEEP_TEAL }: IconProps) => (
   </svg>
 );
 
-const SERVICES = [
+const SERVICES__cms = [
   { Icon: MigrateIcon, title: ["Swift migration to", "WooCommerce platform"] },
   { Icon: ThemeIcon, title: ["Theme development for", "WooCommerce platform"] },
   { Icon: SupportIcon, title: ["Full support and maintenance", "on WooCommerce platform"] },
@@ -137,7 +144,7 @@ const SERVICES = [
   { Icon: ShippingIcon, title: ["Development of", "shipping methods"] },
 ];
 
-const PROMISES = [
+const PROMISES__cms = [
   { Icon: ShieldIcon, title: "Secure & Reliable", desc: "Your store is in safe hands." },
   { Icon: RocketIcon, title: "High Performance", desc: "Built for speed and growth." },
   { Icon: GrowthIcon, title: "Scalable for Business Growth", desc: "Solutions that grow with your business." },
@@ -200,6 +207,7 @@ const itemV: Variants = {
 };
 
 function ServiceItem({ i }: { i: number }) {
+  const SERVICES = useCmsData("WooExpertise__SERVICES", SERVICES__cms);
   const s = SERVICES[i];
   return (
     <div className="flex items-center gap-4">
@@ -208,8 +216,8 @@ function ServiceItem({ i }: { i: number }) {
         <s.Icon />
       </span>
       <div>
-        <p className="text-[17px] font-extrabold" style={{ color: TEAL }}>{String(i + 1).padStart(2, "0")}</p>
-        <p className="text-[13.5px] font-semibold leading-snug" style={{ color: NAVY }}>
+        <p className="text-body font-extrabold" style={{ color: TEAL }}>{String(i + 1).padStart(2, "0")}</p>
+        <p className="text-small font-semibold" style={{ color: NAVY }}>
           {s.title[0]}
           <br />
           {s.title[1]}
@@ -407,6 +415,9 @@ function ExpertiseDiagram() {
 }
 
 export default function WooExpertise() {
+  const $t = useCmsText();
+  const SERVICES = useCmsData("WooExpertise__SERVICES", SERVICES__cms);
+  const PROMISES = useCmsData("WooExpertise__PROMISES", PROMISES__cms);
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-[#f8fcfb] to-[#eef8f6] pt-14 pb-16 sm:pt-16 lg:pt-20">
       {/* dotted corner accents */}
@@ -437,24 +448,21 @@ export default function WooExpertise() {
           >
             <span className="h-px w-12 bg-teal-400" />
             <span className="h-1.5 w-1.5 rotate-45 bg-teal-500" />
-            Our WooCommerce Expertise
-            <span className="h-1.5 w-1.5 rotate-45 bg-teal-500" />
+            {$t("WooExpertise__t3", "Our WooCommerce Expertise")}<span className="h-1.5 w-1.5 rotate-45 bg-teal-500" />
             <span className="h-px w-12 bg-teal-400" />
           </motion.div>
           <motion.h2
             variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } } }}
-            className="mt-4 text-[32px] sm:text-[44px] lg:text-[52px] font-extrabold leading-[1.1] tracking-tight"
+            className="text-h2 mt-4 font-extrabold tracking-tight"
             style={{ color: NAVY }}
           >
-            What you can expect from our
-          </motion.h2>
+            {$t("WooExpertise__t4", "What you can expect from our")}</motion.h2>
           <motion.p
             variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } } }}
             className={`${caveat.className} relative mt-1 text-[44px] sm:text-[58px] lg:text-[68px] font-bold leading-none`}
             style={{ color: TEAL }}
           >
-            WooCommerce developers
-            <svg className="pointer-events-none absolute -right-9 -top-1 hidden sm:block" width="34" height="30" viewBox="0 0 34 30" fill="none" aria-hidden>
+            {rich($t("WooExpertise__t5", "WooCommerce developers"))}<svg className="pointer-events-none absolute -right-9 -top-1 hidden sm:block" width="34" height="30" viewBox="0 0 34 30" fill="none" aria-hidden>
               <path d="M5 22 13 15M15 19l13-4M12 9l3-7" stroke={TEAL} strokeWidth="2.4" strokeLinecap="round" />
             </svg>
             <svg className="pointer-events-none absolute -bottom-4 left-[16%] h-4 w-[70%]" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden>
@@ -470,10 +478,9 @@ export default function WooExpertise() {
           </motion.p>
           <motion.p
             variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } } }}
-            className="mt-9 max-w-[560px] text-[15px] leading-[1.7] text-slate-600"
+            className="text-body mt-9 max-w-[560px] text-slate-600"
           >
-            End-to-end solutions tailored to your business needs to create powerful, secure &amp; high-performing online stores.
-          </motion.p>
+            {rich($t("WooExpertise__t6", "End-to-end solutions tailored to your business needs to create powerful, secure & high-performing online stores."))}</motion.p>
         </motion.div>
 
         {/* Diagram (desktop) */}
@@ -515,8 +522,8 @@ export default function WooExpertise() {
             >
               <p.Icon />
               <div>
-                <p className="text-[14px] font-bold" style={{ color: DEEP_TEAL }}>{p.title}</p>
-                <p className="mt-0.5 text-[12.5px] leading-snug text-slate-500">{p.desc}</p>
+                <p className="text-small font-bold" style={{ color: DEEP_TEAL }}>{p.title}</p>
+                <p className="text-caption mt-0.5 text-slate-500">{p.desc}</p>
               </div>
             </motion.li>
           ))}

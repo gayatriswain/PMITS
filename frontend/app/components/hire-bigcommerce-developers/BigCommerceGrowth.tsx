@@ -5,36 +5,39 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { BC, CtaStrip, Eyebrow, Icon, Icon3D, ScreenOverlay, Sneaker, ease, fadeUp, heading, useSeen, useWidth, type Glyph3D } from "./BigCommerceShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const LAP_QUAD: [[number, number], [number, number], [number, number], [number, number]] = [[498, 250], [1072, 132], [1042, 692], [460, 700]];
 const IW = BC.laptop.w, IH = BC.laptop.h;
 
-const leftF: { title: string; text: string; g: Glyph3D }[] = [
+const leftF__cms: { title: string; text: string; g: Glyph3D }[] = [
   { title: "Launch Faster", text: "Get your store up and running quickly with built-in features and ready-to-go tools.", g: "rocket" },
   { title: "Sell More", text: "Powerful marketing, SEO, and conversion tools help you attract more customers and boost sales.", g: "chart" },
   { title: "Scale Without Limits", text: "Handle more traffic, more orders, and more growth — without slowing down.", g: "globe" },
 ];
-const rightF: { title: string; text: string; g: Glyph3D }[] = [
+const rightF__cms: { title: string; text: string; g: Glyph3D }[] = [
   { title: "Enterprise Security", text: "Keep your business and customer data safe with industry-leading security and compliance.", g: "shield" },
   { title: "Work Your Way", text: "Flexible APIs and integrations let you connect the tools that work for you.", g: "puzzle" },
   { title: "Support You Can Rely On", text: "24/7 expert support from a team that’s here to help you succeed, every step of the way.", g: "headset" },
 ];
 
 function Storefront() {
+  const $t = useCmsText();
   const reduce = useReducedMotion();
   return (
     <div className="h-full w-full bg-white px-8 py-6">
       <div className="flex items-center justify-between">
-        <p className={`${heading.className} text-[22px] font-bold tracking-tight text-[#0d1b45]`}><span className="font-extrabold">BIG</span>COMMERCE</p>
+        <p className={`text-body ${heading.className} font-bold tracking-tight text-[#0d1b45]`}><span className="font-extrabold">{$t("BigCommerceGrowth__t1", "BIG")}</span>{rich($t("BigCommerceGrowth__t2", "COMMERCE"))}</p>
         <div className="flex items-center gap-6 text-[15px] text-slate-600">
-          <span>Shop</span><span>New in</span><span>Best Sellers</span>
+          <span>{$t("BigCommerceGrowth__t3", "Shop")}</span><span>{$t("BigCommerceGrowth__t4", "New in")}</span><span>{$t("BigCommerceGrowth__t5", "Best Sellers")}</span>
           <Icon name="cart" className="h-6 w-6 text-[#0d1b45]" />
         </div>
       </div>
       <div className="mt-12 flex items-center">
         <div className="w-[44%]">
-          <p className={`${heading.className} text-[40px] font-bold italic leading-[1.1] text-[#0d1b45]`}>Elevate Your<br />Store.</p>
-          <span className="mt-6 inline-block rounded-full bg-[#2348e6] px-6 py-2.5 text-[15px] font-semibold text-white">Shop Now</span>
+          <p className={`${heading.className} text-[40px] font-bold italic leading-[1.1] text-[#0d1b45]`}>{rich($t("BigCommerceGrowth__t6", "Elevate Your"))}<br />{rich($t("BigCommerceGrowth__t7", "Store."))}</p>
+          <span className="mt-6 inline-block rounded-full bg-[#2348e6] px-6 py-2.5 text-[15px] font-semibold text-white">{$t("BigCommerceGrowth__t8", "Shop Now")}</span>
         </div>
         <motion.div className="flex-1" animate={reduce ? undefined : { y: [0, -8, 0], rotate: [-6, -3, -6] }} transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}>
           <Sneaker className="w-full" />
@@ -44,7 +47,7 @@ function Storefront() {
   );
 }
 
-function FeatureItem({ f, i, side }: { f: (typeof leftF)[number]; i: number; side: "l" | "r" }) {
+function FeatureItem({ f, i, side }: { f: (typeof leftF__cms)[number]; i: number; side: "l" | "r" }) {
   return (
     <motion.li
       variants={fadeUp}
@@ -70,6 +73,9 @@ function FeatureItem({ f, i, side }: { f: (typeof leftF)[number]; i: number; sid
 }
 
 export default function BigCommerceGrowth() {
+  const $t = useCmsText();
+  const leftF = useCmsData("BigCommerceGrowth__leftF", leftF__cms);
+  const rightF = useCmsData("BigCommerceGrowth__rightF", rightF__cms);
   const reduce = useReducedMotion();
   const [boxRef, boxW] = useWidth<HTMLDivElement>();
   const stageRef = useRef<HTMLDivElement>(null);
@@ -79,21 +85,20 @@ export default function BigCommerceGrowth() {
     <section className="relative overflow-hidden bg-gradient-to-b from-[#f7f9fe] via-[#f3f6fd] to-[#eef3fc] py-12 sm:py-16">
       <Container className="relative">
         <div className="mx-auto max-w-[860px] text-center">
-          <Eyebrow variant="line" className="tracking-[0.3em]">The BigCommerce difference</Eyebrow>
+          <Eyebrow variant="line" className="tracking-[0.3em]">{$t("BigCommerceGrowth__t9", "The BigCommerce difference")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-[36px] font-bold leading-[1.1] tracking-tight text-[#0b1a4a] sm:text-5xl lg:text-[56px]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
           >
-            Built for <span className="text-[#2348e6]">Growth.</span>
+            {$t("BigCommerceGrowth__t10", "Built for ")}<span className="text-[#2348e6]">{$t("BigCommerceGrowth__t11", "Growth.")}</span>
             <br />
-            Designed for <span className="bg-gradient-to-r from-[#0d8f9a] to-[#14b1b8] bg-clip-text text-transparent">Results.</span>
+            {$t("BigCommerceGrowth__t12", "Designed for ")}<span className="bg-gradient-to-r from-[#0d8f9a] to-[#14b1b8] bg-clip-text text-transparent">{$t("BigCommerceGrowth__t13", "Results.")}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mx-auto mt-5 max-w-[620px] text-base text-slate-600">
-            BigCommerce combines enterprise-grade features with unmatched flexibility so you can focus on what matters most—
-            <span className="font-semibold text-[#2348e6]">growing your business.</span>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mx-auto mt-5 max-w-[620px] text-slate-600">
+            {rich($t("BigCommerceGrowth__t14", "BigCommerce combines enterprise-grade features with unmatched flexibility so you can focus on what matters most—"))}<span className="font-semibold text-[#2348e6]">{$t("BigCommerceGrowth__t15", "growing your business.")}</span>
           </motion.p>
         </div>
 
@@ -112,7 +117,7 @@ export default function BigCommerceGrowth() {
                 className="absolute inset-0"
               >
                 <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_55%_55%_at_50%_50%,black_75%,transparent_100%)]">
-                  <Image src={BC.laptop.src} alt="Growing BigCommerce storefront on a laptop" fill sizes="(min-width:1280px) 640px, 92vw" className="object-contain" />
+                  <Image src={BC.laptop.src} alt={$t("BigCommerceGrowth__t16", "Growing BigCommerce storefront on a laptop")} fill sizes="(min-width:1280px) 640px, 92vw" className="object-contain" />
                 </div>
                 <ScreenOverlay imgW={IW} quad={LAP_QUAD} boxW={620} boxH={480} scale={boxW}>
                   <Storefront />
@@ -173,9 +178,9 @@ export default function BigCommerceGrowth() {
                   transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
                   className="rounded-xl border border-white bg-white/90 p-[6%] shadow-[0_18px_36px_-18px_rgba(35,72,230,0.6)] backdrop-blur"
                 >
-                  <p className="text-[clamp(7px,0.7vw,10px)] text-slate-500">Total Sales</p>
-                  <p className={`${heading.className} text-[clamp(11px,1.2vw,17px)] font-bold text-[#0b1a4a]`}>$58,645</p>
-                  <p className="text-[clamp(7px,0.65vw,9px)] font-semibold text-emerald-600">▲ 23%</p>
+                  <p className="text-[clamp(7px,0.7vw,10px)] text-slate-500">{rich($t("BigCommerceGrowth__t17", "Total Sales"))}</p>
+                  <p className={`${heading.className} text-[clamp(11px,1.2vw,17px)] font-bold text-[#0b1a4a]`}>{rich($t("BigCommerceGrowth__t18", "$58,645"))}</p>
+                  <p className="text-[clamp(7px,0.65vw,9px)] font-semibold text-emerald-600">{rich($t("BigCommerceGrowth__t19", "▲ 23%"))}</p>
                   <svg viewBox="0 0 80 28" className="mt-1 w-full" aria-hidden>
                     <motion.path
                       d="M0 24 L12 20 L22 22 L34 12 L46 16 L58 6 L70 10 L80 2"
@@ -215,13 +220,13 @@ export default function BigCommerceGrowth() {
         <div className="mt-12">
           <CtaStrip
             tile="square"
-            title="Ready to Take Your Business to the"
+            title={$t("BigCommerceGrowth__t20", "Ready to Take Your Business to the")}
             accent="Next Level?"
-            text="Join thousands of successful brands building their future with BigCommerce."
+            text={$t("BigCommerceGrowth__t21", "Join thousands of successful brands building their future with BigCommerce.")}
             checks={[
-              { icon: "briefcase", label: "No credit card required" },
-              { icon: "bolt", label: "Setup in minutes" },
-              { icon: "clock", label: "Cancel anytime" },
+              { icon: "briefcase", label: $t("BigCommerceGrowth__t22", "No credit card required") },
+              { icon: "bolt", label: $t("BigCommerceGrowth__t23", "Setup in minutes") },
+              { icon: "clock", label: $t("BigCommerceGrowth__t24", "Cancel anytime") },
             ]}
           />
         </div>

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { animate, motion, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -38,7 +40,7 @@ type Step = {
   imageAlt: string;
 };
 
-const STEPS: Step[] = [
+const STEPS__cms: Step[] = [
   {
     title: "Discover",
     text: "We dive deep into your goals, audience, and challenges to define the right experience.",
@@ -98,7 +100,7 @@ const STEPS: Step[] = [
   },
 ];
 
-const STATS = [
+const STATS__cms = [
   {
     value: 50,
     suffix: "K+",
@@ -245,6 +247,9 @@ const imageV: Variants = {
 };
 
 export default function ArVrApproach() {
+  const $t = useCmsText();
+  const STEPS = useCmsData("ArVrApproach__STEPS", STEPS__cms);
+  const STATS = useCmsData("ArVrApproach__STATS", STATS__cms);
   // One-after-another reveal only makes sense when the steps sit side by side (lg+)
   const [wide, setWide] = useState(false);
   useEffect(() => {
@@ -283,35 +288,29 @@ export default function ArVrApproach() {
             custom={0}
             className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
           >
-            Our Approach
-          </motion.span>
+            {$t("ArVrApproach__t1", "Our Approach")}</motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="mt-3 text-3xl font-black leading-[1.1] tracking-tight text-[#0f1535] sm:text-4xl lg:text-[48px]"
+            className="text-h2 mt-3 font-black tracking-tight text-[#0f1535]"
           >
-            From Imagination
-            <br />
-            to Immersive{" "}
+            {$t("ArVrApproach__t2", "From Imagination")}<br />
+            {$t("ArVrApproach__t3", "to Immersive")}{" "}
             <span className="bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#ec4899] bg-clip-text text-transparent">
-              Reality.
-            </span>
+              {$t("ArVrApproach__t4", "Reality.")}</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base"
+            className="text-body mx-auto mt-4 max-w-2xl text-slate-600"
           >
-            A proven process that transforms your ideas into engaging AR/VR experiences
-            that drive real results.
-          </motion.p>
+            {rich($t("ArVrApproach__t5", "A proven process that transforms your ideas into engaging AR/VR experiences that drive real results."))}</motion.p>
           <motion.div variants={fadeUp} custom={3} className="mt-5">
             <Link
-              href="#showreel"
+              href={$t("ArVrApproach__t6", "#showreel")}
               className="inline-flex items-center gap-2.5 rounded-full border border-[#d9d9f5] bg-white px-5 py-2 text-[13px] font-semibold text-[#0f1535] transition-colors duration-200 hover:border-[#5b43e8] hover:text-[#5b43e8]"
             >
-              See How It Works
-              <span className="grid h-5 w-5 place-items-center rounded-full bg-[#5b43e8] text-[8px] text-white">
+              {$t("ArVrApproach__t7", "See How It Works")}<span className="grid h-5 w-5 place-items-center rounded-full bg-[#5b43e8] text-[8px] text-white">
                 ▶
               </span>
             </Link>
@@ -340,7 +339,7 @@ export default function ArVrApproach() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-2 text-[17px] font-bold text-[#0f1535]">{s.title}</h3>
-                  <p className="mt-1.5 text-[12.5px] leading-[1.55] text-slate-600">{s.text}</p>
+                  <p className="text-caption mt-1.5 text-slate-600">{s.text}</p>
                 </motion.div>
 
                 {/* node on the wave */}

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -95,7 +97,7 @@ const CARDS: Card[] = [
   },
 ];
 
-const FEATURES = [
+const FEATURES__cms = [
   {
     title: "Tailored Solutions",
     text: "Custom-built experiences aligned with your goals.",
@@ -203,6 +205,7 @@ function buildSlots(W: number) {
 const slotOf = (i: number, active: number) => ((((i - active + 2) % N) + N) % N) - 2;
 
 function CardFace({ c }: { c: Card }) {
+  const $t = useCmsText();
   return (
     <>
       {/* clipped card face */}
@@ -250,11 +253,10 @@ function CardFace({ c }: { c: Card }) {
           {c.text}
         </p>
         <Link
-          href="#contact-form"
+          href={$t("ArVrShowcase__t1", "#contact-form")}
           className="group/link mt-2.5 inline-flex w-fit items-center gap-1 text-[12px] font-semibold text-white"
         >
-          Explore
-          <span aria-hidden className="transition-transform duration-300 group-hover/link:translate-x-1">
+          {$t("ArVrShowcase__t2", "Explore")}<span aria-hidden className="transition-transform duration-300 group-hover/link:translate-x-1">
             →
           </span>
         </Link>
@@ -267,6 +269,8 @@ const ARROW =
   "absolute top-1/2 z-40 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#d9d9f5] bg-white/90 text-[#5b43e8] shadow-[0_10px_24px_-10px_rgba(91,67,232,0.55)] backdrop-blur transition hover:bg-[#5b43e8] hover:text-white";
 
 export default function ArVrShowcase() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("ArVrShowcase__FEATURES", FEATURES__cms);
   const [wide, setWide] = useState(false);
   // cur = card in the centre (AR Experiences at first); prev = the one before, to spot wrap-arounds
   const [nav, setNav] = useState({ cur: 2, prev: 2 });
@@ -331,36 +335,29 @@ export default function ArVrShowcase() {
             custom={0}
             className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
           >
-            What we create
-          </motion.span>
+            {$t("ArVrShowcase__t3", "What we create")}</motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="mt-3 text-3xl font-black leading-[1.1] tracking-tight text-[#0f1535] sm:text-4xl lg:text-[46px]"
+            className="text-h2 mt-3 font-black tracking-tight text-[#0f1535]"
           >
-            Powerful AR/VR Solutions
-            <br />
-            That Drive{" "}
+            {$t("ArVrShowcase__t4", "Powerful AR/VR Solutions")}<br />
+            {$t("ArVrShowcase__t5", "That Drive")}{" "}
             <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-              Real Results.
-            </span>
+              {$t("ArVrShowcase__t6", "Real Results.")}</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-[15px]"
+            className="text-body mx-auto mt-4 max-w-2xl text-slate-600"
           >
-            From training and simulation to visualisation and interactive experiences, we
-            build immersive solutions that solve real challenges and unlock new
-            possibilities.
-          </motion.p>
+            {rich($t("ArVrShowcase__t7", "From training and simulation to visualisation and interactive experiences, we build immersive solutions that solve real challenges and unlock new possibilities."))}</motion.p>
           <motion.div variants={fadeUp} custom={3} className="mt-5">
             <Link
-              href="#contact-form"
+              href={$t("ArVrShowcase__t8", "#contact-form")}
               className="inline-flex items-center gap-2.5 rounded-full border border-[#d9d9f5] bg-white px-5 py-2 text-[13px] font-semibold text-[#0f1535] transition-colors duration-200 hover:border-[#5b43e8] hover:text-[#5b43e8]"
             >
-              Explore All Solutions
-              <span className="grid h-5 w-5 place-items-center rounded-full bg-[#5b43e8] text-[8px] text-white">
+              {$t("ArVrShowcase__t9", "Explore All Solutions")}<span className="grid h-5 w-5 place-items-center rounded-full bg-[#5b43e8] text-[8px] text-white">
                 ▶
               </span>
             </Link>
@@ -435,8 +432,8 @@ export default function ArVrShowcase() {
 
               {/* Fixed in the middle: the VR user on the platform, in front of the centre card */}
               <Image
-                src="/arvr-platform.webp"
-                alt="Person in a VR headset on a glowing platform"
+                src={$t("ArVrShowcase__t10", "/arvr-platform.webp")}
+                alt={$t("ArVrShowcase__t11", "Person in a VR headset on a glowing platform")}
                 width={1543}
                 height={1000}
                 sizes="(min-width: 1024px) 34vw, 90vw"
@@ -491,7 +488,7 @@ export default function ArVrShowcase() {
               </span>
               <div>
                 <h3 className="text-[13.5px] font-bold text-[#0f1535]">{f.title}</h3>
-                <p className="mt-0.5 text-[12px] leading-snug text-slate-500">{f.text}</p>
+                <p className="text-caption mt-0.5 text-slate-500">{f.text}</p>
               </div>
             </li>
           ))}

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -124,7 +126,7 @@ type Category = {
   appName: string;
 };
 
-const CATEGORIES: Category[] = [
+const CATEGORIES__cms: Category[] = [
   { id: "food", label: "Food Delivery", Icon: ScooterIcon, color: "#ea580c", bg: "#fff1e6", appName: "QuickBite" },
   { id: "ecommerce", label: "Ecommerce", Icon: BagIcon, color: "#db2777", bg: "#fde8f2", appName: "ShopZone" },
   { id: "healthcare", label: "Healthcare", Icon: HeartPulseIcon, color: "#0284c7", bg: "#e6f4fd", appName: "HealthCare+" },
@@ -133,7 +135,7 @@ const CATEGORIES: Category[] = [
   { id: "more", label: "More", Icon: GridDotsIcon, color: "#475569", bg: "#eef2f6", appName: "And Many More" },
 ];
 
-const FEATURES = [
+const FEATURES__cms = [
   {
     Icon: (p: { color?: string; size?: number }) => (
       <svg {...svgBase(p.color ?? "currentColor", p.size ?? 20)}>
@@ -182,7 +184,14 @@ const FEATURES = [
   },
 ];
 
-const STATS = [
+/** Client faces in the trust bar (replace with real client photos in the CMS). */
+const AVATARS__cms = [
+  { name: "Client", image: "/customer-avatar.jpg" },
+  { name: "Client", image: "/ravi-sharma-avatar.jpg" },
+  { name: "Client", image: "/local-seo/avatar-sarah.webp" },
+];
+
+const STATS__cms = [
   {
     target: 120,
     suffix: "+",
@@ -249,14 +258,14 @@ const fadeUp: Variants = {
 /* reused (scaled down) for the peeking side cards.                   */
 /* ------------------------------------------------------------------ */
 
-const QUICK_ICONS = [
+const QUICK_ICONS__cms = [
   { label: "Pizza", emoji: "\u{1F355}" },
   { label: "Burger", emoji: "\u{1F354}" },
   { label: "Sushi", emoji: "\u{1F363}" },
   { label: "Drinks", emoji: "\u{1F964}" },
 ];
 
-const RESTAURANTS = [
+const RESTAURANTS__cms = [
   { name: "The Burger Co.", rating: "4.5", time: "20-30 min", fee: "$0 Delivery" },
   { name: "Pizza House", rating: "4.3", time: "25-35 min", fee: "$1.99 Delivery" },
   { name: "Sushi World", rating: "4.7", time: "20-30 min", fee: "$0 Delivery" },
@@ -264,12 +273,15 @@ const RESTAURANTS = [
 ];
 
 function FoodScreen() {
+  const $t = useCmsText();
+  const QUICK_ICONS = useCmsData("AppDevHero__QUICK_ICONS", QUICK_ICONS__cms);
+  const RESTAURANTS = useCmsData("AppDevHero__RESTAURANTS", RESTAURANTS__cms);
   return (
     <>
       <div className="flex items-center justify-between px-4 pb-2.5">
         <MenuIcon color={NAVY} size={15} />
         <span className="flex items-center gap-1 text-[9px] font-semibold" style={{ color: NAVY }}>
-          Deliver to <span className="font-bold">Home</span>
+          {$t("AppDevHero__t1", "Deliver to ")}<span className="font-bold">{$t("AppDevHero__t2", "Home")}</span>
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke={NAVY} strokeWidth="3"><path d="m6 9 6 6 6-6" /></svg>
         </span>
         <span className="relative">
@@ -282,19 +294,19 @@ function FoodScreen() {
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round">
           <circle cx="11" cy="11" r="6.5" /><path d="M16 16 L20.5 20.5" />
         </svg>
-        <span className="text-[8.5px] text-slate-400">Search for restaurants or dishes</span>
+        <span className="text-[8.5px] text-slate-400">{$t("AppDevHero__t3", "Search for restaurants or dishes")}</span>
       </div>
 
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl p-3.5" style={{ backgroundColor: "#ea580c" }}>
-        <p className="inline-block rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-extrabold" style={{ color: "#ea580c" }}>30% OFF</p>
-        <p className="text-[10px] font-semibold leading-snug text-white mt-1.5 max-w-[62%]">on your first order</p>
-        <span className="inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: "#ea580c" }}>Order Now</span>
+        <p className="inline-block rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-extrabold" style={{ color: "#ea580c" }}>{rich($t("AppDevHero__t4", "30% OFF"))}</p>
+        <p className="text-[10px] font-semibold leading-snug text-white mt-1.5 max-w-[62%]">{rich($t("AppDevHero__t5", "on your first order"))}</p>
+        <span className="inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: "#ea580c" }}>{$t("AppDevHero__t6", "Order Now")}</span>
         <span className="absolute right-1.5 bottom-1.5"><BurgerIcon size={40} /></span>
       </div>
 
       <div className="px-4 mb-1 flex items-center justify-between">
-        <p className="text-[9.5px] font-bold" style={{ color: NAVY }}>Popular Near You</p>
-        <p className="text-[8px] font-semibold" style={{ color: "#ea580c" }}>View all</p>
+        <p className="text-[9.5px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t7", "Popular Near You"))}</p>
+        <p className="text-[8px] font-semibold" style={{ color: "#ea580c" }}>{rich($t("AppDevHero__t8", "View all"))}</p>
       </div>
       <div className="px-4 mb-3 flex items-center justify-between">
         {QUICK_ICONS.map((q) => (
@@ -305,17 +317,17 @@ function FoodScreen() {
         ))}
         <div className="flex flex-col items-center gap-1">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-400 text-[13px]">•••</span>
-          <span className="text-[7.5px] text-slate-500">More</span>
+          <span className="text-[7.5px] text-slate-500">{$t("AppDevHero__t9", "More")}</span>
         </div>
       </div>
 
       <div className="px-4 flex flex-1 flex-col pb-2">
-        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>Top Restaurants</p>
+        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>{rich($t("AppDevHero__t10", "Top Restaurants"))}</p>
         <div className="flex flex-1 flex-col justify-between">
           {RESTAURANTS.map((r) => (
             <div key={r.name} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2 py-1.5">
               <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg bg-orange-100">
-                <Image src="/project4.png" alt={r.name} fill className="object-cover" sizes="32px" />
+                <Image src={$t("AppDevHero__t11", "/project4.png")} alt={r.name} fill className="object-cover" sizes="32px" />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-[9px] font-bold truncate" style={{ color: NAVY }}>{r.name}</p>
@@ -327,31 +339,32 @@ function FoodScreen() {
         </div>
       </div>
 
-      <BottomNav color="#ea580c" labels={["Home", "Orders", "Favorites", "Profile"]} />
+      <BottomNav color="#ea580c" labels={[$t("AppDevHero__t12", "Home"), $t("AppDevHero__t13", "Orders"), $t("AppDevHero__t14", "Favorites"), $t("AppDevHero__t15", "Profile")]} />
     </>
   );
 }
 
 function EcommerceScreen() {
+  const $t = useCmsText();
   return (
     <>
       <div className="px-4 pb-3 flex items-center justify-between">
-        <p className="text-[12px] font-bold" style={{ color: NAVY }}>Hi, Sarah {"\u{1F44B}"}</p>
+        <p className="text-caption font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t16", "Hi, Sarah "))}{"\u{1F44B}"}</p>
         <BellIcon color="#94a3b8" size={15} />
       </div>
 
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl p-3.5">
-        <Image src="/lux.png" alt="" fill className="object-cover" sizes="200px" />
+        <Image src={$t("AppDevHero__t17", "/lux.png")} alt="" fill className="object-cover" sizes="200px" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(100deg, rgba(219,39,119,0.9) 30%, rgba(219,39,119,0.15) 90%)" }} />
-        <p className="relative text-[8px] font-bold uppercase tracking-wide text-white/85">Today&apos;s Deals</p>
-        <p className="relative text-[10.5px] font-bold leading-snug mt-1 max-w-[60%] text-white">Summer Collection up to 40% off</p>
-        <span className="relative inline-block mt-2 rounded-full px-2.5 py-1 text-[8px] font-bold text-white" style={{ backgroundColor: "#db2777" }}>Shop Now</span>
+        <p className="relative text-[8px] font-bold uppercase tracking-wide text-white/85">{rich($t("AppDevHero__t18", "Today's Deals"))}</p>
+        <p className="relative text-[10.5px] font-bold leading-snug mt-1 max-w-[60%] text-white">{rich($t("AppDevHero__t19", "Summer Collection up to 40% off"))}</p>
+        <span className="relative inline-block mt-2 rounded-full px-2.5 py-1 text-[8px] font-bold text-white" style={{ backgroundColor: "#db2777" }}>{$t("AppDevHero__t20", "Shop Now")}</span>
       </div>
 
       <div className="px-4 mb-3">
-        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>Categories</p>
+        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>{rich($t("AppDevHero__t21", "Categories"))}</p>
         <div className="flex items-center justify-between">
-          {["Men", "Women", "Kids", "Home"].map((c) => (
+          {[$t("AppDevHero__t22", "Men"), $t("AppDevHero__t23", "Women"), $t("AppDevHero__t24", "Kids"), $t("AppDevHero__t25", "Home")].map((c) => (
             <div key={c} className="flex flex-col items-center gap-1">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-pink-50" style={{ color: "#db2777" }}>
                 <BagIcon size={13} />
@@ -363,12 +376,12 @@ function EcommerceScreen() {
       </div>
 
       <div className="px-4 flex flex-1 flex-col pb-2">
-        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>Best Sellers</p>
+        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>{rich($t("AppDevHero__t26", "Best Sellers"))}</p>
         <div className="flex flex-1 flex-col justify-between">
           {[
-            { name: "Minimal Chair", price: "$88.00", image: "/83a9d1eb-da0f-4585-bf40-f9031fb7e5f1.png" },
-            { name: "Everyday Sneakers", price: "$64.00", image: "/furnisher.png" },
-            { name: "Canvas Tote Bag", price: "$22.00", image: "/lux.png" },
+            { name: $t("AppDevHero__t27", "Minimal Chair"), price: $t("AppDevHero__t28", "$88.00"), image: $t("AppDevHero__t29", "/83a9d1eb-da0f-4585-bf40-f9031fb7e5f1.png") },
+            { name: $t("AppDevHero__t30", "Everyday Sneakers"), price: $t("AppDevHero__t31", "$64.00"), image: $t("AppDevHero__t32", "/furnisher.png") },
+            { name: $t("AppDevHero__t33", "Canvas Tote Bag"), price: $t("AppDevHero__t34", "$22.00"), image: $t("AppDevHero__t35", "/lux.png") },
           ].map((p) => (
             <div key={p.name} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2 py-1.5">
               <span className="relative flex h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-slate-200">
@@ -383,20 +396,21 @@ function EcommerceScreen() {
         </div>
       </div>
 
-      <BottomNav color="#db2777" labels={["Home", "Categories", "Cart", "Profile"]} />
+      <BottomNav color="#db2777" labels={[$t("AppDevHero__t36", "Home"), $t("AppDevHero__t37", "Categories"), $t("AppDevHero__t38", "Cart"), $t("AppDevHero__t39", "Profile")]} />
     </>
   );
 }
 
 function HealthcareScreen() {
+  const $t = useCmsText();
   return (
     <>
       <div className="px-4 pb-2.5 flex items-center justify-between">
-        <p className="text-[11px] font-bold" style={{ color: NAVY }}>Book Doctor Appointment</p>
+        <p className="text-[11px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t40", "Book Doctor Appointment"))}</p>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="6.5" /><path d="M16 16 L20.5 20.5" /></svg>
       </div>
       <div className="mx-4 mb-3 flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
-        <span className="text-[8.5px] text-slate-400">Search doctors, clinics...</span>
+        <span className="text-[8.5px] text-slate-400">{$t("AppDevHero__t41", "Search doctors, clinics...")}</span>
       </div>
 
       <div className="mx-4 mb-4 rounded-2xl border border-slate-100 p-3">
@@ -405,20 +419,20 @@ function HealthcareScreen() {
             <DoctorAvatar size={22} />
           </span>
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] font-bold truncate" style={{ color: NAVY }}>Dr. James Carter</p>
-            <p className="text-[8px] text-slate-400">Cardiologist</p>
-            <p className="flex items-center gap-1 text-[7.5px] text-slate-400 mt-0.5"><StarFillIcon />4.8 (120)</p>
+            <p className="text-[10px] font-bold truncate" style={{ color: NAVY }}>{rich($t("AppDevHero__t42", "Dr. James Carter"))}</p>
+            <p className="text-[8px] text-slate-400">{rich($t("AppDevHero__t43", "Cardiologist"))}</p>
+            <p className="flex items-center gap-1 text-[7.5px] text-slate-400 mt-0.5"><StarFillIcon />{rich($t("AppDevHero__t44", "4.8 (120)"))}</p>
           </div>
         </div>
-        <span className="mt-2.5 block rounded-lg py-1.5 text-center text-[8.5px] font-bold text-white" style={{ backgroundColor: "#0284c7" }}>Book Now</span>
+        <span className="mt-2.5 block rounded-lg py-1.5 text-center text-[8.5px] font-bold text-white" style={{ backgroundColor: "#0284c7" }}>{$t("AppDevHero__t45", "Book Now")}</span>
       </div>
 
       <div className="px-4 flex flex-1 flex-col pb-2">
-        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>Upcoming Appointments</p>
+        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>{rich($t("AppDevHero__t46", "Upcoming Appointments"))}</p>
         <div className="flex flex-1 flex-col justify-between">
           {[
-            { name: "Dr. James Carter", meta: "Today, 5:00 PM" },
-            { name: "Dr. Sarah Lee", meta: "Fri, 11:30 AM" },
+            { name: $t("AppDevHero__t47", "Dr. James Carter"), meta: $t("AppDevHero__t48", "Today, 5:00 PM") },
+            { name: $t("AppDevHero__t49", "Dr. Sarah Lee"), meta: $t("AppDevHero__t50", "Fri, 11:30 AM") },
           ].map((a) => (
             <div key={a.name} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2 py-1.5">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ backgroundColor: "#e6f4fd", color: "#0284c7" }}>
@@ -433,24 +447,25 @@ function HealthcareScreen() {
         </div>
       </div>
 
-      <BottomNav color="#0284c7" labels={["Home", "Appointments", "Records", "Profile"]} />
+      <BottomNav color="#0284c7" labels={[$t("AppDevHero__t51", "Home"), $t("AppDevHero__t52", "Appointments"), $t("AppDevHero__t53", "Records"), $t("AppDevHero__t54", "Profile")]} />
     </>
   );
 }
 
 function FitnessScreen() {
+  const $t = useCmsText();
   return (
     <>
       <div className="px-4 pb-3 flex items-center justify-between">
-        <p className="text-[12px] font-bold" style={{ color: NAVY }}>Hello, Alex {"\u{1F44B}"}</p>
+        <p className="text-caption font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t55", "Hello, Alex "))}{"\u{1F44B}"}</p>
         <BellIcon color="#94a3b8" size={15} />
       </div>
 
       <div className="mx-4 mb-4 rounded-2xl p-3.5 flex items-center justify-between" style={{ backgroundColor: "#e9f9ee" }}>
         <div>
-          <p className="text-[8px] font-bold uppercase tracking-wide" style={{ color: "#16a34a" }}>Today&apos;s Activity</p>
-          <p className="text-[18px] font-extrabold leading-none mt-1.5" style={{ color: NAVY }}>6,248</p>
-          <p className="text-[8px] text-slate-500 mt-0.5">Steps</p>
+          <p className="text-[8px] font-bold uppercase tracking-wide" style={{ color: "#16a34a" }}>{rich($t("AppDevHero__t56", "Today's Activity"))}</p>
+          <p className="text-body font-extrabold mt-1.5" style={{ color: NAVY }}>{rich($t("AppDevHero__t57", "6,248"))}</p>
+          <p className="text-[8px] text-slate-500 mt-0.5">{rich($t("AppDevHero__t58", "Steps"))}</p>
         </div>
         <svg width="46" height="46" viewBox="0 0 40 40">
           <circle cx="20" cy="20" r="16" fill="none" stroke="#d1f0da" strokeWidth="4" />
@@ -460,22 +475,22 @@ function FitnessScreen() {
 
       <div className="px-4 mb-4 flex items-center gap-3">
         <div className="flex-1 rounded-xl bg-slate-50 px-2.5 py-2">
-          <p className="text-[10px] font-bold" style={{ color: NAVY }}>462</p>
-          <p className="text-[7px] text-slate-400">Calories</p>
+          <p className="text-[10px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t59", "462"))}</p>
+          <p className="text-[7px] text-slate-400">{rich($t("AppDevHero__t60", "Calories"))}</p>
         </div>
         <div className="flex-1 rounded-xl bg-slate-50 px-2.5 py-2">
-          <p className="text-[10px] font-bold" style={{ color: NAVY }}>5.2 km</p>
-          <p className="text-[7px] text-slate-400">Distance</p>
+          <p className="text-[10px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t61", "5.2 km"))}</p>
+          <p className="text-[7px] text-slate-400">{rich($t("AppDevHero__t62", "Distance"))}</p>
         </div>
       </div>
 
       <div className="px-4 flex flex-1 flex-col pb-2">
-        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>Workouts For You</p>
+        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>{rich($t("AppDevHero__t63", "Workouts For You"))}</p>
         <div className="flex flex-1 flex-col justify-between">
           {[
-            { n: "Full Body Strength", m: "45 min • 320 kcal" },
-            { n: "Yoga Flow", m: "30 min • 180 kcal" },
-            { n: "Cardio Blast", m: "20 min • 210 kcal" },
+            { n: $t("AppDevHero__t64", "Full Body Strength"), m: $t("AppDevHero__t65", "45 min • 320 kcal") },
+            { n: $t("AppDevHero__t66", "Yoga Flow"), m: $t("AppDevHero__t67", "30 min • 180 kcal") },
+            { n: $t("AppDevHero__t68", "Cardio Blast"), m: $t("AppDevHero__t69", "20 min • 210 kcal") },
           ].map((w) => (
             <div key={w.n} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2 py-1.5">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ backgroundColor: "#e9f9ee", color: "#16a34a" }}>
@@ -490,39 +505,41 @@ function FitnessScreen() {
         </div>
       </div>
 
-      <BottomNav color="#16a34a" labels={["Home", "Workouts", "Progress", "Profile"]} />
+      <BottomNav color="#16a34a" labels={[$t("AppDevHero__t70", "Home"), $t("AppDevHero__t71", "Workouts"), $t("AppDevHero__t72", "Progress"), $t("AppDevHero__t73", "Profile")]} />
     </>
   );
 }
 
-const TRANSACTIONS = [
+const TRANSACTIONS__cms = [
   { name: "Amazon", amount: "-$120.00", positive: false },
   { name: "Starbucks", amount: "-$8.50", positive: false },
   { name: "Salary", amount: "+$12,000.00", positive: true },
 ];
 
 function FintechScreen() {
+  const $t = useCmsText();
+  const TRANSACTIONS = useCmsData("AppDevHero__TRANSACTIONS", TRANSACTIONS__cms);
   return (
     <>
       <div className="px-4 pb-3 flex items-center gap-2">
         <span className="flex h-7 w-7 items-center justify-center rounded-full" style={{ backgroundColor: "#f1ebfe", color: "#7c3aed" }}>
           <CreditCardIcon size={14} />
         </span>
-        <p className="text-[11px] font-bold" style={{ color: NAVY }}>MyFinance</p>
+        <p className="text-[11px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t74", "MyFinance"))}</p>
       </div>
 
       <div className="mx-4 mb-4 rounded-2xl p-3.5" style={{ backgroundColor: "#7c3aed" }}>
-        <p className="text-[8px] font-semibold uppercase tracking-wide text-white/70">Total Balance</p>
-        <p className="text-[17px] font-extrabold text-white mt-1">$8,750.50</p>
+        <p className="text-[8px] font-semibold uppercase tracking-wide text-white/70">{rich($t("AppDevHero__t75", "Total Balance"))}</p>
+        <p className="text-body font-extrabold text-white mt-1">{rich($t("AppDevHero__t76", "$8,750.50"))}</p>
         <div className="mt-3 flex items-center gap-4">
-          {["Send", "Receive", "History"].map((a) => (
+          {[$t("AppDevHero__t77", "Send"), $t("AppDevHero__t78", "Receive"), $t("AppDevHero__t79", "History")].map((a) => (
             <span key={a} className="text-[7.5px] font-semibold text-white/85">{a}</span>
           ))}
         </div>
       </div>
 
       <div className="px-4 flex flex-1 flex-col pb-2">
-        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>Recent Transactions</p>
+        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>{rich($t("AppDevHero__t80", "Recent Transactions"))}</p>
         <div className="flex flex-1 flex-col justify-between">
           {TRANSACTIONS.map((t) => (
             <div key={t.name} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2.5 py-2">
@@ -536,25 +553,26 @@ function FintechScreen() {
         </div>
       </div>
 
-      <BottomNav color="#7c3aed" labels={["Home", "Cards", "Stats", "Profile"]} />
+      <BottomNav color="#7c3aed" labels={[$t("AppDevHero__t81", "Home"), $t("AppDevHero__t82", "Cards"), $t("AppDevHero__t83", "Stats"), $t("AppDevHero__t84", "Profile")]} />
     </>
   );
 }
 
 function MoreScreen() {
+  const $t = useCmsText();
   return (
     <>
       <div className="px-4 pb-3">
-        <p className="text-[11px] font-bold" style={{ color: NAVY }}>And Many More Industries</p>
+        <p className="text-[11px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevHero__t85", "And Many More Industries"))}</p>
       </div>
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl p-3.5">
-        <Image src="/954cbb0f-d7ee-4b91-b540-716a91c584b5.png" alt="" fill className="object-cover" sizes="200px" />
+        <Image src={$t("AppDevHero__t86", "/954cbb0f-d7ee-4b91-b540-716a91c584b5.png")} alt="" fill className="object-cover" sizes="200px" />
         <div className="absolute inset-0 bg-white/80" />
-        <p className="relative text-[10.5px] font-bold leading-snug" style={{ color: NAVY }}>Real estate, education, travel &amp; more</p>
-        <p className="relative text-[8px] text-slate-500 mt-1">Custom apps for every industry we serve.</p>
+        <p className="relative text-[10.5px] font-bold leading-snug" style={{ color: NAVY }}>{rich($t("AppDevHero__t87", "Real estate, education, travel & more"))}</p>
+        <p className="relative text-[8px] text-slate-500 mt-1">{rich($t("AppDevHero__t88", "Custom apps for every industry we serve."))}</p>
       </div>
       <div className="px-4 flex flex-1 flex-col justify-between pb-2">
-        {["Real Estate", "Education", "Travel & Booking", "Logistics"].map((n) => (
+        {[$t("AppDevHero__t89", "Real Estate"), $t("AppDevHero__t90", "Education"), $t("AppDevHero__t91", "Travel & Booking"), $t("AppDevHero__t92", "Logistics")].map((n) => (
           <div key={n} className="flex items-center gap-2 rounded-xl bg-slate-50 px-2.5 py-2.5">
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: "#eef2f6", color: "#475569" }}>
               <GridDotsIcon size={13} />
@@ -563,7 +581,7 @@ function MoreScreen() {
           </div>
         ))}
       </div>
-      <BottomNav color="#475569" labels={["Home", "Explore", "Saved", "Profile"]} />
+      <BottomNav color="#475569" labels={[$t("AppDevHero__t93", "Home"), $t("AppDevHero__t94", "Explore"), $t("AppDevHero__t95", "Saved"), $t("AppDevHero__t96", "Profile")]} />
     </>
   );
 }
@@ -610,6 +628,7 @@ function ScreenBody({ id }: { id: string }) {
 /* ------------------------------------------------------------------ */
 
 function PeekCard({ cat, side, depth }: { cat: Category; side: "left" | "right"; depth: 0 | 1 }) {
+  const $t = useCmsText();
   // Upright, no rotation — flat open cards behind the phone, pushed out so ~70% of each is visible.
   // Near-card offset chosen so only ~10% of the card sits behind the phone (≈90% visible);
   // far cards get a smaller extra push so they don't overshoot past the section edge again.
@@ -636,7 +655,7 @@ function PeekCard({ cat, side, depth }: { cat: Category; side: "left" | "right";
       <div className="h-full w-full" style={{ transform: "scale(0.58)", transformOrigin: "top left", width: "172.4%", height: "172.4%" }}>
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between px-4 pt-3 pb-1 text-[9px] font-semibold" style={{ color: NAVY }}>
-            <span>9:41</span>
+            <span>{$t("AppDevHero__t97", "9:41")}</span>
           </div>
           <div className="flex flex-1 min-h-0 flex-col">
             <ScreenBody id={cat.id} />
@@ -652,6 +671,7 @@ function PeekCard({ cat, side, depth }: { cat: Category; side: "left" | "right";
 /* ------------------------------------------------------------------ */
 
 function PhoneScreen({ cat }: { cat: Category }) {
+  const $t = useCmsText();
   return (
     <div className="absolute inset-[3px] rounded-[34px] overflow-hidden bg-white">
       <AnimatePresence initial={false} mode="popLayout">
@@ -665,7 +685,7 @@ function PhoneScreen({ cat }: { cat: Category }) {
         >
           {/* status bar */}
           <div className="flex items-center justify-between px-4 pt-2.5 pb-1.5 text-[9px] font-semibold" style={{ color: NAVY }}>
-            <span>9:41</span>
+            <span>{$t("AppDevHero__t98", "9:41")}</span>
             <span className="flex items-center gap-1">
               <svg width="12" height="9" viewBox="0 0 16 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 4 C4 1 12 1 15 4 M3.5 6.5 C5.5 4.7 10.5 4.7 12.5 6.5 M6 9 C7 8 9 8 10 9" /></svg>
               <span className="w-3 h-2 rounded-sm border border-current" />
@@ -682,6 +702,11 @@ function PhoneScreen({ cat }: { cat: Category }) {
 /* ------------------------------------------------------------------ */
 
 export default function AppDevHero() {
+  const $t = useCmsText();
+  const CATEGORIES = useCmsData("AppDevHero__CATEGORIES", CATEGORIES__cms);
+  const FEATURES = useCmsData("AppDevHero__FEATURES", FEATURES__cms);
+  const STATS = useCmsData("AppDevHero__STATS", STATS__cms);
+  const AVATARS = useCmsData("AppDevHero__AVATARS", AVATARS__cms);
   const [activeId, setActiveId] = useState<string>(CATEGORIES[0].id);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -717,63 +742,61 @@ export default function AppDevHero() {
 
   return (
     <section className="relative w-full bg-[#F7F9FA] overflow-x-clip py-10 lg:py-14">
-      <Container className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] gap-14 lg:gap-8 items-center">
+      <Container className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] gap-14 lg:gap-10 items-center">
         {/* Left content */}
         <motion.div variants={container} initial="hidden" animate="show" className="relative z-10">
           <motion.span
             variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-bold tracking-widest uppercase mb-5"
+            className="inline-flex items-center gap-2 rounded-md bg-[#e6f4f1] px-3 py-1.5 text-[11px] font-bold tracking-[0.14em] uppercase mb-6"
             style={{ color: TEAL }}
           >
             <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: TEAL }} />
-            App Development
-          </motion.span>
+            {$t("AppDevHero__t99", "App Development")}</motion.span>
 
-          <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-5xl lg:text-[52px] leading-[1.12] font-bold tracking-tight mb-5">
-            <span className="block" style={{ color: NAVY }}>Powerful Apps.</span>
-            <span className="block" style={{ color: NAVY }}>Meaningful Experiences.</span>
-            <span className="block" style={{ color: DEEP_TEAL }}>Real Business Growth.</span>
+          <motion.h1 variants={fadeUp} className="font-heading text-[clamp(32px,3.4vw,52px)] font-bold leading-[1.16] tracking-[-0.025em] mb-6">
+            <span className="block" style={{ color: NAVY }}>{$t("AppDevHero__t100", "Powerful Apps.")}</span>
+            <span className="block" style={{ color: NAVY }}>{$t("AppDevHero__t101", "Meaningful Experiences.")}</span>
+            <span className="block" style={{ color: DEEP_TEAL }}>{$t("AppDevHero__t102", "Real Business Growth.")}</span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="text-sm md:text-base text-slate-600 leading-relaxed max-w-lg mb-7">
-            We design and develop intuitive, high-performance mobile apps that engage users, streamline operations and help your business grow — every single day.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-small text-slate-600 leading-relaxed max-w-[470px]">
+            {rich($t("AppDevHero__t103", "We design and develop intuitive, high-performance mobile apps that engage users, streamline operations and help your business grow — every single day."))}</motion.p>
 
-          <motion.div variants={fadeUp} className="grid grid-cols-2 gap-x-6 gap-y-6 max-w-md mb-8">
+          <motion.span variants={fadeUp} aria-hidden className="mt-6 mb-7 block h-[3px] w-10 rounded-full bg-amber-400" />
+
+          <motion.div variants={fadeUp} className="grid grid-cols-2 gap-y-6 sm:grid-cols-4 sm:divide-x sm:divide-slate-200 mb-9 max-w-[640px]">
             {FEATURES.map((f) => (
-              <div key={f.title}>
+              <div key={f.title} className="pr-3 sm:px-4 sm:first:pl-0">
                 <span
-                  className="flex h-10 w-10 items-center justify-center rounded-full mb-2.5"
+                  className="flex h-11 w-11 items-center justify-center rounded-full mb-3"
                   style={{ backgroundColor: f.bg, color: f.color }}
                 >
-                  <f.Icon color={f.color} size={18} />
+                  <f.Icon color={f.color} size={19} />
                 </span>
-                <p className="text-[13px] font-bold mb-1" style={{ color: NAVY }}>{f.title}</p>
-                <p className="text-[11.5px] text-slate-500 leading-snug max-w-[170px]">{f.text}</p>
+                <p className="text-[13px] font-bold leading-snug mb-1.5" style={{ color: NAVY }}>{f.title}</p>
+                <p className="text-[11.5px] text-slate-500 leading-relaxed">{f.text}</p>
               </div>
             ))}
           </motion.div>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3">
             <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg px-5 py-3 text-[13px] font-semibold text-white shadow-lg shadow-teal-900/20 transition-transform hover:-translate-y-0.5"
+              href={$t("AppDevHero__t104", "/contact")}
+              className="inline-flex items-center gap-3 rounded-lg px-6 py-3 text-[13px] font-semibold text-white shadow-lg shadow-teal-900/20 transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Let&apos;s Build Your App
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              {$t("AppDevHero__t105", "Let's Build Your App")}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
             </Link>
             <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-[13px] font-semibold transition-colors hover:border-slate-400"
-              style={{ color: NAVY }}
+              href={$t("AppDevHero__t106", "/portfolio")}
+              className="inline-flex items-center gap-2.5 rounded-lg border px-5 py-3 text-[13px] font-semibold transition-colors hover:bg-[#e6f4f1]"
+              style={{ color: DEEP_TEAL, borderColor: DEEP_TEAL }}
             >
-              View Our Work
-              <span className="flex h-5 w-5 items-center justify-center rounded-full text-white" style={{ backgroundColor: DEEP_TEAL }}>
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+              {$t("AppDevHero__t107", "View Our Work")}<span className="flex h-5 w-5 items-center justify-center rounded-full border-[1.5px]" style={{ borderColor: DEEP_TEAL, color: DEEP_TEAL }}>
+                <svg width="7" height="7" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
               </span>
@@ -822,12 +845,12 @@ export default function AppDevHero() {
           </div>
 
           {/* Category switcher */}
-          <div className="relative mt-12 flex items-center justify-center gap-2 sm:gap-4">
+          <div className="relative mt-12 flex items-center justify-between gap-2 sm:gap-4">
             <button
               type="button"
               onClick={() => go(-1)}
               aria-label="Previous category"
-              className="hidden sm:flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm ring-1 ring-slate-100 transition-colors hover:text-white"
+              className="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-slate-700 shadow-[0_8px_20px_-8px_rgba(15,23,42,0.3)] ring-1 ring-slate-100 transition-colors hover:text-white"
               style={{ backgroundColor: "#fff" }}
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = DEEP_TEAL; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
@@ -837,7 +860,8 @@ export default function AppDevHero() {
               </svg>
             </button>
 
-            <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar px-1">
+            <div className="relative flex flex-1 items-start justify-center gap-3 sm:gap-7 overflow-x-auto no-scrollbar px-2 py-2.5">
+              <span aria-hidden className="pointer-events-none absolute inset-x-4 top-[33px] border-t border-dashed border-slate-200" />
               {CATEGORIES.map((cat) => {
                 const isActive = cat.id === active.id;
                 return (
@@ -845,21 +869,22 @@ export default function AppDevHero() {
                     key={cat.id}
                     type="button"
                     onClick={() => setActiveId(cat.id)}
-                    className="flex shrink-0 flex-col items-center gap-1.5"
+                    aria-pressed={isActive}
+                    className="group flex shrink-0 flex-col items-center gap-1.5 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-[#0f766e]/40 focus-visible:ring-offset-4 focus-visible:ring-offset-[#F7F9FA]"
                   >
                     <span
-                      className="flex h-10 w-10 items-center justify-center rounded-full transition-colors"
+                      className="relative flex h-[46px] w-[46px] items-center justify-center rounded-full transition-all duration-300"
                       style={{
-                        backgroundColor: isActive ? DEEP_TEAL : "#fff",
-                        color: isActive ? "#fff" : cat.color,
-                        boxShadow: isActive ? `0 8px 18px -8px ${DEEP_TEAL}99` : "0 2px 8px -4px rgba(15,23,42,0.15)",
+                        backgroundColor: isActive ? "#e6f4f1" : "#F7F9FA",
+                        color: isActive ? DEEP_TEAL : "#64748b",
+                        boxShadow: isActive ? `0 0 0 2px ${DEEP_TEAL}, 0 10px 20px -10px ${DEEP_TEAL}aa` : "none",
                       }}
                     >
                       <cat.Icon size={17} />
                     </span>
                     <span
-                      className="text-[10px] font-semibold whitespace-nowrap"
-                      style={{ color: isActive ? DEEP_TEAL : "#94a3b8" }}
+                      className="text-[11px] font-semibold whitespace-nowrap"
+                      style={{ color: isActive ? DEEP_TEAL : "#64748b" }}
                     >
                       {cat.label}
                     </span>
@@ -872,7 +897,7 @@ export default function AppDevHero() {
               type="button"
               onClick={() => go(1)}
               aria-label="Next category"
-              className="hidden sm:flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm ring-1 ring-slate-100 transition-colors hover:text-white"
+              className="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-slate-700 shadow-[0_8px_20px_-8px_rgba(15,23,42,0.3)] ring-1 ring-slate-100 transition-colors hover:text-white"
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = DEEP_TEAL; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
             >
@@ -894,38 +919,36 @@ export default function AppDevHero() {
           className="w-full bg-white rounded-[24px] shadow-[0_15px_40px_-25px_rgba(15,40,60,0.25)] border border-slate-100 p-6 lg:p-7 flex flex-col lg:flex-row items-center gap-6 lg:gap-10"
         >
           <div className="flex flex-col items-center lg:items-start gap-2 shrink-0">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 text-center lg:text-left">
-              Trusted by Businesses
-              <br className="hidden lg:block" /> Worldwide
-            </p>
-            <div className="flex -space-x-2.5">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-8 w-8 rounded-full ring-2 ring-white overflow-hidden relative bg-slate-200">
-                  <Image src="/image1.jpg" alt="Client" fill className="object-cover" />
+            <p className="text-[11px] font-bold uppercase leading-relaxed tracking-[0.12em] text-center lg:text-left" style={{ color: NAVY }}>
+              {rich($t("AppDevHero__t108", "Trusted by Businesses"))}<br className="hidden lg:block" /> {rich($t("AppDevHero__t109", "Worldwide"))}</p>
+            <div className="mt-1 flex -space-x-2">
+              {AVATARS.map((a, i) => (
+                <div key={i} className="h-10 w-10 rounded-full ring-[3px] ring-white overflow-hidden relative bg-slate-200 shadow-sm">
+                  <Image src={a.image} alt={a.name} fill sizes="40px" className="object-cover" />
                 </div>
               ))}
               <span
-                className="flex h-8 w-8 items-center justify-center rounded-full ring-2 ring-white text-[10px] font-bold"
-                style={{ backgroundColor: "#e6f6f4", color: DEEP_TEAL }}
+                className="flex h-10 w-10 items-center justify-center rounded-full ring-[3px] ring-white text-sm font-bold shadow-sm"
+                style={{ backgroundColor: "#f1f5f9", color: NAVY }}
               >
                 +
               </span>
             </div>
           </div>
 
-          <span className="hidden lg:block w-px h-14 bg-slate-100 shrink-0" />
+          <span className="hidden lg:block w-px h-16 bg-slate-200 shrink-0" />
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 flex-1 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 sm:divide-x sm:divide-slate-200 flex-1 w-full">
             {STATS.map((stat) => (
-              <div key={stat.label} className="flex items-center gap-2.5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: "#e6f6f4" }}>
+              <div key={stat.label} className="flex items-center gap-3.5 sm:justify-center sm:px-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full ring-1 ring-[#d7ece8] [&_svg]:h-[22px] [&_svg]:w-[22px]" style={{ backgroundColor: "#eef7f5" }}>
                   {stat.icon}
                 </span>
                 <div>
-                  <p className="text-base font-bold leading-none" style={{ color: DEEP_TEAL }}>
+                  <p className="text-h4 font-heading font-bold leading-none" style={{ color: NAVY }}>
                     {stat.target % 1 === 0 ? <Counter target={stat.target} suffix={stat.suffix} /> : `${stat.target}${stat.suffix}`}
                   </p>
-                  <p className="text-[11px] text-slate-500 mt-1">{stat.label}</p>
+                  <p className="text-[12px] text-slate-500 mt-1.5">{stat.label}</p>
                 </div>
               </div>
             ))}

@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BarChart3, Eye, Mic, Search, TrendingUp, Users } from "lucide-react";
 import { AI, BrandIcon, ClientWordmarks, CtaButton, Pill, Spark, display, ease, type Brand, Inner, Panel } from "../shared/AiSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const CHANNELS: { brand: Brand; label: string }[] = [
+const CHANNELS__cms: { brand: Brand; label: string }[] = [
   { brand: "google", label: "Google Search" },
   { brand: "gemini", label: "AI Overviews" },
   { brand: "chatgpt", label: "ChatGPT" },
@@ -15,14 +17,14 @@ const CHANNELS: { brand: Brand; label: string }[] = [
   { brand: "voice", label: "Voice Search" },
 ];
 
-const NEEDS = [
+const NEEDS__cms = [
   { Icon: Eye, label: "More Visibility" },
   { Icon: BarChart3, label: "More Traffic" },
   { Icon: Users, label: "More Customers" },
   { Icon: TrendingUp, label: "More Growth" },
 ];
 
-const TABS: { brand: Brand; label: string }[] = [
+const TABS__cms: { brand: Brand; label: string }[] = [
   { brand: "aioverview", label: "AI Overview" },
   { brand: "google", label: "Google Search" },
   { brand: "chatgpt", label: "ChatGPT Answer" },
@@ -45,6 +47,8 @@ function Stars({ n = 5 }: { n?: number }) {
 
 /** Per-tab body of the results mock. */
 function TabBody({ tab }: { tab: number }) {
+  const $t = useCmsText();
+  const TABS = useCmsData("AiSeoRankEverywhere__TABS", TABS__cms);
   const lead =
     tab === 2
       ? "Based on reviews and portfolio, ProManage Interior Studio is one of the top-rated interior designers in Dubai."
@@ -57,7 +61,7 @@ function TabBody({ tab }: { tab: number }) {
       <div className="flex gap-4 pb-4">
         <div className="min-w-0 flex-1">
           <span className="inline-block rounded bg-teal-100/70 px-1.5 py-0.5 text-xs font-semibold text-[#0f766e]">{label}</span>
-          <p className="mt-2 text-[13px] leading-relaxed text-slate-700 sm:text-sm">
+          <p className="text-small mt-2 text-slate-700">
             <b className="font-semibold text-[#0b1b33]">{lead.split(" is ")[0]}</b>
             {lead.includes(" is ") ? ` is ${lead.split(" is ").slice(1).join(" is ")}` : ""}
           </p>
@@ -68,12 +72,11 @@ function TabBody({ tab }: { tab: number }) {
       </div>
       <div className="flex gap-4 pt-4">
         <div className="min-w-0 flex-1">
-          <p className="text-[15px] font-semibold text-[#1a3fa8]">ProManage Interior Studio</p>
-          <p className="text-xs text-green-700">https://promanage.com</p>
-          <p className="mt-1 text-[13px] text-slate-600">Luxury Interior Designers in Dubai | ProManage</p>
-          <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-600">
-            4.9 <Stars /> (128)
-          </p>
+          <p className="text-body font-semibold text-[#1a3fa8]">{rich($t("AiSeoRankEverywhere__t1", "ProManage Interior Studio"))}</p>
+          <p className="text-caption text-green-700">{rich($t("AiSeoRankEverywhere__t2", "https://promanage.com"))}</p>
+          <p className="text-small mt-1 text-slate-600">{rich($t("AiSeoRankEverywhere__t3", "Luxury Interior Designers in Dubai | ProManage"))}</p>
+          <p className="text-caption mt-1 flex items-center gap-1.5 text-slate-600">
+            {rich($t("AiSeoRankEverywhere__t4", "4.9 "))}<Stars /> {rich($t("AiSeoRankEverywhere__t5", "(128)"))}</p>
         </div>
         <div className="relative hidden aspect-[1.55] w-28 shrink-0 overflow-hidden rounded-xl sm:block">
           <Image src={AI.interior2} alt="" fill sizes="112px" className="scale-[1.05] object-cover" />
@@ -94,6 +97,10 @@ function Spine({ side }: { side: "left" | "right" }) {
 }
 
 export default function AiSeoRankEverywhere() {
+  const $t = useCmsText();
+  const CHANNELS = useCmsData("AiSeoRankEverywhere__CHANNELS", CHANNELS__cms);
+  const NEEDS = useCmsData("AiSeoRankEverywhere__NEEDS", NEEDS__cms);
+  const TABS = useCmsData("AiSeoRankEverywhere__TABS", TABS__cms);
   const reduce = useReducedMotion();
   const [tab, setTab] = useState(0);
   const [typed, setTyped] = useState(reduce ? QUERY.length : 0);
@@ -118,27 +125,25 @@ export default function AiSeoRankEverywhere() {
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(50%_100%_at_50%_0%,rgba(20,163,154,.08),transparent)]" />
       <Inner className="!max-w-[1314px] py-14 sm:py-16 lg:py-20 2xl:py-24">
         <div className="text-center">
-          <Pill>AI SEO Services</Pill>
+          <Pill>{$t("AiSeoRankEverywhere__t6", "AI SEO Services")}</Pill>
           <motion.h2
             initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease }}
-            className={`${display.className} mt-5 text-[clamp(44px,5vw,97px)] font-bold uppercase leading-[0.98] tracking-tight text-[#0b1b33]`}
+            className={`text-h2 ${display.className} mt-5 font-bold uppercase tracking-tight text-[#0b1b33]`}
           >
-            Rank Everywhere.
-            <br />
-            <span className="bg-gradient-to-r from-[#0b4f4a] via-[#0f766e] to-[#0b4f4a] bg-clip-text text-transparent">Grow Faster.</span>
+            {$t("AiSeoRankEverywhere__t7", "Rank Everywhere.")}<br />
+            <span className="bg-gradient-to-r from-[#0b4f4a] via-[#0f766e] to-[#0b4f4a] bg-clip-text text-transparent">{$t("AiSeoRankEverywhere__t8", "Grow Faster.")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1, ease }}
-            className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg 2xl:max-w-[540px] 2xl:text-[19px]"
+            className="text-body mx-auto mt-5 max-w-xl text-slate-600 2xl:max-w-[540px]"
           >
-            AI SEO strategies that get your business discovered across Google, AI Overviews, ChatGPT, Gemini, Maps and beyond.
-          </motion.p>
+            {rich($t("AiSeoRankEverywhere__t9", "AI SEO strategies that get your business discovered across Google, AI Overviews, ChatGPT, Gemini, Maps and beyond."))}</motion.p>
         </div>
 
         {/* search bar */}
@@ -166,10 +171,8 @@ export default function AiSeoRankEverywhere() {
             transition={{ duration: 0.7, ease }}
             className="relative order-2 xl:order-1"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-              We show up where
-              <br className="hidden xl:block" /> your customers search
-            </p>
+            <p className="text-caption font-semibold uppercase tracking-[0.14em] text-slate-500">
+              {rich($t("AiSeoRankEverywhere__t10", "We show up where"))}<br className="hidden xl:block" /> {rich($t("AiSeoRankEverywhere__t11", "your customers search"))}</p>
             <div className="relative mt-4">
             <Spine side="left" />
             <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 xl:grid-cols-1">
@@ -243,10 +246,8 @@ export default function AiSeoRankEverywhere() {
             transition={{ duration: 0.7, ease }}
             className="relative order-3"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-              More of what
-              <br className="hidden xl:block" /> your business needs
-            </p>
+            <p className="text-caption font-semibold uppercase tracking-[0.14em] text-slate-500">
+              {rich($t("AiSeoRankEverywhere__t12", "More of what"))}<br className="hidden xl:block" /> {rich($t("AiSeoRankEverywhere__t13", "your business needs"))}</p>
             <div className="relative mt-4">
             <Spine side="right" />
             <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 xl:grid-cols-1">
@@ -269,23 +270,21 @@ export default function AiSeoRankEverywhere() {
             </ul>
             </div>
             <div className="mt-2.5 flex items-end justify-between gap-2 rounded-xl border border-slate-100 bg-white p-3.5 shadow-[0_8px_20px_-16px_rgba(15,40,80,.4)]">
-              <p className="text-[13px] leading-snug text-slate-700">
-                Sustainable growth that compounds over time.
-              </p>
+              <p className="text-small text-slate-700">
+                {rich($t("AiSeoRankEverywhere__t14", "Sustainable growth that compounds over time."))}</p>
               <Spark className="h-12 w-16 shrink-0" points="0,28 14,24 26,26 40,17 52,20 66,10 78,13 100,1" />
             </div>
           </motion.div>
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <CtaButton className="sm:min-w-[240px] 2xl:min-w-[310px] 2xl:py-4 2xl:text-[17px]">Get AI SEO Strategy</CtaButton>
-          <CtaButton variant="ghost" href="#how-it-works" className="sm:min-w-[240px] 2xl:min-w-[280px] 2xl:py-4 2xl:text-[17px]">
-            See How It Works
-          </CtaButton>
+          <CtaButton className="sm:min-w-[240px] 2xl:min-w-[310px] 2xl:py-4 2xl:text-[17px]">{$t("AiSeoRankEverywhere__t15", "Get AI SEO Strategy")}</CtaButton>
+          <CtaButton variant="ghost" href={$t("AiSeoRankEverywhere__t16", "#how-it-works")} className="sm:min-w-[240px] 2xl:min-w-[280px] 2xl:py-4 2xl:text-[17px]">
+            {$t("AiSeoRankEverywhere__t17", "See How It Works")}</CtaButton>
         </div>
 
         <div className="mt-12 border-t border-slate-100 pt-6 text-center">
-          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate-500">Trusted by 100+ businesses growing through modern search</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate-500">{rich($t("AiSeoRankEverywhere__t18", "Trusted by 100+ businesses growing through modern search"))}</p>
           <ClientWordmarks className="mt-5" />
         </div>
       </Inner>

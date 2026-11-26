@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -103,19 +105,19 @@ const NoSalesPitchIcon = (p: { color?: string; size?: number }) => (
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
 
-const LEFT_STEPS = [
+const LEFT_STEPS__cms = [
   { num: "1", label: "Idea", Icon: LightbulbIcon, desc: "We turn your idea into a clear roadmap." },
   { num: "2", label: "Discover", Icon: SearchIcon, desc: "Deep research to understand users, market & opportunities." },
   { num: "3", label: "Design", Icon: DesignPenIcon, desc: "Intuitive UX. Beautiful UI. Built for real people." },
 ];
 
-const RIGHT_STEPS = [
+const RIGHT_STEPS__cms = [
   { num: "4", label: "Build", Icon: CodeIcon, desc: "Clean code. Scalable architecture. Zero compromise on performance." },
   { num: "5", label: "Launch", Icon: RocketIcon, desc: "We launch, support and optimize for real-world success." },
   { num: "6", label: "Grow", Icon: TrendingUpIcon, desc: "We stay with you to scale, improve and grow continuously." },
 ];
 
-const TRUST_BADGES = [
+const TRUST_BADGES__cms = [
   { Icon: ClockIcon, label: "30-min strategy call" },
   { Icon: NoObligationIcon, label: "No obligation" },
   { Icon: NoSalesPitchIcon, label: "No sales pitch" },
@@ -132,7 +134,7 @@ const stepItem: Variants = {
 
 /* ------------------------------------------------------------------ */
 
-function StepDot({ step, align }: { step: (typeof LEFT_STEPS)[number]; align: "left" | "right" }) {
+function StepDot({ step, align }: { step: (typeof LEFT_STEPS__cms)[number]; align: "left" | "right" }) {
   return (
     <motion.div variants={stepItem} className={`flex flex-col items-center text-center w-[104px] sm:w-[120px] ${align === "left" ? "" : ""}`}>
       <span
@@ -180,32 +182,33 @@ function Wave({ className = "flex-1 mt-7", flat = false }: { className?: string;
 /* ------------------------------------------------------------------ */
 
 function DiscoverScreen() {
+  const $t = useCmsText();
   return (
     <div className="absolute inset-[3px] rounded-[30px] overflow-hidden bg-white flex flex-col">
       <div className="flex items-center justify-between px-4 pt-3 pb-1.5 text-[9px] font-semibold" style={{ color: NAVY }}>
-        <span>9:41</span>
+        <span>{$t("AppDevProcess__t1", "9:41")}</span>
         <span className="w-3 h-2 rounded-sm border border-current" />
       </div>
 
       <div className="px-4 pb-2">
-        <p className="text-[9px] text-slate-400">Good Morning</p>
-        <p className="text-[13px] font-bold" style={{ color: NAVY }}>Discover what matters</p>
+        <p className="text-[9px] text-slate-400">{rich($t("AppDevProcess__t2", "Good Morning"))}</p>
+        <p className="text-small font-bold" style={{ color: NAVY }}>{rich($t("AppDevProcess__t3", "Discover what matters"))}</p>
       </div>
 
       <div className="mx-4 mb-3 flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
         <SearchIcon color="#94a3b8" size={11} />
-        <span className="text-[8.5px] text-slate-400">Search anything...</span>
+        <span className="text-[8.5px] text-slate-400">{$t("AppDevProcess__t4", "Search anything...")}</span>
       </div>
 
       <div className="px-4 mb-1 flex items-center justify-between">
-        <p className="text-[9.5px] font-bold" style={{ color: NAVY }}>Recommended for you</p>
-        <p className="text-[7.5px] font-semibold" style={{ color: DEEP_TEAL }}>See all</p>
+        <p className="text-[9.5px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevProcess__t5", "Recommended for you"))}</p>
+        <p className="text-[7.5px] font-semibold" style={{ color: DEEP_TEAL }}>{rich($t("AppDevProcess__t6", "See all"))}</p>
       </div>
       <div className="px-4 mb-3 grid grid-cols-2 gap-2">
-        {[{ n: "Minimal Chair", tag: "New Decor" }, { n: "Table Lamp", tag: "New Decor" }].map((it) => (
+        {[{ n: $t("AppDevProcess__t7", "Minimal Chair"), tag: $t("AppDevProcess__t8", "New Decor") }, { n: $t("AppDevProcess__t9", "Table Lamp"), tag: $t("AppDevProcess__t10", "New Decor") }].map((it) => (
           <div key={it.n} className="rounded-xl bg-slate-50 p-2">
             <div className="relative h-12 w-full overflow-hidden rounded-lg mb-1.5 bg-slate-100">
-              <Image src="/83a9d1eb-da0f-4585-bf40-f9031fb7e5f1.png" alt={it.n} fill className="object-cover" sizes="80px" />
+              <Image src={$t("AppDevProcess__t11", "/83a9d1eb-da0f-4585-bf40-f9031fb7e5f1.png")} alt={it.n} fill className="object-cover" sizes="80px" />
             </div>
             <p className="text-[8px] font-bold truncate" style={{ color: NAVY }}>{it.n}</p>
             <p className="text-[6.5px] text-slate-400">{it.tag}</p>
@@ -214,9 +217,9 @@ function DiscoverScreen() {
       </div>
 
       <div className="px-4 mb-3">
-        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>Categories</p>
+        <p className="text-[9.5px] font-bold mb-2" style={{ color: NAVY }}>{rich($t("AppDevProcess__t12", "Categories"))}</p>
         <div className="flex items-center justify-between">
-          {["Home", "Decor", "Lighting", "More"].map((c) => (
+          {[$t("AppDevProcess__t13", "Home"), $t("AppDevProcess__t14", "Decor"), $t("AppDevProcess__t15", "Lighting"), $t("AppDevProcess__t16", "More")].map((c) => (
             <div key={c} className="flex flex-col items-center gap-1">
               <span className="flex h-7 w-7 items-center justify-center rounded-full" style={{ backgroundColor: "#e6f6f4", color: DEEP_TEAL }}>
                 <span className="h-2 w-2 rounded-full" style={{ backgroundColor: DEEP_TEAL }} />
@@ -228,15 +231,15 @@ function DiscoverScreen() {
       </div>
 
       <div className="relative mx-4 mb-3 flex-1 overflow-hidden rounded-2xl p-3.5">
-        <Image src="/db67c28c-d876-48dc-bd73-fcdea87c15cb.png" alt="" fill className="object-cover" sizes="200px" />
+        <Image src={$t("AppDevProcess__t17", "/db67c28c-d876-48dc-bd73-fcdea87c15cb.png")} alt="" fill className="object-cover" sizes="200px" />
         <div className="absolute inset-0" style={{ background: `linear-gradient(100deg, ${DEEP_TEAL} 40%, transparent 95%)` }} />
-        <p className="relative text-[8px] font-semibold uppercase tracking-wide text-white/70">Summer Sale</p>
-        <p className="relative text-[12px] font-bold text-white mt-1">Up to 40% Off</p>
-        <span className="relative inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: DEEP_TEAL }}>Shop Now</span>
+        <p className="relative text-[8px] font-semibold uppercase tracking-wide text-white/70">{rich($t("AppDevProcess__t18", "Summer Sale"))}</p>
+        <p className="text-caption relative font-bold text-white mt-1">{rich($t("AppDevProcess__t19", "Up to 40% Off"))}</p>
+        <span className="relative inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: DEEP_TEAL }}>{$t("AppDevProcess__t20", "Shop Now")}</span>
       </div>
 
       <div className="mt-auto flex items-center justify-around border-t border-slate-100 px-1 pt-2 pb-3">
-        {["Home", "Categories", "Cart", "Wishlist", "Profile"].map((l, i) => (
+        {[$t("AppDevProcess__t21", "Home"), $t("AppDevProcess__t22", "Categories"), $t("AppDevProcess__t23", "Cart"), $t("AppDevProcess__t24", "Wishlist"), $t("AppDevProcess__t25", "Profile")].map((l, i) => (
           <span key={l} className="text-[6px] font-semibold" style={{ color: i === 0 ? DEEP_TEAL : "#cbd5e1" }}>{l}</span>
         ))}
       </div>
@@ -247,6 +250,10 @@ function DiscoverScreen() {
 /* ------------------------------------------------------------------ */
 
 export default function AppDevProcess() {
+  const $t = useCmsText();
+  const LEFT_STEPS = useCmsData("AppDevProcess__LEFT_STEPS", LEFT_STEPS__cms);
+  const RIGHT_STEPS = useCmsData("AppDevProcess__RIGHT_STEPS", RIGHT_STEPS__cms);
+  const TRUST_BADGES = useCmsData("AppDevProcess__TRUST_BADGES", TRUST_BADGES__cms);
   return (
     <section className="relative w-full bg-white py-14 lg:py-20 overflow-x-clip">
       <Container>
@@ -263,16 +270,13 @@ export default function AppDevProcess() {
             style={{ borderColor: "#e8d9b8", backgroundColor: CREAM, color: GOLD }}
           >
             <SparkleIcon color={GOLD} size={12} />
-            Let&apos;s Build What&apos;s Next
-          </span>
-          <h2 className="font-serif text-3xl md:text-[44px] leading-tight font-bold" style={{ color: NAVY }}>
-            The Next App They&apos;ll Love.
-            <br />
-            <span style={{ color: TEAL }}>It Starts With You.</span>
+            {$t("AppDevProcess__t26", "Let's Build What's Next")}</span>
+          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
+            {$t("AppDevProcess__t27", "The Next App They'll Love.")}<br />
+            <span style={{ color: TEAL }}>{$t("AppDevProcess__t28", "It Starts With You.")}</span>
           </h2>
-          <p className="text-sm md:text-base text-slate-500 max-w-lg leading-relaxed mt-4">
-            You bring the vision. We&apos;ll handle everything else to turn it into a powerful digital product.
-          </p>
+          <p className="text-body text-slate-500 max-w-lg mt-4">
+            {rich($t("AppDevProcess__t29", "You bring the vision. We'll handle everything else to turn it into a powerful digital product."))}</p>
         </motion.div>
 
         {/* Process timeline + phone */}
@@ -342,26 +346,23 @@ export default function AppDevProcess() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-0 p-8 lg:p-10">
             {/* Left */}
             <div className="flex flex-col justify-center lg:pr-10 lg:border-r border-slate-200/80">
-              <h3 className="font-serif text-2xl md:text-[28px] leading-snug font-bold" style={{ color: NAVY }}>
-                From an idea in your mind
-                <br />
+              <h3 className="text-h4 font-serif font-bold" style={{ color: NAVY }}>
+                {$t("AppDevProcess__t30", "From an idea in your mind")}<br />
                 to <span className="relative" style={{ color: TEAL }}>
-                  millions in their hands.
-                  <svg className="absolute -bottom-1.5 left-0 w-full h-2" viewBox="0 0 200 10" fill="none" preserveAspectRatio="none" aria-hidden>
+                  {$t("AppDevProcess__t31", "millions in their hands.")}<svg className="absolute -bottom-1.5 left-0 w-full h-2" viewBox="0 0 200 10" fill="none" preserveAspectRatio="none" aria-hidden>
                     <path d="M2 8 Q 100 -2 198 8" stroke={GOLD} strokeWidth="2.5" fill="none" />
                   </svg>
                 </span>
               </h3>
-              <p className="text-[13px] text-slate-500 leading-relaxed mt-3 max-w-sm">
-                We&apos;ve helped startups and enterprises launch apps that users love and businesses rely on.
-              </p>
+              <p className="text-small text-slate-500 mt-3 max-w-sm">
+                {rich($t("AppDevProcess__t32", "We've helped startups and enterprises launch apps that users love and businesses rely on."))}</p>
             </div>
 
             {/* Center: button + caption */}
             <div className="relative flex flex-col items-center justify-center px-10 lg:px-16 lg:border-r border-slate-200/80">
               <div className="relative z-20 flex flex-col items-center mt-10 lg:mt-14">
                 <Link
-                  href="/contact"
+                  href={$t("AppDevProcess__t33", "/contact")}
                   aria-label="Take the first step"
                   className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-white shadow-[0_15px_30px_-10px_rgba(15,92,86,0.6)] transition-transform hover:-translate-y-0.5"
                   style={{ backgroundColor: DEEP_TEAL }}
@@ -370,8 +371,7 @@ export default function AppDevProcess() {
                 </Link>
                 <div className="relative mt-2 text-center">
                   <p className="font-serif italic text-[11.5px] leading-snug max-w-[140px]" style={{ color: GOLD }}>
-                    Take the first step towards your next big success.
-                  </p>
+                    {rich($t("AppDevProcess__t34", "Take the first step towards your next big success."))}</p>
                 </div>
               </div>
             </div>
@@ -382,23 +382,22 @@ export default function AppDevProcess() {
                 <div className="flex -space-x-2">
                   {[1, 2, 3].map((i) => (
                     <div key={i} className="h-7 w-7 rounded-full ring-2 ring-white overflow-hidden relative bg-slate-200">
-                      <Image src="/image1.jpg" alt="Client" fill className="object-cover" />
+                      <Image src={$t("AppDevProcess__t35", "/image1.jpg")} alt={$t("AppDevProcess__t36", "Client")} fill className="object-cover" />
                     </div>
                   ))}
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  <span className="font-bold" style={{ color: NAVY }}>50+ businesses</span> transformed with ProManage
-                </p>
+                  <span className="font-bold" style={{ color: NAVY }}>{$t("AppDevProcess__t37", "50+ businesses")}</span> {rich($t("AppDevProcess__t38", "transformed with ProManage"))}</p>
               </div>
 
-              <h3 className="text-[19px] font-bold" style={{ color: NAVY }}>Let&apos;s Build Your Success Story</h3>
+              <h3 className="text-h6 font-bold" style={{ color: NAVY }}>{$t("AppDevProcess__t39", "Let's Build Your Success Story")}</h3>
 
               <Link
-                href="/contact"
+                href={$t("AppDevProcess__t40", "/contact")}
                 className="mt-4 inline-flex w-fit items-center gap-2 rounded-lg px-5 py-3 text-[13px] font-semibold text-white shadow-lg shadow-teal-900/20 transition-transform hover:-translate-y-0.5"
                 style={{ backgroundColor: DEEP_TEAL }}
               >
-                Start Your Project <ArrowRightIcon color="#fff" size={15} />
+                {$t("AppDevProcess__t41", "Start Your Project ")}<ArrowRightIcon color="#fff" size={15} />
               </Link>
 
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5">
@@ -422,7 +421,7 @@ export default function AppDevProcess() {
           className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 mt-8"
         >
           <HeartIcon color="#cbd5e1" size={13} />
-          Trusted by <span className="font-semibold" style={{ color: TEAL }}>ambitious brands</span> worldwide
+          {rich($t("AppDevProcess__t42", "Trusted by "))}<span className="font-semibold" style={{ color: TEAL }}>{$t("AppDevProcess__t43", "ambitious brands")}</span> worldwide
         </motion.p>
       </Container>
     </section>

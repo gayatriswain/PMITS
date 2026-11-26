@@ -3,6 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Container from '../shared/Container';
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const SearchIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
@@ -33,6 +35,7 @@ const NODES = [
 ];
 
 const EcosystemCircle = () => {
+  const $t = useCmsText();
   const S = 340, cx = 170, cy = 170, outerR = 125;
   const arcs = [];
   for (let i = 0; i < NODES.length; i++) {
@@ -76,43 +79,45 @@ const EcosystemCircle = () => {
       })}
       <foreignObject x={cx - 60} y={cy - 50} width="120" height="100">
         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'100%' }}>
-          <img src="/google-ads-icon.webp" alt="Google Ads" style={{ width: '48px', height: '48px', objectFit: 'contain', marginBottom: '4px' }} />
-          <span style={{ fontSize:'12px', fontWeight:700, color:'#132a43', textAlign:'center', lineHeight:1.3 }}>Google Ads<br/>Ecosystem</span>
+          <img src={$t("GoogleAdsFunnel__t1", "/google-ads-icon.webp")} alt={$t("GoogleAdsFunnel__t2", "Google Ads")} style={{ width: '48px', height: '48px', objectFit: 'contain', marginBottom: '4px' }} />
+          <span style={{ fontSize:'12px', fontWeight:700, color:'#132a43', textAlign:'center', lineHeight:1.3 }}>{$t("GoogleAdsFunnel__t3", "Google Ads")}<br/>{$t("GoogleAdsFunnel__t4", "Ecosystem")}</span>
         </div>
       </foreignObject>
     </svg>
   );
 };
 
-const LEFT_ITEMS = [
+const LEFT_ITEMS__cms = [
   { num: "01", title: "Search Ads", desc: "Capture high-intent customers actively searching for your products or services.", Icon: SearchIcon, color: "#00acc1", clip: "polygon(0 0, 100% 12%, 100% 88%, 0 100%)" },
   { num: "02", title: "Shopping Ads", desc: "Showcase your products to customers who are ready to buy.", Icon: ShoppingIcon, color: "#34A853", clip: "polygon(0 4%, 100% 10%, 100% 90%, 0 96%)" },
   { num: "03", title: "YouTube Ads", desc: "Build brand awareness and drive demand with engaging video advertising.", Icon: YouTubeIcon, color: "#EA4335", clip: "polygon(0 12%, 100% 4%, 100% 96%, 0 88%)" },
 ];
 
-const RIGHT_ITEMS = [
+const RIGHT_ITEMS__cms = [
   { num: "05", title: "Performance Max", desc: "Leverage AI to maximize conversions across all Google channels with one campaign.", Icon: StarIcon, color: "#FBBC05", clip: "polygon(0 12%, 100% 0, 100% 100%, 0 88%)" },
   { num: "06", title: "Display Ads", desc: "Reach your audience across millions of websites and apps they visit.", Icon: MonitorIcon, color: "#4285F4", clip: "polygon(0 10%, 100% 4%, 100% 96%, 0 90%)" },
   { num: "04", title: "Remarketing", desc: "Reconnect with visitors who showed interest and bring them back to convert.", Icon: UsersIcon, color: "#7c4dff", clip: "polygon(0 4%, 100% 12%, 100% 88%, 0 96%)" },
 ];
 
 export default function GoogleAdsFunnel() {
+  const $t = useCmsText();
+  const LEFT_ITEMS = useCmsData("GoogleAdsFunnel__LEFT_ITEMS", LEFT_ITEMS__cms);
+  const RIGHT_ITEMS = useCmsData("GoogleAdsFunnel__RIGHT_ITEMS", RIGHT_ITEMS__cms);
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section id="how-it-works" className="py-20 bg-white overflow-hidden">
       <Container>
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="h-px w-10 bg-[#00acc1]"></span>
-            <span className="text-[#00acc1] text-xs font-bold tracking-widest uppercase">How We Do It</span>
+            <span className="text-[#00acc1] text-xs font-bold tracking-widest uppercase">{$t("GoogleAdsFunnel__t5", "How We Do It")}</span>
             <span className="h-px w-10 bg-[#00acc1]"></span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#132a43] leading-tight mb-5 font-serif">
-            A Full-Funnel Approach<br />Across <span className="text-[#00acc1]">Google.</span>
+          <h2 className="text-h2 font-bold text-[#132a43] mb-5 font-serif">
+            {$t("GoogleAdsFunnel__t6", "A Full-Funnel Approach")}<br />{$t("GoogleAdsFunnel__t7", "Across ")}<span className="text-[#00acc1]">{$t("GoogleAdsFunnel__t8", "Google.")}</span>
           </h2>
-          <p className="text-slate-500 max-w-xl mx-auto text-sm lg:text-base leading-relaxed">
-            We combine the power of all Google Ads networks<br className="hidden md:block" />
-            to attract, engage and convert your ideal customers at every stage.
-          </p>
+          <p className="text-body text-slate-500 max-w-xl mx-auto">
+            {rich($t("GoogleAdsFunnel__t9", "We combine the power of all Google Ads networks"))}<br className="hidden md:block" />
+            {rich($t("GoogleAdsFunnel__t10", "to attract, engage and convert your ideal customers at every stage."))}</p>
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-0 w-full relative z-0">
@@ -132,7 +137,7 @@ export default function GoogleAdsFunnel() {
                     >
                       <span className="text-sm font-extrabold tracking-wider mb-1" style={{ color: item.color }}>{item.num}</span>
                       <h3 className="text-lg font-bold text-[#132a43] mb-2">{item.title}</h3>
-                      <p className="text-xs text-slate-500 leading-relaxed mb-4">{item.desc}</p>
+                      <p className="text-caption text-slate-500 mb-4">{item.desc}</p>
                       <div className="h-[2px] w-8 rounded-full" style={{ backgroundColor: item.color, opacity: 0.5 }}></div>
                     </div>
                   </div>
@@ -170,7 +175,7 @@ export default function GoogleAdsFunnel() {
                     >
                       <span className="text-sm font-extrabold tracking-wider mb-1" style={{ color: item.color }}>{item.num}</span>
                       <h3 className="text-lg font-bold text-[#132a43] mb-2">{item.title}</h3>
-                      <p className="text-xs text-slate-500 leading-relaxed mb-4">{item.desc}</p>
+                      <p className="text-caption text-slate-500 mb-4">{item.desc}</p>
                       <div className="h-[2px] w-8 rounded-full" style={{ backgroundColor: item.color, opacity: 0.5 }}></div>
                     </div>
                   </div>
@@ -187,7 +192,7 @@ export default function GoogleAdsFunnel() {
         </div>
 
         {/* Bottom Row */}
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-6 w-full max-w-4xl mx-auto relative z-10 mt-8 lg:-mt-2">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-6 w-full max-w-6xl mx-auto relative z-10 mt-8 lg:-mt-2">
           {[LEFT_ITEMS[2], RIGHT_ITEMS[2]].map((item, i) => {
             const delay = i === 0 ? 0.3 : 0.45;
             const translateX = i === 0 ? 'lg:translate-x-12' : 'lg:-translate-x-12';
@@ -203,7 +208,7 @@ export default function GoogleAdsFunnel() {
                   >
                     <span className="text-sm font-extrabold tracking-wider mb-1" style={{ color: item.color }}>{item.num}</span>
                     <h3 className="text-lg font-bold text-[#132a43] mb-2">{item.title}</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed mb-4">{item.desc}</p>
+                    <p className="text-caption text-slate-500 mb-4">{item.desc}</p>
                     <div className="h-[2px] w-8 rounded-full" style={{ backgroundColor: item.color, opacity: 0.5 }}></div>
                   </div>
                 </div>

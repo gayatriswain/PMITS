@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -21,7 +23,7 @@ const fadeUp: Variants = {
 };
 
 /* ------------------------------ action options ------------------------------ */
-const ACTIONS = [
+const ACTIONS__cms = [
   {
     id: "discuss",
     title: "Discuss My Idea",
@@ -77,6 +79,8 @@ const ACTIONS = [
 ];
 
 export default function HireCakePhpFinalStep() {
+  const $t = useCmsText();
+  const ACTIONS = useCmsData("HireCakePhpFinalStep__ACTIONS", ACTIONS__cms);
   const reduce = useReducedMotion();
   const [selectedAction, setSelectedAction] = useState<string>("discuss");
 
@@ -94,31 +98,28 @@ export default function HireCakePhpFinalStep() {
           >
             <motion.div variants={fadeUp} custom={0} className="flex items-center gap-2.5">
               <span className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: RED }}>
-                FINAL STEP
-              </span>
+                {$t("HireCakePhpFinalStep__t1", "FINAL STEP")}</span>
               <span className="h-[1.5px] w-7 opacity-60" style={{ background: RED }} />
             </motion.div>
 
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="mt-4 font-playfair text-[36px] font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[44px] xl:text-[48px]"
+              className="text-h2 mt-4 font-playfair font-bold tracking-tight"
               style={{ color: INK }}
             >
-              Ready to build
-              <br />
+              {$t("HireCakePhpFinalStep__t2", "Ready to build")}<br />
               something
               <br />
-              <span style={{ color: RED }}>extraordinary?</span>
+              <span style={{ color: RED }}>{$t("HireCakePhpFinalStep__t3", "extraordinary?")}</span>
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
               custom={2}
-              className="mt-4 max-w-[340px] text-[13.5px] leading-relaxed text-slate-600"
+              className="text-small mt-4 max-w-[340px] text-slate-600"
             >
-              Share your idea with our CakePHP experts and let&apos;s turn it into a powerful solution.
-            </motion.p>
+              {rich($t("HireCakePhpFinalStep__t4", "Share your idea with our CakePHP experts and let's turn it into a powerful solution."))}</motion.p>
 
             {/* Red swoosh scribble */}
             <motion.div variants={fadeUp} custom={3} className="mt-5 text-[#d92b32]">
@@ -196,7 +197,7 @@ export default function HireCakePhpFinalStep() {
               >
                 <Image
                   src={PEDESTAL}
-                  alt="CakePHP Architecture"
+                  alt={$t("HireCakePhpFinalStep__t5", "CakePHP Architecture")}
                   width={210}
                   height={195}
                   sizes="210px"
@@ -221,8 +222,8 @@ export default function HireCakePhpFinalStep() {
                 </svg>
               </span>
               <div className="text-left">
-                <p className="text-[11px] font-bold leading-tight" style={{ color: INK }}>Secure</p>
-                <p className="text-[9.5px] leading-tight text-slate-500">by design</p>
+                <p className="text-[11px] font-bold leading-tight" style={{ color: INK }}>{rich($t("HireCakePhpFinalStep__t6", "Secure"))}</p>
+                <p className="text-[9.5px] leading-tight text-slate-500">{rich($t("HireCakePhpFinalStep__t7", "by design"))}</p>
               </div>
             </motion.div>
 
@@ -240,7 +241,7 @@ export default function HireCakePhpFinalStep() {
                   <path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-3.05 11a22 22 0 01-3.95 2L12 15z" />
                 </svg>
               </span>
-              <p className="mt-1 text-[10.5px] font-bold leading-tight" style={{ color: INK }}>Built for</p>
+              <p className="mt-1 text-[10.5px] font-bold leading-tight" style={{ color: INK }}>{rich($t("HireCakePhpFinalStep__t8", "Built for"))}</p>
               <p className="text-[9.5px] leading-tight text-slate-500">performance</p>
             </motion.div>
 
@@ -260,8 +261,8 @@ export default function HireCakePhpFinalStep() {
                 </svg>
               </span>
               <div className="text-left">
-                <p className="text-[11px] font-bold leading-tight" style={{ color: INK }}>Developed</p>
-                <p className="text-[9.5px] leading-tight text-slate-500">to scale</p>
+                <p className="text-[11px] font-bold leading-tight" style={{ color: INK }}>{rich($t("HireCakePhpFinalStep__t9", "Developed"))}</p>
+                <p className="text-[9.5px] leading-tight text-slate-500">{rich($t("HireCakePhpFinalStep__t10", "to scale"))}</p>
               </div>
             </motion.div>
           </div>
@@ -274,9 +275,8 @@ export default function HireCakePhpFinalStep() {
             transition={{ duration: 0.75, delay: 0.2, ease: EASE }}
             className="relative rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_24px_60px_-20px_rgba(15,26,46,0.08)] sm:p-7"
           >
-            <h3 className="font-playfair text-[22px] font-bold leading-snug sm:text-[24px]" style={{ color: INK }}>
-              What would <span style={{ color: RED }}>you</span> like to do?
-            </h3>
+            <h3 className="text-h5 font-playfair font-bold" style={{ color: INK }}>
+              {$t("HireCakePhpFinalStep__t11", "What would ")}<span style={{ color: RED }}>you</span> {$t("HireCakePhpFinalStep__t12", "like to do?")}</h3>
 
             {/* 4 Action Cards */}
             <div className="mt-5 flex flex-col gap-3">
@@ -285,7 +285,7 @@ export default function HireCakePhpFinalStep() {
                 return (
                   <Link
                     key={act.id}
-                    href="#cakephp-contact"
+                    href={$t("HireCakePhpFinalStep__t13", "#cakephp-contact")}
                     onClick={() => setSelectedAction(act.id)}
                     className={`group flex items-center justify-between rounded-2xl border p-3.5 transition-all duration-300 ${
                       active
@@ -304,7 +304,7 @@ export default function HireCakePhpFinalStep() {
                         {act.icon}
                       </span>
                       <div className="text-left">
-                        <p className="text-[13px] font-bold leading-tight" style={{ color: INK }}>
+                        <p className="text-small font-bold" style={{ color: INK }}>
                           {act.title}
                         </p>
                         <p className="mt-0.5 text-[11px] leading-tight text-slate-500">
@@ -331,7 +331,7 @@ export default function HireCakePhpFinalStep() {
                 <rect x="4" y="11" width="16" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0110 0v4" />
               </svg>
-              <span>No spam. Just real conversations.</span>
+              <span>{$t("HireCakePhpFinalStep__t14", "No spam. Just real conversations.")}</span>
             </div>
           </motion.div>
         </div>
@@ -359,12 +359,11 @@ export default function HireCakePhpFinalStep() {
             </svg>
 
             <div>
-              <p className="font-playfair text-[15px] font-bold leading-tight sm:text-[16px]" style={{ color: INK }}>
-                Let&apos;s build it <span style={{ color: RED }}>the right way.</span>
+              <p className="text-body font-playfair font-bold" style={{ color: INK }}>
+                {rich($t("HireCakePhpFinalStep__t15", "Let's build it "))}<span style={{ color: RED }}>{$t("HireCakePhpFinalStep__t16", "the right way.")}</span>
               </p>
               <p className="mt-0.5 text-[11px] text-slate-500">
-                Simple conversation. Real solutions.
-              </p>
+                {rich($t("HireCakePhpFinalStep__t17", "Simple conversation. Real solutions."))}</p>
             </div>
           </div>
 
@@ -376,32 +375,30 @@ export default function HireCakePhpFinalStep() {
             {/* Team Avatars */}
             <div className="flex items-center -space-x-2">
               <Image
-                src="/customer-avatar.jpg"
-                alt="ProManage Team Member"
+                src={$t("HireCakePhpFinalStep__t18", "/customer-avatar.jpg")}
+                alt={$t("HireCakePhpFinalStep__t19", "ProManage Team Member")}
                 width={36}
                 height={36}
                 className="h-9 w-9 rounded-full border-2 border-white object-cover shadow-sm"
               />
               <Image
-                src="/ravi-sharma-avatar.jpg"
-                alt="ProManage CakePHP Specialist"
+                src={$t("HireCakePhpFinalStep__t20", "/ravi-sharma-avatar.jpg")}
+                alt={$t("HireCakePhpFinalStep__t21", "ProManage CakePHP Specialist")}
                 width={36}
                 height={36}
                 className="h-9 w-9 rounded-full border-2 border-white object-cover shadow-sm"
               />
               <Image
-                src="/agent-live-avatar.png"
-                alt="ProManage Technical Lead"
+                src={$t("HireCakePhpFinalStep__t22", "/agent-live-avatar.png")}
+                alt={$t("HireCakePhpFinalStep__t23", "ProManage Technical Lead")}
                 width={36}
                 height={36}
                 className="h-9 w-9 rounded-full border-2 border-white object-cover shadow-sm"
               />
             </div>
 
-            <p className="text-[12px] font-medium text-slate-600">
-              Your idea is safe
-              <br className="hidden sm:inline" /> with us.
-            </p>
+            <p className="text-caption font-medium text-slate-600">
+              {rich($t("HireCakePhpFinalStep__t24", "Your idea is safe"))}<br className="hidden sm:inline" /> {rich($t("HireCakePhpFinalStep__t25", "with us."))}</p>
 
             {/* Red Heart with subtle ripple ring */}
             <div className="relative grid h-9 w-9 place-items-center">

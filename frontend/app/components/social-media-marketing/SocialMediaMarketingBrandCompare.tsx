@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, useInView, type Variants } from "framer-motion";
 import { Counter } from "../shared/useCountUp";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -120,7 +122,7 @@ const RocketIcon = ({ color = DEEP_TEAL, size = 20 }: IconProps) => (
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
 
-const LEFT_ISSUES = [
+const LEFT_ISSUES__cms = [
   { label: "Inconsistent Look", Icon: NoEntryIcon },
   { label: "Random Content", Icon: ScatterGridIcon },
   { label: "Low Engagement", Icon: TrendDownIcon },
@@ -128,22 +130,22 @@ const LEFT_ISSUES = [
   { label: "Forgettable", Icon: EyeSlashIcon },
 ];
 
-const RIGHT_WINS = ["Consistent Identity", "Strategic Content", "Higher Engagement", "Stronger Brand Recall", "Better Results"];
+const RIGHT_WINS__cms = ["Consistent Identity", "Strategic Content", "Higher Engagement", "Stronger Brand Recall", "Better Results"];
 
-const STATS = [
+const STATS__cms = [
   { target: 30, suffix: "M+", label: "People Reached", Icon: UsersIcon },
   { target: 4.9, suffix: "/5", label: "Client Rating", Icon: HeartIcon, stars: true },
   { target: 1000, suffix: "+", label: "Campaigns Delivered", Icon: TrendUpIcon },
 ];
 
-const FEATURES = [
+const FEATURES__cms = [
   { title: "Consistency", desc: "A strong brand across every platform.", Icon: TargetIcon },
   { title: "Creativity", desc: "Content that stops and connects.", Icon: BulbIcon },
   { title: "Strategy", desc: "Data-driven campaigns that deliver real growth.", Icon: RocketIcon },
 ];
 
 // Drop each logo file into frontend/public/ with these exact names and it'll show up here automatically.
-const BRANDS = [
+const BRANDS__cms = [
   { name: "bont", logo: "/brand-bont.png" },
   { name: "The Urban Collective", logo: "/brand-urban-collective.png" },
   { name: "Luna", logo: "/brand-luna.png" },
@@ -172,6 +174,7 @@ const listItemRight: Variants = {
 /* ------------------------------------------------------------------ */
 
 function StatsBar() {
+  const STATS = useCmsData("SocialMediaMarketingBrandCompare__STATS", STATS__cms);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   return (
@@ -188,7 +191,7 @@ function StatsBar() {
             <stat.Icon />
           </span>
           <div>
-            <p className="text-xl font-bold tabular-nums leading-none" style={{ color: DEEP_TEAL }}>
+            <p className="text-body font-bold tabular-nums" style={{ color: DEEP_TEAL }}>
               {Number.isInteger(stat.target) ? (
                 inView ? <Counter target={stat.target} suffix={stat.suffix} /> : `0${stat.suffix}`
               ) : (
@@ -196,7 +199,7 @@ function StatsBar() {
               )}
             </p>
             <div className="flex items-center gap-1.5 mt-1">
-              <p className="text-[13px] font-semibold text-slate-700">{stat.label}</p>
+              <p className="text-small font-semibold text-slate-700">{stat.label}</p>
               {stat.stars && (
                 <span className="flex gap-0.5">
                   {[0, 1, 2, 3, 4].map((s) => (
@@ -213,6 +216,7 @@ function StatsBar() {
 }
 
 function FeaturesBar() {
+  const FEATURES = useCmsData("SocialMediaMarketingBrandCompare__FEATURES", FEATURES__cms);
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -227,8 +231,8 @@ function FeaturesBar() {
             <f.Icon />
           </span>
           <div>
-            <p className="text-[15px] font-bold" style={{ color: NAVY }}>{f.title}</p>
-            <p className="text-[13px] text-slate-500 leading-snug mt-1">{f.desc}</p>
+            <p className="text-body font-bold" style={{ color: NAVY }}>{f.title}</p>
+            <p className="text-small text-slate-500 mt-1">{f.desc}</p>
           </div>
         </div>
       ))}
@@ -239,6 +243,10 @@ function FeaturesBar() {
 /* ------------------------------------------------------------------ */
 
 export default function SocialMediaMarketingBrandCompare() {
+  const $t = useCmsText();
+  const LEFT_ISSUES = useCmsData("SocialMediaMarketingBrandCompare__LEFT_ISSUES", LEFT_ISSUES__cms);
+  const RIGHT_WINS = useCmsData("SocialMediaMarketingBrandCompare__RIGHT_WINS", RIGHT_WINS__cms);
+  const BRANDS = useCmsData("SocialMediaMarketingBrandCompare__BRANDS", BRANDS__cms);
   return (
     <section className="relative w-full bg-[#F7F9FA] py-16 lg:py-24 overflow-hidden">
       <Container className="flex flex-col gap-12 lg:gap-16">
@@ -252,21 +260,17 @@ export default function SocialMediaMarketingBrandCompare() {
             transition={{ duration: 0.7, ease: EASE }}
           >
             <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              Why Some Brands Get Remembered
-            </span>
-            <h2 className="font-serif text-3xl md:text-[42px] leading-tight font-bold mt-3" style={{ color: NAVY }}>
-              While Others Get Scrolled Past.
-            </h2>
-            <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-4 max-w-md">
-              A beautiful social presence isn&apos;t about posting more. It&apos;s about creating a brand people instantly recognize, trust and remember every time they scroll.
-            </p>
+              {$t("SocialMediaMarketingBrandCompare__t1", "Why Some Brands Get Remembered")}</span>
+            <h2 className="text-h2 font-serif font-bold mt-3" style={{ color: NAVY }}>
+              {$t("SocialMediaMarketingBrandCompare__t2", "While Others Get Scrolled Past.")}</h2>
+            <p className="text-body text-slate-600 mt-4 max-w-md">
+              {rich($t("SocialMediaMarketingBrandCompare__t3", "A beautiful social presence isn't about posting more. It's about creating a brand people instantly recognize, trust and remember every time they scroll."))}</p>
             <Link
-              href="/contact"
+              href={$t("SocialMediaMarketingBrandCompare__t4", "/contact")}
               className="inline-flex items-center gap-2.5 mt-6 rounded-lg px-5 py-3 text-[13px] font-semibold text-white shadow-lg shadow-teal-900/15 transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Let&apos;s Build a Brand That Stands Out
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              {$t("SocialMediaMarketingBrandCompare__t5", "Let's Build a Brand That Stands Out")}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
@@ -283,10 +287,10 @@ export default function SocialMediaMarketingBrandCompare() {
               transition={{ duration: 0.6, ease: EASE }}
               className="flex flex-col items-center"
             >
-              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-slate-400 text-center">Ordinary Brand</span>
-              <span className="text-[11px] text-slate-400 mb-3 text-center">Just Another Feed</span>
+              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-slate-400 text-center">{$t("SocialMediaMarketingBrandCompare__t6", "Ordinary Brand")}</span>
+              <span className="text-[11px] text-slate-400 mb-3 text-center">{$t("SocialMediaMarketingBrandCompare__t7", "Just Another Feed")}</span>
               <div className="relative w-[120px] sm:w-[170px]" style={{ aspectRatio: "501/970" }}>
-                <Image src="/social-media.webp" alt="Ordinary brand's inconsistent social feed" fill sizes="170px" className="object-contain" />
+                <Image src={$t("SocialMediaMarketingBrandCompare__t8", "/social-media.webp")} alt={$t("SocialMediaMarketingBrandCompare__t9", "Ordinary brand's inconsistent social feed")} fill sizes="170px" className="object-contain" />
               </div>
               <motion.ul
                 variants={listContainer}
@@ -313,10 +317,10 @@ export default function SocialMediaMarketingBrandCompare() {
               transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
               className="flex flex-col items-center"
             >
-              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-center" style={{ color: TEAL }}>ProManage Brand</span>
-              <span className="text-[11px] text-slate-400 mb-3 text-center">Built to Stand Out</span>
+              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-center" style={{ color: TEAL }}>{$t("SocialMediaMarketingBrandCompare__t10", "ProManage Brand")}</span>
+              <span className="text-[11px] text-slate-400 mb-3 text-center">{$t("SocialMediaMarketingBrandCompare__t11", "Built to Stand Out")}</span>
               <div className="relative w-[120px] sm:w-[170px]" style={{ aspectRatio: "500/941" }}>
-                <Image src="/social media2.webp" alt="ProManage's consistent, branded social feed" fill sizes="170px" className="object-contain" />
+                <Image src={$t("SocialMediaMarketingBrandCompare__t12", "/social media2.webp")} alt={$t("SocialMediaMarketingBrandCompare__t13", "ProManage's consistent, branded social feed")} fill sizes="170px" className="object-contain" />
               </div>
               <motion.ul
                 variants={listContainer}
@@ -364,10 +368,10 @@ export default function SocialMediaMarketingBrandCompare() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="flex flex-col items-center"
               >
-                <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-slate-400">Ordinary Brand</span>
-                <span className="text-[11px] text-slate-400 mb-3">Just Another Feed</span>
+                <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-slate-400">{$t("SocialMediaMarketingBrandCompare__t14", "Ordinary Brand")}</span>
+                <span className="text-[11px] text-slate-400 mb-3">{$t("SocialMediaMarketingBrandCompare__t15", "Just Another Feed")}</span>
                 <div className="relative w-[170px]" style={{ aspectRatio: "501/970" }}>
-                  <Image src="/social-media.webp" alt="Ordinary brand's inconsistent social feed" fill sizes="170px" className="object-contain" />
+                  <Image src={$t("SocialMediaMarketingBrandCompare__t16", "/social-media.webp")} alt={$t("SocialMediaMarketingBrandCompare__t17", "Ordinary brand's inconsistent social feed")} fill sizes="170px" className="object-contain" />
                 </div>
               </motion.div>
 
@@ -379,8 +383,7 @@ export default function SocialMediaMarketingBrandCompare() {
                 className="mt-24 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[12px] font-extrabold text-white ring-4 ring-white"
                 style={{ backgroundColor: DEEP_TEAL }}
               >
-                VS
-              </motion.span>
+                {$t("SocialMediaMarketingBrandCompare__t18", "VS")}</motion.span>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -389,10 +392,10 @@ export default function SocialMediaMarketingBrandCompare() {
                 transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
                 className="flex flex-col items-center"
               >
-                <span className="text-[10px] font-bold tracking-[0.12em] uppercase" style={{ color: TEAL }}>ProManage Brand</span>
-                <span className="text-[11px] text-slate-400 mb-3">Built to Stand Out</span>
+                <span className="text-[10px] font-bold tracking-[0.12em] uppercase" style={{ color: TEAL }}>{$t("SocialMediaMarketingBrandCompare__t19", "ProManage Brand")}</span>
+                <span className="text-[11px] text-slate-400 mb-3">{$t("SocialMediaMarketingBrandCompare__t20", "Built to Stand Out")}</span>
                 <div className="relative w-[170px]" style={{ aspectRatio: "500/941" }}>
-                  <Image src="/social media2.webp" alt="ProManage's consistent, branded social feed" fill sizes="170px" className="object-contain" />
+                  <Image src={$t("SocialMediaMarketingBrandCompare__t21", "/social media2.webp")} alt={$t("SocialMediaMarketingBrandCompare__t22", "ProManage's consistent, branded social feed")} fill sizes="170px" className="object-contain" />
                 </div>
               </motion.div>
             </div>
@@ -429,8 +432,7 @@ export default function SocialMediaMarketingBrandCompare() {
           className="flex flex-col items-center text-center"
         >
           <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5">
-            Trusted by <span style={{ color: DEEP_TEAL }}>Ambitious Brands</span> Worldwide
-          </p>
+            {rich($t("SocialMediaMarketingBrandCompare__t23", "Trusted by "))}<span style={{ color: DEEP_TEAL }}>{$t("SocialMediaMarketingBrandCompare__t24", "Ambitious Brands")}</span> {rich($t("SocialMediaMarketingBrandCompare__t25", "Worldwide"))}</p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
             {BRANDS.map((b) => (
               <span key={b.name} className="relative h-7 sm:h-8 w-[110px] opacity-60 grayscale">

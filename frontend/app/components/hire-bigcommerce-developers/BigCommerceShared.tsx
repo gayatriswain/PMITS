@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Icon, ease, heading, type IconName } from "../shared/MagentoShared";
+import { useCmsText } from "@/components/cms/SectionContent";
 
 export { ArrowRight, DotGrid, Eyebrow, Icon, ease, fadeUp, heading, useSeen, MagentoStyles, type IconName } from "../shared/MagentoShared";
 
@@ -280,6 +281,7 @@ export function CtaStrip({
   dark?: boolean;
   tile?: "ring" | "square";
 }) {
+  const $t = useCmsText();
   const reduce = useReducedMotion();
   return (
     <motion.div
@@ -330,7 +332,7 @@ export function CtaStrip({
         <h3 className={`${heading.className} text-xl font-semibold sm:text-2xl ${dark ? "text-white" : "text-[#0b1a4a]"}`}>
           {title} <span className={dark ? "text-cyan-300" : "text-[#2348e6]"}>{accent}</span>
         </h3>
-        <p className={`mt-1 text-sm ${dark ? "text-blue-100/85" : "text-slate-600"}`}>{text}</p>
+        <p className={`text-small mt-1 ${dark ? "text-blue-100/85" : "text-slate-600"}`}>{text}</p>
         <ul className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2 md:justify-start">
           {checks.map((c, i) => (
             <li key={c.label} className={`flex items-center gap-2 text-[13px] ${dark ? "text-blue-50/90" : "text-slate-600"} ${i > 0 ? "md:border-l md:pl-5" : ""} ${dark ? "border-white/20" : "border-slate-200"}`}>
@@ -342,8 +344,8 @@ export function CtaStrip({
       </div>
 
       <div className="relative flex shrink-0 flex-col items-center gap-2">
-        <GradButton light={dark}>Start Your Free Trial</GradButton>
-        <HandNote light={dark}>It’s free. It’s easy. It’s time.</HandNote>
+        <GradButton light={dark}>{$t("BigCommerceShared__t1", "Start Your Free Trial")}</GradButton>
+        <HandNote light={dark}>{$t("BigCommerceShared__t2", "It’s free. It’s easy. It’s time.")}</HandNote>
       </div>
     </motion.div>
   );

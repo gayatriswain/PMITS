@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "./Container";
 import { Plant } from "./WooWhyHire";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
+import { goToThankYou } from "@/lib/forms";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -134,7 +136,7 @@ const CheckCircleIcon = ({ size = 52, color = "#5eead4" }: IconProps) => (
   </svg>
 );
 
-const BENEFITS = [
+const BENEFITS__cms = [
   { Icon: TargetIcon, bg: "#e6f6f4", title: "Tailored for You", desc: "A custom strategy aligned with your goals." },
   { Icon: RocketIcon, bg: "#f1ebfa", title: "Actionable & Clear", desc: "No fluff, just a clear plan that delivers results." },
   { Icon: ShieldIcon, bg: "#fdf3e3", title: "100% Confidential", desc: "Your information is safe with us." },
@@ -143,6 +145,7 @@ const BENEFITS = [
 
 /* ---------- Left illustration: clipboard, envelope, plant, plane, trusted card ---------- */
 function ProposalIllustration() {
+  const $t = useCmsText();
   return (
     <div className="relative h-[230px] w-full max-w-[460px]">
       {/* dashed flight path + plane */}
@@ -183,7 +186,7 @@ function ProposalIllustration() {
       >
         <span className="absolute -top-2 left-1/2 h-5 w-14 -translate-x-1/2 rounded-md bg-[#2f4e6a]" />
         <div className="h-full rounded-lg bg-white px-3 pt-4">
-          <p className="text-center text-[12px] font-extrabold tracking-[0.12em]" style={{ color: NAVY }}>PROPOSAL</p>
+          <p className="text-caption text-center font-extrabold tracking-[0.12em]" style={{ color: NAVY }}>{rich($t("WooProposal__t1", "PROPOSAL"))}</p>
           <span className="mx-auto mt-1 block h-px w-16 bg-slate-200" />
           {[0, 1, 2].map((i) => (
             <div key={i} className="mt-3 flex items-center gap-2">
@@ -210,9 +213,9 @@ function ProposalIllustration() {
       >
         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-50"><PeopleIcon /></span>
         <div className="leading-tight">
-          <p className="text-[10.5px] text-slate-500">Trusted by</p>
-          <p className="text-[20px] font-extrabold" style={{ color: NAVY }}>100+</p>
-          <p className="text-[10px] text-slate-500">Businesses Worldwide</p>
+          <p className="text-[10.5px] text-slate-500">{rich($t("WooProposal__t2", "Trusted by"))}</p>
+          <p className="text-body font-extrabold" style={{ color: NAVY }}>{rich($t("WooProposal__t3", "100+"))}</p>
+          <p className="text-[10px] text-slate-500">{rich($t("WooProposal__t4", "Businesses Worldwide"))}</p>
         </div>
         <svg className="ml-1" width="42" height="34" viewBox="0 0 42 34" fill="none" aria-hidden>
           {[[2, 22], [11, 16], [20, 12], [29, 6]].map(([x, y]) => <rect key={x} x={x} y={y} width="6" height={32 - y} rx="1" fill="#99e0d7" />)}
@@ -271,6 +274,7 @@ function Field({
 /* `formId` names this form everywhere: it's sent to the backend as `source` (stored with the request, so leads
    can be told apart by page), it's the <form>'s id, and it prefixes every field id so two forms never clash. */
 function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: string }) {
+  const $t = useCmsText();
   const [values, setValues] = useState<Fields>(EMPTY);
   const [touched, setTouched] = useState<Partial<Record<keyof Fields, boolean>>>({});
   const [serverErrors, setServerErrors] = useState<FieldErrors>({});
@@ -298,7 +302,7 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
     setTouched({ firstName: true, lastName: true, email: true, phone: true, location: true, message: true });
     if (Object.keys(validate(values)).length) return;
 
-    const honeypot = (new FormData(e.currentTarget).get("website") as string) ?? "";
+    const honeypot = (new FormData(e.currentTarget).get("pm_trap_field") as string) ?? "";
     setStatus("submitting");
     setError("");
     try {
@@ -313,6 +317,7 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
       setStatus("success");
+      goToThankYou("proposal");
       setValues(EMPTY);
       setTouched({});
     } catch (err) {
@@ -336,10 +341,9 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
         <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-teal-300/30 bg-teal-300/10">
           <DocIcon />
         </span>
-        <h3 className="mt-4 text-[24px] sm:text-[28px] font-bold text-white">Let&apos;s Build Something</h3>
+        <h3 className="text-h4 mt-4 font-bold text-white">{$t("WooProposal__t5", "Let's Build Something")}</h3>
         <p className={`${caveat.className} relative mx-auto -mt-1 inline-block text-[36px] sm:text-[42px] font-bold leading-tight text-teal-300`}>
-          Amazing Together!
-          <svg className="pointer-events-none absolute -bottom-2 left-[10%] h-3 w-[80%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+          {rich($t("WooProposal__t6", "Amazing Together!"))}<svg className="pointer-events-none absolute -bottom-2 left-[10%] h-3 w-[80%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
             <path d="M3 9C60 3 140 2 197 6" fill="none" stroke="#5eead4" strokeWidth="3" strokeLinecap="round" />
           </svg>
         </p>
@@ -354,27 +358,25 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
           role="status"
         >
           <CheckCircleIcon />
-          <p className="text-[20px] font-bold text-white">Thank you! Your request is in.</p>
-          <p className="max-w-sm text-[14px] text-slate-300">
-            Our experts will review your details and send your free proposal within 24 hours.
-          </p>
+          <p className="text-body font-bold text-white">{rich($t("WooProposal__t7", "Thank you! Your request is in."))}</p>
+          <p className="text-small max-w-sm text-slate-300">
+            {rich($t("WooProposal__t8", "Our experts will review your details and send your free proposal within 24 hours."))}</p>
           <button type="button" onClick={() => setStatus("idle")} className="mt-2 text-[13px] font-semibold text-teal-300 underline underline-offset-4">
-            Submit another request
-          </button>
+            {$t("WooProposal__t9", "Submit another request")}</button>
         </motion.div>
       ) : (
         <form id={formId} data-form-id={formId} onSubmit={handleSubmit} noValidate className="mt-7">
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
+          <input type="text" name="pm_trap_field" tabIndex={-1} autoComplete="new-password" className="hidden" aria-hidden />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
             <Field id={`${fieldPrefix}-firstName`} icon={<UserIcon />} error={show("firstName")}>
-              <input {...bind("firstName")} autoComplete="given-name" placeholder="First Name*" className={input} />
+              <input {...bind("firstName")} autoComplete="given-name" placeholder={$t("WooProposal__t10", "First Name*")} className={input} />
             </Field>
             <Field id={`${fieldPrefix}-lastName`} icon={<UserIcon />} error={show("lastName")}>
-              <input {...bind("lastName")} autoComplete="family-name" placeholder="Last Name*" className={input} />
+              <input {...bind("lastName")} autoComplete="family-name" placeholder={$t("WooProposal__t11", "Last Name*")} className={input} />
             </Field>
             <Field id={`${fieldPrefix}-email`} icon={<MailIcon />} error={show("email")}>
-              <input {...bind("email")} type="email" autoComplete="email" placeholder="Business Email*" className={input} />
+              <input {...bind("email")} type="email" autoComplete="email" placeholder={$t("WooProposal__t12", "Business Email*")} className={input} />
             </Field>
             <Field id={`${fieldPrefix}-phone`} icon={<PhoneIcon />} error={show("phone")}>
               <span className="relative block w-full">
@@ -382,15 +384,14 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
                 {/* two-line placeholder (a native one can't wrap), hidden once there's a value */}
                 {!values.phone && (
                   <span className="pointer-events-none absolute inset-y-0 left-0 flex flex-col justify-center text-[14px] leading-tight text-slate-300/80">
-                    Phone Number*
-                    <span className="text-[12px] text-slate-300/60">(with country code)</span>
+                    {$t("WooProposal__t13", "Phone Number*")}<span className="text-[12px] text-slate-300/60">{$t("WooProposal__t14", "(with country code)")}</span>
                   </span>
                 )}
               </span>
             </Field>
             <div className="sm:col-span-2">
               <Field id={`${fieldPrefix}-location`} icon={<PinIcon />} error={show("location")}>
-                <input {...bind("location")} autoComplete="address-level2" placeholder="Your Location*" className={input} />
+                <input {...bind("location")} autoComplete="address-level2" placeholder={$t("WooProposal__t15", "Your Location*")} className={input} />
               </Field>
             </div>
             <div className="sm:col-span-2">
@@ -404,7 +405,7 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
                   {...bind("message")}
                   rows={4}
                   maxLength={MESSAGE_MAX}
-                  placeholder="What's your biggest challenge right now? What's not working with your current digital presence?"
+                  placeholder={$t("WooProposal__t16", "What's your biggest challenge right now? What's not working with your current digital presence?")}
                   className="w-full resize-y bg-transparent pb-3 text-[14px] leading-relaxed text-white placeholder:text-slate-300/80 outline-none"
                 />
               </div>
@@ -414,12 +415,12 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
 
           <div className="mt-3 flex items-center gap-3">
             <span className="h-px flex-1 border-t border-dashed border-white/20" />
-            <span className={`${caveat.className} text-[19px] text-teal-200`}>No Commitment. Just Possibilities.</span>
+            <span className={`${caveat.className} text-[19px] text-teal-200`}>{$t("WooProposal__t17", "No Commitment. Just Possibilities.")}</span>
             <span className="h-px flex-1 border-t border-dashed border-white/20" />
           </div>
 
           {status === "error" && (
-            <p role="alert" className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-2.5 text-[13px] text-red-200">
+            <p role="alert" className="text-small mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-2.5 text-red-200">
               {error}
             </p>
           )}
@@ -433,22 +434,19 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
             {status === "submitting" ? (
               <>
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                Sending...
-              </>
+                {$t("WooProposal__t18", "Sending...")}</>
             ) : (
               <>
                 <SendIcon />
-                Send My Free Proposal
-              </>
+                {$t("WooProposal__t19", "Send My Free Proposal")}</>
             )}
             <span className="absolute right-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#0b2a2a] transition-transform group-hover:translate-x-0.5">
               <ChevronIcon />
             </span>
           </button>
 
-          <p className="mt-4 flex items-center justify-center gap-2 text-[12px] text-slate-300">
-            <LockIcon /> We respect your privacy. Your information is safe with us.
-          </p>
+          <p className="text-caption mt-4 flex items-center justify-center gap-2 text-slate-300">
+            <LockIcon /> {rich($t("WooProposal__t20", "We respect your privacy. Your information is safe with us."))}</p>
         </form>
       )}
     </div>
@@ -465,6 +463,8 @@ export default function WooProposal({
   fieldPrefix?: string;
   sectionId?: string;
 }) {
+  const $t = useCmsText();
+  const BENEFITS = useCmsData("WooProposal__BENEFITS", BENEFITS__cms);
   return (
     <section id={sectionId} className="relative w-full overflow-hidden bg-gradient-to-br from-white via-[#f8fbfb] to-[#f1f7f6] py-14 sm:py-16 lg:py-20">
       <Container>
@@ -476,27 +476,22 @@ export default function WooProposal({
               className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] shadow-sm"
               style={{ color: DEEP_TEAL }}
             >
-              <PlaneIcon /> Let&apos;s turn your idea into reality
-            </motion.span>
+              <PlaneIcon /> {$t("WooProposal__t21", "Let's turn your idea into reality")}</motion.span>
             <motion.h2
               variants={fadeUp}
-              className="mt-5 text-[40px] sm:text-[50px] lg:text-[56px] font-extrabold leading-[1.05] tracking-tight"
+              className="text-h2 mt-5 font-extrabold tracking-tight"
               style={{ color: NAVY }}
             >
-              Get My
-              <br />
-              <span style={{ color: TEAL }}>Free</span>{" "}
+              {$t("WooProposal__t22", "Get My")}<br />
+              <span style={{ color: TEAL }}>{$t("WooProposal__t23", "Free")}</span>{" "}
               <span className="relative inline-block">
-                Proposal
-                <svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                {$t("WooProposal__t24", "Proposal")}<svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={NAVY} strokeWidth="3" strokeLinecap="round" />
                 </svg>
               </span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="mt-6 max-w-[440px] text-[15px] leading-[1.75] text-slate-600">
-              Share a few details about your project and our experts will create a personalized roadmap to help your business
-              grow faster.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[440px] text-slate-600">
+              {rich($t("WooProposal__t25", "Share a few details about your project and our experts will create a personalized roadmap to help your business grow faster."))}</motion.p>
 
             <ul className="mt-7 flex flex-col gap-4">
               {BENEFITS.map((b) => (
@@ -505,8 +500,8 @@ export default function WooProposal({
                     <b.Icon />
                   </span>
                   <div>
-                    <p className="text-[14.5px] font-bold" style={{ color: NAVY }}>{b.title}</p>
-                    <p className="text-[12.5px] text-slate-500">{b.desc}</p>
+                    <p className="text-small font-bold" style={{ color: NAVY }}>{b.title}</p>
+                    <p className="text-caption text-slate-500">{b.desc}</p>
                   </div>
                 </motion.li>
               ))}

@@ -3,16 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { DM_Serif_Display } from "next/font/google";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const dmSerif = DM_Serif_Display({
-  weight: ["400"],
-  subsets: ["latin"],
-  display: "swap",
-});
+const dmSerif = { className: "font-heading" }; // global font from app/layout.tsx
 
-const leftPillars = [
+const leftPillars__cms = [
   {
     num: "01",
     title: "User First",
@@ -40,7 +37,7 @@ const leftPillars = [
   },
 ];
 
-const rightPillars = [
+const rightPillars__cms = [
   {
     num: "03",
     title: "Scalable by Design",
@@ -74,6 +71,9 @@ const rightPillars = [
 ];
 
 export default function UiUxWhyUs() {
+  const $t = useCmsText();
+  const leftPillars = useCmsData("UiUxWhyUs__leftPillars", leftPillars__cms);
+  const rightPillars = useCmsData("UiUxWhyUs__rightPillars", rightPillars__cms);
   const [hoveredIdx, setHoveredIdx] = useState<string | null>(null);
 
   return (
@@ -120,38 +120,35 @@ export default function UiUxWhyUs() {
           >
             <span className="w-8 sm:w-12 h-px bg-teal-500/40" />
             <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.25em] text-[#0d9488] uppercase">
-              WHY PROMANAGE
-            </span>
+              {$t("UiUxWhyUs__t1", "WHY PROMANAGE")}</span>
             <span className="w-8 sm:w-12 h-px bg-teal-500/40" />
           </motion.div>
 
           {/* Heading */}
           <motion.h2
-            className="mt-6 text-4xl sm:text-6xl lg:text-[68px] tracking-tight leading-[1.05] text-[#0c1e3d]"
+            className="text-h2 mt-6 tracking-tight text-[#0c1e3d]"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <span className={`${dmSerif.className} block font-normal tracking-[-0.015em]`}>
-              Design with <span className="text-[#0d9488]">purpose.</span>
+              {$t("UiUxWhyUs__t2", "Design with ")}<span className="text-[#0d9488]">{$t("UiUxWhyUs__t3", "purpose.")}</span>
             </span>
             <span className={`${dmSerif.className} block font-normal tracking-[-0.015em]`}>
-              Built for <span className="text-[#0d9488]">impact.</span>
+              {$t("UiUxWhyUs__t4", "Built for ")}<span className="text-[#0d9488]">{$t("UiUxWhyUs__t5", "impact.")}</span>
             </span>
           </motion.h2>
 
           {/* Subtitle */}
           <motion.p
-            className="mt-5 mx-auto max-w-2xl text-[14.5px] sm:text-[16px] text-slate-600 leading-relaxed font-normal"
+            className="text-body mt-5 mx-auto max-w-2xl text-slate-600 font-normal"
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            We blend strategy, creativity and technology to design
-            <br className="hidden sm:inline" /> experiences that drive real business growth.
-          </motion.p>
+            {rich($t("UiUxWhyUs__t6", "We blend strategy, creativity and technology to design"))}<br className="hidden sm:inline" /> {rich($t("UiUxWhyUs__t7", "experiences that drive real business growth."))}</motion.p>
         </div>
 
         {/* ---------------- MIDDLE SHOWCASE: 4 PILLARS & CENTER 3D FLOATING STACK ---------------- */}
@@ -192,7 +189,7 @@ export default function UiUxWhyUs() {
                       {p.title}
                     </h3>
                     <div className="mt-1.5 w-6 h-[2px] rounded-full bg-[#0d9488]/50" />
-                    <p className="mt-2 text-[12.5px] text-slate-500 leading-relaxed max-w-[210px]">
+                    <p className="text-caption mt-2 text-slate-500 max-w-[210px]">
                       {p.desc}
                     </p>
                   </div>
@@ -241,7 +238,7 @@ export default function UiUxWhyUs() {
                       <span className="w-2 h-2 rounded-full bg-[#0d9488]" />
                     </div>
                     <div className="w-full h-12 border border-teal-300/40 rounded-lg flex items-center justify-center">
-                      <span className="text-[10px] text-teal-600/40 font-mono">FRAMEWORK BASE</span>
+                      <span className="text-[10px] text-teal-600/40 font-mono">{$t("UiUxWhyUs__t8", "FRAMEWORK BASE")}</span>
                     </div>
                     <span className="w-12 h-1.5 rounded bg-teal-400" />
                   </div>
@@ -267,7 +264,7 @@ export default function UiUxWhyUs() {
                     </div>
                     <div className="grid grid-cols-2 gap-2 my-1">
                       <div className="rounded-lg bg-[#0d9488] p-2 flex items-center justify-center shadow-sm">
-                        <span className="text-[9.5px] font-bold text-white tracking-wider">DEPLOY</span>
+                        <span className="text-[9.5px] font-bold text-white tracking-wider">{$t("UiUxWhyUs__t9", "DEPLOY")}</span>
                       </div>
                       <div className="rounded-lg bg-slate-800 p-2 border border-slate-700" />
                     </div>
@@ -290,7 +287,7 @@ export default function UiUxWhyUs() {
                       <span className="w-4 h-4 rounded-full bg-white/30" />
                     </div>
                     <div className="w-full h-10 rounded-lg bg-white/20 border border-white/30 flex items-center justify-center">
-                      <span className="text-[10px] font-bold tracking-wider">DESIGN TO SCALE</span>
+                      <span className="text-[10px] font-bold tracking-wider">{$t("UiUxWhyUs__t10", "DESIGN TO SCALE")}</span>
                     </div>
                     <div className="flex gap-2">
                       <span className="w-8 h-1.5 rounded bg-white/70" />
@@ -317,7 +314,7 @@ export default function UiUxWhyUs() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
                         <span className="w-2.5 h-2.5 rounded-full bg-[#0d9488]" />
-                        <span className="text-[10px] font-extrabold text-[#0c1e3d] tracking-wide">ProManage</span>
+                        <span className="text-[10px] font-extrabold text-[#0c1e3d] tracking-wide">{$t("UiUxWhyUs__t11", "ProManage")}</span>
                       </div>
                       <span className="w-4 h-4 rounded-full bg-slate-100 border border-slate-200" />
                     </div>
@@ -350,8 +347,7 @@ export default function UiUxWhyUs() {
                         <span className="w-2 h-2 rounded-full bg-[#0c1e3d]" />
                       </div>
                       <span className="px-2 py-0.5 rounded-full bg-[#0d9488] text-white text-[8.5px] font-bold">
-                        Live Preview
-                      </span>
+                        {$t("UiUxWhyUs__t12", "Live Preview")}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -392,7 +388,7 @@ export default function UiUxWhyUs() {
                       {p.title}
                     </h3>
                     <div className="mt-1.5 w-6 h-[2px] rounded-full bg-[#0d9488]/50" />
-                    <p className="mt-2 text-[12.5px] text-slate-500 leading-relaxed max-w-[210px]">
+                    <p className="text-caption mt-2 text-slate-500 max-w-[210px]">
                       {p.desc}
                     </p>
                   </div>
@@ -428,14 +424,14 @@ export default function UiUxWhyUs() {
 
             {/* Middle: 3-line Copy */}
             <div className="text-left flex-1 leading-tight">
-              <div className="text-[14.5px] sm:text-[15.5px] font-bold text-[#0c1e3d]">Thoughtful design.</div>
-              <div className="text-[14.5px] sm:text-[15.5px] font-bold text-[#0c1e3d]">Stronger products.</div>
-              <div className="text-[14.5px] sm:text-[15.5px] font-bold text-[#0d9488]">Real growth.</div>
+              <div className="text-[14.5px] sm:text-[15.5px] font-bold text-[#0c1e3d]">{$t("UiUxWhyUs__t13", "Thoughtful design.")}</div>
+              <div className="text-[14.5px] sm:text-[15.5px] font-bold text-[#0c1e3d]">{$t("UiUxWhyUs__t14", "Stronger products.")}</div>
+              <div className="text-[14.5px] sm:text-[15.5px] font-bold text-[#0d9488]">{$t("UiUxWhyUs__t15", "Real growth.")}</div>
             </div>
 
             {/* Right: Circular Teal Arrow Button */}
             <Link
-              href="#contact"
+              href={$t("UiUxWhyUs__t16", "#contact")}
               className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0d9488] text-white flex items-center justify-center shadow-md shadow-teal-500/30 hover:bg-[#0b766c] hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
             >
               <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

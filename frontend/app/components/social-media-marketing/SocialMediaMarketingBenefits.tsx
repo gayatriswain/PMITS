@@ -2,6 +2,8 @@
 
 import Container from "../shared/Container";
 import { useInView } from "../shared/useInView";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -70,7 +72,7 @@ const ScalabilityIcon = ({ size = 18 }: IconProps) => (
   </svg>
 );
 
-const BENEFITS = [
+const BENEFITS__cms = [
   {
     title: "Visibility",
     desc: "Be seen across platforms with content that actually stands out in busy feeds every single day.",
@@ -113,7 +115,7 @@ const BENEFITS = [
   },
 ];
 
-const HASHTAGS = ["#content", "#growth", "#strategy", "#performance", "#visibility"];
+const HASHTAGS__cms = ["#content", "#growth", "#strategy", "#performance", "#visibility"];
 
 function BenefitItem({
   title,
@@ -149,26 +151,27 @@ function BenefitItem({
           {title}
         </h3>
       </div>
-      <p className="mt-2.5 text-sm leading-relaxed text-slate-500">{desc}</p>
+      <p className="text-small mt-2.5 text-slate-500">{desc}</p>
     </div>
   );
 }
 
 export default function SocialMediaMarketingBenefits() {
+  const $t = useCmsText();
+  const BENEFITS = useCmsData("SocialMediaMarketingBenefits__BENEFITS", BENEFITS__cms);
+  const HASHTAGS = useCmsData("SocialMediaMarketingBenefits__HASHTAGS", HASHTAGS__cms);
   return (
     <section className="bg-white py-16 lg:py-20">
       <Container>
-        <div className="w-full lg:w-[70%] mx-auto grid grid-cols-1 gap-10 lg:grid-cols-[300px_1px_1fr] lg:items-start lg:gap-10">
+        <div className="w-full lg:w-[88%] mx-auto grid grid-cols-1 gap-10 lg:grid-cols-[300px_1px_1fr] lg:items-start lg:gap-10">
           <div className="lg:sticky lg:top-28">
-            <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">Benefits</span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">{$t("SocialMediaMarketingBenefits__t1", "Benefits")}</span>
 
-            <h2 className="mt-3 text-3xl font-bold leading-snug sm:text-4xl" style={{ color: NAVY }}>
-              Everything You Need to Grow
-            </h2>
+            <h2 className="text-h2 mt-3 font-bold" style={{ color: NAVY }}>
+              {$t("SocialMediaMarketingBenefits__t2", "Everything You Need to Grow")}</h2>
 
-            <p className="mt-4 text-sm leading-relaxed text-slate-500">
-              A flexible system designed to help brands create, scale and stay ahead across platforms while capturing trends, shaping culture and turning content into scroll-stopping moments.
-            </p>
+            <p className="text-small mt-4 text-slate-500">
+              {rich($t("SocialMediaMarketingBenefits__t3", "A flexible system designed to help brands create, scale and stay ahead across platforms while capturing trends, shaping culture and turning content into scroll-stopping moments."))}</p>
 
             <div className="mt-5 flex flex-wrap gap-2">
               {HASHTAGS.map((tag) => (

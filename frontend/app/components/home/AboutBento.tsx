@@ -6,13 +6,15 @@ import Image from "next/image";
 import Container from "../shared/Container";
 import { useCountUp } from "../shared/useCountUp";
 import { BarChartUpIcon, ChevronLeftIcon, ChevronRightIcon, GaugeIcon, LinkedinIcon, TrendingUpIcon } from "../shared/icons";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
 const ACCENT = "#ff6321";
 
 const RATING_EMOJIS = ["\u{1F620}", "\u{1F641}", "\u{1F610}", "\u{1F642}", "\u{1F604}"];
-const RATING_LABELS = ["Poor", "Unhappy", "Neutral", "Good", "Excellent"];
+const RATING_LABELS__cms = ["Poor", "Unhappy", "Neutral", "Good", "Excellent"];
 
 function CsatMeter({
   active,
@@ -21,6 +23,7 @@ function CsatMeter({
   active: number;
   onSelect: (index: number) => void;
 }) {
+  const RATING_LABELS = useCmsData("AboutBento__RATING_LABELS", RATING_LABELS__cms);
   return (
     <div className="mt-5 flex items-center justify-center gap-2">
       {RATING_EMOJIS.map((emoji, i) => (
@@ -46,6 +49,8 @@ function CsatMeter({
 }
 
 function CsatCard({ delay }: { delay: number }) {
+  const $t = useCmsText();
+  const RATING_LABELS = useCmsData("AboutBento__RATING_LABELS", RATING_LABELS__cms);
   const [active, setActive] = useState(2);
 
   return (
@@ -54,12 +59,10 @@ function CsatCard({ delay }: { delay: number }) {
       style={{ animationDelay: `${delay}ms` }}
     >
       <h3 className="text-base font-bold" style={{ color: NAVY }}>
-        CSAT
-      </h3>
-      <p className="mt-1.5 text-xs leading-relaxed text-slate-500">
-        Measures and improves client satisfaction.
-      </p>
-      <p className="mt-4 text-sm font-bold uppercase tracking-wide" style={{ color: ACCENT }}>
+        {$t("AboutBento__t1", "CSAT")}</h3>
+      <p className="text-caption mt-1.5 text-slate-500">
+        {rich($t("AboutBento__t2", "Measures and improves client satisfaction."))}</p>
+      <p className="text-small mt-4 font-bold uppercase tracking-wide" style={{ color: ACCENT }}>
         {RATING_LABELS[active]}
       </p>
       <CsatMeter active={active} onSelect={setActive} />
@@ -67,7 +70,7 @@ function CsatCard({ delay }: { delay: number }) {
   );
 }
 
-const strategySlides = [
+const strategySlides__cms = [
   {
     image: "/project1.png",
     icon: BarChartUpIcon,
@@ -89,6 +92,7 @@ const strategySlides = [
 ];
 
 function StrategyCard({ delay }: { delay: number }) {
+  const strategySlides = useCmsData("AboutBento__strategySlides", strategySlides__cms);
   const [index, setIndex] = useState(0);
   const go = (dir: 1 | -1) =>
     setIndex((i) => (i + dir + strategySlides.length) % strategySlides.length);
@@ -139,17 +143,17 @@ function StrategyCard({ delay }: { delay: number }) {
           </div>
         </div>
         <div key={`text-${index}`} className="animate-slide-fade mt-6 lg:mt-0">
-          <h3 className="text-xl font-bold" style={{ color: NAVY }}>
+          <h3 className="text-h6 font-bold" style={{ color: NAVY }}>
             {slide.heading}
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-500">{slide.text}</p>
+          <p className="text-small mt-2 text-slate-500">{slide.text}</p>
         </div>
       </div>
     </div>
   );
 }
 
-const collaborators = [
+const collaborators__cms = [
   { name: "Grace Thompson", initials: "GT", gradient: "linear-gradient(135deg, #0d9488, #134e4a)", rotate: "-18deg" },
   { name: "Ava Morgan", initials: "AM", gradient: "linear-gradient(135deg, #fb923c, #9a3412)", rotate: "-8deg" },
   { name: "Ethan Cole", initials: "EC", gradient: "linear-gradient(135deg, #132a43, #0b3b35)", rotate: "6deg" },
@@ -157,6 +161,8 @@ const collaborators = [
 ];
 
 function DiscussCard({ delay }: { delay: number }) {
+  const $t = useCmsText();
+  const collaborators = useCmsData("AboutBento__collaborators", collaborators__cms);
   return (
     <div
       className="animate-fade-up relative flex min-h-[280px] flex-col overflow-hidden rounded-lg p-6"
@@ -166,17 +172,15 @@ function DiscussCard({ delay }: { delay: number }) {
       }}
     >
       <div className="text-center">
-        <h3 className="text-xl font-bold text-white">Discuss your project</h3>
+        <h3 className="text-h6 font-bold text-white">{$t("AboutBento__t3", "Discuss your project")}</h3>
         <Link
-          href="/contact"
+          href={$t("AboutBento__t4", "/contact")}
           className="mt-4 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-transform duration-300 hover:scale-105"
           style={{ backgroundColor: NAVY }}
         >
-          Schedule a call - 15 mins free
-        </Link>
-        <p className="mt-3 text-sm font-semibold" style={{ color: NAVY }}>
-          No pressure, just a thoughtful chat.
-        </p>
+          {$t("AboutBento__t5", "Schedule a call - 15 mins free")}</Link>
+        <p className="text-small mt-3 font-semibold" style={{ color: NAVY }}>
+          {rich($t("AboutBento__t6", "No pressure, just a thoughtful chat."))}</p>
       </div>
 
       <div className="absolute bottom-0 left-1/2 flex translate-x-[-50%] translate-y-8 items-end justify-center -space-x-4">
@@ -247,49 +251,48 @@ function CircularProgress({
           {value}%
         </div>
       </div>
-      <p className="text-xs uppercase tracking-wide text-slate-400">{label}</p>
+      <p className="text-caption uppercase tracking-wide text-slate-400">{label}</p>
     </div>
   );
 }
 
 function SeoStatsCard({ delay }: { delay: number }) {
+  const $t = useCmsText();
   return (
     <div
       className="animate-fade-up rounded-lg bg-white p-6 shadow-[0_10px_30px_-15px_rgba(15,23,42,0.12)] ring-1 ring-slate-100"
       style={{ animationDelay: `${delay}ms` }}
     >
       <h3 className="text-lg font-bold" style={{ color: NAVY }}>
-        SEO ready &amp; fast performance
-      </h3>
-      <p className="mt-1.5 text-sm leading-relaxed text-slate-500">
-        Optimized for search rankings and blazing-fast speed.
-      </p>
+        {$t("AboutBento__t7", "SEO ready & fast performance")}</h3>
+      <p className="text-small mt-1.5 text-slate-500">
+        {rich($t("AboutBento__t8", "Optimized for search rankings and blazing-fast speed."))}</p>
       <div className="mt-8 flex items-end justify-center gap-6 sm:justify-start">
-        <CircularProgress target={99} label="Performance" color={NAVY} trackColor="rgba(19,42,67,0.1)" size={76} />
-        <CircularProgress target={100} label="SEO" color={NAVY} trackColor="rgba(19,42,67,0.1)" size={104} />
-        <CircularProgress target={98} label="Accessibility" color={NAVY} trackColor="rgba(19,42,67,0.1)" size={76} />
+        <CircularProgress target={99} label={$t("AboutBento__t9", "Performance")} color={NAVY} trackColor="rgba(19,42,67,0.1)" size={76} />
+        <CircularProgress target={100} label={$t("AboutBento__t10", "SEO")} color={NAVY} trackColor="rgba(19,42,67,0.1)" size={104} />
+        <CircularProgress target={98} label={$t("AboutBento__t11", "Accessibility")} color={NAVY} trackColor="rgba(19,42,67,0.1)" size={76} />
       </div>
     </div>
   );
 }
 
 function AgencyRebuildCard({ delay }: { delay: number }) {
+  const $t = useCmsText();
   return (
     <Link
-      href="/portfolio"
+      href={$t("AboutBento__t12", "/portfolio")}
       className="animate-fade-up group flex h-56 flex-col rounded-lg bg-white p-5 shadow-[0_10px_30px_-15px_rgba(15,23,42,0.12)] ring-1 ring-slate-100"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div>
         <h3 className="text-base font-bold leading-snug" style={{ color: NAVY }}>
-          Agency website rebuild
-        </h3>
-        <p className="mt-1.5 text-sm text-slate-500">120% more inquiries</p>
+          {$t("AboutBento__t13", "Agency website rebuild")}</h3>
+        <p className="text-small mt-1.5 text-slate-500">{rich($t("AboutBento__t14", "120% more inquiries"))}</p>
       </div>
       <div className="relative mt-3 flex-1 overflow-hidden rounded-lg bg-slate-50">
         <Image
-          src="/image1.jpg"
-          alt="Agency website rebuild case study"
+          src={$t("AboutBento__t15", "/image1.jpg")}
+          alt={$t("AboutBento__t16", "Agency website rebuild case study")}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
           sizes="(min-width: 1024px) 33vw, 90vw"
@@ -299,7 +302,7 @@ function AgencyRebuildCard({ delay }: { delay: number }) {
   );
 }
 
-const industries = [
+const industries__cms = [
   "Healthcare & Wellness",
   "Finance & Fintech",
   "SaaS & Tech",
@@ -346,7 +349,7 @@ function IndustryRow({
     >
       <div className="flex items-center gap-2">
         <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: color }} />
-        <p className={`whitespace-nowrap text-xs ${active ? "font-bold" : "font-semibold"}`} style={{ color }}>
+        <p className={`text-caption whitespace-nowrap ${active ? "font-bold" : "font-semibold"}`} style={{ color }}>
           {name}
         </p>
         <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: color }} />
@@ -356,6 +359,8 @@ function IndustryRow({
 }
 
 function IndustriesTicker({ delay }: { delay: number }) {
+  const $t = useCmsText();
+  const industries = useCmsData("AboutBento__industries", industries__cms);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const items = [...industries, ...industries];
 
@@ -365,8 +370,7 @@ function IndustriesTicker({ delay }: { delay: number }) {
       style={{ animationDelay: `${delay}ms` }}
     >
       <h3 className="text-center text-lg font-bold" style={{ color: NAVY }}>
-        Industries we work with
-      </h3>
+        {$t("AboutBento__t17", "Industries we work with")}</h3>
       <div
         ref={containerRef}
         className="relative mt-3 flex-1 overflow-hidden"
@@ -386,13 +390,14 @@ function IndustriesTicker({ delay }: { delay: number }) {
 }
 
 function TeamPortraitCard({ delay }: { delay: number }) {
+  const $t = useCmsText();
   return (
     <div
       className="animate-fade-up relative flex h-56 flex-col justify-end overflow-hidden rounded-lg p-5"
       style={{ animationDelay: `${delay}ms` }}
     >
       <video
-        src="/cGuKSoUq2iETRc96nhUQGbcBc.mp4"
+        src={$t("AboutBento__t18", "/cGuKSoUq2iETRc96nhUQGbcBc.mp4")}
         autoPlay
         muted
         loop
@@ -401,13 +406,14 @@ function TeamPortraitCard({ delay }: { delay: number }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-      <p className="relative text-base font-bold text-white">Rohan Desai</p>
-      <p className="relative text-xs font-semibold uppercase tracking-wide text-white/70">CEO - ProManage</p>
+      <p className="text-body relative font-bold text-white">{rich($t("AboutBento__t19", "Rohan Desai"))}</p>
+      <p className="text-caption relative font-semibold uppercase tracking-wide text-white/70">{rich($t("AboutBento__t20", "CEO - ProManage"))}</p>
     </div>
   );
 }
 
 export default function AboutBento() {
+  const $t = useCmsText();
   return (
     <section className="bg-slate-50 py-16 lg:py-20">
       <Container>
@@ -416,14 +422,13 @@ export default function AboutBento() {
             className="inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            WHY PROMANAGE
-          </span>
-          <h2 className="mt-4 text-3xl font-bold leading-snug sm:text-4xl" style={{ color: NAVY }}>
-            What Working With Us <span style={{ color: TEAL }}>Feels Like.</span>
+            {$t("AboutBento__t21", "WHY PROMANAGE")}</span>
+          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>
+            {$t("AboutBento__t22", "What Working With Us ")}<span style={{ color: TEAL }}>{$t("AboutBento__t23", "Feels Like.")}</span>
           </h2>
         </div>
 
-        <div className="mx-auto mt-12 max-w-5xl rounded-3xl border border-slate-200 bg-slate-100 p-3 sm:p-5">
+        <div className="mx-auto mt-12 max-w-6xl rounded-3xl border border-slate-200 bg-slate-100 p-3 sm:p-5">
           <div className="flex flex-col gap-5">
             <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_2fr]">
               <CsatCard delay={0} />

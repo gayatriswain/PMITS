@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    VISUALS: every illustration is drawn in code (HTML + SVG), no image files
@@ -24,7 +26,7 @@ function Panel({ children, className = "" }: { children: React.ReactNode; classN
 
 /* ---- 1. Analytics dashboard: header + smooth area chart ---- */
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+const MONTHS__cms = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
 const SERIES = [8, 28, 64, 70, 46, 52, 66, 74, 82];
 const CURSOR = 3; // the highlighted point (Apr)
 
@@ -44,6 +46,8 @@ function smoothPath(pts: [number, number][]) {
 }
 
 function AnalyticsVisual() {
+  const $t = useCmsText();
+  const MONTHS = useCmsData("CustomCrmSmartTools__MONTHS", MONTHS__cms);
   const W = 250;
   const H = 96;
   const x0 = 22;
@@ -56,10 +60,9 @@ function AnalyticsVisual() {
   return (
     <Panel className="px-4 pb-2 pt-3">
       <div className="flex items-center justify-between">
-        <span className="text-[9px] font-semibold text-slate-700">Sandro Tavares</span>
+        <span className="text-[9px] font-semibold text-slate-700">{$t("CustomCrmSmartTools__t1", "Sandro Tavares")}</span>
         <span className="flex items-center gap-1.5 rounded-md border border-slate-200 px-2 py-1 text-[8px] font-medium text-slate-600">
-          Last 15 Days
-          <svg viewBox="0 0 10 10" className="h-2 w-2" fill="none" stroke="currentColor" strokeWidth="1.5">
+          {$t("CustomCrmSmartTools__t2", "Last 15 Days")}<svg viewBox="0 0 10 10" className="h-2 w-2" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M2 3.5l3 3 3-3" />
           </svg>
         </span>
@@ -101,27 +104,28 @@ function AnalyticsVisual() {
 /* ---- 2. Relationship organisation: record header, contact rows, progress donut ---- */
 
 function RelationshipVisual() {
+  const $t = useCmsText();
   const r = 17;
   const circ = 2 * Math.PI * r;
   return (
     <Panel className="px-4 pt-3.5">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-[8.5px] font-semibold text-slate-800">Intelligent CRM Framework</p>
+          <p className="text-[8.5px] font-semibold text-slate-800">{rich($t("CustomCrmSmartTools__t3", "Intelligent CRM Framework"))}</p>
           <p className="mt-1 text-[6.5px] text-slate-400">
-            Participant: <span className="text-slate-600">Alex Tarafe</span>
+            {rich($t("CustomCrmSmartTools__t4", "Participant: "))}<span className="text-slate-600">{$t("CustomCrmSmartTools__t5", "Alex Tarafe")}</span>
             <span className="mx-2">·</span>
-            Date added: <span className="text-slate-600">18/08/2024</span>
+            {rich($t("CustomCrmSmartTools__t6", "Date added: "))}<span className="text-slate-600">{$t("CustomCrmSmartTools__t7", "18/08/2024")}</span>
           </p>
         </div>
-        <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[6.5px] font-semibold text-blue-600">Medium</span>
+        <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[6.5px] font-semibold text-blue-600">{$t("CustomCrmSmartTools__t8", "Medium")}</span>
       </div>
 
       <div className="mt-3 grid grid-cols-[1fr_auto] gap-3">
         <ul className="space-y-2.5">
           {[
-            { name: "Arona Holdan", tag: "High", bars: ["w-16", "w-10"] },
-            { name: "Rahild Alaniv", tag: null, bars: ["w-14", "w-8"] },
+            { name: $t("CustomCrmSmartTools__t9", "Arona Holdan"), tag: $t("CustomCrmSmartTools__t10", "High"), bars: ["w-16", "w-10"] },
+            { name: $t("CustomCrmSmartTools__t11", "Rahild Alaniv"), tag: null, bars: ["w-14", "w-8"] },
           ].map((p) => (
             <li key={p.name} className="rounded-md border border-slate-100 px-2.5 py-2 shadow-[0_2px_6px_-4px_rgba(15,35,51,0.25)]">
               <div className="flex items-center justify-between">
@@ -140,7 +144,7 @@ function RelationshipVisual() {
         </ul>
 
         <div className="flex w-[82px] flex-col items-center pt-1">
-          <p className="self-start text-[6px] text-slate-400">Project Progress</p>
+          <p className="self-start text-[6px] text-slate-400">{rich($t("CustomCrmSmartTools__t12", "Project Progress"))}</p>
           <div className="relative mt-1 h-[58px] w-[58px]">
             <svg viewBox="0 0 44 44" className="h-full w-full -rotate-90" aria-hidden>
               <circle cx="22" cy="22" r={r} fill="none" stroke="#e8edf5" strokeWidth="5" />
@@ -160,12 +164,10 @@ function RelationshipVisual() {
           <div className="mt-1.5 flex items-center gap-2 text-[5.5px] text-slate-500">
             <span className="flex items-center gap-0.5">
               <i className="h-1 w-1 rounded-full" style={{ background: BLUE }} />
-              Completed
-            </span>
+              {$t("CustomCrmSmartTools__t13", "Completed")}</span>
             <span className="flex items-center gap-0.5">
               <i className="h-1 w-1 rounded-full bg-slate-200" />
-              In progress
-            </span>
+              {$t("CustomCrmSmartTools__t14", "In progress")}</span>
           </div>
         </div>
       </div>
@@ -177,7 +179,7 @@ function RelationshipVisual() {
 
 type Node = { label: string; x: number; y: number; tone: "blue" | "red" | "green" | "white" };
 // x / y are % of the visual area
-const NODES: Node[] = [
+const NODES__cms: Node[] = [
   { label: "Dashboard", x: 27, y: 29, tone: "blue" },
   { label: "Metrics", x: 20, y: 46, tone: "red" },
   { label: "Contacts", x: 27, y: 62, tone: "blue" },
@@ -195,6 +197,7 @@ const TONE: Record<Node["tone"], string> = {
 };
 
 function DataFlowVisual() {
+  const NODES = useCmsData("CustomCrmSmartTools__NODES", NODES__cms);
   return (
     <div className="absolute inset-0">
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>
@@ -263,21 +266,21 @@ function Select({ value, chip }: { value: string; chip?: boolean }) {
 }
 
 function PlannerVisual() {
+  const $t = useCmsText();
   return (
     <Panel className="px-4 pb-3 pt-3">
       <div className="flex items-center justify-between text-[7px]">
-        <span className="font-semibold text-slate-700">Task filters</span>
+        <span className="font-semibold text-slate-700">{$t("CustomCrmSmartTools__t15", "Task filters")}</span>
         <span className="font-medium" style={{ color: BLUE }}>
-          Reset filter
-        </span>
+          {$t("CustomCrmSmartTools__t16", "Reset filter")}</span>
       </div>
 
       <div className="mt-2.5 grid grid-cols-[34px_1fr_8px] items-center gap-x-2 gap-y-2">
         {[
-          { l: "Owner", v: "Blue Link", chip: false },
-          { l: "Status", v: "New Lead", chip: true },
-          { l: "Due", v: "Mar 4, 2025", chip: false },
-          { l: "Priority", v: "High", chip: false },
+          { l: $t("CustomCrmSmartTools__t17", "Owner"), v: $t("CustomCrmSmartTools__t18", "Blue Link"), chip: false },
+          { l: $t("CustomCrmSmartTools__t19", "Status"), v: $t("CustomCrmSmartTools__t20", "New Lead"), chip: true },
+          { l: $t("CustomCrmSmartTools__t21", "Due"), v: $t("CustomCrmSmartTools__t22", "Mar 4, 2025"), chip: false },
+          { l: $t("CustomCrmSmartTools__t23", "Priority"), v: $t("CustomCrmSmartTools__t24", "High"), chip: false },
         ].map((row) => (
           <React.Fragment key={row.l}>
             <span className="text-[6.5px] text-slate-400">{row.l}</span>
@@ -288,14 +291,12 @@ function PlannerVisual() {
       </div>
 
       <p className="mt-2.5 text-[7px] font-medium" style={{ color: BLUE }}>
-        + Add Filter
-      </p>
+        {rich($t("CustomCrmSmartTools__t25", "+ Add Filter"))}</p>
 
       <div className="mt-2.5 flex justify-end gap-2">
-        <span className="rounded border border-slate-200 px-2.5 py-1 text-[7px] font-medium text-slate-600">Cancel</span>
+        <span className="rounded border border-slate-200 px-2.5 py-1 text-[7px] font-medium text-slate-600">{$t("CustomCrmSmartTools__t26", "Cancel")}</span>
         <span className="rounded px-3 py-1 text-[7px] font-semibold text-white" style={{ background: BLUE }}>
-          Apply
-        </span>
+          {$t("CustomCrmSmartTools__t27", "Apply")}</span>
       </div>
     </Panel>
   );
@@ -314,7 +315,7 @@ interface ToolCard {
   cardBg: string; // card background
 }
 
-const tools: ToolCard[] = [
+const tools__cms: ToolCard[] = [
   {
     title: "Advanced Analytics Dashboard",
     desc: "Turn raw data into meaningful insights with real-time reports, smart visualizations, and performance metrics.",
@@ -354,8 +355,10 @@ const tools: ToolCard[] = [
    ========================================================================= */
 
 export default function CustomCrmSmartTools() {
+  const $t = useCmsText();
+  const tools = useCmsData("CustomCrmSmartTools__tools", tools__cms);
   return (
-    <section className="relative w-full bg-white py-16 sm:py-20 font-sans">
+    <section id="smart-tools" className="relative w-full bg-white py-16 sm:py-20 font-sans">
       <Container>
         {/* Header */}
         <motion.div
@@ -365,20 +368,16 @@ export default function CustomCrmSmartTools() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] text-slate-700 uppercase">Features</span>
-          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.15] text-[#0f2333]">
-            Smarter Tools to
-            <br />
-            Accelerate Your Growth
-          </h2>
-          <p className="mt-4 text-sm sm:text-[15px] text-slate-500 leading-relaxed">
-            Explore powerful features designed to simplify
-            <br className="hidden sm:block" /> workflows and boost team productivity.
-          </p>
+          <span className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] text-slate-700 uppercase">{$t("CustomCrmSmartTools__t28", "Features")}</span>
+          <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0f2333]">
+            {$t("CustomCrmSmartTools__t29", "Smarter Tools to")}<br />
+            {$t("CustomCrmSmartTools__t30", "Accelerate Your Growth")}</h2>
+          <p className="text-body mt-4 text-slate-500">
+            {rich($t("CustomCrmSmartTools__t31", "Explore powerful features designed to simplify"))}<br className="hidden sm:block" /> {rich($t("CustomCrmSmartTools__t32", "workflows and boost team productivity."))}</p>
         </motion.div>
 
         {/* Cards */}
-        <div className="mt-10 sm:mt-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+        <div className="mt-10 sm:mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           {tools.map((tool, i) => (
             <motion.div
               key={tool.title}
@@ -405,7 +404,7 @@ export default function CustomCrmSmartTools() {
                   <h3 className="text-base sm:text-[18px] font-bold text-[#0f2333] leading-snug group-hover:text-[#1d63ff] transition-colors">
                     {tool.title}
                   </h3>
-                  <p className="mt-2 text-[13px] sm:text-sm text-slate-600 leading-relaxed">{tool.desc}</p>
+                  <p className="text-small mt-2 text-slate-600">{tool.desc}</p>
                 </div>
               </Link>
             </motion.div>

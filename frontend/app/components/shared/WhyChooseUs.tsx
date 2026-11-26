@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "./Container";
 import { Counter } from "./useCountUp";
 import { GoogleGIcon, StarIcon } from "./icons";
@@ -11,11 +13,13 @@ import {
   DrawBarChartUpIcon,
   DrawAwardIcon,
 } from "./drawIcons";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
 
-const features = [
+const features__cms = [
   {
     number: "01",
     Icon: DrawUsersIcon,
@@ -70,7 +74,7 @@ type Stat = {
   value?: string;
 };
 
-const stats: Stat[] = [
+const stats__cms: Stat[] = [
   { Icon: DrawTrendingUpIcon, target: 250, prefix: "", suffix: "+", label: "Projects Delivered", sub: "Across 15+ Industries" },
   { Icon: DrawUsersIcon, target: 98, prefix: "", suffix: "%", label: "Client Retention Rate", sub: "Long-term Partnerships" },
   { Icon: DrawAwardIcon, target: 7, prefix: "", suffix: "+", label: "Years of Excellence", sub: "Industry Experience" },
@@ -78,6 +82,9 @@ const stats: Stat[] = [
 ];
 
 export default function WhyChooseUs() {
+  const $t = useCmsText();
+  const features = useCmsData("WhyChooseUs__features", features__cms);
+  const stats = useCmsData("WhyChooseUs__stats", stats__cms);
   return (
     <section className="relative overflow-hidden bg-slate-50 pb-16 pt-8 lg:pb-20 lg:pt-10">
       <div className="pointer-events-none absolute -right-24 -top-24 hidden h-96 w-96 rounded-full bg-teal-100/25 blur-3xl lg:block" />
@@ -89,13 +96,11 @@ export default function WhyChooseUs() {
             className="inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            WHY BUSINESSES CHOOSE PROMANAGE
-          </span>
-          <h2 className="mt-4 text-3xl font-bold leading-snug sm:text-4xl" style={{ color: NAVY }}>
-            More Than a Service, <br className="hidden sm:block" />
+            {$t("WhyChooseUs__t1", "WHY BUSINESSES CHOOSE PROMANAGE")}</span>
+          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>
+            {$t("WhyChooseUs__t2", "More Than a Service, ")}<br className="hidden sm:block" />
             <span className="relative inline-block" style={{ color: TEAL }}>
-              A Growth Partnership.
-              <svg
+              {$t("WhyChooseUs__t3", "A Growth Partnership.")}<svg
                 className="absolute -bottom-1.5 left-0 h-3 w-full"
                 viewBox="0 0 220 12"
                 preserveAspectRatio="none"
@@ -108,10 +113,8 @@ export default function WhyChooseUs() {
               </svg>
             </span>
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-slate-500 sm:text-base">
-            We combine strategy, creativity, and technology to deliver digital experiences that help businesses
-            attract, convert, and grow—consistently.
-          </p>
+          <p className="text-body mt-4 text-slate-500">
+            {rich($t("WhyChooseUs__t4", "We combine strategy, creativity, and technology to deliver digital experiences that help businesses attract, convert, and grow—consistently."))}</p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -145,7 +148,7 @@ export default function WhyChooseUs() {
               <h3 className="relative mt-4 text-base font-bold leading-snug" style={{ color: NAVY }}>
                 {title}
               </h3>
-              <p className="relative mt-2 text-sm leading-relaxed text-slate-500">{description}</p>
+              <p className="text-small relative mt-2 text-slate-500">{description}</p>
             </div>
           ))}
         </div>
@@ -161,14 +164,14 @@ export default function WhyChooseUs() {
                   <stat.Icon />
                 </span>
                 <div>
-                  <p className="text-lg font-bold" style={{ color: TEAL }}>
+                  <p className="text-body font-bold" style={{ color: TEAL }}>
                     {stat.target !== undefined ? (
                       <Counter target={stat.target} prefix={stat.prefix} suffix={stat.suffix} />
                     ) : (
                       stat.value
                     )}
                   </p>
-                  <p className="text-xs font-medium text-slate-600">{stat.label}</p>
+                  <p className="text-caption font-medium text-slate-600">{stat.label}</p>
                   <p className="text-[11px] text-slate-400">{stat.sub}</p>
                 </div>
               </div>
@@ -184,30 +187,25 @@ export default function WhyChooseUs() {
                     <StarIcon key={i} />
                   ))}
                 </span>
-                <p className="text-xs text-slate-500">
+                <p className="text-caption text-slate-500">
                   <span className="font-bold" style={{ color: NAVY }}>
-                    4.9/5
-                  </span>{" "}
-                  Google Reviews
-                </p>
+                    {$t("WhyChooseUs__t5", "4.9/5")}</span>{" "}
+                  {rich($t("WhyChooseUs__t6", "Google Reviews"))}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-base font-extrabold" style={{ color: NAVY }}>
-                Clutch
-              </span>
+                {$t("WhyChooseUs__t7", "Clutch")}</span>
               <div>
                 <span className="flex items-center gap-0.5 text-red-500">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <StarIcon key={i} />
                   ))}
                 </span>
-                <p className="text-xs text-slate-500">
+                <p className="text-caption text-slate-500">
                   <span className="font-bold" style={{ color: NAVY }}>
-                    4.9/5
-                  </span>{" "}
-                  Clutch Reviews
-                </p>
+                    {$t("WhyChooseUs__t8", "4.9/5")}</span>{" "}
+                  {rich($t("WhyChooseUs__t9", "Clutch Reviews"))}</p>
               </div>
             </div>
           </div>

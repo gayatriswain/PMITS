@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import Image from "next/image";
+import { useCmsText } from "@/components/cms/SectionContent";
 
 type BeforeAfterSliderProps = {
   beforeImage: string;
@@ -21,6 +22,7 @@ export default function BeforeAfterSlider({
   initialPosition = 50,
   heightClassName = "aspect-[1900/906]",
 }: BeforeAfterSliderProps) {
+  const $t = useCmsText();
   const containerRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
   const [position, setPosition] = useState(initialPosition);
@@ -76,7 +78,7 @@ export default function BeforeAfterSlider({
     >
       {/* AFTER layer — always fully visible underneath */}
       <div className="absolute inset-0">
-        <Image src={afterImage} alt="After" fill priority className="object-cover object-top" />
+        <Image src={afterImage} alt={$t("BeforeAfterSlider__t1", "After")} fill priority className="object-cover object-top" />
         <span className="pointer-events-none absolute right-3 top-3 shrink-0 rounded-full bg-[#cca651] px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-white shadow-sm sm:right-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-[10px]">
           {afterBadge}
         </span>
@@ -87,7 +89,7 @@ export default function BeforeAfterSlider({
         <div className="absolute inset-0 bg-[#141414]">
           <Image
             src={beforeImage}
-            alt="Before"
+            alt={$t("BeforeAfterSlider__t2", "Before")}
             fill
             priority
             className="object-cover object-top grayscale contrast-125 brightness-[0.7]"

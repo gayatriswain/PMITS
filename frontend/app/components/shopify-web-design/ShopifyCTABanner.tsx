@@ -2,8 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 export default function ShopifyCTABanner() {
+  const $t = useCmsText();
   return (
     <section className="w-full bg-[#fcfdfd] pb-16 pt-4 px-4 md:px-8">
       <div className="max-w-[1280px] mx-auto bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col lg:flex-row items-center p-6 lg:p-8 gap-8 lg:gap-10 relative overflow-hidden">
@@ -17,20 +20,19 @@ export default function ShopifyCTABanner() {
         {/* Left Side: Content */}
         <div className="flex-1 w-full relative z-10">
           
-          <h2 className="text-[28px] md:text-[36px] font-black leading-[1.2] text-[#0f2333] mb-3">
-            Let's build a store that<br />
-            looks <span className="text-[#0d9488]">amazing</span> and <span className="text-[#0d9488]">sells even better.</span>
+          <h2 className="text-h2 font-black text-[#0f2333] mb-3">
+            {$t("ShopifyCTABanner__t1", "Let's build a store that")}<br />
+            looks <span className="text-[#0d9488]">amazing</span> and <span className="text-[#0d9488]">{$t("ShopifyCTABanner__t2", "sells even better.")}</span>
           </h2>
-          <p className="text-[14px] md:text-[15px] text-slate-500 font-medium mb-10">
-            Get a tailored strategy for your Shopify store.
-          </p>
+          <p className="text-body text-slate-500 font-medium mb-10">
+            {rich($t("ShopifyCTABanner__t3", "Get a tailored strategy for your Shopify store."))}</p>
 
           <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
             
             {/* The Image (Composite 3D illustration) */}
             <div className="w-[180px] md:w-[220px] shrink-0 relative">
               {/* Fallback image path, assuming shopify4.png or similar is the 3D asset */}
-              <img src="/shopify4.png" alt="Shopify Strategy" className="w-full h-auto object-contain" 
+              <img src={$t("ShopifyCTABanner__t4", "/shopify4.png")} alt={$t("ShopifyCTABanner__t5", "Shopify Strategy")} className="w-full h-auto object-contain" 
                    onError={(e) => { e.currentTarget.style.display = 'none'; }} />
             </div>
 
@@ -45,8 +47,8 @@ export default function ShopifyCTABanner() {
                     <path d="M8 10h.01M12 10h.01M16 10h.01" strokeWidth="3" stroke="#0d9488"/>
                   </svg>
                 </div>
-                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">Free Expert<br/>Consultation</h4>
-                <p className="text-[10px] text-slate-500 font-medium">No obligations.</p>
+                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{$t("ShopifyCTABanner__t6", "Free Expert")}<br/>{$t("ShopifyCTABanner__t7", "Consultation")}</h4>
+                <p className="text-[10px] text-slate-500 font-medium">{rich($t("ShopifyCTABanner__t8", "No obligations."))}</p>
               </div>
 
               {/* Feature 2 */}
@@ -57,8 +59,8 @@ export default function ShopifyCTABanner() {
                     <polyline points="12 6 12 12 16 14" stroke="#0d9488" strokeWidth="2.5"/>
                   </svg>
                 </div>
-                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">Actionable<br/>Recommendations</h4>
-                <p className="text-[10px] text-slate-500 font-medium">Clear next steps.</p>
+                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{$t("ShopifyCTABanner__t9", "Actionable")}<br/>{$t("ShopifyCTABanner__t10", "Recommendations")}</h4>
+                <p className="text-[10px] text-slate-500 font-medium">{rich($t("ShopifyCTABanner__t11", "Clear next steps."))}</p>
               </div>
 
               {/* Feature 3 */}
@@ -70,8 +72,8 @@ export default function ShopifyCTABanner() {
                     <rect x="2" y="13" width="4" height="8" rx="1" fill="#14b8a6" stroke="none" />
                   </svg>
                 </div>
-                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">Growth-Focused<br/>Strategy</h4>
-                <p className="text-[10px] text-slate-500 font-medium">Built for results.</p>
+                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{$t("ShopifyCTABanner__t12", "Growth-Focused")}<br/>{$t("ShopifyCTABanner__t13", "Strategy")}</h4>
+                <p className="text-[10px] text-slate-500 font-medium">{rich($t("ShopifyCTABanner__t14", "Built for results."))}</p>
               </div>
 
             </div>
@@ -83,12 +85,11 @@ export default function ShopifyCTABanner() {
           
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xl">✨</span>
-            <h3 className="text-[18px] font-bold text-[#0f2333]">Ready to get started?</h3>
+            <h3 className="text-[18px] font-bold text-[#0f2333]">{$t("ShopifyCTABanner__t15", "Ready to get started?")}</h3>
           </div>
           
-          <Link href="/contact" className="w-full bg-[#0d9488] text-white font-bold rounded-xl py-4 px-6 flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(13,148,136,0.25)] hover:shadow-[0_8px_25px_rgba(13,148,136,0.35)] hover:-translate-y-1 transition-all duration-300 mb-6">
-            Get My Shopify Strategy
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <Link href={$t("ShopifyCTABanner__t16", "/contact")} className="w-full bg-[#0d9488] text-white font-bold rounded-xl py-4 px-6 flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(13,148,136,0.25)] hover:shadow-[0_8px_25px_rgba(13,148,136,0.35)] hover:-translate-y-1 transition-all duration-300 mb-6">
+            {$t("ShopifyCTABanner__t17", "Get My Shopify Strategy")}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
@@ -108,8 +109,7 @@ export default function ShopifyCTABanner() {
             </div>
             
             <p className="text-[11px] text-slate-500 font-medium leading-tight">
-              Trusted by<br/>businesses worldwide
-            </p>
+              {rich($t("ShopifyCTABanner__t18", "Trusted by"))}<br/>{rich($t("ShopifyCTABanner__t19", "businesses worldwide"))}</p>
           </div>
 
         </div>

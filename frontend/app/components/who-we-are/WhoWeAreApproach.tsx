@@ -3,6 +3,8 @@
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import ProposalLink from "./ProposalLink";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -62,7 +64,7 @@ const ChartUpIcon = ({ size = 30, color = TEAL }: IconProps) => (
   </svg>
 );
 
-const CARDS = [
+const CARDS__cms = [
   {
     Icon: BrowserCodeIcon,
     num: "01",
@@ -110,7 +112,7 @@ function PaperPlane() {
   );
 }
 
-function ApproachCard({ card, index }: { card: (typeof CARDS)[number]; index: number }) {
+function ApproachCard({ card, index }: { card: (typeof CARDS__cms)[number]; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -146,11 +148,11 @@ function ApproachCard({ card, index }: { card: (typeof CARDS)[number]; index: nu
           >
             {card.num}
           </span>
-          <h3 className="text-[19px] font-semibold" style={{ color: card.color }}>
+          <h3 className="text-h6 font-semibold" style={{ color: card.color }}>
             {card.title}
           </h3>
           <span className="mt-4 block h-[3px] w-9 rounded-full" style={{ backgroundColor: card.color }} />
-          <p className="mt-5 max-w-[320px] text-[14.5px] leading-[1.7] text-slate-700">{card.desc}</p>
+          <p className="text-small mt-5 max-w-[320px] text-slate-700">{card.desc}</p>
           {/* short coloured bar trailing off into a dotted line along the bottom edge */}
           <span className="absolute bottom-0 left-[28%] right-10 flex items-center">
             <span className="h-[3px] w-9 shrink-0 rounded-full" style={{ backgroundColor: card.color }} />
@@ -167,6 +169,7 @@ const RING_C = 2 * Math.PI * RING_R;
 const RETENTION = 0.92;
 
 function RetentionRing() {
+  const $t = useCmsText();
   // the arc's end, where the dot sits; the ring starts at 12 o'clock and runs clockwise
   const end = -Math.PI / 2 + RETENTION * 2 * Math.PI;
   return (
@@ -203,13 +206,14 @@ function RetentionRing() {
         style={{ left: 56 + RING_R * Math.cos(end), top: 56 + RING_R * Math.sin(end), backgroundColor: TEAL }}
       />
       <span className="absolute inset-0 flex items-center justify-center text-[34px] font-bold" style={{ color: DEEP_TEAL }}>
-        92<span className="mt-2 text-[18px]">%</span>
+        {$t("WhoWeAreApproach__t1", "92")}<span className="mt-2 text-[18px]">%</span>
       </span>
     </div>
   );
 }
 
 function RetentionStrip() {
+  const $t = useCmsText();
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -220,11 +224,8 @@ function RetentionStrip() {
     >
       <RetentionRing />
       <span className="hidden h-16 w-px bg-slate-200 md:block" />
-      <p className="flex-1 text-center text-[14px] leading-[1.75] text-slate-600 md:text-left">
-        We have maintained a <strong className="font-bold" style={{ color: TEAL }}>92%</strong> customer retention rate thanks to our consistent
-        focus on transparency, client satisfaction, and quantifiable return on investment. This accomplishment speaks to the quality of our
-        work and the confidence we gain from our clients.
-      </p>
+      <p className="text-small flex-1 text-center text-slate-600 md:text-left">
+        {rich($t("WhoWeAreApproach__t2", "We have maintained a "))}<strong className="font-bold" style={{ color: TEAL }}>92%</strong> {rich($t("WhoWeAreApproach__t3", "customer retention rate thanks to our consistent focus on transparency, client satisfaction, and quantifiable return on investment. This accomplishment speaks to the quality of our work and the confidence we gain from our clients."))}</p>
       <span className="hidden h-16 w-px bg-slate-200 md:block" />
       <span className="relative z-10 flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-2xl bg-white lg:mr-12 shadow-[0_12px_28px_-14px_rgba(13,27,51,0.4)] ring-1 ring-slate-100">
         <ChartUpIcon size={32} color={DEEP_TEAL} />
@@ -260,6 +261,8 @@ function ProposalButton() {
 }
 
 export default function WhoWeAreApproach() {
+  const $t = useCmsText();
+  const CARDS = useCmsData("WhoWeAreApproach__CARDS", CARDS__cms);
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#f4f8fb] via-white to-[#f7fbfb] py-16 lg:py-20">
       <div className="pointer-events-none absolute -left-40 top-1/3 h-[420px] w-[420px] rounded-full bg-teal-100/30 blur-3xl" />
@@ -278,25 +281,20 @@ export default function WhoWeAreApproach() {
               <span className="flex h-4 w-4 items-center justify-center rounded-full border-2" style={{ borderColor: TEAL }}>
                 <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: TEAL }} />
               </span>
-              Our Approach
-              <span className="text-teal-400">÷</span>
+              {$t("WhoWeAreApproach__t4", "Our Approach")}<span className="text-teal-400">÷</span>
             </motion.span>
 
-            <motion.h2 variants={fadeUp} className="mt-5 text-[44px] font-bold leading-tight tracking-tight sm:text-[54px]">
-              <span style={{ color: INK }}>Our </span>
+            <motion.h2 variants={fadeUp} className="text-h2 mt-5 font-bold tracking-tight">
+              <span style={{ color: INK }}>{$t("WhoWeAreApproach__t5", "Our ")}</span>
               <span className="relative inline-block" style={{ color: TEAL }}>
-                Approach
-                <svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none" aria-hidden>
+                {$t("WhoWeAreApproach__t6", "Approach")}<svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none" aria-hidden>
                   <path d="M3 7C60 2 140 1 197 5" stroke={TEAL} strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
               </span>
             </motion.h2>
 
-            <motion.p variants={fadeUp} className="mt-6 max-w-[760px] text-[14.5px] leading-[1.8] text-slate-600">
-              ProManage IT Solution provides an extensive range of services aimed at supporting companies in their digital transformation. We
-              have experience with digital product development, which focuses on safe, scalable applications for specific business
-              requirements, web design and development, digital marketing, and SEO.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-small mt-6 max-w-[760px] text-slate-600">
+              {rich($t("WhoWeAreApproach__t7", "ProManage IT Solution provides an extensive range of services aimed at supporting companies in their digital transformation. We have experience with digital product development, which focuses on safe, scalable applications for specific business requirements, web design and development, digital marketing, and SEO."))}</motion.p>
           </motion.div>
         </div>
 

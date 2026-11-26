@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Caveat } from "next/font/google";
-import { motion, type Variants } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import {
   Palette,
@@ -18,9 +17,18 @@ import {
   ArrowRight,
   Send,
   Users,
+  X,
+  CheckCircle2,
+  Wallet,
+  CalendarClock,
 } from "lucide-react";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
+import { applyForJob, type CmsJob } from "./careerJobs";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+export type { CmsJob };
+
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const INK = "#0a1f2c";
 const TEAL = "#00a8b5";
@@ -36,7 +44,7 @@ const fadeUp: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
 };
 
-const OPEN_POSITIONS = [
+const OPEN_POSITIONS__cms = [
   {
     id: "ui-ux",
     icon: Palette,
@@ -93,8 +101,58 @@ const OPEN_POSITIONS = [
   },
 ];
 
-export default function CareerOpenPositions() {
-  const [selectedRole, setSelectedRole] = useState<string | null>(null);
+/** How many cards show before "View More Openings". */
+const VISIBLE = 6;
+
+type Role = (typeof OPEN_POSITIONS__cms)[number] & {
+  careerId?: string;
+  salaryRange?: string;
+  description?: string;
+  responsibilities?: string[];
+  requirements?: string[];
+  benefits?: string[];
+  deadline?: string;
+};
+
+const DEPT_ICONS: { match: RegExp; icon: (typeof OPEN_POSITIONS__cms)[number]["icon"] }[] = [
+  { match: /design|creative|ui|ux/i, icon: Palette },
+  { match: /front|web|develop|engineer|software/i, icon: Code2 },
+  { match: /back|server|devops|data/i, icon: Box },
+  { match: /market|seo|sales|growth|content/i, icon: Megaphone },
+  { match: /support|service|help/i, icon: Headphones },
+  { match: /operation|manage|project|hr|admin/i, icon: Settings },
+];
+const WORK_TYPES: Record<string, string> = { "full-time": "Full-time", "part-time": "Part-time", contract: "Contract", internship: "Internship", remote: "Remote", hybrid: "Hybrid", onsite: "On-site" };
+
+export default function CareerOpenPositions({ jobs }: { jobs?: CmsJob[] }) {
+  const $t = useCmsText();
+  const sectionPositions = useCmsData("CareerOpenPositions__OPEN_POSITIONS", OPEN_POSITIONS__cms);
+  // Jobs managed in the CMS "Careers" module take priority; otherwise the section's own list.
+  const OPEN_POSITIONS: Role[] = jobs?.length
+    ? jobs.map((j) => {
+        const text = `${j.department ?? ""} ${j.title}`;
+        return {
+          id: j.slug,
+          icon: (DEPT_ICONS.find((d) => d.match.test(text)) ?? DEPT_ICONS[1]).icon,
+          category: (j.department ?? "").toUpperCase(),
+          title: j.title,
+          experience: j.experience ?? "",
+          location: j.location ?? "",
+          workType: WORK_TYPES[j.employmentType ?? ""] ?? j.employmentType ?? "",
+          careerId: j._id,
+          salaryRange: j.salaryRange,
+          description: j.description,
+          responsibilities: j.responsibilities,
+          requirements: j.requirements,
+          benefits: j.benefits,
+          deadline: j.deadline,
+        };
+      })
+    : sectionPositions;
+  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
+  const [showAll, setShowAll] = useState(false);
+  const closeRole = useCallback(() => setSelectedRole(null), []);
+  const visibleRoles = showAll ? OPEN_POSITIONS : OPEN_POSITIONS.slice(0, VISIBLE);
 
   return (
     <section id="open-positions" className="relative w-full overflow-hidden py-16 lg:py-24 bg-[#fbfdfd]">
@@ -163,8 +221,7 @@ export default function CareerOpenPositions() {
               style={{ color: TEAL }}
             >
               <span className="text-[9px]">•</span>
-              OPEN POSITIONS
-              <span className="text-[9px]">•</span>
+              {$t("CareerOpenPositions__t1", "OPEN POSITIONS")}<span className="text-[9px]">•</span>
             </span>
             <span
               className="mt-1.5 h-[2.5px] w-12 rounded-full"
@@ -175,17 +232,16 @@ export default function CareerOpenPositions() {
           {/* Heading */}
           <motion.h2
             variants={fadeUp}
-            className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-extrabold tracking-tight relative inline-block"
+            className="text-h2 mt-4 font-extrabold tracking-tight relative inline-block"
             style={{ color: INK }}
           >
-            Find Your Next{" "}
+            {$t("CareerOpenPositions__t2", "Find Your Next")}{" "}
             <span className="relative inline-block">
               <span
                 className={`${caveat.className} inline-block text-[44px] sm:text-[54px] lg:text-[62px] font-bold tracking-normal`}
                 style={{ color: TEAL }}
               >
-                Opportunity
-              </span>
+                {$t("CareerOpenPositions__t3", "Opportunity")}</span>
               {/* Hand-drawn sparkle accents on top-right of Opportunity */}
               <svg
                 className="absolute -top-1 -right-6 w-6 h-6 text-[#00a8b5] pointer-events-none"
@@ -202,17 +258,15 @@ export default function CareerOpenPositions() {
           {/* Subtitle */}
           <motion.p
             variants={fadeUp}
-            className="mt-3.5 text-[15px] sm:text-[16px] text-slate-600 leading-relaxed max-w-xl mx-auto"
+            className="text-body mt-3.5 text-slate-600 max-w-xl mx-auto"
           >
-            Explore roles where your skills can{" "}
+            {rich($t("CareerOpenPositions__t4", "Explore roles where your skills can"))}{" "}
             <strong className="font-bold" style={{ color: TEAL }}>
-              create impact
-            </strong>
+              {$t("CareerOpenPositions__t5", "create impact")}</strong>
             <br className="hidden sm:inline" />
-            and your ideas can{" "}
+            {rich($t("CareerOpenPositions__t6", "and your ideas can"))}{" "}
             <strong className="font-bold" style={{ color: TEAL }}>
-              shape the future
-            </strong>
+              {$t("CareerOpenPositions__t7", "shape the future")}</strong>
             .
           </motion.p>
         </motion.div>
@@ -227,12 +281,14 @@ export default function CareerOpenPositions() {
           viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-5 mb-8"
         >
-          {OPEN_POSITIONS.map((role) => {
+          {visibleRoles.map((role, i) => {
             const Icon = role.icon;
             return (
               <motion.div
                 key={role.id}
                 variants={fadeUp}
+                // cards revealed by "View More" mount after the grid's entrance animation, so they animate in on their own
+                {...(i >= VISIBLE ? { initial: "hidden", animate: "show" } : {})}
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.3 }}
                 className="group relative bg-white rounded-2xl p-5 shadow-[0_8px_25px_-8px_rgba(10,31,44,0.06)] border border-slate-100 hover:shadow-[0_16px_35px_-8px_rgba(0,168,181,0.18)] hover:border-teal-200 transition-all flex flex-col justify-between overflow-hidden"
@@ -276,11 +332,18 @@ export default function CareerOpenPositions() {
                   </div>
                 </div>
 
+                {/* whole card opens the role popup */}
+                <button
+                  type="button"
+                  onClick={() => setSelectedRole(role)}
+                  className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00a8b5]"
+                  aria-label={`${$t("CareerOpenPositions__t8", "View Role")}: ${role.title}`}
+                />
+
                 {/* Card Footer: View Role */}
                 <div className="pt-2 border-t border-slate-100/80 flex items-center justify-between">
                   <span className="text-[13px] font-bold text-[#0a1f2c] group-hover:text-[#00a8b5] transition-colors">
-                    View Role
-                  </span>
+                    {$t("CareerOpenPositions__t8", "View Role")}</span>
                   <div className="w-7 h-7 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-[#00a8b5] group-hover:text-white group-hover:border-[#00a8b5] transition-all">
                     <ArrowRight size={14} strokeWidth={2.2} />
                   </div>
@@ -293,20 +356,30 @@ export default function CareerOpenPositions() {
         {/* ========================================================
             "View More Openings" Pill Button
             ======================================================== */}
-        <div className="flex justify-center mb-12 lg:mb-14">
-          <motion.button
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.98 }}
-            className="group inline-flex items-center gap-3.5 px-6 py-2.5 rounded-full bg-white shadow-[0_8px_20px_-6px_rgba(10,31,44,0.08)] border border-slate-150 hover:border-teal-300 hover:shadow-[0_12px_28px_-6px_rgba(0,168,181,0.2)] transition-all cursor-pointer"
-          >
-            <span className="text-[14px] font-bold text-[#0a1f2c] group-hover:text-[#00a8b5] transition-colors">
-              View More Openings
-            </span>
-            <span className="w-6 h-6 rounded-full bg-[#00a8b5] text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5">
-              <ArrowRight size={13} strokeWidth={2.4} />
-            </span>
-          </motion.button>
-        </div>
+        {/* only when there are more openings than fit in one row */}
+        {OPEN_POSITIONS.length > VISIBLE ? (
+          <div className="flex justify-center mb-12 lg:mb-14">
+            <motion.button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.98 }}
+              className="group inline-flex items-center gap-3.5 px-6 py-2.5 rounded-full bg-white shadow-[0_8px_20px_-6px_rgba(10,31,44,0.08)] border border-slate-150 hover:border-teal-300 hover:shadow-[0_12px_28px_-6px_rgba(0,168,181,0.2)] transition-all cursor-pointer"
+            >
+              <span className="text-[14px] font-bold text-[#0a1f2c] group-hover:text-[#00a8b5] transition-colors">
+                {showAll
+                  ? $t("CareerOpenPositions__t16", "Show Fewer Openings")
+                  : `${$t("CareerOpenPositions__t9", "View More Openings")} (${OPEN_POSITIONS.length - VISIBLE})`}
+              </span>
+              <span className={`w-6 h-6 rounded-full bg-[#00a8b5] text-white flex items-center justify-center transition-transform ${showAll ? "-rotate-90" : "rotate-90"}`}>
+                <ArrowRight size={13} strokeWidth={2.4} />
+              </span>
+            </motion.button>
+          </div>
+        ) : (
+          <div className="mb-4 lg:mb-6" />
+        )}
 
         {/* ========================================================
             BOTTOM BANNER: "Don't see the right role? Let's build it together."
@@ -342,21 +415,18 @@ export default function CareerOpenPositions() {
                     <path d="M6 5 L3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                     <path d="M10 4 L10 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                   </svg>
-                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">
-                    Don&apos;t see the right role?
-                  </h3>
+                  <h3 className="text-h5 font-bold tracking-tight text-white">
+                    {$t("CareerOpenPositions__t10", "Don't see the right role?")}</h3>
                 </div>
 
                 <div
                   className={`${caveat.className} text-[28px] sm:text-[34px] font-bold leading-none mt-1 tracking-normal`}
                   style={{ color: "#38bdf8" }}
                 >
-                  Let&apos;s build it together.
-                </div>
+                  {$t("CareerOpenPositions__t11", "Let's build it together.")}</div>
 
-                <p className="text-[12.5px] sm:text-[13px] text-slate-300/90 leading-relaxed mt-2.5 max-w-[320px]">
-                  We&apos;re always looking for curious minds who love solving problems and creating impact.
-                </p>
+                <p className="text-small text-slate-300/90 mt-2.5 max-w-[320px]">
+                  {rich($t("CareerOpenPositions__t12", "We're always looking for curious minds who love solving problems and creating impact."))}</p>
               </div>
             </div>
 
@@ -367,12 +437,10 @@ export default function CareerOpenPositions() {
 
             {/* Middle-Right Column: Send us your profile */}
             <div className="lg:col-span-3 flex flex-col justify-center">
-              <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                Send us your profile
-              </h4>
-              <p className="text-[12px] sm:text-[13px] text-slate-300/90 leading-relaxed mt-1.5 mb-4 max-w-[260px]">
-                Share your details and we&apos;ll reach out when the perfect opportunity comes up.
-              </p>
+              <h4 className="text-h6 font-bold text-white tracking-tight">
+                {$t("CareerOpenPositions__t13", "Send us your profile")}</h4>
+              <p className="text-small text-slate-300/90 mt-1.5 mb-4 max-w-[260px]">
+                {rich($t("CareerOpenPositions__t14", "Share your details and we'll reach out when the perfect opportunity comes up."))}</p>
 
               <motion.a
                 href="#send-profile"
@@ -380,7 +448,7 @@ export default function CareerOpenPositions() {
                 whileTap={{ scale: 0.98 }}
                 className="group inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white text-[#0a1f2c] font-bold text-[13px] shadow-md hover:bg-slate-50 transition-all w-fit cursor-pointer"
               >
-                <span>Send Your Profile</span>
+                <span>{$t("CareerOpenPositions__t15", "Send Your Profile")}</span>
                 <span className="w-6 h-6 rounded-full bg-[#00a8b5] text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5">
                   <ArrowRight size={13} strokeWidth={2.4} />
                 </span>
@@ -449,6 +517,156 @@ export default function CareerOpenPositions() {
           </div>
         </motion.div>
       </Container>
+
+      <AnimatePresence>
+        {selectedRole && <RoleDialog role={selectedRole} onClose={closeRole} />}
+      </AnimatePresence>
     </section>
+  );
+}
+
+/** Popup with everything filled in for the job in the CMS, and "Apply" that preselects it in the form below. */
+function RoleDialog({ role, onClose }: { role: Role; onClose: () => void }) {
+  const $t = useCmsText();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const Icon = role.icon;
+
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
+  const deadline = role.deadline ? new Date(role.deadline) : null;
+  const facts = [
+    { icon: Briefcase, label: $t("CareerOpenPositions__t17", "Experience"), value: role.experience },
+    { icon: MapPin, label: $t("CareerOpenPositions__t18", "Location"), value: role.location },
+    { icon: Home, label: $t("CareerOpenPositions__t19", "Work type"), value: role.workType },
+    { icon: Wallet, label: $t("CareerOpenPositions__t20", "Salary"), value: role.salaryRange },
+    {
+      icon: CalendarClock,
+      label: $t("CareerOpenPositions__t21", "Apply by"),
+      value: deadline && !isNaN(+deadline) ? deadline.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "",
+    },
+  ].filter((f) => f.value);
+  const lists = [
+    { title: $t("CareerOpenPositions__t22", "What you'll do"), items: role.responsibilities },
+    { title: $t("CareerOpenPositions__t23", "What we're looking for"), items: role.requirements },
+    { title: $t("CareerOpenPositions__t24", "What you'll get"), items: role.benefits },
+  ].filter((l) => l.items?.length);
+  const hasDetails = !!role.description?.trim() || lists.length > 0;
+
+  const apply = () => {
+    onClose();
+    applyForJob({ id: role.id, title: role.title, careerId: role.careerId });
+  };
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[100] flex items-end justify-center bg-[#0a1f2c]/60 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="role-dialog-title"
+        className="relative flex max-h-[92vh] w-full max-w-[720px] flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl sm:rounded-3xl"
+        initial={{ y: 40, opacity: 0, scale: 0.98 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        exit={{ y: 30, opacity: 0, scale: 0.98 }}
+        transition={{ duration: 0.35, ease: EASE }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* header */}
+        <div className="relative bg-gradient-to-r from-[#06242f] via-[#073646] to-[#04616d] px-6 pb-6 pt-7 text-white sm:px-8">
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            aria-label={$t("CareerOpenPositions__t25", "Close")}
+            className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
+          >
+            <X size={18} />
+          </button>
+          <div className="flex items-start gap-4 pr-10">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-[#00a8b5]">
+              <Icon size={22} />
+            </span>
+            <div>
+              {role.category && (
+                <span className="inline-block rounded-full bg-white/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-cyan-100">
+                  {role.category}
+                </span>
+              )}
+              <h3 id="role-dialog-title" className="mt-1.5 text-[22px] font-extrabold leading-tight sm:text-[26px]">
+                {role.title}
+              </h3>
+            </div>
+          </div>
+          {facts.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {facts.map((f) => (
+                <span key={f.label} className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[12px]">
+                  <f.icon size={13} className="text-cyan-300" />
+                  <span className="text-slate-300">{f.label}:</span>
+                  <b className="font-semibold">{f.value}</b>
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* body */}
+        <div className="flex-1 overflow-y-auto px-6 py-6 sm:px-8">
+          {role.description?.trim() && (
+            // sanitized by the CMS when the job is saved (allow-listed tags and attributes)
+            <div className="cms-prose text-[14px] text-slate-600" dangerouslySetInnerHTML={{ __html: role.description }} />
+          )}
+          {lists.map((l) => (
+            <div key={l.title} className="mt-6 first:mt-0">
+              <h4 className="text-[15px] font-bold text-[#0a1f2c]">{l.title}</h4>
+              <ul className="mt-3 space-y-2">
+                {l.items!.map((it, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-[14px] text-slate-600">
+                    <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#00a8b5]" />
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          {!hasDetails && (
+            <p className="rounded-xl bg-teal-50/60 px-4 py-3 text-[14px] text-slate-600">
+              {rich($t("CareerOpenPositions__t26", "Interested in this role? Send us your profile and our team will share the full role details with you."))}
+            </p>
+          )}
+        </div>
+
+        {/* footer */}
+        <div className="flex flex-col-reverse gap-3 border-t border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-end sm:px-8">
+          <button type="button" onClick={onClose} className="rounded-full px-5 py-2.5 text-[14px] font-semibold text-slate-600 hover:text-[#0a1f2c]">
+            {$t("CareerOpenPositions__t27", "Maybe later")}
+          </button>
+          <button
+            type="button"
+            onClick={apply}
+            className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#0a1f2c] px-6 py-3 text-[14px] font-bold text-white shadow-lg transition-colors hover:bg-[#073646]"
+          >
+            <Send size={15} />
+            {$t("CareerOpenPositions__t28", "Apply for this role")}
+            <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+          </button>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }

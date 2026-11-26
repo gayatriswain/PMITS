@@ -4,6 +4,8 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const PURPLE = "#7f54b3";
@@ -81,7 +83,7 @@ const Star = () => (
   </svg>
 );
 
-const FEATURES = [
+const FEATURES__cms = [
   { Icon: BoxIcon, title: "Scalable Stores", desc: "Grow Without Limits" },
   { Icon: RocketIcon, title: "Higher Sales", desc: "Smart Shopping Experience" },
   { Icon: UsersIcon, title: "Happy Customers", desc: "Trust & Loyalty" },
@@ -145,6 +147,7 @@ const CANVAS_W = 620;
 const CANVAS_H = 440;
 
 function PoweredVisual() {
+  const $t = useCmsText();
   const { ref, scale } = useFitScale(CANVAS_W);
   return (
     <div ref={ref} className="relative w-full" style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}>
@@ -161,8 +164,8 @@ function PoweredVisual() {
           className="absolute left-[64px] top-[30px] w-[556px]"
         >
           <Image
-            src="/WooCommerce1.webp"
-            alt="WooCommerce online store on a laptop"
+            src={$t("WooPowered__t1", "/WooCommerce1.webp")}
+            alt={$t("WooPowered__t2", "WooCommerce online store on a laptop")}
             width={1503}
             height={1047}
             sizes="(min-width: 1024px) 620px, 100vw"
@@ -182,8 +185,8 @@ function PoweredVisual() {
             <CartIcon />
           </span>
           <div className="leading-tight">
-            <p className="text-[12px] font-bold" style={{ color: NAVY }}>More Sales</p>
-            <p className="text-[9.5px] text-slate-500">Higher Conversions</p>
+            <p className="text-caption font-bold" style={{ color: NAVY }}>{rich($t("WooPowered__t3", "More Sales"))}</p>
+            <p className="text-[9.5px] text-slate-500">{rich($t("WooPowered__t4", "Higher Conversions"))}</p>
           </div>
           <TrendIcon />
         </motion.div>
@@ -200,11 +203,9 @@ function PoweredVisual() {
             <UsersIcon />
           </span>
           <div className="leading-tight">
-            <p className="text-[12px] font-bold" style={{ color: NAVY }}>
-              Happy
-              <br />
-              Customers
-            </p>
+            <p className="text-caption font-bold" style={{ color: NAVY }}>
+              {rich($t("WooPowered__t5", "Happy"))}<br />
+              {rich($t("WooPowered__t6", "Customers"))}</p>
             <p className="mt-0.5 flex gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => <Star key={i} />)}
             </p>
@@ -217,6 +218,8 @@ function PoweredVisual() {
 }
 
 export default function WooPowered() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("WooPowered__FEATURES", FEATURES__cms);
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-r from-white via-[#fbf9fe] to-[#f5f0fb] py-14 sm:py-16 lg:py-20">
       {/* decorative curves, top right */}
@@ -238,33 +241,26 @@ export default function WooPowered() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full" style={{ backgroundColor: PURPLE }}>
                 <WpIcon size={14} />
               </span>
-              WooCommerce Powered
-            </motion.span>
+              {$t("WooPowered__t7", "WooCommerce Powered")}</motion.span>
 
             <motion.h2
               variants={fadeUp}
-              className="mt-5 text-[30px] sm:text-[38px] lg:text-[42px] font-extrabold leading-[1.15] tracking-tight"
+              className="text-h2 mt-5 font-extrabold tracking-tight"
               style={{ color: NAVY }}
             >
-              Build Powerful Online Stores
-              <br />
+              {$t("WooPowered__t8", "Build Powerful Online Stores")}<br />
               with{" "}
               <span className="relative inline-block" style={{ color: PURPLE }}>
-                WooCommerce
-                <svg className="pointer-events-none absolute -bottom-2.5 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                {$t("WooPowered__t9", "WooCommerce")}<svg className="pointer-events-none absolute -bottom-2.5 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={PURPLE} strokeWidth="3" strokeLinecap="round" />
                 </svg>
               </span>
             </motion.h2>
 
-            <motion.p variants={fadeUp} className="mt-7 max-w-[600px] text-[14.5px] leading-[1.8] text-slate-600">
-              If WooCommerce is creating a buzz because of its ability as an ecommerce plugin, the developers at ProManage IT
-              Solution are regarded as the best WooCommerce developers. We have a long list of happy and satisfied clients
-              enjoying high amount of sales from their ecommerce websites with our help.
-            </motion.p>
-            <motion.p variants={fadeUp} className="mt-4 max-w-[600px] text-[14.5px] leading-[1.8] text-slate-600">
-              With your WooCommerce enabled WordPress website, you will be able to handle large amount of traffic and sales.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-small mt-7 max-w-[600px] text-slate-600">
+              {rich($t("WooPowered__t10", "If WooCommerce is creating a buzz because of its ability as an ecommerce plugin, the developers at ProManage IT Solution are regarded as the best WooCommerce developers. We have a long list of happy and satisfied clients enjoying high amount of sales from their ecommerce websites with our help."))}</motion.p>
+            <motion.p variants={fadeUp} className="text-small mt-4 max-w-[600px] text-slate-600">
+              {rich($t("WooPowered__t11", "With your WooCommerce enabled WordPress website, you will be able to handle large amount of traffic and sales."))}</motion.p>
 
             <motion.ul variants={stagger} className="mt-8 grid grid-cols-2 xl:grid-cols-4 gap-3">
               {FEATURES.map((f) => (

@@ -5,14 +5,16 @@ import Image from "next/image";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, Emblem, Eyebrow, Icon, IMG, ease, fadeUp, heading, type IconName } from "../shared/MagentoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 type Card = { title: string; sub?: string; icon: IconName };
-const leftCards: Card[] = [
+const leftCards__cms: Card[] = [
   { title: "Proven track record", sub: "of timely completion of projects", icon: "stopwatch" },
   { title: "Customized and cost", sub: "effective solutions", icon: "database" },
   { title: "Daily reporting", icon: "report" },
 ];
-const rightCards: Card[] = [
+const rightCards__cms: Card[] = [
   { title: "Industry leaders", sub: "in Magento development", icon: "team" },
   { title: "Dedicated Magento developers", sub: "for your project", icon: "userCog" },
 ];
@@ -49,6 +51,9 @@ function ReasonCard({ c, on, onEnter, delay, from }: { c: Card; on: boolean; onE
 }
 
 export default function MagentoWhyUs() {
+  const $t = useCmsText();
+  const leftCards = useCmsData("MagentoWhyUs__leftCards", leftCards__cms);
+  const rightCards = useCmsData("MagentoWhyUs__rightCards", rightCards__cms);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.3 });
@@ -74,19 +79,18 @@ export default function MagentoWhyUs() {
 
       <Container className="relative">
         <div className="text-center">
-          <Eyebrow variant="line" className="tracking-[0.3em]">The ProManage advantage</Eyebrow>
+          <Eyebrow variant="line" className="tracking-[0.3em]">{$t("MagentoWhyUs__t1", "The ProManage advantage")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-[30px] font-bold leading-tight tracking-tight text-[#0c1e3d] sm:text-[44px]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0c1e3d]`}
           >
-            Why Hire Magento Developers from <span className="text-[#0d9488]">ProManage IT Solution</span>
+            {$t("MagentoWhyUs__t2", "Why Hire Magento Developers from ")}<span className="text-[#0d9488]">{$t("MagentoWhyUs__t3", "ProManage IT Solution")}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-4 text-base text-slate-600 sm:text-lg">
-            Partner with a team that understands Magento inside out and delivers real business value.
-          </motion.p>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-4 text-slate-600">
+            {rich($t("MagentoWhyUs__t4", "Partner with a team that understands Magento inside out and delivers real business value."))}</motion.p>
         </div>
 
         <div ref={ref} className="mt-10 grid items-center gap-8 sm:mt-14 lg:grid-cols-[1fr_340px_1fr] lg:gap-10" onMouseLeave={() => setHold(false)}>
@@ -172,8 +176,8 @@ export default function MagentoWhyUs() {
               viewport={{ once: true }}
               transition={{ duration: 1.4, delay: 0.6, ease: "easeInOut" }}
             >
-              <text x="8" y="48" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-14 8 48)">Your Magento</text>
-              <text x="48" y="80" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-14 48 80)">Success Partner</text>
+              <text x="8" y="48" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-14 8 48)">{$t("MagentoWhyUs__t5", "Your Magento")}</text>
+              <text x="48" y="80" className="font-caveat" fontSize="26" fill="currentColor" transform="rotate(-14 48 80)">{$t("MagentoWhyUs__t6", "Success Partner")}</text>
               <path d="M40 96 C110 86 180 70 250 44" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" />
             </motion.svg>
           </div>

@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ICONS (solid, small — used inside the diagram nodes)
@@ -90,7 +92,7 @@ interface DiagramNode {
 }
 
 // Order = clockwise from the top of the ring
-const disconnectedNodes: DiagramNode[] = [
+const disconnectedNodes__cms: DiagramNode[] = [
   { label: "Lead Comes In", sub: "Website / Forms", icon: <PersonIcon /> },
   { label: "Email", sub: "Manual Entry", icon: <MailIcon /> },
   { label: "Spreadsheets", sub: "Scattered Data", icon: <SheetIcon /> },
@@ -98,7 +100,7 @@ const disconnectedNodes: DiagramNode[] = [
   { label: "Calls", sub: "No Tracking", icon: <PhoneIcon /> },
 ];
 
-const connectedNodes: DiagramNode[] = [
+const connectedNodes__cms: DiagramNode[] = [
   { label: "Lead Capture", sub: "Website / Forms", icon: <PersonIcon color={TEAL} /> },
   { label: "Email", sub: "Sync & Track", icon: <MailIcon color={TEAL} /> },
   { label: "Data & Reports", sub: "Real-time Insights", icon: <ReportIcon /> },
@@ -106,7 +108,7 @@ const connectedNodes: DiagramNode[] = [
   { label: "Calls", sub: "Click to Call", icon: <PhoneIcon color={TEAL} /> },
 ];
 
-const painPoints = [
+const painPoints__cms = [
   "Leads are lost in follow-ups",
   "Important data is scattered everywhere",
   "Teams waste time on manual work",
@@ -126,6 +128,9 @@ const polar = (angleDeg: number, r = RING_R) => {
    ========================================================================= */
 
 function RingDiagram({ variant }: { variant: "disconnected" | "connected" }) {
+  const $t = useCmsText();
+  const disconnectedNodes = useCmsData("CustomCrmChallenge__disconnectedNodes", disconnectedNodes__cms);
+  const connectedNodes = useCmsData("CustomCrmChallenge__connectedNodes", connectedNodes__cms);
   const isConnected = variant === "connected";
   const nodes = isConnected ? connectedNodes : disconnectedNodes;
 
@@ -201,12 +206,10 @@ function RingDiagram({ variant }: { variant: "disconnected" | "connected" }) {
           />
           <div className="relative w-full h-full rounded-full bg-white border border-[#8fdcd4] shadow-[0_10px_30px_-10px_rgba(15,138,131,0.45),inset_0_0_18px_rgba(20,184,166,0.12)] flex flex-col items-center justify-center text-center">
             <CodeLogo className="w-8 h-8" />
-            <span className="mt-1 text-[13px] font-extrabold text-[#0f2333] uppercase">Your CRM</span>
+            <span className="mt-1 text-[13px] font-extrabold text-[#0f2333] uppercase">{$t("CustomCrmChallenge__t1", "Your CRM")}</span>
             <span className="mt-0.5 text-[9.5px] text-slate-500 leading-tight">
-              Single Source
-              <br />
-              of Truth
-            </span>
+              {$t("CustomCrmChallenge__t2", "Single Source")}<br />
+              {$t("CustomCrmChallenge__t3", "of Truth")}</span>
           </div>
         </div>
       ) : (
@@ -214,12 +217,10 @@ function RingDiagram({ variant }: { variant: "disconnected" | "connected" }) {
           <span className="w-7 h-7 rounded-full border-2 border-[#ef4444] text-[#ef4444] flex items-center justify-center text-sm font-black">
             !
           </span>
-          <span className="mt-1 text-[10px] font-extrabold text-[#0f2333] uppercase">Data Silos</span>
+          <span className="mt-1 text-[10px] font-extrabold text-[#0f2333] uppercase">{$t("CustomCrmChallenge__t4", "Data Silos")}</span>
           <span className="mt-0.5 text-[9px] text-slate-500 leading-tight">
-            No Visibility
-            <br />
-            No Control
-          </span>
+            {$t("CustomCrmChallenge__t5", "No Visibility")}<br />
+            {$t("CustomCrmChallenge__t6", "No Control")}</span>
         </div>
       )}
     </div>
@@ -231,6 +232,8 @@ function RingDiagram({ variant }: { variant: "disconnected" | "connected" }) {
    ========================================================================= */
 
 export default function CustomCrmChallenge() {
+  const $t = useCmsText();
+  const painPoints = useCmsData("CustomCrmChallenge__painPoints", painPoints__cms);
   return (
     <section className="relative w-full bg-white py-16 sm:py-20 font-sans">
       <Container>
@@ -243,16 +246,13 @@ export default function CustomCrmChallenge() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-[11px] font-black tracking-[0.2em] text-[#0f8a83] uppercase">The Challenge</span>
-            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[40px] font-extrabold tracking-tight leading-[1.12] text-[#0f2333]">
-              Your business has its own way of working.
-              <br />
-              <span className="text-[#0f8a83]">But your tools don&apos;t.</span>
+            <span className="text-[11px] font-black tracking-[0.2em] text-[#0f8a83] uppercase">{$t("CustomCrmChallenge__t7", "The Challenge")}</span>
+            <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0f2333]">
+              {$t("CustomCrmChallenge__t8", "Your business has its own way of working.")}<br />
+              <span className="text-[#0f8a83]">{$t("CustomCrmChallenge__t9", "But your tools don't.")}</span>
             </h2>
-            <p className="mt-5 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
-              When your teams, data and processes live in different places, work slows down and opportunities slip
-              away.
-            </p>
+            <p className="text-body mt-5 text-slate-600">
+              {rich($t("CustomCrmChallenge__t10", "When your teams, data and processes live in different places, work slows down and opportunities slip away."))}</p>
 
             <ul className="mt-6 space-y-3.5">
               {painPoints.map((point) => (
@@ -271,11 +271,10 @@ export default function CustomCrmChallenge() {
                 <path d="M9 18h6M10 21h4" />
                 <path d="M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3Z" />
               </svg>
-              <p className="text-[13px] text-slate-600 leading-relaxed">
-                <span className="font-bold text-[#0f2333]">Your problem isn&apos;t that you need another CRM.</span>
+              <p className="text-small text-slate-600">
+                <span className="font-bold text-[#0f2333]">{$t("CustomCrmChallenge__t11", "Your problem isn't that you need another CRM.")}</span>
                 <br />
-                Your problem is that your current tools don&apos;t work together.
-              </p>
+                {rich($t("CustomCrmChallenge__t12", "Your problem is that your current tools don't work together."))}</p>
             </div>
           </motion.div>
 
@@ -291,8 +290,8 @@ export default function CustomCrmChallenge() {
               {/* Disconnected */}
               <div className="p-6 sm:p-7 bg-[#fafbfc] md:border-r border-b md:border-b-0 border-slate-200/70">
                 <div className="text-center">
-                  <h3 className="text-base font-extrabold tracking-[0.06em] text-[#0f2333] uppercase">Disconnected</h3>
-                  <p className="mt-1 text-sm text-slate-700">Tools don&apos;t talk. Data doesn&apos;t flow.</p>
+                  <h3 className="text-base font-extrabold tracking-[0.06em] text-[#0f2333] uppercase">{$t("CustomCrmChallenge__t13", "Disconnected")}</h3>
+                  <p className="text-small mt-1 text-slate-700">{rich($t("CustomCrmChallenge__t14", "Tools don't talk. Data doesn't flow."))}</p>
                 </div>
                 <div className="mt-4">
                   <RingDiagram variant="disconnected" />
@@ -301,15 +300,14 @@ export default function CustomCrmChallenge() {
                   <span className="text-[#ef4444]">
                     <FaceIcon happy={false} />
                   </span>
-                  More manual work. More errors. Missed opportunities.
-                </div>
+                  {$t("CustomCrmChallenge__t15", "More manual work. More errors. Missed opportunities.")}</div>
               </div>
 
               {/* Connected */}
               <div className="p-6 sm:p-7 bg-[#fafbfc]">
                 <div className="text-center">
-                  <h3 className="text-base font-extrabold tracking-[0.06em] text-[#0f8a83] uppercase">Connected</h3>
-                  <p className="mt-1 text-sm text-slate-700">One CRM. Everything works together.</p>
+                  <h3 className="text-base font-extrabold tracking-[0.06em] text-[#0f8a83] uppercase">{$t("CustomCrmChallenge__t16", "Connected")}</h3>
+                  <p className="text-small mt-1 text-slate-700">{rich($t("CustomCrmChallenge__t17", "One CRM. Everything works together."))}</p>
                 </div>
                 <div className="mt-4">
                   <RingDiagram variant="connected" />
@@ -318,15 +316,13 @@ export default function CustomCrmChallenge() {
                   <span className="text-[#0f8a83]">
                     <FaceIcon happy />
                   </span>
-                  Connected teams. Real-time data. More growth.
-                </div>
+                  {$t("CustomCrmChallenge__t18", "Connected teams. Real-time data. More growth.")}</div>
               </div>
             </div>
 
             {/* VS badge on the divider */}
             <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#0f766e] text-white text-sm font-bold items-center justify-center ring-4 ring-white shadow-[0_8px_20px_-6px_rgba(15,118,110,0.6)]">
-              VS
-            </div>
+              {$t("CustomCrmChallenge__t19", "VS")}</div>
           </motion.div>
         </div>
 
@@ -344,15 +340,14 @@ export default function CustomCrmChallenge() {
             </svg>
           </span>
           <div className="flex-1">
-            <h4 className="text-lg sm:text-xl font-bold text-[#0f2333]">It&apos;s time to bring everything together.</h4>
-            <p className="mt-0.5 text-sm text-slate-600">A custom CRM that fits the way you work, not the other way around.</p>
+            <h4 className="text-h6 font-bold text-[#0f2333]">{$t("CustomCrmChallenge__t20", "It's time to bring everything together.")}</h4>
+            <p className="text-small mt-0.5 text-slate-600">{rich($t("CustomCrmChallenge__t21", "A custom CRM that fits the way you work, not the other way around."))}</p>
           </div>
           <Link
-            href="#how-it-works"
+            href={$t("CustomCrmChallenge__t22", "#how-it-works")}
             className="group inline-flex items-center gap-3 sm:pl-6 sm:border-l border-[#cfe9e5] text-sm font-semibold text-[#0f8a83]"
           >
-            See how it works
-            <span className="w-8 h-8 rounded-full border border-[#0f8a83] flex items-center justify-center group-hover:bg-[#0f8a83] group-hover:text-white transition-colors">
+            {$t("CustomCrmChallenge__t23", "See how it works")}<span className="w-8 h-8 rounded-full border border-[#0f8a83] flex items-center justify-center group-hover:bg-[#0f8a83] group-hover:text-white transition-colors">
               →
             </span>
           </Link>

@@ -4,8 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Code2, FileEdit, Globe2, LineChart, Network, SearchCode } from "lucide-react";
 import { AI, H2, Hl, Pill, ease, Inner, Panel } from "../shared/AiSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const AGENTS = [
+const AGENTS__cms = [
   { Icon: SearchCode, title: "Search Intelligence", text: "Finds how your customers search and what AI shows.", tone: "teal" },
   { Icon: FileEdit, title: "Content Intelligence", text: "Creates content that ranks, engages and gets referenced by AI.", tone: "violet" },
   { Icon: Globe2, title: "GEO & AI Visibility", text: "Optimizes for AI Overviews, ChatGPT, Gemini, Perplexity and more.", tone: "blue" },
@@ -37,6 +39,8 @@ function Network6({ flip = false }: { flip?: boolean }) {
 }
 
 export default function AiSeoTeam() {
+  const $t = useCmsText();
+  const AGENTS = useCmsData("AiSeoTeam__AGENTS", AGENTS__cms);
   return (
     <Panel id="how-it-works" inner="!bg-white">
       <Inner className="py-14 sm:py-16 lg:py-20 2xl:py-24">
@@ -52,12 +56,10 @@ export default function AiSeoTeam() {
               className="relative mx-auto w-full max-w-[360px] lg:-my-6 lg:-ml-6 lg:max-w-none 2xl:-ml-10"
             >
               <div className="relative aspect-square">
-                <Image src={AI.robotPoint} alt="AI SEO agent robot pointing at its team" fill sizes="(min-width:1536px) 480px, 360px" className="ai-float object-contain mix-blend-multiply" />
+                <Image src={AI.robotPoint} alt={$t("AiSeoTeam__t1", "AI SEO agent robot pointing at its team")} fill sizes="(min-width:1536px) 480px, 360px" className="ai-float object-contain mix-blend-multiply" />
               </div>
               <div className="absolute -top-2 right-0 hidden rotate-[-8deg] font-[cursive] text-[15px] leading-tight text-blue-600 sm:block lg:-right-6 lg:-top-6">
-                Multiple AI specialists.
-                <br /> One goal – Your Growth.
-                <svg viewBox="0 0 40 30" className="ml-2 mt-1 h-7 w-9 text-blue-500" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+                {$t("AiSeoTeam__t2", "Multiple AI specialists.")}<br /> {$t("AiSeoTeam__t3", "One goal – Your Growth.")}<svg viewBox="0 0 40 30" className="ml-2 mt-1 h-7 w-9 text-blue-500" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
                   <path d="M30 2C30 16 20 24 6 24M6 24l7-5M6 24l7 4" />
                 </svg>
               </div>
@@ -65,19 +67,17 @@ export default function AiSeoTeam() {
 
             {/* copy + agents */}
             <div className="min-w-0">
-              <Pill>How It Works</Pill>
+              <Pill>{$t("AiSeoTeam__t4", "How It Works")}</Pill>
               <H2 className="mt-4">
-                How Your <Hl>AI SEO</Hl> Team Works
-              </H2>
+                {$t("AiSeoTeam__t5", "How Your ")}<Hl>{$t("AiSeoTeam__t6", "AI SEO")}</Hl> {$t("AiSeoTeam__t7", "Team Works")}</H2>
               <motion.p
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.1, ease }}
-                className="mt-4 max-w-xl text-[15px] leading-relaxed text-slate-600 sm:text-base"
+                className="text-body mt-4 max-w-xl text-slate-600"
               >
-                Our AI SEO Agent coordinates multiple AI specialists 24/7 to analyze, optimize and grow your visibility across every search experience.
-              </motion.p>
+                {rich($t("AiSeoTeam__t8", "Our AI SEO Agent coordinates multiple AI specialists 24/7 to analyze, optimize and grow your visibility across every search experience."))}</motion.p>
 
               <div className="mt-6">
                 <Network6 />
@@ -101,8 +101,7 @@ export default function AiSeoTeam() {
                         <p className="mt-2 flex-1 text-[11.5px] leading-relaxed text-slate-500">{text}</p>
                         <span className={`mt-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10.5px] font-semibold ${t.chip}`}>
                           <span className={`ai-anim h-1.5 w-1.5 rounded-full ${t.dot}`} style={{ animation: "aiBlink 1.6s ease-in-out infinite" }} />
-                          Active
-                        </span>
+                          {$t("AiSeoTeam__t9", "Active")}</span>
                       </motion.div>
                     );
                   })}

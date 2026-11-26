@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -86,7 +88,7 @@ const ArrowIcon = ({ size = 18, color = "#fff" }: IconProps) => (
   </svg>
 );
 
-const INDUSTRIES = [
+const INDUSTRIES__cms = [
   { Icon: CapIcon, label: "Education" },
   { Icon: BankIcon, label: "Banking" },
   { Icon: HeartPulseIcon, label: "Healthcare" },
@@ -126,6 +128,7 @@ function Dots({
 
 /* Industries as a column of white tiles joined by a thin dotted spine */
 function IndustryList() {
+  const INDUSTRIES = useCmsData("WhoWeAreVision__INDUSTRIES", INDUSTRIES__cms);
   return (
     <motion.ul
       variants={stagger}
@@ -169,9 +172,10 @@ function IndustryList() {
 }
 
 function VisionProposalLink() {
+  const $t = useCmsText();
   return (
     <Link
-      href="/contact"
+      href={$t("WhoWeAreVision__t1", "/contact")}
       className="group inline-flex items-center gap-5 rounded-2xl py-3 pl-3 pr-10 text-[15px] font-semibold uppercase tracking-[0.04em] text-white shadow-[0_18px_36px_-14px_rgba(13,148,136,0.8)] transition hover:-translate-y-0.5"
       style={{
         background: "linear-gradient(90deg, #0b857c, #109a90 50%, #23b3a8)",
@@ -181,8 +185,7 @@ function VisionProposalLink() {
         <ArrowIcon size={20} />
       </span>
       <span className="h-8 w-px bg-white/40" />
-      Get My Free Proposal
-    </Link>
+      {$t("WhoWeAreVision__t2", "Get My Free Proposal")}</Link>
   );
 }
 
@@ -191,6 +194,7 @@ const PHOTO_MASK =
   "linear-gradient(to right, transparent, #000 10%, #000 70%, transparent)";
 
 export default function WhoWeAreVision() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full overflow-hidden bg-white">
       <Container>
@@ -219,10 +223,10 @@ export default function WhoWeAreVision() {
             </motion.span>
             <motion.h2
               variants={fadeUp}
-              className="mt-5 text-[46px] font-bold leading-tight tracking-tight sm:text-[56px]"
+              className="text-h2 mt-5 font-bold tracking-tight"
             >
-              <span style={{ color: INK }}>Our </span>
-              <span style={{ color: TEAL }}>Vision</span>
+              <span style={{ color: INK }}>{$t("WhoWeAreVision__t3", "Our ")}</span>
+              <span style={{ color: TEAL }}>{$t("WhoWeAreVision__t4", "Vision")}</span>
             </motion.h2>
             <motion.span
               variants={fadeUp}
@@ -231,14 +235,9 @@ export default function WhoWeAreVision() {
             />
             <motion.p
               variants={fadeUp}
-              className="mt-7 max-w-[440px] text-[15px] leading-[1.8] text-slate-600"
+              className="text-body mt-7 max-w-[440px] text-slate-600"
             >
-              Our goal is to be known as the go-to partner for companies looking
-              to transition digitally. With a genuinely global reach, we enable
-              our customers to thrive in various industries, such as education,
-              banking, healthcare, e-commerce, logistics, and more, by combining
-              innovative methods with strategic insights.
-            </motion.p>
+              {rich($t("WhoWeAreVision__t5", "Our goal is to be known as the go-to partner for companies looking to transition digitally. With a genuinely global reach, we enable our customers to thrive in various industries, such as education, banking, healthcare, e-commerce, logistics, and more, by combining innovative methods with strategic insights."))}</motion.p>
 
             <motion.div
               variants={fadeUp}
@@ -251,15 +250,13 @@ export default function WhoWeAreVision() {
                 <span className="absolute -bottom-3 left-1/2 h-2 w-px -translate-x-1/2 bg-teal-300" />
               </span>
               <span className="h-14 w-px bg-slate-200" />
-              <p className="text-[16px] leading-[1.6]" style={{ color: INK }}>
-                Shaping a better tomorrow through{" "}
+              <p className="text-body" style={{ color: INK }}>
+                {rich($t("WhoWeAreVision__t6", "Shaping a better tomorrow through"))}{" "}
                 <span className="font-semibold" style={{ color: TEAL }}>
-                  digital innovation
-                </span>{" "}
+                  {$t("WhoWeAreVision__t7", "digital innovation")}</span>{" "}
                 and{" "}
                 <span className="font-semibold" style={{ color: TEAL }}>
-                  strategic insights.
-                </span>
+                  {$t("WhoWeAreVision__t8", "strategic insights.")}</span>
               </p>
             </motion.div>
 
@@ -281,8 +278,8 @@ export default function WhoWeAreVision() {
           <div className="relative order-1 lg:order-2">
             <div className="relative aspect-[1068/992] w-full">
               <Image
-                src="/who-we-are3.webp"
-                alt="A man in a suit looking out over a city skyline at sunrise"
+                src={$t("WhoWeAreVision__t9", "/who-we-are3.webp")}
+                alt={$t("WhoWeAreVision__t10", "A man in a suit looking out over a city skyline at sunrise")}
                 fill
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 className="object-contain lg:[-webkit-mask-image:var(--photo-mask)] lg:[mask-image:var(--photo-mask)]"

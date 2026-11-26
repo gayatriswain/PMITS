@@ -14,8 +14,10 @@ import {
 } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, DotGrid, Emblem, EdgeChevrons, Eyebrow, Icon, IMG, display, ease, type IconName } from "../shared/MagentoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const needs: { label: [string, string]; icon: IconName; blurb: string }[] = [
+const needs__cms: { label: [string, string]; icon: IconName; blurb: string }[] = [
   { label: ["New", "Magento Store"], icon: "store", blurb: "Launch a fast, conversion-ready store built on Magento 2 from day one." },
   { label: ["Custom", "Development"], icon: "code", blurb: "Modules, checkout flows and business logic shaped around how you sell." },
   { label: ["Upgrade /", "Migration"], icon: "upload", blurb: "Move to the latest Magento safely — data, SEO and integrations intact." },
@@ -23,14 +25,14 @@ const needs: { label: [string, string]; icon: IconName; blurb: string }[] = [
   { label: ["Ongoing", "Support"], icon: "headset", blurb: "Patches, monitoring and quick fixes from a team that knows your store." },
 ];
 
-const features: { title: [string, string]; text: [string, string]; icon: IconName; side: "l" | "r"; row: 0 | 1 }[] = [
+const features__cms: { title: [string, string]; text: [string, string]; icon: IconName; side: "l" | "r"; row: 0 | 1 }[] = [
   { title: ["Custom", "Solutions"], text: ["Built around your", "business needs."], icon: "puzzle", side: "l", row: 0 },
   { title: ["High", "Performance"], text: ["Faster stores.", "Better results."], icon: "gauge", side: "l", row: 1 },
   { title: ["Seamless", "Integration"], text: ["Connect with the tools", "you already use."], icon: "link", side: "r", row: 0 },
   { title: ["Secure &", "Reliable"], text: ["Secure, stable and", "built to scale."], icon: "shield", side: "r", row: 1 },
 ];
 
-const trust = ["Vetted Developers", "Flexible Engagement", "Transparent Process", "On-time Delivery"];
+const trust__cms = ["Vetted Developers", "Flexible Engagement", "Transparent Process", "On-time Delivery"];
 
 /* Stage geometry (1460×400 units, taken from the design mock).
    Cards are 285 wide at the edges, vertically centred on y=92 / y=256.
@@ -56,6 +58,10 @@ function Parallax({ mx, my, depth, children, className = "" }: { mx: MotionValue
 }
 
 export default function MagentoHero() {
+  const $t = useCmsText();
+  const needs = useCmsData("MagentoHero__needs", needs__cms);
+  const features = useCmsData("MagentoHero__features", features__cms);
+  const trust = useCmsData("MagentoHero__trust", trust__cms);
   const reduce = useReducedMotion();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -78,8 +84,8 @@ export default function MagentoHero() {
     rawY.set(((e.clientY - r.top) / r.height - 0.5) * 2);
   };
 
-  const line1 = ["NEED", "MAGENTO", "EXPERTISE?"];
-  const line2 = ["LET’S", "BUILD", "IT", "RIGHT."];
+  const line1 = [$t("MagentoHero__t1", "NEED"), $t("MagentoHero__t2", "MAGENTO"), $t("MagentoHero__t3", "EXPERTISE?")];
+  const line2 = [$t("MagentoHero__t4", "LET’S"), $t("MagentoHero__t5", "BUILD"), $t("MagentoHero__t6", "IT"), $t("MagentoHero__t7", "RIGHT.")];
 
   return (
     <section
@@ -102,9 +108,9 @@ export default function MagentoHero() {
       <Container className="relative">
         {/* Heading block */}
         <div className="mx-auto max-w-[1120px] text-center">
-          <Eyebrow className="text-sm sm:text-[15px] tracking-[0.12em]">Hire Magento Developers</Eyebrow>
+          <Eyebrow className="text-sm sm:text-[15px] tracking-[0.12em]">{$t("MagentoHero__t8", "Hire Magento Developers")}</Eyebrow>
 
-          <h1 className={`${display.className} mt-6 text-[44px] font-bold uppercase leading-[0.98] tracking-[0.005em] text-[#0c1e3d] sm:text-6xl lg:text-[84px]`}>
+          <h1 className={`text-h1 ${display.className} mt-6 font-bold uppercase tracking-[0.005em] text-[#0c1e3d]`}>
             <span className="block">
               {line1.map((w, i) => (
                 <span key={w} className="inline-block overflow-hidden pr-[0.22em] align-bottom last:pr-0">
@@ -139,10 +145,9 @@ export default function MagentoHero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.75, ease }}
-            className="mx-auto mt-6 max-w-[640px] text-base leading-relaxed text-slate-600 sm:text-xl"
+            className="text-body mx-auto mt-6 max-w-[640px] text-slate-600"
           >
-            Hire dedicated Magento developers for development, customization, optimization and ongoing support.
-          </motion.p>
+            {rich($t("MagentoHero__t9", "Hire dedicated Magento developers for development, customization, optimization and ongoing support."))}</motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -151,18 +156,16 @@ export default function MagentoHero() {
             className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
           >
             <Link
-              href="#magento-proposal"
+              href={$t("MagentoHero__t10", "#magento-proposal")}
               className="group inline-flex w-full items-center justify-center gap-3 rounded-md bg-[#0c1e3d] px-7 py-4 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_12px_30px_-12px_rgba(12,30,61,0.7)] transition hover:-translate-y-0.5 hover:bg-[#13294f] sm:w-auto"
             >
-              Hire Magento Developers
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {$t("MagentoHero__t11", "Hire Magento Developers")}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href="#magento-proposal"
+              href={$t("MagentoHero__t12", "#magento-proposal")}
               className="group inline-flex w-full items-center justify-center gap-3 rounded-md border border-[#0d9488]/70 bg-white/70 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-[#0c1e3d] backdrop-blur transition hover:-translate-y-0.5 hover:border-[#0d9488] hover:bg-white sm:w-auto"
             >
-              Tell us what you’re building
-              <ArrowRight className="h-4 w-4 text-[#0d9488] transition-transform group-hover:translate-x-1" />
+              {$t("MagentoHero__t13", "Tell us what you’re building")}<ArrowRight className="h-4 w-4 text-[#0d9488] transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </div>
@@ -176,7 +179,7 @@ export default function MagentoHero() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <p className="text-center text-sm font-semibold uppercase tracking-wide text-[#0c1e3d]">What do you need help with?</p>
+          <p className="text-small text-center font-semibold uppercase tracking-wide text-[#0c1e3d]">{rich($t("MagentoHero__t14", "What do you need help with?"))}</p>
           <div role="tablist" aria-label="What do you need help with?" className="relative mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-slate-200/80 bg-white/90 p-2 shadow-[0_18px_40px_-24px_rgba(12,30,61,0.35)] backdrop-blur sm:grid-cols-3 lg:grid-cols-5 lg:gap-0">
             {needs.map((n, i) => {
               const on = i === active;
@@ -231,7 +234,7 @@ export default function MagentoHero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.3 }}
-                className="mt-2 text-center text-sm text-slate-500"
+                className="text-small mt-2 text-center text-slate-500"
                 aria-live="polite"
               >
                 {needs[active].blurb}

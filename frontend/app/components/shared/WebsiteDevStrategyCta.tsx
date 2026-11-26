@@ -3,11 +3,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat } from "next/font/google";
 import { animate, motion, useInView, useMotionValueEvent, useMotionValue, type Variants } from "framer-motion";
 import Container from "./Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["500", "600"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -26,7 +27,7 @@ const svgBase = (color: string, size: number) => ({
   strokeLinejoin: "round" as const,
 });
 
-const FEATURES = [
+const FEATURES__cms = [
   {
     title: "Strategy-First",
     text: "Every decision aligned with your goals.",
@@ -69,7 +70,7 @@ const FEATURES = [
   },
 ];
 
-const BENEFITS = [
+const BENEFITS__cms = [
   "Custom strategy tailored to your business",
   "Actionable insights you can use immediately",
   "No pressure. No sales pitch.",
@@ -109,7 +110,7 @@ function CountUp({ to, start, decimals = 0, duration = 1.6 }: { to: number; star
   return <span className="tabular-nums">{display}</span>;
 }
 
-const PROOF_STATS = [
+const PROOF_STATS__cms = [
   {
     to: 150,
     suffix: "+",
@@ -147,6 +148,8 @@ const PROOF_STATS = [
 ];
 
 function ProofStrip() {
+  const $t = useCmsText();
+  const PROOF_STATS = useCmsData("WebsiteDevStrategyCta__PROOF_STATS", PROOF_STATS__cms);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.4 });
 
@@ -174,17 +177,16 @@ function ProofStrip() {
       <motion.div variants={item} className="xl:pr-8 md:col-span-2 xl:col-span-1">
         <div className="flex gap-4 mb-5">
           <span className={`${caveat.className} shrink-0 text-6xl leading-[0.6]`} style={{ color: GOLD }}>&ldquo;</span>
-          <p className="text-[13px] text-slate-700 leading-relaxed">
-            ProManage transformed our online presence completely. Our leads increased 3X within just 3 months of the new website launch.
-          </p>
+          <p className="text-small text-slate-700">
+            {rich($t("WebsiteDevStrategyCta__t1", "ProManage transformed our online presence completely. Our leads increased 3X within just 3 months of the new website launch."))}</p>
         </div>
         <div className="flex items-center gap-3 pl-10">
           <span className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-white shadow-md">
-            <Image src="/image1.jpg" alt="Ravi Sharma" fill sizes="44px" className="object-cover" />
+            <Image src={$t("WebsiteDevStrategyCta__t2", "/image1.jpg")} alt={$t("WebsiteDevStrategyCta__t3", "Ravi Sharma")} fill sizes="44px" className="object-cover" />
           </span>
           <div>
-            <p className="text-[13px] font-bold" style={{ color: NAVY }}>Ravi Sharma</p>
-            <p className="text-[11px] text-slate-500">Founder, WellnessKart</p>
+            <p className="text-small font-bold" style={{ color: NAVY }}>{rich($t("WebsiteDevStrategyCta__t4", "Ravi Sharma"))}</p>
+            <p className="text-[11px] text-slate-500">{rich($t("WebsiteDevStrategyCta__t5", "Founder, WellnessKart"))}</p>
           </div>
         </div>
       </motion.div>
@@ -206,7 +208,7 @@ function ProofStrip() {
             <CountUp to={stat.to} start={inView} />
             {stat.suffix}
           </p>
-          <p className="text-[12px] text-slate-600 leading-snug whitespace-pre-line">{stat.label}</p>
+          <p className="text-caption text-slate-600 whitespace-pre-line">{stat.label}</p>
           {stat.label === "Happy Clients" && (
             <motion.span
               className="mt-3 block w-8 h-[2px] origin-center"
@@ -238,25 +240,22 @@ function ProofStrip() {
           ))}
         </div>
         <p className="text-3xl font-bold mb-1" style={{ color: NAVY }}>
-          <CountUp to={4.9} decimals={1} start={inView} />/5
-        </p>
-        <p className="text-[12px] text-slate-600 mb-3">Client Rating</p>
+          <CountUp to={4.9} decimals={1} start={inView} />{rich($t("WebsiteDevStrategyCta__t6", "/5"))}</p>
+        <p className="text-caption text-slate-600 mb-3">{rich($t("WebsiteDevStrategyCta__t7", "Client Rating"))}</p>
         <span className="block w-8 h-[2px] mb-3" style={{ backgroundColor: GOLD }} />
-        <p className="text-[11px] text-slate-500 whitespace-nowrap">Google | Clutch | GoodFirms</p>
+        <p className="text-[11px] text-slate-500 whitespace-nowrap">{rich($t("WebsiteDevStrategyCta__t8", "Google | Clutch | GoodFirms"))}</p>
       </motion.div>
 
       {/* CTA */}
       <motion.div variants={item} className="relative md:col-span-2 xl:col-span-1 xl:border-l border-[#e2d7c7] xl:pl-8">
-        <h3 className="font-serif text-2xl leading-tight font-semibold mb-3">
-          <span className="block" style={{ color: NAVY }}>Let&apos;s build something</span>
-          <span className="block" style={{ color: DEEP_TEAL }}>extraordinary together.</span>
+        <h3 className="text-h5 font-serif font-semibold mb-3">
+          <span className="block" style={{ color: NAVY }}>{$t("WebsiteDevStrategyCta__t9", "Let's build something")}</span>
+          <span className="block" style={{ color: DEEP_TEAL }}>{$t("WebsiteDevStrategyCta__t10", "extraordinary together.")}</span>
         </h3>
-        <p className="text-[12px] text-slate-600 leading-relaxed mb-5">
-          Tell us about your project and let&apos;s create a website that sets you ahead of your competition.
-        </p>
-        <Link href="/contact" className="group inline-flex items-center gap-3 text-[13px] font-semibold" style={{ color: DEEP_TEAL }}>
-          Start Your Project
-          <svg {...svgBase(DEEP_TEAL, 18)} className="transition-transform group-hover:translate-x-1.5">
+        <p className="text-caption text-slate-600 mb-5">
+          {rich($t("WebsiteDevStrategyCta__t11", "Tell us about your project and let's create a website that sets you ahead of your competition."))}</p>
+        <Link href={$t("WebsiteDevStrategyCta__t12", "/contact")} className="group inline-flex items-center gap-3 text-[13px] font-semibold" style={{ color: DEEP_TEAL }}>
+          {$t("WebsiteDevStrategyCta__t13", "Start Your Project")}<svg {...svgBase(DEEP_TEAL, 18)} className="transition-transform group-hover:translate-x-1.5">
             <path d="M5 12h14" />
             <path d="M12 5l7 7-7 7" />
           </svg>
@@ -267,11 +266,14 @@ function ProofStrip() {
 }
 
 export default function WebsiteDevStrategyCta() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("WebsiteDevStrategyCta__FEATURES", FEATURES__cms);
+  const BENEFITS = useCmsData("WebsiteDevStrategyCta__BENEFITS", BENEFITS__cms);
   return (
     <section className="relative w-full overflow-hidden bg-[#FBF8F3] py-14 lg:py-20">
       {/* Background artwork (leaf shadows + plant on the right) */}
       <Image
-        src="/growth.png"
+        src={$t("WebsiteDevStrategyCta__t14", "/growth.png")}
         alt=""
         fill
         sizes="100vw"
@@ -285,12 +287,11 @@ export default function WebsiteDevStrategyCta() {
           <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
             <span className="w-12 h-px" style={{ backgroundColor: GOLD }} />
             <p className="text-[11px] font-bold tracking-[0.18em] uppercase" style={{ color: DEEP_TEAL }}>
-              Let&apos;s Build What&apos;s Next
-            </p>
+              {rich($t("WebsiteDevStrategyCta__t15", "Let's Build What's Next"))}</p>
           </motion.div>
 
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-[58px] leading-[1.08] font-semibold tracking-tight mb-4">
-            {["Ready to turn", "your website into"].map((line) => (
+          <h2 className="text-h2 font-serif font-semibold tracking-tight mb-4">
+            {[$t("WebsiteDevStrategyCta__t16", "Ready to turn"), $t("WebsiteDevStrategyCta__t17", "your website into")].map((line) => (
               <span key={line} className="block overflow-hidden pb-1">
                 <motion.span variants={lineReveal} className="block" style={{ color: NAVY }}>
                   {line}
@@ -299,8 +300,7 @@ export default function WebsiteDevStrategyCta() {
             ))}
             <span className="block overflow-hidden pb-2">
               <motion.span variants={lineReveal} className="block italic" style={{ color: GOLD }}>
-                your growth engine?
-              </motion.span>
+                {$t("WebsiteDevStrategyCta__t18", "your growth engine?")}</motion.span>
             </span>
           </h2>
 
@@ -315,11 +315,9 @@ export default function WebsiteDevStrategyCta() {
             />
           </svg>
 
-          <motion.p variants={fadeUp} className="text-base md:text-lg text-slate-700 leading-relaxed mb-10">
-            The right website does more than look good.
-            <br />
-            It attracts, engages and converts — every single day.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body text-slate-700 mb-10">
+            {rich($t("WebsiteDevStrategyCta__t19", "The right website does more than look good."))}<br />
+            {rich($t("WebsiteDevStrategyCta__t20", "It attracts, engages and converts — every single day."))}</motion.p>
 
           <motion.div variants={stagger(0, 0.1)} className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 mb-10">
             {FEATURES.map((f, i) => (
@@ -336,14 +334,14 @@ export default function WebsiteDevStrategyCta() {
                   {f.icon}
                 </motion.span>
                 <h3 className="text-[14px] font-bold mb-1.5" style={{ color: NAVY }}>{f.title}</h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed">{f.text}</p>
+                <p className="text-caption text-slate-500">{f.text}</p>
               </motion.div>
             ))}
           </motion.div>
 
           <motion.p variants={fadeUp} className={`${caveat.className} text-2xl leading-snug`}>
-            <span className="block" style={{ color: TEAL }}>Great websites don&apos;t happen by chance.</span>
-            <span className="block" style={{ color: GOLD }}>They happen by strategy.</span>
+            <span className="block" style={{ color: TEAL }}>{$t("WebsiteDevStrategyCta__t21", "Great websites don't happen by chance.")}</span>
+            <span className="block" style={{ color: GOLD }}>{$t("WebsiteDevStrategyCta__t22", "They happen by strategy.")}</span>
           </motion.p>
         </motion.div>
 
@@ -374,19 +372,15 @@ export default function WebsiteDevStrategyCta() {
               </motion.span>
               <span className="h-px flex-1 max-w-8" style={{ backgroundColor: GOLD }} />
               <p className="text-[11px] font-bold tracking-[0.15em] uppercase whitespace-nowrap" style={{ color: GOLD }}>
-                Take the Next Step
-              </p>
+                {rich($t("WebsiteDevStrategyCta__t23", "Take the Next Step"))}</p>
               <span className="h-px flex-1 max-w-8" style={{ backgroundColor: GOLD }} />
             </div>
 
-            <h3 className="font-serif text-3xl sm:text-[34px] leading-[1.15] font-semibold text-center mb-4" style={{ color: NAVY }}>
-              Book Your Free
-              <br />
-              Strategy Session
-            </h3>
-            <p className="text-[13px] text-slate-600 text-center leading-relaxed mb-7 max-w-sm mx-auto">
-              A personalized 30-minute session to explore your goals, challenges and the right website strategy to grow your business.
-            </p>
+            <h3 className="text-h4 font-serif font-semibold text-center mb-4" style={{ color: NAVY }}>
+              {$t("WebsiteDevStrategyCta__t24", "Book Your Free")}<br />
+              {$t("WebsiteDevStrategyCta__t25", "Strategy Session")}</h3>
+            <p className="text-small text-slate-600 text-center mb-7 max-w-sm mx-auto">
+              {rich($t("WebsiteDevStrategyCta__t26", "A personalized 30-minute session to explore your goals, challenges and the right website strategy to grow your business."))}</p>
 
             <motion.ul
               variants={stagger(0.6, 0.1)}
@@ -413,7 +407,7 @@ export default function WebsiteDevStrategyCta() {
 
             <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
               <Link
-                href="/contact"
+                href={$t("WebsiteDevStrategyCta__t27", "/contact")}
                 className="group relative overflow-hidden flex items-center justify-center gap-3 w-full rounded-xl px-6 py-4 text-white text-[14px] font-semibold shadow-[0_15px_30px_-12px_rgba(15,92,86,0.7)]"
                 style={{ backgroundColor: DEEP_TEAL }}
               >
@@ -428,7 +422,7 @@ export default function WebsiteDevStrategyCta() {
                   <path d="M16 3 V7 M8 3 V7 M3 11 H21" />
                   <rect x="8" y="14" width="3" height="3" rx="0.5" />
                 </svg>
-                <span className="relative">Book My Free Strategy Session</span>
+                <span className="relative">{$t("WebsiteDevStrategyCta__t28", "Book My Free Strategy Session")}</span>
                 <svg {...svgBase("#ffffff", 18)} className="relative ml-auto transition-transform group-hover:translate-x-1">
                   <path d="M5 12h14" />
                   <path d="M12 5l7 7-7 7" />
@@ -437,7 +431,7 @@ export default function WebsiteDevStrategyCta() {
             </motion.div>
 
             <Link
-              href="/contact"
+              href={$t("WebsiteDevStrategyCta__t29", "/contact")}
               className="mt-5 flex items-center justify-center gap-2 text-[13px] font-semibold"
               style={{ color: DEEP_TEAL }}
             >
@@ -448,7 +442,7 @@ export default function WebsiteDevStrategyCta() {
               >
                 <path d="M5 4 H9 L11 9 L8.5 10.5 C9.5 12.5 11.5 14.5 13.5 15.5 L15 13 L20 15 V19 C20 20 19 21 18 21 C10 20.5 3.5 14 3 6 C3 5 4 4 5 4 Z" />
               </motion.svg>
-              <span className="underline underline-offset-4">Schedule a Call</span>
+              <span className="underline underline-offset-4">{$t("WebsiteDevStrategyCta__t30", "Schedule a Call")}</span>
             </Link>
           </motion.div>
         </motion.div>

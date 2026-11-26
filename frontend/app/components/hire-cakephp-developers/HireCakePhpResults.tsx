@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { CakeMark } from "./HireCakePhpExpertise";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -35,7 +37,7 @@ const I = {
   className: "h-5 w-5",
 };
 
-const PROJECTS = [
+const PROJECTS__cms = [
   {
     title: "E-Commerce Platform",
     industry: "Retail Industry",
@@ -84,7 +86,7 @@ const PROJECTS = [
 ];
 
 // Plain text stand-ins: replace each with the client's real logo file in /public
-const CLIENTS = [
+const CLIENTS__cms = [
   { name: "JOCKEY", cls: "font-black italic tracking-tight text-[20px]" },
   { name: "bigbasket", cls: "font-extrabold text-[19px]" },
   { name: "policybazaar", cls: "font-bold text-[17px]" },
@@ -93,6 +95,9 @@ const CLIENTS = [
 ];
 
 export default function HireCakePhpResults() {
+  const $t = useCmsText();
+  const PROJECTS = useCmsData("HireCakePhpResults__PROJECTS", PROJECTS__cms);
+  const CLIENTS = useCmsData("HireCakePhpResults__CLIENTS", CLIENTS__cms);
   return (
     <section
       id="results"
@@ -113,8 +118,7 @@ export default function HireCakePhpResults() {
             style={{ color: RED }}
           >
             <i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
-            Real CakePHP Results
-            <i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
+            {$t("HireCakePhpResults__t1", "Real CakePHP Results")}<i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
           </motion.span>
           <motion.div variants={fadeUp} custom={1} className="flex items-center gap-3" aria-hidden>
             <i className="h-px w-16" style={{ background: RED, opacity: 0.3 }} />
@@ -134,20 +138,17 @@ export default function HireCakePhpResults() {
               <motion.h2
                 variants={fadeUp}
                 custom={0}
-                className="font-playfair text-[36px] font-bold leading-[1.1] tracking-tight text-[#0f1a2e] sm:text-5xl lg:text-[52px]"
+                className="text-h2 font-playfair font-bold tracking-tight text-[#0f1a2e]"
               >
-                Real Projects.
-                <br />
-                Real <span style={{ color: RED }}>CakePHP</span> Impact<span style={{ color: RED }}>.</span>
+                {$t("HireCakePhpResults__t2", "Real Projects.")}<br />
+                {$t("HireCakePhpResults__t3", "Real ")}<span style={{ color: RED }}>{$t("HireCakePhpResults__t4", "CakePHP")}</span> {$t("HireCakePhpResults__t5", "Impact")}<span style={{ color: RED }}>.</span>
               </motion.h2>
               <motion.p
                 variants={fadeUp}
                 custom={1}
-                className="mt-4 max-w-md text-sm leading-relaxed text-slate-600 sm:text-[15px]"
+                className="text-body mt-4 max-w-md text-slate-600"
               >
-                We build secure, scalable and high-performance applications that help businesses
-                grow.
-              </motion.p>
+                {rich($t("HireCakePhpResults__t6", "We build secure, scalable and high-performance applications that help businesses grow."))}</motion.p>
             </motion.div>
 
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -176,7 +177,7 @@ export default function HireCakePhpResults() {
                   <div className="flex items-stretch">
                     {p.stats.map((s, k) => (
                       <div key={s.label} className={k ? "ml-3 border-l border-[#f0e6e6] pl-3" : ""}>
-                        <p className="text-[20px] font-extrabold leading-none" style={{ color: RED }}>
+                        <p className="text-body font-extrabold" style={{ color: RED }}>
                           {s.value}
                         </p>
                         <p className="mt-1 whitespace-nowrap text-[9.5px] leading-tight text-slate-500">{s.label}</p>
@@ -211,7 +212,7 @@ export default function HireCakePhpResults() {
             >
               <Image
                 src={CAKE_IMAGE}
-                alt="Two-tier red velvet cake with a slice cut out"
+                alt={$t("HireCakePhpResults__t7", "Two-tier red velvet cake with a slice cut out")}
                 width={1351}
                 height={1164}
                 sizes="(min-width: 1024px) 480px, 90vw"
@@ -237,14 +238,12 @@ export default function HireCakePhpResults() {
                 </span>
               </span>
               <div>
-                <h3 className="font-playfair text-[20px] font-bold leading-tight text-[#0f1a2e]">
-                  Trusted by businesses
-                  <br />
-                  <span style={{ color: RED }}>across industries.</span>
+                <h3 className="text-h6 font-playfair font-bold text-[#0f1a2e]">
+                  {$t("HireCakePhpResults__t8", "Trusted by businesses")}<br />
+                  <span style={{ color: RED }}>{$t("HireCakePhpResults__t9", "across industries.")}</span>
                 </h3>
                 <p className="mt-1.5 max-w-[250px] text-[11px] leading-relaxed text-slate-500">
-                  Long-term partnerships built on trust, quality and results.
-                </p>
+                  {rich($t("HireCakePhpResults__t10", "Long-term partnerships built on trust, quality and results."))}</p>
               </div>
             </div>
 
@@ -277,18 +276,17 @@ export default function HireCakePhpResults() {
                 className="h-auto w-[86px] select-none drop-shadow-[0_14px_16px_rgba(120,40,40,0.2)]"
               />
               <div>
-                <h3 className="text-[17px] font-bold leading-tight text-[#0f1a2e]">Have a project in mind?</h3>
-                <p className="mt-1 text-[12px] text-slate-500">Let&apos;s build something amazing with CakePHP.</p>
+                <h3 className="text-[17px] font-bold leading-tight text-[#0f1a2e]">{$t("HireCakePhpResults__t11", "Have a project in mind?")}</h3>
+                <p className="text-caption mt-1 text-slate-500">{rich($t("HireCakePhpResults__t12", "Let's build something amazing with CakePHP."))}</p>
               </div>
             </div>
 
             <Link
-              href="#contact"
+              href={$t("HireCakePhpResults__t13", "#contact")}
               className="group inline-flex h-12 items-center justify-center gap-3 rounded-lg px-6 text-sm font-semibold text-white shadow-[0_14px_28px_-10px_rgba(217,43,50,0.7)] transition hover:brightness-110"
               style={{ background: RED }}
             >
-              Let&apos;s Talk About Your Project
-              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+              {$t("HireCakePhpResults__t14", "Let's Talk About Your Project")}<span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </Link>
@@ -302,7 +300,7 @@ export default function HireCakePhpResults() {
                     </svg>
                   </span>
                   <span>
-                    <span className="block text-[10px] font-semibold text-slate-400">Call Us</span>
+                    <span className="block text-[10px] font-semibold text-slate-400">{$t("HireCakePhpResults__t15", "Call Us")}</span>
                     <span className="block text-[12.5px] font-semibold text-[#0f1a2e]">{PHONE}</span>
                   </span>
                 </a>
@@ -316,7 +314,7 @@ export default function HireCakePhpResults() {
                     </svg>
                   </span>
                   <span>
-                    <span className="block text-[10px] font-semibold text-slate-400">Email Us</span>
+                    <span className="block text-[10px] font-semibold text-slate-400">{$t("HireCakePhpResults__t16", "Email Us")}</span>
                     <span className="block text-[12.5px] font-semibold text-[#0f1a2e]">{EMAIL}</span>
                   </span>
                 </a>

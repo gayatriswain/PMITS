@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ICON GLYPHS (white, sit inside the coloured 3D feature badges)
@@ -86,6 +88,7 @@ interface Feature {
   title: string;
   desc: string;
   link: string;
+  href?: string;
   glyph: React.ReactNode;
   gradient: string; // badge gradient
   color: string; // connector colour
@@ -94,11 +97,12 @@ interface Feature {
   edge: number; // inner edge of the card facing the hub (stage % of width)
 }
 
-const leftFeatures: Feature[] = [
+const leftFeatures__cms: Feature[] = [
   {
     title: "Lead & Pipeline Management",
     desc: "Track leads, move deals forward, and close more with a clear pipeline.",
     link: "View Pipeline",
+    href: "/contact",
     glyph: <UsersGlyph />,
     gradient: "from-[#2dd4bf] to-[#0f766e]",
     color: "#14b8a6",
@@ -110,6 +114,7 @@ const leftFeatures: Feature[] = [
     title: "Contact & Account Management",
     desc: "Keep all your customer information organized and instantly accessible.",
     link: "View Contacts",
+    href: "/contact",
     glyph: <ContactGlyph />,
     gradient: "from-[#60a5fa] to-[#1d4ed8]",
     color: "#3b82f6",
@@ -121,6 +126,7 @@ const leftFeatures: Feature[] = [
     title: "Workflow & Automation",
     desc: "Automate follow-ups, tasks, and approvals to save time and reduce errors.",
     link: "See Automations",
+    href: "/contact",
     glyph: <WorkflowGlyph />,
     gradient: "from-[#a78bfa] to-[#6d28d9]",
     color: "#8b5cf6",
@@ -130,11 +136,12 @@ const leftFeatures: Feature[] = [
   },
 ];
 
-const rightFeatures: Feature[] = [
+const rightFeatures__cms: Feature[] = [
   {
     title: "Reports & Analytics",
     desc: "Get real-time insights with custom dashboards and advanced reporting.",
     link: "View Reports",
+    href: "/contact",
     glyph: <PieGlyph />,
     gradient: "from-[#fcd34d] to-[#f59e0b]",
     color: "#f59e0b",
@@ -146,6 +153,7 @@ const rightFeatures: Feature[] = [
     title: "Task & Activity Management",
     desc: "Stay on top of tasks, meetings, and reminders across your team.",
     link: "View Tasks",
+    href: "/contact",
     glyph: <CalendarGlyph />,
     gradient: "from-[#86efac] to-[#16a34a]",
     color: "#22c55e",
@@ -157,6 +165,7 @@ const rightFeatures: Feature[] = [
     title: "Team Collaboration",
     desc: "Share updates, collaborate and work together from one place.",
     link: "See Collaboration",
+    href: "/contact",
     glyph: <ChatGlyph />,
     gradient: "from-[#60a5fa] to-[#2563eb]",
     color: "#3b82f6",
@@ -166,7 +175,7 @@ const rightFeatures: Feature[] = [
   },
 ];
 
-const stats = [
+const stats__cms = [
   { value: "42%", label: "More Conversions", icon: "users" },
   { value: "35%", label: "Time Saved on Manual Tasks", icon: "clock" },
   { value: "50%", label: "Better Customer Retention", icon: "person" },
@@ -241,8 +250,8 @@ function FeatureCard({ f, side }: { f: Feature; side: "left" | "right" }) {
       </span>
       <div className="min-w-0">
         <h3 className="text-[14px] xl:text-[15px] font-bold text-[#0f2333] leading-snug">{f.title}</h3>
-        <p className="mt-1 text-[12px] xl:text-[12.5px] text-slate-500 leading-relaxed">{f.desc}</p>
-        <Link href="#" className="mt-2.5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#0f8a83] hover:text-[#0f5e63]">
+        <p className="text-caption mt-1 text-slate-500">{f.desc}</p>
+        <Link href={f.href || "/contact"} className="mt-2.5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#0f8a83] hover:text-[#0f5e63]">
           {f.link}
           <ArrowCircle />
         </Link>
@@ -251,7 +260,7 @@ function FeatureCard({ f, side }: { f: Feature; side: "left" | "right" }) {
   );
 }
 
-function StatIcon({ type }: { type: (typeof stats)[number]["icon"] }) {
+function StatIcon({ type }: { type: (typeof stats__cms)[number]["icon"] }) {
   const p = { className: "w-5 h-5", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   if (type === "users")
     return (
@@ -289,6 +298,7 @@ function StatIcon({ type }: { type: (typeof stats)[number]["icon"] }) {
 const HALO_MASK = "radial-gradient(circle closest-side, transparent 73%, #000 78%, #000 90%, transparent 98%)";
 
 function Hub() {
+  const $t = useCmsText();
   return (
     <div className="relative w-full h-full">
       {/* Wide soft outer glow */}
@@ -331,13 +341,10 @@ function Hub() {
       >
         <CodeLogo className="w-[clamp(30px,3vw,46px)] h-[clamp(30px,3vw,46px)]" />
         <span className="mt-[clamp(4px,0.5vw,8px)] text-[clamp(16px,1.65vw,24px)] font-bold text-white tracking-wide leading-none">
-          YOUR CRM
-        </span>
+          {$t("CustomCrmFeatures__t1", "YOUR CRM")}</span>
         <span className="mt-[clamp(4px,0.6vw,9px)] text-[clamp(9px,0.9vw,13px)] text-white/90 leading-snug">
-          Your Data. Your Process.
-          <br />
-          One Smart System.
-        </span>
+          {$t("CustomCrmFeatures__t2", "Your Data. Your Process.")}<br />
+          {$t("CustomCrmFeatures__t3", "One Smart System.")}</span>
       </div>
     </div>
   );
@@ -380,22 +387,23 @@ const TXT = {
 };
 
 function Platform() {
+  const $t = useCmsText();
   const activities = [
     {
-      t: "Follow up with John",
-      w: "Today",
+      t: $t("CustomCrmFeatures__t4", "Follow up with John"),
+      w: $t("CustomCrmFeatures__t5", "Today"),
       bg: "bg-[#2563eb]",
       icon: <path d="m6 12.5 4 4 8-9" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />,
     },
     {
-      t: "Demo with ABC Corp",
-      w: "2h ago",
+      t: $t("CustomCrmFeatures__t6", "Demo with ABC Corp"),
+      w: $t("CustomCrmFeatures__t7", "2h ago"),
       bg: "bg-[#a855f7]",
       icon: <path d="M7 6h10v12H7ZM9.5 10h5M9.5 13h5" stroke="#fff" strokeWidth="2" strokeLinecap="round" fill="none" />,
     },
     {
-      t: "Proposal Sent",
-      w: "Yesterday",
+      t: $t("CustomCrmFeatures__t8", "Proposal Sent"),
+      w: $t("CustomCrmFeatures__t9", "Yesterday"),
       bg: "bg-[#f59e0b]",
       icon: (
         <>
@@ -459,12 +467,12 @@ function Platform() {
           {/* Deals panel */}
           <div className="rounded-xl bg-white border border-slate-100 p-[clamp(6px,0.8vw,12px)]">
             <div className="flex items-center justify-between gap-1">
-              <span className={`${TXT.title} font-bold text-[#0f2333] whitespace-nowrap`}>Deals This Month</span>
-              <span className={`${TXT.small} text-slate-500 border border-slate-200 rounded px-1 whitespace-nowrap`}>This Month ▾</span>
+              <span className={`${TXT.title} font-bold text-[#0f2333] whitespace-nowrap`}>{$t("CustomCrmFeatures__t10", "Deals This Month")}</span>
+              <span className={`${TXT.small} text-slate-500 border border-slate-200 rounded px-1 whitespace-nowrap`}>{$t("CustomCrmFeatures__t11", "This Month ▾")}</span>
             </div>
-            <div className={`mt-[clamp(6px,0.8vw,12px)] ${TXT.value} font-extrabold text-[#0f2333] leading-none`}>₹24.85 Cr</div>
+            <div className={`mt-[clamp(6px,0.8vw,12px)] ${TXT.value} font-extrabold text-[#0f2333] leading-none`}>{$t("CustomCrmFeatures__t12", "₹24.85 Cr")}</div>
             <div className={`mt-1 ${TXT.small} font-semibold text-[#16a34a]`}>
-              ↑ 24% <span className="font-normal text-slate-500">vs last month</span>
+              {$t("CustomCrmFeatures__t13", "↑ 24% ")}<span className="font-normal text-slate-500">{$t("CustomCrmFeatures__t14", "vs last month")}</span>
             </div>
             <svg className="mt-[clamp(6px,0.8vw,12px)] w-full h-[clamp(28px,3.4vw,52px)] overflow-visible" viewBox="0 0 100 40" preserveAspectRatio="none" fill="none">
               <defs>
@@ -480,7 +488,7 @@ function Platform() {
 
           {/* Recent activities panel */}
           <div className="rounded-xl bg-white border border-slate-100 p-[clamp(6px,0.8vw,12px)] flex flex-col">
-            <span className={`${TXT.title} font-bold text-[#0f2333]`}>Recent Activities</span>
+            <span className={`${TXT.title} font-bold text-[#0f2333]`}>{$t("CustomCrmFeatures__t15", "Recent Activities")}</span>
             <div className="mt-[clamp(6px,0.8vw,12px)] flex-1 flex flex-col justify-around">
               {activities.map((a) => (
                 <div key={a.t} className="flex items-center gap-[clamp(4px,0.55vw,8px)]">
@@ -535,6 +543,10 @@ function Platform() {
    ========================================================================= */
 
 export default function CustomCrmFeatures() {
+  const $t = useCmsText();
+  const leftFeatures = useCmsData("CustomCrmFeatures__leftFeatures", leftFeatures__cms);
+  const rightFeatures = useCmsData("CustomCrmFeatures__rightFeatures", rightFeatures__cms);
+  const stats = useCmsData("CustomCrmFeatures__stats", stats__cms);
   const connectors = [
     ...leftFeatures.map((f, row) => ({ f, side: "left" as const, row })),
     ...rightFeatures.map((f, row) => ({ f, side: "right" as const, row })),
@@ -547,23 +559,19 @@ export default function CustomCrmFeatures() {
       <Container className="relative z-10">
         {/* ======================= HEADER ======================= */}
         <div className="relative text-center max-w-2xl mx-auto">
-          <span className="text-[11px] sm:text-xs font-black tracking-[0.2em] text-[#0f8a83] uppercase">Do More With Your CRM</span>
-          <h2 className="mt-3 text-4xl sm:text-5xl lg:text-[58px] font-extrabold tracking-tight leading-[1.1] lg:leading-[1.3] text-[#0f2333]">
-            Powerful Features.
-            <br />
-            <span className="text-[#0f8a83]">Real Results.</span>
+          <span className="text-[11px] sm:text-xs font-black tracking-[0.2em] text-[#0f8a83] uppercase">{$t("CustomCrmFeatures__t16", "Do More With Your CRM")}</span>
+          <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0f2333]">
+            {$t("CustomCrmFeatures__t17", "Powerful Features.")}<br />
+            <span className="text-[#0f8a83]">{$t("CustomCrmFeatures__t18", "Real Results.")}</span>
           </h2>
-          <p className="mt-4 lg:mt-1 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
-            Everything you need to manage, automate and grow your business
-            <br className="hidden sm:block" /> — in one custom-built CRM.
-          </p>
+          <p className="text-body mt-4 lg:mt-1 text-slate-600">
+            {rich($t("CustomCrmFeatures__t19", "Everything you need to manage, automate and grow your business"))}<br className="hidden sm:block" /> {rich($t("CustomCrmFeatures__t20", "— in one custom-built CRM."))}</p>
         </div>
         <Link
-          href="#"
+          href={$t("CustomCrmFeatures__u1", "#smart-tools")}
           className="group mt-6 lg:mt-0 lg:absolute lg:right-6 lg:top-[92px] flex lg:inline-flex justify-center items-center gap-3 text-sm font-bold text-[#0f5e63]"
         >
-          Explore All Features
-          <span className="w-9 h-9 rounded-full bg-[#0f5e63] text-white flex items-center justify-center group-hover:bg-[#0f8a83] transition-colors">
+          {$t("CustomCrmFeatures__t21", "Explore All Features")}<span className="w-9 h-9 rounded-full bg-[#0f5e63] text-white flex items-center justify-center group-hover:bg-[#0f8a83] transition-colors">
             →
           </span>
         </Link>
@@ -698,13 +706,10 @@ export default function CustomCrmFeatures() {
             </svg>
             <div>
               <h4 className="text-base font-bold text-[#0f2333] leading-snug">
-                Built to Drive
-                <br />
-                Real Business Impact
-              </h4>
+                {$t("CustomCrmFeatures__t22", "Built to Drive")}<br />
+                {$t("CustomCrmFeatures__t23", "Real Business Impact")}</h4>
               <p className="mt-1 text-[11.5px] text-slate-500 leading-snug">
-                Smarter workflows. Stronger relationships. Better decisions.
-              </p>
+                {rich($t("CustomCrmFeatures__t24", "Smarter workflows. Stronger relationships. Better decisions."))}</p>
               <div className="mt-2 flex gap-1">
                 <span className="w-6 h-1 rounded-full bg-[#0f8a83]" />
                 <span className="w-3 h-1 rounded-full bg-slate-200" />

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 
 interface OrbitFeature {
   id: string;
@@ -14,7 +15,7 @@ interface OrbitFeature {
   icon: React.ReactNode;
 }
 
-const features: OrbitFeature[] = [
+const features__cms: OrbitFeature[] = [
   {
     id: "secure",
     title: "Secure & Reliable",
@@ -160,6 +161,7 @@ function OrbitCard({ f, index, hovered, setHovered }: { f: OrbitFeature; index: 
 }
 
 function PartnerBanner({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <motion.div
       className={`relative rounded-2xl bg-[linear-gradient(100deg,#07162b_0%,#0a2038_60%,#08192f_100%)] shadow-[0_24px_50px_-20px_rgba(7,22,43,0.8)] border border-white/5 overflow-hidden ${className}`}
@@ -181,9 +183,8 @@ function PartnerBanner({ className = "" }: { className?: string }) {
             </svg>
           </motion.span>
           <div className="text-left text-[17px] font-semibold leading-snug text-white">
-            The Right Partner for Your
-            <br />
-            <span className="text-[#3fd6cf]">Core PHP Projects.</span>
+            {$t("HireCorePhpWhyChooseUs__t1", "The Right Partner for Your")}<br />
+            <span className="text-[#3fd6cf]">{$t("HireCorePhpWhyChooseUs__t2", "Core PHP Projects.")}</span>
           </div>
         </div>
 
@@ -191,25 +192,23 @@ function PartnerBanner({ className = "" }: { className?: string }) {
 
         <div className="flex items-center gap-3 flex-wrap justify-center">
           <Link
-            href="#contact"
+            href={$t("HireCorePhpWhyChooseUs__t3", "#contact")}
             className="group inline-flex items-center justify-center gap-2.5 h-[46px] px-7 rounded-lg bg-[linear-gradient(90deg,#0f8a99,#1aa6a6)] text-white text-[13px] font-semibold shadow-[0_12px_24px_-10px_rgba(26,166,166,0.8)] hover:brightness-110 transition whitespace-nowrap"
           >
-            Hire Core PHP Developers
-            <svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            {$t("HireCorePhpWhyChooseUs__t4", "Hire Core PHP Developers")}<svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </Link>
           <Link
-            href="#contact"
+            href={$t("HireCorePhpWhyChooseUs__t5", "#contact")}
             className="inline-flex items-center justify-center gap-2.5 h-[46px] px-6 rounded-lg border border-white/30 text-white text-[13px] font-medium hover:bg-white/10 transition whitespace-nowrap"
           >
             <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12Z" />
               <path d="M9 11h.01M12.5 11h.01M16 11h.01" />
             </svg>
-            Talk to an Expert
-          </Link>
+            {$t("HireCorePhpWhyChooseUs__t6", "Talk to an Expert")}</Link>
         </div>
       </div>
     </motion.div>
@@ -217,11 +216,12 @@ function PartnerBanner({ className = "" }: { className?: string }) {
 }
 
 function HubCircle({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <div className={`rounded-full bg-white border border-slate-100 shadow-[0_26px_50px_-18px_rgba(15,35,80,0.35)] flex flex-col items-center justify-center text-center ${className}`}>
       <span className="w-9 h-[2px] rounded-full bg-[#0f8a83]" />
-      <div className="mt-2.5 text-[15px] font-extrabold tracking-wide text-[#0c1e3d] leading-none">CORE PHP</div>
-      <div className="mt-1.5 text-[15px] font-extrabold tracking-wide text-[#0f8a83] leading-none">EXCELLENCE</div>
+      <div className="mt-2.5 text-[15px] font-extrabold tracking-wide text-[#0c1e3d] leading-none">{$t("HireCorePhpWhyChooseUs__t7", "CORE PHP")}</div>
+      <div className="mt-1.5 text-[15px] font-extrabold tracking-wide text-[#0f8a83] leading-none">{$t("HireCorePhpWhyChooseUs__t8", "EXCELLENCE")}</div>
       <svg viewBox="0 0 24 24" className="mt-2.5 w-6 h-6 text-[#0f8a83]" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />
       </svg>
@@ -230,12 +230,14 @@ function HubCircle({ className = "" }: { className?: string }) {
 }
 
 export default function HireCorePhpWhyChooseUs() {
+  const $t = useCmsText();
+  const features = useCmsData("HireCorePhpWhyChooseUs__features", features__cms);
   const [hovered, setHovered] = useState<string | null>(null);
   const subtitle = "We combine deep Core PHP expertise with a commitment to quality, security and long-term success.";
 
   return (
     <section id="why-choose-us" className="relative w-full overflow-hidden font-sans bg-[linear-gradient(180deg,#fbfdff_0%,#f4f8fc_55%,#eff4fa_100%)] pt-10 sm:pt-14 pb-12 sm:pb-16">
-      <Container className="relative z-10 max-w-[1320px] w-full sm:px-10 lg:px-16">
+      <Container className="relative z-10 max-w-[1320px] w-full">
         {/* ======================= DESKTOP: fixed 1100 x 720 canvas, scaled ======================= */}
         <div className="hidden lg:block">
           <ScaleBox width={1100} height={720}>
@@ -247,17 +249,15 @@ export default function HireCorePhpWhyChooseUs() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Why businesses choose us
-              </motion.div>
+                {$t("HireCorePhpWhyChooseUs__t9", "Why businesses choose us")}</motion.div>
               <motion.h2
                 className="absolute left-[47px] top-[80px] text-[44px] font-black tracking-tight leading-[1.12] text-[#0c1e3d] whitespace-nowrap"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Experience That
-                <br />
-                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">Delivers Confidence.</span>
+                {$t("HireCorePhpWhyChooseUs__t10", "Experience That")}<br />
+                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpWhyChooseUs__t11", "Delivers Confidence.")}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[47px] top-[200px] w-[400px] text-[14.5px] leading-[1.55] text-slate-600"
@@ -282,8 +282,8 @@ export default function HireCorePhpWhyChooseUs() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <Image
-                  src="/core-php3.webp"
-                  alt="Expert PHP developer delivering confidence"
+                  src={$t("HireCorePhpWhyChooseUs__t12", "/core-php3.webp")}
+                  alt={$t("HireCorePhpWhyChooseUs__t13", "Expert PHP developer delivering confidence")}
                   width={1237}
                   height={693}
                   priority
@@ -358,19 +358,18 @@ export default function HireCorePhpWhyChooseUs() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.22em] text-[#0f8a83] uppercase">Why businesses choose us</div>
-          <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight leading-[1.1] text-[#0c1e3d]">
-            Experience That
-            <br />
-            <span className="text-[#0f8a83]">Delivers Confidence.</span>
+          <div className="text-[11.5px] font-bold tracking-[0.22em] text-[#0f8a83] uppercase">{$t("HireCorePhpWhyChooseUs__t14", "Why businesses choose us")}</div>
+          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0c1e3d]">
+            {$t("HireCorePhpWhyChooseUs__t15", "Experience That")}<br />
+            <span className="text-[#0f8a83]">{$t("HireCorePhpWhyChooseUs__t16", "Delivers Confidence.")}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-600 max-w-md">{subtitle}</p>
+          <p className="text-body mt-4 text-slate-600 max-w-md">{subtitle}</p>
           <div className="mt-5 w-10 h-[3px] rounded-full bg-[#0f8a83]" />
 
           <div className="mt-8 -mx-2">
             <Image
-              src="/core-php3.webp"
-              alt="Expert PHP developer delivering confidence"
+              src={$t("HireCorePhpWhyChooseUs__t17", "/core-php3.webp")}
+              alt={$t("HireCorePhpWhyChooseUs__t18", "Expert PHP developer delivering confidence")}
               width={1237}
               height={693}
               className="w-full h-auto mix-blend-multiply"
@@ -385,7 +384,7 @@ export default function HireCorePhpWhyChooseUs() {
               <div key={f.id} className="rounded-2xl bg-white/90 border border-white shadow-[0_18px_36px_-20px_rgba(15,35,80,0.3)] p-5 text-center flex flex-col items-center">
                 <span className="text-[#0f7f8f] [&_svg]:w-9 [&_svg]:h-9">{f.icon}</span>
                 <h3 className="mt-3 text-[14px] font-bold text-[#0c1e3d]">{f.title}</h3>
-                <p className="mt-1.5 text-[12px] text-slate-500 leading-snug">{f.desc}</p>
+                <p className="text-caption mt-1.5 text-slate-500">{f.desc}</p>
               </div>
             ))}
           </div>

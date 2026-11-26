@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Caveat, Oswald } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const oswald = Oswald({ subsets: ["latin"], weight: ["600", "700"] });
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const oswald = { className: "font-heading" }; // global font from app/layout.tsx
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const INK = "#0d1b33";
@@ -86,7 +87,7 @@ const PlayIcon = ({ size = 13, color = NAVY }: IconProps) => (
   </svg>
 );
 
-const STEPS = [
+const STEPS__cms = [
   { Icon: TargetIcon, title: "Strategy", desc: ["Understand", "the business."] },
   { Icon: PenIcon, title: "Design", desc: ["Shape the", "experience."] },
   { Icon: CodeIcon, title: "Build", desc: ["Bring the", "solution to life."] },
@@ -148,7 +149,7 @@ const SCENE_PERSPECTIVE = { perspective: 1000, perspectiveOrigin: "45% 58%" };
 const BLOCK_PERSPECTIVE = { perspective: 1000, perspectiveOrigin: "100% 50%" };
 const SCENE_TRANSFORM = "translate(0px, 4px) scale(0.82) rotateY(-13deg)";
 
-function StepFront({ step }: { step: (typeof STEPS)[number] }) {
+function StepFront({ step }: { step: (typeof STEPS__cms)[number] }) {
   return (
     <div className="flex h-full items-center gap-5 border-b border-slate-200 bg-gradient-to-br from-white via-white to-slate-100 px-7 shadow-[inset_0_-10px_20px_-14px_rgba(13,27,51,0.35),inset_-2px_0_0_rgba(103,232,249,0.75),inset_0_2px_0_rgba(255,255,255,1)]">
       <step.Icon size={34} color={TEAL} />
@@ -212,6 +213,8 @@ function Scene({ children, camera = SCENE_PERSPECTIVE }: { children: React.React
 }
 
 function SolveVisual() {
+  const $t = useCmsText();
+  const STEPS = useCmsData("WhoWeAreSolve__STEPS", STEPS__cms);
   const { ref, scale } = useFitScale(CANVAS_W);
   return (
     <div ref={ref} className="relative w-full" style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}>
@@ -318,11 +321,9 @@ function SolveVisual() {
                         <CodeSlashIcon size={96} color="#67e8f9" />
                       </motion.span>
                       <p className="mt-2 text-[25px] font-extrabold tracking-wide text-white">
-                        PR
-                        <span className="mx-[2px] inline-block h-[13px] w-[13px] rotate-45 border-[3px] border-cyan-400 align-[1px]" />
-                        MANAGE
-                      </p>
-                      <p className="mt-0.5 text-[12px] font-semibold tracking-[0.32em] text-sky-400">IT SOLUTIONS</p>
+                        {rich($t("WhoWeAreSolve__t1", "PR"))}<span className="mx-[2px] inline-block h-[13px] w-[13px] rotate-45 border-[3px] border-cyan-400 align-[1px]" />
+                        {rich($t("WhoWeAreSolve__t2", "MANAGE"))}</p>
+                      <p className="text-caption mt-0.5 font-semibold tracking-[0.32em] text-sky-400">{rich($t("WhoWeAreSolve__t3", "IT SOLUTIONS"))}</p>
                     </div>
                   </div>
                 ),
@@ -383,6 +384,7 @@ function SolveVisual() {
 }
 
 function PromiseCard() {
+  const $t = useCmsText();
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -393,23 +395,16 @@ function PromiseCard() {
     >
       <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-300">
         <ShieldIcon />
-        Our Promise
-      </p>
-      <h3 className={`${oswald.className} mt-5 text-[24px] font-semibold uppercase leading-[1.15] tracking-wide`}>
-        We don&apos;t just
-        <br />
-        deliver projects.
-      </h3>
+        {rich($t("WhoWeAreSolve__t4", "Our Promise"))}</p>
+      <h3 className={`text-h5 ${oswald.className} mt-5 font-semibold uppercase tracking-wide`}>
+        {$t("WhoWeAreSolve__t5", "We don't just")}<br />
+        {$t("WhoWeAreSolve__t6", "deliver projects.")}</h3>
       <p className={`${oswald.className} mt-3 text-[24px] font-semibold uppercase leading-[1.15] tracking-wide text-teal-300`}>
-        We build what
-        <br />
-        makes it possible.
-      </p>
+        {rich($t("WhoWeAreSolve__t7", "We build what"))}<br />
+        {rich($t("WhoWeAreSolve__t8", "makes it possible."))}</p>
       <span className="mt-5 block h-[2px] w-10 rounded-full bg-teal-300" />
-      <p className="mt-5 text-[13.5px] leading-[1.7] text-slate-300">
-        Every line of code, every design decision and every strategy we craft is aimed at one thing — helping your
-        business move forward, faster.
-      </p>
+      <p className="text-small mt-5 text-slate-300">
+        {rich($t("WhoWeAreSolve__t9", "Every line of code, every design decision and every strategy we craft is aimed at one thing — helping your business move forward, faster."))}</p>
       <div className="mt-6 flex gap-2">
         {Array.from({ length: 6 }).map((_, i) => (
           <span key={i} className="h-1.5 w-1.5 rounded-full bg-teal-300/50" />
@@ -432,6 +427,7 @@ function Hexagon({ children }: { children: React.ReactNode }) {
 }
 
 function StepsStrip() {
+  const STEPS = useCmsData("WhoWeAreSolve__STEPS", STEPS__cms);
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -450,9 +446,9 @@ function StepsStrip() {
               <s.Icon size={26} color={i === 2 ? TEAL : INK} />
             </Hexagon>
             <div className="leading-tight">
-              <p className="text-[22px] font-bold" style={{ color: TEAL }}>{String(i + 1).padStart(2, "0")}</p>
-              <p className="mt-1 text-[13px] font-bold uppercase tracking-wide" style={{ color: INK }}>{s.title}</p>
-              <p className="mt-1 text-[12.5px] text-slate-500">
+              <p className="text-body font-bold" style={{ color: TEAL }}>{String(i + 1).padStart(2, "0")}</p>
+              <p className="text-small mt-1 font-bold uppercase tracking-wide" style={{ color: INK }}>{s.title}</p>
+              <p className="text-caption mt-1 text-slate-500">
                 {s.desc[0]}
                 <br />
                 {s.desc[1]}
@@ -485,6 +481,7 @@ function StepsStrip() {
 }
 
 export default function WhoWeAreSolve() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#f7fbfb] via-white to-[#f4f8fb] py-16 lg:py-20">
       {/* soft accents */}
@@ -499,20 +496,18 @@ export default function WhoWeAreSolve() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,460px)_1fr] xl:gap-12">
           {/* Left copy */}
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}>
-            <motion.p variants={fadeUp} className="flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.14em]" style={{ color: DEEP_TEAL }}>
+            <motion.p variants={fadeUp} className="text-caption flex items-center gap-3 font-semibold uppercase tracking-[0.14em]" style={{ color: DEEP_TEAL }}>
               <span className="h-px w-10 bg-teal-400" />
-              We don&apos;t just write code.
-            </motion.p>
+              {rich($t("WhoWeAreSolve__t10", "We don't just write code."))}</motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className={`${oswald.className} mt-4 text-[48px] sm:text-[62px] lg:text-[68px] font-bold uppercase leading-[0.98] tracking-tight`}
+              className={`text-h2 ${oswald.className} mt-4 font-bold uppercase tracking-tight`}
             >
-              <span className="block" style={{ color: INK }}>We Solve.</span>
-              <span className="block" style={{ color: INK }}>We Build.</span>
+              <span className="block" style={{ color: INK }}>{$t("WhoWeAreSolve__t11", "We Solve.")}</span>
+              <span className="block" style={{ color: INK }}>{$t("WhoWeAreSolve__t12", "We Build.")}</span>
               <span className="relative inline-block bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL} 60%, #22d3ee)` }}>
-                We Grow
-                <svg className="pointer-events-none absolute -right-12 top-0" width="40" height="38" viewBox="0 0 48 46" fill="none" aria-hidden>
+                {$t("WhoWeAreSolve__t13", "We Grow")}<svg className="pointer-events-none absolute -right-12 top-0" width="40" height="38" viewBox="0 0 48 46" fill="none" aria-hidden>
                   <path d="M4 42C16 36 30 22 40 8" stroke="#2563eb" strokeWidth="3" strokeLinecap="round" />
                   <path d="M31 7l11-3-1 12" stroke="#2563eb" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -520,33 +515,29 @@ export default function WhoWeAreSolve() {
             </motion.h2>
 
             <motion.p variants={fadeUp} className={`${caveat.className} mt-2 text-[36px] leading-none`} style={{ color: INK }}>
-              With You.
-              <svg className="mt-1 block h-2 w-[130px]" viewBox="0 0 130 8" fill="none" preserveAspectRatio="none" aria-hidden>
+              {rich($t("WhoWeAreSolve__t14", "With You."))}<svg className="mt-1 block h-2 w-[130px]" viewBox="0 0 130 8" fill="none" preserveAspectRatio="none" aria-hidden>
                 <path d="M2 6C40 1 90 1 128 4" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
               </svg>
             </motion.p>
 
-            <motion.p variants={fadeUp} className="mt-6 max-w-[440px] text-[15px] leading-[1.75] text-slate-600">
-              At ProManage IT Solutions, we blend strategy, creativity and technology to build digital solutions that drive
-              measurable impact and meaningful growth.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[440px] text-slate-600">
+              {rich($t("WhoWeAreSolve__t15", "At ProManage IT Solutions, we blend strategy, creativity and technology to build digital solutions that drive measurable impact and meaningful growth."))}</motion.p>
 
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-5">
               <Link
-                href="/contact"
+                href={$t("WhoWeAreSolve__t16", "/contact")}
                 className="group inline-flex items-center gap-4 rounded-xl py-3 pl-5 pr-3 text-[14.5px] font-semibold text-white shadow-[0_15px_30px_-12px_rgba(13,148,136,0.7)] transition hover:-translate-y-0.5"
                 style={{ background: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL} 55%, #1d4ed8)` }}
               >
-                Start a Conversation
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
+                {$t("WhoWeAreSolve__t17", "Start a Conversation")}<span className="flex h-7 w-7 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
                   <ArrowIcon size={14} color={DEEP_TEAL} />
                 </span>
               </Link>
-              <Link href="#how-we-work" className="group inline-flex items-center gap-3">
+              <Link href={$t("WhoWeAreSolve__t18", "#how-we-work")} className="group inline-flex items-center gap-3">
                 <span className="flex h-11 w-11 items-center justify-center rounded-full border-2 transition-transform group-hover:scale-105" style={{ borderColor: INK }}>
                   <PlayIcon color={INK} />
                 </span>
-                <span className="text-[14.5px] font-semibold" style={{ color: INK }}>See How We Work</span>
+                <span className="text-[14.5px] font-semibold" style={{ color: INK }}>{$t("WhoWeAreSolve__t19", "See How We Work")}</span>
               </Link>
             </motion.div>
           </motion.div>

@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import Container from "../shared/Container";
 import { ArrowIcon } from "../shared/icons";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -9,47 +13,54 @@ const GREEN = "#0be881";
 
 type Project = {
   name: string;
+  href?: string;
   year: string;
   category: string;
   image: string;
 };
 
-const leftProjects: Project[] = [
+const leftProjects__cms: Project[] = [
   {
     name: "NovaTech Website",
+    href: "/portfolio",
     year: "2025",
     category: "Web Design",
     image: "/project1.png",
   },
   {
     name: "Bloom Cosmetics",
+    href: "/portfolio",
     year: "2025",
     category: "Branding",
     image: "/project2.png",
   },
   {
     name: "Horizon App UI",
+    href: "/portfolio",
     year: "2025",
     category: "UI/UX Design",
     image: "/project3.png",
   },
 ];
 
-const rightProjects: Project[] = [
+const rightProjects__cms: Project[] = [
   {
     name: "Pulse Creative Studio",
+    href: "/portfolio",
     year: "2024",
     category: "Branding",
     image: "/project4.png",
   },
   {
     name: "Vertex Analytics",
+    href: "/portfolio",
     year: "2024",
     category: "Creative Development",
     image: "/project5.png",
   },
   {
     name: "Arclight Interior",
+    href: "/portfolio",
     year: "2024",
     category: "Web Design",
     image: "/project6.png",
@@ -70,11 +81,12 @@ function ArrowBadge() {
 }
 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
-  const { name, year, category, image } = project;
+  const $t = useCmsText();
+  const { name, year, category, image, href } = project;
   return (
     <div className="animate-fade-up group cursor-pointer" style={{ animationDelay: `${delay}ms` }}>
       <Link
-        href="#"
+        href={href || "/portfolio"}
         aria-label={`View ${name} project`}
         className="relative block w-full max-w-[595px] overflow-hidden rounded-2xl"
         style={{ aspectRatio: "595 / 580" }}
@@ -93,19 +105,18 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             className="translate-y-2 rounded-full bg-white px-4 py-2 text-xs font-bold shadow-lg transition-transform duration-500 group-hover:translate-y-0"
             style={{ color: NAVY }}
           >
-            View Project
-          </span>
+            {$t("OurWork__t1", "View Project")}</span>
         </div>
       </Link>
 
       <div className="mt-3 flex items-center justify-between">
-        <p className="text-sm font-bold" style={{ color: NAVY }}>
+        <p className="text-small font-bold" style={{ color: NAVY }}>
           {name}
         </p>
         <span className="text-xs text-slate-400">{year}</span>
       </div>
       <div className="mt-1 flex items-center justify-between">
-        <p className="text-xs text-slate-400">{category}</p>
+        <p className="text-caption text-slate-400">{category}</p>
         <ArrowBadge />
       </div>
     </div>
@@ -113,27 +124,30 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
 }
 
 function Heading() {
+  const $t = useCmsText();
   return (
     <div className="animate-fade-up">
-      <p className="flex items-center gap-2 text-lg font-extrabold sm:text-xl" style={{ color: NAVY }}>
+      <p className="text-body flex items-center gap-2 font-extrabold" style={{ color: NAVY }}>
         <span aria-hidden style={{ color: GREEN }}>
           {"//"}
         </span>
-        Our Work
-      </p>
-      <h2 className="mt-3 text-2xl font-bold leading-snug sm:text-3xl" style={{ color: NAVY }}>
-        Projects That Reflect Our{" "}
-        <span style={{ color: TEAL }}>Design Excellence</span>
+        {rich($t("OurWork__t2", "Our Work"))}</p>
+      <h2 className="text-h2 mt-3 font-bold" style={{ color: NAVY }}>
+        {$t("OurWork__t3", "Projects That Reflect Our")}{" "}
+        <span style={{ color: TEAL }}>{$t("OurWork__t4", "Design Excellence")}</span>
       </h2>
     </div>
   );
 }
 
 export default function OurWork() {
+  const $t = useCmsText();
+  const leftProjects = useCmsData("OurWork__leftProjects", leftProjects__cms);
+  const rightProjects = useCmsData("OurWork__rightProjects", rightProjects__cms);
   return (
     <section className="bg-white py-16 lg:py-20">
       <Container>
-        <div className="mx-auto lg:w-[70%]">
+        <div className="mx-auto lg:w-[90%] 2xl:w-[84%]">
           <div className="mb-8 lg:hidden">
             <Heading />
           </div>
@@ -148,16 +162,14 @@ export default function OurWork() {
                 className="animate-fade-up"
                 style={{ animationDelay: `${CARD_START_MS + 6 * CARD_STEP_MS}ms` }}
               >
-                <p className="text-sm leading-relaxed text-slate-500">
-                  Shaping digital experiences with precision and purpose.
-                </p>
+                <p className="text-small text-slate-500">
+                  {rich($t("OurWork__t5", "Shaping digital experiences with precision and purpose."))}</p>
                 <Link
-                  href="/portfolio"
+                  href={$t("OurWork__t6", "/portfolio")}
                   className="group mt-4 flex max-w-[280px] items-center justify-between gap-4 rounded-2xl bg-slate-100 py-2 pl-5 pr-2 transition-colors hover:bg-slate-200"
                 >
                   <span className="text-sm font-bold" style={{ color: NAVY }}>
-                    View All Projects
-                  </span>
+                    {$t("OurWork__t7", "View All Projects")}</span>
                   <span
                     className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border-2 bg-white transition-colors duration-300 group-hover:bg-[#0be881] group-hover:text-white"
                     style={{ borderColor: GREEN, color: GREEN }}

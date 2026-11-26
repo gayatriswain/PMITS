@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ICONS (solid, colour-coded: navy for sources, teal for outcomes)
@@ -88,7 +90,7 @@ interface FlowChip {
   y: number; // vertical centre in % of stage
 }
 
-const sources: FlowChip[] = [
+const sources__cms: FlowChip[] = [
   { title: "Leads", sub: "New Enquiry", icon: <UsersIcon color={NAVY} />, y: 32 },
   { title: "Email", sub: "Conversations", icon: <EnvelopeIcon />, y: 45 },
   { title: "WhatsApp", sub: "Messages", icon: <WhatsAppIcon />, y: 58 },
@@ -96,16 +98,16 @@ const sources: FlowChip[] = [
   { title: "Calls & Meetings", sub: "Follow-ups", icon: <UsersIcon color={NAVY} />, y: 84 },
 ];
 
-const outcomes: FlowChip[] = [
+const outcomes__cms: FlowChip[] = [
   { title: "Higher Conversions", sub: "Close more deals", icon: <HouseChartIcon />, y: 36 },
   { title: "Time Saved", sub: "Automate routine tasks", icon: <ClockIcon />, y: 50 },
   { title: "Stronger Relationships", sub: "360° customer view", icon: <UsersIcon color={TEAL} />, y: 64 },
   { title: "Data-Driven Growth", sub: "Real-time insights", icon: <GrowthChartIcon />, y: 78 },
 ];
 
-const highlights = ["Custom-Built", "Scalable", "Integrated", "Secure", "Business-Focused"];
+const highlights__cms = ["Custom-Built", "Scalable", "Integrated", "Secure", "Business-Focused"];
 
-const trustedBrands = [
+const trustedBrands__cms = [
   { name: "RealEdge", sector: "Real Estate", path: "M3 11 12 4l9 7M5 10v10h14V10" },
   { name: "EduQuest", sector: "Education", path: "M2 9l10-5 10 5-10 5Z M6 11v5c3 2 9 2 12 0v-5" },
   { name: "HealthPlus", sector: "Healthcare", path: "M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11Z" },
@@ -210,6 +212,11 @@ function Pipe3D({ d, delay }: { d: string; delay: number }) {
    ========================================================================= */
 
 export default function CustomCrmHero() {
+  const $t = useCmsText();
+  const sources = useCmsData("CustomCrmHero__sources", sources__cms);
+  const outcomes = useCmsData("CustomCrmHero__outcomes", outcomes__cms);
+  const highlights = useCmsData("CustomCrmHero__highlights", highlights__cms);
+  const trustedBrands = useCmsData("CustomCrmHero__trustedBrands", trustedBrands__cms);
   // Measure the desktop stage so pipes can be drawn in real px
   const stageRef = useRef<HTMLDivElement>(null);
   const [stageSize, setStageSize] = useState({ w: 0, h: 0 });
@@ -236,32 +243,26 @@ export default function CustomCrmHero() {
         {/* ======================= HEADLINE BLOCK ======================= */}
         <div className="text-center max-w-3xl mx-auto">
           <span className="text-[11px] sm:text-xs font-black tracking-[0.22em] text-[#0f8a83] uppercase">
-            Custom CRM Solution
-          </span>
-          <h1 className="mt-3 text-4xl sm:text-5xl lg:text-[60px] font-extrabold tracking-tight leading-[1.05] text-[#0f2333]">
-            A CRM Built Around
-            <br />
-            <span className="text-[#0f8a83]">Your Business.</span>
+            {$t("CustomCrmHero__t1", "Custom CRM Solution")}</span>
+          <h1 className="text-h1 mt-3 font-extrabold tracking-tight text-[#0f2333]">
+            {$t("CustomCrmHero__t2", "A CRM Built Around")}<br />
+            <span className="text-[#0f8a83]">{$t("CustomCrmHero__t3", "Your Business.")}</span>
           </h1>
-          <p className="mt-5 text-slate-600 text-sm sm:text-base leading-relaxed">
-            We don&apos;t force you to adapt to software.
-            <br className="hidden sm:block" /> We build a CRM that adapts to the way you work.
-          </p>
+          <p className="text-body mt-5 text-slate-600">
+            {rich($t("CustomCrmHero__t4", "We don't force you to adapt to software."))}<br className="hidden sm:block" /> {rich($t("CustomCrmHero__t5", "We build a CRM that adapts to the way you work."))}</p>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
-              href="#contact"
+              href={$t("CustomCrmHero__t6", "#contact")}
               className="group inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-[#0f2333] text-white text-sm font-semibold hover:bg-[#0f5e63] transition-colors"
             >
-              Build My CRM
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              {$t("CustomCrmHero__t7", "Build My CRM")}<span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
             <Link
-              href="#contact"
+              href={$t("CustomCrmHero__t8", "#contact")}
               className="inline-flex items-center px-7 py-3 rounded-lg border border-[#0f8a83] text-[#0f2333] text-sm font-semibold bg-white/70 hover:bg-teal-50 transition-colors"
             >
-              Book a Free Consultation
-            </Link>
+              {$t("CustomCrmHero__t9", "Book a Free Consultation")}</Link>
           </div>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
@@ -304,8 +305,8 @@ export default function CustomCrmHero() {
             transition={{ duration: IMAGE_DURATION, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-              src="/Custom CRM Solution1.webp"
-              alt="ProManage custom CRM dashboard"
+              src={$t("CustomCrmHero__t10", "/Custom CRM Solution1.webp")}
+              alt={$t("CustomCrmHero__t11", "ProManage custom CRM dashboard")}
               width={1684}
               height={934}
               priority
@@ -321,13 +322,11 @@ export default function CustomCrmHero() {
             transition={{ duration: 0.6, delay: LINE_START }}
           >
             <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase leading-snug">
-              From Disconnected
-              <br />
-              <span className="text-[#0f2333]">to Connected</span>
+              {$t("CustomCrmHero__t12", "From Disconnected")}<br />
+              <span className="text-[#0f2333]">{$t("CustomCrmHero__t13", "to Connected")}</span>
             </h3>
-            <p className="mt-2 text-[12px] text-slate-600 leading-relaxed">
-              Bring your people, data and processes together in one intelligent system.
-            </p>
+            <p className="text-caption mt-2 text-slate-600">
+              {rich($t("CustomCrmHero__t14", "Bring your people, data and processes together in one intelligent system."))}</p>
           </motion.div>
           {sources.map((c, i) => (
             <div
@@ -360,13 +359,11 @@ export default function CustomCrmHero() {
             transition={{ duration: 0.6, delay: LINE_START }}
           >
             <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase leading-snug">
-              Outcomes That
-              <br />
-              <span className="text-[#0f2333]">Drive Growth</span>
+              {$t("CustomCrmHero__t15", "Outcomes That")}<br />
+              <span className="text-[#0f2333]">{$t("CustomCrmHero__t16", "Drive Growth")}</span>
             </h3>
-            <p className="mt-2 text-[12px] text-slate-600 leading-relaxed">
-              Make smarter decisions, build stronger relationships and close more deals.
-            </p>
+            <p className="text-caption mt-2 text-slate-600">
+              {rich($t("CustomCrmHero__t17", "Make smarter decisions, build stronger relationships and close more deals."))}</p>
           </motion.div>
           {outcomes.map((c, i) => (
             <div
@@ -400,8 +397,8 @@ export default function CustomCrmHero() {
             transition={{ duration: IMAGE_DURATION, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-            src="/Custom CRM Solution1.webp"
-            alt="ProManage custom CRM dashboard"
+            src={$t("CustomCrmHero__t18", "/Custom CRM Solution1.webp")}
+            alt={$t("CustomCrmHero__t19", "ProManage custom CRM dashboard")}
             width={1684}
             height={934}
             priority
@@ -411,11 +408,10 @@ export default function CustomCrmHero() {
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
               <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase">
-                From Disconnected <span className="text-[#0f2333]">to Connected</span>
+                {$t("CustomCrmHero__t20", "From Disconnected ")}<span className="text-[#0f2333]">{$t("CustomCrmHero__t21", "to Connected")}</span>
               </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Bring your people, data and processes together in one intelligent system.
-              </p>
+              <p className="text-small mt-2 text-slate-600">
+                {rich($t("CustomCrmHero__t22", "Bring your people, data and processes together in one intelligent system."))}</p>
               <div className="mt-4 grid gap-2.5">
                 {sources.map((c) => (
                   <Chip key={c.title} chip={c} />
@@ -424,11 +420,10 @@ export default function CustomCrmHero() {
             </div>
             <div>
               <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase">
-                Outcomes That <span className="text-[#0f2333]">Drive Growth</span>
+                {$t("CustomCrmHero__t23", "Outcomes That ")}<span className="text-[#0f2333]">{$t("CustomCrmHero__t24", "Drive Growth")}</span>
               </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Make smarter decisions, build stronger relationships and close more deals.
-              </p>
+              <p className="text-small mt-2 text-slate-600">
+                {rich($t("CustomCrmHero__t25", "Make smarter decisions, build stronger relationships and close more deals."))}</p>
               <div className="mt-4 grid gap-2.5">
                 {outcomes.map((c) => (
                   <Chip key={c.title} chip={c} />
@@ -441,8 +436,7 @@ export default function CustomCrmHero() {
         {/* ======================= TRUSTED BY ======================= */}
         <div className="mt-8 lg:mt-4 text-center">
           <p className="text-[10.5px] sm:text-[11px] font-bold tracking-[0.16em] text-slate-500 uppercase">
-            Trusted by forward-thinking businesses to streamline, automate and grow.
-          </p>
+            {rich($t("CustomCrmHero__t26", "Trusted by forward-thinking businesses to streamline, automate and grow."))}</p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
             {trustedBrands.map((b) => (
               <div key={b.name} className="flex items-center gap-2 text-[#0f2333]">

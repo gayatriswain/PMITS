@@ -3,12 +3,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 
-const caveat = Caveat({ subsets: ["latin"], weight: ["500", "600", "700"] });
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#0c1f1a";
 const GREEN = "#1f7a3f";
@@ -30,7 +30,7 @@ const Icon = ({ children, className = "w-6 h-6" }: { children: React.ReactNode; 
   </svg>
 );
 
-const features = [
+const features__cms = [
   {
     label: "Low-Code/No-Code\nPlatform Utilisation",
     icon: <path d="m16 18 6-6-6-6M8 6l-6 6 6 6M14 4l-4 16" />,
@@ -66,7 +66,7 @@ const features = [
   },
 ];
 
-const trust = [
+const trust__cms = [
   {
     a: "Free",
     b: "Consultation",
@@ -100,32 +100,32 @@ const trust = [
 ];
 
 function Heading({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <h1 className={`font-black tracking-tight ${className}`} style={{ color: NAVY }}>
-      Hire{" "}
-      <span className="bg-gradient-to-r from-[#2f9e4f] to-[#0e5a33] bg-clip-text text-transparent">Shopify</span>
+      {$t("HireShopifyHero__t1", "Hire")}{" "}
+      <span className="bg-gradient-to-r from-[#2f9e4f] to-[#0e5a33] bg-clip-text text-transparent">{$t("HireShopifyHero__t2", "Shopify")}</span>
       <br />
-      Developers
-    </h1>
+      {$t("HireShopifyHero__t3", "Developers")}</h1>
   );
 }
 
 const copy = "Power up your online business using the skills of industry-certified Shopify developers having diverse experiences and deep eCommerce insights.";
 
 function Buttons({ className = "" }: { className?: string }) {
+  const $t = useCmsText();
   return (
     <div className={`flex items-center gap-5 ${className}`}>
       <Link
-        href="#contact"
+        href={$t("HireShopifyHero__t4", "#contact")}
         className="group inline-flex items-center justify-center gap-3 h-[50px] px-8 rounded-full bg-[linear-gradient(90deg,#0b4a2c,#1b6b3f)] text-white text-[15px] font-semibold shadow-[0_16px_28px_-10px_rgba(14,77,47,0.75)] hover:brightness-110 transition whitespace-nowrap"
       >
-        Get My Free Proposal
-        <svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        {$t("HireShopifyHero__t5", "Get My Free Proposal")}<svg viewBox="0 0 24 24" className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />
         </svg>
       </Link>
-      <Link href="#contact" className="group inline-flex items-center gap-3 whitespace-nowrap">
+      <Link href={$t("HireShopifyHero__t6", "#contact")} className="group inline-flex items-center gap-3 whitespace-nowrap">
         <span className="relative w-[50px] h-[50px] rounded-full bg-white border border-slate-100 shadow-[0_12px_24px_-10px_rgba(15,35,30,0.35)] flex items-center justify-center">
           <motion.span
             className="absolute inset-0 rounded-full border border-emerald-300"
@@ -137,14 +137,14 @@ function Buttons({ className = "" }: { className?: string }) {
           </svg>
         </span>
         <span className="text-[15px] font-semibold" style={{ color: NAVY }}>
-          Talk to Our Experts
-        </span>
+          {$t("HireShopifyHero__t7", "Talk to Our Experts")}</span>
       </Link>
     </div>
   );
 }
 
 function TrustRow({ className = "" }: { className?: string }) {
+  const trust = useCmsData("HireShopifyHero__trust", trust__cms);
   return (
     <div className={`flex items-center divide-x divide-slate-200 ${className}`}>
       {trust.map((t, i) => (
@@ -164,6 +164,8 @@ function TrustRow({ className = "" }: { className?: string }) {
 }
 
 export default function HireShopifyHero() {
+  const $t = useCmsText();
+  const features = useCmsData("HireShopifyHero__features", features__cms);
   const { ref, scale } = useFitScale(1240);
 
   return (
@@ -171,14 +173,14 @@ export default function HireShopifyHero() {
       {/* soft green wash behind the artwork */}
       <div className="absolute right-[-120px] top-[-160px] w-[760px] h-[760px] rounded-full bg-[radial-gradient(circle,rgba(190,230,200,0.55)_0%,rgba(225,245,232,0.3)_50%,transparent_72%)] pointer-events-none" />
 
-      <Container className="relative z-10 max-w-[1320px] sm:px-10 lg:px-14">
+      <Container className="relative z-10 max-w-[1320px]">
         {/* ======================= DESKTOP: fixed 1240 x 815 canvas, scaled ======================= */}
         <div className="hidden lg:block">
           <div ref={ref} className="relative w-full" style={{ aspectRatio: "1240 / 815" }}>
             <div style={{ width: 1240, height: 815, transform: `scale(${scale})`, transformOrigin: "top left", visibility: scale ? "visible" : "hidden" }} className="relative">
               {/* ---------- artwork ---------- */}
               <div className="absolute" style={{ left: 630, top: 110, width: 510 }}>
-                <Image src="/shopify developer.webp" alt="Shopify developer building an online store" width={800} height={824} priority sizes="510px" className="w-full h-auto select-none drop-shadow-[0_30px_40px_rgba(15,60,40,0.14)]" />
+                <Image src={$t("HireShopifyHero__t8", "/shopify developer.webp")} alt={$t("HireShopifyHero__t9", "Shopify developer building an online store")} width={800} height={824} priority sizes="510px" className="w-full h-auto select-none drop-shadow-[0_30px_40px_rgba(15,60,40,0.14)]" />
               </div>
 
               {/* handwritten: Build Sell Grow */}
@@ -189,12 +191,9 @@ export default function HireShopifyHero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 1.1 }}
               >
-                Build
-                <br />
-                Sell
-                <br />
-                Grow
-              </motion.div>
+                {$t("HireShopifyHero__t10", "Build")}<br />
+                {$t("HireShopifyHero__t11", "Sell")}<br />
+                {$t("HireShopifyHero__t12", "Grow")}</motion.div>
               <svg className="absolute pointer-events-none" style={{ left: 1128, top: 14 }} width="80" height="80" viewBox="0 0 80 80" fill="none">
                 <motion.path
                   d="M6 22 C 30 6, 56 14, 62 50"
@@ -229,24 +228,21 @@ export default function HireShopifyHero() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 2 }}
               >
-                More
-                <br />
-                than just a store.
-              </motion.div>
+                {$t("HireShopifyHero__t13", "More")}<br />
+                {$t("HireShopifyHero__t14", "than just a store.")}</motion.div>
 
               {/* ---------- copy ---------- */}
               <motion.div className="absolute left-[35px] top-[66px] w-[470px]" variants={stagger} initial="hidden" animate="show">
                 <motion.div variants={fadeUp} className="flex items-center gap-3 text-[11.5px] font-medium tracking-[0.2em] uppercase text-slate-500">
                   <span className="w-12 h-px bg-slate-300" />
-                  Ecommerce Experts, Real Results
-                  <span className="w-12 h-px bg-slate-300" />
+                  {$t("HireShopifyHero__t15", "Ecommerce Experts, Real Results")}<span className="w-12 h-px bg-slate-300" />
                 </motion.div>
 
                 <motion.div variants={fadeUp} className="mt-5">
                   <Heading className="text-[70px] leading-[1.04]" />
                 </motion.div>
 
-                <motion.p variants={fadeUp} className="mt-7 text-[17.5px] leading-[1.6] text-slate-600 w-[430px]">
+                <motion.p variants={fadeUp} className="text-body mt-7 text-slate-600 w-[430px]">
                   {copy}
                 </motion.p>
 
@@ -282,9 +278,8 @@ export default function HireShopifyHero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 1.6 }}
               >
-                Your Shopify Store
-                <br />
-                <span className="ml-8">Our Expertise.</span>
+                {$t("HireShopifyHero__t16", "Your Shopify Store")}<br />
+                <span className="ml-8">{$t("HireShopifyHero__t17", "Our Expertise.")}</span>
               </motion.div>
               <svg className="absolute pointer-events-none" style={{ left: 74, top: 778 }} width="230" height="26" viewBox="0 0 230 26" fill="none">
                 <motion.path d="M4 20 C 60 18, 150 10, 224 3" stroke="#2f9e4f" strokeWidth="3" strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.9, delay: 2.2 }} />
@@ -297,10 +292,9 @@ export default function HireShopifyHero() {
         <div className="lg:hidden py-10 sm:py-14">
           <div className="flex items-center gap-3 text-[11px] font-medium tracking-[0.18em] uppercase text-slate-500">
             <span className="w-8 h-px bg-slate-300" />
-            Ecommerce Experts, Real Results
-          </div>
+            {$t("HireShopifyHero__t18", "Ecommerce Experts, Real Results")}</div>
           <Heading className="mt-4 text-5xl sm:text-6xl leading-[1.05]" />
-          <p className="mt-5 text-base text-slate-600 leading-relaxed max-w-lg">{copy}</p>
+          <p className="text-body mt-5 text-slate-600 max-w-lg">{copy}</p>
 
           <div className="mt-6 grid grid-cols-2 gap-4 max-w-md">
             {features.map((f) => (
@@ -317,13 +311,12 @@ export default function HireShopifyHero() {
           <TrustRow className="mt-6 flex-wrap gap-y-3" />
 
           <div className="mt-10 max-w-[480px] mx-auto">
-            <Image src="/shopify developer.webp" alt="Shopify developer building an online store" width={800} height={824} priority className="w-full h-auto" />
+            <Image src={$t("HireShopifyHero__t19", "/shopify developer.webp")} alt={$t("HireShopifyHero__t20", "Shopify developer building an online store")} width={800} height={824} priority className="w-full h-auto" />
           </div>
 
           <div className={`${caveat.className} mt-4 text-3xl font-semibold`} style={{ color: DEEP }}>
-            Your Shopify Store
-            <br />
-            <span className="ml-6">Our Expertise.</span>
+            {$t("HireShopifyHero__t21", "Your Shopify Store")}<br />
+            <span className="ml-6">{$t("HireShopifyHero__t22", "Our Expertise.")}</span>
           </div>
         </div>
       </Container>

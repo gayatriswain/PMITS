@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CheckCircle2, ChevronLeft, ChevronRight, Globe2, MapPin, ShieldAlert } from "lucide-react";
 import { AI, FADE, BrandIcon, CtaButton, Hl, Pill, ease, heading, type Brand, Inner, Panel } from "../shared/AiSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 type Project = {
   name: string;
@@ -17,7 +19,7 @@ type Project = {
   thumb: string;
 };
 
-const PROJECTS: Project[] = [
+const PROJECTS__cms: Project[] = [
   { name: "Luxury Interior Studio", brand: "Luxe Interiors", category: "Interior Design", kind: "interior design studio", location: "Dubai, UAE", domain: "luxeinteriors.ae", challenge: "Low visibility in search results and no presence in AI-driven platforms.", thumb: AI.thumbs[0] },
   { name: "Dental Care Clinic", brand: "BrightSmile Dental", category: "Healthcare", kind: "dental clinic", location: "Abu Dhabi, UAE", domain: "brightsmile.ae", challenge: "Patients couldn't find the clinic for local 'near me' and AI assistant searches.", thumb: AI.thumbs[1] },
   { name: "Lexiora Law Firm", brand: "Lexiora Law", category: "Legal Services", kind: "law firm", location: "Dubai, UAE", domain: "lexioralaw.com", challenge: "Strong expertise but almost no authority signals that AI engines trust.", thumb: AI.thumbs[2] },
@@ -25,9 +27,9 @@ const PROJECTS: Project[] = [
   { name: "UrbanTrail", brand: "UrbanTrail", category: "E-commerce", kind: "online store", location: "Noida, India", domain: "urbantrail.in", challenge: "High ad spend with little organic traffic and zero AI answer citations.", thumb: AI.thumbs[4] },
 ];
 
-const SOLUTION = ["AI SEO Strategy", "Entity & Topical Authority", "GEO & Local SEO", "Content Strategy & Optimization", "Technical SEO & Performance"];
+const SOLUTION__cms = ["AI SEO Strategy", "Entity & Topical Authority", "GEO & Local SEO", "Content Strategy & Optimization", "Technical SEO & Performance"];
 
-const VISIBLE: { brand: Brand; label: string }[] = [
+const VISIBLE__cms: { brand: Brand; label: string }[] = [
   { brand: "google", label: "Google Search" },
   { brand: "aioverview", label: "AI Overview" },
   { brand: "chatgpt", label: "ChatGPT" },
@@ -38,11 +40,12 @@ const VISIBLE: { brand: Brand; label: string }[] = [
 const mini = "rounded-2xl border border-slate-100 bg-white p-3 text-[11px] shadow-[0_16px_34px_-26px_rgba(15,40,80,.55)]";
 
 function MiniHead({ brand, title, beta = false }: { brand: Brand; title: string; beta?: boolean }) {
+  const $t = useCmsText();
   return (
-    <p className="flex items-center gap-2 text-[12px] font-bold text-[#0b1b33]">
+    <p className="text-caption flex items-center gap-2 font-bold text-[#0b1b33]">
       <BrandIcon name={brand} className="h-4 w-4" />
       {title}
-      {beta && <span className="ml-auto rounded bg-blue-50 px-1.5 py-0.5 text-[9px] font-semibold text-blue-600">Beta</span>}
+      {beta && <span className="ml-auto rounded bg-blue-50 px-1.5 py-0.5 text-[9px] font-semibold text-blue-600">{$t("AiSeoProof__t1", "Beta")}</span>}
     </p>
   );
 }
@@ -128,6 +131,10 @@ function buildCards(p: Project) {
 }
 
 export default function AiSeoProof() {
+  const $t = useCmsText();
+  const PROJECTS = useCmsData("AiSeoProof__PROJECTS", PROJECTS__cms);
+  const SOLUTION = useCmsData("AiSeoProof__SOLUTION", SOLUTION__cms);
+  const VISIBLE = useCmsData("AiSeoProof__VISIBLE", VISIBLE__cms);
   const reduce = useReducedMotion();
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(true);
@@ -158,19 +165,18 @@ export default function AiSeoProof() {
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-50 [background-image:radial-gradient(#d6dee8_1px,transparent_1px)] [background-size:18px_18px] [mask-image:radial-gradient(60%_50%_at_20%_60%,#000,transparent)]" />
       <Inner className="!max-w-[1340px] py-14 sm:py-16 lg:py-20 2xl:py-24">
         <div className="text-center">
-          <Pill>Real Businesses. Real AI Visibility.</Pill>
+          <Pill>{$t("AiSeoProof__t2", "Real Businesses. Real AI Visibility.")}</Pill>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease }}
-            className={`${heading.className} mt-5 text-[clamp(34px,3.6vw,70px)] font-bold leading-[1.05] tracking-[-0.025em] text-[#0b1b33]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-[-0.025em] text-[#0b1b33]`}
           >
-            Proof, Not <Hl>Promises.</Hl>
+            {$t("AiSeoProof__t3", "Proof, Not ")}<Hl>{$t("AiSeoProof__t4", "Promises.")}</Hl>
           </motion.h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-slate-600 sm:text-base">
-            See how we help businesses show up and get recommended across Google, AI Overviews, ChatGPT, Gemini and beyond.
-          </p>
+          <p className="text-body mx-auto mt-4 max-w-lg text-slate-600">
+            {rich($t("AiSeoProof__t5", "See how we help businesses show up and get recommended across Google, AI Overviews, ChatGPT, Gemini and beyond."))}</p>
         </div>
 
         <div className="mt-10 grid gap-8 xl:grid-cols-[1fr_290px] xl:gap-8">
@@ -185,15 +191,15 @@ export default function AiSeoProof() {
             <div className="grid gap-4 md:grid-cols-[120px_1fr_210px] md:items-center lg:grid-cols-[140px_1fr_220px]">
               {/* phone */}
               <div className="relative hidden md:block">
-                <p className="mb-1 text-center text-[11px] font-semibold text-[#0b1b33]">Mobile Website</p>
+                <p className="mb-1 text-center text-[11px] font-semibold text-[#0b1b33]">{rich($t("AiSeoProof__t6", "Mobile Website"))}</p>
                 <div className="relative aspect-[0.8]">
-                  <Image src={AI.casePhone} alt="Client mobile website" fill sizes="140px" className="ai-float object-contain mix-blend-multiply" style={FADE} />
+                  <Image src={AI.casePhone} alt={$t("AiSeoProof__t7", "Client mobile website")} fill sizes="140px" className="ai-float object-contain mix-blend-multiply" style={FADE} />
                 </div>
               </div>
               {/* laptop */}
               <div className="relative">
                 <div className="relative aspect-[1.59]">
-                  <Image src={AI.caseLaptop} alt="Client website on a laptop" fill sizes="(min-width:1280px) 480px, 90vw" className="object-contain mix-blend-multiply" style={FADE} />
+                  <Image src={AI.caseLaptop} alt={$t("AiSeoProof__t8", "Client website on a laptop")} fill sizes="(min-width:1280px) 480px, 90vw" className="object-contain mix-blend-multiply" style={FADE} />
                 </div>
                 <span className="absolute -right-4 top-1/3 hidden h-px w-6 border-t border-dashed border-teal-400 md:block" />
               </div>
@@ -221,20 +227,18 @@ export default function AiSeoProof() {
           >
             <AnimatePresence mode="wait">
               <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.4, ease }}>
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0f766e]">Featured Project</p>
-                <h3 className={`${heading.className} mt-2 text-2xl font-bold text-[#0b1b33] sm:text-[26px]`}>{p.name}</h3>
-                <p className="mt-2 flex items-center gap-2 text-xs text-slate-500">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#0f766e]">{rich($t("AiSeoProof__t9", "Featured Project"))}</p>
+                <h3 className={`text-h5 ${heading.className} mt-2 font-bold text-[#0b1b33]`}>{p.name}</h3>
+                <p className="text-caption mt-2 flex items-center gap-2 text-slate-500">
                   <MapPin className="h-3.5 w-3.5" /> {p.location} <span className="text-slate-300">|</span> {p.category}
                 </p>
                 <p className="mt-5 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-[#0b1b33]">
-                  <ShieldAlert className="h-4 w-4" /> The Challenge
-                </p>
-                <p className="mt-1.5 pl-6 text-[13px] leading-relaxed text-slate-500">{p.challenge}</p>
+                  <ShieldAlert className="h-4 w-4" /> {rich($t("AiSeoProof__t10", "The Challenge"))}</p>
+                <p className="text-small mt-1.5 pl-6 text-slate-500">{p.challenge}</p>
               </motion.div>
             </AnimatePresence>
             <p className="mt-5 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-[#0b1b33]">
-              <CheckCircle2 className="h-4 w-4" /> Our AI SEO Solution
-            </p>
+              <CheckCircle2 className="h-4 w-4" /> {rich($t("AiSeoProof__t11", "Our AI SEO Solution"))}</p>
             <ul className="mt-2 space-y-1.5 pl-6">
               {SOLUTION.map((s) => (
                 <li key={s} className="flex items-center gap-2 text-[13px] text-slate-600">
@@ -246,8 +250,7 @@ export default function AiSeoProof() {
               ))}
             </ul>
             <p className="mt-5 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-[#0b1b33]">
-              <Globe2 className="h-4 w-4" /> Now Visible On
-            </p>
+              <Globe2 className="h-4 w-4" /> {rich($t("AiSeoProof__t12", "Now Visible On"))}</p>
             <div className="mt-3 flex flex-wrap gap-3">
               {VISIBLE.map((v, i) => (
                 <motion.span
@@ -265,9 +268,8 @@ export default function AiSeoProof() {
                 </motion.span>
               ))}
             </div>
-            <CtaButton variant="primary" href="#ai-seo-strategy" className="mt-6 w-full !bg-none !bg-white !text-[#0f766e] !shadow-none ring-1 ring-[#0f766e]/60 hover:!bg-teal-50">
-              View Full Case Study
-            </CtaButton>
+            <CtaButton variant="primary" href={$t("AiSeoProof__t13", "#ai-seo-strategy")} className="mt-6 w-full !bg-none !bg-white !text-[#0f766e] !shadow-none ring-1 ring-[#0f766e]/60 hover:!bg-teal-50">
+              {$t("AiSeoProof__t14", "View Full Case Study")}</CtaButton>
           </motion.aside>
         </div>
 
@@ -340,11 +342,11 @@ export default function AiSeoProof() {
           transition={{ duration: 0.7, ease }}
           className="mt-8 text-center"
         >
-          <p className="text-base italic text-slate-600 sm:text-lg">
+          <p className="text-body italic text-slate-600">
             <span className={`${heading.className} mr-2 align-[-0.2em] text-4xl font-black not-italic text-[#0f766e]`}>“</span>
-            We didn&apos;t just improve rankings. <span className="text-[#0f766e]">We became the answer AI recommends.</span>
+            {rich($t("AiSeoProof__t15", "We didn't just improve rankings. "))}<span className="text-[#0f766e]">{$t("AiSeoProof__t16", "We became the answer AI recommends.")}</span>
           </p>
-          <footer className="mt-2 text-sm text-slate-500">– Founder, Luxe Interiors</footer>
+          <footer className="mt-2 text-sm text-slate-500">{$t("AiSeoProof__t17", "– Founder, Luxe Interiors")}</footer>
         </motion.blockquote>
       </Inner>
     </Panel>

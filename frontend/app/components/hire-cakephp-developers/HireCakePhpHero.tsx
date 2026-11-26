@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -28,7 +30,7 @@ const I = {
   className: "h-[18px] w-[18px]",
 };
 
-const FEATURES = [
+const FEATURES__cms = [
   {
     title: "Secure",
     text: "Built with best security practices",
@@ -72,6 +74,8 @@ const FEATURES = [
 ];
 
 export default function HireCakePhpHero() {
+  const $t = useCmsText();
+  const FEATURES = useCmsData("HireCakePhpHero__FEATURES", FEATURES__cms);
   return (
     <section className="relative w-full overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fbf7f7_60%,#f7f1f1_100%)] pb-12 pt-10 font-sans sm:pt-14 lg:pb-16 lg:pt-16">
       {/* soft glow + ring behind the cake */}
@@ -94,41 +98,35 @@ export default function HireCakePhpHero() {
               className="block text-[11px] font-bold uppercase tracking-[0.24em]"
               style={{ color: RED }}
             >
-              Hire CakePHP Developers
-            </motion.span>
+              {$t("HireCakePhpHero__t1", "Hire CakePHP Developers")}</motion.span>
 
             <motion.h1
               variants={fadeUp}
               custom={1}
-              className="mt-4 text-[40px] font-extrabold leading-[1.06] tracking-tight text-[#0f1a2e] sm:text-5xl lg:text-[58px]"
+              className="text-h1 mt-4 font-extrabold tracking-tight text-[#0f1a2e]"
             >
-              Built on CakePHP.
-              <br />
-              Built for what&apos;s next.
-            </motion.h1>
+              {$t("HireCakePhpHero__t2", "Built on CakePHP.")}<br />
+              {$t("HireCakePhpHero__t3", "Built for what's next.")}</motion.h1>
 
             <motion.p
               variants={fadeUp}
               custom={2}
-              className="mt-5 max-w-[440px] text-sm leading-relaxed text-slate-600 sm:text-[15px]"
+              className="text-body mt-5 max-w-[440px] text-slate-600"
             >
-              Hire dedicated CakePHP developers to build secure, high-performance web
-              applications that help your business rise.
-            </motion.p>
+              {rich($t("HireCakePhpHero__t4", "Hire dedicated CakePHP developers to build secure, high-performance web applications that help your business rise."))}</motion.p>
 
             <motion.div variants={fadeUp} custom={3} className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
               <Link
-                href="#contact"
+                href={$t("HireCakePhpHero__t5", "#contact")}
                 className="group inline-flex h-12 items-center justify-center gap-3 rounded-lg px-6 text-sm font-semibold text-white shadow-[0_14px_28px_-10px_rgba(217,43,50,0.7)] transition hover:brightness-110"
                 style={{ background: RED }}
               >
-                Hire a CakePHP Developer
-                <svg {...I} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.2}>
+                {$t("HireCakePhpHero__t6", "Hire a CakePHP Developer")}<svg {...I} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </Link>
               <Link
-                href="#contact"
+                href={$t("HireCakePhpHero__t7", "#contact")}
                 className="group inline-flex items-center gap-3 text-sm font-semibold text-[#0f1a2e] transition-colors hover:text-[#d92b32]"
               >
                 <span
@@ -137,8 +135,7 @@ export default function HireCakePhpHero() {
                 >
                   <span aria-hidden className="ml-0.5 text-[11px]">▶</span>
                 </span>
-                Discuss Your Project
-              </Link>
+                {$t("HireCakePhpHero__t8", "Discuss Your Project")}</Link>
             </motion.div>
 
             {/* feature strip */}
@@ -171,7 +168,7 @@ export default function HireCakePhpHero() {
             <motion.p
               variants={fadeUp}
               custom={5}
-              className="mt-5 flex items-center gap-2.5 text-[12.5px] text-slate-600"
+              className="text-caption mt-5 flex items-center gap-2.5 text-slate-600"
             >
               <svg {...I} className="h-[18px] w-[18px] text-slate-500">
                 <circle cx="9" cy="8" r="3.2" />
@@ -180,8 +177,7 @@ export default function HireCakePhpHero() {
                 <path d="M17 14.2c2.4 0 4 1.7 4 4.3" />
               </svg>
               <span>
-                Trusted by <strong className="font-semibold text-[#0f1a2e]">2,700+</strong> businesses
-                across <strong className="font-semibold text-[#0f1a2e]">75+</strong> cities
+                {$t("HireCakePhpHero__t9", "Trusted by ")}<strong className="font-semibold text-[#0f1a2e]">{$t("HireCakePhpHero__t10", "2,700+")}</strong> {$t("HireCakePhpHero__t11", "businesses across ")}<strong className="font-semibold text-[#0f1a2e]">{$t("HireCakePhpHero__t12", "75+")}</strong> cities
               </span>
             </motion.p>
           </motion.div>
@@ -198,8 +194,8 @@ export default function HireCakePhpHero() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               <Image
-                src="/CakePHP Layered Architecture Cake.webp"
-                alt="Layered CakePHP cake showing the Presentation, Controller, Model and CakePHP Core layers"
+                src={$t("HireCakePhpHero__t13", "/CakePHP Layered Architecture Cake.webp")}
+                alt={$t("HireCakePhpHero__t14", "Layered CakePHP cake showing the Presentation, Controller, Model and CakePHP Core layers")}
                 width={1202}
                 height={1309}
                 priority

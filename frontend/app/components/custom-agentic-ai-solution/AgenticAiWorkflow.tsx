@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    SCALE BOX: renders at fixed 1440 x 510 design size and scales seamlessly
@@ -269,13 +271,14 @@ function StepCard({ title, children, delay }: { title: string; children: React.R
 }
 
 function RequestToResult() {
+  const $t = useCmsText();
   const working = [
-    { t: "Checks CRM", icon: <><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></> },
-    { t: "Finds latest proposal", icon: <><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></> },
-    { t: "Verifies customer details", icon: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></> },
-    { t: "Sends proposal", icon: <><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4 20-7z" /></> },
+    { t: $t("AgenticAiWorkflow__t1", "Checks CRM"), icon: <><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></> },
+    { t: $t("AgenticAiWorkflow__t2", "Finds latest proposal"), icon: <><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></> },
+    { t: $t("AgenticAiWorkflow__t3", "Verifies customer details"), icon: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></> },
+    { t: $t("AgenticAiWorkflow__t4", "Sends proposal"), icon: <><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4 20-7z" /></> },
   ];
-  const actions = ["Email sent", "CRM updated", "Activity logged", "Follow-up scheduled"];
+  const actions = [$t("AgenticAiWorkflow__t5", "Email sent"), $t("AgenticAiWorkflow__t6", "CRM updated"), $t("AgenticAiWorkflow__t7", "Activity logged"), $t("AgenticAiWorkflow__t8", "Follow-up scheduled")];
 
   return (
     <motion.div
@@ -287,17 +290,16 @@ function RequestToResult() {
     >
       {/* Intro */}
       <div className="lg:w-[210px] shrink-0">
-        <div className="text-[10px] font-black tracking-[0.16em] text-[#0d9488] uppercase">See it in action</div>
-        <h3 className="mt-2 text-2xl sm:text-[26px] font-black tracking-tight leading-tight text-[#0b1f4a]">From request to result.</h3>
-        <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-          Your custom AI agent takes care of the entire process — so your team doesn&apos;t have to.
-        </p>
+        <div className="text-[10px] font-black tracking-[0.16em] text-[#0d9488] uppercase">{$t("AgenticAiWorkflow__t9", "See it in action")}</div>
+        <h3 className="text-h5 mt-2 font-black tracking-tight text-[#0b1f4a]">{$t("AgenticAiWorkflow__t10", "From request to result.")}</h3>
+        <p className="text-caption mt-2 text-slate-500">
+          {rich($t("AgenticAiWorkflow__t11", "Your custom AI agent takes care of the entire process — so your team doesn't have to."))}</p>
       </div>
 
       {/* Flow */}
       <div className="flex-1 flex flex-col lg:flex-row lg:items-stretch gap-4 lg:gap-0">
         {/* Customer asks */}
-        <StepCard title="Customer asks" delay={0.05}>
+        <StepCard title={$t("AgenticAiWorkflow__t12", "Customer asks")} delay={0.05}>
           <div className="mt-3 flex items-center gap-3">
             <span className="w-10 h-10 rounded-full bg-gradient-to-br from-[#fde7d6] to-[#f7c9a8] flex items-end justify-center overflow-hidden shrink-0">
               <svg viewBox="0 0 40 40" className="w-full h-full">
@@ -308,15 +310,14 @@ function RequestToResult() {
               </svg>
             </span>
             <div className="relative rounded-xl rounded-tl-sm bg-[#eef4fb] px-3 py-2 text-[11px] leading-snug text-[#0b1f4a]">
-              &ldquo;Can you send me the updated proposal?&rdquo;
-            </div>
+              {$t("AgenticAiWorkflow__t13", "“Can you send me the updated proposal?”")}</div>
           </div>
         </StepCard>
 
         <DottedArrow />
 
         {/* AI agent working */}
-        <StepCard title="AI agent working" delay={0.15}>
+        <StepCard title={$t("AgenticAiWorkflow__t14", "AI agent working")} delay={0.15}>
           <ul className="mt-3 space-y-2">
             {working.map((w, i) => (
               <motion.li
@@ -339,7 +340,7 @@ function RequestToResult() {
         <DottedArrow />
 
         {/* Actions taken */}
-        <StepCard title="Actions taken" delay={0.25}>
+        <StepCard title={$t("AgenticAiWorkflow__t15", "Actions taken")} delay={0.25}>
           <ul className="mt-3 space-y-2">
             {actions.map((a, i) => (
               <motion.li
@@ -362,7 +363,7 @@ function RequestToResult() {
         <DottedArrow />
 
         {/* Done */}
-        <StepCard title="Done." delay={0.35}>
+        <StepCard title={$t("AgenticAiWorkflow__t16", "Done.")} delay={0.35}>
           <div className="mt-3 flex flex-col items-center text-center">
             <motion.span
               className="w-10 h-10 rounded-full border-2 border-emerald-500 bg-emerald-50/60 flex items-center justify-center"
@@ -374,12 +375,9 @@ function RequestToResult() {
               <CheckmarkIcon className="w-5 h-5 text-[#059669]" />
             </motion.span>
             <p className="mt-2 text-[11px] font-semibold leading-snug text-[#0b1f4a]">
-              Customer happy.
-              <br />
-              Team saves time.
-              <br />
-              Business moves forward.
-            </p>
+              {rich($t("AgenticAiWorkflow__t17", "Customer happy."))}<br />
+              {rich($t("AgenticAiWorkflow__t18", "Team saves time."))}<br />
+              {rich($t("AgenticAiWorkflow__t19", "Business moves forward."))}</p>
           </div>
         </StepCard>
       </div>
@@ -392,19 +390,20 @@ function RequestToResult() {
    ========================================================================= */
 
 export default function AgenticAiWorkflow() {
+  const $t = useCmsText();
   const inputCards = [
-    { label: "CRM", desc: "Lead & customer\ninformation", icon: <CrmUserIcon />, bg: "#f0fbf6" },
-    { label: "EMAIL", desc: "Customer\ninquiries", icon: <EmailLetterIcon />, bg: "#f7f3ff" },
-    { label: "DOCUMENTS", desc: "Proposals, invoices\n& contracts", icon: <DocFileIcon />, bg: "#f0f9ff" },
-    { label: "CALENDAR", desc: "Meetings &\nfollow-ups", icon: <CalendarIcon />, bg: "#fbf7ff" },
-    { label: "DATA", desc: "Business\ninformation", icon: <DatabaseIcon />, bg: "#f0fbf6" },
+    { label: $t("AgenticAiWorkflow__t20", "CRM"), desc: $t("AgenticAiWorkflow__t21", "Lead & customer\ninformation"), icon: <CrmUserIcon />, bg: "#f0fbf6" },
+    { label: $t("AgenticAiWorkflow__t22", "EMAIL"), desc: $t("AgenticAiWorkflow__t23", "Customer\ninquiries"), icon: <EmailLetterIcon />, bg: "#f7f3ff" },
+    { label: $t("AgenticAiWorkflow__t24", "DOCUMENTS"), desc: $t("AgenticAiWorkflow__t25", "Proposals, invoices\n& contracts"), icon: <DocFileIcon />, bg: "#f0f9ff" },
+    { label: $t("AgenticAiWorkflow__t26", "CALENDAR"), desc: $t("AgenticAiWorkflow__t27", "Meetings &\nfollow-ups"), icon: <CalendarIcon />, bg: "#fbf7ff" },
+    { label: $t("AgenticAiWorkflow__t28", "DATA"), desc: $t("AgenticAiWorkflow__t29", "Business\ninformation"), icon: <DatabaseIcon />, bg: "#f0fbf6" },
   ];
 
   const processCards = [
-    { label: "UNDERSTAND", desc: "Reads and understands the request", icon: <BrainHeadIcon />, bg: "#e6fbf9" },
-    { label: "REASON", desc: "Analyzes context and decides the best action", icon: <ReasonIcon />, bg: "#f5efff" },
-    { label: "ACT", desc: "Performs the task across your systems", icon: <ActIcon />, bg: "#eff6ff" },
-    { label: "UPDATE", desc: "Keeps everything in sync automatically", icon: <UpdateIcon />, bg: "#ecfdf5" },
+    { label: $t("AgenticAiWorkflow__t30", "UNDERSTAND"), desc: $t("AgenticAiWorkflow__t31", "Reads and understands the request"), icon: <BrainHeadIcon />, bg: "#e6fbf9" },
+    { label: $t("AgenticAiWorkflow__t32", "REASON"), desc: $t("AgenticAiWorkflow__t33", "Analyzes context and decides the best action"), icon: <ReasonIcon />, bg: "#f5efff" },
+    { label: $t("AgenticAiWorkflow__t34", "ACT"), desc: $t("AgenticAiWorkflow__t35", "Performs the task across your systems"), icon: <ActIcon />, bg: "#eff6ff" },
+    { label: $t("AgenticAiWorkflow__t36", "UPDATE"), desc: $t("AgenticAiWorkflow__t37", "Keeps everything in sync automatically"), icon: <UpdateIcon />, bg: "#ecfdf5" },
   ];
 
   return (
@@ -424,7 +423,7 @@ export default function AgenticAiWorkflow() {
         <path d="M 1220 850 C 1310 770, 1400 730, 1500 740" stroke="#06b6d4" strokeWidth="1" opacity="0.3" />
       </svg>
 
-      <Container className="relative z-10 max-w-[1440px]">
+      <Container className="relative z-10 max-w-[1640px]">
         {/* =========================================================================
             DESKTOP LAYOUT (1440 x 500 DESIGN CANVAS)
             Matching the exact spatial layout from the reference image:
@@ -438,18 +437,15 @@ export default function AgenticAiWorkflow() {
               {/* ================= LEFT CONTENT COLUMN (x: 20 to 300) ================= */}
               <div className="absolute left-[20px] top-[15px] w-[285px]">
                 {/* Heading */}
-                <h2 className="text-[42px] font-black tracking-tight text-[#0b1f4a] leading-[1.08]">
-                  AI That Works
-                  <br />
+                <h2 className="text-h2 font-black tracking-tight text-[#0b1f4a]">
+                  {$t("AgenticAiWorkflow__t38", "AI That Works")}<br />
                   <span className="text-[#2563eb]">
-                    Your Way.
-                  </span>
+                    {$t("AgenticAiWorkflow__t39", "Your Way.")}</span>
                 </h2>
 
                 {/* Subtitle */}
-                <p className="mt-4 text-[12.5px] text-slate-600 leading-relaxed pr-1">
-                  Your business already has a way of working. We build intelligent agents that understand it, work within it, and take action where your team needs them most.
-                </p>
+                <p className="text-caption mt-4 text-slate-600 pr-1">
+                  {rich($t("AgenticAiWorkflow__t40", "Your business already has a way of working. We build intelligent agents that understand it, work within it, and take action where your team needs them most."))}</p>
 
                 {/* 3 Value Propositions Stacked Vertically (Transparent list matching reference) */}
                 <div className="mt-8 space-y-4">
@@ -462,8 +458,8 @@ export default function AgenticAiWorkflow() {
                       <LightningIcon className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="text-[13px] font-bold text-[#0b1f4a]">Save Time</h4>
-                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">Automate repetitive and manual tasks</p>
+                      <h4 className="text-[13px] font-bold text-[#0b1f4a]">{$t("AgenticAiWorkflow__t41", "Save Time")}</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{rich($t("AgenticAiWorkflow__t42", "Automate repetitive and manual tasks"))}</p>
                     </div>
                   </motion.div>
 
@@ -476,8 +472,8 @@ export default function AgenticAiWorkflow() {
                       <TrendIcon className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="text-[13px] font-bold text-[#0b1f4a]">Increase Efficiency</h4>
-                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">Streamline workflows and reduce delays</p>
+                      <h4 className="text-[13px] font-bold text-[#0b1f4a]">{$t("AgenticAiWorkflow__t43", "Increase Efficiency")}</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{rich($t("AgenticAiWorkflow__t44", "Streamline workflows and reduce delays"))}</p>
                     </div>
                   </motion.div>
 
@@ -490,8 +486,8 @@ export default function AgenticAiWorkflow() {
                       <TargetIcon className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="text-[13px] font-bold text-[#0b1f4a]">Focus on Growth</h4>
-                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">Your team works on what truly matters</p>
+                      <h4 className="text-[13px] font-bold text-[#0b1f4a]">{$t("AgenticAiWorkflow__t45", "Focus on Growth")}</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{rich($t("AgenticAiWorkflow__t46", "Your team works on what truly matters"))}</p>
                     </div>
                   </motion.div>
                 </div>
@@ -585,9 +581,9 @@ export default function AgenticAiWorkflow() {
                       <circle cx="68" cy="62" r="2" fill="#ffffff" opacity="0.9" />
                     </svg>
                   </div>
-                  <div className="mt-3 text-[16px] font-black tracking-wider text-[#0b1f4a] uppercase">CUSTOM AI AGENT</div>
+                  <div className="mt-3 text-[16px] font-black tracking-wider text-[#0b1f4a] uppercase">{$t("AgenticAiWorkflow__t47", "CUSTOM AI AGENT")}</div>
                   <div className="mt-0.5 text-[11.5px] font-medium text-slate-500">
-                    Built by <span className="text-[#0284c7] font-bold">ProManage</span>
+                    {$t("AgenticAiWorkflow__t48", "Built by ")}<span className="text-[#0284c7] font-bold">{$t("AgenticAiWorkflow__t49", "ProManage")}</span>
                   </div>
                 </motion.div>
               </div>
@@ -622,8 +618,7 @@ export default function AgenticAiWorkflow() {
                 {/* Header with Title and Green Checkmark Circle */}
                 <div className="flex items-center justify-between pb-2.5 border-b border-slate-100">
                   <span className="text-[10px] font-black tracking-wider text-[#0f4a5a] uppercase">
-                    BUSINESS MOVES FORWARD
-                  </span>
+                    {$t("AgenticAiWorkflow__t50", "BUSINESS MOVES FORWARD")}</span>
                   <span className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
                     <CheckmarkIcon className="w-3 h-3 text-[#10b981]" />
                   </span>
@@ -632,10 +627,10 @@ export default function AgenticAiWorkflow() {
                 {/* 4 Checklist Bullets */}
                 <div className="space-y-2 my-auto">
                   {[
-                    "Work gets done on time",
-                    "Customers get faster responses",
-                    "Teams stay aligned",
-                    "Business keeps growing",
+                    $t("AgenticAiWorkflow__t51", "Work gets done on time"),
+                    $t("AgenticAiWorkflow__t52", "Customers get faster responses"),
+                    $t("AgenticAiWorkflow__t53", "Teams stay aligned"),
+                    $t("AgenticAiWorkflow__t54", "Business keeps growing"),
                   ].map((text) => (
                     <div key={text} className="flex items-center gap-2 text-[10px] font-medium text-slate-700">
                       <span className="w-3.5 h-3.5 rounded-full border border-emerald-500/30 bg-emerald-50 flex items-center justify-center shrink-0">
@@ -660,23 +655,21 @@ export default function AgenticAiWorkflow() {
         <div className="lg:hidden flex flex-col gap-6">
           {/* Header */}
           <div>
-            <h2 className="text-3xl font-black tracking-tight text-[#0b1f4a] leading-tight">
-              AI That Works{" "}
+            <h2 className="text-h2 font-black tracking-tight text-[#0b1f4a]">
+              {$t("AgenticAiWorkflow__t55", "AI That Works")}{" "}
               <span className="bg-gradient-to-r from-[#1755a6] via-[#107ca3] to-[#4338ca] bg-clip-text text-transparent">
-                Your Way.
-              </span>
+                {$t("AgenticAiWorkflow__t56", "Your Way.")}</span>
             </h2>
-            <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-              Your business already has a way of working. We build intelligent agents that understand it, work within it, and take action where your team needs them most.
-            </p>
+            <p className="text-small mt-3 text-slate-600">
+              {rich($t("AgenticAiWorkflow__t57", "Your business already has a way of working. We build intelligent agents that understand it, work within it, and take action where your team needs them most."))}</p>
           </div>
 
           {/* 3 Value Cards in Mobile */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
-              { title: "Save Time", sub: "Automate repetitive tasks", icon: <LightningIcon />, bg: "#e6fbf9", text: "text-[#0d9488]" },
-              { title: "Increase Efficiency", sub: "Streamline workflows", icon: <TrendIcon />, bg: "#f5efff", text: "text-[#8b5cf6]" },
-              { title: "Focus on Growth", sub: "Works on what matters", icon: <TargetIcon />, bg: "#eff6ff", text: "text-[#2563eb]" },
+              { title: $t("AgenticAiWorkflow__t58", "Save Time"), sub: $t("AgenticAiWorkflow__t59", "Automate repetitive tasks"), icon: <LightningIcon />, bg: "#e6fbf9", text: "text-[#0d9488]" },
+              { title: $t("AgenticAiWorkflow__t60", "Increase Efficiency"), sub: $t("AgenticAiWorkflow__t61", "Streamline workflows"), icon: <TrendIcon />, bg: "#f5efff", text: "text-[#8b5cf6]" },
+              { title: $t("AgenticAiWorkflow__t62", "Focus on Growth"), sub: $t("AgenticAiWorkflow__t63", "Works on what matters"), icon: <TargetIcon />, bg: "#eff6ff", text: "text-[#2563eb]" },
             ].map((v) => (
               <div key={v.title} className="flex items-center gap-2.5 p-3 rounded-2xl bg-white border border-slate-100 shadow-xs">
                 <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${v.text}`} style={{ backgroundColor: v.bg }}>
@@ -697,13 +690,13 @@ export default function AgenticAiWorkflow() {
                 <path d="M12 2l2.4 6.6 6.6 2.4-6.6 2.4-2.4 6.6-2.4-6.6-6.6-2.4 6.6-2.4 2.4-6.6z" />
               </svg>
             </div>
-            <div className="mt-3 text-sm font-black tracking-wide text-[#0b1f4a] uppercase">CUSTOM AI AGENT</div>
-            <div className="text-xs text-slate-500">Built by <span className="text-[#0284c7] font-semibold">ProManage</span></div>
+            <div className="mt-3 text-sm font-black tracking-wide text-[#0b1f4a] uppercase">{$t("AgenticAiWorkflow__t64", "CUSTOM AI AGENT")}</div>
+            <div className="text-xs text-slate-500">{$t("AgenticAiWorkflow__t65", "Built by ")}<span className="text-[#0284c7] font-semibold">{$t("AgenticAiWorkflow__t66", "ProManage")}</span></div>
           </div>
 
           {/* Inputs Grid */}
           <div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Connected Inputs</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{$t("AgenticAiWorkflow__t67", "Connected Inputs")}</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {inputCards.map((item) => (
                 <div key={item.label} className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-slate-100 shadow-xs">
@@ -721,7 +714,7 @@ export default function AgenticAiWorkflow() {
 
           {/* Cognitive Steps Grid */}
           <div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Execution Process</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{$t("AgenticAiWorkflow__t68", "Execution Process")}</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {processCards.map((step) => (
                 <div key={step.label} className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white border border-slate-100 shadow-xs">
@@ -740,13 +733,13 @@ export default function AgenticAiWorkflow() {
           {/* Business Moves Forward Card */}
           <div className="rounded-2xl bg-white border border-slate-100 p-5 shadow-sm">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <span className="text-xs font-black text-[#0f4a5a] uppercase">BUSINESS MOVES FORWARD</span>
+              <span className="text-xs font-black text-[#0f4a5a] uppercase">{$t("AgenticAiWorkflow__t69", "BUSINESS MOVES FORWARD")}</span>
               <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
                 <CheckmarkIcon className="w-3 h-3 text-[#10b981]" />
               </span>
             </div>
             <div className="mt-3 space-y-2">
-              {["Work gets done on time", "Customers get faster responses", "Teams stay aligned", "Business keeps growing"].map((t) => (
+              {[$t("AgenticAiWorkflow__t70", "Work gets done on time"), $t("AgenticAiWorkflow__t71", "Customers get faster responses"), $t("AgenticAiWorkflow__t72", "Teams stay aligned"), $t("AgenticAiWorkflow__t73", "Business keeps growing")].map((t) => (
                 <div key={t} className="flex items-center gap-2 text-xs text-slate-700">
                   <span className="w-3.5 h-3.5 rounded-full bg-emerald-50 border border-emerald-500/30 flex items-center justify-center shrink-0">
                     <CheckmarkIcon className="w-2 h-2 text-[#059669]" />

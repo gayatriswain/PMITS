@@ -7,12 +7,19 @@ import SocialMediaMarketingBenefits from "../../components/social-media-marketin
 import SocialMediaMarketingCaseStudy from "../../components/social-media-marketing/SocialMediaMarketingCaseStudy";
 import SocialMediaMarketingFinalCTA from "../../components/social-media-marketing/SocialMediaMarketingFinalCTA";
 import { getInstagramMedia } from "../../lib/instagram";
+import { cmsMetadata } from "../../../lib/seo";
+import CmsSections from "../../../components/cms/CmsSections";
+import JsonLd from "../../../components/cms/JsonLd";
 
-export const metadata: Metadata = {
+const staticMetadata: Metadata = {
   title: "Social Media Marketing | ProManage",
   description:
     "We create content, campaigns, and brand experiences that transform businesses into brands people notice, remember, and trust.",
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  return cmsMetadata("/marketing-growth/social-media-marketing", staticMetadata);
+}
 
 export default async function SocialMediaMarketingPage() {
   // Fetches only if INSTAGRAM_ACCESS_TOKEN / INSTAGRAM_BUSINESS_ACCOUNT_ID are set in .env.local
@@ -22,13 +29,19 @@ export default async function SocialMediaMarketingPage() {
 
   return (
     <div className="relative overflow-x-clip">
-      <SocialMediaMarketingHero />
-      <SocialMediaMarketingContentGrid />
-      <SocialMediaMarketingBrandCompare />
-      <SocialMediaMarketingContentTypes liveMedia={liveMedia} />
-      <SocialMediaMarketingBenefits />
-      <SocialMediaMarketingCaseStudy />
-      <SocialMediaMarketingFinalCTA />
+      <JsonLd path="/marketing-growth/social-media-marketing" />
+      <CmsSections
+        path="/marketing-growth/social-media-marketing"
+        sections={[
+          ["hero", <SocialMediaMarketingHero key="hero" />],
+          ["content-grid", <SocialMediaMarketingContentGrid key="content-grid" />],
+          ["brand-compare", <SocialMediaMarketingBrandCompare key="brand-compare" />],
+          ["content-types", <SocialMediaMarketingContentTypes key="content-types" liveMedia={liveMedia} />],
+          ["benefits", <SocialMediaMarketingBenefits key="benefits" />],
+          ["case-study", <SocialMediaMarketingCaseStudy key="case-study" />],
+          ["final-cta", <SocialMediaMarketingFinalCTA key="final-cta" />],
+        ]}
+      />
     </div>
   );
 }

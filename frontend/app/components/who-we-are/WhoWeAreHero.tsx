@@ -3,13 +3,14 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat, Oswald } from "next/font/google";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const oswald = Oswald({ subsets: ["latin"], weight: ["600", "700"] });
-const caveat = Caveat({ subsets: ["latin"], weight: ["600", "700"] });
+const oswald = { className: "font-heading" }; // global font from app/layout.tsx
+const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -77,7 +78,7 @@ const QuoteIcon = ({ size = 14, color = "#fff" }: IconProps) => (
   </svg>
 );
 
-const HIGHLIGHTS = [
+const HIGHLIGHTS__cms = [
   { Icon: GlobeUsersIcon, label: ["Global Clients", "75+ Cities"] },
   { Icon: ShieldIcon, label: ["Proven", "Expertise"] },
   { Icon: TeamIcon, label: ["Dedicated", "Team"] },
@@ -475,32 +476,33 @@ function FloatingTech() {
 
 /* Partner marks, drawn as simple wordmarks */
 function Partners() {
+  const $t = useCmsText();
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 items-center rounded-2xl border border-white/70 bg-white/85 px-4 py-3 shadow-[0_20px_45px_-25px_rgba(15,40,60,0.45)] backdrop-blur-md">
       <div className="flex items-center justify-center gap-1.5 px-3 py-2">
-        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#95bf47] text-[13px] font-extrabold text-white">S</span>
+        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#95bf47] text-[13px] font-extrabold text-white">{$t("WhoWeAreHero__t1", "S")}</span>
         <span className="text-[15px] font-bold tracking-tight text-slate-800">
           shopify<span className="font-normal italic text-slate-500">partners</span>
         </span>
       </div>
       <div className="flex items-center justify-center gap-1.5 px-3 py-2 sm:border-l sm:border-slate-200">
-        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#34313f] text-[13px] font-extrabold text-white">B</span>
+        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#34313f] text-[13px] font-extrabold text-white">{$t("WhoWeAreHero__t2", "B")}</span>
         <span className="leading-none">
-          <span className="block text-[11.5px] font-bold tracking-wide text-slate-800">BIGCOMMERCE</span>
-          <span className="block text-[9.5px] text-slate-500">Partner</span>
+          <span className="block text-[11.5px] font-bold tracking-wide text-slate-800">{$t("WhoWeAreHero__t3", "BIGCOMMERCE")}</span>
+          <span className="block text-[9.5px] text-slate-500">{$t("WhoWeAreHero__t4", "Partner")}</span>
         </span>
       </div>
       <div className="flex items-center justify-center px-3 py-2 border-t border-slate-200 sm:border-t-0 sm:border-l">
         <span className="leading-none text-center">
           <span className="block text-[15px] font-semibold">
-            <span className="text-[#4285f4]">G</span>
+            <span className="text-[#4285f4]">{$t("WhoWeAreHero__t5", "G")}</span>
             <span className="text-[#ea4335]">o</span>
             <span className="text-[#fbbc05]">o</span>
             <span className="text-[#4285f4]">g</span>
             <span className="text-[#34a853]">l</span>
             <span className="text-[#ea4335]">e</span>
           </span>
-          <span className="block text-[14px] text-slate-600">Partner</span>
+          <span className="block text-[14px] text-slate-600">{$t("WhoWeAreHero__t6", "Partner")}</span>
         </span>
       </div>
       <div className="flex items-center justify-center gap-1.5 px-3 py-2 border-t border-l border-slate-200 sm:border-t-0">
@@ -508,14 +510,15 @@ function Partners() {
           <span className="-rotate-45 text-[12px] font-extrabold text-white">e</span>
         </span>
         <span className="text-[15px] font-semibold text-slate-700">
-          <span className="text-[#16a34a]">eLearning</span>.com
-        </span>
+          <span className="text-[#16a34a]">eLearning</span>{$t("WhoWeAreHero__t7", ".com")}</span>
       </div>
     </div>
   );
 }
 
 export default function WhoWeAreHero() {
+  const $t = useCmsText();
+  const HIGHLIGHTS = useCmsData("WhoWeAreHero__HIGHLIGHTS", HIGHLIGHTS__cms);
   return (
     <section className="relative flex w-full flex-col overflow-hidden bg-gradient-to-br lg:block from-white via-[#f7fbfb] to-[#eef7f6]">
       {/* Office photo — full-height on the right from lg up, fading into the copy */}
@@ -528,8 +531,8 @@ export default function WhoWeAreHero() {
       >
         <div style={COVER}>
           <Image
-            src="/who-we-are.webp"
-            alt="ProManage IT Solutions office reception"
+            src={$t("WhoWeAreHero__t8", "/who-we-are.webp")}
+            alt={$t("WhoWeAreHero__t9", "ProManage IT Solutions office reception")}
             fill
             priority
             sizes="(min-width: 1024px) 90vw, 150vw"
@@ -545,19 +548,17 @@ export default function WhoWeAreHero() {
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,560px)_1fr] gap-10 pt-10 pb-12 lg:pt-16 lg:pb-14 lg:min-h-[640px]">
           {/* Left copy */}
           <motion.div variants={stagger} initial="hidden" animate="show" className="flex flex-col justify-center">
-            <motion.p variants={fadeUp} className="flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.14em]" style={{ color: DEEP_TEAL }}>
-              Technology That Moves Businesses Forward
-              <span className="h-px w-10 bg-teal-300" />
+            <motion.p variants={fadeUp} className="text-caption flex items-center gap-3 font-semibold uppercase tracking-[0.14em]" style={{ color: DEEP_TEAL }}>
+              {rich($t("WhoWeAreHero__t10", "Technology That Moves Businesses Forward"))}<span className="h-px w-10 bg-teal-300" />
             </motion.p>
 
             <motion.h1
               variants={fadeUp}
-              className={`${oswald.className} mt-3 text-[46px] sm:text-[62px] lg:text-[70px] font-bold uppercase leading-[0.98] tracking-tight`}
+              className={`text-h1 ${oswald.className} mt-3 font-bold uppercase tracking-tight`}
             >
-              <span className="block" style={{ color: NAVY }}>Solutions Today.</span>
+              <span className="block" style={{ color: NAVY }}>{$t("WhoWeAreHero__t11", "Solutions Today.")}</span>
               <span className="relative inline-block bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL} 55%, #14b8a6)` }}>
-                Success Tomorrow.
-                <svg className="pointer-events-none absolute -right-9 -top-5 hidden sm:block" width="40" height="34" viewBox="0 0 40 34" fill="none" aria-hidden>
+                {$t("WhoWeAreHero__t12", "Success Tomorrow.")}<svg className="pointer-events-none absolute -right-9 -top-5 hidden sm:block" width="40" height="34" viewBox="0 0 40 34" fill="none" aria-hidden>
                   <path d="M4 30C14 26 26 16 34 6" stroke={TEAL} strokeWidth="2.4" strokeLinecap="round" />
                   <path d="M26 5l9-1-1 9" stroke={TEAL} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -565,20 +566,18 @@ export default function WhoWeAreHero() {
             </motion.h1>
 
             <motion.p variants={fadeUp} className={`${caveat.className} mt-4 text-[30px] sm:text-[34px] leading-none`} style={{ color: NAVY }}>
-              Built on trust. Driven by impact.
-              <svg className="mt-1 block h-2 w-[260px]" viewBox="0 0 260 8" fill="none" preserveAspectRatio="none" aria-hidden>
+              {rich($t("WhoWeAreHero__t13", "Built on trust. Driven by impact."))}<svg className="mt-1 block h-2 w-[260px]" viewBox="0 0 260 8" fill="none" preserveAspectRatio="none" aria-hidden>
                 <path d="M2 6C80 1 180 1 258 4" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
               </svg>
             </motion.p>
 
-            <motion.p variants={fadeUp} className="mt-6 max-w-[520px] text-[15px] leading-[1.7] text-slate-600">
-              Founded on a commitment to empowering businesses through advanced IT services, ProManage IT Solution has grown
-              from a dedicated team of tech professionals into a global agency serving clients across{" "}
-              <span className="font-semibold" style={{ color: DEEP_TEAL }}>75+ global cities.</span>
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[520px] text-slate-600">
+              {rich($t("WhoWeAreHero__t14", "Founded on a commitment to empowering businesses through advanced IT services, ProManage IT Solution has grown from a dedicated team of tech professionals into a global agency serving clients across"))}{" "}
+              <span className="font-semibold" style={{ color: DEEP_TEAL }}>{$t("WhoWeAreHero__t15", "75+ global cities.")}</span>
             </motion.p>
-            <motion.p variants={fadeUp} className="mt-4 max-w-[520px] text-[15px] leading-[1.7] text-slate-600">
-              We combine strategic insight, strong methodology, and a passion for innovation to help organizations{" "}
-              <span className="font-semibold" style={{ color: DEEP_TEAL }}>thrive in a fast-changing digital landscape.</span>
+            <motion.p variants={fadeUp} className="text-body mt-4 max-w-[520px] text-slate-600">
+              {rich($t("WhoWeAreHero__t16", "We combine strategic insight, strong methodology, and a passion for innovation to help organizations"))}{" "}
+              <span className="font-semibold" style={{ color: DEEP_TEAL }}>{$t("WhoWeAreHero__t17", "thrive in a fast-changing digital landscape.")}</span>
             </motion.p>
 
             <motion.ul variants={fadeUp} className="mt-8 grid max-w-[520px] grid-cols-2 sm:grid-cols-4 gap-y-6">
@@ -600,7 +599,7 @@ export default function WhoWeAreHero() {
             </motion.ul>
 
             <motion.div variants={fadeUp} className="mt-9">
-              <Link href="/contact" className="group inline-flex items-center gap-4">
+              <Link href={$t("WhoWeAreHero__t18", "/contact")} className="group inline-flex items-center gap-4">
                 <span
                   className="flex h-12 w-12 items-center justify-center rounded-full shadow-[0_15px_30px_-12px_rgba(13,148,136,0.7)] transition-transform group-hover:translate-x-1"
                   style={{ background: `linear-gradient(135deg, ${DEEP_TEAL}, ${TEAL})` }}
@@ -608,8 +607,7 @@ export default function WhoWeAreHero() {
                   <ArrowIcon />
                 </span>
                 <span className="relative text-[15px] font-bold uppercase tracking-[0.06em]" style={{ color: NAVY }}>
-                  Get My Free Proposal
-                  <span className="absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-75 rounded-full transition-transform group-hover:scale-x-100" style={{ backgroundColor: TEAL }} />
+                  {$t("WhoWeAreHero__t19", "Get My Free Proposal")}<span className="absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-75 rounded-full transition-transform group-hover:scale-x-100" style={{ backgroundColor: TEAL }} />
                 </span>
               </Link>
             </motion.div>
@@ -627,9 +625,9 @@ export default function WhoWeAreHero() {
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
                 <QuoteIcon />
               </span>
-              <p className="mt-3 text-[16px] leading-snug">
-                We don&apos;t just build solutions, we build{" "}
-                <span className="font-bold">digital success stories.</span>
+              <p className="text-body mt-3">
+                {rich($t("WhoWeAreHero__t20", "We don't just build solutions, we build"))}{" "}
+                <span className="font-bold">{$t("WhoWeAreHero__t21", "digital success stories.")}</span>
               </p>
               <svg className="mt-2" width="70" height="8" viewBox="0 0 70 8" fill="none" aria-hidden>
                 <path d="M2 6C24 2 46 2 68 4" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" opacity="0.8" />

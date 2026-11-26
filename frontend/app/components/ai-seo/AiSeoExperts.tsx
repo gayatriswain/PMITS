@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import { Bot, CheckCircle2, ClipboardCheck, Rocket, TrendingUp, Users } from "lucide-react";
 import CountUp from "../shared/CountUp";
 import { AI, FADE, H2, Hl, Pill, Spark, ease, heading, Inner, Panel } from "../shared/AiSeoShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const STEPS = [
+const STEPS__cms = [
   { Icon: Bot, title: "AI Agents Work 24/7", text: "Collect data, find insights and run thousands of checks in real-time.", c: "text-teal-600 bg-teal-50" },
   { Icon: Users, title: "SEO Experts Analyze", text: "Experts interpret the data, spot opportunities and build winning strategies.", c: "text-violet-600 bg-violet-50" },
   { Icon: ClipboardCheck, title: "Review & Refine", text: "Every recommendation is reviewed, refined and aligned with your business goals.", c: "text-sky-600 bg-sky-50" },
@@ -15,26 +17,26 @@ const STEPS = [
 ];
 
 export default function AiSeoExperts() {
+  const $t = useCmsText();
+  const STEPS = useCmsData("AiSeoExperts__STEPS", STEPS__cms);
   return (
     <Panel inner="!bg-[#f5f7fb]">
       <Inner className="py-14 sm:py-16 lg:py-20 2xl:py-24">
         <div className="relative">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] 2xl:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)] lg:items-center">
             <div className="min-w-0">
-              <Pill>Powered by AI &amp; Human Expertise</Pill>
+              <Pill>{$t("AiSeoExperts__t1", "Powered by AI & Human Expertise")}</Pill>
               <H2 className="mt-4 !text-[28px] sm:!text-[34px] lg:!text-[40px]">
-                AI Works Faster.
-                <br /> Experts Make It <Hl>Smarter.</Hl>
+                {$t("AiSeoExperts__t2", "AI Works Faster.")}<br /> {$t("AiSeoExperts__t3", "Experts Make It ")}<Hl>{$t("AiSeoExperts__t4", "Smarter.")}</Hl>
               </H2>
               <motion.p
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.1, ease }}
-                className="mt-4 max-w-md text-[15px] leading-relaxed text-slate-600"
+                className="text-body mt-4 max-w-md text-slate-600"
               >
-                Our AI agents handle data, analysis and execution at scale. Our SEO experts add strategy, creativity and experience to deliver what truly drives growth.
-              </motion.p>
+                {rich($t("AiSeoExperts__t5", "Our AI agents handle data, analysis and execution at scale. Our SEO experts add strategy, creativity and experience to deliver what truly drives growth."))}</motion.p>
             </div>
 
             {/* image with floating cards */}
@@ -46,7 +48,7 @@ export default function AiSeoExperts() {
               className="relative mx-auto w-full max-w-[520px] lg:row-span-2 lg:-my-6 lg:max-w-none 2xl:-mr-6"
             >
               <div className="relative aspect-[1.34]">
-                <Image src={AI.robotHuman} alt="SEO expert working alongside an AI agent" fill sizes="(min-width:1024px) 480px, 90vw" className="object-contain mix-blend-multiply" style={FADE} />
+                <Image src={AI.robotHuman} alt={$t("AiSeoExperts__t6", "SEO expert working alongside an AI agent")} fill sizes="(min-width:1024px) 480px, 90vw" className="object-contain mix-blend-multiply" style={FADE} />
               </div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -56,17 +58,17 @@ export default function AiSeoExperts() {
                 className="absolute -bottom-3 right-0 w-[52%] max-w-[220px] sm:right-2"
               >
                 <div className="ai-float rounded-2xl border border-white bg-white/95 p-3.5 shadow-[0_20px_40px_-20px_rgba(15,40,80,.45)]">
-                  <p className="text-center text-xs font-bold text-[#0b1b33]">The Impact You Get</p>
+                  <p className="text-caption text-center font-bold text-[#0b1b33]">{rich($t("AiSeoExperts__t7", "The Impact You Get"))}</p>
                   <div className="mt-2 flex items-end gap-2">
                     <Spark className="h-12 flex-1" />
                     <div className="text-right">
-                      <p className="text-[10px] text-slate-500">Visibility Growth</p>
+                      <p className="text-[10px] text-slate-500">{rich($t("AiSeoExperts__t8", "Visibility Growth"))}</p>
                       <p className={`${heading.className} text-2xl font-bold leading-none text-[#0f766e]`}>
                         +<CountUp to={180} suffix="%" />
                       </p>
                     </div>
                   </div>
-                  <p className="mt-2 rounded-lg bg-slate-50 py-1 text-center text-[10px] text-slate-500">in 6 Months ↑</p>
+                  <p className="mt-2 rounded-lg bg-slate-50 py-1 text-center text-[10px] text-slate-500">{rich($t("AiSeoExperts__t9", "in 6 Months ↑"))}</p>
                 </div>
               </motion.div>
               <motion.div

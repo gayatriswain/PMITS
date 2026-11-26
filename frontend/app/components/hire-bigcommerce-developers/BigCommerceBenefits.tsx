@@ -4,8 +4,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { CtaStrip, Eyebrow, Grad, Icon3D, Swoosh, fadeUp, heading, useSeen, type Glyph3D } from "./BigCommerceShared";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
-const steps: { n: string; title: string; text: string; g: Glyph3D }[] = [
+const steps__cms: { n: string; title: string; text: string; g: Glyph3D }[] = [
   { n: "01", title: "Launch Faster", text: "Get your store up and running quickly with built-in features.", g: "rocket" },
   { n: "02", title: "Sell More", text: "Powerful marketing, SEO, and conversion tools help you drive more sales.", g: "chart" },
   { n: "03", title: "Scale Without Limits", text: "Handle more traffic, more orders, and more growth — without slowing down.", g: "globe" },
@@ -25,6 +27,8 @@ const WAVE = (() => {
 })();
 
 export default function BigCommerceBenefits() {
+  const $t = useCmsText();
+  const steps = useCmsData("BigCommerceBenefits__steps", steps__cms);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const seen = useSeen(ref, 0.3);
@@ -42,27 +46,24 @@ export default function BigCommerceBenefits() {
     <section className="relative overflow-hidden bg-gradient-to-b from-[#f6f8fe] to-[#eef3fd] py-12 sm:py-16">
       <Container className="relative">
         <div className="mx-auto max-w-[820px] text-center">
-          <Eyebrow variant="line" className="tracking-[0.3em]">Big benefits for your business</Eyebrow>
+          <Eyebrow variant="line" className="tracking-[0.3em]">{$t("BigCommerceBenefits__t1", "Big benefits for your business")}</Eyebrow>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className={`${heading.className} mt-5 text-[36px] font-bold leading-[1.1] tracking-tight text-[#0b1a4a] sm:text-5xl lg:text-[54px]`}
+            className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
           >
-            More Power. More Growth.
-            <br />
+            {$t("BigCommerceBenefits__t2", "More Power. More Growth.")}<br />
             <Grad>
-              More{" "}
+              {$t("BigCommerceBenefits__t3", "More")}{" "}
               <span className="relative inline-block">
-                Success.
-                <Swoosh className="-bottom-2 left-0 h-3 w-[90%]" />
+                {$t("BigCommerceBenefits__t4", "Success.")}<Swoosh className="-bottom-2 left-0 h-3 w-[90%]" />
               </span>
             </Grad>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mx-auto mt-5 max-w-[520px] text-base text-slate-600">
-            BigCommerce gives you the tools and flexibility to grow your business, delight your customers, and stay ahead of the competition.
-          </motion.p>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mx-auto mt-5 max-w-[520px] text-slate-600">
+            {rich($t("BigCommerceBenefits__t5", "BigCommerce gives you the tools and flexibility to grow your business, delight your customers, and stay ahead of the competition."))}</motion.p>
         </div>
 
         <div ref={ref} className="relative mt-12" onMouseLeave={() => setHold(false)}>
@@ -116,7 +117,7 @@ export default function BigCommerceBenefits() {
                     <span className="text-[10px] tracking-[0.2em] text-[#2348e6]/50">••</span>
                   </p>
                   <h3 className={`${heading.className} mt-2 text-[16px] font-semibold text-[#0b1a4a]`}>{s.title}</h3>
-                  <p className="mt-2 max-w-[200px] text-[13px] leading-relaxed text-slate-600">{s.text}</p>
+                  <p className="text-small mt-2 max-w-[200px] text-slate-600">{s.text}</p>
                 </motion.li>
               );
             })}
@@ -125,12 +126,12 @@ export default function BigCommerceBenefits() {
 
         <div className="mt-12">
           <CtaStrip
-            title="Ready to Build Something"
+            title={$t("BigCommerceBenefits__t6", "Ready to Build Something")}
             accent="Amazing?"
-            text="Join thousands of successful brands building their future with BigCommerce."
+            text={$t("BigCommerceBenefits__t7", "Join thousands of successful brands building their future with BigCommerce.")}
             checks={[
-              { icon: "check", label: "No credit card required" },
-              { icon: "bolt", label: "Setup in minutes" },
+              { icon: "check", label: $t("BigCommerceBenefits__t8", "No credit card required") },
+              { icon: "bolt", label: $t("BigCommerceBenefits__t9", "Setup in minutes") },
             ]}
           />
         </div>

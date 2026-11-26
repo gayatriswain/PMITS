@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -58,7 +60,7 @@ const WindowIcon = ({ size = 14, color = "#94a3b8" }: IconProps) => (
   </svg>
 );
 
-const STEPS = [
+const STEPS__cms = [
   { label: "Discover", Icon: SearchIcon, active: true },
   { label: "Product", Icon: BagIcon, active: false },
   { label: "Cart", Icon: CartIcon, active: false },
@@ -90,7 +92,7 @@ const ZapIcon = ({ size = 18, color = TEAL }: IconProps) => (
   </svg>
 );
 
-const FEATURES = [
+const FEATURES__cms = [
   { label: "Clearer Navigation", Icon: ScissorsIcon },
   { label: "Better Product Discovery", Icon: CompassIcon },
   { label: "Mobile-First Experience", Icon: PhoneIcon },
@@ -125,7 +127,7 @@ const TrendStatIcon = ({ size = 18, color = TEAL }: IconProps) => (
   </svg>
 );
 
-const TRUST_ROW = [
+const TRUST_ROW__cms = [
   { label: "Conversion-Focused", sub: "Design", Icon: ShieldStatIcon },
   { label: "Shopify", sub: "Experts", Icon: ShopifyBagIconSmall },
   { label: "Fast Loading", sub: "Stores", Icon: BoltStatIcon },
@@ -137,6 +139,7 @@ function ShopifyBagIconSmall({ size = 18 }: IconProps) {
 }
 
 function StoreMockup() {
+  const $t = useCmsText();
   return (
     // Both cards float directly over the tablet, side by side, large and centered-low — matching
     // the reference layout. Positioned with `left` + fixed px (not `right`), which keeps them
@@ -146,9 +149,9 @@ function StoreMockup() {
       <div className="rounded-2xl border-[6px] border-[#0e1117] bg-white shadow-[0_35px_70px_-25px_rgba(15,23,42,0.35)] overflow-hidden">
         {/* Storefront nav */}
         <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-slate-100">
-          <span className="text-[13px] font-bold tracking-widest" style={{ color: NAVY }}>PURELY</span>
+          <span className="text-[13px] font-bold tracking-widest" style={{ color: NAVY }}>{$t("ShopifyWebDesignHero__t1", "PURELY")}</span>
           <div className="hidden sm:flex items-center gap-4 text-[10.5px] font-medium text-slate-500">
-            <span>Shop</span><span>Collections</span><span>About</span><span>Blog</span>
+            <span>{$t("ShopifyWebDesignHero__t2", "Shop")}</span><span>{$t("ShopifyWebDesignHero__t3", "Collections")}</span><span>{$t("ShopifyWebDesignHero__t4", "About")}</span><span>{$t("ShopifyWebDesignHero__t5", "Blog")}</span>
           </div>
           <div className="flex items-center gap-3 text-slate-500">
             <SearchIcon size={13} color="#64748b" />
@@ -159,15 +162,15 @@ function StoreMockup() {
 
         {/* Storefront banner */}
         <div className="relative h-[260px] sm:h-[320px]">
-          <Image src="/case-urban.jpg" alt="" fill sizes="560px" className="object-cover" />
+          <Image src={$t("ShopifyWebDesignHero__t6", "/case-urban.jpg")} alt="" fill sizes="560px" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/35 to-transparent" />
           <div className="absolute left-4 sm:left-6 top-[18%] max-w-[180px]">
             <div className="mb-2 flex items-center gap-2 rounded-full bg-white/80 px-2.5 py-1 w-fit">
               <span className="w-6 border-t" style={{ borderColor: TEAL }} />
             </div>
-            <h3 className="font-serif text-lg sm:text-xl font-bold leading-tight" style={{ color: NAVY }}>Summer Collection</h3>
-            <p className="text-[10px] text-slate-600 mt-1.5">New arrivals. Natural comfort.</p>
-            <span className="mt-3 inline-block rounded-md px-3.5 py-1.5 text-[10px] font-semibold text-white" style={{ backgroundColor: TEAL }}>Shop Now</span>
+            <h3 className="text-h6 font-serif font-bold" style={{ color: NAVY }}>{$t("ShopifyWebDesignHero__t7", "Summer Collection")}</h3>
+            <p className="text-[10px] text-slate-600 mt-1.5">{rich($t("ShopifyWebDesignHero__t8", "New arrivals. Natural comfort."))}</p>
+            <span className="mt-3 inline-block rounded-md px-3.5 py-1.5 text-[10px] font-semibold text-white" style={{ backgroundColor: TEAL }}>{$t("ShopifyWebDesignHero__t9", "Shop Now")}</span>
           </div>
         </div>
       </div>
@@ -176,6 +179,10 @@ function StoreMockup() {
 }
 
 export default function ShopifyWebDesignHero() {
+  const $t = useCmsText();
+  const STEPS = useCmsData("ShopifyWebDesignHero__STEPS", STEPS__cms);
+  const FEATURES = useCmsData("ShopifyWebDesignHero__FEATURES", FEATURES__cms);
+  const TRUST_ROW = useCmsData("ShopifyWebDesignHero__TRUST_ROW", TRUST_ROW__cms);
   const [activeStep, setActiveStep] = useState(0);
 
   const handleViewportEnter = () => {
@@ -198,35 +205,31 @@ export default function ShopifyWebDesignHero() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-16 sm:gap-20 lg:gap-10 items-center">
           {/* Left content */}
           <motion.div variants={container} initial="hidden" animate="show" className="max-w-xl">
-            <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-5xl lg:text-[52px] leading-[1.1] font-bold tracking-tight" style={{ color: NAVY }}>
-              A Shopify Store
-              <br />
-              <span style={{ color: TEAL }}>Built to Sell.</span>
+            <motion.h1 variants={fadeUp} className="text-h1 font-serif font-bold tracking-tight" style={{ color: NAVY }}>
+              {$t("ShopifyWebDesignHero__t10", "A Shopify Store")}<br />
+              <span style={{ color: TEAL }}>{$t("ShopifyWebDesignHero__t11", "Built to Sell.")}</span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="text-sm md:text-base text-slate-600 leading-relaxed mt-5 max-w-md">
-              We design fast, intuitive Shopify stores that turn product discovery into confident purchases.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body text-slate-600 mt-5 max-w-md">
+              {rich($t("ShopifyWebDesignHero__t12", "We design fast, intuitive Shopify stores that turn product discovery into confident purchases."))}</motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mt-7">
               <Link
-                href="/contact"
+                href={$t("ShopifyWebDesignHero__t13", "/contact")}
                 className="group inline-flex items-center gap-2.5 rounded-lg px-6 py-3.5 text-[14px] font-semibold text-white shadow-[0_15px_30px_-12px_rgba(15,92,86,0.6)] transition-transform hover:-translate-y-0.5"
                 style={{ backgroundColor: DEEP_TEAL }}
               >
-                Get My Shopify Strategy
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+                {$t("ShopifyWebDesignHero__t14", "Get My Shopify Strategy")}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
                   <path d="M5 12h14" />
                   <path d="M12 5l7 7-7 7" />
                 </svg>
               </Link>
               <Link
-                href="/portfolio"
+                href={$t("ShopifyWebDesignHero__t15", "/portfolio")}
                 className="inline-flex items-center gap-2.5 rounded-lg px-6 py-3.5 bg-white border border-slate-300 text-[14px] font-semibold transition-colors hover:border-slate-400"
                 style={{ color: NAVY }}
               >
-                See Our Shopify Work
-              </Link>
+                {$t("ShopifyWebDesignHero__t16", "See Our Shopify Work")}</Link>
             </motion.div>
 
             <motion.div variants={fadeUp} className="grid grid-cols-2 gap-x-6 gap-y-3.5 mt-9">
@@ -241,10 +244,10 @@ export default function ShopifyWebDesignHero() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex items-center gap-3 mt-9">
-              <Image src="/shopify.webp" alt="Shopify" width={32} height={32} className="object-contain" />
+              <Image src={$t("ShopifyWebDesignHero__t17", "/shopify.webp")} alt={$t("ShopifyWebDesignHero__t18", "Shopify")} width={32} height={32} className="object-contain" />
               <div>
-                <p className="text-[13px] font-bold" style={{ color: NAVY }}>Built on Shopify.</p>
-                <p className="text-[11px] text-slate-400">Designed for Growth.</p>
+                <p className="text-small font-bold" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignHero__t19", "Built on Shopify."))}</p>
+                <p className="text-[11px] text-slate-400">{rich($t("ShopifyWebDesignHero__t20", "Designed for Growth."))}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -318,28 +321,28 @@ export default function ShopifyWebDesignHero() {
                 className="relative z-10 w-[185px] xl:w-[200px] rounded-2xl bg-white shadow-[0_20px_50px_-12px_rgba(15,23,42,0.28)] border border-slate-100 overflow-hidden pointer-events-auto"
               >
                 <div className="relative h-[190px] xl:h-[210px]">
-                  <Image src="/case-luxera.jpg" alt="" fill sizes="200px" className="object-cover" />
+                  <Image src={$t("ShopifyWebDesignHero__t21", "/case-luxera.jpg")} alt="" fill sizes="200px" className="object-cover" />
                 </div>
                 <div className="p-3">
-                  <p className="text-[12px] font-bold leading-tight" style={{ color: NAVY }}>Linen Wrap Dress</p>
-                  <p className="text-[11px] font-semibold mt-0.5" style={{ color: TEAL }}>$89.00</p>
+                  <p className="text-caption font-bold" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignHero__t22", "Linen Wrap Dress"))}</p>
+                  <p className="text-[11px] font-semibold mt-0.5" style={{ color: TEAL }}>{rich($t("ShopifyWebDesignHero__t23", "$89.00"))}</p>
                   <div className="flex items-center gap-1.5 mt-2">
-                    <span className="text-[8px] text-slate-400">Size</span>
-                    {["S", "M", "L"].map((s) => (
+                    <span className="text-[8px] text-slate-400">{$t("ShopifyWebDesignHero__t24", "Size")}</span>
+                    {[$t("ShopifyWebDesignHero__t25", "S"), $t("ShopifyWebDesignHero__t26", "M"), $t("ShopifyWebDesignHero__t27", "L")].map((s) => (
                       <span key={s} className={`flex h-4 w-4 items-center justify-center rounded text-[7px] font-semibold ${s === "M" ? "text-white" : "text-slate-500 border border-slate-200"}`} style={s === "M" ? { backgroundColor: TEAL } : undefined}>
                         {s}
                       </span>
                     ))}
                   </div>
                   <div className="flex items-center gap-1.5 mt-1.5">
-                    <span className="text-[8px] text-slate-400 mr-0.5">Color</span>
+                    <span className="text-[8px] text-slate-400 mr-0.5">{$t("ShopifyWebDesignHero__t28", "Color")}</span>
                     {["#4d5f4a", "#8c8c8c", "#d8cbb8"].map((c, i) => (
                       <span key={c} className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: c, boxShadow: i === 0 ? `0 0 0 1.5px #fff, 0 0 0 2.5px ${TEAL}` : undefined }} />
                     ))}
                   </div>
                   <div className="mt-2 space-y-1.5">
-                    <div className="rounded-lg py-1.5 text-center text-[9px] font-semibold text-white" style={{ backgroundColor: NAVY }}>Add to Cart</div>
-                    <div className="rounded-lg py-1.5 text-center text-[9px] font-semibold border border-slate-200" style={{ color: NAVY }}>Buy it now</div>
+                    <div className="rounded-lg py-1.5 text-center text-[9px] font-semibold text-white" style={{ backgroundColor: NAVY }}>{$t("ShopifyWebDesignHero__t29", "Add to Cart")}</div>
+                    <div className="rounded-lg py-1.5 text-center text-[9px] font-semibold border border-slate-200" style={{ color: NAVY }}>{$t("ShopifyWebDesignHero__t30", "Buy it now")}</div>
                   </div>
                 </div>
               </motion.div>
@@ -353,17 +356,17 @@ export default function ShopifyWebDesignHero() {
                 className="relative z-20 w-[150px] xl:w-[165px] rounded-2xl bg-white shadow-[0_20px_50px_-12px_rgba(15,23,42,0.28)] border border-slate-100 p-3 -ml-6 pointer-events-auto"
               >
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-[10px] font-bold" style={{ color: NAVY }}>Your Cart (2)</p>
+                  <p className="text-[10px] font-bold" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignHero__t31", "Your Cart (2)"))}</p>
                   <span className="text-slate-300 text-[9px]">✕</span>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <span className="relative h-12 w-10 shrink-0 overflow-hidden rounded">
-                      <Image src="/case-luxera.jpg" alt="" fill sizes="28px" className="object-cover" />
+                      <Image src={$t("ShopifyWebDesignHero__t32", "/case-luxera.jpg")} alt="" fill sizes="28px" className="object-cover" />
                     </span>
                     <div className="min-w-0">
-                      <p className="text-[8px] font-semibold truncate" style={{ color: NAVY }}>Linen Wrap Dress</p>
-                      <p className="text-[7.5px] text-slate-400">$89.00</p>
+                      <p className="text-[8px] font-semibold truncate" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignHero__t33", "Linen Wrap Dress"))}</p>
+                      <p className="text-[7.5px] text-slate-400">{rich($t("ShopifyWebDesignHero__t34", "$89.00"))}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -371,16 +374,16 @@ export default function ShopifyWebDesignHero() {
                       <BagIcon size={12} color={TEAL} />
                     </span>
                     <div className="min-w-0">
-                      <p className="text-[8px] font-semibold truncate" style={{ color: NAVY }}>Canvas Tote Bag</p>
-                      <p className="text-[7.5px] text-slate-400">$39.00</p>
+                      <p className="text-[8px] font-semibold truncate" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignHero__t35", "Canvas Tote Bag"))}</p>
+                      <p className="text-[7.5px] text-slate-400">{rich($t("ShopifyWebDesignHero__t36", "$39.00"))}</p>
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
-                  <span className="text-[8px] text-slate-500">Subtotal</span>
-                  <span className="text-[9px] font-bold" style={{ color: NAVY }}>$128.00</span>
+                  <span className="text-[8px] text-slate-500">{$t("ShopifyWebDesignHero__t37", "Subtotal")}</span>
+                  <span className="text-[9px] font-bold" style={{ color: NAVY }}>{$t("ShopifyWebDesignHero__t38", "$128.00")}</span>
                 </div>
-                <div className="mt-2 rounded-lg py-1.5 text-center text-[8px] font-semibold text-white" style={{ backgroundColor: TEAL }}>Checkout Securely</div>
+                <div className="mt-2 rounded-lg py-1.5 text-center text-[8px] font-semibold text-white" style={{ backgroundColor: TEAL }}>{$t("ShopifyWebDesignHero__t39", "Checkout Securely")}</div>
               </motion.div>
             </div>
           </motion.div>

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "./Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -100,7 +102,7 @@ const ArrowIcon = ({ size = 15, color = DEEP_TEAL }: IconProps) => (
   </svg>
 );
 
-const REASONS = [
+const REASONS__cms = [
   { Icon: DesignIcon, title: "Contemporary Design", desc: "Modern, user-centric designs that reflect your brand personality and leave a lasting impression." },
   { Icon: CursorIcon, title: "Smooth Navigation", desc: "Intuitive layouts and seamless navigation that keep visitors engaged and coming back." },
   { Icon: ScaleIcon, title: "Totally Scalable", desc: "Future-ready solutions built to scale with your business and adapt to evolving needs." },
@@ -142,6 +144,7 @@ export function Plant() {
 
 /* ---------- Left visual: WooCommerce store mockup ---------- */
 function StoreVisual() {
+  const $t = useCmsText();
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -150,8 +153,8 @@ function StoreVisual() {
       transition={{ duration: 0.8, ease: EASE }}
     >
       <Image
-        src="/WooCommerce2.webp"
-        alt="WooCommerce store on a tablet with a 5.0 rating, shopping bag and parcels"
+        src={$t("WooWhyHire__t1", "/WooCommerce2.webp")}
+        alt={$t("WooWhyHire__t2", "WooCommerce store on a tablet with a 5.0 rating, shopping bag and parcels")}
         width={1474}
         height={1067}
         sizes="(min-width: 1024px) 50vw, 100vw"
@@ -162,6 +165,8 @@ function StoreVisual() {
 }
 
 export default function WooWhyHire() {
+  const $t = useCmsText();
+  const REASONS = useCmsData("WooWhyHire__REASONS", REASONS__cms);
   return (
     <section className="relative w-full overflow-hidden bg-white py-14 sm:py-16 lg:py-20">
       <Container>
@@ -181,31 +186,25 @@ export default function WooWhyHire() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full" style={{ backgroundColor: PURPLE }}>
               <StarIcon />
             </span>
-            Built for growth. Designed to convert.
-          </motion.span>
+            {$t("WooWhyHire__t3", "Built for growth. Designed to convert.")}</motion.span>
 
           <motion.h2
             variants={fadeUp}
-            className="mt-5 text-[32px] sm:text-[42px] lg:text-[48px] font-extrabold leading-[1.12] tracking-tight"
+            className="text-h2 mt-5 font-extrabold tracking-tight"
             style={{ color: NAVY }}
           >
-            Why Hire <span style={{ color: PURPLE }}>Woo-commerce</span>
+            {$t("WooWhyHire__t4", "Why Hire ")}<span style={{ color: PURPLE }}>{$t("WooWhyHire__t5", "Woo-commerce")}</span>
             <br />
-            Developers{" "}
+            {$t("WooWhyHire__t6", "Developers")}{" "}
             <span className="relative inline-block">
-              from Us?
-              <svg className="pointer-events-none absolute -bottom-2.5 left-0 h-3 w-[88%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+              {$t("WooWhyHire__t7", "from Us?")}<svg className="pointer-events-none absolute -bottom-2.5 left-0 h-3 w-[88%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                 <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={TEAL} strokeWidth="3.2" strokeLinecap="round" />
               </svg>
             </span>
           </motion.h2>
 
-          <motion.p variants={fadeUp} className="mt-7 text-[14.5px] leading-[1.8] text-slate-600">
-            It takes lots of skills and experience to develop an ecommerce website. However, a good looking online store is
-            not enough to attract customers and to provide a wonderful shopping experience to them. Our WooCommerce
-            developers at ProManage IT Solution give all this, and much more to you when you hire them to make your
-            ecommerce website.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-small mt-7 text-slate-600">
+            {rich($t("WooWhyHire__t8", "It takes lots of skills and experience to develop an ecommerce website. However, a good looking online store is not enough to attract customers and to provide a wonderful shopping experience to them. Our WooCommerce developers at ProManage IT Solution give all this, and much more to you when you hire them to make your ecommerce website."))}</motion.p>
         </motion.div>
 
         {/* Visual + reasons */}
@@ -251,7 +250,7 @@ export default function WooWhyHire() {
                   </span>
                   <div className="min-w-0 flex-1">
                     <h3 className="text-[15px] font-bold" style={{ color: NAVY }}>{r.title}</h3>
-                    <p className="mt-0.5 text-[12.5px] leading-snug text-slate-500">{r.desc}</p>
+                    <p className="text-caption mt-0.5 text-slate-500">{r.desc}</p>
                   </div>
                   <span className="hidden sm:block text-[26px] font-light text-slate-200">{String(i + 1).padStart(2, "0")}</span>
                 </motion.div>
@@ -275,22 +274,19 @@ export default function WooWhyHire() {
               </svg>
             </span>
             <div>
-              <p className="text-[15px] font-bold" style={{ color: NAVY }}>We build more than just online stores</p>
-              <p className="text-[12.5px]" style={{ color: TEAL }}>We build growth engines for your business.</p>
+              <p className="text-body font-bold" style={{ color: NAVY }}>{rich($t("WooWhyHire__t9", "We build more than just online stores"))}</p>
+              <p className="text-caption" style={{ color: TEAL }}>{rich($t("WooWhyHire__t10", "We build growth engines for your business."))}</p>
             </div>
           </div>
           <span className="hidden lg:block h-12 w-px bg-teal-100" />
-          <p className="flex-1 text-center lg:text-left text-[13px] leading-relaxed text-slate-600">
-            From stunning design to powerful functionality, we deliver optimized WooCommerce stores that drive traffic, boost
-            sales and create happy customers.
-          </p>
+          <p className="text-small flex-1 text-center lg:text-left text-slate-600">
+            {rich($t("WooWhyHire__t11", "From stunning design to powerful functionality, we deliver optimized WooCommerce stores that drive traffic, boost sales and create happy customers."))}</p>
           <Link
-            href="/contact"
+            href={$t("WooWhyHire__t12", "/contact")}
             className="group inline-flex shrink-0 items-center gap-3 rounded-full py-1.5 pl-6 pr-1.5 text-[14px] font-semibold text-white shadow-[0_15px_30px_-14px_rgba(13,148,136,0.75)] transition hover:-translate-y-0.5"
             style={{ background: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL})` }}
           >
-            Let&apos;s Build Your Store
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
+            {$t("WooWhyHire__t13", "Let's Build Your Store")}<span className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
               <ArrowIcon />
             </span>
           </Link>

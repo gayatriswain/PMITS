@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -88,7 +90,7 @@ const CodeIcon = ({ size = 18, color = TEAL }: IconProps) => (
   </svg>
 );
 
-const ITEMS = [
+const ITEMS__cms = [
   { Badge: MonitorBadge, title: "Business Management Systems", desc: "Streamline operations and manage your entire business from one place.", image: "/shopify-icon1.webp" },
   { Badge: CartBadge, title: "E-commerce & Marketplace Solutions", desc: "Powerful, secure and scalable platforms that grow with your business.", image: "/shopify-icon2.webp" },
   { Badge: PhoneBadge, title: "Customer-Facing Applications", desc: "Engaging digital experiences that your customers will love.", image: "/shopify-icon3.webp" },
@@ -99,13 +101,16 @@ const ITEMS = [
   { Badge: MonitorBadge, title: "Something Custom in Mind?", desc: "Tell us what you need — we'll build a solution tailored exactly to your business.", image: "/shopify-icon1.webp" },
 ];
 
-const PROCESS_STEPS = [
+const PROCESS_STEPS__cms = [
   { Icon: ChatBubbleIcon, label: "Understand Your Goal" },
   { Icon: PencilIcon, label: "Plan & Design Your Solution" },
   { Icon: CodeIcon, label: "Build & Deliver With Excellence" },
 ];
 
 export default function CustomDevWhatWeBuild() {
+  const $t = useCmsText();
+  const ITEMS = useCmsData("CustomDevWhatWeBuild__ITEMS", ITEMS__cms);
+  const PROCESS_STEPS = useCmsData("CustomDevWhatWeBuild__PROCESS_STEPS", PROCESS_STEPS__cms);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -145,17 +150,14 @@ export default function CustomDevWhatWeBuild() {
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full" style={{ backgroundColor: "#e6f6f4", color: TEAL }}>
             <span className="w-1 h-1 rounded-full" style={{ backgroundColor: TEAL }} />
-            What We Build
-            <span className="w-1 h-1 rounded-full" style={{ backgroundColor: TEAL }} />
+            {$t("CustomDevWhatWeBuild__t1", "What We Build")}<span className="w-1 h-1 rounded-full" style={{ backgroundColor: TEAL }} />
           </span>
-          <h2 className="mt-5 font-serif text-3xl sm:text-4xl md:text-[42px] font-bold leading-tight" style={{ color: NAVY }}>
-            Custom Software for
-            <br />
-            <span style={{ color: TEAL }}>Real Business Needs.</span>
+          <h2 className="text-h2 mt-5 font-serif font-bold" style={{ color: NAVY }}>
+            {$t("CustomDevWhatWeBuild__t2", "Custom Software for")}<br />
+            <span style={{ color: TEAL }}>{$t("CustomDevWhatWeBuild__t3", "Real Business Needs.")}</span>
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed">
-            From internal tools to customer-facing platforms, we build secure, scalable and future-ready software that solves real problems.
-          </p>
+          <p className="text-body mt-4 text-slate-500">
+            {rich($t("CustomDevWhatWeBuild__t4", "From internal tools to customer-facing platforms, we build secure, scalable and future-ready software that solves real problems."))}</p>
         </motion.div>
 
         <div className="relative">
@@ -210,7 +212,7 @@ export default function CustomDevWhatWeBuild() {
                     <item.Badge />
                   </span>
                   <h3 className="text-[14px] font-bold leading-snug" style={{ color: NAVY }}>{item.title}</h3>
-                  <p className="text-[12px] text-slate-500 leading-relaxed mt-2">{item.desc}</p>
+                  <p className="text-caption text-slate-500 mt-2">{item.desc}</p>
                   <div className="relative w-full h-[120px] mt-5">
                     <Image src={item.image} alt="" fill sizes="250px" className="object-contain" />
                   </div>
@@ -239,11 +241,9 @@ export default function CustomDevWhatWeBuild() {
             </div>
             <div className="min-w-0">
               <h3 className="text-[15px] sm:text-base font-bold leading-snug" style={{ color: NAVY }}>
-                Got an idea? Let&apos;s build it together.
-              </h3>
-              <p className="text-[12.5px] text-slate-500 mt-1 leading-snug">
-                Share your requirements and we&apos;ll turn it into a powerful software solution.
-              </p>
+                {$t("CustomDevWhatWeBuild__t5", "Got an idea? Let's build it together.")}</h3>
+              <p className="text-caption text-slate-500 mt-1">
+                {rich($t("CustomDevWhatWeBuild__t6", "Share your requirements and we'll turn it into a powerful software solution."))}</p>
             </div>
           </div>
 
@@ -262,12 +262,11 @@ export default function CustomDevWhatWeBuild() {
           {/* CTA + trust */}
           <div className="flex flex-col items-center xl:items-end gap-2.5 shrink-0 w-full xl:w-auto">
             <Link
-              href="/contact"
+              href={$t("CustomDevWhatWeBuild__t7", "/contact")}
               className="group inline-flex items-center gap-3 rounded-full pl-5 pr-1.5 py-1.5 text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Start Your Project
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
+              {$t("CustomDevWhatWeBuild__t8", "Start Your Project")}<span className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition-transform group-hover:translate-x-0.5">
                 <ArrowIcon color={DEEP_TEAL} />
               </span>
             </Link>
@@ -277,7 +276,7 @@ export default function CustomDevWhatWeBuild() {
                   <span key={i} className="h-6 w-6 rounded-full ring-2 ring-white bg-slate-200" />
                 ))}
               </div>
-              <span className="text-[11px] text-slate-500 whitespace-nowrap">Trusted by 500+ businesses</span>
+              <span className="text-[11px] text-slate-500 whitespace-nowrap">{$t("CustomDevWhatWeBuild__t9", "Trusted by 500+ businesses")}</span>
             </div>
           </div>
         </motion.div>

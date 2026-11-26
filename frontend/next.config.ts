@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
       { source: "/shopify-web-design", destination: "/web-software/shopify-web-design", permanent: true },
       { source: "/services/web-hosting", destination: "/web-software/web-hosting", permanent: true },
       { source: "/web-hosting", destination: "/web-software/web-hosting", permanent: true },
+      // the old standalone hosting page is the same service as Web Hosting
+      { source: "/hosting", destination: "/web-software/web-hosting", permanent: true },
       { source: "/services/ui-ux-design", destination: "/design-innovation/ui-ux-design", permanent: true },
       { source: "/ui-ux-design", destination: "/design-innovation/ui-ux-design", permanent: true },
       { source: "/ui-ux", destination: "/design-innovation/ui-ux-design", permanent: true },
@@ -62,6 +64,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      // Images uploaded through the CMS media library.
+      { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "http", hostname: "localhost", port: "4000" },
+      ...(process.env.CMS_URL && process.env.CMS_URL.startsWith("https://")
+        ? [{ protocol: "https" as const, hostname: new URL(process.env.CMS_URL).hostname }]
+        : []),
     ],
   },
 };

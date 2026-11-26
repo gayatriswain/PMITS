@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -90,7 +92,7 @@ const ArrowIcon = ({ size = 16, color = "#fff" }: IconProps) => (
   </svg>
 );
 
-const REASONS = [
+const REASONS__cms = [
   { Icon: FastCartIcon, title: "Ecommerce Expertise", desc: "Build high-performing WooCommerce stores" },
   { Icon: PeopleIcon, title: "Happy Clients", desc: "A long list of satisfied customers" },
   { Icon: BoltIcon, title: "High Sales Results", desc: "Turn visitors into loyal buyers" },
@@ -100,9 +102,10 @@ const REASONS = [
 
 /* Minimal mint wave background (waves, WordPress mark, shopping bag) */
 function Decorations() {
+  const $t = useCmsText();
   return (
     <Image
-      src="/Minimal%20Mint%20Tech%20Wave%20Banner.webp"
+      src={$t("WooWhy__t1", "/Minimal%20Mint%20Tech%20Wave%20Banner.webp")}
       alt=""
       fill
       sizes="100vw"
@@ -113,6 +116,8 @@ function Decorations() {
 }
 
 export default function WooWhy() {
+  const $t = useCmsText();
+  const REASONS = useCmsData("WooWhy__REASONS", REASONS__cms);
   const [active, setActive] = useState(2);
 
   return (
@@ -134,42 +139,35 @@ export default function WooWhy() {
               className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-4 py-1.5 text-[13px] font-semibold"
               style={{ color: DEEP_TEAL }}
             >
-              <TrophyIcon /> Why WooCommerce?
-            </span>
+              <TrophyIcon /> {$t("WooWhy__t2", "Why WooCommerce?")}</span>
             <span className="hidden sm:block h-px w-16 bg-gradient-to-l from-transparent to-teal-300" />
           </motion.div>
 
           {/* Heading */}
           <motion.h2
             variants={fadeUp}
-            className="mt-5 text-[30px] sm:text-[40px] lg:text-[46px] font-extrabold leading-[1.15] tracking-tight"
+            className="text-h2 mt-5 font-extrabold tracking-tight"
             style={{ color: NAVY }}
           >
-            More Than Just a Website —
-            <br />
+            {$t("WooWhy__t3", "More Than Just a Website —")}<br />
             <span style={{ color: TEAL }}>
-              A Powerful{" "}
+              {$t("WooWhy__t4", "A Powerful")}{" "}
               <span className="relative inline-block">
-                Online
-                <svg className="pointer-events-none absolute -bottom-3 left-[-6%] h-4 w-[112%]" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden>
+                {$t("WooWhy__t5", "Online")}<svg className="pointer-events-none absolute -bottom-3 left-[-6%] h-4 w-[112%]" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden>
                   <path d="M3 11C60 3 140 2 197 7" fill="none" stroke={TEAL} strokeWidth="3.2" strokeLinecap="round" />
                   <path d="M30 15C80 9 130 8 170 11" fill="none" stroke={TEAL} strokeWidth="1.6" strokeLinecap="round" opacity="0.6" />
                 </svg>
               </span>{" "}
-              Store
-            </span>
+              {$t("WooWhy__t6", "Store")}</span>
           </motion.h2>
 
-          <motion.p variants={fadeUp} className="mt-8 max-w-[880px] text-[14.5px] sm:text-[15px] leading-[1.8] text-slate-600">
-            If WooCommerce is creating a buzz because of its ability as an ecommerce plugin, the developers at ProManage IT
-            Solution are regarded as the best WooCommerce developers. We have a long list of happy and satisfied clients
-            enjoying high amount of sales from their ecommerce websites with our help.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body mt-8 max-w-[880px] text-slate-600">
+            {rich($t("WooWhy__t7", "If WooCommerce is creating a buzz because of its ability as an ecommerce plugin, the developers at ProManage IT Solution are regarded as the best WooCommerce developers. We have a long list of happy and satisfied clients enjoying high amount of sales from their ecommerce websites with our help."))}</motion.p>
 
           {/* Reason cards */}
           <motion.ul
             variants={stagger}
-            className="mt-10 grid w-full max-w-[1120px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5"
+            className="mt-10 grid w-full max-w-[1320px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5"
             onMouseLeave={() => setActive(2)}
           >
             {REASONS.map((r, i) => {
@@ -193,7 +191,7 @@ export default function WooWhy() {
                     <r.Icon />
                   </span>
                   <h3 className="mt-4 text-[14.5px] font-bold" style={{ color: NAVY }}>{r.title}</h3>
-                  <p className="mt-1.5 max-w-[170px] text-[12.5px] leading-snug text-slate-500">{r.desc}</p>
+                  <p className="text-caption mt-1.5 max-w-[170px] text-slate-500">{r.desc}</p>
                   <span
                     className="mt-4 block h-[3px] rounded-full transition-all duration-300"
                     style={{ backgroundColor: TEAL, width: isActive ? 40 : 28 }}
@@ -206,17 +204,15 @@ export default function WooWhy() {
           {/* CTA */}
           <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center gap-3">
             <Link
-              href="/contact"
+              href={$t("WooWhy__t8", "/contact")}
               className="group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold text-white shadow-[0_18px_35px_-14px_rgba(13,148,136,0.75)] transition hover:-translate-y-0.5"
               style={{ background: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL})` }}
             >
               <RocketIcon />
-              Build Your WooCommerce Store
-              <span className="transition-transform group-hover:translate-x-1"><ArrowIcon /></span>
+              {$t("WooWhy__t9", "Build Your WooCommerce Store")}<span className="transition-transform group-hover:translate-x-1"><ArrowIcon /></span>
             </Link>
-            <p className="text-[13.5px] text-slate-600">
-              Better Design. <span className="font-bold" style={{ color: TEAL }}>Higher Sales.</span> Stronger Business.
-            </p>
+            <p className="text-small text-slate-600">
+              {rich($t("WooWhy__t10", "Better Design. "))}<span className="font-bold" style={{ color: TEAL }}>{$t("WooWhy__t11", "Higher Sales.")}</span> {rich($t("WooWhy__t12", "Stronger Business."))}</p>
           </motion.div>
         </motion.div>
       </Container>

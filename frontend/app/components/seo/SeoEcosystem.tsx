@@ -2,8 +2,11 @@
 
 import React from "react";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import Link from "next/link";
+import { rich } from "@/components/cms/rich";
 
-const orbitNodes = [
+const orbitNodes__cms = [
   {
     id: "google-search",
     title: "Google Search",
@@ -124,6 +127,8 @@ const orbitNodes = [
 ];
 
 export default function SeoEcosystem() {
+  const $t = useCmsText();
+  const orbitNodes = useCmsData("SeoEcosystem__orbitNodes", orbitNodes__cms);
   return (
     <section className="relative   bg-white overflow-hidden">
       <Container>
@@ -134,27 +139,25 @@ export default function SeoEcosystem() {
             <div className="flex items-center gap-2 mb-6">
               <div className="w-1.5 h-1.5 rounded-full bg-teal-500" />
               <span className="text-[10px] lg:text-[11px] font-bold tracking-[0.15em] text-teal-700 uppercase">
-                THE MODERN SEARCH ECOSYSTEM
-              </span>
+                {$t("SeoEcosystem__t1", "THE MODERN SEARCH ECOSYSTEM")}</span>
             </div>
             
-            <h2 className="font-serif text-4xl lg:text-5xl font-bold leading-[1.1] text-[#132a43] mb-6">
-              Your Customers<br />
-              Search<br />
-              <span className="text-[#0f5c56]">Everywhere.</span>
+            <h2 className="text-h2 font-serif font-bold text-[#132a43] mb-6">
+              {$t("SeoEcosystem__t2", "Your Customers")}<br />
+              {$t("SeoEcosystem__t3", "Search")}<br />
+              <span className="text-[#0f5c56]">{$t("SeoEcosystem__t4", "Everywhere.")}</span>
             </h2>
             
-            <p className="text-slate-500 text-[15px] leading-relaxed mb-8 max-w-md">
-              Search is no longer limited to Google. Your customers discover, compare and decide across multiple platforms and touchpoints. We make sure your business shows up in <strong className="text-[#0f5c56] font-semibold">all the places that matter.</strong>
+            <p className="text-body text-slate-500 mb-8 max-w-md">
+              {rich($t("SeoEcosystem__t5", "Search is no longer limited to Google. Your customers discover, compare and decide across multiple platforms and touchpoints. We make sure your business shows up in "))}<strong className="text-[#0f5c56] font-semibold">{$t("SeoEcosystem__t6", "all the places that matter.")}</strong>
             </p>
             
-            <button className="px-6 py-3.5 bg-[#0f5c56] hover:bg-[#0b423d] text-white font-medium text-[14px] rounded-lg transition-colors flex items-center justify-center gap-2 mb-10">
-              We Put You Everywhere
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <Link href={$t("SeoEcosystem__u1", "/contact")} className="px-6 py-3.5 bg-[#0f5c56] hover:bg-[#0b423d] text-white font-medium text-[14px] rounded-lg transition-colors flex items-center justify-center gap-2 mb-10">
+              {$t("SeoEcosystem__t7", "We Put You Everywhere")}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
-            </button>
+            </Link>
 
             {/* Stats Info Box */}
             <div className="bg-[#f8fafc] rounded-2xl p-5 border border-slate-100 flex items-start gap-4 max-w-sm">
@@ -171,14 +174,11 @@ export default function SeoEcosystem() {
               </div>
               <div>
                 <p className="text-[11px] text-slate-500 leading-snug mb-1">
-                  Businesses that appear across multiple search touchpoints get up to
-                </p>
+                  {rich($t("SeoEcosystem__t8", "Businesses that appear across multiple search touchpoints get up to"))}</p>
                 <div className="text-[16px] font-bold text-[#0f5c56] mb-1">
-                  2.7X More Customers
-                </div>
+                  {$t("SeoEcosystem__t9", "2.7X More Customers")}</div>
                 <p className="text-[11px] text-slate-500 leading-snug">
-                  than those that don't.
-                </p>
+                  {rich($t("SeoEcosystem__t10", "than those that don't."))}</p>
               </div>
             </div>
           </div>
@@ -223,7 +223,7 @@ export default function SeoEcosystem() {
 
             {/* The Orbit Cards (Desktop: Absolute, Mobile: Grid) */}
             <div className="w-full max-w-[800px] md:aspect-square relative z-10 flex flex-col md:block gap-4 mt-8 md:mt-0">
-              <style dangerouslySetInnerHTML={{__html: `
+              <style dangerouslySetInnerHTML={{__html: $t("SeoEcosystem__t11", `
                 @media (min-width: 768px) {
                   .orbit-node-0 { top: 18%; left: 28%; }
                   .orbit-node-1 { top: 18%; left: 72%; }
@@ -234,7 +234,7 @@ export default function SeoEcosystem() {
                   .orbit-node-6 { top: 82%; left: 28%; }
                   .orbit-node-7 { top: 82%; left: 72%; }
                 }
-              `}} />
+              `)}} />
               
               {orbitNodes.map((node, i) => (
                 <div 
@@ -275,11 +275,9 @@ export default function SeoEcosystem() {
                   </div>
                   
                   <h3 className="text-[18px] font-bold text-[#132a43] mb-1 relative z-10 text-center uppercase tracking-wide">
-                    Your Business
-                  </h3>
+                    {$t("SeoEcosystem__t12", "Your Business")}</h3>
                   <p className="text-[11px] font-bold text-[#14b8a6] mb-2 relative z-10">
-                    Visible. Trusted. Chosen.
-                  </p>
+                    {rich($t("SeoEcosystem__t13", "Visible. Trusted. Chosen."))}</p>
                   
                   <div className="flex gap-1 relative z-10">
                     {[1, 2, 3, 4, 5].map((star) => (

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 /* =========================================================================
    FEATURE ICONS (Exact match to reference image: pure teal outlines, no box)
@@ -127,18 +129,16 @@ function TargetBrandIcon() {
    ========================================================================= */
 
 function ByjusLogo() {
+  const $t = useCmsText();
   return (
     <div className="flex items-center gap-2 text-slate-700">
       <div className="w-7 h-7 rounded-md bg-slate-700 flex items-center justify-center text-white font-black text-sm">
-        B
-      </div>
+        {$t("AnimationGraphicDesignHero__t1", "B")}</div>
       <div className="flex flex-col text-left">
         <span className="text-[17px] font-black tracking-tight leading-none text-slate-800">
-          BYJU&apos;S
-        </span>
+          {$t("AnimationGraphicDesignHero__t2", "BYJU'S")}</span>
         <span className="text-[8px] font-bold text-slate-500 tracking-tight mt-0.5">
-          The Learning App
-        </span>
+          {$t("AnimationGraphicDesignHero__t3", "The Learning App")}</span>
       </div>
     </div>
   );
@@ -160,24 +160,24 @@ function LenskartLogo() {
 }
 
 function OyoLogo() {
+  const $t = useCmsText();
   return (
     <div className="flex items-center text-slate-800">
       <span className="text-[25px] font-black tracking-tighter text-slate-800 font-sans">
-        OYO
-      </span>
+        {$t("AnimationGraphicDesignHero__t4", "OYO")}</span>
     </div>
   );
 }
 
 function MyntraLogo() {
+  const $t = useCmsText();
   return (
     <div className="flex items-center gap-1.5 text-slate-700">
       <svg className="w-5 h-4 text-slate-700" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 17L7 4L12 14L17 4L22 17" />
       </svg>
       <span className="text-[17px] font-extrabold tracking-tight text-slate-800 font-sans">
-        Myntra
-      </span>
+        {$t("AnimationGraphicDesignHero__t5", "Myntra")}</span>
     </div>
   );
 }
@@ -203,10 +203,11 @@ function ZomatoLogo() {
 }
 
 function MapsLogo() {
+  const $t = useCmsText();
   return (
     <div className="flex items-center text-slate-800">
       <span className="text-[18px] font-black tracking-tight text-slate-800">
-        maps<span className="text-[12px] font-semibold text-slate-500">.com</span>
+        maps<span className="text-[12px] font-semibold text-slate-500">{$t("AnimationGraphicDesignHero__t6", ".com")}</span>
       </span>
     </div>
   );
@@ -217,6 +218,7 @@ function MapsLogo() {
    ========================================================================= */
 
 export default function AnimationGraphicDesignHero() {
+  const $t = useCmsText();
   return (
     <section className="relative w-full bg-white pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-20 overflow-hidden">
       <Container className="relative z-10">
@@ -230,41 +232,38 @@ export default function AnimationGraphicDesignHero() {
             {/* Tag Badge with Underline */}
             <div className="mb-4 sm:mb-5">
               <span className="text-[11px] sm:text-[12px] font-black tracking-[0.22em] text-[#0d9488] uppercase block">
-                ANIMATION &amp; GRAPHIC DESIGN
-              </span>
+                {$t("AnimationGraphicDesignHero__t7", "ANIMATION & GRAPHIC DESIGN")}</span>
               <div className="w-10 h-[3px] bg-[#0d9488] rounded-full mt-2" />
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[46px] xl:text-[54px] font-black text-[#0f2333] tracking-tight leading-[1.12] mb-5 sm:mb-6 font-sans">
-              Design That <span className="text-[#0d9488]">Speaks.</span>
+            <h1 className="text-h1 font-black text-[#0f2333] tracking-tight mb-5 sm:mb-6 font-sans">
+              {$t("AnimationGraphicDesignHero__t8", "Design That ")}<span className="text-[#0d9488]">{$t("AnimationGraphicDesignHero__t9", "Speaks.")}</span>
               <br />
-              Animation That <span className="text-[#6366f1]">Moves.</span>
+              {$t("AnimationGraphicDesignHero__t10", "Animation That ")}<span className="text-[#6366f1]">{$t("AnimationGraphicDesignHero__t11", "Moves.")}</span>
             </h1>
 
             {/* Subheading */}
-            <p className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-xl mb-8 sm:mb-10 font-normal">
-              We create powerful animations and stunning designs that
-              communicate your message, captivate your audience and elevate your brand.
-            </p>
+            <p className="text-body text-slate-500 max-w-xl mb-8 sm:mb-10 font-normal">
+              {rich($t("AnimationGraphicDesignHero__t12", "We create powerful animations and stunning designs that communicate your message, captivate your audience and elevate your brand."))}</p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-10 sm:mb-14">
               {/* Primary Solid Teal Pill */}
               <Link
-                href="#contact-form"
+                href={$t("AnimationGraphicDesignHero__t13", "#contact-form")}
                 className="group inline-flex items-center gap-2.5 px-7 sm:px-8 py-3.5 rounded-full bg-[#0d9488] hover:bg-[#0b7a70] text-white font-semibold text-sm sm:text-[15px] shadow-[0_8px_20px_-4px_rgba(13,148,136,0.35)] transition-colors duration-200"
               >
-                <span>Explore Our Work</span>
+                <span>{$t("AnimationGraphicDesignHero__t14", "Explore Our Work")}</span>
                 <span className="text-base font-normal">→</span>
               </Link>
 
               {/* Secondary Outline Teal Pill */}
               <Link
-                href="#contact-form"
+                href={$t("AnimationGraphicDesignHero__t15", "#contact-form")}
                 className="group inline-flex items-center gap-2.5 px-7 sm:px-8 py-3.5 rounded-full border-2 border-[#14b8a6] hover:bg-teal-50/60 text-[#0d9488] font-semibold text-sm sm:text-[15px] transition-colors duration-200"
               >
-                <span>Discuss Your Project</span>
+                <span>{$t("AnimationGraphicDesignHero__t16", "Discuss Your Project")}</span>
                 <span className="text-base font-normal">→</span>
               </Link>
             </div>
@@ -276,11 +275,9 @@ export default function AnimationGraphicDesignHero() {
                 <VideoSparkleIcon />
                 <div>
                   <h3 className="font-bold text-slate-800 text-[13px] sm:text-[13.5px] leading-tight mb-1">
-                    Engaging Animations
-                  </h3>
+                    {$t("AnimationGraphicDesignHero__t17", "Engaging Animations")}</h3>
                   <p className="text-slate-500 text-[11px] sm:text-[11.5px] leading-snug">
-                    2D, 3D &amp; motion graphics that tell your story.
-                  </p>
+                    {rich($t("AnimationGraphicDesignHero__t18", "2D, 3D & motion graphics that tell your story."))}</p>
                 </div>
               </div>
 
@@ -289,11 +286,9 @@ export default function AnimationGraphicDesignHero() {
                 <PenToolIcon />
                 <div>
                   <h3 className="font-bold text-slate-800 text-[13px] sm:text-[13.5px] leading-tight mb-1">
-                    Creative Designs
-                  </h3>
+                    {$t("AnimationGraphicDesignHero__t19", "Creative Designs")}</h3>
                   <p className="text-slate-500 text-[11px] sm:text-[11.5px] leading-snug">
-                    Eye-catching visuals that build your brand.
-                  </p>
+                    {rich($t("AnimationGraphicDesignHero__t20", "Eye-catching visuals that build your brand."))}</p>
                 </div>
               </div>
 
@@ -302,11 +297,9 @@ export default function AnimationGraphicDesignHero() {
                 <ClockDeliveryIcon />
                 <div>
                   <h3 className="font-bold text-slate-800 text-[13px] sm:text-[13.5px] leading-tight mb-1">
-                    On-Time Delivery
-                  </h3>
+                    {$t("AnimationGraphicDesignHero__t21", "On-Time Delivery")}</h3>
                   <p className="text-slate-500 text-[11px] sm:text-[11.5px] leading-snug">
-                    High-quality deliverables on time, every time.
-                  </p>
+                    {rich($t("AnimationGraphicDesignHero__t22", "High-quality deliverables on time, every time."))}</p>
                 </div>
               </div>
 
@@ -315,11 +308,9 @@ export default function AnimationGraphicDesignHero() {
                 <TargetBrandIcon />
                 <div>
                   <h3 className="font-bold text-slate-800 text-[13px] sm:text-[13.5px] leading-tight mb-1">
-                    Brand Focused
-                  </h3>
+                    {$t("AnimationGraphicDesignHero__t23", "Brand Focused")}</h3>
                   <p className="text-slate-500 text-[11px] sm:text-[11.5px] leading-snug">
-                    Designs that connect and convert.
-                  </p>
+                    {rich($t("AnimationGraphicDesignHero__t24", "Designs that connect and convert."))}</p>
                 </div>
               </div>
             </div>
@@ -335,8 +326,8 @@ export default function AnimationGraphicDesignHero() {
                 
                 {/* Clean 3D Workspace PNG (No cards burned in, High-Res, No hover effect, No shadow) */}
                 <Image
-                  src="/animation-graphic-clean.png"
-                  alt="Animation & Graphic Design 3D Workspace"
+                  src={$t("AnimationGraphicDesignHero__t25", "/animation-graphic-clean.png")}
+                  alt={$t("AnimationGraphicDesignHero__t26", "Animation & Graphic Design 3D Workspace")}
                   width={1672}
                   height={941}
                   priority
@@ -361,8 +352,7 @@ export default function AnimationGraphicDesignHero() {
                 className="absolute top-[10%] left-[2%] sm:left-[5%] lg:left-[4%] bg-white rounded-2xl p-3 sm:p-4 shadow-[0_12px_32px_-6px_rgba(0,0,0,0.08)] border border-slate-100 flex flex-col justify-between w-[115px] sm:w-[142px] z-20 pointer-events-none"
               >
                 <div className="text-slate-800 font-bold text-xs sm:text-[13px] leading-tight">
-                  Smooth<br />Animation
-                </div>
+                  {$t("AnimationGraphicDesignHero__t27", "Smooth")}<br />{$t("AnimationGraphicDesignHero__t28", "Animation")}</div>
                 <div className="mt-2.5 w-full">
                   <svg viewBox="0 0 64 20" fill="none" className="w-full h-auto">
                     <path
@@ -382,8 +372,7 @@ export default function AnimationGraphicDesignHero() {
                 className="absolute top-[32%] right-[2%] sm:right-[4%] lg:right-[3%] bg-white rounded-2xl p-3 sm:p-4 shadow-[0_12px_32px_-6px_rgba(0,0,0,0.08)] border border-slate-100 flex flex-col justify-between w-[120px] sm:w-[152px] z-20 pointer-events-none"
               >
                 <div className="text-slate-800 font-bold text-xs sm:text-[13px] leading-tight mb-2">
-                  Creative<br />Designs
-                </div>
+                  {$t("AnimationGraphicDesignHero__t29", "Creative")}<br />{$t("AnimationGraphicDesignHero__t30", "Designs")}</div>
                 <div className="w-full h-9 sm:h-11 flex items-center justify-center">
                   <svg viewBox="0 0 64 48" fill="none" className="w-full h-full">
                     {/* Horizontal handle guide line */}
@@ -422,8 +411,7 @@ export default function AnimationGraphicDesignHero() {
         <div className="mt-14 sm:mt-18 pt-8 text-center">
           {/* Header uppercase label in teal */}
           <p className="text-[11px] sm:text-[11.5px] font-black tracking-[0.24em] text-[#0d9488] uppercase mb-6 sm:mb-8">
-            TRUSTED BY BRANDS THAT TRUST US
-          </p>
+            {rich($t("AnimationGraphicDesignHero__t31", "TRUSTED BY BRANDS THAT TRUST US"))}</p>
 
           {/* Logos Row with vertical dividers matching the reference */}
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-7 lg:gap-8 px-2 max-w-6xl mx-auto opacity-80 hover:opacity-100 transition-opacity">

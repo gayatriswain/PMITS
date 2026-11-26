@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+.mongo-data/
+uploads/
+public/uploads/
+next-env.d.ts
+*.tsbuildinfo
+storage/

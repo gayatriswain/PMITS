@@ -3,6 +3,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -44,7 +46,7 @@ function Counter({ value, suffix = "", duration = 2 }: { value: number, suffix?:
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
-const WORKFLOW_STEPS = [
+const WORKFLOW_STEPS__cms = [
   {
     icon: (
       <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -86,7 +88,7 @@ const WORKFLOW_STEPS = [
   }
 ];
 
-const STATS = [
+const STATS__cms = [
   {
     icon: (
       <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -141,6 +143,7 @@ const STATS = [
 ];
 
 function SearchBar() {
+  const $t = useCmsText();
   return (
     <div className="flex items-center gap-4 w-full h-14 pl-5 pr-6 rounded-full bg-white shadow-[0_8px_30px_rgba(15,40,60,0.08)] border border-slate-100 mb-8 max-w-2xl mx-auto">
       <svg width="24" height="24" viewBox="0 0 48 48" aria-label="Google">
@@ -149,9 +152,8 @@ function SearchBar() {
         <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z" />
         <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
       </svg>
-      <p className="flex-1 min-w-0 text-[15px] text-slate-800 truncate font-medium">
-        best digital growth partner
-      </p>
+      <p className="text-body flex-1 min-w-0 text-slate-800 truncate font-medium">
+        {rich($t("SeoOpportunity__t1", "best digital growth partner"))}</p>
       <div className="flex items-center gap-4">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#4285f4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
@@ -186,6 +188,7 @@ function SmallCard({
   chart?: boolean;
   rankColor?: string;
 }) {
+  const $t = useCmsText();
   return (
     <div className={`flex items-center gap-3 md:gap-4 py-4 px-3 md:px-4 ${active ? 'bg-white rounded-[16px] shadow-[0_4px_24px_rgba(20,184,166,0.2)] ring-1 ring-teal-300 z-10 relative' : 'bg-transparent'}`}>
       <div className={`w-[42px] h-[42px] shrink-0 rounded-lg flex items-center justify-center font-bold text-white text-lg ${active ? 'bg-[#0f5c56]' : rankColor}`}>
@@ -209,10 +212,10 @@ function SmallCard({
             {title}
           </h4>
           {active && (
-            <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded ml-auto">#1</span>
+            <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded ml-auto">{$t("SeoOpportunity__t2", "#1")}</span>
           )}
         </div>
-        <p className={`text-[12.5px] truncate mt-0.5 ${active ? 'text-teal-700' : 'text-slate-500'}`}>
+        <p className={`text-caption truncate mt-0.5 ${active ? 'text-teal-700' : 'text-slate-500'}`}>
           {subtitle}
         </p>
         
@@ -255,6 +258,9 @@ function SmallCard({
 }
 
 export default function SeoOpportunity() {
+  const $t = useCmsText();
+  const WORKFLOW_STEPS = useCmsData("SeoOpportunity__WORKFLOW_STEPS", WORKFLOW_STEPS__cms);
+  const STATS = useCmsData("SeoOpportunity__STATS", STATS__cms);
   return (
     <section className="relative py-12 lg:py-16 bg-white overflow-hidden">
       <Container>
@@ -262,8 +268,7 @@ export default function SeoOpportunity() {
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-px bg-slate-200" />
             <span className="text-[11px] lg:text-xs font-bold tracking-[0.15em] text-teal-800 uppercase">
-              The opportunity you can't ignore
-            </span>
+              {$t("SeoOpportunity__t3", "The opportunity you can't ignore")}</span>
             <div className="w-16 h-px bg-slate-200" />
           </div>
         </div>
@@ -277,19 +282,17 @@ export default function SeoOpportunity() {
             transition={{ duration: 0.8, ease: EASE }}
             className="max-w-xl"
           >
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-[56px] leading-[1.05] font-bold tracking-tight mb-8">
-              <span className="block text-slate-900">Every Search Is</span>
-              <span className="block text-slate-900">A Missed</span>
+            <h2 className="text-h2 font-serif font-bold tracking-tight mb-8">
+              <span className="block text-slate-900">{$t("SeoOpportunity__t4", "Every Search Is")}</span>
+              <span className="block text-slate-900">{$t("SeoOpportunity__t5", "A Missed")}</span>
               <span className="block text-teal-800">
-                Opportunity
-                <span className="text-amber-500">.</span>
+                {$t("SeoOpportunity__t6", "Opportunity")}<span className="text-amber-500">.</span>
               </span>
             </h2>
             <div className="w-12 h-[3px] bg-amber-400 mb-8" />
             
-            <p className="text-lg text-slate-600 leading-relaxed mb-10">
-              Your potential customers are searching every day with intent. If they don't find you, they'll find your competitors.
-            </p>
+            <p className="text-body text-slate-600 mb-10">
+              {rich($t("SeoOpportunity__t7", "Your potential customers are searching every day with intent. If they don't find you, they'll find your competitors."))}</p>
 
             <div className="flex items-start gap-4 p-5 md:p-6 rounded-2xl bg-teal-50 border border-teal-100">
               <div className="w-12 h-12 rounded-full bg-teal-700 text-white flex items-center justify-center shrink-0 shadow-md">
@@ -306,10 +309,9 @@ export default function SeoOpportunity() {
                   <path d="M12 11c-1.5 2.5-3 4-3 7h6c0-3-1.5-4.5-3-7z" />
                 </svg>
               </div>
-              <p className="text-sm md:text-base text-teal-900 font-medium leading-relaxed">
-                <span className="font-bold">SEO isn't just about rankings.</span><br />
-                It's about owning the moments that drive your business forward.
-              </p>
+              <p className="text-body text-teal-900 font-medium">
+                <span className="font-bold">{$t("SeoOpportunity__t8", "SEO isn't just about rankings.")}</span><br />
+                {rich($t("SeoOpportunity__t9", "It's about owning the moments that drive your business forward."))}</p>
             </div>
           </motion.div>
 
@@ -331,15 +333,14 @@ export default function SeoOpportunity() {
               {/* Without SEO */}
               <div className="flex-1 basis-0 min-w-0 bg-white rounded-[24px] shadow-sm border border-slate-100 px-3 md:px-4 pb-6 md:pb-8 pt-10 relative opacity-90 z-10">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#a3b1c6] text-white text-[11px] font-bold px-5 py-1.5 rounded-full tracking-wider shadow-sm">
-                  WITHOUT SEO
-                </div>
+                  {$t("SeoOpportunity__t10", "WITHOUT SEO")}</div>
                 
                 <div className="flex flex-col mb-8">
-                  <SmallCard rank={1} title="Competitor A" subtitle="www.competitorA.com" rankColor="bg-[#6b72bd]" />
+                  <SmallCard rank={1} title={$t("SeoOpportunity__t11", "Competitor A")} subtitle={$t("SeoOpportunity__t12", "www.competitorA.com")} rankColor="bg-[#6b72bd]" />
                   <div className="w-full h-px bg-slate-100 my-1" />
-                  <SmallCard rank={2} title="Competitor B" subtitle="www.competitorB.com" rankColor="bg-[#7c90cd]" />
+                  <SmallCard rank={2} title={$t("SeoOpportunity__t13", "Competitor B")} subtitle={$t("SeoOpportunity__t14", "www.competitorB.com")} rankColor="bg-[#7c90cd]" />
                   <div className="w-full h-px bg-slate-100 my-1" />
-                  <SmallCard rank={8} title="Your Business" subtitle="www.yourbusiness.com" isOwn rankColor="bg-[#64748b]" />
+                  <SmallCard rank={8} title={$t("SeoOpportunity__t15", "Your Business")} subtitle={$t("SeoOpportunity__t16", "www.yourbusiness.com")} isOwn rankColor="bg-[#64748b]" />
                 </div>
                 
                 <div className="flex items-center justify-center gap-2 text-[11px] md:text-xs text-slate-500 font-semibold pt-2">
@@ -347,7 +348,7 @@ export default function SeoOpportunity() {
                     <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
                     <polyline points="16 17 22 17 22 11" />
                   </svg>
-                  <span>Low Visibility • Less Traffic • Lost Customers</span>
+                  <span>{$t("SeoOpportunity__t17", "Low Visibility • Less Traffic • Lost Customers")}</span>
                 </div>
               </div>
 
@@ -368,15 +369,14 @@ export default function SeoOpportunity() {
               {/* With SEO */}
               <div className="flex-1 basis-0 min-w-0 bg-white rounded-[24px] shadow-sm border border-slate-100 px-3 md:px-4 pb-6 md:pb-8 pt-10 relative z-10">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0f5c56] text-white text-[11px] font-bold px-5 py-1.5 rounded-full tracking-wider shadow-sm">
-                  WITH PROMANAGE SEO
-                </div>
+                  {$t("SeoOpportunity__t18", "WITH PROMANAGE SEO")}</div>
 
                 <div className="flex flex-col mb-8">
-                  <SmallCard rank={1} title="ProManage" subtitle="www.promanage.com" active />
+                  <SmallCard rank={1} title={$t("SeoOpportunity__t19", "ProManage")} subtitle={$t("SeoOpportunity__t20", "www.promanage.com")} active />
                   <div className="w-full h-px bg-slate-100 my-1" />
-                  <SmallCard rank={2} title="Competitor A" subtitle="www.competitorA.com" rankColor="bg-[#7c90cd]" />
+                  <SmallCard rank={2} title={$t("SeoOpportunity__t21", "Competitor A")} subtitle={$t("SeoOpportunity__t22", "www.competitorA.com")} rankColor="bg-[#7c90cd]" />
                   <div className="w-full h-px bg-slate-100 my-1" />
-                  <SmallCard rank={3} title="Competitor B" subtitle="www.competitorB.com" rankColor="bg-[#8b9bd7]" />
+                  <SmallCard rank={3} title={$t("SeoOpportunity__t23", "Competitor B")} subtitle={$t("SeoOpportunity__t24", "www.competitorB.com")} rankColor="bg-[#8b9bd7]" />
                 </div>
 
                 <div className="flex items-center justify-center gap-2 text-[11px] md:text-xs text-[#0f5c56] font-bold pt-2">
@@ -384,7 +384,7 @@ export default function SeoOpportunity() {
                     <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
                     <polyline points="16 7 22 7 22 13" />
                   </svg>
-                  <span>High Visibility • More Traffic • More Revenue</span>
+                  <span>{$t("SeoOpportunity__t25", "High Visibility • More Traffic • More Revenue")}</span>
                 </div>
               </div>
 
@@ -392,9 +392,8 @@ export default function SeoOpportunity() {
           </motion.div>
         </div>
         <div className="flex flex-col items-center mt-12 md:mt-16">
-          <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-6 text-center" style={{ color: NAVY }}>
-            More Visibility Drives Real Business Growth
-          </h2>
+          <h2 className="text-h2 font-serif font-semibold mb-6 text-center" style={{ color: NAVY }}>
+            {$t("SeoOpportunity__t26", "More Visibility Drives Real Business Growth")}</h2>
 
           {/* Workflow */}
           <div className="w-full max-w-4xl flex flex-col md:flex-row items-start justify-between gap-8 md:gap-0 mb-8">

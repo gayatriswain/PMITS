@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -64,7 +66,7 @@ function SearchBar({ typed }: { typed: string }) {
     >
       <GoogleG size={24} />
       <span className="w-px h-6 bg-slate-200" aria-hidden />
-      <p className="flex-1 min-w-0 text-[15px] text-slate-800 truncate" aria-label={SEARCH_QUERY}>
+      <p className="text-body flex-1 min-w-0 text-slate-800 truncate" aria-label={SEARCH_QUERY}>
         {typed}
         {/* caret blinks while typing, then fades out */}
         <motion.span
@@ -88,7 +90,7 @@ const TILT: React.CSSProperties = { transform: "perspective(900px) rotateY(-12de
 // result card below (both foreshorten identically), plus a small extra 2D lean on top.
 const SEARCH_TILT: React.CSSProperties = { transform: "perspective(900px) rotateY(-12deg) rotate(-1.5deg)", transformOrigin: "right center" };
 
-const RESULT_TAGS = [
+const RESULT_TAGS__cms = [
   {
     label: "SEO Strategy",
     icon: <path d="M4 20 V15 M9 20 V11 M14 20 V13 M19 20 V7" />,
@@ -129,6 +131,8 @@ function ProManageMark() {
 
 // Search result card — sizes use container-query units so it scales with the visual
 function ResultCard({ onShown }: { onShown: () => void }) {
+  const $t = useCmsText();
+  const RESULT_TAGS = useCmsData("SeoHero__RESULT_TAGS", RESULT_TAGS__cms);
   const base = 1.3;
   return (
     <motion.div
@@ -154,7 +158,7 @@ function ResultCard({ onShown }: { onShown: () => void }) {
             </linearGradient>
           </defs>
           <path d="M0 0 H60 V76 L30 60 L0 76 Z" fill="url(#seo-ribbon)" />
-          <text x="30" y="42" textAnchor="middle" fontSize="24" fontWeight="700" fill="#fff" fontFamily="Georgia, serif">#1</text>
+          <text x="30" y="42" textAnchor="middle" fontSize="24" fontWeight="700" fill="#fff" fontFamily="Georgia, serif">{$t("SeoHero__t1", "#1")}</text>
         </svg>
       </motion.div>
 
@@ -165,10 +169,9 @@ function ResultCard({ onShown }: { onShown: () => void }) {
             <ProManageMark />
           </span>
           <div>
-            <p className="font-serif font-semibold leading-none" style={{ fontSize: `${base * 2.6}cqw`, color: NAVY }}>ProManage</p>
+            <p className="font-serif font-semibold leading-none" style={{ fontSize: `${base * 2.6}cqw`, color: NAVY }}>{rich($t("SeoHero__t2", "ProManage"))}</p>
             <p className="flex items-center gap-[0.6cqw] font-semibold mt-[0.6cqw]" style={{ fontSize: `${base * 1.2}cqw`, color: DEEP_TEAL }}>
-              www.promanage.com
-              <svg viewBox="0 0 24 24" className="w-[1.8cqw] h-[1.8cqw]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden>
+              {rich($t("SeoHero__t3", "www.promanage.com"))}<svg viewBox="0 0 24 24" className="w-[1.8cqw] h-[1.8cqw]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden>
                 <path d="M6 9 L12 15 L18 9" />
               </svg>
             </p>
@@ -176,11 +179,9 @@ function ResultCard({ onShown }: { onShown: () => void }) {
         </div>
 
         <h3 className="font-serif font-semibold leading-tight mb-[1.8cqw]" style={{ fontSize: `${base * 2.8}cqw`, color: "#2b36b8" }}>
-          ProManage – Digital Growth Partner
-        </h3>
+          {$t("SeoHero__t4", "ProManage – Digital Growth Partner")}</h3>
         <p className="text-slate-700 leading-relaxed mb-[2.6cqw] max-w-[60cqw]" style={{ fontSize: `${base * 1.4}cqw` }}>
-          Helping businesses rank higher, attract the right audience, and grow consistently with proven SEO strategies.
-        </p>
+          {rich($t("SeoHero__t5", "Helping businesses rank higher, attract the right audience, and grow consistently with proven SEO strategies."))}</p>
 
         <div className="flex flex-wrap gap-[1.2cqw] mb-[2.8cqw]">
           {RESULT_TAGS.map((tag, i) => (
@@ -216,16 +217,16 @@ function ResultCard({ onShown }: { onShown: () => void }) {
               </motion.svg>
             ))}
           </span>
-          <span>300+ reviews</span>
+          <span>{$t("SeoHero__t6", "300+ reviews")}</span>
           <span className="w-px h-[2cqw] bg-slate-300" />
-          <span>Trusted by 1000+ Clients</span>
+          <span>{$t("SeoHero__t7", "Trusted by 1000+ Clients")}</span>
         </div>
       </div>
     </motion.div>
   );
 }
 
-const SEO_STATS = [
+const SEO_STATS__cms = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -284,13 +285,15 @@ const SEO_STATS = [
   },
 ];
 
-const COMPETITORS = [
+const COMPETITORS__cms = [
   { rank: 2, name: "Competitor One", width: "72%", color: "#b9c4f0" },
   { rank: 3, name: "Competitor Two", width: "58%", color: "#c9b7f0" },
   { rank: 4, name: "Competitor Three", width: "44%", color: "#f0b9c4" },
 ];
 
 function CompetitorsCard() {
+  const $t = useCmsText();
+  const COMPETITORS = useCmsData("SeoHero__COMPETITORS", COMPETITORS__cms);
   const base = 1.3;
   return (
     <motion.div
@@ -300,7 +303,7 @@ function CompetitorsCard() {
       className="w-full rounded-[2.4cqw] bg-white/85 backdrop-blur border border-white shadow-[0_20px_40px_-20px_rgba(15,40,60,0.3)]"
       style={{ padding: "2.4cqw 2.8cqw" }}
     >
-      <p className="font-semibold mb-[1.6cqw]" style={{ fontSize: `${base * 1.25}cqw`, color: NAVY }}>Your Competitors</p>
+      <p className="font-semibold mb-[1.6cqw]" style={{ fontSize: `${base * 1.25}cqw`, color: NAVY }}>{rich($t("SeoHero__t8", "Your Competitors"))}</p>
       <ul className="flex flex-col">
         {COMPETITORS.map((c, i) => (
           <li
@@ -331,7 +334,7 @@ function Divider() {
   return <span className="hidden sm:block w-px h-10 bg-slate-200" aria-hidden />;
 }
 
-const RIGHT_FEATURES = [
+const RIGHT_FEATURES__cms = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -380,6 +383,7 @@ const RIGHT_FEATURES = [
 ];
 
 function FeaturesList() {
+  const RIGHT_FEATURES = useCmsData("SeoHero__RIGHT_FEATURES", RIGHT_FEATURES__cms);
   const base = 1.3;
   return (
     <div className="flex flex-col h-full justify-between py-2">
@@ -421,6 +425,8 @@ function FeaturesList() {
 }
 
 export default function SeoHero() {
+  const $t = useCmsText();
+  const SEO_STATS = useCmsData("SeoHero__SEO_STATS", SEO_STATS__cms);
   // Sequence: search query types out → result card → competitors card
   const typed = useTypingOnce(SEARCH_QUERY);
   const typingDone = typed.length === SEARCH_QUERY.length;
@@ -441,7 +447,7 @@ export default function SeoHero() {
         transition={{ duration: 1.2, ease: EASE }}
         aria-hidden
       >
-        <Image src="/seo-bg.png" alt="" fill priority sizes="60vw" className="object-cover object-right" />
+        <Image src={$t("SeoHero__t9", "/seo-bg.png")} alt="" fill priority sizes="60vw" className="object-cover object-right" />
       </motion.div>
 
       <Container className="grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-10 lg:gap-4 items-center">
@@ -449,19 +455,17 @@ export default function SeoHero() {
         <motion.div variants={container} initial="hidden" animate="show" className="relative z-10 max-w-xl lg:-translate-y-10">
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
             <span className="text-[11px] lg:text-xs font-bold tracking-[0.15em] uppercase" style={{ color: ORANGE }}>
-              Premium SEO Services
-            </span>
+              {$t("SeoHero__t10", "Premium SEO Services")}</span>
             <span className="flex items-center gap-1" aria-hidden>
               <span className="w-10 h-px" style={{ backgroundColor: ORANGE }} />
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: ORANGE }} />
             </span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl lg:text-[68px] leading-[1.05] font-bold tracking-tight mb-6">
-            <span className="block" style={{ color: NAVY }}>Others Search.</span>
+          <motion.h1 variants={fadeUp} className="text-h1 font-serif font-bold tracking-tight mb-6">
+            <span className="block" style={{ color: NAVY }}>{$t("SeoHero__t11", "Others Search.")}</span>
             <span className="block" style={{ color: DEEP_TEAL }}>
-              You Stay On Top
-              <motion.span
+              {$t("SeoHero__t12", "You Stay On Top")}<motion.span
                 className="inline-block"
                 style={{ color: ORANGE }}
                 animate={{ y: [0, -6, 0] }}
@@ -472,27 +476,26 @@ export default function SeoHero() {
             </span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="text-base md:text-lg text-slate-600 leading-relaxed mb-9 max-w-lg">
-            We put your business at the top of search where it matters—driving more{" "}
-            <span className="font-bold" style={{ color: DEEP_TEAL }}>visibility</span>, more{" "}
-            <span className="font-bold" style={{ color: DEEP_TEAL }}>traffic</span>, and more{" "}
+          <motion.p variants={fadeUp} className="text-body text-slate-600 mb-9 max-w-lg">
+            {rich($t("SeoHero__t13", "We put your business at the top of search where it matters—driving more"))}{" "}
+            <span className="font-bold" style={{ color: DEEP_TEAL }}>visibility</span>{rich($t("SeoHero__t14", ", more"))}{" "}
+            <span className="font-bold" style={{ color: DEEP_TEAL }}>traffic</span>{rich($t("SeoHero__t15", ", and more"))}{" "}
             <span className="font-bold" style={{ color: DEEP_TEAL }}>revenue</span>.
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-10">
             <Link
-              href="/contact"
+              href={$t("SeoHero__t16", "/contact")}
               className="group inline-flex items-center gap-3 px-7 py-4 rounded-lg text-white text-[15px] font-semibold shadow-[0_15px_30px_-12px_rgba(15,92,86,0.7)] transition-transform hover:-translate-y-0.5"
               style={{ backgroundColor: DEEP_TEAL }}
             >
-              Get My SEO Strategy
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+              {$t("SeoHero__t17", "Get My SEO Strategy")}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
             </Link>
             <Link
-              href="#how-it-works"
+              href={$t("SeoHero__t18", "#how-it-works")}
               className="group inline-flex items-center gap-3 px-6 py-4 rounded-lg bg-white border text-[15px] font-semibold transition-colors hover:bg-teal-50"
               style={{ borderColor: `${TEAL}66`, color: DEEP_TEAL }}
             >
@@ -501,8 +504,7 @@ export default function SeoHero() {
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
               </span>
-              See How It Works
-            </Link>
+              {$t("SeoHero__t19", "See How It Works")}</Link>
           </motion.div>
 
           {/* Trust row */}
@@ -514,11 +516,9 @@ export default function SeoHero() {
                   <path d="M8.5 12 L11 14.5 L15.5 9.5" />
                 </svg>
               </span>
-              <p className="text-[12px] font-semibold leading-snug" style={{ color: NAVY }}>
-                Trusted by
-                <br />
-                300+ Businesses
-              </p>
+              <p className="text-caption font-semibold" style={{ color: NAVY }}>
+                {rich($t("SeoHero__t20", "Trusted by"))}<br />
+                {rich($t("SeoHero__t21", "300+ Businesses"))}</p>
             </div>
 
             <Divider />
@@ -542,8 +542,8 @@ export default function SeoHero() {
                     </motion.svg>
                   ))}
                 </div>
-                <p className="text-[12px] font-semibold leading-snug" style={{ color: NAVY }}>4.9/5 Rating</p>
-                <p className="text-[11px] text-slate-500 leading-snug">120+ Reviews</p>
+                <p className="text-caption font-semibold" style={{ color: NAVY }}>{rich($t("SeoHero__t22", "4.9/5 Rating"))}</p>
+                <p className="text-[11px] text-slate-500 leading-snug">{rich($t("SeoHero__t23", "120+ Reviews"))}</p>
               </div>
             </div>
 
@@ -556,11 +556,9 @@ export default function SeoHero() {
                   <path d="M8.5 12 L11 14.5 L15.5 9.5" />
                 </svg>
               </span>
-              <p className="text-[12px] font-semibold leading-snug" style={{ color: NAVY }}>
-                Proven Strategies.
-                <br />
-                Real Results.
-              </p>
+              <p className="text-caption font-semibold" style={{ color: NAVY }}>
+                {rich($t("SeoHero__t24", "Proven Strategies."))}<br />
+                {rich($t("SeoHero__t25", "Real Results."))}</p>
             </div>
           </motion.div>
         </motion.div>
@@ -591,14 +589,14 @@ export default function SeoHero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: EASE }}
           >
-            <Image src="/seo-bg.png" alt="" fill priority sizes="100vw" className="object-contain" />
+            <Image src={$t("SeoHero__t26", "/seo-bg.png")} alt="" fill priority sizes="100vw" className="object-contain" />
           </motion.div>
           {/* man sits above the cards (static, no animation) */}
           <div className="absolute inset-x-0 bottom-0 aspect-[1494/1052] z-30 pointer-events-none">
             <div className="absolute inset-0 scale-[0.95] origin-[100%_92%] translate-y-[14%]">
               <Image
-                src="/seo-man.png"
-                alt="Business owner looking at the city skyline"
+                src={$t("SeoHero__t27", "/seo-man.png")}
+                alt={$t("SeoHero__t28", "Business owner looking at the city skyline")}
                 fill
                 priority
                 sizes="(min-width: 1024px) 50vw, 90vw"

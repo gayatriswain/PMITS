@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useCmsText } from "@/components/cms/SectionContent";
 
 const DEEP_TEAL = "#0f5c56";
 
 /* Glossy teal "Get My Free Proposal" button with an arrow pill, shared by the Who We Are sections */
 export default function ProposalLink({ href = "/contact" }: { href?: string }) {
+  const $t = useCmsText();
   return (
     <Link
       href={href}
@@ -12,7 +16,7 @@ export default function ProposalLink({ href = "/contact" }: { href?: string }) {
     >
       {/* glossy sheen across the top half */}
       <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/20 to-white/0" />
-      <span className="relative">Get My Free Proposal</span>
+      <span className="relative">{$t("ProposalLink__t1", "Get My Free Proposal")}</span>
       <span className="relative flex h-9 w-14 items-center justify-center rounded-full bg-white shadow-[0_4px_10px_-4px_rgba(13,27,51,0.35)] transition-transform group-hover:translate-x-1">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={DEEP_TEAL} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M5 12h14" />

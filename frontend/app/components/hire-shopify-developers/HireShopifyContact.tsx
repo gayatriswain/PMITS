@@ -3,11 +3,13 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
-import { Anton, Caveat } from "next/font/google";
 import Container from "../shared/Container";
+import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { rich } from "@/components/cms/rich";
+import { goToThankYou } from "@/lib/forms";
 
-const heavy = Anton({ subsets: ["latin"], weight: "400", display: "swap" });
-const script = Caveat({ subsets: ["latin"], weight: ["600", "700"], display: "swap" });
+const heavy = { className: "font-heading" }; // global font from app/layout.tsx
+const script = { className: "font-caveat" }; // global font from app/layout.tsx
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const GREEN = "#1f7a3f";
@@ -16,7 +18,7 @@ const INK = "#0c1f1a";
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const PROJECT_TYPES = [
+const PROJECT_TYPES__cms = [
   "New Shopify store setup",
   "Theme customization",
   "Custom app / integration",
@@ -70,6 +72,8 @@ function Field({ icon, children }: { icon: React.ReactNode; children: React.Reac
 }
 
 function ProposalForm({ inView }: { inView: boolean }) {
+  const $t = useCmsText();
+  const PROJECT_TYPES = useCmsData("HireShopifyContact__PROJECT_TYPES", PROJECT_TYPES__cms);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
@@ -102,13 +106,14 @@ function ProposalForm({ inView }: { inView: boolean }) {
       const res = await fetch(`${API_URL}/api/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idea, email, source: "hire-shopify-developers", website: get("website") }),
+        body: JSON.stringify({ idea, email, source: "hire-shopify-developers", website: get("pm_trap_field") }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
       setStatus("success");
+      goToThankYou("hire-shopify");
       form.reset();
     } catch (err) {
       fail(err instanceof TypeError ? "We couldn't reach our server. Please try again or call us." : (err as Error).message);
@@ -118,17 +123,17 @@ function ProposalForm({ inView }: { inView: boolean }) {
   const sending = status === "sending";
   const rows = [
     <Field key="n" icon={<svg {...ic}><circle cx="12" cy="8.5" r="3.5" /><path d="M5 20c.5-3.5 3.3-5.5 7-5.5s6.5 2 7 5.5" /></svg>}>
-      <input name="name" placeholder="Your Name *" autoComplete="name" className={fieldCls} />
+      <input name="name" placeholder={$t("HireShopifyContact__t1", "Your Name *")} autoComplete="name" className={fieldCls} />
     </Field>,
     <Field key="e" icon={<svg {...ic}><rect x="3.5" y="5.5" width="17" height="13" rx="2" /><path d="M4 7l8 6 8-6" /></svg>}>
-      <input name="email" type="email" placeholder="Your Email *" autoComplete="email" className={fieldCls} />
+      <input name="email" type="email" placeholder={$t("HireShopifyContact__t2", "Your Email *")} autoComplete="email" className={fieldCls} />
     </Field>,
     <Field key="b" icon={<svg {...ic}><rect x="5" y="3.5" width="14" height="17" rx="1.5" /><path d="M9 8h2M13 8h2M9 12h2M13 12h2M10.5 20.5v-3h3v3" /></svg>}>
-      <input name="business" placeholder="Business Name" autoComplete="organization" className={fieldCls} />
+      <input name="business" placeholder={$t("HireShopifyContact__t3", "Business Name")} autoComplete="organization" className={fieldCls} />
     </Field>,
     <Field key="t" icon={<svg {...ic}><path d="M6 3.5h8l4 4v13H6z" /><path d="M14 3.5v4h4M9 12.5h6M9 16h4" /></svg>}>
       <select name="type" defaultValue="" className={`${fieldCls} appearance-none`}>
-        <option value="" disabled>Project Type *</option>
+        <option value="" disabled>{$t("HireShopifyContact__t4", "Project Type *")}</option>
         {PROJECT_TYPES.map((t) => (
           <option key={t} value={t}>{t}</option>
         ))}
@@ -136,14 +141,14 @@ function ProposalForm({ inView }: { inView: boolean }) {
       <svg viewBox="0 0 24 24" className="pointer-events-none absolute right-3 top-[15px] h-4 w-4 text-slate-500" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
     </Field>,
     <Field key="p" icon={<svg {...ic}><path d="M4 6.5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2h-6l-4 3.5v-3.5H6a2 2 0 01-2-2z" /><path d="M8.5 9.5h7M8.5 12.5h4" /></svg>}>
-      <textarea name="project" rows={2} maxLength={300} placeholder="Tell us about your project *" className={`${fieldCls} resize-none`} />
+      <textarea name="project" rows={2} maxLength={300} placeholder={$t("HireShopifyContact__t5", "Tell us about your project *")} className={`${fieldCls} resize-none`} />
     </Field>,
   ];
 
   return (
     <form onSubmit={onSubmit} noValidate>
       {/* honeypot: real users never see this */}
-      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
+      <input type="text" name="pm_trap_field" tabIndex={-1} autoComplete="new-password" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
       <div className="space-y-2.5">
         {rows.map((r, i) => (
           <motion.div key={i} initial={{ opacity: 0, x: 16 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.5, delay: 0.5 + i * 0.08, ease: EASE }}>
@@ -162,7 +167,7 @@ function ProposalForm({ inView }: { inView: boolean }) {
         style={{ background: `linear-gradient(180deg,#2a8a4a,${DEEP})` }}
       >
         <span aria-hidden className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-        <span className="relative">{sending ? "Sending…" : "Get My Free Proposal"}</span>
+        <span className="relative">{sending ? $t("HireShopifyContact__t6", "Sending…") : $t("HireShopifyContact__t7", "Get My Free Proposal")}</span>
         <svg viewBox="0 0 24 24" className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <line x1="4" y1="12" x2="20" y2="12" />
           <polyline points="14 6 20 12 14 18" />
@@ -170,18 +175,18 @@ function ProposalForm({ inView }: { inView: boolean }) {
       </motion.button>
 
       <p role="status" aria-live="polite" className={`mt-2 min-h-[1.25rem] text-center text-[12px] font-medium ${status === "error" ? "text-[#c0392b]" : "text-[#1f7a3f]"}`}>
-        {status === "success" ? "Thank you! We'll send your proposal within 24 hours." : message}
+        {status === "success" ? $t("HireShopifyContact__t8", "Thank you! We'll send your proposal within 24 hours.") : message}
       </p>
       <p className="mt-1 flex items-center justify-center gap-1.5 text-[10.5px] text-slate-500">
         <svg viewBox="0 0 24 24" className="h-3 w-3" fill="#1f7a3f" aria-hidden><path d="M12 2l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5l8-3zm-1 13l6-6-1.4-1.4L11 12.2 8.4 9.6 7 11l4 4z" /></svg>
-        Your information is 100% secure and confidential.
-      </p>
+        {rich($t("HireShopifyContact__t9", "Your information is 100% secure and confidential."))}</p>
     </form>
   );
 }
 
 /* ------------------------------ section ------------------------------ */
 export default function HireShopifyContact() {
+  const $t = useCmsText();
   const reduce = !!useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   // observe the section itself: a fully clip-pathed element never counts as "in view"
@@ -199,7 +204,7 @@ export default function HireShopifyContact() {
         animate={{ clipPath: show ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)" }}
         transition={{ duration: reduce ? 0 : 1.6, ease: EASE }}
       >
-        <Image src="/shopify-zipper-reveal.webp" alt="" fill sizes="100vw" className="select-none object-cover" style={{ objectPosition: "50% 72%" }} />
+        <Image src={$t("HireShopifyContact__t10", "/shopify-zipper-reveal.webp")} alt="" fill sizes="100vw" className="select-none object-cover" style={{ objectPosition: "50% 72%" }} />
         {/* soft glint travelling on the zip pull */}
         {!reduce && (
           <motion.span
@@ -218,7 +223,7 @@ export default function HireShopifyContact() {
 
       {/* banner version for tablets / phones */}
       <div aria-hidden className="relative h-[220px] overflow-hidden bg-white sm:h-[300px] lg:hidden">
-        <Image src="/shopify-zipper-reveal.webp" alt="" fill sizes="100vw" className="select-none object-cover" style={{ objectPosition: "50% 75%" }} />
+        <Image src={$t("HireShopifyContact__t11", "/shopify-zipper-reveal.webp")} alt="" fill sizes="100vw" className="select-none object-cover" style={{ objectPosition: "50% 75%" }} />
       </div>
 
       <Container className="relative max-w-[1240px]">
@@ -229,14 +234,13 @@ export default function HireShopifyContact() {
               <ShopifyLogo />
             </motion.div>
             <motion.p variants={fadeUp} custom={1} className="mt-3 hidden text-[10.5px] font-semibold uppercase tracking-[0.3em] text-slate-500 lg:block">
-              Ideas into real stores
-            </motion.p>
+              {rich($t("HireShopifyContact__t12", "Ideas into real stores"))}</motion.p>
 
-            <h2 className={`${heavy.className} mt-0 text-[54px] font-normal uppercase leading-[0.98] tracking-[0.005em] text-white sm:text-[64px] lg:mt-8 lg:text-[76px] lg:text-[#0c1f1a]`}>
+            <h2 className={`text-h2 ${heavy.className} mt-0 font-normal uppercase tracking-[0.005em] text-white lg:mt-8 lg:text-[#0c1f1a]`}>
               {[
-                { t: "Unzip", c: "" },
-                { t: "Possibilities.", c: "text-[#4cc26f] lg:text-[#1f7a3f]" },
-                { t: "Build Success.", c: "" },
+                { t: $t("HireShopifyContact__t13", "Unzip"), c: "" },
+                { t: $t("HireShopifyContact__t14", "Possibilities."), c: "text-[#4cc26f] lg:text-[#1f7a3f]" },
+                { t: $t("HireShopifyContact__t15", "Build Success."), c: "" },
               ].map((l, i) => (
                 <span key={l.t} className="block overflow-hidden pb-[0.06em] -mb-[0.06em]">
                   <motion.span
@@ -254,11 +258,9 @@ export default function HireShopifyContact() {
               className="mt-6 block h-[3px] w-14 origin-left rounded-full"
               style={{ background: GREEN }}
             />
-            <motion.p variants={fadeUp} custom={5} className="mt-5 max-w-[330px] text-[15px] leading-relaxed text-white/85 lg:text-slate-700">
-              Get a tailored Shopify solution
-              <br />
-              for your business.
-            </motion.p>
+            <motion.p variants={fadeUp} custom={5} className="text-body mt-5 max-w-[330px] text-white/85 lg:text-slate-700">
+              {rich($t("HireShopifyContact__t16", "Get a tailored Shopify solution"))}<br />
+              {rich($t("HireShopifyContact__t17", "for your business."))}</motion.p>
 
             <motion.p
               variants={fadeUp}
@@ -266,11 +268,10 @@ export default function HireShopifyContact() {
               className={`${script.className} mt-12 hidden w-[170px] -rotate-[8deg] text-[25px] leading-[1.1] lg:block`}
               style={{ color: DEEP }}
             >
-              Your
+              {rich($t("HireShopifyContact__t18", "Your"))}<br />
+              <span className="ml-3 inline-block">{$t("HireShopifyContact__t19", "Ecommerce")}</span>
               <br />
-              <span className="ml-3 inline-block">Ecommerce</span>
-              <br />
-              <span className="ml-8 inline-block">Growth Partner</span>
+              <span className="ml-8 inline-block">{$t("HireShopifyContact__t20", "Growth Partner")}</span>
               <svg viewBox="0 0 150 14" className="mt-0.5 h-3 w-[150px]" fill="none" aria-hidden>
                 <motion.path d="M2 9C40 2 90 12 148 4" stroke={GREEN} strokeWidth="1.6" strokeLinecap="round" initial={{ pathLength: 0 }} animate={show ? { pathLength: 1 } : {}} transition={{ duration: 1, delay: 1.3 }} />
               </svg>
@@ -291,12 +292,10 @@ export default function HireShopifyContact() {
             >
               <p className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-500">
                 <span className="h-px w-5 bg-slate-400/70" />
-                Get started today
-              </p>
-              <h3 className="mt-3 text-[30px] font-extrabold leading-[1.08] tracking-[-0.02em] sm:text-[34px]" style={{ color: INK }}>
-                Get My
-                <br />
-                <span style={{ color: DEEP }}>Free Proposal</span>
+                {rich($t("HireShopifyContact__t21", "Get started today"))}</p>
+              <h3 className="text-h4 mt-3 font-extrabold tracking-[-0.02em]" style={{ color: INK }}>
+                {$t("HireShopifyContact__t22", "Get My")}<br />
+                <span style={{ color: DEEP }}>{$t("HireShopifyContact__t23", "Free Proposal")}</span>
               </h3>
               <div className="mt-5">
                 <ProposalForm inView={show} />
