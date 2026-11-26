@@ -96,15 +96,15 @@ export function Button({
   ...rest
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "secondary" | "ghost" | "danger" | "teal"; size?: "sm" | "md"; loading?: boolean }) {
   const v = {
-    primary: "bg-navy text-white hover:bg-navy-2 disabled:bg-slate-300",
-    teal: "bg-teal text-white hover:bg-teal-dark disabled:bg-slate-300",
-    secondary: "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 disabled:text-slate-400",
-    ghost: "text-slate-600 hover:bg-slate-100 disabled:text-slate-300",
-    danger: "bg-rose-600 text-white hover:bg-rose-700 disabled:bg-rose-300",
+    primary: "bg-navy text-white shadow-[0_8px_20px_-10px_rgba(12,30,61,0.7)] hover:bg-navy-2 hover:-translate-y-px disabled:bg-slate-300 disabled:shadow-none disabled:translate-y-0",
+    teal: "bg-gradient-to-r from-teal to-[#0f766e] text-white shadow-[0_8px_20px_-10px_rgba(13,148,136,0.8)] hover:-translate-y-px hover:brightness-105 disabled:from-slate-300 disabled:to-slate-300 disabled:shadow-none disabled:translate-y-0",
+    secondary: "border border-slate-200 bg-white text-slate-700 shadow-[0_1px_2px_rgba(15,23,42,0.05)] hover:border-slate-300 hover:bg-slate-50 disabled:text-slate-400",
+    ghost: "text-slate-600 hover:bg-slate-100 hover:text-slate-900 disabled:text-slate-300",
+    danger: "bg-rose-600 text-white shadow-[0_8px_20px_-10px_rgba(225,29,72,0.7)] hover:bg-rose-700 disabled:bg-rose-300",
   }[variant];
-  const s = size === "sm" ? "h-8 px-3 text-xs" : "h-10 px-4 text-sm";
+  const s = size === "sm" ? "h-8 rounded-lg px-3 text-xs" : "h-10 rounded-xl px-4 text-sm";
   return (
-    <button {...rest} disabled={rest.disabled || loading} className={`inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors disabled:cursor-not-allowed ${v} ${s} ${className}`}>
+    <button {...rest} disabled={rest.disabled || loading} className={`inline-flex items-center justify-center gap-2 font-semibold transition-all duration-150 disabled:cursor-not-allowed ${v} ${s} ${className}`}>
       {loading && <Loader2 className="h-4 w-4 animate-spin" />}
       {children}
     </button>
@@ -113,14 +113,14 @@ export function Button({
 
 export function Card({ children, className = "", title, actions }: { children: ReactNode; className?: string; title?: ReactNode; actions?: ReactNode }) {
   return (
-    <section className={`rounded-xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)] ${className}`}>
+    <section className={`rounded-2xl border border-slate-200/80 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_32px_-24px_rgba(15,23,42,0.25)] ${className}`}>
       {(title || actions) && (
-        <header className="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-3.5">
-          <h2 className="text-sm font-semibold text-slate-800">{title}</h2>
+        <header className="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 sm:px-6">
+          <h2 className="text-[15px] font-semibold text-slate-900">{title}</h2>
           <div className="flex items-center gap-2">{actions}</div>
         </header>
       )}
-      <div className="p-5">{children}</div>
+      <div className="p-5 sm:p-6">{children}</div>
     </section>
   );
 }
@@ -146,7 +146,8 @@ const BADGE: Record<string, string> = {
 };
 export function Badge({ value, label }: { value: string; label?: string }) {
   return (
-    <span className={`inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-medium capitalize ring-1 ring-inset ${BADGE[value] ?? "bg-slate-100 text-slate-600 ring-slate-500/20"}`}>
+    <span className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-0.5 text-[11px] font-semibold capitalize ring-1 ring-inset ${BADGE[value] ?? "bg-slate-100 text-slate-600 ring-slate-500/20"}`}>
+      <span className="h-1.5 w-1.5 rounded-full bg-current opacity-70" />
       {label ?? value.replace(/_/g, " ")}
     </span>
   );
@@ -174,15 +175,15 @@ export function Modal({ title, children, onClose, size = "md" }: { title: ReactN
   }, []);
   const w = { sm: "max-w-md", md: "max-w-xl", lg: "max-w-3xl", xl: "max-w-5xl" }[size];
   return (
-    <div className="fixed inset-0 z-[90] flex items-start justify-center overflow-y-auto bg-slate-900/40 p-4 pt-[8vh]" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
-      <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" className={`w-full ${w} rounded-xl bg-white shadow-2xl outline-none`}>
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3.5">
-          <h2 className="text-base font-semibold text-slate-800">{title}</h2>
+    <div className="fixed inset-0 z-[90] flex items-start justify-center overflow-y-auto bg-slate-900/50 p-4 pt-[8vh] backdrop-blur-sm" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+      <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" className={`w-full ${w} rounded-2xl bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.45)] outline-none`}>
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+          <h2 className="text-base font-semibold text-slate-900">{title}</h2>
           <button type="button" onClick={onClose} aria-label="Close" className="rounded-md p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600">
             <X className="h-5 w-5" />
           </button>
         </div>
-        <div className="p-5">{children}</div>
+        <div className="p-6">{children}</div>
       </div>
     </div>
   );
@@ -203,14 +204,14 @@ export function SearchInput({ value, onChange, placeholder = "Search…" }: { va
   return (
     <label className="relative block w-full sm:w-72">
       <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-      <input value={v} onChange={(e) => setV(e.target.value)} placeholder={placeholder} className="h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-sm outline-none focus:border-teal focus:ring-2 focus:ring-teal/15" />
+      <input value={v} onChange={(e) => setV(e.target.value)} placeholder={placeholder} className="h-10 w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 text-sm outline-none transition hover:border-slate-300 focus:border-teal focus:ring-4 focus:ring-teal/10" />
     </label>
   );
 }
 
 export function Select({ value, onChange, options, label, className = "" }: { value: string; onChange: (v: string) => void; options: { value: string; label: string }[]; label?: string; className?: string }) {
   return (
-    <select aria-label={label} value={value} onChange={(e) => onChange(e.target.value)} className={`h-10 rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none focus:border-teal focus:ring-2 focus:ring-teal/15 ${className}`}>
+    <select aria-label={label} value={value} onChange={(e) => onChange(e.target.value)} className={`h-10 rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none transition hover:border-slate-300 focus:border-teal focus:ring-4 focus:ring-teal/10 ${className}`}>
       {options.map((o) => (
         <option key={o.value} value={o.value}>
           {o.label}
@@ -260,7 +261,7 @@ export function Spinner({ label = "Loading…" }: { label?: string }) {
 
 export function PageHeader({ title, description, actions, crumbs }: { title: ReactNode; description?: ReactNode; actions?: ReactNode; crumbs?: { label: string; href?: string }[] }) {
   return (
-    <div className="mb-6">
+    <div className="mb-7">
       {crumbs && (
         <nav aria-label="Breadcrumb" className="mb-2 flex flex-wrap items-center gap-1.5 text-xs text-slate-500">
           {crumbs.map((c, i) => (
@@ -279,8 +280,8 @@ export function PageHeader({ title, description, actions, crumbs }: { title: Rea
       )}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-slate-900 sm:text-2xl">{title}</h1>
-          {description && <p className="mt-1 text-sm text-slate-500">{description}</p>}
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-[28px]">{title}</h1>
+          {description && <div className="mt-1.5 text-sm text-slate-500">{description}</div>}
         </div>
         {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
       </div>

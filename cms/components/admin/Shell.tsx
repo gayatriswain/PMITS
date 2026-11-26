@@ -77,7 +77,7 @@ export function Shell({ user, children }: { user: ShellUser; children: ReactNode
   const sidebar = (
     <nav className="flex h-full flex-col" aria-label="Admin">
       <div className="flex h-16 items-center gap-2.5 border-b border-white/10 px-5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal text-sm font-bold text-white">P</span>
+        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-teal-300 to-teal text-sm font-extrabold text-navy shadow-[0_6px_18px_-6px_rgba(45,212,191,0.8)]">P</span>
         <div className="leading-tight">
           <p className="text-sm font-semibold text-white">ProManage</p>
           <p className="text-[11px] text-slate-400">Content Management</p>
@@ -89,16 +89,17 @@ export function Shell({ user, children }: { user: ShellUser; children: ReactNode
           if (!items.length) return null;
           return (
             <div key={g.title}>
-              <p className="px-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">{g.title}</p>
+              <p className="px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{g.title}</p>
               <ul className="mt-1.5 space-y-0.5">
                 {items.map((i) => (
                   <li key={i.href}>
                     <Link
                       href={i.href}
                       onClick={() => setOpen(false)}
-                      className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors ${isActive(i.href, i.exact) ? "bg-white/10 font-medium text-white" : "text-slate-300 hover:bg-white/5 hover:text-white"}`}
+                      className={`relative flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm transition-all ${isActive(i.href, i.exact) ? "bg-gradient-to-r from-teal/30 to-white/[0.04] font-semibold text-white shadow-[inset_0_0_0_1px_rgba(94,234,212,0.18)]" : "text-slate-300 hover:bg-white/[0.06] hover:text-white"}`}
                     >
-                      <i.icon className={`h-4 w-4 ${isActive(i.href, i.exact) ? "text-teal-300" : ""}`} />
+                      {isActive(i.href, i.exact) && <span className="absolute -left-3 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-teal-300" />}
+                      <i.icon className={`h-4 w-4 ${isActive(i.href, i.exact) ? "text-teal-300" : "text-slate-400"}`} />
                       {i.label}
                     </Link>
                   </li>
@@ -108,7 +109,7 @@ export function Shell({ user, children }: { user: ShellUser; children: ReactNode
           );
         })}
       </div>
-      <a href={process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000"} target="_blank" rel="noreferrer" className="m-3 flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-xs text-slate-300 hover:bg-white/5">
+      <a href={process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000"} target="_blank" rel="noreferrer" className="m-3 flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 text-xs font-medium text-slate-200 transition hover:bg-white/10">
         <ExternalLink className="h-3.5 w-3.5" /> View website
       </a>
     </nav>
@@ -131,13 +132,24 @@ export function Shell({ user, children }: { user: ShellUser; children: ReactNode
             </div>
           )}
           <div className="lg:pl-64">
-            <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-slate-200 bg-white/90 px-4 backdrop-blur sm:px-6">
+            <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-slate-200/70 bg-white/80 px-4 backdrop-blur-xl sm:px-6">
               <button type="button" aria-label="Open menu" onClick={() => setOpen(true)} className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden">
                 <Menu className="h-5 w-5" />
               </button>
-              <div className="ml-auto flex items-center gap-3">
-                <Link href="/admin/profile" className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-slate-100">
-                  <UserCircle className="h-7 w-7 text-slate-400" />
+              <div className="ml-auto flex items-center gap-2 sm:gap-3">
+                <a
+                  href={process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000"}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hidden items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 shadow-[0_1px_2px_rgba(15,23,42,0.05)] transition hover:border-teal/40 hover:text-teal sm:inline-flex"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" /> View website
+                </a>
+                <span className="hidden h-6 w-px bg-slate-200 sm:block" />
+                <Link href="/admin/profile" className="flex items-center gap-2.5 rounded-xl px-2 py-1.5 transition hover:bg-slate-100">
+                  <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-teal to-navy text-xs font-bold uppercase text-white">
+                    {user.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("") || <UserCircle className="h-5 w-5" />}
+                  </span>
                   <span className="hidden text-left leading-tight sm:block">
                     <span className="block text-sm font-medium text-slate-800">{user.name}</span>
                     <span className="block text-[11px] text-slate-500">{ROLE_LABELS[user.role]}</span>

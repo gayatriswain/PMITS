@@ -7,6 +7,7 @@ import { api, qs } from "@/lib/client/api";
 import { MediaPicker, Thumb } from "./MediaPicker";
 import { Button } from "./ui";
 import { PasswordInput } from "./PasswordInput";
+import { SectionFields } from "./SectionFields";
 
 const RichTextEditor = dynamic(() => import("./RichTextEditor").then((m) => m.RichTextEditor), {
   ssr: false,
@@ -46,12 +47,12 @@ type Errors = Record<string, string | string[]>;
 type Values = Record<string, unknown>;
 
 const inputCls =
-  "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-teal focus:ring-2 focus:ring-teal/15 disabled:bg-slate-50";
+  "w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.04)] outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal focus:ring-4 focus:ring-teal/10 disabled:bg-slate-50";
 
 export function Label({ children, htmlFor, required, help }: { children: ReactNode; htmlFor?: string; required?: boolean; help?: string }) {
   return (
     <div className="mb-1.5">
-      <label htmlFor={htmlFor} className="text-sm font-medium text-slate-700">
+      <label htmlFor={htmlFor} className="text-[13px] font-semibold text-slate-700">
         {children}
         {required && <span className="ml-0.5 text-rose-500">*</span>}
       </label>
@@ -180,10 +181,13 @@ function ListField({ field, value, onChange, errors, path }: { field: FieldDef; 
   return (
     <div className="space-y-3">
       {items.map((item, i) => (
-        <div key={i} className="rounded-lg border border-slate-200 bg-slate-50/50 p-3">
+        <div key={i} className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-              {field.label} #{i + 1}
+            <span className="flex min-w-0 items-center gap-2">
+              <span className="grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-white text-[11px] font-bold text-slate-500 ring-1 ring-slate-200">{i + 1}</span>
+              <span className="truncate text-sm font-semibold text-slate-700">
+                {String(Object.values(item ?? {}).find((x) => typeof x === "string" && x.trim() && !/^(\/|https?:|#)/.test(x)) ?? `${field.label} #${i + 1}`).replace(/<[^>]+>/g, "").slice(0, 70)}
+              </span>
             </span>
             <div className="flex gap-1">
               <Button type="button" variant="ghost" size="sm" disabled={i === 0} onClick={() => move(i, -1)} aria-label="Move up"><ArrowUp className="h-3.5 w-3.5" /></Button>
@@ -235,7 +239,7 @@ function SeoField({ value, onChange, errors, path }: { value: Values; onChange: 
   );
 }
 
-export function FieldInput({ field, value, onChange, errors, path }: { field: FieldDef; value: unknown; onChange: (v: unknown) => void; errors: Errors; path: string }) {
+export function FieldInput({ field, value, onChange, errors, path, hideLabel = false }: { field: FieldDef; value: unknown; onChange: (v: unknown) => void; errors: Errors; path: string; hideLabel?: boolean }) {
   const id = `f-${path.replace(/[^a-z0-9]/gi, "-")}`;
   const err = errors[path];
   const errText = Array.isArray(err) ? err.join(", ") : err;
@@ -352,9 +356,11 @@ export function FieldInput({ field, value, onChange, errors, path }: { field: Fi
   const wide = ["richtext", "richinline", "list", "seo", "textarea", "image", "json", "textlist", "relation", "link", "group"].includes(field.type);
   return (
     <div className={wide && !field.half ? "sm:col-span-2" : ""}>
-      <Label htmlFor={id} required={field.required} help={field.help}>
-        {field.label}
-      </Label>
+      {!hideLabel && (
+        <Label htmlFor={id} required={field.required} help={field.help}>
+          {field.label}
+        </Label>
+      )}
       {control}
       {errText && <p className="mt-1 text-xs text-rose-600">{errText}</p>}
     </div>
@@ -362,36 +368,31 @@ export function FieldInput({ field, value, onChange, errors, path }: { field: Fi
 }
 
 /** A titled, collapsible block whose fields live directly on the parent object (CMS section parts). */
-function FlatGroup({ field, values, onChange, errors, prefix, defaultOpen }: { field: FieldDef; values: Values; onChange: (v: Values) => void; errors: Errors; prefix: string; defaultOpen: boolean }) {
-  const [open, setOpen] = useState(defaultOpen);
-  const [q, setQ] = useState("");
+function FlatGroup({ field, values, defaults, onChange, errors, prefix, single }: { field: FieldDef; values: Values; defaults?: Values; onChange: (v: Values) => void; errors: Errors; prefix: string; single: boolean }) {
+  const [open, setOpen] = useState(single);
   const all = field.fields ?? [];
-  const shown = q ? all.filter((f) => `${f.label} ${typeof values[f.name] === "string" ? values[f.name] : ""}`.toLowerCase().includes(q.toLowerCase())) : all;
+  const body = <SectionFields fields={all} values={values} defaults={defaults} onChange={onChange} errors={errors} prefix={prefix} />;
+  // one part only: no extra box around it
+  if (single) return body;
   return (
-    <div className="rounded-xl border border-slate-200 sm:col-span-2">
-      <button type="button" onClick={() => setOpen((o) => !o)} className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left">
+    <div className="rounded-2xl border border-slate-200 bg-white sm:col-span-2">
+      <button type="button" onClick={() => setOpen((o) => !o)} className="flex w-full items-center justify-between gap-3 rounded-2xl px-4 py-3.5 text-left transition hover:bg-slate-50">
         <span className="text-sm font-semibold text-slate-800">{field.label}</span>
-        <span className="text-xs text-slate-500">{all.length} fields {open ? "▲" : "▼"}</span>
+        <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-500">{all.length} items {open ? "▲" : "▼"}</span>
       </button>
-      {open && (
-        <div className="border-t border-slate-100 p-4">
-          {all.length > 8 && (
-            <input className={`${inputCls} mb-4`} placeholder="Find a field by its text…" value={q} onChange={(e) => setQ(e.target.value)} />
-          )}
-          <FieldGroup fields={shown} values={values} onChange={onChange} errors={errors} prefix={prefix} />
-        </div>
-      )}
+      {open && <div className="border-t border-slate-100 p-4">{body}</div>}
     </div>
   );
 }
 
-export function FieldGroup({ fields, values, onChange, errors = {}, prefix = "" }: { fields: FieldDef[]; values: Values; onChange: (v: Values) => void; errors?: Errors; prefix?: string }) {
+/** defaults: the website's original content (coded sections), used to mark and undo edits. */
+export function FieldGroup({ fields, values, onChange, errors = {}, prefix = "", defaults }: { fields: FieldDef[]; values: Values; onChange: (v: Values) => void; errors?: Errors; prefix?: string; defaults?: Values }) {
   const v = values ?? {};
   return (
     <div className="grid gap-4 sm:grid-cols-2">
-      {fields.map((f, i) =>
+      {fields.map((f) =>
         f.type === "group" && f.flat ? (
-          <FlatGroup key={f.name} field={f} values={v} onChange={onChange} errors={errors} prefix={prefix} defaultOpen={i === 0 && fields.length <= 3} />
+          <FlatGroup key={f.name} field={f} values={v} defaults={defaults} onChange={onChange} errors={errors} prefix={prefix} single={fields.filter((x) => x.type === "group" && x.flat).length === 1} />
         ) : (
         <FieldInput
           key={f.name}
