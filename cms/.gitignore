@@ -4,8 +4,9 @@ out/
 .env*
 !.env.example
 .mongo-data/
-uploads/
-public/uploads/
+# public/uploads (images uploaded in the admin) IS committed so the team gets them with db/data.
+# Private files (CVs) live in storage/ and are never committed.
+.db-backups/
 next-env.d.ts
 *.tsbuildinfo
 storage/

@@ -1,0 +1,767 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fea"
+    },
+    "slug": "website-development",
+    "__v": 0,
+    "benefits": [],
+    "category": "web-and-software",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.501Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Globe",
+    "name": "Website Development",
+    "order": 0,
+    "pagePath": "/web-software/website-development",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "shortDescription": "Fast, secure business websites",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.328Z"
+    },
+    "cta": {},
+    "description": ""
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6feb"
+    },
+    "slug": "app-development",
+    "__v": 0,
+    "benefits": [],
+    "category": "web-and-software",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.502Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Smartphone",
+    "name": "App Development",
+    "order": 1,
+    "pagePath": "/web-software/app-development",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "iOS, Android & cross-platform apps",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.330Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fec"
+    },
+    "slug": "custom-development",
+    "__v": 0,
+    "benefits": [],
+    "category": "web-and-software",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.504Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Code2",
+    "name": "Custom Development",
+    "order": 2,
+    "pagePath": "/web-software/custom-development",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Tailor-made web software",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.331Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fed"
+    },
+    "slug": "custom-crm-solution",
+    "__v": 0,
+    "benefits": [],
+    "category": "web-and-software",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.506Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "LayoutDashboard",
+    "name": "Custom CRM Solution",
+    "order": 3,
+    "pagePath": "/web-software/custom-crm-solution",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "CRM built around your sales flow",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.332Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fee"
+    },
+    "slug": "shopify-web-design",
+    "__v": 0,
+    "benefits": [],
+    "category": "web-and-software",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.507Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "ShoppingBag",
+    "name": "Shopify Web Design",
+    "order": 4,
+    "pagePath": "/web-software/shopify-web-design",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Online stores that convert",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.333Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fef"
+    },
+    "slug": "web-hosting",
+    "__v": 0,
+    "benefits": [],
+    "category": "web-and-software",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.508Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Server",
+    "name": "Web Hosting",
+    "order": 5,
+    "pagePath": "/web-software/web-hosting",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Reliable, secure hosting",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.334Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff0"
+    },
+    "slug": "ui-ux-design",
+    "__v": 0,
+    "benefits": [],
+    "category": "design-and-innovation",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.509Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "PenTool",
+    "name": "UI/UX Design",
+    "order": 6,
+    "pagePath": "/design-innovation/ui-ux-design",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Interfaces people love to use",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.335Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff1"
+    },
+    "slug": "animation-and-graphic-design",
+    "__v": 0,
+    "benefits": [],
+    "category": "design-and-innovation",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.510Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Film",
+    "name": "Animation & Graphic Design",
+    "order": 7,
+    "pagePath": "/design-innovation/animation-and-graphic-design",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Motion and brand visuals",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.336Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff2"
+    },
+    "slug": "custom-ar-vr-solution",
+    "__v": 0,
+    "benefits": [],
+    "category": "design-and-innovation",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.511Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Glasses",
+    "name": "Custom AR/VR Solution",
+    "order": 8,
+    "pagePath": "/design-innovation/custom-ar-vr-solution",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Immersive 3D experiences",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.337Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff3"
+    },
+    "slug": "custom-agentic-ai-solution",
+    "__v": 0,
+    "badge": "AI",
+    "benefits": [],
+    "category": "design-and-innovation",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.512Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Bot",
+    "name": "Custom Agentic AI Solution",
+    "order": 9,
+    "pagePath": "/design-innovation/custom-agentic-ai-solution",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Autonomous AI workflows",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.337Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff4"
+    },
+    "slug": "digital-marketing",
+    "__v": 0,
+    "benefits": [],
+    "category": "marketing-and-growth",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.514Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "TrendingUp",
+    "name": "Digital Marketing",
+    "order": 10,
+    "pagePath": "/marketing-growth/digital-marketing",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Full-funnel growth campaigns",
+    "status": "draft",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.338Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff5"
+    },
+    "slug": "social-media-marketing",
+    "__v": 0,
+    "benefits": [],
+    "category": "marketing-and-growth",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.515Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Share2",
+    "name": "Social Media Marketing",
+    "order": 11,
+    "pagePath": "/marketing-growth/social-media-marketing",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Content that builds community",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.339Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff6"
+    },
+    "slug": "google-ads",
+    "__v": 0,
+    "benefits": [],
+    "category": "marketing-and-growth",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.516Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Target",
+    "name": "Google Ads",
+    "order": 12,
+    "pagePath": "/marketing-growth/google-ads",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "High-intent paid traffic",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.340Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff7"
+    },
+    "slug": "ai-seo",
+    "__v": 0,
+    "badge": "New",
+    "benefits": [],
+    "category": "marketing-and-growth",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.517Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Sparkles",
+    "name": "AI SEO",
+    "order": 13,
+    "pagePath": "/marketing-growth/ai-seo",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Rank in search and AI answers",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.343Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff8"
+    },
+    "slug": "ecommerce-seo",
+    "__v": 0,
+    "benefits": [],
+    "category": "marketing-and-growth",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.518Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "ShoppingCart",
+    "name": "E-commerce SEO",
+    "order": 14,
+    "pagePath": "/marketing-growth/ecommerce-seo",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "More organic sales for stores",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.344Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ff9"
+    },
+    "slug": "local-seo",
+    "__v": 0,
+    "badge": "New",
+    "benefits": [],
+    "category": "marketing-and-growth",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.519Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "MapPin",
+    "name": "Local SEO",
+    "order": 15,
+    "pagePath": "/marketing-growth/local-seo",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Get found by nearby customers",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.345Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ffa"
+    },
+    "slug": "hire-woocommerce-developers",
+    "__v": 0,
+    "benefits": [],
+    "category": "hire-developers",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.520Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Store",
+    "name": "Hire WooCommerce Developers",
+    "order": 16,
+    "pagePath": "/hire-developer/hire-woocommerce-developers",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Store experts on demand",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.346Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ffb"
+    },
+    "slug": "hire-core-php-developers",
+    "__v": 0,
+    "benefits": [],
+    "category": "hire-developers",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.522Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Code",
+    "name": "Hire Core PHP Developers",
+    "order": 17,
+    "pagePath": "/hire-developer/hire-core-php-developers",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Clean, scalable PHP",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.347Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ffc"
+    },
+    "slug": "hire-cakephp-developers",
+    "__v": 0,
+    "benefits": [],
+    "category": "hire-developers",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.524Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Cake",
+    "name": "Hire CakePHP Developers",
+    "order": 18,
+    "pagePath": "/hire-developer/hire-cakephp-developers",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Secure CakePHP applications",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.347Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ffd"
+    },
+    "slug": "hire-aspnet-developers",
+    "__v": 0,
+    "badge": "New",
+    "benefits": [],
+    "category": "hire-developers",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.525Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Cpu",
+    "name": "Hire ASP.NET Developers",
+    "order": 19,
+    "pagePath": "/hire-developer/hire-aspnet-developers",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Enterprise-grade .NET apps",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.348Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ffe"
+    },
+    "slug": "hire-shopify-developers",
+    "__v": 0,
+    "benefits": [],
+    "category": "hire-developers",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.527Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "ShoppingBag",
+    "name": "Hire Shopify Developers",
+    "order": 20,
+    "pagePath": "/hire-developer/hire-shopify-developers",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Custom Shopify builds",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.349Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fff"
+    },
+    "slug": "hire-magento-developers",
+    "__v": 0,
+    "benefits": [],
+    "category": "hire-developers",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.529Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Hexagon",
+    "name": "Hire Magento Developers",
+    "order": 21,
+    "pagePath": "/hire-developer/hire-magento-developers",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "Scalable Magento stores",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.350Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7000"
+    },
+    "slug": "hire-bigcommerce-developers",
+    "__v": 0,
+    "benefits": [],
+    "category": "hire-developers",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.530Z"
+    },
+    "faqs": [],
+    "features": [],
+    "icon": "Package",
+    "name": "Hire BigCommerce Developers",
+    "order": 22,
+    "pagePath": "/hire-developer/hire-bigcommerce-developers",
+    "process": [],
+    "relatedServices": [],
+    "seo": {
+      "breadcrumbs": [],
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false
+    },
+    "shortDescription": "BigCommerce builds that grow",
+    "status": "published",
+    "technologies": [],
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.351Z"
+    }
+  }
+]

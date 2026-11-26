@@ -239,3 +239,23 @@ The old `/api/tasks` endpoints from the Express backend are kept for compatibili
 
 - The old Express API in `../backend` is untouched and still works. Its MySQL tables were never created, so there was no lead data to move.
 - The local MySQL database `promanage` is actually a **WordPress** database (about 19.5k posts, 203 Elementor form submissions, 3 career applications). It was **not** imported. Migrating it needs an explicit decision about which records to bring over.
+
+## Sharing the content database through git
+
+The website content (pages, sections, global sections, services, blogs, careers, menus, settings,
+media records) is kept in `db/data/*.json` so the whole team works with the same content.
+
+| When | Run (in `cms/`) |
+|---|---|
+| Before you commit/push, if you changed anything in the admin | `npm run db:export`, then commit `db/data/` with your code |
+| After `git pull` | `npm run db:import` |
+
+- **Not shared, ever:** admin users, sessions, leads, proposal requests, job applications, SMTP/email
+  settings, activity log, private files (CVs in `storage/`). Each developer creates their own admin
+  with `npx tsx scripts/create-admin.ts` and sets up email in the admin.
+- `db:import` **replaces** the shared content in your local database. Your previous data is saved
+  first to `.db-backups/<date>/` (not committed). It refuses to run against a non-local database
+  (Atlas/production) unless you add `-- --allow-remote`.
+- Images uploaded in the admin (`public/uploads/`) are committed too, so they arrive with the data.
+- Two people editing the same page in the admin at the same time will get a git conflict in
+  `db/data/*.json`, like any code conflict - agree who edits what, and export/commit often.

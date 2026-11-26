@@ -1,0 +1,1102 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "path": "/",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.042Z"
+    },
+    "description": "Website development, SEO and digital marketing that help businesses attract, convert and grow.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.041Z"
+    },
+    "seo": {
+      "title": "ProManage IT Solution | Web Development, SEO & Digital Marketing",
+      "description": "Website development, SEO and digital marketing that help businesses attract, convert and grow.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "",
+    "status": "published",
+    "title": "Home",
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.684Z"
+    },
+    "updatedBy": {
+      "$oid": "6b05226e204e595d465f79f5"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f07"
+    },
+    "path": "/blog",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.108Z"
+    },
+    "description": "Practical insights on SEO, AI, ecommerce, websites, and digital growth.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.108Z"
+    },
+    "seo": {
+      "title": "Blog & Insights | ProManage",
+      "description": "Practical insights on SEO, AI, ecommerce, websites, and digital growth.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "blog",
+    "status": "published",
+    "title": "Blog & Insights",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.083Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f0b"
+    },
+    "path": "/career",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.121Z"
+    },
+    "description": "Careers at ProManage IT Solution — work with people who turn ideas into technology, and technology into impact.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.121Z"
+    },
+    "seo": {
+      "title": "Careers | ProManage",
+      "description": "Careers at ProManage IT Solution — work with people who turn ideas into technology, and technology into impact.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "career",
+    "status": "published",
+    "title": "Careers",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.087Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f12"
+    },
+    "path": "/design-innovation/animation-and-graphic-design",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.141Z"
+    },
+    "description": "Design That Speaks. Animation That Moves. We create powerful 2D/3D animations and stunning graphic designs that captivate your audience and elevate your brand.",
+    "group": "design-innovation",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.141Z"
+    },
+    "seo": {
+      "title": "Animation & Graphic Design Services | ProManage",
+      "description": "Design That Speaks. Animation That Moves. We create powerful 2D/3D animations and stunning graphic designs that captivate your audience and elevate your brand.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "design-innovation/animation-and-graphic-design",
+    "status": "published",
+    "title": "Animation & Graphic Design Services",
+    "updatedAt": {
+      "$date": "2026-11-25T13:26:21.703Z"
+    },
+    "updatedBy": {
+      "$oid": "6b05226e204e595d465f79f5"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f19"
+    },
+    "path": "/design-innovation/custom-agentic-ai-solution",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.158Z"
+    },
+    "description": "AI that thinks. AI that acts. We build intelligent AI agents that understand your business, make decisions and take action — automatically.",
+    "group": "design-innovation",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.157Z"
+    },
+    "seo": {
+      "title": "Custom Agentic AI Solution | ProManage",
+      "description": "AI that thinks. AI that acts. We build intelligent AI agents that understand your business, make decisions and take action — automatically.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "design-innovation/custom-agentic-ai-solution",
+    "status": "published",
+    "title": "Custom Agentic AI Solution",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.107Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "path": "/design-innovation/custom-ar-vr-solution",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.173Z"
+    },
+    "description": "Step Into. Experience. Transform. We create immersive AR/VR experiences that connect imagination with real-world impact.",
+    "group": "design-innovation",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.173Z"
+    },
+    "seo": {
+      "title": "Custom AR/VR Solutions | ProManage",
+      "description": "Step Into. Experience. Transform. We create immersive AR/VR experiences that connect imagination with real-world impact.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "design-innovation/custom-ar-vr-solution",
+    "status": "published",
+    "title": "Custom AR/VR Solutions",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.115Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f27"
+    },
+    "path": "/design-innovation/ui-ux-design",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.189Z"
+    },
+    "description": "We design digital experiences that are intuitive, meaningful and built to deliver real business results.",
+    "group": "design-innovation",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.189Z"
+    },
+    "seo": {
+      "title": "UI/UX Design Services | ProManage",
+      "description": "We design digital experiences that are intuitive, meaningful and built to deliver real business results.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "design-innovation/ui-ux-design",
+    "status": "published",
+    "title": "UI/UX Design Services",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.123Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "path": "/hire-developer/hire-aspnet-developers",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.208Z"
+    },
+    "description": "Hire skilled ASP.NET developers to build secure, scalable and high-performance web applications that drive your business forward.",
+    "group": "hire-developer",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.208Z"
+    },
+    "seo": {
+      "title": "Hire ASP.NET Developers | ProManage",
+      "description": "Hire skilled ASP.NET developers to build secure, scalable and high-performance web applications that drive your business forward.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "hire-developer/hire-aspnet-developers",
+    "status": "published",
+    "title": "Hire ASP.NET Developers",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.131Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "path": "/hire-developer/hire-bigcommerce-developers",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.218Z"
+    },
+    "description": "End-to-end BigCommerce development: custom storefronts, theme customization, apps & integrations, checkout, performance and ongoing support from dedicated BigCommerce developers.",
+    "group": "hire-developer",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.218Z"
+    },
+    "seo": {
+      "title": "Hire BigCommerce Developers | ProManage IT Solution",
+      "description": "End-to-end BigCommerce development: custom storefronts, theme customization, apps & integrations, checkout, performance and ongoing support from dedicated BigCommerce developers.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "hire-developer/hire-bigcommerce-developers",
+    "status": "published",
+    "title": "Hire BigCommerce Developers",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.140Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "path": "/hire-developer/hire-cakephp-developers",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.246Z"
+    },
+    "description": "Hire dedicated CakePHP developers to build secure, high-performance web applications that help your business rise.",
+    "group": "hire-developer",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.246Z"
+    },
+    "seo": {
+      "title": "Hire CakePHP Developers | ProManage",
+      "description": "Hire dedicated CakePHP developers to build secure, high-performance web applications that help your business rise.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "hire-developer/hire-cakephp-developers",
+    "status": "published",
+    "title": "Hire CakePHP Developers",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.149Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "path": "/hire-developer/hire-core-php-developers",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.289Z"
+    },
+    "description": "Bring in dedicated PHP experts who build, optimize and scale powerful web applications.",
+    "group": "hire-developer",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.289Z"
+    },
+    "seo": {
+      "title": "Hire Core PHP Developers | ProManage",
+      "description": "Bring in dedicated PHP experts who build, optimize and scale powerful web applications.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "hire-developer/hire-core-php-developers",
+    "status": "published",
+    "title": "Hire Core PHP Developers",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.160Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "path": "/hire-developer/hire-magento-developers",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.317Z"
+    },
+    "description": "Hire dedicated, certified Magento developers for store development, customization, extensions, integrations, upgrades, performance optimization and ongoing support.",
+    "group": "hire-developer",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.317Z"
+    },
+    "seo": {
+      "title": "Hire Magento Developers | ProManage IT Solution",
+      "description": "Hire dedicated, certified Magento developers for store development, customization, extensions, integrations, upgrades, performance optimization and ongoing support.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "hire-developer/hire-magento-developers",
+    "status": "published",
+    "title": "Hire Magento Developers",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.171Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f59"
+    },
+    "path": "/hire-developer/hire-shopify-developers",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.348Z"
+    },
+    "description": "Power up your online business using the skills of industry-certified Shopify developers having diverse experiences and deep eCommerce insights.",
+    "group": "hire-developer",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.347Z"
+    },
+    "seo": {
+      "title": "Hire Shopify Developers | ProManage",
+      "description": "Power up your online business using the skills of industry-certified Shopify developers having diverse experiences and deep eCommerce insights.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "hire-developer/hire-shopify-developers",
+    "status": "published",
+    "title": "Hire Shopify Developers",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.184Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "path": "/hire-developer/hire-woocommerce-developers",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.368Z"
+    },
+    "description": "Hire dedicated WooCommerce developers to build high-performance, scalable stores that drive sales.",
+    "group": "hire-developer",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.368Z"
+    },
+    "seo": {
+      "title": "Hire WooCommerce Developers | ProManage",
+      "description": "Hire dedicated WooCommerce developers to build high-performance, scalable stores that drive sales.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "hire-developer/hire-woocommerce-developers",
+    "status": "published",
+    "title": "Hire WooCommerce Developers",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.190Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f68"
+    },
+    "path": "/hosting",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.379Z"
+    },
+    "description": "Secure, fast and reliable hosting for business websites.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.379Z"
+    },
+    "seo": {
+      "title": "Hosting | ProManage",
+      "description": "Secure, fast and reliable hosting for business websites.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "hosting",
+    "status": "published",
+    "title": "Hosting",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.200Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "path": "/location",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.381Z"
+    },
+    "description": "Find ProManage IT Solution and the industries and businesses we work with.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.381Z"
+    },
+    "seo": {
+      "title": "Location | ProManage",
+      "description": "Find ProManage IT Solution and the industries and businesses we work with.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "location",
+    "status": "published",
+    "title": "Location",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.203Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "path": "/marketing-growth/ai-seo",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.388Z"
+    },
+    "description": "Powered by multiple AI agents that work together to grow your visibility, rankings and revenue across Google, AI Overviews, ChatGPT, Gemini and every search experience.",
+    "group": "marketing-growth",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.388Z"
+    },
+    "seo": {
+      "title": "AI SEO Agent - Always Optimizing | Promanage",
+      "description": "Powered by multiple AI agents that work together to grow your visibility, rankings and revenue across Google, AI Overviews, ChatGPT, Gemini and every search experience.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "marketing-growth/ai-seo",
+    "status": "published",
+    "title": "AI SEO Agent",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.211Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f7a"
+    },
+    "path": "/marketing-growth/ecommerce-seo",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.394Z"
+    },
+    "description": "E-commerce SEO that gets your products found by the right shoppers and turns searches into sales.",
+    "group": "marketing-growth",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.394Z"
+    },
+    "seo": {
+      "title": "E-Commerce SEO Services | ProManage",
+      "description": "E-commerce SEO that gets your products found by the right shoppers and turns searches into sales.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "marketing-growth/ecommerce-seo",
+    "status": "published",
+    "title": "E-Commerce SEO Services",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.219Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "path": "/marketing-growth/google-ads",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.401Z"
+    },
+    "description": "We create high-performing Google Ads campaigns that put your business at the top of search results—driving qualified leads, more calls, and real revenue.",
+    "group": "marketing-growth",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.401Z"
+    },
+    "seo": {
+      "title": "Google Ads | ProManage",
+      "description": "We create high-performing Google Ads campaigns that put your business at the top of search results—driving qualified leads, more calls, and real revenue.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "marketing-growth/google-ads",
+    "status": "published",
+    "title": "Google Ads",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.227Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f8c"
+    },
+    "path": "/marketing-growth/local-seo",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.410Z"
+    },
+    "description": "Local SEO that drives real customers: Google Business Profile optimization, local keywords, citations, reviews and location pages so nearby customers find and choose you.",
+    "group": "marketing-growth",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.410Z"
+    },
+    "seo": {
+      "title": "Local SEO Services - Be Found. Get Chosen. Grow Locally. | ProManage",
+      "description": "Local SEO that drives real customers: Google Business Profile optimization, local keywords, citations, reviews and location pages so nearby customers find and choose you.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "marketing-growth/local-seo",
+    "status": "published",
+    "title": "Local SEO Services",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.237Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f94"
+    },
+    "path": "/marketing-growth/social-media-marketing",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.418Z"
+    },
+    "description": "We create content, campaigns, and brand experiences that transform businesses into brands people notice, remember, and trust.",
+    "group": "marketing-growth",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.418Z"
+    },
+    "seo": {
+      "title": "Social Media Marketing | ProManage",
+      "description": "We create content, campaigns, and brand experiences that transform businesses into brands people notice, remember, and trust.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "marketing-growth/social-media-marketing",
+    "status": "published",
+    "title": "Social Media Marketing",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.243Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "path": "/seo",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.425Z"
+    },
+    "description": "Premium SEO services that put your business at the top of search — more visibility, more traffic and more revenue.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.425Z"
+    },
+    "seo": {
+      "title": "SEO Services | ProManage",
+      "description": "Premium SEO services that put your business at the top of search — more visibility, more traffic and more revenue.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "seo",
+    "status": "published",
+    "title": "SEO Services",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.250Z"
+    },
+    "updatedBy": {
+      "$oid": "6b051700333b3d5405e45036"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa5"
+    },
+    "path": "/testimonials",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.433Z"
+    },
+    "description": "Real feedback from ProManage clients. Real relationships, and real results that drive businesses forward.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.433Z"
+    },
+    "seo": {
+      "title": "Client Testimonials | ProManage",
+      "description": "Real feedback from ProManage clients. Real relationships, and real results that drive businesses forward.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "testimonials",
+    "status": "published",
+    "title": "Client Testimonials",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.258Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fab"
+    },
+    "path": "/web-software/app-development",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.439Z"
+    },
+    "description": "We design and develop intuitive, high-performance mobile apps that engage users, streamline operations and help your business grow.",
+    "group": "web-software",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.439Z"
+    },
+    "seo": {
+      "title": "App Development | ProManage",
+      "description": "We design and develop intuitive, high-performance mobile apps that engage users, streamline operations and help your business grow.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "web-software/app-development",
+    "status": "published",
+    "title": "App Development",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.266Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb3"
+    },
+    "path": "/web-software/custom-crm-solution",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.445Z"
+    },
+    "description": "A CRM built around your business. We build custom CRM software that adapts to the way you work — connecting leads, conversations and data in one intelligent system.",
+    "group": "web-software",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.445Z"
+    },
+    "seo": {
+      "title": "Custom CRM Solution | ProManage",
+      "description": "A CRM built around your business. We build custom CRM software that adapts to the way you work — connecting leads, conversations and data in one intelligent system.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "web-software/custom-crm-solution",
+    "status": "published",
+    "title": "Custom CRM Solution",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.272Z"
+    },
+    "updatedBy": {
+      "$oid": "6b0537fca1408cf8617b715d"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fbb"
+    },
+    "path": "/web-software/custom-development",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.452Z"
+    },
+    "description": "We build fully custom web applications and software solutions designed around your business, your workflow, and your future.",
+    "group": "web-software",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.452Z"
+    },
+    "seo": {
+      "title": "Custom Development Services | ProManage",
+      "description": "We build fully custom web applications and software solutions designed around your business, your workflow, and your future.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "web-software/custom-development",
+    "status": "published",
+    "title": "Custom Development Services",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.280Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "path": "/web-software/shopify-web-design",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.459Z"
+    },
+    "description": "We design fast, intuitive Shopify stores that turn product discovery into confident purchases.",
+    "group": "web-software",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.459Z"
+    },
+    "seo": {
+      "title": "Shopify Web Design | ProManage",
+      "description": "We design fast, intuitive Shopify stores that turn product discovery into confident purchases.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "web-software/shopify-web-design",
+    "status": "published",
+    "title": "Shopify Web Design",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.287Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fcb"
+    },
+    "path": "/web-software/web-hosting",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.466Z"
+    },
+    "description": "Supercharge your business with premium web hosting.",
+    "group": "web-software",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.466Z"
+    },
+    "seo": {
+      "title": "Web Hosting | ProManage",
+      "description": "Supercharge your business with premium web hosting.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "web-software/web-hosting",
+    "status": "published",
+    "title": "Web Hosting",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.295Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "path": "/web-software/website-development",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.472Z"
+    },
+    "description": "Strategy-led websites that attract the right audience, build trust and turn clicks into customers.",
+    "group": "web-software",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.472Z"
+    },
+    "seo": {
+      "title": "Website Development Services | ProManage",
+      "description": "Strategy-led websites that attract the right audience, build trust and turn clicks into customers.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "web-software/website-development",
+    "status": "published",
+    "title": "Website Development",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.303Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fda"
+    },
+    "path": "/who-we-are",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.484Z"
+    },
+    "description": "ProManage IT Solution — a global IT agency serving clients across 75+ cities. Solutions today, success tomorrow.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.484Z"
+    },
+    "seo": {
+      "title": "Who We Are | ProManage",
+      "description": "ProManage IT Solution — a global IT agency serving clients across 75+ cities. Solutions today, success tomorrow.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "who-we-are",
+    "status": "published",
+    "title": "Who We Are",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.313Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe2"
+    },
+    "path": "/why-choose-us",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.493Z"
+    },
+    "description": "Strategy. Design. Technology. Growth. Everything aligned to deliver real results that matter to you.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-23T13:24:44.493Z"
+    },
+    "seo": {
+      "title": "Why Choose Us | ProManage",
+      "description": "Strategy. Design. Technology. Growth. Everything aligned to deliver real results that matter to you.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "why-choose-us",
+    "status": "published",
+    "title": "Why Choose Us",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.320Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b0563c513af4a4d99f62040"
+    },
+    "path": "/contact",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-24T10:15:33.715Z"
+    },
+    "description": "Get in touch with ProManage IT Solution for websites, apps, SEO and digital marketing.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-24T10:15:33.715Z"
+    },
+    "seo": {
+      "title": "Contact Us | ProManage",
+      "description": "Get in touch with ProManage IT Solution for websites, apps, SEO and digital marketing.",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "contact",
+    "status": "published",
+    "title": "Contact Us",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.095Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b067d7c5c6508c4a47b8ec4"
+    },
+    "path": "/thank-you",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-25T06:17:32.327Z"
+    },
+    "description": "Thanks for contacting ProManage IT Solutions. Our team will get back to you within 24 hours.",
+    "group": "main",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-25T06:17:32.326Z"
+    },
+    "seo": {
+      "title": "Thank You | ProManage",
+      "description": "Thanks for contacting ProManage IT Solutions. Our team will get back to you within 24 hours.",
+      "robotsIndex": false,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "thank-you",
+    "status": "published",
+    "title": "Thank You",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.264Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b06d5955c6508c4a47b8ece"
+    },
+    "path": "/__global",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-25T12:33:25.054Z"
+    },
+    "description": "Content shared by every page that shows these sections.",
+    "group": "global",
+    "hasUnpublishedChanges": false,
+    "kind": "coded",
+    "publishedAt": {
+      "$date": "2026-11-25T12:33:25.054Z"
+    },
+    "seo": {
+      "title": "Global sections",
+      "description": "Content shared by every page that shows these sections.",
+      "robotsIndex": false,
+      "robotsFollow": false,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "slug": "__global",
+    "status": "published",
+    "title": "Global sections",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.054Z"
+    }
+  }
+]

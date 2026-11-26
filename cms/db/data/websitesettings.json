@@ -1,0 +1,109 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ef7"
+    },
+    "key": "global",
+    "__v": 0,
+    "address": "Sector 62, Noida, Uttar Pradesh 201309, India",
+    "contactEmail": "hello@promanage.com",
+    "contactPhone": "+91 99999 88888",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:43.683Z"
+    },
+    "defaultSeo": {
+      "title": "ProManage IT Solution",
+      "titleTemplate": "%s",
+      "description": "Website development, SEO and digital marketing that help businesses grow."
+    },
+    "footer": {
+      "headline": "Building Digital Experiences.",
+      "accent": "Driving Real Growth.",
+      "description": "We help businesses in India and beyond build powerful digital presence, attract more customers and achieve measurable results that last.",
+      "copyright": "© 2024 ProManage. All rights reserved.",
+      "madeIn": "Noida",
+      "googleRating": "4.8",
+      "reviewsText": "(120+ Reviews)",
+      "ctaTitle": "Let's Grow Your Business Together",
+      "ctaText": "Get expert strategies and digital solutions tailored to your business goals.",
+      "ctaLabel": "Get a Free Consultation",
+      "ctaHref": "/contact",
+      "trustedText": "TRUSTED BY 500+ BUSINESSES ACROSS",
+      "trustedAccent": "INDIA & NCR",
+      "stats": [
+        {
+          "value": "500+",
+          "label": "Businesses Trusted"
+        },
+        {
+          "value": "10+",
+          "label": "Years of Excellence"
+        },
+        {
+          "value": "98%",
+          "label": "Client Satisfaction Rate"
+        }
+      ]
+    },
+    "footerLogo": "/pmits-text-logo4-2.webp",
+    "headerCta": {
+      "label": "Get Free Quote",
+      "href": "/contact"
+    },
+    "logo": "/pmits-text-logo4-2.webp",
+    "notificationEmails": [
+      "rahul@promanageitsolution.com"
+    ],
+    "shortLocation": "Noida, India",
+    "siteName": "ProManage IT Solution",
+    "socials": {
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com",
+      "facebook": "https://facebook.com",
+      "youtube": "https://youtube.com"
+    },
+    "topBar": {
+      "phone": "(555) 123-4567",
+      "email": "hello@promanage.com",
+      "location": "New York, NY",
+      "onlineText": "We're online now!",
+      "ratingText": "4.9/5 (200+ reviews)",
+      "consultationText": "Free 30-min consultation",
+      "chatLabel": "Live Chat",
+      "chatHref": "/contact"
+    },
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:24.988Z"
+    },
+    "clientLogos": [
+      {
+        "name": "Max Healthcare",
+        "image": "/clients/max-healthcare.svg"
+      },
+      {
+        "name": "Danube Properties",
+        "image": "/clients/danube-properties.svg"
+      },
+      {
+        "name": "The Better India",
+        "image": "/clients/the-better-india.svg"
+      },
+      {
+        "name": "HomeLane",
+        "image": "/clients/homelane.svg"
+      },
+      {
+        "name": "Tynor",
+        "image": "/clients/tynor.svg"
+      },
+      {
+        "name": "Policybazaar",
+        "image": "/clients/policybazaar.svg"
+      },
+      {
+        "name": "Bikanervala",
+        "image": "/clients/bikanervala.svg"
+      }
+    ]
+  }
+]

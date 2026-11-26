@@ -1,0 +1,736 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ef8"
+    },
+    "key": "header",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.004Z"
+    },
+    "items": [
+      {
+        "label": "Home",
+        "href": "/",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326bf"
+        },
+        "children": []
+      },
+      {
+        "label": "Services",
+        "href": "/services",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326c0"
+        },
+        "children": []
+      },
+      {
+        "label": "Portfolio",
+        "href": "/portfolio",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326c1"
+        },
+        "children": []
+      },
+      {
+        "label": "Who We Are",
+        "href": "/who-we-are",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326c2"
+        },
+        "children": []
+      },
+      {
+        "label": "Location",
+        "href": "/location",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326c3"
+        },
+        "children": []
+      },
+      {
+        "label": "Testimonials",
+        "href": "/testimonials",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326c4"
+        },
+        "children": []
+      },
+      {
+        "label": "Blog",
+        "href": "/blog",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326c5"
+        },
+        "children": []
+      }
+    ],
+    "name": "Header menu",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.021Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6ef9"
+    },
+    "key": "services",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.015Z"
+    },
+    "items": [
+      {
+        "label": "Web & Software",
+        "href": "",
+        "description": "Build it right",
+        "accent": "teal",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326c6"
+        },
+        "children": [
+          {
+            "label": "Website Development",
+            "href": "/web-software/website-development",
+            "description": "Fast, secure business websites",
+            "icon": "Globe",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326c7"
+            },
+            "children": []
+          },
+          {
+            "label": "App Development",
+            "href": "/web-software/app-development",
+            "description": "iOS, Android & cross-platform apps",
+            "icon": "Smartphone",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326c8"
+            },
+            "children": []
+          },
+          {
+            "label": "Custom Development",
+            "href": "/web-software/custom-development",
+            "description": "Tailor-made web software",
+            "icon": "Code2",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326c9"
+            },
+            "children": []
+          },
+          {
+            "label": "Custom CRM Solution",
+            "href": "/web-software/custom-crm-solution",
+            "description": "CRM built around your sales flow",
+            "icon": "LayoutDashboard",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326ca"
+            },
+            "children": []
+          },
+          {
+            "label": "Shopify Web Design",
+            "href": "/web-software/shopify-web-design",
+            "description": "Online stores that convert",
+            "icon": "ShoppingBag",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326cb"
+            },
+            "children": []
+          },
+          {
+            "label": "Web Hosting",
+            "href": "/web-software/web-hosting",
+            "description": "Reliable, secure hosting",
+            "icon": "Server",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326cc"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "Design & Innovation",
+        "href": "",
+        "description": "Stand out",
+        "accent": "indigo",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326cd"
+        },
+        "children": [
+          {
+            "label": "UI/UX Design",
+            "href": "/design-innovation/ui-ux-design",
+            "description": "Interfaces people love to use",
+            "icon": "PenTool",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326ce"
+            },
+            "children": []
+          },
+          {
+            "label": "Animation & Graphic Design",
+            "href": "/design-innovation/animation-and-graphic-design",
+            "description": "Motion and brand visuals",
+            "icon": "Film",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326cf"
+            },
+            "children": []
+          },
+          {
+            "label": "Custom AR/VR Solution",
+            "href": "/design-innovation/custom-ar-vr-solution",
+            "description": "Immersive 3D experiences",
+            "icon": "Glasses",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326d0"
+            },
+            "children": []
+          },
+          {
+            "label": "Custom Agentic AI Solution",
+            "href": "/design-innovation/custom-agentic-ai-solution",
+            "description": "Autonomous AI workflows",
+            "icon": "Bot",
+            "badge": "AI",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326d1"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "Marketing & Growth",
+        "href": "",
+        "description": "Get found",
+        "accent": "amber",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326d2"
+        },
+        "children": [
+          {
+            "label": "Digital Marketing",
+            "href": "/marketing-growth/digital-marketing",
+            "description": "Full-funnel growth campaigns",
+            "icon": "TrendingUp",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326d3"
+            },
+            "children": []
+          },
+          {
+            "label": "Social Media Marketing",
+            "href": "/marketing-growth/social-media-marketing",
+            "description": "Content that builds community",
+            "icon": "Share2",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326d4"
+            },
+            "children": []
+          },
+          {
+            "label": "Google Ads",
+            "href": "/marketing-growth/google-ads",
+            "description": "High-intent paid traffic",
+            "icon": "Target",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326d5"
+            },
+            "children": []
+          },
+          {
+            "label": "AI SEO",
+            "href": "/marketing-growth/ai-seo",
+            "description": "Rank in search and AI answers",
+            "icon": "Sparkles",
+            "badge": "New",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326d6"
+            },
+            "children": []
+          },
+          {
+            "label": "E-commerce SEO",
+            "href": "/marketing-growth/ecommerce-seo",
+            "description": "More organic sales for stores",
+            "icon": "ShoppingCart",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326d7"
+            },
+            "children": []
+          },
+          {
+            "label": "Local SEO",
+            "href": "/marketing-growth/local-seo",
+            "description": "Get found by nearby customers",
+            "icon": "MapPin",
+            "badge": "New",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326d8"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "Hire Developers",
+        "href": "",
+        "description": "Scale your team",
+        "accent": "rose",
+        "external": false,
+        "visible": true,
+        "_id": {
+          "$oid": "6b043e9c2b529b2619d326d9"
+        },
+        "children": [
+          {
+            "label": "Hire WooCommerce Developers",
+            "href": "/hire-developer/hire-woocommerce-developers",
+            "description": "Store experts on demand",
+            "icon": "Store",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326da"
+            },
+            "children": []
+          },
+          {
+            "label": "Hire Core PHP Developers",
+            "href": "/hire-developer/hire-core-php-developers",
+            "description": "Clean, scalable PHP",
+            "icon": "Code",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326db"
+            },
+            "children": []
+          },
+          {
+            "label": "Hire CakePHP Developers",
+            "href": "/hire-developer/hire-cakephp-developers",
+            "description": "Secure CakePHP applications",
+            "icon": "Cake",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326dc"
+            },
+            "children": []
+          },
+          {
+            "label": "Hire ASP.NET Developers",
+            "href": "/hire-developer/hire-aspnet-developers",
+            "description": "Enterprise-grade .NET apps",
+            "icon": "Cpu",
+            "badge": "New",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326dd"
+            },
+            "children": []
+          },
+          {
+            "label": "Hire Shopify Developers",
+            "href": "/hire-developer/hire-shopify-developers",
+            "description": "Custom Shopify builds",
+            "icon": "ShoppingBag",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326de"
+            },
+            "children": []
+          },
+          {
+            "label": "Hire Magento Developers",
+            "href": "/hire-developer/hire-magento-developers",
+            "description": "Scalable Magento stores",
+            "icon": "Hexagon",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326df"
+            },
+            "children": []
+          },
+          {
+            "label": "Hire BigCommerce Developers",
+            "href": "/hire-developer/hire-bigcommerce-developers",
+            "description": "BigCommerce builds that grow",
+            "icon": "Package",
+            "external": false,
+            "visible": true,
+            "_id": {
+              "$oid": "6b043e9c2b529b2619d326e0"
+            },
+            "children": []
+          }
+        ]
+      }
+    ],
+    "name": "Services mega menu",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.035Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6efa"
+    },
+    "key": "footer",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.029Z"
+    },
+    "items": [
+      {
+        "_id": {
+          "$oid": "6b05478eb1e9b99fe18019af"
+        },
+        "label": "Web & App",
+        "href": "",
+        "external": false,
+        "visible": true,
+        "children": [
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b0"
+            },
+            "label": "Website Development",
+            "href": "/web-software/website-development",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b1"
+            },
+            "label": "App Development",
+            "href": "/web-software/app-development",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b2"
+            },
+            "label": "Custom Development",
+            "href": "/web-software/custom-development",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b3"
+            },
+            "label": "Custom CRM Solution",
+            "href": "/web-software/custom-crm-solution",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b4"
+            },
+            "label": "Shopify Web Design",
+            "href": "/web-software/shopify-web-design",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b5"
+            },
+            "label": "Web Hosting",
+            "href": "/web-software/web-hosting",
+            "external": false,
+            "visible": true,
+            "children": []
+          }
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6b05478eb1e9b99fe18019b6"
+        },
+        "label": "Development",
+        "href": "",
+        "external": false,
+        "visible": true,
+        "children": [
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b7"
+            },
+            "label": "WooCommerce Developers",
+            "href": "/hire-developer/hire-woocommerce-developers",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b8"
+            },
+            "label": "Core PHP Developers",
+            "href": "/hire-developer/hire-core-php-developers",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019b9"
+            },
+            "label": "CakePHP Developers",
+            "href": "/hire-developer/hire-cakephp-developers",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019ba"
+            },
+            "label": "ASP.NET Developers",
+            "href": "/hire-developer/hire-aspnet-developers",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019bb"
+            },
+            "label": "Shopify Developers",
+            "href": "/hire-developer/hire-shopify-developers",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019bc"
+            },
+            "label": "Magento Developers",
+            "href": "/hire-developer/hire-magento-developers",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019bd"
+            },
+            "label": "BigCommerce Developers",
+            "href": "/hire-developer/hire-bigcommerce-developers",
+            "external": false,
+            "visible": true,
+            "children": []
+          }
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6b05478eb1e9b99fe18019be"
+        },
+        "label": "SEO",
+        "href": "",
+        "external": false,
+        "visible": true,
+        "children": [
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019bf"
+            },
+            "label": "SEO Services",
+            "href": "/seo",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c0"
+            },
+            "label": "AI SEO",
+            "href": "/marketing-growth/ai-seo",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c1"
+            },
+            "label": "E-commerce SEO",
+            "href": "/marketing-growth/ecommerce-seo",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c2"
+            },
+            "label": "Local SEO",
+            "href": "/marketing-growth/local-seo",
+            "external": false,
+            "visible": true,
+            "children": []
+          }
+        ]
+      },
+      {
+        "_id": {
+          "$oid": "6b05478eb1e9b99fe18019c3"
+        },
+        "label": "Company",
+        "href": "",
+        "external": false,
+        "visible": true,
+        "children": [
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c4"
+            },
+            "label": "Home",
+            "href": "/",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c5"
+            },
+            "label": "Who We Are",
+            "href": "/who-we-are",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c6"
+            },
+            "label": "Why Choose Us",
+            "href": "/why-choose-us",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c7"
+            },
+            "label": "Careers",
+            "href": "/career",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c8"
+            },
+            "label": "Location",
+            "href": "/location",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019c9"
+            },
+            "label": "Blog",
+            "href": "/blog",
+            "external": false,
+            "visible": true,
+            "children": []
+          },
+          {
+            "_id": {
+              "$oid": "6b05478eb1e9b99fe18019ca"
+            },
+            "label": "Contact Us",
+            "href": "/contact",
+            "external": false,
+            "visible": true,
+            "children": []
+          }
+        ]
+      }
+    ],
+    "name": "Footer columns",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.047Z"
+    }
+  }
+]

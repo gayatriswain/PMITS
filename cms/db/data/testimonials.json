@@ -1,0 +1,122 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7017"
+    },
+    "clientName": "Isabelle Hart",
+    "company": "Aurelia",
+    "__v": 0,
+    "content": "ProManage didn't just build us a website, they built a booking engine. Online reservations climbed within the first two months of launch.",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.559Z"
+    },
+    "designation": "Founder",
+    "featured": false,
+    "order": 0,
+    "rating": 5,
+    "status": "draft",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.379Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7018"
+    },
+    "clientName": "Dr. Samuel Reyes",
+    "company": "VitalCare",
+    "__v": 0,
+    "content": "They understood the sensitivity of our industry from day one. The new site is fast, accessible, and patient inquiries have nearly doubled.",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.561Z"
+    },
+    "designation": "Practice Director",
+    "featured": false,
+    "order": 1,
+    "rating": 5,
+    "status": "draft",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.380Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7019"
+    },
+    "clientName": "Owen Whitfield",
+    "company": "Skyline Group",
+    "__v": 0,
+    "content": "From strategy to execution, every detail was intentional. We finally have a digital presence that matches the scale of our projects.",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.561Z"
+    },
+    "designation": "VP Marketing",
+    "featured": false,
+    "order": 2,
+    "rating": 5,
+    "status": "draft",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.381Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb701a"
+    },
+    "clientName": "Priya Nandakumar",
+    "company": "Havenly",
+    "__v": 0,
+    "content": "Our online showroom went from an afterthought to our biggest lead source. The team made the whole process feel effortless.",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.562Z"
+    },
+    "designation": "Co-Founder",
+    "featured": false,
+    "order": 3,
+    "rating": 5,
+    "status": "draft",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.382Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb701b"
+    },
+    "clientName": "Derek Lomax",
+    "company": "NovaFit",
+    "__v": 0,
+    "content": "Working with ProManage felt like adding a growth team overnight. Class bookings and site traffic both climbed within the first quarter.",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.563Z"
+    },
+    "designation": "Studio Owner",
+    "featured": false,
+    "order": 4,
+    "rating": 5,
+    "status": "draft",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.383Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb701c"
+    },
+    "clientName": "Camille Torres",
+    "company": "Marbella Realty",
+    "__v": 0,
+    "content": "They understood our brand voice better than we did and brought it to life in a way that exceeded expectations. Ten out of ten.",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.563Z"
+    },
+    "designation": "Broker",
+    "featured": false,
+    "order": 5,
+    "rating": 5,
+    "status": "draft",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.384Z"
+    }
+  }
+]

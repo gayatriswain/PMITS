@@ -10,6 +10,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "db:dev": "tsx scripts/dev-mongo.ts",
+    "db:export": "tsx scripts/db-snapshot.ts export",
+    "db:import": "tsx scripts/db-snapshot.ts import",
     "admin:create": "tsx scripts/create-admin.ts",
     "seed": "tsx scripts/seed.ts",
     "test:api": "tsx scripts/smoke-test.ts",

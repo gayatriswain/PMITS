@@ -1,0 +1,382 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb700d"
+    },
+    "slug": "ai-overviews-and-organic-traffic-what-the-data-really-shows",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb7007"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.548Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-20T00:00:00Z"
+    },
+    "readingTime": 6,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "AI Overviews & Organic Traffic: What the Data Really Shows | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "published",
+    "tags": [],
+    "title": "AI Overviews & Organic Traffic: What the Data Really Shows",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.366Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb700e"
+    },
+    "slug": "ecommerce-seo-in-2026-10-strategies-that-actually-work",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb7008"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.550Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-18T00:00:00Z"
+    },
+    "readingTime": 7,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "Ecommerce SEO in 2026: 10 Strategies That Actually Work | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "Ecommerce SEO in 2026: 10 Strategies That Actually Work",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.369Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb700f"
+    },
+    "slug": "product-page-seo-the-complete-optimization-checklist",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb7009"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.551Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-16T00:00:00Z"
+    },
+    "readingTime": 5,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "Product Page SEO: The Complete Optimization Checklist | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "Product Page SEO: The Complete Optimization Checklist",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.370Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7010"
+    },
+    "slug": "local-seo-for-ecommerce-brands-rank-locally-sell-globally",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb700a"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.552Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-14T00:00:00Z"
+    },
+    "readingTime": 6,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "Local SEO for Ecommerce Brands: Rank Locally, Sell Globally | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "Local SEO for Ecommerce Brands: Rank Locally, Sell Globally",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.371Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7011"
+    },
+    "slug": "core-web-vitals-and-seo-the-real-impact-on-rankings",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb700b"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.553Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-12T00:00:00Z"
+    },
+    "readingTime": 8,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "Core Web Vitals & SEO: The Real Impact on Rankings | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "Core Web Vitals & SEO: The Real Impact on Rankings",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.372Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7012"
+    },
+    "slug": "from-traffic-to-revenue-building-a-growth-system-that-scales",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb700c"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.555Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-10T00:00:00Z"
+    },
+    "readingTime": 8,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "From Traffic to Revenue: Building a Growth System That Scales | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "From Traffic to Revenue: Building a Growth System That Scales",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.373Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7013"
+    },
+    "slug": "googles-march-2026-core-update-key-takeaways-for-websites",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb7008"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.556Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-08T00:00:00Z"
+    },
+    "readingTime": 7,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "Google's March 2026 Core Update: Key Takeaways for Websites | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "Google's March 2026 Core Update: Key Takeaways for Websites",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.374Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7014"
+    },
+    "slug": "geo-vs-traditional-seo-whats-different-and-why-it-matters",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb7007"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.557Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-06T00:00:00Z"
+    },
+    "readingTime": 6,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "GEO vs Traditional SEO: What's Different and Why It Matters | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "GEO vs Traditional SEO: What's Different and Why It Matters",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.375Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7015"
+    },
+    "slug": "scaling-content-production-without-losing-quality",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb700c"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.558Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-04T00:00:00Z"
+    },
+    "readingTime": 5,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "Scaling Content Production Without Losing Quality | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "Scaling Content Production Without Losing Quality",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.377Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7016"
+    },
+    "slug": "optimizing-google-business-profiles-in-2026",
+    "__v": 0,
+    "categories": [
+      {
+        "$oid": "6b043e9cdb56916197bb700a"
+      }
+    ],
+    "content": "",
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.558Z"
+    },
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop",
+    "publishedAt": {
+      "$date": "2026-05-02T00:00:00Z"
+    },
+    "readingTime": 4,
+    "relatedBlogs": [],
+    "schemaType": "BlogPosting",
+    "seo": {
+      "title": "Optimizing Google Business Profiles in 2026 | ProManage Blog",
+      "robotsIndex": true,
+      "robotsFollow": true,
+      "twitterCard": "summary_large_image",
+      "faqSchema": false,
+      "breadcrumbs": []
+    },
+    "status": "draft",
+    "tags": [],
+    "title": "Optimizing Google Business Profiles in 2026",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.378Z"
+    }
+  }
+]

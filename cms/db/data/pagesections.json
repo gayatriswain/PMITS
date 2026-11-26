@@ -1,0 +1,5722 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6efc"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "key": "growth-dashboard-card",
+    "__v": 0,
+    "component": "GrowthDashboardCard",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.051Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Growth Dashboard Card",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.694Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6efd"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "key": "projects-carousel",
+    "__v": 0,
+    "component": "ProjectsCarousel",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.080Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Projects Carousel",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.695Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6efe"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "key": "core-expertise",
+    "__v": 0,
+    "component": "CoreExpertise",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.083Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Core Expertise",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.696Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6eff"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "key": "trusted-bar",
+    "__v": 0,
+    "component": "TrustedBar",
+    "content": {
+      "label": "Trusted by 250+ Businesses Across 15+ Industries",
+      "logos": [
+        {
+          "name": "Max Healthcare",
+          "image": "/clients/max-healthcare.svg"
+        },
+        {
+          "name": "Danube Properties",
+          "image": "/clients/danube-properties.svg"
+        },
+        {
+          "name": "The Better India",
+          "image": "/clients/the-better-india.svg"
+        },
+        {
+          "name": "HomeLane",
+          "image": "/clients/homelane.svg"
+        },
+        {
+          "name": "Tynor",
+          "image": "/clients/tynor.svg"
+        },
+        {
+          "name": "Policybazaar",
+          "image": "/clients/policybazaar.svg"
+        },
+        {
+          "name": "Bikanervala",
+          "image": "/clients/bikanervala.svg"
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.086Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Trusted Bar",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.697Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f00"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "key": "why-choose-us",
+    "__v": 0,
+    "component": "WhyChooseUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.089Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.698Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f01"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "key": "services-showcase",
+    "__v": 0,
+    "component": "ServicesShowcase",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.091Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Services Showcase",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.698Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f02"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "key": "client-stories",
+    "__v": 0,
+    "component": "ClientStories",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.094Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Client Stories",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.699Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f03"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "key": "our-work",
+    "__v": 0,
+    "component": "OurWork",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.096Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Our Work",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.700Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f04"
+    },
+    "key": "about-bento",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "__v": 0,
+    "component": "AboutBento",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.098Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "About Bento",
+    "order": 9,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.701Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f05"
+    },
+    "key": "faq-section",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "__v": 0,
+    "component": "FAQSection",
+    "content": {
+      "eyebrow": "Frequently Asked Questions",
+      "heading": "FAQ It Up! Your curiosity meets our expertise—let's clear things up!",
+      "intro": "We've gathered all the important info right here. Explore our FAQs and find the answers you need.",
+      "items": [
+        {
+          "question": "What services do you offer?",
+          "answer": "We offer website design and development, SEO, and full-funnel digital marketing strategies tailored to help your business grow online."
+        },
+        {
+          "question": "How long does it take to design a website?",
+          "answer": "Most website projects take 3 to 6 weeks from kickoff to launch, depending on scope, content readiness, and the number of revisions."
+        },
+        {
+          "question": "Do you work with small businesses or just big brands?",
+          "answer": "We work with businesses of every size, from solo founders and startups to established brands looking to scale."
+        },
+        {
+          "question": "Can I customize the packages you offer?",
+          "answer": "Absolutely. Every package can be tailored to your goals, budget, and timeline, so you only pay for what you actually need."
+        },
+        {
+          "question": "How do you measure the success of a marketing campaign?",
+          "answer": "We track metrics like traffic, conversion rate, lead quality, and ROI, then share clear monthly reports so you always know what's working."
+        },
+        {
+          "question": "What if I don't like the designs or strategies?",
+          "answer": "We build in revision rounds at every stage, and we won't move forward until you're genuinely happy with the direction."
+        },
+        {
+          "question": "How do I get started?",
+          "answer": "Book a free consultation call, tell us about your goals, and we'll put together a tailored plan within a few days."
+        },
+        {
+          "question": "Do you provide support after launching my website or campaign?",
+          "answer": "Yes, we offer ongoing support and maintenance plans to keep your site secure, updated, and performing well long after launch."
+        },
+        {
+          "question": "What makes your agency different from the rest?",
+          "answer": "We combine design, development, and SEO under one roof, so your website and marketing strategy are built to work together from day one."
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.101Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "FAQ Section",
+    "order": 10,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.702Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f06"
+    },
+    "key": "cta-section",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "__v": 0,
+    "component": "CtaSection",
+    "content": {
+      "eyebrow": "Let's build something great",
+      "heading": "Ready to start your next project?",
+      "button": {
+        "label": "Get started",
+        "href": "/contact"
+      },
+      "availability": "Available for project",
+      "cardTitle": "Quick 15-minute call",
+      "cardText": "Pick a time that works for you.",
+      "cardButton": {
+        "label": "Book a free call",
+        "href": "/contact"
+      }
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.105Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Cta Section",
+    "order": 11,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.703Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f08"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f07"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "BlogHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.114Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Blog Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.085Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f09"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f07"
+    },
+    "key": "insights",
+    "__v": 0,
+    "component": "BlogInsights",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.116Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Blog Insights",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.086Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f0a"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f07"
+    },
+    "key": "grid",
+    "__v": 0,
+    "component": "BlogGrid",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.118Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Blog Grid",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.086Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f0c"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f0b"
+    },
+    "__v": 0,
+    "component": "CareerHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.127Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Career Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.089Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f0d"
+    },
+    "key": "why-love",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f0b"
+    },
+    "__v": 0,
+    "component": "CareerWhyLove",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.130Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Career Why Love",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.090Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f0e"
+    },
+    "key": "life",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f0b"
+    },
+    "__v": 0,
+    "component": "CareerLife",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.132Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Career Life",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.092Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f0f"
+    },
+    "key": "how-we-work",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f0b"
+    },
+    "__v": 0,
+    "component": "CareerHowWeWork",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.134Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Career How We Work",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.093Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f10"
+    },
+    "key": "open-positions",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f0b"
+    },
+    "__v": 0,
+    "component": "CareerOpenPositions",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.136Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Career Open Positions",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.094Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f11"
+    },
+    "key": "send-profile",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f0b"
+    },
+    "__v": 0,
+    "component": "CareerSendProfile",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.139Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Career Send Profile",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.095Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f13"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f12"
+    },
+    "key": "graphic-design-hero",
+    "__v": 0,
+    "component": "AnimationGraphicDesignHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.145Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Animation Graphic Design Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T13:26:21.708Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f14"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f12"
+    },
+    "key": "visual-communication-solutions",
+    "__v": 0,
+    "component": "VisualCommunicationSolutions",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.146Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Visual Communication Solutions",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T13:26:21.710Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f15"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f12"
+    },
+    "key": "creative-partnership-section",
+    "__v": 0,
+    "component": "CreativePartnershipSection",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.149Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Creative Partnership Section",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T13:26:21.712Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f16"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f12"
+    },
+    "key": "process",
+    "__v": 0,
+    "component": "AnimationProcess",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.151Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Animation Process",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T13:26:21.713Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f17"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f12"
+    },
+    "key": "impact-showcase",
+    "__v": 0,
+    "component": "AnimationImpactShowcase",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.152Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Animation Impact Showcase",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T13:26:21.715Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f18"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f12"
+    },
+    "key": "our-work",
+    "__v": 0,
+    "component": "AnimationOurWork",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.155Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Animation Our Work",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T13:26:21.717Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f1a"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f19"
+    },
+    "__v": 0,
+    "component": "AgenticAiHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.162Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Agentic Ai Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.110Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f1b"
+    },
+    "key": "workflow",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f19"
+    },
+    "__v": 0,
+    "component": "AgenticAiWorkflow",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.163Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Agentic Ai Workflow",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.111Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f1c"
+    },
+    "key": "live-action",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f19"
+    },
+    "__v": 0,
+    "component": "AgenticAiLiveAction",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.165Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Agentic Ai Live Action",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.112Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f1d"
+    },
+    "key": "features",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f19"
+    },
+    "__v": 0,
+    "component": "AgenticAiFeatures",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.167Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Agentic Ai Features",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.113Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f1e"
+    },
+    "key": "platform",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f19"
+    },
+    "__v": 0,
+    "component": "AgenticAiPlatform",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.170Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Agentic Ai Platform",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.114Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f1f"
+    },
+    "key": "cta",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f19"
+    },
+    "__v": 0,
+    "component": "AgenticAiCTA",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.172Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Agentic Ai CTA",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.114Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f21"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "ArVrHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.178Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ar Vr Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.117Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f22"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "key": "solutions",
+    "__v": 0,
+    "component": "ArVrSolutions",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.179Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ar Vr Solutions",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.118Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f23"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "key": "cta",
+    "__v": 0,
+    "component": "ArVrCTA",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.181Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ar Vr CTA",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.119Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f24"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "key": "approach",
+    "__v": 0,
+    "component": "ArVrApproach",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.183Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ar Vr Approach",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.120Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f25"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "key": "showcase",
+    "__v": 0,
+    "component": "ArVrShowcase",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.185Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ar Vr Showcase",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.120Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f26"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "key": "why",
+    "__v": 0,
+    "component": "ArVrWhy",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.187Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ar Vr Why",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.121Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f28"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f27"
+    },
+    "__v": 0,
+    "component": "UiUxHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.193Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ui Ux Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.126Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f29"
+    },
+    "key": "approach",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f27"
+    },
+    "__v": 0,
+    "component": "UiUxApproach",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.196Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ui Ux Approach",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.127Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f2a"
+    },
+    "key": "what-we-do",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f27"
+    },
+    "__v": 0,
+    "component": "UiUxWhatWeDo",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.198Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ui Ux What We Do",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.128Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f2b"
+    },
+    "key": "why-us",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f27"
+    },
+    "__v": 0,
+    "component": "UiUxWhyUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.200Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ui Ux Why Us",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.129Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f2c"
+    },
+    "key": "client-stories",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f27"
+    },
+    "__v": 0,
+    "component": "UiUxClientStories",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.202Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ui Ux Client Stories",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.129Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f2d"
+    },
+    "key": "contact-cta",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f27"
+    },
+    "__v": 0,
+    "component": "UiUxContactCTA",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.206Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ui Ux Contact CTA",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.130Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f2f"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "HireAspNetHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.213Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.133Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f30"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "key": "build",
+    "__v": 0,
+    "component": "HireAspNetBuild",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.215Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Build",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.134Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f31"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "key": "expertise",
+    "__v": 0,
+    "component": "HireAspNetExpertise",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.216Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Expertise",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.135Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f33"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "__v": 0,
+    "component": "BigCommerceHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.225Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Big Commerce Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.142Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f34"
+    },
+    "key": "trusted",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "__v": 0,
+    "component": "BigCommerceTrusted",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.227Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Big Commerce Trusted",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.143Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f35"
+    },
+    "key": "features",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "__v": 0,
+    "component": "BigCommerceFeatures",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.229Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Big Commerce Features",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.144Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f36"
+    },
+    "key": "all-in-one",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "__v": 0,
+    "component": "BigCommerceAllInOne",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.233Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Big Commerce All In One",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.145Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f37"
+    },
+    "key": "benefits",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "__v": 0,
+    "component": "BigCommerceBenefits",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.234Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Big Commerce Benefits",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.146Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f38"
+    },
+    "key": "growth",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "__v": 0,
+    "component": "BigCommerceGrowth",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.237Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Big Commerce Growth",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.147Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f39"
+    },
+    "key": "impact",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "__v": 0,
+    "component": "BigCommerceImpact",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.241Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Big Commerce Impact",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.147Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f3a"
+    },
+    "key": "contact",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f32"
+    },
+    "__v": 0,
+    "component": "BigCommerceContact",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.244Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Big Commerce Contact",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.148Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f3c"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "HireCakePhpHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.276Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.152Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f3d"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "expertise",
+    "__v": 0,
+    "component": "HireCakePhpExpertise",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.277Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Expertise",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.153Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f3e"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "hire-options",
+    "__v": 0,
+    "component": "HireCakePhpHireOptions",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.278Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Hire Options",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.153Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f3f"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "process",
+    "__v": 0,
+    "component": "HireCakePhpProcess",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.279Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Process",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.154Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f40"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "results",
+    "__v": 0,
+    "component": "HireCakePhpResults",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.280Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Results",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.155Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f41"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "work",
+    "__v": 0,
+    "component": "HireCakePhpWork",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.281Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Work",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.155Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f42"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "why",
+    "__v": 0,
+    "component": "HireCakePhpWhy",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.282Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Why",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.156Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f43"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "engagement",
+    "__v": 0,
+    "component": "HireCakePhpEngagement",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.285Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Engagement",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.157Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f44"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "final-step",
+    "__v": 0,
+    "component": "HireCakePhpFinalStep",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.286Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Final Step",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.159Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f45"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f3b"
+    },
+    "key": "start-project",
+    "__v": 0,
+    "component": "HireCakePhpStartProject",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.288Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Cake Php Start Project",
+    "order": 9,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.160Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f47"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.292Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.162Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f48"
+    },
+    "key": "approach",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpApproach",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.294Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Approach",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.163Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f49"
+    },
+    "key": "why-it-matters",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpWhyItMatters",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.296Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Why It Matters",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.164Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f4a"
+    },
+    "key": "solutions",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpSolutions",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.298Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Solutions",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.164Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f4b"
+    },
+    "key": "why-choose-us",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpWhyChooseUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.301Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Why Choose Us",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.165Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f4c"
+    },
+    "key": "what-you-can-build",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpWhatYouCanBuild",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.308Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php What You Can Build",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.167Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f4d"
+    },
+    "key": "why-hire-from-us",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpWhyHireFromUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.311Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Why Hire From Us",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.168Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f4e"
+    },
+    "key": "signature",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpSignature",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.314Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Signature",
+    "order": 9,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.170Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f50"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "MagentoHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.327Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.173Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f51"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "services",
+    "__v": 0,
+    "component": "MagentoServices",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.330Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Services",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.175Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f52"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "industry",
+    "__v": 0,
+    "component": "MagentoIndustry",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.333Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Industry",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.177Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f53"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "expertise",
+    "__v": 0,
+    "component": "MagentoExpertise",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.335Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Expertise",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.178Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f54"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "why-us",
+    "__v": 0,
+    "component": "MagentoWhyUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.338Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Why Us",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.179Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f55"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "process",
+    "__v": 0,
+    "component": "MagentoProcess",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.339Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Process",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.180Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f56"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "engage",
+    "__v": 0,
+    "component": "MagentoEngage",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.341Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Engage",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.180Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f57"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "outcome",
+    "__v": 0,
+    "component": "MagentoOutcome",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.343Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Outcome",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.181Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f58"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f4f"
+    },
+    "key": "proposal",
+    "__v": 0,
+    "component": "MagentoProposal",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.345Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Magento Proposal",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.183Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f5a"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f59"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "HireShopifyHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.362Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Shopify Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.187Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f5b"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f59"
+    },
+    "key": "shopify-expertise",
+    "__v": 0,
+    "component": "ShopifyExpertise",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.364Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify Expertise",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.188Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f5c"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f59"
+    },
+    "key": "solutions",
+    "__v": 0,
+    "component": "HireShopifySolutions",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.366Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Shopify Solutions",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.189Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f5d"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f59"
+    },
+    "key": "contact",
+    "__v": 0,
+    "component": "HireShopifyContact",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.367Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Shopify Contact",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.190Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f5f"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "hire-hero",
+    "__v": 0,
+    "component": "WooHireHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.371Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Hire Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.193Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f60"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "intro",
+    "__v": 0,
+    "component": "WooIntro",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.372Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Intro",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.194Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f61"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "why",
+    "__v": 0,
+    "component": "WooWhy",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.373Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Why",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.195Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f62"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "powered",
+    "__v": 0,
+    "component": "WooPowered",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.374Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Powered",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.195Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f63"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "why-hire",
+    "__v": 0,
+    "component": "WooWhyHire",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.375Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Why Hire",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.196Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f64"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "commitment",
+    "__v": 0,
+    "component": "WooCommitment",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.376Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Commitment",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.197Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f65"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "expertise",
+    "__v": 0,
+    "component": "WooExpertise",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.377Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Expertise",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.198Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f66"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "success",
+    "__v": 0,
+    "component": "WooSuccess",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.377Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Success",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.199Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f67"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f5e"
+    },
+    "key": "proposal",
+    "__v": 0,
+    "component": "WooProposal",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.378Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Proposal",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.200Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f6a"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "key": "trusted-bar",
+    "__v": 0,
+    "component": "TrustedBar",
+    "content": {
+      "label": "Trusted by 250+ Businesses Across 15+ Industries",
+      "logos": [
+        {
+          "name": "Max Healthcare",
+          "image": "/clients/max-healthcare.svg"
+        },
+        {
+          "name": "Danube Properties",
+          "image": "/clients/danube-properties.svg"
+        },
+        {
+          "name": "The Better India",
+          "image": "/clients/the-better-india.svg"
+        },
+        {
+          "name": "HomeLane",
+          "image": "/clients/homelane.svg"
+        },
+        {
+          "name": "Tynor",
+          "image": "/clients/tynor.svg"
+        },
+        {
+          "name": "Policybazaar",
+          "image": "/clients/policybazaar.svg"
+        },
+        {
+          "name": "Bikanervala",
+          "image": "/clients/bikanervala.svg"
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.383Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Trusted Bar",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.206Z"
+    },
+    "draftOrder": 2
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f6b"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "key": "industries-we-empower",
+    "__v": 0,
+    "component": "IndustriesWeEmpower",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.383Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Industries We Empower",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.206Z"
+    },
+    "draftOrder": 3
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f6c"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "key": "recent-success-stories",
+    "__v": 0,
+    "component": "RecentSuccessStories",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.384Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Recent Success Stories",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.207Z"
+    },
+    "draftOrder": 4
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f6d"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "key": "why-choose-us",
+    "__v": 0,
+    "component": "WhyChooseUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.385Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.208Z"
+    },
+    "draftOrder": 5
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f6e"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "key": "client-stories",
+    "__v": 0,
+    "component": "ClientStories",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.385Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Client Stories",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.209Z"
+    },
+    "draftOrder": 6
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f6f"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "key": "faq-section",
+    "__v": 0,
+    "component": "FAQSection",
+    "content": {
+      "eyebrow": "Frequently Asked Questions",
+      "heading": "FAQ It Up! Your curiosity meets our expertise—let's clear things up!",
+      "intro": "We've gathered all the important info right here. Explore our FAQs and find the answers you need.",
+      "items": [
+        {
+          "question": "What services do you offer?",
+          "answer": "We offer website design and development, SEO, and full-funnel digital marketing strategies tailored to help your business grow online."
+        },
+        {
+          "question": "How long does it take to design a website?",
+          "answer": "Most website projects take 3 to 6 weeks from kickoff to launch, depending on scope, content readiness, and the number of revisions."
+        },
+        {
+          "question": "Do you work with small businesses or just big brands?",
+          "answer": "We work with businesses of every size, from solo founders and startups to established brands looking to scale."
+        },
+        {
+          "question": "Can I customize the packages you offer?",
+          "answer": "Absolutely. Every package can be tailored to your goals, budget, and timeline, so you only pay for what you actually need."
+        },
+        {
+          "question": "How do you measure the success of a marketing campaign?",
+          "answer": "We track metrics like traffic, conversion rate, lead quality, and ROI, then share clear monthly reports so you always know what's working."
+        },
+        {
+          "question": "What if I don't like the designs or strategies?",
+          "answer": "We build in revision rounds at every stage, and we won't move forward until you're genuinely happy with the direction."
+        },
+        {
+          "question": "How do I get started?",
+          "answer": "Book a free consultation call, tell us about your goals, and we'll put together a tailored plan within a few days."
+        },
+        {
+          "question": "Do you provide support after launching my website or campaign?",
+          "answer": "Yes, we offer ongoing support and maintenance plans to keep your site secure, updated, and performing well long after launch."
+        },
+        {
+          "question": "What makes your agency different from the rest?",
+          "answer": "We combine design, development, and SEO under one roof, so your website and marketing strategy are built to work together from day one."
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.386Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "FAQ Section",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.210Z"
+    },
+    "draftOrder": 7
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f70"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "key": "cta-section",
+    "__v": 0,
+    "component": "CtaSection",
+    "content": {
+      "eyebrow": "Let's build something great",
+      "heading": "Ready to start your next project?",
+      "button": {
+        "label": "Get started",
+        "href": "/contact"
+      },
+      "cardTitle": "Quick 15-minute call",
+      "cardText": "Pick a time that works for you.",
+      "cardButton": {
+        "label": "Book a free call",
+        "href": "/contact"
+      },
+      "availability": "Available for project"
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.387Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Cta Section",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.211Z"
+    },
+    "draftOrder": 8
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f72"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "AiSeoHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.389Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ai Seo Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.213Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f73"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "key": "rank-everywhere",
+    "__v": 0,
+    "component": "AiSeoRankEverywhere",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.390Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ai Seo Rank Everywhere",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.214Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f74"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "key": "team",
+    "__v": 0,
+    "component": "AiSeoTeam",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.390Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ai Seo Team",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.215Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f75"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "key": "experts",
+    "__v": 0,
+    "component": "AiSeoExperts",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.391Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ai Seo Experts",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.216Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f76"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "key": "difference",
+    "__v": 0,
+    "component": "AiSeoDifference",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.392Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ai Seo Difference",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.217Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f77"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "key": "never-stops",
+    "__v": 0,
+    "component": "AiSeoNeverStops",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.392Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ai Seo Never Stops",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.217Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f78"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "key": "proof",
+    "__v": 0,
+    "component": "AiSeoProof",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.393Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ai Seo Proof",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.218Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f79"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f71"
+    },
+    "key": "strategy",
+    "__v": 0,
+    "component": "AiSeoStrategy",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.393Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ai Seo Strategy",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.219Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f7b"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f7a"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "EcommerceSeoHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.395Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ecommerce Seo Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.221Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f7c"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f7a"
+    },
+    "key": "layers",
+    "__v": 0,
+    "component": "EcommerceSeoLayers",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.396Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ecommerce Seo Layers",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.221Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f7d"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f7a"
+    },
+    "key": "ecosystem",
+    "__v": 0,
+    "component": "EcommerceSeoEcosystem",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.397Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ecommerce Seo Ecosystem",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.222Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f7e"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f7a"
+    },
+    "key": "results",
+    "__v": 0,
+    "component": "EcommerceSeoResults",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.398Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ecommerce Seo Results",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.223Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f7f"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f7a"
+    },
+    "key": "process-section",
+    "__v": 0,
+    "component": "EcommerceSeoProcessSection",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.399Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ecommerce Seo Process Section",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.223Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f80"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f7a"
+    },
+    "key": "growth-partner-section",
+    "__v": 0,
+    "component": "GrowthPartnerSection",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.399Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Growth Partner Section",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.224Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f81"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f7a"
+    },
+    "key": "lead-form-section",
+    "__v": 0,
+    "component": "LeadFormSection",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.400Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Lead Form Section",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.226Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f83"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "GoogleAdsHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.402Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Google Ads Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.228Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f84"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "ecosystem",
+    "__v": 0,
+    "component": "GoogleAdsEcosystem",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.403Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Google Ads Ecosystem",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.229Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f85"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "intent",
+    "__v": 0,
+    "component": "GoogleAdsIntent",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.404Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Google Ads Intent",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.230Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f86"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "funnel",
+    "__v": 0,
+    "component": "GoogleAdsFunnel",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.405Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Google Ads Funnel",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.231Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f87"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "case-study",
+    "__v": 0,
+    "component": "GoogleAdsCaseStudy",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.406Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Google Ads Case Study",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.232Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f88"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "cta",
+    "__v": 0,
+    "component": "GoogleAdsCta",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.407Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Google Ads Cta",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.233Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f89"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "bottom-banner",
+    "__v": 0,
+    "component": "GoogleAdsBottomBanner",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.407Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Google Ads Bottom Banner",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.234Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f8a"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "client-stories",
+    "__v": 0,
+    "component": "ClientStories",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.408Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Client Stories",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.235Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f8b"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "faq-section",
+    "__v": 0,
+    "component": "FAQSection",
+    "content": {
+      "eyebrow": "Frequently Asked Questions",
+      "heading": "FAQ It Up! Your curiosity meets our expertise—let's clear things up!",
+      "intro": "We've gathered all the important info right here. Explore our FAQs and find the answers you need.",
+      "items": [
+        {
+          "question": "What services do you offer?",
+          "answer": "We offer website design and development, SEO, and full-funnel digital marketing strategies tailored to help your business grow online."
+        },
+        {
+          "question": "How long does it take to design a website?",
+          "answer": "Most website projects take 3 to 6 weeks from kickoff to launch, depending on scope, content readiness, and the number of revisions."
+        },
+        {
+          "question": "Do you work with small businesses or just big brands?",
+          "answer": "We work with businesses of every size, from solo founders and startups to established brands looking to scale."
+        },
+        {
+          "question": "Can I customize the packages you offer?",
+          "answer": "Absolutely. Every package can be tailored to your goals, budget, and timeline, so you only pay for what you actually need."
+        },
+        {
+          "question": "How do you measure the success of a marketing campaign?",
+          "answer": "We track metrics like traffic, conversion rate, lead quality, and ROI, then share clear monthly reports so you always know what's working."
+        },
+        {
+          "question": "What if I don't like the designs or strategies?",
+          "answer": "We build in revision rounds at every stage, and we won't move forward until you're genuinely happy with the direction."
+        },
+        {
+          "question": "How do I get started?",
+          "answer": "Book a free consultation call, tell us about your goals, and we'll put together a tailored plan within a few days."
+        },
+        {
+          "question": "Do you provide support after launching my website or campaign?",
+          "answer": "Yes, we offer ongoing support and maintenance plans to keep your site secure, updated, and performing well long after launch."
+        },
+        {
+          "question": "What makes your agency different from the rest?",
+          "answer": "We combine design, development, and SEO under one roof, so your website and marketing strategy are built to work together from day one."
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.409Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "FAQ Section",
+    "order": 9,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.236Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f8d"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f8c"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "LocalSeoHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.412Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Local Seo Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.238Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f8e"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f8c"
+    },
+    "key": "journey",
+    "__v": 0,
+    "component": "LocalSeoJourney",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.413Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Local Seo Journey",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.239Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f8f"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f8c"
+    },
+    "key": "dominate",
+    "__v": 0,
+    "component": "LocalSeoDominate",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.414Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Local Seo Dominate",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.239Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f90"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f8c"
+    },
+    "key": "everywhere",
+    "__v": 0,
+    "component": "LocalSeoEverywhere",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.415Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Local Seo Everywhere",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.240Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f91"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f8c"
+    },
+    "key": "optimize",
+    "__v": 0,
+    "component": "LocalSeoOptimize",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.416Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Local Seo Optimize",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.241Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f92"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f8c"
+    },
+    "key": "results",
+    "__v": 0,
+    "component": "LocalSeoResults",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.417Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Local Seo Results",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.242Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f93"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f8c"
+    },
+    "key": "contact",
+    "__v": 0,
+    "component": "LocalSeoContact",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.417Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Local Seo Contact",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.243Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f95"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f94"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "SocialMediaMarketingHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.419Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Social Media Marketing Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.245Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f96"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f94"
+    },
+    "key": "content-grid",
+    "__v": 0,
+    "component": "SocialMediaMarketingContentGrid",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.421Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Social Media Marketing Content Grid",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.246Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f97"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f94"
+    },
+    "key": "brand-compare",
+    "__v": 0,
+    "component": "SocialMediaMarketingBrandCompare",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.422Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Social Media Marketing Brand Compare",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.247Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f98"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f94"
+    },
+    "key": "content-types",
+    "__v": 0,
+    "component": "SocialMediaMarketingContentTypes",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.422Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Social Media Marketing Content Types",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.247Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f99"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f94"
+    },
+    "key": "benefits",
+    "__v": 0,
+    "component": "SocialMediaMarketingBenefits",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.423Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Social Media Marketing Benefits",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.248Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f9a"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f94"
+    },
+    "key": "case-study",
+    "__v": 0,
+    "component": "SocialMediaMarketingCaseStudy",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.424Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Social Media Marketing Case Study",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.249Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f9b"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f94"
+    },
+    "key": "final-cta",
+    "__v": 0,
+    "component": "SocialMediaMarketingFinalCTA",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.425Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Social Media Marketing Final CTA",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.249Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f9d"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "SeoHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.427Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Seo Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.252Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f9e"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "key": "opportunity",
+    "__v": 0,
+    "component": "SeoOpportunity",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.428Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Seo Opportunity",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.253Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6f9f"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "key": "transformation",
+    "__v": 0,
+    "component": "SeoTransformation",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.428Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Seo Transformation",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.254Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa0"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "key": "process",
+    "__v": 0,
+    "component": "SeoProcess",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.429Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Seo Process",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.254Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa1"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "key": "ecosystem",
+    "__v": 0,
+    "component": "SeoEcosystem",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.430Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Seo Ecosystem",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.255Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa2"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "key": "growth-framework",
+    "__v": 0,
+    "component": "SeoGrowthFramework",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.431Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Seo Growth Framework",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.255Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa3"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "key": "website-dev-comparison",
+    "__v": 0,
+    "component": "WebsiteDevComparison",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.432Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Comparison",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.256Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa4"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f9c"
+    },
+    "key": "faq-section",
+    "__v": 0,
+    "component": "FAQSection",
+    "content": {
+      "eyebrow": "Frequently Asked Questions",
+      "heading": "FAQ It Up! Your curiosity meets our expertise—let's clear things up!",
+      "intro": "We've gathered all the important info right here. Explore our FAQs and find the answers you need.",
+      "items": [
+        {
+          "question": "What services do you offer?",
+          "answer": "We offer website design and development, SEO, and full-funnel digital marketing strategies tailored to help your business grow online."
+        },
+        {
+          "question": "How long does it take to design a website?",
+          "answer": "Most website projects take 3 to 6 weeks from kickoff to launch, depending on scope, content readiness, and the number of revisions."
+        },
+        {
+          "question": "Do you work with small businesses or just big brands?",
+          "answer": "We work with businesses of every size, from solo founders and startups to established brands looking to scale."
+        },
+        {
+          "question": "Can I customize the packages you offer?",
+          "answer": "Absolutely. Every package can be tailored to your goals, budget, and timeline, so you only pay for what you actually need."
+        },
+        {
+          "question": "How do you measure the success of a marketing campaign?",
+          "answer": "We track metrics like traffic, conversion rate, lead quality, and ROI, then share clear monthly reports so you always know what's working."
+        },
+        {
+          "question": "What if I don't like the designs or strategies?",
+          "answer": "We build in revision rounds at every stage, and we won't move forward until you're genuinely happy with the direction."
+        },
+        {
+          "question": "How do I get started?",
+          "answer": "Book a free consultation call, tell us about your goals, and we'll put together a tailored plan within a few days."
+        },
+        {
+          "question": "Do you provide support after launching my website or campaign?",
+          "answer": "Yes, we offer ongoing support and maintenance plans to keep your site secure, updated, and performing well long after launch."
+        },
+        {
+          "question": "What makes your agency different from the rest?",
+          "answer": "We combine design, development, and SEO under one roof, so your website and marketing strategy are built to work together from day one."
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.433Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "FAQ Section",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.257Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa6"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fa5"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "TestimonialsHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.434Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Testimonials Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.260Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa7"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fa5"
+    },
+    "key": "awards",
+    "__v": 0,
+    "component": "TestimonialsAwards",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.435Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Testimonials Awards",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.261Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa8"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fa5"
+    },
+    "key": "client-stories",
+    "__v": 0,
+    "component": "ClientStories",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.435Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Client Stories",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.262Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fa9"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fa5"
+    },
+    "key": "platforms",
+    "__v": 0,
+    "component": "TestimonialsPlatforms",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.437Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Testimonials Platforms",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.262Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6faa"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fa5"
+    },
+    "key": "strategy",
+    "__v": 0,
+    "component": "TestimonialsStrategy",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.438Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Testimonials Strategy",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.263Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fac"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fab"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "AppDevHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.440Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "App Dev Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.267Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fad"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fab"
+    },
+    "key": "showcase",
+    "__v": 0,
+    "component": "AppDevShowcase",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.441Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "App Dev Showcase",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.268Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fae"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fab"
+    },
+    "key": "services",
+    "__v": 0,
+    "component": "AppDevServices",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.441Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "App Dev Services",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.269Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6faf"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fab"
+    },
+    "key": "process",
+    "__v": 0,
+    "component": "AppDevProcess",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.442Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "App Dev Process",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.269Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb0"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fab"
+    },
+    "key": "website-dev-comparison",
+    "__v": 0,
+    "component": "WebsiteDevComparison",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.443Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Comparison",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.270Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb1"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fab"
+    },
+    "key": "website-dev-strategy-cta",
+    "__v": 0,
+    "component": "WebsiteDevStrategyCta",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.443Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Strategy Cta",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.271Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb2"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fab"
+    },
+    "key": "faq-section",
+    "__v": 0,
+    "component": "FAQSection",
+    "content": {
+      "eyebrow": "Frequently Asked Questions",
+      "heading": "FAQ It Up! Your curiosity meets our expertise—let's clear things up!",
+      "intro": "We've gathered all the important info right here. Explore our FAQs and find the answers you need.",
+      "items": [
+        {
+          "question": "What services do you offer?",
+          "answer": "We offer website design and development, SEO, and full-funnel digital marketing strategies tailored to help your business grow online."
+        },
+        {
+          "question": "How long does it take to design a website?",
+          "answer": "Most website projects take 3 to 6 weeks from kickoff to launch, depending on scope, content readiness, and the number of revisions."
+        },
+        {
+          "question": "Do you work with small businesses or just big brands?",
+          "answer": "We work with businesses of every size, from solo founders and startups to established brands looking to scale."
+        },
+        {
+          "question": "Can I customize the packages you offer?",
+          "answer": "Absolutely. Every package can be tailored to your goals, budget, and timeline, so you only pay for what you actually need."
+        },
+        {
+          "question": "How do you measure the success of a marketing campaign?",
+          "answer": "We track metrics like traffic, conversion rate, lead quality, and ROI, then share clear monthly reports so you always know what's working."
+        },
+        {
+          "question": "What if I don't like the designs or strategies?",
+          "answer": "We build in revision rounds at every stage, and we won't move forward until you're genuinely happy with the direction."
+        },
+        {
+          "question": "How do I get started?",
+          "answer": "Book a free consultation call, tell us about your goals, and we'll put together a tailored plan within a few days."
+        },
+        {
+          "question": "Do you provide support after launching my website or campaign?",
+          "answer": "Yes, we offer ongoing support and maintenance plans to keep your site secure, updated, and performing well long after launch."
+        },
+        {
+          "question": "What makes your agency different from the rest?",
+          "answer": "We combine design, development, and SEO under one roof, so your website and marketing strategy are built to work together from day one."
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.444Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "FAQ Section",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.271Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb4"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fb3"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "CustomCrmHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.447Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Crm Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.273Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb5"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fb3"
+    },
+    "key": "challenge",
+    "__v": 0,
+    "component": "CustomCrmChallenge",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.448Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Crm Challenge",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.274Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb6"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fb3"
+    },
+    "key": "features",
+    "__v": 0,
+    "component": "CustomCrmFeatures",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.449Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Crm Features",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.275Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb7"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fb3"
+    },
+    "key": "smart-tools",
+    "__v": 0,
+    "component": "CustomCrmSmartTools",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.449Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Crm Smart Tools",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.277Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb8"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fb3"
+    },
+    "key": "industries",
+    "__v": 0,
+    "component": "CustomCrmIndustries",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.450Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Crm Industries",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.278Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fb9"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fb3"
+    },
+    "key": "built-around",
+    "__v": 0,
+    "component": "CustomCrmBuiltAround",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.451Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Crm Built Around",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.279Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fba"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fb3"
+    },
+    "key": "start-journey",
+    "__v": 0,
+    "component": "CustomCrmStartJourney",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.451Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Crm Start Journey",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.280Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fbc"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fbb"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "CustomDevHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.454Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Dev Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.282Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fbd"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fbb"
+    },
+    "key": "features",
+    "__v": 0,
+    "component": "CustomDevFeatures",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.455Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Dev Features",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.283Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fbe"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fbb"
+    },
+    "key": "what-we-build",
+    "__v": 0,
+    "component": "CustomDevWhatWeBuild",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.456Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Dev What We Build",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.284Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fbf"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fbb"
+    },
+    "key": "growth-partner",
+    "__v": 0,
+    "component": "CustomDevGrowthPartner",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.457Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Dev Growth Partner",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.285Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc0"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fbb"
+    },
+    "key": "our-work",
+    "__v": 0,
+    "component": "CustomDevOurWork",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.458Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Dev Our Work",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.285Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc1"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fbb"
+    },
+    "key": "start-project",
+    "__v": 0,
+    "component": "CustomDevStartProject",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.458Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Custom Dev Start Project",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.286Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc3"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "key": "web-design-hero",
+    "__v": 0,
+    "component": "ShopifyWebDesignHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.461Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify Web Design Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.288Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc4"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "key": "web-design-journey",
+    "__v": 0,
+    "component": "ShopifyWebDesignJourney",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.462Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify Web Design Journey",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.289Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc5"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "key": "product-design",
+    "__v": 0,
+    "component": "ShopifyProductDesign",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.462Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify Product Design",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.289Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc6"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "key": "store-architecture",
+    "__v": 0,
+    "component": "ShopifyStoreArchitecture",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.463Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify Store Architecture",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.290Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc7"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "key": "mobile-experience",
+    "__v": 0,
+    "component": "ShopifyMobileExperience",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.464Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify Mobile Experience",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.291Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc8"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "key": "what-we-offer",
+    "__v": 0,
+    "component": "ShopifyWhatWeOffer",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.465Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify What We Offer",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.292Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fc9"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "key": "cta-banner",
+    "__v": 0,
+    "component": "ShopifyCTABanner",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.465Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify CTA Banner",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.293Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fca"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fc2"
+    },
+    "key": "results-and-form",
+    "__v": 0,
+    "component": "ShopifyResultsAndForm",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.466Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Shopify Results And Form",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.294Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fcc"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fcb"
+    },
+    "key": "hero",
+    "__v": 0,
+    "component": "WebHostingHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.468Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Web Hosting Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.297Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fcd"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fcb"
+    },
+    "key": "features",
+    "__v": 0,
+    "component": "WebHostingFeatures",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.468Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Web Hosting Features",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.298Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fce"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fcb"
+    },
+    "key": "speed",
+    "__v": 0,
+    "component": "WebHostingSpeed",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.469Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Web Hosting Speed",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.299Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fcf"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fcb"
+    },
+    "key": "security",
+    "__v": 0,
+    "component": "WebHostingSecurity",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.470Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Web Hosting Security",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.300Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd1"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "hero-visual",
+    "__v": 0,
+    "component": "WebsiteDevHeroVisual",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.474Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Hero Visual",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.305Z"
+    },
+    "draftOrder": 1
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd2"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "trusted-bar",
+    "__v": 0,
+    "component": "TrustedBar",
+    "content": {
+      "label": "Trusted by 250+ Businesses Across 15+ Industries",
+      "logos": [
+        {
+          "name": "Max Healthcare",
+          "image": "/clients/max-healthcare.svg"
+        },
+        {
+          "name": "Danube Properties",
+          "image": "/clients/danube-properties.svg"
+        },
+        {
+          "name": "The Better India",
+          "image": "/clients/the-better-india.svg"
+        },
+        {
+          "name": "HomeLane",
+          "image": "/clients/homelane.svg"
+        },
+        {
+          "name": "Tynor",
+          "image": "/clients/tynor.svg"
+        },
+        {
+          "name": "Policybazaar",
+          "image": "/clients/policybazaar.svg"
+        },
+        {
+          "name": "Bikanervala",
+          "image": "/clients/bikanervala.svg"
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.476Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Trusted Bar",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.306Z"
+    },
+    "draftOrder": 2
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd3"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "transformations",
+    "__v": 0,
+    "component": "WebsiteDevTransformations",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.477Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Transformations",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.307Z"
+    },
+    "draftOrder": 3
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd4"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "approach",
+    "__v": 0,
+    "component": "WebsiteDevApproach",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.478Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Approach",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.307Z"
+    },
+    "draftOrder": 4
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd5"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "growth-journey",
+    "__v": 0,
+    "component": "WebsiteDevGrowthJourney",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.479Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Growth Journey",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.309Z"
+    },
+    "draftOrder": 5
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd6"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "comparison",
+    "__v": 0,
+    "component": "WebsiteDevComparison",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.480Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Comparison",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.310Z"
+    },
+    "draftOrder": 6
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd7"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "growth-plan",
+    "__v": 0,
+    "component": "WebsiteDevGrowthPlan",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.481Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Growth Plan",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.311Z"
+    },
+    "draftOrder": 7
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd8"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "strategy-cta",
+    "__v": 0,
+    "component": "WebsiteDevStrategyCta",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.482Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Strategy Cta",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.312Z"
+    },
+    "draftOrder": 8
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fd9"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "faq-section",
+    "__v": 0,
+    "component": "FAQSection",
+    "content": {
+      "eyebrow": "Frequently Asked Questions",
+      "heading": "FAQ It Up! Your curiosity meets our expertise—let's clear things up!",
+      "intro": "We've gathered all the important info right here. Explore our FAQs and find the answers you need.",
+      "items": [
+        {
+          "question": "What services do you offer?",
+          "answer": "We offer website design and development, SEO, and full-funnel digital marketing strategies tailored to help your business grow online."
+        },
+        {
+          "question": "How long does it take to design a website?",
+          "answer": "Most website projects take 3 to 6 weeks from kickoff to launch, depending on scope, content readiness, and the number of revisions."
+        },
+        {
+          "question": "Do you work with small businesses or just big brands?",
+          "answer": "We work with businesses of every size, from solo founders and startups to established brands looking to scale."
+        },
+        {
+          "question": "Can I customize the packages you offer?",
+          "answer": "Absolutely. Every package can be tailored to your goals, budget, and timeline, so you only pay for what you actually need."
+        },
+        {
+          "question": "How do you measure the success of a marketing campaign?",
+          "answer": "We track metrics like traffic, conversion rate, lead quality, and ROI, then share clear monthly reports so you always know what's working."
+        },
+        {
+          "question": "What if I don't like the designs or strategies?",
+          "answer": "We build in revision rounds at every stage, and we won't move forward until you're genuinely happy with the direction."
+        },
+        {
+          "question": "How do I get started?",
+          "answer": "Book a free consultation call, tell us about your goals, and we'll put together a tailored plan within a few days."
+        },
+        {
+          "question": "Do you provide support after launching my website or campaign?",
+          "answer": "Yes, we offer ongoing support and maintenance plans to keep your site secure, updated, and performing well long after launch."
+        },
+        {
+          "question": "What makes your agency different from the rest?",
+          "answer": "We combine design, development, and SEO under one roof, so your website and marketing strategy are built to work together from day one."
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.483Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "FAQ Section",
+    "order": 9,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.312Z"
+    },
+    "draftOrder": 9
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fdb"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fda"
+    },
+    "__v": 0,
+    "component": "WhoWeAreHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.486Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Who We Are Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.315Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fdc"
+    },
+    "key": "solve",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fda"
+    },
+    "__v": 0,
+    "component": "WhoWeAreSolve",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.487Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Who We Are Solve",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.316Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fdd"
+    },
+    "key": "approach",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fda"
+    },
+    "__v": 0,
+    "component": "WhoWeAreApproach",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.488Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Who We Are Approach",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.317Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fde"
+    },
+    "key": "mission",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fda"
+    },
+    "__v": 0,
+    "component": "WhoWeAreMission",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.490Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Who We Are Mission",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.318Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fdf"
+    },
+    "key": "vision",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fda"
+    },
+    "__v": 0,
+    "component": "WhoWeAreVision",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.491Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Who We Are Vision",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.318Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe0"
+    },
+    "key": "values",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fda"
+    },
+    "__v": 0,
+    "component": "WhoWeAreValues",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.491Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Who We Are Values",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.319Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe1"
+    },
+    "key": "woo-proposal",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fda"
+    },
+    "__v": 0,
+    "component": "WooProposal",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.492Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Woo Proposal",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.320Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe3"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fe2"
+    },
+    "__v": 0,
+    "component": "WhyChooseUsHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.495Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.322Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe4"
+    },
+    "key": "benefits",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fe2"
+    },
+    "__v": 0,
+    "component": "WhyChooseUsBenefits",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.496Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us Benefits",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.322Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe5"
+    },
+    "key": "how-we-work-process",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fe2"
+    },
+    "__v": 0,
+    "component": "HowWeWorkProcess",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.496Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "How We Work Process",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.323Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe6"
+    },
+    "key": "approach",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fe2"
+    },
+    "__v": 0,
+    "component": "WhyChooseUsApproach",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.497Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us Approach",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.323Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe7"
+    },
+    "key": "value",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fe2"
+    },
+    "__v": 0,
+    "component": "WhyChooseUsValue",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.498Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us Value",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.324Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe8"
+    },
+    "key": "future-ready",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fe2"
+    },
+    "__v": 0,
+    "component": "WhyChooseUsFutureReady",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.499Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us Future Ready",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.326Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb6fe9"
+    },
+    "key": "proposal-form",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fe2"
+    },
+    "__v": 0,
+    "component": "WhyChooseUsProposalForm",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.500Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us Proposal Form",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.327Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b0537e313af4a4d99f62015"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6efb"
+    },
+    "__v": 0,
+    "component": "HomeHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T07:08:19.692Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Home Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-26T05:51:14.686Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b0537e313af4a4d99f62016"
+    },
+    "key": "content",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f68"
+    },
+    "__v": 0,
+    "component": "HostingContent",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T07:08:19.790Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hosting Content",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.202Z"
+    },
+    "draftOrder": 0
+  },
+  {
+    "_id": {
+      "$oid": "6b0537e313af4a4d99f62017"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "__v": 0,
+    "component": "LocationHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T07:08:19.793Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Location Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.204Z"
+    },
+    "draftOrder": 0
+  },
+  {
+    "_id": {
+      "$oid": "6b0537e313af4a4d99f62018"
+    },
+    "key": "services",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f69"
+    },
+    "__v": 0,
+    "component": "LocationServices",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T07:08:19.793Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Location Services",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.205Z"
+    },
+    "draftOrder": 1
+  },
+  {
+    "_id": {
+      "$oid": "6b0537e313af4a4d99f62019"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "__v": 0,
+    "component": "WebsiteDevHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T07:08:19.873Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Website Dev Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.305Z"
+    },
+    "draftOrder": 0
+  },
+  {
+    "_id": {
+      "$oid": "6b0563c513af4a4d99f62041"
+    },
+    "key": "hero",
+    "page": {
+      "$oid": "6b0563c513af4a4d99f62040"
+    },
+    "__v": 0,
+    "component": "ContactHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T10:15:33.717Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Contact Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.098Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b0563c513af4a4d99f62042"
+    },
+    "key": "why-choose-us",
+    "page": {
+      "$oid": "6b0563c513af4a4d99f62040"
+    },
+    "__v": 0,
+    "component": "WhyChooseUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T10:15:33.718Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why Choose Us",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.098Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b0563c513af4a4d99f62043"
+    },
+    "key": "faq-section",
+    "page": {
+      "$oid": "6b0563c513af4a4d99f62040"
+    },
+    "__v": 0,
+    "component": "FAQSection",
+    "content": {
+      "eyebrow": "Frequently Asked Questions",
+      "heading": "FAQ It Up! Your curiosity meets our expertise—let's clear things up!",
+      "intro": "We've gathered all the important info right here. Explore our FAQs and find the answers you need.",
+      "items": [
+        {
+          "question": "What services do you offer?",
+          "answer": "We offer website design and development, SEO, and full-funnel digital marketing strategies tailored to help your business grow online."
+        },
+        {
+          "question": "How long does it take to design a website?",
+          "answer": "Most website projects take 3 to 6 weeks from kickoff to launch, depending on scope, content readiness, and the number of revisions."
+        },
+        {
+          "question": "Do you work with small businesses or just big brands?",
+          "answer": "We work with businesses of every size, from solo founders and startups to established brands looking to scale."
+        },
+        {
+          "question": "Can I customize the packages you offer?",
+          "answer": "Absolutely. Every package can be tailored to your goals, budget, and timeline, so you only pay for what you actually need."
+        },
+        {
+          "question": "How do you measure the success of a marketing campaign?",
+          "answer": "We track metrics like traffic, conversion rate, lead quality, and ROI, then share clear monthly reports so you always know what's working."
+        },
+        {
+          "question": "What if I don't like the designs or strategies?",
+          "answer": "We build in revision rounds at every stage, and we won't move forward until you're genuinely happy with the direction."
+        },
+        {
+          "question": "How do I get started?",
+          "answer": "Book a free consultation call, tell us about your goals, and we'll put together a tailored plan within a few days."
+        },
+        {
+          "question": "Do you provide support after launching my website or campaign?",
+          "answer": "Yes, we offer ongoing support and maintenance plans to keep your site secure, updated, and performing well long after launch."
+        },
+        {
+          "question": "What makes your agency different from the rest?",
+          "answer": "We combine design, development, and SEO under one roof, so your website and marketing strategy are built to work together from day one."
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-24T10:15:33.719Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "FAQ Section",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.099Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b057f4a13af4a4d99f62048"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "key": "why-us",
+    "__v": 0,
+    "component": "HireAspNetWhyUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T12:12:58.150Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Why Us",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.135Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b057f4a13af4a4d99f62049"
+    },
+    "key": "process",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "__v": 0,
+    "component": "HireAspNetProcess",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T12:12:58.152Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Process",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.136Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b057f4a13af4a4d99f6204a"
+    },
+    "key": "cta",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "__v": 0,
+    "component": "HireAspNetCta",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T12:12:58.152Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Cta",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.137Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b057f4a13af4a4d99f6204b"
+    },
+    "key": "success-stories",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "__v": 0,
+    "component": "HireAspNetStories",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T12:12:58.153Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Stories",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.138Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b057f4a13af4a4d99f6204c"
+    },
+    "key": "innovation",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "__v": 0,
+    "component": "HireAspNetInnovation",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T12:12:58.154Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Innovation",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.138Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b057f4a13af4a4d99f6204d"
+    },
+    "key": "contact",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f2e"
+    },
+    "__v": 0,
+    "component": "HireAspNetContact",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-24T12:12:58.155Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Asp Net Contact",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.139Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b066e185c6508c4a47b8eaf"
+    },
+    "key": "case-study",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "__v": 0,
+    "component": "HireCorePhpCaseStudy",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:11:52.199Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Case Study",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.166Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b066e185c6508c4a47b8eb0"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f46"
+    },
+    "key": "next-step",
+    "__v": 0,
+    "component": "HireCorePhpNextStep",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:11:52.214Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Core Php Next Step",
+    "order": 8,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.170Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b066e185c6508c4a47b8eb1"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f59"
+    },
+    "key": "what-to-expect",
+    "__v": 0,
+    "component": "HireShopifyExpect",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:11:52.228Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Hire Shopify Expect",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.188Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b066e185c6508c4a47b8eb2"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f82"
+    },
+    "key": "performance",
+    "__v": 0,
+    "component": "GoogleAdsPerformance",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:11:52.280Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Google Ads Performance",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.231Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b066e185c6508c4a47b8eb3"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fcb"
+    },
+    "key": "scale",
+    "__v": 0,
+    "component": "WebHostingScale",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:11:52.359Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Web Hosting Scale",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.301Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b066e185c6508c4a47b8eb4"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fcb"
+    },
+    "key": "results",
+    "__v": 0,
+    "component": "WebHostingResults",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:11:52.361Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Web Hosting Results",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.302Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b066e185c6508c4a47b8eb5"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fcb"
+    },
+    "key": "responsibility",
+    "__v": 0,
+    "component": "WebHostingResponsibility",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:11:52.362Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Web Hosting Responsibility",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.302Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b0675ed5c6508c4a47b8ebc"
+    },
+    "key": "results",
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "__v": 0,
+    "component": "ArVrResults",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:45:17.862Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ar Vr Results",
+    "order": 6,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.122Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b0675ed5c6508c4a47b8ebd"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6f20"
+    },
+    "key": "contact",
+    "__v": 0,
+    "component": "ArVrContact",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T05:45:17.863Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Ar Vr Contact",
+    "order": 7,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.122Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b067d7c5c6508c4a47b8ec5"
+    },
+    "page": {
+      "$oid": "6b067d7c5c6508c4a47b8ec4"
+    },
+    "key": "thank-you",
+    "__v": 0,
+    "component": "ThankYouHero",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T06:17:32.363Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Thank You Hero",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T06:17:32.363Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b06d5955c6508c4a47b8ecf"
+    },
+    "key": "trusted-bar",
+    "page": {
+      "$oid": "6b06d5955c6508c4a47b8ece"
+    },
+    "__v": 0,
+    "component": "TrustedBar",
+    "content": {
+      "label": "Trusted by 250+ Businesses Across 15+ Industries",
+      "logos": [
+        {
+          "name": "Max Healthcare",
+          "image": "/clients/max-healthcare.svg"
+        },
+        {
+          "name": "Danube Properties",
+          "image": "/clients/danube-properties.svg"
+        },
+        {
+          "name": "The Better India",
+          "image": "/clients/the-better-india.svg"
+        },
+        {
+          "name": "HomeLane",
+          "image": "/clients/homelane.svg"
+        },
+        {
+          "name": "Tynor",
+          "image": "/clients/tynor.svg"
+        },
+        {
+          "name": "Policybazaar",
+          "image": "/clients/policybazaar.svg"
+        },
+        {
+          "name": "Bikanervala",
+          "image": "/clients/bikanervala.svg"
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-25T12:33:25.061Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Client logos (Trusted by…)",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.061Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b06d5955c6508c4a47b8ed0"
+    },
+    "key": "projects-carousel",
+    "page": {
+      "$oid": "6b06d5955c6508c4a47b8ece"
+    },
+    "__v": 0,
+    "component": "ProjectsCarousel",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T12:33:25.063Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Featured projects slider",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.063Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b06d5955c6508c4a47b8ed1"
+    },
+    "key": "client-stories",
+    "page": {
+      "$oid": "6b06d5955c6508c4a47b8ece"
+    },
+    "__v": 0,
+    "component": "ClientStories",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T12:33:25.064Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Client stories slider",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.064Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b06d5955c6508c4a47b8ed2"
+    },
+    "key": "why-choose-us",
+    "page": {
+      "$oid": "6b06d5955c6508c4a47b8ece"
+    },
+    "__v": 0,
+    "component": "WhyChooseUs",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T12:33:25.065Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Why choose us",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.065Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b06d5955c6508c4a47b8ed3"
+    },
+    "key": "cta-section",
+    "page": {
+      "$oid": "6b06d5955c6508c4a47b8ece"
+    },
+    "__v": 0,
+    "component": "CtaSection",
+    "content": {
+      "eyebrow": "Let's build something great",
+      "heading": "Ready to start your next project?",
+      "button": {
+        "label": "Get started",
+        "href": "/contact"
+      },
+      "cardTitle": "Quick 15-minute call",
+      "cardText": "Pick a time that works for you.",
+      "cardButton": {
+        "label": "Book a free call",
+        "href": "/contact"
+      },
+      "availability": "Available for project"
+    },
+    "createdAt": {
+      "$date": "2026-11-25T12:33:25.066Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Call to action banner",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.066Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b06d5955c6508c4a47b8ed4"
+    },
+    "key": "website-dev-comparison",
+    "page": {
+      "$oid": "6b06d5955c6508c4a47b8ece"
+    },
+    "__v": 0,
+    "component": "WebsiteDevComparison",
+    "content": {},
+    "createdAt": {
+      "$date": "2026-11-25T12:33:25.067Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Us vs others comparison",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.067Z"
+    }
+  }
+]

@@ -1,0 +1,140 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7001"
+    },
+    "slug": "ui-ux-designer",
+    "__v": 0,
+    "benefits": [],
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.532Z"
+    },
+    "department": "Design",
+    "employmentType": "hybrid",
+    "experience": "2 - 4 Yrs",
+    "location": "Gurugram",
+    "order": 0,
+    "requirements": [],
+    "responsibilities": [],
+    "status": "open",
+    "title": "UI/UX Designer",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.352Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7002"
+    },
+    "slug": "frontend-developer",
+    "__v": 0,
+    "benefits": [],
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.533Z"
+    },
+    "department": "Development",
+    "employmentType": "hybrid",
+    "experience": "2 - 5 Yrs",
+    "location": "Gurugram",
+    "order": 1,
+    "requirements": [],
+    "responsibilities": [],
+    "status": "open",
+    "title": "Frontend Developer",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.353Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7003"
+    },
+    "slug": "backend-developer",
+    "__v": 0,
+    "benefits": [],
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.534Z"
+    },
+    "department": "Development",
+    "employmentType": "hybrid",
+    "experience": "2 - 5 Yrs",
+    "location": "Gurugram",
+    "order": 2,
+    "requirements": [],
+    "responsibilities": [],
+    "status": "open",
+    "title": "Backend Developer",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.354Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7004"
+    },
+    "slug": "digital-marketing-executive",
+    "__v": 0,
+    "benefits": [],
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.535Z"
+    },
+    "department": "Marketing",
+    "employmentType": "hybrid",
+    "experience": "1 - 3 Yrs",
+    "location": "Gurugram",
+    "order": 3,
+    "requirements": [],
+    "responsibilities": [],
+    "status": "open",
+    "title": "Digital Marketing Executive",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.354Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7005"
+    },
+    "slug": "project-manager",
+    "__v": 0,
+    "benefits": [],
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.536Z"
+    },
+    "department": "Operations",
+    "employmentType": "hybrid",
+    "experience": "3 - 6 Yrs",
+    "location": "Gurugram",
+    "order": 4,
+    "requirements": [],
+    "responsibilities": [],
+    "status": "open",
+    "title": "Project Manager",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.355Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7006"
+    },
+    "slug": "technical-support-engineer",
+    "__v": 0,
+    "benefits": [],
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.537Z"
+    },
+    "department": "Support",
+    "employmentType": "hybrid",
+    "experience": "1 - 4 Yrs",
+    "location": "Gurugram",
+    "order": 5,
+    "requirements": [],
+    "responsibilities": [],
+    "status": "open",
+    "title": "Technical Support Engineer",
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.356Z"
+    }
+  }
+]

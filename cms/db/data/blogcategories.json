@@ -1,0 +1,92 @@
+[
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7007"
+    },
+    "slug": "ai-and-geo",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.539Z"
+    },
+    "name": "AI & GEO",
+    "order": 0,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.357Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7008"
+    },
+    "slug": "seo",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.540Z"
+    },
+    "name": "SEO",
+    "order": 1,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.359Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb7009"
+    },
+    "slug": "ecommerce",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.541Z"
+    },
+    "name": "Ecommerce",
+    "order": 2,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.361Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb700a"
+    },
+    "slug": "local-seo",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.543Z"
+    },
+    "name": "Local SEO",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.362Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb700b"
+    },
+    "slug": "web-and-ux",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.545Z"
+    },
+    "name": "Web & UX",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.363Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b043e9cdb56916197bb700c"
+    },
+    "slug": "digital-growth",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-23T13:24:44.546Z"
+    },
+    "name": "Digital Growth",
+    "order": 5,
+    "updatedAt": {
+      "$date": "2026-11-25T12:33:25.365Z"
+    }
+  }
+]
