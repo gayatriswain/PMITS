@@ -28,7 +28,7 @@
     "status": "published",
     "title": "Home",
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.684Z"
+      "$date": "2026-11-26T08:28:25.782Z"
     },
     "updatedBy": {
       "$oid": "6b05226e204e595d465f79f5"
@@ -63,7 +63,7 @@
     "status": "published",
     "title": "Blog & Insights",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.083Z"
+      "$date": "2026-11-26T08:28:25.798Z"
     }
   },
   {
@@ -95,7 +95,7 @@
     "status": "published",
     "title": "Careers",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.087Z"
+      "$date": "2026-11-26T08:28:25.803Z"
     }
   },
   {
@@ -127,7 +127,7 @@
     "status": "published",
     "title": "Animation & Graphic Design Services",
     "updatedAt": {
-      "$date": "2026-11-25T13:26:21.703Z"
+      "$date": "2026-11-26T08:28:25.818Z"
     },
     "updatedBy": {
       "$oid": "6b05226e204e595d465f79f5"
@@ -162,7 +162,7 @@
     "status": "published",
     "title": "Custom Agentic AI Solution",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.107Z"
+      "$date": "2026-11-26T08:28:25.827Z"
     }
   },
   {
@@ -194,7 +194,7 @@
     "status": "published",
     "title": "Custom AR/VR Solutions",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.115Z"
+      "$date": "2026-11-26T08:28:25.837Z"
     }
   },
   {
@@ -226,7 +226,7 @@
     "status": "published",
     "title": "UI/UX Design Services",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.123Z"
+      "$date": "2026-11-26T08:28:25.852Z"
     }
   },
   {
@@ -258,7 +258,7 @@
     "status": "published",
     "title": "Hire ASP.NET Developers",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.131Z"
+      "$date": "2026-11-26T08:28:25.862Z"
     }
   },
   {
@@ -290,7 +290,7 @@
     "status": "published",
     "title": "Hire BigCommerce Developers",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.140Z"
+      "$date": "2026-11-26T08:28:25.874Z"
     }
   },
   {
@@ -322,7 +322,7 @@
     "status": "published",
     "title": "Hire CakePHP Developers",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.149Z"
+      "$date": "2026-11-26T08:28:25.885Z"
     }
   },
   {
@@ -354,7 +354,7 @@
     "status": "published",
     "title": "Hire Core PHP Developers",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.160Z"
+      "$date": "2026-11-26T08:28:25.898Z"
     }
   },
   {
@@ -386,7 +386,7 @@
     "status": "published",
     "title": "Hire Magento Developers",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.171Z"
+      "$date": "2026-11-26T08:28:25.910Z"
     }
   },
   {
@@ -418,7 +418,7 @@
     "status": "published",
     "title": "Hire Shopify Developers",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.184Z"
+      "$date": "2026-11-26T08:28:25.920Z"
     }
   },
   {
@@ -450,7 +450,7 @@
     "status": "published",
     "title": "Hire WooCommerce Developers",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.190Z"
+      "$date": "2026-11-26T08:28:25.928Z"
     }
   },
   {
@@ -482,7 +482,7 @@
     "status": "published",
     "title": "Hosting",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.200Z"
+      "$date": "2026-11-26T08:28:25.938Z"
     }
   },
   {
@@ -514,7 +514,7 @@
     "status": "published",
     "title": "Location",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.203Z"
+      "$date": "2026-11-26T08:28:25.941Z"
     }
   },
   {
@@ -546,7 +546,7 @@
     "status": "published",
     "title": "AI SEO Agent",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.211Z"
+      "$date": "2026-11-26T08:28:25.954Z"
     }
   },
   {
@@ -578,7 +578,7 @@
     "status": "published",
     "title": "E-Commerce SEO Services",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.219Z"
+      "$date": "2026-11-26T08:28:25.968Z"
     }
   },
   {
@@ -610,7 +610,7 @@
     "status": "published",
     "title": "Google Ads",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.227Z"
+      "$date": "2026-11-26T08:28:25.979Z"
     }
   },
   {
@@ -642,7 +642,7 @@
     "status": "published",
     "title": "Local SEO Services",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.237Z"
+      "$date": "2026-11-26T08:28:25.993Z"
     }
   },
   {
@@ -674,7 +674,7 @@
     "status": "published",
     "title": "Social Media Marketing",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.243Z"
+      "$date": "2026-11-26T08:28:26.002Z"
     }
   },
   {
@@ -706,7 +706,7 @@
     "status": "published",
     "title": "SEO Services",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.250Z"
+      "$date": "2026-11-26T08:28:26.010Z"
     },
     "updatedBy": {
       "$oid": "6b051700333b3d5405e45036"
@@ -741,7 +741,7 @@
     "status": "published",
     "title": "Client Testimonials",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.258Z"
+      "$date": "2026-11-26T08:28:26.020Z"
     }
   },
   {
@@ -773,7 +773,7 @@
     "status": "published",
     "title": "App Development",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.266Z"
+      "$date": "2026-11-26T08:28:26.028Z"
     }
   },
   {
@@ -805,7 +805,7 @@
     "status": "published",
     "title": "Custom CRM Solution",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.272Z"
+      "$date": "2026-11-26T08:28:26.036Z"
     },
     "updatedBy": {
       "$oid": "6b0537fca1408cf8617b715d"
@@ -840,7 +840,7 @@
     "status": "published",
     "title": "Custom Development Services",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.280Z"
+      "$date": "2026-11-26T08:28:26.042Z"
     }
   },
   {
@@ -872,7 +872,7 @@
     "status": "published",
     "title": "Shopify Web Design",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.287Z"
+      "$date": "2026-11-26T08:28:26.050Z"
     }
   },
   {
@@ -904,7 +904,7 @@
     "status": "published",
     "title": "Web Hosting",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.295Z"
+      "$date": "2026-11-26T08:28:26.057Z"
     }
   },
   {
@@ -936,7 +936,7 @@
     "status": "published",
     "title": "Website Development",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.303Z"
+      "$date": "2026-11-26T08:28:26.065Z"
     }
   },
   {
@@ -968,7 +968,7 @@
     "status": "published",
     "title": "Who We Are",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.313Z"
+      "$date": "2026-11-26T08:28:26.074Z"
     }
   },
   {
@@ -1000,7 +1000,7 @@
     "status": "published",
     "title": "Why Choose Us",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.320Z"
+      "$date": "2026-11-26T08:28:26.082Z"
     }
   },
   {
@@ -1032,7 +1032,7 @@
     "status": "published",
     "title": "Contact Us",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.095Z"
+      "$date": "2026-11-26T08:28:25.812Z"
     }
   },
   {
@@ -1064,7 +1064,7 @@
     "status": "published",
     "title": "Thank You",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.264Z"
+      "$date": "2026-11-26T08:28:26.026Z"
     }
   },
   {
@@ -1096,7 +1096,7 @@
     "status": "published",
     "title": "Global sections",
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.054Z"
+      "$date": "2026-11-26T08:28:25.761Z"
     }
   }
 ]

@@ -11,7 +11,7 @@
     "name": "AI & GEO",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.357Z"
+      "$date": "2026-11-26T08:28:26.119Z"
     }
   },
   {
@@ -26,7 +26,7 @@
     "name": "SEO",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.359Z"
+      "$date": "2026-11-26T08:28:26.121Z"
     }
   },
   {
@@ -41,7 +41,7 @@
     "name": "Ecommerce",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.361Z"
+      "$date": "2026-11-26T08:28:26.122Z"
     }
   },
   {
@@ -56,7 +56,7 @@
     "name": "Local SEO",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.362Z"
+      "$date": "2026-11-26T08:28:26.123Z"
     }
   },
   {
@@ -71,7 +71,7 @@
     "name": "Web & UX",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.363Z"
+      "$date": "2026-11-26T08:28:26.125Z"
     }
   },
   {
@@ -86,7 +86,23 @@
     "name": "Digital Growth",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.365Z"
+      "$date": "2026-11-26T08:28:26.127Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b07e94f9781d01cf65a8918"
+    },
+    "slug": "uncategorized",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-11-26T08:09:51.306Z"
+    },
+    "isDefault": true,
+    "name": "Uncategorized",
+    "order": 999,
+    "updatedAt": {
+      "$date": "2026-11-26T08:09:51.306Z"
     }
   }
 ]

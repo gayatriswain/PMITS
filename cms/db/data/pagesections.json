@@ -18,7 +18,7 @@
     "label": "Growth Dashboard Card",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.694Z"
+      "$date": "2026-11-26T08:28:25.785Z"
     }
   },
   {
@@ -40,7 +40,7 @@
     "label": "Projects Carousel",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.695Z"
+      "$date": "2026-11-26T08:28:25.786Z"
     }
   },
   {
@@ -62,7 +62,7 @@
     "label": "Core Expertise",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.696Z"
+      "$date": "2026-11-26T08:28:25.787Z"
     }
   },
   {
@@ -116,7 +116,7 @@
     "label": "Trusted Bar",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.697Z"
+      "$date": "2026-11-26T08:28:25.788Z"
     }
   },
   {
@@ -138,7 +138,7 @@
     "label": "Why Choose Us",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.698Z"
+      "$date": "2026-11-26T08:28:25.789Z"
     }
   },
   {
@@ -160,7 +160,7 @@
     "label": "Services Showcase",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.698Z"
+      "$date": "2026-11-26T08:28:25.790Z"
     }
   },
   {
@@ -182,7 +182,7 @@
     "label": "Client Stories",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.699Z"
+      "$date": "2026-11-26T08:28:25.791Z"
     }
   },
   {
@@ -204,7 +204,7 @@
     "label": "Our Work",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.700Z"
+      "$date": "2026-11-26T08:28:25.792Z"
     }
   },
   {
@@ -226,7 +226,7 @@
     "label": "About Bento",
     "order": 9,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.701Z"
+      "$date": "2026-11-26T08:28:25.794Z"
     }
   },
   {
@@ -290,7 +290,7 @@
     "label": "FAQ Section",
     "order": 10,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.702Z"
+      "$date": "2026-11-26T08:28:25.795Z"
     }
   },
   {
@@ -326,7 +326,7 @@
     "label": "Cta Section",
     "order": 11,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.703Z"
+      "$date": "2026-11-26T08:28:25.797Z"
     }
   },
   {
@@ -348,7 +348,7 @@
     "label": "Blog Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.085Z"
+      "$date": "2026-11-26T08:28:25.800Z"
     }
   },
   {
@@ -370,7 +370,7 @@
     "label": "Blog Insights",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.086Z"
+      "$date": "2026-11-26T08:28:25.801Z"
     }
   },
   {
@@ -392,7 +392,7 @@
     "label": "Blog Grid",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.086Z"
+      "$date": "2026-11-26T08:28:25.802Z"
     }
   },
   {
@@ -414,7 +414,7 @@
     "label": "Career Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.089Z"
+      "$date": "2026-11-26T08:28:25.805Z"
     }
   },
   {
@@ -436,7 +436,7 @@
     "label": "Career Why Love",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.090Z"
+      "$date": "2026-11-26T08:28:25.805Z"
     }
   },
   {
@@ -458,7 +458,7 @@
     "label": "Career Life",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.092Z"
+      "$date": "2026-11-26T08:28:25.806Z"
     }
   },
   {
@@ -480,7 +480,7 @@
     "label": "Career How We Work",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.093Z"
+      "$date": "2026-11-26T08:28:25.808Z"
     }
   },
   {
@@ -502,7 +502,7 @@
     "label": "Career Open Positions",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.094Z"
+      "$date": "2026-11-26T08:28:25.809Z"
     }
   },
   {
@@ -524,7 +524,7 @@
     "label": "Career Send Profile",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.095Z"
+      "$date": "2026-11-26T08:28:25.811Z"
     }
   },
   {
@@ -537,7 +537,9 @@
     "key": "graphic-design-hero",
     "__v": 0,
     "component": "AnimationGraphicDesignHero",
-    "content": {},
+    "content": {
+      "AnimationGraphicDesignHero__t2": "BYJU'S "
+    },
     "createdAt": {
       "$date": "2026-11-23T13:24:44.145Z"
     },
@@ -546,7 +548,7 @@
     "label": "Animation Graphic Design Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T13:26:21.708Z"
+      "$date": "2026-11-26T08:28:25.820Z"
     }
   },
   {
@@ -568,7 +570,7 @@
     "label": "Visual Communication Solutions",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T13:26:21.710Z"
+      "$date": "2026-11-26T08:28:25.821Z"
     }
   },
   {
@@ -590,7 +592,7 @@
     "label": "Creative Partnership Section",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T13:26:21.712Z"
+      "$date": "2026-11-26T08:28:25.822Z"
     }
   },
   {
@@ -612,7 +614,7 @@
     "label": "Animation Process",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T13:26:21.713Z"
+      "$date": "2026-11-26T08:28:25.823Z"
     }
   },
   {
@@ -634,7 +636,7 @@
     "label": "Animation Impact Showcase",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T13:26:21.715Z"
+      "$date": "2026-11-26T08:28:25.824Z"
     }
   },
   {
@@ -656,7 +658,7 @@
     "label": "Animation Our Work",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T13:26:21.717Z"
+      "$date": "2026-11-26T08:28:25.826Z"
     }
   },
   {
@@ -678,7 +680,7 @@
     "label": "Agentic Ai Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.110Z"
+      "$date": "2026-11-26T08:28:25.830Z"
     }
   },
   {
@@ -700,7 +702,7 @@
     "label": "Agentic Ai Workflow",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.111Z"
+      "$date": "2026-11-26T08:28:25.832Z"
     }
   },
   {
@@ -722,7 +724,7 @@
     "label": "Agentic Ai Live Action",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.112Z"
+      "$date": "2026-11-26T08:28:25.833Z"
     }
   },
   {
@@ -744,7 +746,7 @@
     "label": "Agentic Ai Features",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.113Z"
+      "$date": "2026-11-26T08:28:25.834Z"
     }
   },
   {
@@ -766,7 +768,7 @@
     "label": "Agentic Ai Platform",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.114Z"
+      "$date": "2026-11-26T08:28:25.835Z"
     }
   },
   {
@@ -788,7 +790,7 @@
     "label": "Agentic Ai CTA",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.114Z"
+      "$date": "2026-11-26T08:28:25.836Z"
     }
   },
   {
@@ -810,7 +812,7 @@
     "label": "Ar Vr Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.117Z"
+      "$date": "2026-11-26T08:28:25.839Z"
     }
   },
   {
@@ -832,7 +834,7 @@
     "label": "Ar Vr Solutions",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.118Z"
+      "$date": "2026-11-26T08:28:25.841Z"
     }
   },
   {
@@ -854,7 +856,7 @@
     "label": "Ar Vr CTA",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.119Z"
+      "$date": "2026-11-26T08:28:25.842Z"
     }
   },
   {
@@ -876,7 +878,7 @@
     "label": "Ar Vr Approach",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.120Z"
+      "$date": "2026-11-26T08:28:25.844Z"
     }
   },
   {
@@ -898,7 +900,7 @@
     "label": "Ar Vr Showcase",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.120Z"
+      "$date": "2026-11-26T08:28:25.846Z"
     }
   },
   {
@@ -920,7 +922,7 @@
     "label": "Ar Vr Why",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.121Z"
+      "$date": "2026-11-26T08:28:25.847Z"
     }
   },
   {
@@ -942,7 +944,7 @@
     "label": "Ui Ux Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.126Z"
+      "$date": "2026-11-26T08:28:25.854Z"
     }
   },
   {
@@ -964,7 +966,7 @@
     "label": "Ui Ux Approach",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.127Z"
+      "$date": "2026-11-26T08:28:25.855Z"
     }
   },
   {
@@ -986,7 +988,7 @@
     "label": "Ui Ux What We Do",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.128Z"
+      "$date": "2026-11-26T08:28:25.856Z"
     }
   },
   {
@@ -1008,7 +1010,7 @@
     "label": "Ui Ux Why Us",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.129Z"
+      "$date": "2026-11-26T08:28:25.857Z"
     }
   },
   {
@@ -1030,7 +1032,7 @@
     "label": "Ui Ux Client Stories",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.129Z"
+      "$date": "2026-11-26T08:28:25.858Z"
     }
   },
   {
@@ -1052,7 +1054,7 @@
     "label": "Ui Ux Contact CTA",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.130Z"
+      "$date": "2026-11-26T08:28:25.860Z"
     }
   },
   {
@@ -1074,7 +1076,7 @@
     "label": "Hire Asp Net Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.133Z"
+      "$date": "2026-11-26T08:28:25.865Z"
     }
   },
   {
@@ -1096,7 +1098,7 @@
     "label": "Hire Asp Net Build",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.134Z"
+      "$date": "2026-11-26T08:28:25.866Z"
     }
   },
   {
@@ -1118,7 +1120,7 @@
     "label": "Hire Asp Net Expertise",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.135Z"
+      "$date": "2026-11-26T08:28:25.867Z"
     }
   },
   {
@@ -1140,7 +1142,7 @@
     "label": "Big Commerce Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.142Z"
+      "$date": "2026-11-26T08:28:25.877Z"
     }
   },
   {
@@ -1162,7 +1164,7 @@
     "label": "Big Commerce Trusted",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.143Z"
+      "$date": "2026-11-26T08:28:25.878Z"
     }
   },
   {
@@ -1184,7 +1186,7 @@
     "label": "Big Commerce Features",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.144Z"
+      "$date": "2026-11-26T08:28:25.880Z"
     }
   },
   {
@@ -1206,7 +1208,7 @@
     "label": "Big Commerce All In One",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.145Z"
+      "$date": "2026-11-26T08:28:25.881Z"
     }
   },
   {
@@ -1228,7 +1230,7 @@
     "label": "Big Commerce Benefits",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.146Z"
+      "$date": "2026-11-26T08:28:25.882Z"
     }
   },
   {
@@ -1250,7 +1252,7 @@
     "label": "Big Commerce Growth",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.147Z"
+      "$date": "2026-11-26T08:28:25.883Z"
     }
   },
   {
@@ -1272,7 +1274,7 @@
     "label": "Big Commerce Impact",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.147Z"
+      "$date": "2026-11-26T08:28:25.884Z"
     }
   },
   {
@@ -1294,7 +1296,7 @@
     "label": "Big Commerce Contact",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.148Z"
+      "$date": "2026-11-26T08:28:25.884Z"
     }
   },
   {
@@ -1316,7 +1318,7 @@
     "label": "Hire Cake Php Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.152Z"
+      "$date": "2026-11-26T08:28:25.887Z"
     }
   },
   {
@@ -1338,7 +1340,7 @@
     "label": "Hire Cake Php Expertise",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.153Z"
+      "$date": "2026-11-26T08:28:25.888Z"
     }
   },
   {
@@ -1360,7 +1362,7 @@
     "label": "Hire Cake Php Hire Options",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.153Z"
+      "$date": "2026-11-26T08:28:25.888Z"
     }
   },
   {
@@ -1382,7 +1384,7 @@
     "label": "Hire Cake Php Process",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.154Z"
+      "$date": "2026-11-26T08:28:25.889Z"
     }
   },
   {
@@ -1404,7 +1406,7 @@
     "label": "Hire Cake Php Results",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.155Z"
+      "$date": "2026-11-26T08:28:25.890Z"
     }
   },
   {
@@ -1426,7 +1428,7 @@
     "label": "Hire Cake Php Work",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.155Z"
+      "$date": "2026-11-26T08:28:25.891Z"
     }
   },
   {
@@ -1448,7 +1450,7 @@
     "label": "Hire Cake Php Why",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.156Z"
+      "$date": "2026-11-26T08:28:25.893Z"
     }
   },
   {
@@ -1470,7 +1472,7 @@
     "label": "Hire Cake Php Engagement",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.157Z"
+      "$date": "2026-11-26T08:28:25.894Z"
     }
   },
   {
@@ -1492,7 +1494,7 @@
     "label": "Hire Cake Php Final Step",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.159Z"
+      "$date": "2026-11-26T08:28:25.896Z"
     }
   },
   {
@@ -1514,7 +1516,7 @@
     "label": "Hire Cake Php Start Project",
     "order": 9,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.160Z"
+      "$date": "2026-11-26T08:28:25.897Z"
     }
   },
   {
@@ -1536,7 +1538,7 @@
     "label": "Hire Core Php Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.162Z"
+      "$date": "2026-11-26T08:28:25.901Z"
     }
   },
   {
@@ -1558,7 +1560,7 @@
     "label": "Hire Core Php Approach",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.163Z"
+      "$date": "2026-11-26T08:28:25.902Z"
     }
   },
   {
@@ -1580,7 +1582,7 @@
     "label": "Hire Core Php Why It Matters",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.164Z"
+      "$date": "2026-11-26T08:28:25.902Z"
     }
   },
   {
@@ -1602,7 +1604,7 @@
     "label": "Hire Core Php Solutions",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.164Z"
+      "$date": "2026-11-26T08:28:25.903Z"
     }
   },
   {
@@ -1624,7 +1626,7 @@
     "label": "Hire Core Php Why Choose Us",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.165Z"
+      "$date": "2026-11-26T08:28:25.904Z"
     }
   },
   {
@@ -1646,7 +1648,7 @@
     "label": "Hire Core Php What You Can Build",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.167Z"
+      "$date": "2026-11-26T08:28:25.906Z"
     }
   },
   {
@@ -1668,7 +1670,7 @@
     "label": "Hire Core Php Why Hire From Us",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.168Z"
+      "$date": "2026-11-26T08:28:25.907Z"
     }
   },
   {
@@ -1690,7 +1692,7 @@
     "label": "Hire Core Php Signature",
     "order": 9,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.170Z"
+      "$date": "2026-11-26T08:28:25.909Z"
     }
   },
   {
@@ -1712,7 +1714,7 @@
     "label": "Magento Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.173Z"
+      "$date": "2026-11-26T08:28:25.913Z"
     }
   },
   {
@@ -1734,7 +1736,7 @@
     "label": "Magento Services",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.175Z"
+      "$date": "2026-11-26T08:28:25.914Z"
     }
   },
   {
@@ -1756,7 +1758,7 @@
     "label": "Magento Industry",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.177Z"
+      "$date": "2026-11-26T08:28:25.915Z"
     }
   },
   {
@@ -1778,7 +1780,7 @@
     "label": "Magento Expertise",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.178Z"
+      "$date": "2026-11-26T08:28:25.916Z"
     }
   },
   {
@@ -1800,7 +1802,7 @@
     "label": "Magento Why Us",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.179Z"
+      "$date": "2026-11-26T08:28:25.916Z"
     }
   },
   {
@@ -1822,7 +1824,7 @@
     "label": "Magento Process",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.180Z"
+      "$date": "2026-11-26T08:28:25.917Z"
     }
   },
   {
@@ -1844,7 +1846,7 @@
     "label": "Magento Engage",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.180Z"
+      "$date": "2026-11-26T08:28:25.918Z"
     }
   },
   {
@@ -1866,7 +1868,7 @@
     "label": "Magento Outcome",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.181Z"
+      "$date": "2026-11-26T08:28:25.919Z"
     }
   },
   {
@@ -1888,7 +1890,7 @@
     "label": "Magento Proposal",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.183Z"
+      "$date": "2026-11-26T08:28:25.919Z"
     }
   },
   {
@@ -1910,7 +1912,7 @@
     "label": "Hire Shopify Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.187Z"
+      "$date": "2026-11-26T08:28:25.922Z"
     }
   },
   {
@@ -1932,7 +1934,7 @@
     "label": "Shopify Expertise",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.188Z"
+      "$date": "2026-11-26T08:28:25.923Z"
     }
   },
   {
@@ -1954,7 +1956,7 @@
     "label": "Hire Shopify Solutions",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.189Z"
+      "$date": "2026-11-26T08:28:25.925Z"
     }
   },
   {
@@ -1976,7 +1978,7 @@
     "label": "Hire Shopify Contact",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.190Z"
+      "$date": "2026-11-26T08:28:25.927Z"
     }
   },
   {
@@ -1998,7 +2000,7 @@
     "label": "Woo Hire Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.193Z"
+      "$date": "2026-11-26T08:28:25.931Z"
     }
   },
   {
@@ -2020,7 +2022,7 @@
     "label": "Woo Intro",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.194Z"
+      "$date": "2026-11-26T08:28:25.932Z"
     }
   },
   {
@@ -2042,7 +2044,7 @@
     "label": "Woo Why",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.195Z"
+      "$date": "2026-11-26T08:28:25.933Z"
     }
   },
   {
@@ -2064,7 +2066,7 @@
     "label": "Woo Powered",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.195Z"
+      "$date": "2026-11-26T08:28:25.933Z"
     }
   },
   {
@@ -2086,7 +2088,7 @@
     "label": "Woo Why Hire",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.196Z"
+      "$date": "2026-11-26T08:28:25.934Z"
     }
   },
   {
@@ -2108,7 +2110,7 @@
     "label": "Woo Commitment",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.197Z"
+      "$date": "2026-11-26T08:28:25.935Z"
     }
   },
   {
@@ -2130,7 +2132,7 @@
     "label": "Woo Expertise",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.198Z"
+      "$date": "2026-11-26T08:28:25.936Z"
     }
   },
   {
@@ -2152,7 +2154,7 @@
     "label": "Woo Success",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.199Z"
+      "$date": "2026-11-26T08:28:25.936Z"
     }
   },
   {
@@ -2174,7 +2176,7 @@
     "label": "Woo Proposal",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.200Z"
+      "$date": "2026-11-26T08:28:25.937Z"
     }
   },
   {
@@ -2228,7 +2230,7 @@
     "label": "Trusted Bar",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.206Z"
+      "$date": "2026-11-26T08:28:25.946Z"
     },
     "draftOrder": 2
   },
@@ -2251,7 +2253,7 @@
     "label": "Industries We Empower",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.206Z"
+      "$date": "2026-11-26T08:28:25.948Z"
     },
     "draftOrder": 3
   },
@@ -2274,7 +2276,7 @@
     "label": "Recent Success Stories",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.207Z"
+      "$date": "2026-11-26T08:28:25.948Z"
     },
     "draftOrder": 4
   },
@@ -2297,7 +2299,7 @@
     "label": "Why Choose Us",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.208Z"
+      "$date": "2026-11-26T08:28:25.950Z"
     },
     "draftOrder": 5
   },
@@ -2320,7 +2322,7 @@
     "label": "Client Stories",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.209Z"
+      "$date": "2026-11-26T08:28:25.950Z"
     },
     "draftOrder": 6
   },
@@ -2385,7 +2387,7 @@
     "label": "FAQ Section",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.210Z"
+      "$date": "2026-11-26T08:28:25.951Z"
     },
     "draftOrder": 7
   },
@@ -2422,7 +2424,7 @@
     "label": "Cta Section",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.211Z"
+      "$date": "2026-11-26T08:28:25.952Z"
     },
     "draftOrder": 8
   },
@@ -2445,7 +2447,7 @@
     "label": "Ai Seo Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.213Z"
+      "$date": "2026-11-26T08:28:25.956Z"
     }
   },
   {
@@ -2467,7 +2469,7 @@
     "label": "Ai Seo Rank Everywhere",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.214Z"
+      "$date": "2026-11-26T08:28:25.957Z"
     }
   },
   {
@@ -2489,7 +2491,7 @@
     "label": "Ai Seo Team",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.215Z"
+      "$date": "2026-11-26T08:28:25.959Z"
     }
   },
   {
@@ -2511,7 +2513,7 @@
     "label": "Ai Seo Experts",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.216Z"
+      "$date": "2026-11-26T08:28:25.960Z"
     }
   },
   {
@@ -2533,7 +2535,7 @@
     "label": "Ai Seo Difference",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.217Z"
+      "$date": "2026-11-26T08:28:25.961Z"
     }
   },
   {
@@ -2555,7 +2557,7 @@
     "label": "Ai Seo Never Stops",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.217Z"
+      "$date": "2026-11-26T08:28:25.963Z"
     }
   },
   {
@@ -2577,7 +2579,7 @@
     "label": "Ai Seo Proof",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.218Z"
+      "$date": "2026-11-26T08:28:25.965Z"
     }
   },
   {
@@ -2599,7 +2601,7 @@
     "label": "Ai Seo Strategy",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.219Z"
+      "$date": "2026-11-26T08:28:25.966Z"
     }
   },
   {
@@ -2621,7 +2623,7 @@
     "label": "Ecommerce Seo Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.221Z"
+      "$date": "2026-11-26T08:28:25.971Z"
     }
   },
   {
@@ -2643,7 +2645,7 @@
     "label": "Ecommerce Seo Layers",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.221Z"
+      "$date": "2026-11-26T08:28:25.972Z"
     }
   },
   {
@@ -2665,7 +2667,7 @@
     "label": "Ecommerce Seo Ecosystem",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.222Z"
+      "$date": "2026-11-26T08:28:25.973Z"
     }
   },
   {
@@ -2687,7 +2689,7 @@
     "label": "Ecommerce Seo Results",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.223Z"
+      "$date": "2026-11-26T08:28:25.974Z"
     }
   },
   {
@@ -2709,7 +2711,7 @@
     "label": "Ecommerce Seo Process Section",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.223Z"
+      "$date": "2026-11-26T08:28:25.975Z"
     }
   },
   {
@@ -2731,7 +2733,7 @@
     "label": "Growth Partner Section",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.224Z"
+      "$date": "2026-11-26T08:28:25.977Z"
     }
   },
   {
@@ -2753,7 +2755,7 @@
     "label": "Lead Form Section",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.226Z"
+      "$date": "2026-11-26T08:28:25.978Z"
     }
   },
   {
@@ -2775,7 +2777,7 @@
     "label": "Google Ads Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.228Z"
+      "$date": "2026-11-26T08:28:25.982Z"
     }
   },
   {
@@ -2797,7 +2799,7 @@
     "label": "Google Ads Ecosystem",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.229Z"
+      "$date": "2026-11-26T08:28:25.983Z"
     }
   },
   {
@@ -2819,7 +2821,7 @@
     "label": "Google Ads Intent",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.230Z"
+      "$date": "2026-11-26T08:28:25.984Z"
     }
   },
   {
@@ -2841,7 +2843,7 @@
     "label": "Google Ads Funnel",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.231Z"
+      "$date": "2026-11-26T08:28:25.985Z"
     }
   },
   {
@@ -2863,7 +2865,7 @@
     "label": "Google Ads Case Study",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.232Z"
+      "$date": "2026-11-26T08:28:25.987Z"
     }
   },
   {
@@ -2885,7 +2887,7 @@
     "label": "Google Ads Cta",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.233Z"
+      "$date": "2026-11-26T08:28:25.988Z"
     }
   },
   {
@@ -2907,7 +2909,7 @@
     "label": "Google Ads Bottom Banner",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.234Z"
+      "$date": "2026-11-26T08:28:25.989Z"
     }
   },
   {
@@ -2929,7 +2931,7 @@
     "label": "Client Stories",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.235Z"
+      "$date": "2026-11-26T08:28:25.990Z"
     }
   },
   {
@@ -2993,7 +2995,7 @@
     "label": "FAQ Section",
     "order": 9,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.236Z"
+      "$date": "2026-11-26T08:28:25.992Z"
     }
   },
   {
@@ -3015,7 +3017,7 @@
     "label": "Local Seo Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.238Z"
+      "$date": "2026-11-26T08:28:25.997Z"
     }
   },
   {
@@ -3037,7 +3039,7 @@
     "label": "Local Seo Journey",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.239Z"
+      "$date": "2026-11-26T08:28:25.998Z"
     }
   },
   {
@@ -3059,7 +3061,7 @@
     "label": "Local Seo Dominate",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.239Z"
+      "$date": "2026-11-26T08:28:25.999Z"
     }
   },
   {
@@ -3081,7 +3083,7 @@
     "label": "Local Seo Everywhere",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.240Z"
+      "$date": "2026-11-26T08:28:26Z"
     }
   },
   {
@@ -3103,7 +3105,7 @@
     "label": "Local Seo Optimize",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.241Z"
+      "$date": "2026-11-26T08:28:26Z"
     }
   },
   {
@@ -3125,7 +3127,7 @@
     "label": "Local Seo Results",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.242Z"
+      "$date": "2026-11-26T08:28:26.001Z"
     }
   },
   {
@@ -3147,7 +3149,7 @@
     "label": "Local Seo Contact",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.243Z"
+      "$date": "2026-11-26T08:28:26.002Z"
     }
   },
   {
@@ -3169,7 +3171,7 @@
     "label": "Social Media Marketing Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.245Z"
+      "$date": "2026-11-26T08:28:26.004Z"
     }
   },
   {
@@ -3191,7 +3193,7 @@
     "label": "Social Media Marketing Content Grid",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.246Z"
+      "$date": "2026-11-26T08:28:26.005Z"
     }
   },
   {
@@ -3213,7 +3215,7 @@
     "label": "Social Media Marketing Brand Compare",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.247Z"
+      "$date": "2026-11-26T08:28:26.006Z"
     }
   },
   {
@@ -3235,7 +3237,7 @@
     "label": "Social Media Marketing Content Types",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.247Z"
+      "$date": "2026-11-26T08:28:26.006Z"
     }
   },
   {
@@ -3257,7 +3259,7 @@
     "label": "Social Media Marketing Benefits",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.248Z"
+      "$date": "2026-11-26T08:28:26.007Z"
     }
   },
   {
@@ -3279,7 +3281,7 @@
     "label": "Social Media Marketing Case Study",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.249Z"
+      "$date": "2026-11-26T08:28:26.008Z"
     }
   },
   {
@@ -3301,7 +3303,7 @@
     "label": "Social Media Marketing Final CTA",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.249Z"
+      "$date": "2026-11-26T08:28:26.009Z"
     }
   },
   {
@@ -3323,7 +3325,7 @@
     "label": "Seo Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.252Z"
+      "$date": "2026-11-26T08:28:26.012Z"
     }
   },
   {
@@ -3345,7 +3347,7 @@
     "label": "Seo Opportunity",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.253Z"
+      "$date": "2026-11-26T08:28:26.014Z"
     }
   },
   {
@@ -3367,7 +3369,7 @@
     "label": "Seo Transformation",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.254Z"
+      "$date": "2026-11-26T08:28:26.015Z"
     }
   },
   {
@@ -3389,7 +3391,7 @@
     "label": "Seo Process",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.254Z"
+      "$date": "2026-11-26T08:28:26.015Z"
     }
   },
   {
@@ -3411,7 +3413,7 @@
     "label": "Seo Ecosystem",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.255Z"
+      "$date": "2026-11-26T08:28:26.017Z"
     }
   },
   {
@@ -3433,7 +3435,7 @@
     "label": "Seo Growth Framework",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.255Z"
+      "$date": "2026-11-26T08:28:26.017Z"
     }
   },
   {
@@ -3455,7 +3457,7 @@
     "label": "Website Dev Comparison",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.256Z"
+      "$date": "2026-11-26T08:28:26.018Z"
     }
   },
   {
@@ -3519,7 +3521,7 @@
     "label": "FAQ Section",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.257Z"
+      "$date": "2026-11-26T08:28:26.019Z"
     }
   },
   {
@@ -3541,7 +3543,7 @@
     "label": "Testimonials Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.260Z"
+      "$date": "2026-11-26T08:28:26.021Z"
     }
   },
   {
@@ -3563,7 +3565,7 @@
     "label": "Testimonials Awards",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.261Z"
+      "$date": "2026-11-26T08:28:26.022Z"
     }
   },
   {
@@ -3585,7 +3587,7 @@
     "label": "Client Stories",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.262Z"
+      "$date": "2026-11-26T08:28:26.023Z"
     }
   },
   {
@@ -3607,7 +3609,7 @@
     "label": "Testimonials Platforms",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.262Z"
+      "$date": "2026-11-26T08:28:26.023Z"
     }
   },
   {
@@ -3629,7 +3631,7 @@
     "label": "Testimonials Strategy",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.263Z"
+      "$date": "2026-11-26T08:28:26.024Z"
     }
   },
   {
@@ -3651,7 +3653,7 @@
     "label": "App Dev Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.267Z"
+      "$date": "2026-11-26T08:28:26.030Z"
     }
   },
   {
@@ -3673,7 +3675,7 @@
     "label": "App Dev Showcase",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.268Z"
+      "$date": "2026-11-26T08:28:26.031Z"
     }
   },
   {
@@ -3695,7 +3697,7 @@
     "label": "App Dev Services",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.269Z"
+      "$date": "2026-11-26T08:28:26.032Z"
     }
   },
   {
@@ -3717,7 +3719,7 @@
     "label": "App Dev Process",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.269Z"
+      "$date": "2026-11-26T08:28:26.033Z"
     }
   },
   {
@@ -3739,7 +3741,7 @@
     "label": "Website Dev Comparison",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.270Z"
+      "$date": "2026-11-26T08:28:26.034Z"
     }
   },
   {
@@ -3761,7 +3763,7 @@
     "label": "Website Dev Strategy Cta",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.271Z"
+      "$date": "2026-11-26T08:28:26.034Z"
     }
   },
   {
@@ -3825,7 +3827,7 @@
     "label": "FAQ Section",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.271Z"
+      "$date": "2026-11-26T08:28:26.035Z"
     }
   },
   {
@@ -3847,7 +3849,7 @@
     "label": "Custom Crm Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.273Z"
+      "$date": "2026-11-26T08:28:26.037Z"
     }
   },
   {
@@ -3869,7 +3871,7 @@
     "label": "Custom Crm Challenge",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.274Z"
+      "$date": "2026-11-26T08:28:26.038Z"
     }
   },
   {
@@ -3891,7 +3893,7 @@
     "label": "Custom Crm Features",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.275Z"
+      "$date": "2026-11-26T08:28:26.038Z"
     }
   },
   {
@@ -3913,7 +3915,7 @@
     "label": "Custom Crm Smart Tools",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.277Z"
+      "$date": "2026-11-26T08:28:26.039Z"
     }
   },
   {
@@ -3935,7 +3937,7 @@
     "label": "Custom Crm Industries",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.278Z"
+      "$date": "2026-11-26T08:28:26.040Z"
     }
   },
   {
@@ -3957,7 +3959,7 @@
     "label": "Custom Crm Built Around",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.279Z"
+      "$date": "2026-11-26T08:28:26.040Z"
     }
   },
   {
@@ -3979,7 +3981,7 @@
     "label": "Custom Crm Start Journey",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.280Z"
+      "$date": "2026-11-26T08:28:26.041Z"
     }
   },
   {
@@ -4001,7 +4003,7 @@
     "label": "Custom Dev Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.282Z"
+      "$date": "2026-11-26T08:28:26.044Z"
     }
   },
   {
@@ -4023,7 +4025,7 @@
     "label": "Custom Dev Features",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.283Z"
+      "$date": "2026-11-26T08:28:26.045Z"
     }
   },
   {
@@ -4045,7 +4047,7 @@
     "label": "Custom Dev What We Build",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.284Z"
+      "$date": "2026-11-26T08:28:26.046Z"
     }
   },
   {
@@ -4067,7 +4069,7 @@
     "label": "Custom Dev Growth Partner",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.285Z"
+      "$date": "2026-11-26T08:28:26.047Z"
     }
   },
   {
@@ -4089,7 +4091,7 @@
     "label": "Custom Dev Our Work",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.285Z"
+      "$date": "2026-11-26T08:28:26.048Z"
     }
   },
   {
@@ -4111,7 +4113,7 @@
     "label": "Custom Dev Start Project",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.286Z"
+      "$date": "2026-11-26T08:28:26.049Z"
     }
   },
   {
@@ -4133,7 +4135,7 @@
     "label": "Shopify Web Design Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.288Z"
+      "$date": "2026-11-26T08:28:26.051Z"
     }
   },
   {
@@ -4155,7 +4157,7 @@
     "label": "Shopify Web Design Journey",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.289Z"
+      "$date": "2026-11-26T08:28:26.052Z"
     }
   },
   {
@@ -4177,7 +4179,7 @@
     "label": "Shopify Product Design",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.289Z"
+      "$date": "2026-11-26T08:28:26.053Z"
     }
   },
   {
@@ -4199,7 +4201,7 @@
     "label": "Shopify Store Architecture",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.290Z"
+      "$date": "2026-11-26T08:28:26.053Z"
     }
   },
   {
@@ -4221,7 +4223,7 @@
     "label": "Shopify Mobile Experience",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.291Z"
+      "$date": "2026-11-26T08:28:26.054Z"
     }
   },
   {
@@ -4243,7 +4245,7 @@
     "label": "Shopify What We Offer",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.292Z"
+      "$date": "2026-11-26T08:28:26.054Z"
     }
   },
   {
@@ -4265,7 +4267,7 @@
     "label": "Shopify CTA Banner",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.293Z"
+      "$date": "2026-11-26T08:28:26.055Z"
     }
   },
   {
@@ -4287,7 +4289,7 @@
     "label": "Shopify Results And Form",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.294Z"
+      "$date": "2026-11-26T08:28:26.056Z"
     }
   },
   {
@@ -4309,7 +4311,7 @@
     "label": "Web Hosting Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.297Z"
+      "$date": "2026-11-26T08:28:26.059Z"
     }
   },
   {
@@ -4331,7 +4333,7 @@
     "label": "Web Hosting Features",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.298Z"
+      "$date": "2026-11-26T08:28:26.060Z"
     }
   },
   {
@@ -4353,7 +4355,7 @@
     "label": "Web Hosting Speed",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.299Z"
+      "$date": "2026-11-26T08:28:26.061Z"
     }
   },
   {
@@ -4375,7 +4377,7 @@
     "label": "Web Hosting Security",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.300Z"
+      "$date": "2026-11-26T08:28:26.062Z"
     }
   },
   {
@@ -4397,7 +4399,7 @@
     "label": "Website Dev Hero Visual",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.305Z"
+      "$date": "2026-11-26T08:28:26.067Z"
     },
     "draftOrder": 1
   },
@@ -4452,7 +4454,7 @@
     "label": "Trusted Bar",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.306Z"
+      "$date": "2026-11-26T08:28:26.068Z"
     },
     "draftOrder": 2
   },
@@ -4475,7 +4477,7 @@
     "label": "Website Dev Transformations",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.307Z"
+      "$date": "2026-11-26T08:28:26.069Z"
     },
     "draftOrder": 3
   },
@@ -4498,7 +4500,7 @@
     "label": "Website Dev Approach",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.307Z"
+      "$date": "2026-11-26T08:28:26.070Z"
     },
     "draftOrder": 4
   },
@@ -4521,7 +4523,7 @@
     "label": "Website Dev Growth Journey",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.309Z"
+      "$date": "2026-11-26T08:28:26.071Z"
     },
     "draftOrder": 5
   },
@@ -4544,7 +4546,7 @@
     "label": "Website Dev Comparison",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.310Z"
+      "$date": "2026-11-26T08:28:26.072Z"
     },
     "draftOrder": 6
   },
@@ -4567,7 +4569,7 @@
     "label": "Website Dev Growth Plan",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.311Z"
+      "$date": "2026-11-26T08:28:26.072Z"
     },
     "draftOrder": 7
   },
@@ -4590,7 +4592,7 @@
     "label": "Website Dev Strategy Cta",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.312Z"
+      "$date": "2026-11-26T08:28:26.073Z"
     },
     "draftOrder": 8
   },
@@ -4655,7 +4657,7 @@
     "label": "FAQ Section",
     "order": 9,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.312Z"
+      "$date": "2026-11-26T08:28:26.073Z"
     },
     "draftOrder": 9
   },
@@ -4678,7 +4680,7 @@
     "label": "Who We Are Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.315Z"
+      "$date": "2026-11-26T08:28:26.077Z"
     }
   },
   {
@@ -4700,7 +4702,7 @@
     "label": "Who We Are Solve",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.316Z"
+      "$date": "2026-11-26T08:28:26.077Z"
     }
   },
   {
@@ -4722,7 +4724,7 @@
     "label": "Who We Are Approach",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.317Z"
+      "$date": "2026-11-26T08:28:26.078Z"
     }
   },
   {
@@ -4744,7 +4746,7 @@
     "label": "Who We Are Mission",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.318Z"
+      "$date": "2026-11-26T08:28:26.079Z"
     }
   },
   {
@@ -4766,7 +4768,7 @@
     "label": "Who We Are Vision",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.318Z"
+      "$date": "2026-11-26T08:28:26.080Z"
     }
   },
   {
@@ -4788,7 +4790,7 @@
     "label": "Who We Are Values",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.319Z"
+      "$date": "2026-11-26T08:28:26.081Z"
     }
   },
   {
@@ -4810,7 +4812,7 @@
     "label": "Woo Proposal",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.320Z"
+      "$date": "2026-11-26T08:28:26.081Z"
     }
   },
   {
@@ -4832,7 +4834,7 @@
     "label": "Why Choose Us Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.322Z"
+      "$date": "2026-11-26T08:28:26.083Z"
     }
   },
   {
@@ -4854,7 +4856,7 @@
     "label": "Why Choose Us Benefits",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.322Z"
+      "$date": "2026-11-26T08:28:26.084Z"
     }
   },
   {
@@ -4876,7 +4878,7 @@
     "label": "How We Work Process",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.323Z"
+      "$date": "2026-11-26T08:28:26.085Z"
     }
   },
   {
@@ -4898,7 +4900,7 @@
     "label": "Why Choose Us Approach",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.323Z"
+      "$date": "2026-11-26T08:28:26.085Z"
     }
   },
   {
@@ -4920,7 +4922,7 @@
     "label": "Why Choose Us Value",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.324Z"
+      "$date": "2026-11-26T08:28:26.086Z"
     }
   },
   {
@@ -4942,7 +4944,7 @@
     "label": "Why Choose Us Future Ready",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.326Z"
+      "$date": "2026-11-26T08:28:26.086Z"
     }
   },
   {
@@ -4964,7 +4966,7 @@
     "label": "Why Choose Us Proposal Form",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.327Z"
+      "$date": "2026-11-26T08:28:26.087Z"
     }
   },
   {
@@ -4986,7 +4988,7 @@
     "label": "Home Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-26T05:51:14.686Z"
+      "$date": "2026-11-26T08:28:25.784Z"
     }
   },
   {
@@ -5008,7 +5010,7 @@
     "label": "Hosting Content",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.202Z"
+      "$date": "2026-11-26T08:28:25.940Z"
     },
     "draftOrder": 0
   },
@@ -5031,7 +5033,7 @@
     "label": "Location Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.204Z"
+      "$date": "2026-11-26T08:28:25.944Z"
     },
     "draftOrder": 0
   },
@@ -5054,7 +5056,7 @@
     "label": "Location Services",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.205Z"
+      "$date": "2026-11-26T08:28:25.945Z"
     },
     "draftOrder": 1
   },
@@ -5077,7 +5079,7 @@
     "label": "Website Dev Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.305Z"
+      "$date": "2026-11-26T08:28:26.067Z"
     },
     "draftOrder": 0
   },
@@ -5100,7 +5102,7 @@
     "label": "Contact Hero",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.098Z"
+      "$date": "2026-11-26T08:28:25.815Z"
     }
   },
   {
@@ -5122,7 +5124,7 @@
     "label": "Why Choose Us",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.098Z"
+      "$date": "2026-11-26T08:28:25.816Z"
     }
   },
   {
@@ -5186,7 +5188,7 @@
     "label": "FAQ Section",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.099Z"
+      "$date": "2026-11-26T08:28:25.817Z"
     }
   },
   {
@@ -5208,7 +5210,7 @@
     "label": "Hire Asp Net Why Us",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.135Z"
+      "$date": "2026-11-26T08:28:25.868Z"
     }
   },
   {
@@ -5230,7 +5232,7 @@
     "label": "Hire Asp Net Process",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.136Z"
+      "$date": "2026-11-26T08:28:25.869Z"
     }
   },
   {
@@ -5252,7 +5254,7 @@
     "label": "Hire Asp Net Cta",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.137Z"
+      "$date": "2026-11-26T08:28:25.870Z"
     }
   },
   {
@@ -5274,7 +5276,7 @@
     "label": "Hire Asp Net Stories",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.138Z"
+      "$date": "2026-11-26T08:28:25.871Z"
     }
   },
   {
@@ -5296,7 +5298,7 @@
     "label": "Hire Asp Net Innovation",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.138Z"
+      "$date": "2026-11-26T08:28:25.872Z"
     }
   },
   {
@@ -5318,7 +5320,7 @@
     "label": "Hire Asp Net Contact",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.139Z"
+      "$date": "2026-11-26T08:28:25.873Z"
     }
   },
   {
@@ -5340,7 +5342,7 @@
     "label": "Hire Core Php Case Study",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.166Z"
+      "$date": "2026-11-26T08:28:25.905Z"
     }
   },
   {
@@ -5362,7 +5364,7 @@
     "label": "Hire Core Php Next Step",
     "order": 8,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.170Z"
+      "$date": "2026-11-26T08:28:25.908Z"
     }
   },
   {
@@ -5384,7 +5386,7 @@
     "label": "Hire Shopify Expect",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.188Z"
+      "$date": "2026-11-26T08:28:25.924Z"
     }
   },
   {
@@ -5406,7 +5408,7 @@
     "label": "Google Ads Performance",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.231Z"
+      "$date": "2026-11-26T08:28:25.986Z"
     }
   },
   {
@@ -5428,7 +5430,7 @@
     "label": "Web Hosting Scale",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.301Z"
+      "$date": "2026-11-26T08:28:26.063Z"
     }
   },
   {
@@ -5450,7 +5452,7 @@
     "label": "Web Hosting Results",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.302Z"
+      "$date": "2026-11-26T08:28:26.064Z"
     }
   },
   {
@@ -5472,7 +5474,7 @@
     "label": "Web Hosting Responsibility",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.302Z"
+      "$date": "2026-11-26T08:28:26.065Z"
     }
   },
   {
@@ -5494,7 +5496,7 @@
     "label": "Ar Vr Results",
     "order": 6,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.122Z"
+      "$date": "2026-11-26T08:28:25.849Z"
     }
   },
   {
@@ -5516,7 +5518,7 @@
     "label": "Ar Vr Contact",
     "order": 7,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.122Z"
+      "$date": "2026-11-26T08:28:25.850Z"
     }
   },
   {
@@ -5592,7 +5594,7 @@
     "label": "Client logos (Trusted by…)",
     "order": 0,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.061Z"
+      "$date": "2026-11-26T08:28:25.770Z"
     }
   },
   {
@@ -5614,7 +5616,7 @@
     "label": "Featured projects slider",
     "order": 1,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.063Z"
+      "$date": "2026-11-26T08:28:25.772Z"
     }
   },
   {
@@ -5636,7 +5638,7 @@
     "label": "Client stories slider",
     "order": 2,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.064Z"
+      "$date": "2026-11-26T08:28:25.773Z"
     }
   },
   {
@@ -5658,7 +5660,7 @@
     "label": "Why choose us",
     "order": 3,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.065Z"
+      "$date": "2026-11-26T08:28:25.777Z"
     }
   },
   {
@@ -5694,7 +5696,7 @@
     "label": "Call to action banner",
     "order": 4,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.066Z"
+      "$date": "2026-11-26T08:28:25.779Z"
     }
   },
   {
@@ -5716,7 +5718,927 @@
     "label": "Us vs others comparison",
     "order": 5,
     "updatedAt": {
-      "$date": "2026-11-25T12:33:25.067Z"
+      "$date": "2026-11-26T08:28:25.781Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b07eda99781d01cf65a891d"
+    },
+    "key": "before-after",
+    "page": {
+      "$oid": "6b06d5955c6508c4a47b8ece"
+    },
+    "__v": 0,
+    "component": "BeforeAfterShowcase",
+    "content": {
+      "resultsLabel": "· The Results",
+      "beforeBadge": "Before",
+      "afterBadge": "After",
+      "categories": [
+        {
+          "label": "Ecommerce",
+          "icon": "cart",
+          "projects": [
+            {
+              "name": "Organic Harvest",
+              "tag": "Ecommerce",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "312%",
+                  "label": "Increase in Organic Traffic",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "280%",
+                  "label": "More Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "3.6X",
+                  "label": "Increase in Online Sales",
+                  "sub": "Within 4 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "95/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Urban Thread",
+              "tag": "Ecommerce",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "265%",
+                  "label": "Increase in Organic Traffic",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "190%",
+                  "label": "More Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.9X",
+                  "label": "Increase in Online Sales",
+                  "sub": "Within 3 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "92/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Corporate",
+          "icon": "briefcase",
+          "projects": [
+            {
+              "name": "Skyline Corp",
+              "tag": "Corporate",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "220%",
+                  "label": "Increase in Qualified Leads",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "150%",
+                  "label": "More Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.1X",
+                  "label": "Increase in Client Wins",
+                  "sub": "Within 6 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "96/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Nova Consulting",
+              "tag": "Corporate",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "198%",
+                  "label": "Increase in Qualified Leads",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "140%",
+                  "label": "More Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "1.8X",
+                  "label": "Increase in Client Wins",
+                  "sub": "Within 6 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "94/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Healthcare",
+          "icon": "heart",
+          "projects": [
+            {
+              "name": "VitalCare Clinic",
+              "tag": "Healthcare",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "240%",
+                  "label": "Increase in Appointment Bookings",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "175%",
+                  "label": "More Patient Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.4X",
+                  "label": "Increase in New Patients",
+                  "sub": "Within 4 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "97/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Wellness Hub",
+              "tag": "Healthcare",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "210%",
+                  "label": "Increase in Appointment Bookings",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "160%",
+                  "label": "More Patient Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.0X",
+                  "label": "Increase in New Patients",
+                  "sub": "Within 4 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "93/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Education",
+          "icon": "graduation",
+          "projects": [
+            {
+              "name": "BrightPath Academy",
+              "tag": "Education",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "255%",
+                  "label": "Increase in Admission Enquiries",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "185%",
+                  "label": "More Parent Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.6X",
+                  "label": "Increase in Applications",
+                  "sub": "Within 5 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "95/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "EduSpark Institute",
+              "tag": "Education",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "205%",
+                  "label": "Increase in Admission Enquiries",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "165%",
+                  "label": "More Parent Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.2X",
+                  "label": "Increase in Applications",
+                  "sub": "Within 5 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "91/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Restaurant",
+          "icon": "restaurant",
+          "projects": [
+            {
+              "name": "Spice Route",
+              "tag": "Restaurant",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "230%",
+                  "label": "Increase in Online Orders",
+                  "sub": "Within 4 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "170%",
+                  "label": "More Table Reservations",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.3X",
+                  "label": "Increase in Online Sales",
+                  "sub": "Within 3 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "94/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Cafe Bloom",
+              "tag": "Restaurant",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "195%",
+                  "label": "Increase in Online Orders",
+                  "sub": "Within 4 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "150%",
+                  "label": "More Table Reservations",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "1.9X",
+                  "label": "Increase in Online Sales",
+                  "sub": "Within 3 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "90/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Real Estate",
+          "icon": "home",
+          "projects": [
+            {
+              "name": "Prime Realty",
+              "tag": "Real Estate",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "270%",
+                  "label": "Increase in Property Enquiries",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "200%",
+                  "label": "More Site Visit Requests",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.8X",
+                  "label": "Increase in Qualified Leads",
+                  "sub": "Within 5 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "95/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Urban Nest",
+              "tag": "Real Estate",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "215%",
+                  "label": "Increase in Property Enquiries",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "180%",
+                  "label": "More Site Visit Requests",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.2X",
+                  "label": "Increase in Qualified Leads",
+                  "sub": "Within 5 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "92/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-26T08:28:25.774Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Before / after showcase",
+    "order": 3,
+    "updatedAt": {
+      "$date": "2026-11-26T08:28:25.774Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b07edaa9781d01cf65a891e"
+    },
+    "page": {
+      "$oid": "6b043e9cdb56916197bb6fd0"
+    },
+    "key": "before-after",
+    "__v": 0,
+    "component": "BeforeAfterShowcase",
+    "content": {
+      "resultsLabel": "· The Results",
+      "beforeBadge": "Before",
+      "afterBadge": "After",
+      "categories": [
+        {
+          "label": "Ecommerce",
+          "icon": "cart",
+          "projects": [
+            {
+              "name": "Organic Harvest",
+              "tag": "Ecommerce",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "312%",
+                  "label": "Increase in Organic Traffic",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "280%",
+                  "label": "More Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "3.6X",
+                  "label": "Increase in Online Sales",
+                  "sub": "Within 4 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "95/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Urban Thread",
+              "tag": "Ecommerce",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "265%",
+                  "label": "Increase in Organic Traffic",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "190%",
+                  "label": "More Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.9X",
+                  "label": "Increase in Online Sales",
+                  "sub": "Within 3 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "92/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Corporate",
+          "icon": "briefcase",
+          "projects": [
+            {
+              "name": "Skyline Corp",
+              "tag": "Corporate",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "220%",
+                  "label": "Increase in Qualified Leads",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "150%",
+                  "label": "More Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.1X",
+                  "label": "Increase in Client Wins",
+                  "sub": "Within 6 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "96/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Nova Consulting",
+              "tag": "Corporate",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "198%",
+                  "label": "Increase in Qualified Leads",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "140%",
+                  "label": "More Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "1.8X",
+                  "label": "Increase in Client Wins",
+                  "sub": "Within 6 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "94/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Healthcare",
+          "icon": "heart",
+          "projects": [
+            {
+              "name": "VitalCare Clinic",
+              "tag": "Healthcare",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "240%",
+                  "label": "Increase in Appointment Bookings",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "175%",
+                  "label": "More Patient Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.4X",
+                  "label": "Increase in New Patients",
+                  "sub": "Within 4 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "97/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Wellness Hub",
+              "tag": "Healthcare",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "210%",
+                  "label": "Increase in Appointment Bookings",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "160%",
+                  "label": "More Patient Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.0X",
+                  "label": "Increase in New Patients",
+                  "sub": "Within 4 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "93/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Education",
+          "icon": "graduation",
+          "projects": [
+            {
+              "name": "BrightPath Academy",
+              "tag": "Education",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "255%",
+                  "label": "Increase in Admission Enquiries",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "185%",
+                  "label": "More Parent Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.6X",
+                  "label": "Increase in Applications",
+                  "sub": "Within 5 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "95/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "EduSpark Institute",
+              "tag": "Education",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "205%",
+                  "label": "Increase in Admission Enquiries",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "165%",
+                  "label": "More Parent Enquiries",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.2X",
+                  "label": "Increase in Applications",
+                  "sub": "Within 5 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "91/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Restaurant",
+          "icon": "restaurant",
+          "projects": [
+            {
+              "name": "Spice Route",
+              "tag": "Restaurant",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "230%",
+                  "label": "Increase in Online Orders",
+                  "sub": "Within 4 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "170%",
+                  "label": "More Table Reservations",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.3X",
+                  "label": "Increase in Online Sales",
+                  "sub": "Within 3 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "94/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Cafe Bloom",
+              "tag": "Restaurant",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "195%",
+                  "label": "Increase in Online Orders",
+                  "sub": "Within 4 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "150%",
+                  "label": "More Table Reservations",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "1.9X",
+                  "label": "Increase in Online Sales",
+                  "sub": "Within 3 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "90/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Real Estate",
+          "icon": "home",
+          "projects": [
+            {
+              "name": "Prime Realty",
+              "tag": "Real Estate",
+              "thumb": "/lux.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "270%",
+                  "label": "Increase in Property Enquiries",
+                  "sub": "Within 6 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "200%",
+                  "label": "More Site Visit Requests",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.8X",
+                  "label": "Increase in Qualified Leads",
+                  "sub": "Within 5 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "95/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            },
+            {
+              "name": "Urban Nest",
+              "tag": "Real Estate",
+              "thumb": "/furnisher.webp",
+              "before": "/furnisher.webp",
+              "after": "/lux.webp",
+              "stats": [
+                {
+                  "value": "215%",
+                  "label": "Increase in Property Enquiries",
+                  "sub": "Within 5 Months",
+                  "icon": "trend"
+                },
+                {
+                  "value": "180%",
+                  "label": "More Site Visit Requests",
+                  "sub": "Than Previous Website",
+                  "icon": "users"
+                },
+                {
+                  "value": "2.2X",
+                  "label": "Increase in Qualified Leads",
+                  "sub": "Within 5 Months",
+                  "icon": "cart"
+                },
+                {
+                  "value": "92/100",
+                  "label": "Performance Score",
+                  "sub": "Google PageSpeed",
+                  "icon": "gauge"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "createdAt": {
+      "$date": "2026-11-26T08:28:26.069Z"
+    },
+    "enabled": true,
+    "hasUnpublishedChanges": false,
+    "label": "Before After Showcase",
+    "order": 4,
+    "updatedAt": {
+      "$date": "2026-11-26T08:28:26.069Z"
     }
   }
 ]
