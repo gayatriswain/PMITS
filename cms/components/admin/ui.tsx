@@ -221,21 +221,125 @@ export function Select({ value, onChange, options, label, className = "" }: { va
   );
 }
 
-export function Pagination({ page, pages, total, onPage }: { page: number; pages: number; total: number; onPage: (p: number) => void }) {
-  if (total === 0) return null;
+const AVATAR_COLORS = ["#0d9488", "#0c1e3d", "#6366f1", "#f59e0b", "#e11d48", "#0284c7", "#7c3aed", "#059669"];
+
+/** Round initials badge with a stable colour per name (people in lists). */
+export function Avatar({ name, size = 36 }: { name: string; size?: number }) {
+  const clean = (name || "?").replace(/@.*/, "");
+  const initials = clean.split(/[\s._-]+/).filter(Boolean).map((w) => w[0]).slice(0, 2).join("").toUpperCase() || "?";
+  let h = 0;
+  for (const c of clean) h = (h * 31 + c.charCodeAt(0)) >>> 0;
   return (
-    <div className="flex items-center justify-between gap-3 border-t border-slate-100 px-4 py-3 text-sm text-slate-500">
+    <span className="grid shrink-0 place-items-center rounded-full text-[11px] font-bold text-white" style={{ width: size, height: size, background: AVATAR_COLORS[h % AVATAR_COLORS.length] }}>
+      {initials}
+    </span>
+  );
+}
+
+export const PAGE_SIZES = [10, 25, 50, 100];
+
+/** Rows-per-page choice, remembered per list in this browser. */
+export function usePerPage(key: string, initial = 10): [number, (n: number) => void] {
+  const [n, setN] = useState(initial);
+  // read the remembered choice after the first render (same HTML on server and client)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      try {
+        const v = Number(window.localStorage.getItem(`perPage:${key}`));
+        if (PAGE_SIZES.includes(v)) setN(v);
+      } catch {
+        /* storage blocked */
+      }
+    }, 0);
+    return () => clearTimeout(t);
+  }, [key]);
+  const set = useCallback(
+    (v: number) => {
+      setN(v);
+      try {
+        window.localStorage.setItem(`perPage:${key}`, String(v));
+      } catch {
+        /* private mode: just don't remember */
+      }
+    },
+    [key],
+  );
+  return [n, set];
+}
+
+/** "Show [10 ▾] per page" select for list toolbars. */
+export function PerPage({ value, onChange }: { value: number; onChange: (n: number) => void }) {
+  return (
+    <label className="inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border border-slate-200 bg-white pl-3 pr-1 text-sm text-slate-500 transition hover:border-slate-300 lg:ml-auto">
+      Show
+      <select aria-label="Rows per page" value={value} onChange={(e) => onChange(Number(e.target.value))} className="h-8 cursor-pointer rounded-lg bg-slate-50 px-2 text-sm font-semibold text-slate-800 outline-none focus:ring-2 focus:ring-teal/20">
+        {PAGE_SIZES.map((n) => (
+          <option key={n} value={n}>{n}</option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+/** Page numbers with ellipses: 1 … 4 5 6 … 12 */
+function pageList(page: number, pages: number): (number | "…")[] {
+  if (pages <= 7) return Array.from({ length: pages }, (_, i) => i + 1);
+  const out: (number | "…")[] = [1];
+  const from = Math.max(2, page - 1);
+  const to = Math.min(pages - 1, page + 1);
+  if (from > 2) out.push("…");
+  for (let i = from; i <= to; i++) out.push(i);
+  if (to < pages - 1) out.push("…");
+  out.push(pages);
+  return out;
+}
+
+export function Pagination({ page, pages, total, onPage, limit, onLimit }: { page: number; pages: number; total: number; onPage: (p: number) => void; limit?: number; onLimit?: (n: number) => void }) {
+  if (total === 0) return null;
+  const from = limit ? (page - 1) * limit + 1 : null;
+  const to = limit ? Math.min(total, page * limit) : null;
+  return (
+    <div className="flex flex-col items-center justify-between gap-3 border-t border-slate-100 bg-slate-50/40 px-4 py-3 text-sm text-slate-500 sm:flex-row">
       <span>
-        {total} {total === 1 ? "item" : "items"} · page {page} of {pages}
+        {from !== null ? (
+          <>Showing <b className="text-slate-800">{from}–{to}</b> of <b className="text-slate-800">{total}</b></>
+        ) : (
+          <>{total} {total === 1 ? "item" : "items"} · page {page} of {pages}</>
+        )}
       </span>
-      <div className="flex gap-1">
+      <div className="flex items-center gap-1">
         <Button variant="secondary" size="sm" disabled={page <= 1} onClick={() => onPage(page - 1)} aria-label="Previous page">
           <ChevronLeft className="h-4 w-4" />
         </Button>
+        {pageList(page, pages).map((p, i) =>
+          p === "…" ? (
+            <span key={`e${i}`} className="px-1.5 text-slate-400">…</span>
+          ) : (
+            <button
+              key={p}
+              type="button"
+              onClick={() => onPage(p)}
+              aria-current={p === page ? "page" : undefined}
+              className={`h-8 min-w-8 rounded-lg px-2 text-xs font-semibold transition ${p === page ? "bg-navy text-white shadow-sm" : "text-slate-600 hover:bg-white hover:shadow-sm"}`}
+            >
+              {p}
+            </button>
+          ),
+        )}
         <Button variant="secondary" size="sm" disabled={page >= pages} onClick={() => onPage(page + 1)} aria-label="Next page">
           <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
+      {onLimit && limit ? (
+        <label className="flex items-center gap-2 text-xs">
+          Per page
+          <select value={limit} onChange={(e) => onLimit(Number(e.target.value))} className="h-8 rounded-lg border border-slate-200 bg-white px-2 text-xs font-semibold text-slate-700 outline-none">
+            {PAGE_SIZES.map((n) => <option key={n} value={n}>{n}</option>)}
+          </select>
+        </label>
+      ) : (
+        <span className="hidden sm:block" />
+      )}
     </div>
   );
 }

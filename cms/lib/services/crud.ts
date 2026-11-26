@@ -3,7 +3,7 @@ import { isValidObjectId, type SortOrder } from "mongoose";
 import { connectDB } from "@/lib/mongodb";
 import { HttpError, escapeRegex, listParams } from "@/lib/api";
 import { can } from "@/lib/permissions";
-import { logActivity } from "@/lib/activity";
+import { diffObjects, logActivity, prettyPath } from "@/lib/activity";
 import { revalidateFrontend } from "@/lib/revalidate";
 import type { SessionUser } from "@/lib/auth";
 import type { ResourceConfig } from "./resources";
@@ -57,6 +57,7 @@ export async function createItem(cfg: ResourceConfig, user: SessionUser, body: u
   let data = cfg.schema.parse(body) as Doc;
   guardPublish(cfg, user, data, null);
   if (cfg.prepare) data = cfg.prepare(data, null);
+  if (cfg.prepareAsync) data = await cfg.prepareAsync(data);
   const doc = await cfg.model.create(data);
   const plain = doc.toObject() as Doc;
   logActivity(user, "create", cfg.name, String(doc._id), `Created ${cfg.label.toLowerCase()} "${plain.name ?? plain.title ?? plain.clientName ?? ""}"`);
@@ -72,8 +73,9 @@ export async function updateItem(cfg: ResourceConfig, user: SessionUser, id: str
   let data = cfg.schema.parse(body) as Doc;
   guardPublish(cfg, user, data, existing);
   if (cfg.prepare) data = cfg.prepare(data, existing);
+  if (cfg.prepareAsync) data = await cfg.prepareAsync(data);
   const doc = (await cfg.model.findByIdAndUpdate(id, { $set: data }, { new: true, runValidators: true }).lean()) as Doc;
-  logActivity(user, "update", cfg.name, id, `Updated ${cfg.label.toLowerCase()} "${doc.name ?? doc.title ?? doc.clientName ?? ""}"`);
+  logActivity(user, "update", cfg.name, id, `Updated ${cfg.label.toLowerCase()} "${doc.name ?? doc.title ?? doc.clientName ?? ""}"`, { changes: diffObjects(existing, data, prettyPath) });
   // Old slug (if renamed) and new slug both need fresh data.
   await revalidateFrontend([...cfg.revalidate(existing), ...cfg.revalidate(doc)]);
   return doc;
@@ -82,6 +84,7 @@ export async function updateItem(cfg: ResourceConfig, user: SessionUser, id: str
 export async function deleteItem(cfg: ResourceConfig, user: SessionUser, id: string) {
   if (!isValidObjectId(id)) throw new HttpError(400, "Invalid identifier");
   await connectDB();
+  if (cfg.beforeDelete) await cfg.beforeDelete(id);
   const doc = (await cfg.model.findByIdAndDelete(id).lean()) as Doc | null;
   if (!doc) throw new HttpError(404, `${cfg.label} item not found`);
   logActivity(user, "delete", cfg.name, id, `Deleted ${cfg.label.toLowerCase()} "${doc.name ?? doc.title ?? doc.clientName ?? ""}"`);

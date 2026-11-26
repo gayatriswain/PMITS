@@ -4,7 +4,7 @@ import { connectDB } from "@/lib/mongodb";
 import { Page, PageSection } from "@/models";
 import { HttpError, escapeRegex, listParams } from "@/lib/api";
 import { pageSchema, sectionSaveSchema } from "@/lib/validation/schemas";
-import { logActivity } from "@/lib/activity";
+import { diffObjects, logActivity, prettyPath, type Change } from "@/lib/activity";
 import { revalidateFrontend, tags } from "@/lib/revalidate";
 import { can } from "@/lib/permissions";
 import { GLOBAL_PATH, getSectionDef } from "@/lib/sections/registry";
@@ -84,9 +84,39 @@ export async function savePageDraft(user: SessionUser, id: string, body: unknown
     if (await Page.exists({ path, _id: { $ne: page._id } })) throw new HttpError(409, "A page with this URL already exists", { slug: "Already used" });
     await Page.updateOne({ _id: page._id }, { $set: { slug: data.slug, path } });
   }
+  const prevDetails = page.draft ?? { title: page.title, description: page.description, featuredImage: page.featuredImage, group: page.group, seo: page.seo };
   await Page.updateOne({ _id: page._id }, { $set: { draft, hasUnpublishedChanges: true, updatedBy: user.id } });
-  logActivity(user, "save-draft", "pages", id, `Saved draft of ${page.path}`);
+  logActivity(user, "save-draft", "pages", id, `Saved page details of ${page.path}`, { changes: diffObjects(prevDetails, draft, prettyPath) });
   return getPageWithSections(id);
+}
+
+type PrevSection = { label?: string; content?: Record<string, unknown>; draftContent?: Record<string, unknown>; enabled?: boolean; draftEnabled?: boolean; order?: number; draftOrder?: number };
+
+/** Field name -> readable label for a section type ("Heading (H1): Design That"…). */
+function fieldLabels(fields: { name: string; label: string; type: string; flat?: boolean; fields?: unknown[] }[], out = new Map<string, string>()) {
+  for (const f of fields) {
+    if (f.type === "group" && f.flat) fieldLabels((f.fields ?? []) as typeof fields, out);
+    else out.set(f.name, f.label);
+  }
+  return out;
+}
+
+/** What changed in one section (texts/images, visibility, position) compared with its last saved version. */
+function sectionChanges(def: NonNullable<ReturnType<typeof getSectionDef>>, prev: PrevSection, content: Record<string, unknown>, enabled: boolean, index: number): Change[] {
+  const name = prev.label ?? def.label;
+  const labels = fieldLabels(def.fields as Parameters<typeof fieldLabels>[0]);
+  const base = def.generated ? def.defaults : {};
+  const before = { ...base, ...(prev.draftContent ?? prev.content ?? {}) };
+  const after = { ...base, ...content };
+  const out = diffObjects(before, after, (p) => {
+    const [first, ...rest] = p.split(".");
+    return `${name} › ${labels.get(first) ?? prettyPath(first)}${rest.length ? ` › ${prettyPath(rest.join("."))}` : ""}`;
+  });
+  const wasOn = prev.draftEnabled ?? prev.enabled;
+  if (wasOn !== undefined && wasOn !== enabled) out.push({ field: `${name} › Visibility`, before: wasOn ? "shown" : "hidden", after: enabled ? "shown" : "hidden" });
+  const wasAt = prev.draftOrder ?? prev.order;
+  if (wasAt !== undefined && wasAt !== index) out.push({ field: `${name} › Position`, before: String(wasAt + 1), after: String(index + 1) });
+  return out;
 }
 
 /** Replace the section list (order, visibility, content) in draft. */
@@ -95,6 +125,7 @@ export async function saveSectionsDraft(user: SessionUser, id: string, body: unk
   const { sections: incoming } = sectionSaveSchema.parse(body);
   const existingByKey = new Map(sections.map((s) => [s.key, s]));
   const keys = new Set<string>();
+  const changes: Change[] = [];
   for (const [i, s] of incoming.entries()) {
     if (keys.has(s.key)) throw new HttpError(422, `Duplicate section key "${s.key}"`);
     keys.add(s.key);
@@ -106,6 +137,8 @@ export async function saveSectionsDraft(user: SessionUser, id: string, body: unk
       throw new HttpError(422, `Sections of this page are fixed in code; "${s.key}" cannot be added or replaced.`);
     }
     const content = cleanSectionContent(def, s.content);
+    if (prev) changes.push(...sectionChanges(def, prev as unknown as PrevSection, content, s.enabled, i));
+    else changes.push({ field: `${s.label ?? def.label} › Section`, before: "", after: "added" });
     await PageSection.updateOne(
       { page: page._id, key: s.key },
       {
@@ -120,7 +153,7 @@ export async function saveSectionsDraft(user: SessionUser, id: string, body: unk
     if (removed.length) await PageSection.deleteMany({ _id: { $in: removed } });
   }
   await Page.updateOne({ _id: page._id }, { $set: { hasUnpublishedChanges: true, updatedBy: user.id } });
-  logActivity(user, "save-draft", "pages", id, `Saved section draft for ${page.path}`);
+  logActivity(user, "save-draft", "pages", id, `Edited sections of ${page.path}`, { changes });
   return getPageWithSections(id);
 }
 

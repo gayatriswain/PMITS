@@ -76,3 +76,29 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .auth-rise, .auth-float, .auth-glow, .auth-orbit, .auth-bar { animation: none; }
 }
+
+/* Admin tables: one consistent, modern look for every list (pages, leads, applications…) */
+.admin-main table thead { background: #f8fafc; }
+.admin-main table thead th { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #64748b; padding-top: 0.8rem; padding-bottom: 0.8rem; }
+.admin-main table tbody tr { transition: background-color 0.15s ease; }
+.admin-main table tbody tr:hover { background: rgba(13, 148, 136, 0.035); }
+.admin-main table tbody td { padding-top: 0.8rem; padding-bottom: 0.8rem; }
+@keyframes auth-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.auth-grow { transform-origin: left; animation: auth-grow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) { .auth-grow { animation: none; } }
+
+/* Admin tables: rows slide in one after another (only the first screenful is staggered) */
+@keyframes admin-row { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.admin-main table tbody tr { animation: admin-row 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.admin-main table tbody tr:nth-child(2) { animation-delay: 30ms; }
+.admin-main table tbody tr:nth-child(3) { animation-delay: 60ms; }
+.admin-main table tbody tr:nth-child(4) { animation-delay: 90ms; }
+.admin-main table tbody tr:nth-child(5) { animation-delay: 120ms; }
+.admin-main table tbody tr:nth-child(6) { animation-delay: 150ms; }
+.admin-main table tbody tr:nth-child(7) { animation-delay: 180ms; }
+.admin-main table tbody tr:nth-child(8) { animation-delay: 210ms; }
+.admin-main table tbody tr:nth-child(n + 9) { animation-delay: 240ms; }
+.admin-main table tbody td { vertical-align: middle; }
+@media (prefers-reduced-motion: reduce) { .admin-main table tbody tr { animation: none; } }
+.admin-row-in { animation: admin-row 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) { .admin-row-in { animation: none; } }

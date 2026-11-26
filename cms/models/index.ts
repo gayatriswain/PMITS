@@ -1,9 +1,16 @@
 import mongoose, { Schema, type InferSchemaType, type Model } from "mongoose";
 import { FaqSchema, LinkSchema, NoteSchema, SeoSchema, STATUSES, slugField } from "./shared";
 
-/** Reuse compiled models across Next.js hot reloads. */
+/**
+ * Compile a model once per process. In development a hot reload re-runs this file: the old compiled
+ * model is replaced so new schema fields are not silently dropped (Mongoose strict mode) until a restart.
+ */
 function model<T>(name: string, schema: Schema<T>): Model<T> {
-  return (mongoose.models[name] as Model<T>) || mongoose.model<T>(name, schema);
+  if (mongoose.models[name]) {
+    if (process.env.NODE_ENV === "production") return mongoose.models[name] as Model<T>;
+    mongoose.deleteModel(name);
+  }
+  return mongoose.model<T>(name, schema);
 }
 
 /* ------------------------------------------------------------------ */
@@ -143,6 +150,8 @@ const BlogCategorySchema = new Schema(
     slug: { ...slugField },
     description: { type: String, trim: true, maxlength: 1000 },
     order: { type: Number, default: 0 },
+    /** The "Uncategorized" category: can be edited, never deleted (see lib/services/blogCategories.ts). */
+    isDefault: { type: Boolean, default: false, index: true },
   },
   { timestamps: true },
 );
@@ -401,6 +410,8 @@ const WebsiteSettingsSchema = new Schema(
     shortLocation: { type: String, trim: true },
     workingHours: { type: String, trim: true },
     socials: { linkedin: String, instagram: String, facebook: String, youtube: String, twitter: String },
+    /** Any number of social profiles (Settings -> Social); replaces the fixed `socials` fields above. */
+    socialLinks: [{ _id: false, platform: String, url: String, label: String }],
     headerCta: { type: LinkSchema, default: {} },
     topBar: {
       phone: String,
@@ -475,10 +486,19 @@ const ActivityLogSchema = new Schema(
     entityId: String,
     summary: { type: String, trim: true, maxlength: 500 },
     ip: String,
+    /** "City, Region, Country" from the hosting provider's geo headers (empty when unknown / local). */
+    location: String,
+    /** "Chrome on Windows" etc. */
+    device: String,
+    /** Admin page the user opened (action "view"). */
+    path: String,
+    /** What changed: field label + value before and after (trimmed). */
+    changes: [{ _id: false, field: String, before: String, after: String }],
   },
   { timestamps: { createdAt: true, updatedAt: false } },
 );
 ActivityLogSchema.index({ createdAt: -1 });
+ActivityLogSchema.index({ user: 1, createdAt: -1 });
 export const ActivityLog = model("ActivityLog", ActivityLogSchema);
 
 export type LeadDoc = InferSchemaType<typeof LeadSchema>;

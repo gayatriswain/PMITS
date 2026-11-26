@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   Activity, BookOpen, Briefcase, FileStack, FolderKanban, Gauge, ImageIcon, Inbox, LayoutGrid, LogOut, Menu, MessageSquareQuote,
-  Mail, Navigation, ScrollText, Search, Settings, Tags, UserCircle, Users, UsersRound, X, ExternalLink, FileUser,
+  Mail, Navigation, ScrollText, Settings, Tags, UserCircle, Users, UsersRound, X, ExternalLink, FileUser,
   Layers, BadgeCheck, GalleryHorizontalEnd, Quote,
 } from "lucide-react";
 import { can, ROLE_LABELS, type Permission, type Role } from "@/lib/permissions";
@@ -20,7 +20,6 @@ const NAV: { title: string; items: NavItem[] }[] = [
     title: "Website",
     items: [
       { href: "/admin/pages", label: "Pages & sections", icon: FileStack, perm: "pages.read" },
-      { href: "/admin/seo", label: "SEO", icon: Search, perm: "pages.read" },
       { href: "/admin/navigation", label: "Navigation", icon: Navigation, perm: "navigation.write" },
       { href: "/admin/media", label: "Media library", icon: ImageIcon, perm: "media.read" },
     ],
@@ -72,6 +71,13 @@ export function Shell({ user, children }: { user: ShellUser; children: ReactNode
   const path = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  // audit: which admin screens were opened (server de-duplicates; failures are ignored)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      api("/api/admin/activity/visit", { method: "POST", json: { path, title: document.title } }).catch(() => {});
+    }, 800);
+    return () => clearTimeout(t);
+  }, [path]);
   const isActive = (href: string, exact?: boolean) => (href === "/admin" || exact ? path === href : path === href || path.startsWith(`${href}/`));
 
   const sidebar = (
@@ -85,7 +91,7 @@ export function Shell({ user, children }: { user: ShellUser; children: ReactNode
       </div>
       <div className="sidebar-scroll flex-1 space-y-5 overflow-y-auto px-3 py-4">
         {NAV.map((g) => {
-          const items = g.items.filter((i) => can(user.role, i.perm) || (i.href === "/admin/seo" && can(user.role, "seo.write")));
+          const items = g.items.filter((i) => can(user.role, i.perm));
           if (!items.length) return null;
           return (
             <div key={g.title}>
@@ -169,7 +175,7 @@ export function Shell({ user, children }: { user: ShellUser; children: ReactNode
                 </button>
               </div>
             </header>
-            <main className="mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:py-8">{children}</main>
+            <main className="admin-main mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:py-8">{children}</main>
           </div>
         </div>
       </ConfirmProvider>

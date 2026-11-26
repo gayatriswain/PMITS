@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { Download, Inbox, Mail, Phone, Send, Trash2 } from "lucide-react";
 import { api, qs } from "@/lib/client/api";
-import { Badge, Button, Card, EmptyState, PageHeader, Pagination, SearchInput, Select, Spinner, fmtDate, useConfirm, useToast } from "./ui";
+import { Avatar, Badge, Button, Card, EmptyState, PageHeader, Pagination, PerPage, SearchInput, Select, Spinner, fmtDate, useConfirm, usePerPage, useToast } from "./ui";
 
 export const LEAD_STATUSES = ["new", "contacted", "in_progress", "qualified", "converted", "not_interested", "closed"];
 const statusOpts = LEAD_STATUSES.map((s) => ({ value: s, label: s.replace(/_/g, " ").replace(/^./, (c) => c.toUpperCase()) }));
@@ -18,13 +18,14 @@ export function EnquiryList({ kind, canExport }: { kind: Kind; canExport: boolea
   const toast = useToast();
   const [q, setQ] = useState("");
   const [page, setPage] = useState(1);
+  const [limit, setLimit] = usePerPage(`enquiries:${kind}`);
   const [f, setF] = useState({ status: "", formType: "", from: "", to: "" });
   const [data, setData] = useState<{ items: Row[]; total: number; pages: number; formTypes: string[] } | null>(null);
   const label = kind === "leads" ? "Leads" : "Proposal requests";
 
   const load = useCallback(async () => {
     try {
-      setData(await api(`/api/admin/enquiries/${kind}${qs({ q, page, ...f })}`));
+      setData(await api(`/api/admin/enquiries/${kind}${qs({ q, page, limit, ...f })}`));
     } catch (e) {
       toast("error", (e as Error).message);
     }
@@ -44,14 +45,15 @@ export function EnquiryList({ kind, canExport }: { kind: Kind; canExport: boolea
         actions={canExport && <a href={`/api/admin/enquiries/${kind}/export${qs({ q, ...f })}`}><Button variant="secondary"><Download className="h-4 w-4" /> Export CSV</Button></a>}
       />
       <Card className="overflow-hidden [&>div]:p-0">
-        <div className="flex flex-col flex-wrap gap-2 border-b border-slate-100 p-4 lg:flex-row lg:items-center">
+        <div className="flex flex-col flex-wrap gap-2 border-b border-slate-100 bg-slate-50/50 p-4 lg:flex-row lg:items-center">
           <SearchInput value={q} onChange={(v) => { setQ(v); setPage(1); }} placeholder="Name, email, phone, message…" />
           <Select label="Status" value={f.status} onChange={(v) => { setF({ ...f, status: v }); setPage(1); }} options={[{ value: "", label: "All statuses" }, ...statusOpts]} />
           {kind === "leads" && data && (
             <Select label="Form" value={f.formType} onChange={(v) => { setF({ ...f, formType: v }); setPage(1); }} options={[{ value: "", label: "All forms" }, ...data.formTypes.map((t) => ({ value: t, label: t }))]} />
           )}
-          <label className="flex items-center gap-1.5 text-xs text-slate-500">From <input type="date" value={f.from} onChange={(e) => { setF({ ...f, from: e.target.value }); setPage(1); }} className="h-10 rounded-lg border border-slate-200 px-2 text-sm" /></label>
-          <label className="flex items-center gap-1.5 text-xs text-slate-500">To <input type="date" value={f.to} onChange={(e) => { setF({ ...f, to: e.target.value }); setPage(1); }} className="h-10 rounded-lg border border-slate-200 px-2 text-sm" /></label>
+          <label className="flex items-center gap-1.5 text-xs text-slate-500">From <input type="date" value={f.from} onChange={(e) => { setF({ ...f, from: e.target.value }); setPage(1); }} className="h-10 rounded-xl border border-slate-200 px-2 text-sm" /></label>
+          <label className="flex items-center gap-1.5 text-xs text-slate-500">To <input type="date" value={f.to} onChange={(e) => { setF({ ...f, to: e.target.value }); setPage(1); }} className="h-10 rounded-xl border border-slate-200 px-2 text-sm" /></label>
+          <PerPage value={limit} onChange={(n) => { setLimit(n); setPage(1); }} />
         </div>
         {!data ? (
           <Spinner />
@@ -74,8 +76,13 @@ export function EnquiryList({ kind, canExport }: { kind: Kind; canExport: boolea
                 {data.items.map((r) => (
                   <tr key={r._id} className={`hover:bg-slate-50/60 ${r.status === "new" ? "bg-teal-50/30" : ""}`}>
                     <td className="px-4 py-2.5">
-                      <Link href={`/admin/${kind}/${r._id}`} className="font-medium text-slate-800 hover:text-teal">{who(r, kind)}</Link>
-                      <p className="text-xs text-slate-500">{r.email}</p>
+                      <Link href={`/admin/${kind}/${r._id}`} className="group flex items-center gap-3">
+                        <Avatar name={who(r, kind)} />
+                        <span className="min-w-0">
+                          <span className="block truncate font-semibold text-slate-900 group-hover:text-teal">{who(r, kind)}</span>
+                          <span className="block truncate text-xs text-slate-500">{r.email}</span>
+                        </span>
+                      </Link>
                     </td>
                     <td className="px-4 py-2.5 text-xs text-slate-600">{kind === "leads" ? <>{String(r.formType)}<br /><span className="text-slate-400">{String(r.source ?? "")}</span></> : String(r.location ?? "")}</td>
                     <td className="max-w-xs px-4 py-2.5 text-xs text-slate-500"><span className="line-clamp-2">{String(r.message ?? "—")}</span></td>
@@ -88,7 +95,7 @@ export function EnquiryList({ kind, canExport }: { kind: Kind; canExport: boolea
             </table>
           </div>
         )}
-        {data && <Pagination page={page} pages={data.pages} total={data.total} onPage={setPage} />}
+        {data && <Pagination page={page} pages={data.pages} total={data.total} onPage={setPage} limit={limit} onLimit={(n) => { setLimit(n); setPage(1); }} />}
       </Card>
     </>
   );

@@ -8,7 +8,8 @@ import { Blog, Career, Media, Page, PageSection, Portfolio, Service, TeamMember,
 import { HttpError, escapeRegex, listParams } from "@/lib/api";
 import { env } from "@/lib/env";
 import { randomToken } from "@/lib/security";
-import { logActivity } from "@/lib/activity";
+import { diffObjects, logActivity, prettyPath } from "@/lib/activity";
+import { revalidateFrontend } from "@/lib/revalidate";
 import { mediaUpdateSchema } from "@/lib/validation/schemas";
 import type { SessionUser } from "@/lib/auth";
 
@@ -170,9 +171,12 @@ export async function updateMedia(user: SessionUser, id: string, body: unknown) 
   if (!isValidObjectId(id)) throw new HttpError(400, "Invalid identifier");
   await connectDB();
   const data = mediaUpdateSchema.parse(body);
+  const before = await Media.findById(id, "alt title").lean();
   const doc = await Media.findByIdAndUpdate(id, { $set: data }, { new: true }).lean();
   if (!doc) throw new HttpError(404, "File not found");
-  logActivity(user, "update", "media", id, `Updated details of ${doc.originalName ?? doc.filename}`);
+  logActivity(user, "update", "media", id, `Updated details of ${doc.originalName ?? doc.filename}`, { changes: diffObjects(before, data, prettyPath) });
+  // the website reads alt texts from the media library (tag "media-alts")
+  if (before?.alt !== doc.alt) await revalidateFrontend(["media-alts"]);
   return doc;
 }
 

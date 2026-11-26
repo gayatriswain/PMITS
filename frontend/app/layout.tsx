@@ -3,7 +3,8 @@ import { Inter, Plus_Jakarta_Sans, Caveat } from "next/font/google";
 import Script from "next/script";
 import Header from "./components/layout/Header";
 import PreviewBanner from "@/components/cms/PreviewBanner";
-import { getCollection, getNavigation, getSettings, type NavItem } from "@/lib/cms";
+import { getCollection, getMediaAlts, getNavigation, getSettings, type NavItem } from "@/lib/cms";
+import MediaAlts from "@/components/cms/MediaAlts";
 import Footer from "./components/layout/Footer";
 import "./globals.css";
 
@@ -72,12 +73,13 @@ function withServiceDetails(items: NavItem[] | undefined, services: ServiceDoc[]
 }
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const [headerNav, servicesNav, settings, services, portfolio] = await Promise.all([
+  const [headerNav, servicesNav, settings, services, portfolio, mediaAlts] = await Promise.all([
     getNavigation("header"),
     getNavigation("services"),
     getSettings(),
     getCollection<ServiceDoc>("services"),
     getCollection("portfolio", { limit: 1 }),
+    getMediaAlts(),
   ]);
   // The Portfolio link appears once at least one project is published (Admin → Portfolio); until then /portfolio is a 404.
   const noProjects = portfolio !== null && !portfolio.items.length;
@@ -105,6 +107,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <PreviewBanner />
+        {mediaAlts && Object.keys(mediaAlts).length > 0 && <MediaAlts alts={mediaAlts} />}
         {gtm && (
           <Script id="gtm" strategy="afterInteractive">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtm}');`}

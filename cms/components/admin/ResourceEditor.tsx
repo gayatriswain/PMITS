@@ -6,7 +6,7 @@ import { ExternalLink, Save, Trash2 } from "lucide-react";
 import { api, ApiError } from "@/lib/client/api";
 import { RESOURCE_UI } from "@/lib/client/resources";
 import { FieldGroup } from "./fields";
-import { Button, Card, PageHeader, Spinner, fmtDate, useConfirm, useToast, useUnsavedWarning } from "./ui";
+import { Badge, Button, Card, PageHeader, Spinner, fmtDate, useConfirm, useToast, useUnsavedWarning } from "./ui";
 
 type Values = Record<string, unknown>;
 const FRONT = process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
@@ -104,7 +104,7 @@ export function ResourceEditor({ name, id, canWrite, canPublish, canDelete }: { 
                 <Button variant="secondary"><ExternalLink className="h-4 w-4" /> View</Button>
               </a>
             )}
-            {id && canDelete && (
+            {id && canDelete && values.isDefault !== true && (
               <Button variant="ghost" onClick={remove} className="text-rose-600 hover:bg-rose-50">
                 <Trash2 className="h-4 w-4" /> Delete
               </Button>
@@ -117,17 +117,28 @@ export function ResourceEditor({ name, id, canWrite, canPublish, canDelete }: { 
           </>
         }
       />
+      {values.isDefault === true && (
+        <div className="mb-4 rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-800">
+          This is the <b>default category</b>. You can rename it, but it can&apos;t be deleted - posts without a category, and posts of deleted categories, are placed here.
+        </div>
+      )}
       {Object.keys(errors).length > 0 && (
         <div role="alert" className="mb-4 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
           Please fix the highlighted fields: {Object.keys(errors).join(", ")}
         </div>
       )}
       <fieldset disabled={!canWrite} className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
-        <Card>
+        <Card className="auth-rise">
           <FieldGroup fields={ui.fields} values={values} onChange={setValues} errors={errors} />
         </Card>
-        <div className="space-y-6">
+        <div className="auth-rise space-y-6 [animation-delay:80ms] xl:sticky xl:top-24 xl:self-start">
           <Card title="Publishing & details">
+            {typeof values.status === "string" && values.status && (
+              <div className="mb-4 flex items-center justify-between rounded-xl bg-slate-50 px-3 py-2.5">
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">Current status</span>
+                <Badge value={values.status} />
+              </div>
+            )}
             <div className="[&_.sm\:col-span-2]:col-span-1 [&>div]:grid-cols-1">
               <FieldGroup fields={ui.side} values={values} onChange={setValues} errors={errors} />
             </div>
@@ -135,6 +146,16 @@ export function ResourceEditor({ name, id, canWrite, canPublish, canDelete }: { 
           </Card>
         </div>
       </fieldset>
+      {dirty && canWrite && (
+        <div className="sticky bottom-4 z-20 mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-amber-200 bg-white/95 px-4 py-3 shadow-[0_18px_40px_-18px_rgba(15,23,42,0.45)] backdrop-blur">
+          <span className="flex items-center gap-2 text-sm font-medium text-slate-700">
+            <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-amber-400" /> You have unsaved changes
+          </span>
+          <span className="ml-auto flex gap-2">
+            <Button variant="teal" onClick={save} loading={busy}><Save className="h-4 w-4" /> {id ? "Save changes" : "Create"}</Button>
+          </span>
+        </div>
+      )}
     </>
   );
 }

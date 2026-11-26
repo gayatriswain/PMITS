@@ -218,6 +218,9 @@ export const settingsSchema = z
     shortLocation: opt(120),
     workingHours: opt(120),
     socials: z.object({ linkedin: url.optional(), instagram: url.optional(), facebook: url.optional(), youtube: url.optional(), twitter: url.optional() }).partial(),
+    socialLinks: z
+      .array(z.object({ platform: z.string().trim().regex(/^[a-z]{1,20}$/, "Choose a platform"), url: url.refine((v) => v !== "", "Enter the profile link"), label: opt(60) }))
+      .max(20),
     headerCta: z.object({ label: opt(60), href: href.optional() }).partial(),
     topBar: z.object({ phone: opt(40), email: z.string().trim().email().max(255).optional().or(z.literal("")), location: opt(80), onlineText: opt(80), ratingText: opt(80), consultationText: opt(80), chatLabel: opt(40), chatHref: href.optional() }).partial(),
     footer: z

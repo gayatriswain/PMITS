@@ -14,6 +14,7 @@ import {
 import type { Permission } from "@/lib/permissions";
 import { readingTimeMinutes, sanitizeRichText } from "@/lib/sanitize";
 import { tags } from "@/lib/revalidate";
+import { beforeCategoryDelete, withDefaultCategory } from "@/lib/services/blogCategories";
 import { HttpError } from "@/lib/api";
 
 type Doc = Record<string, unknown>;
@@ -32,6 +33,10 @@ export type ResourceConfig = {
   statusField?: string;
   publicStatuses?: string[];
   prepare?: (data: Doc, existing?: Doc | null) => Doc;
+  /** Async step after `prepare` (e.g. database lookups). */
+  prepareAsync?: (data: Doc) => Promise<Doc>;
+  /** Runs before deleting; throw an HttpError to refuse. */
+  beforeDelete?: (id: string) => Promise<void>;
   revalidate: (doc: Doc) => string[];
   publicPath?: (doc: Doc) => string | null;
 };
@@ -75,6 +80,8 @@ export const RESOURCES: Record<string, ResourceConfig> = {
       if (out.status === "published" && !out.publishedAt) out.publishedAt = new Date();
       return out;
     },
+    // a post always has a category: none chosen -> "Uncategorized"
+    prepareAsync: (d) => withDefaultCategory(d),
     revalidate: (d) => [tags.collection("blogs"), tags.item("blogs", String(d.slug)), tags.page("/blog"), tags.sitemap],
     publicPath: (d) => `/blog/${d.slug}`,
   },
@@ -87,7 +94,9 @@ export const RESOURCES: Record<string, ResourceConfig> = {
     filters: [],
     defaultSort: "order",
     perms: content,
-    revalidate: () => [tags.collection("blogs"), tags.collection("blog-categories")],
+    // the default category can't be deleted; a deleted category's posts move to it
+    beforeDelete: beforeCategoryDelete,
+    revalidate: () => [tags.collection("blogs"), tags.collection("blog-categories"), tags.page("/blog"), tags.sitemap],
   },
   testimonials: {
     name: "testimonials",

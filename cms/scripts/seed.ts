@@ -330,6 +330,11 @@ const BLOG_CARDS: [string, string, string, string, string][] = [
 const slugify = (s: string) => s.toLowerCase().replace(/&/g, "and").replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 async function seedBlogs() {
+  // the default category (renamable, never deleted): only one category may carry isDefault
+  if (!(await BlogCategory.exists({ isDefault: true }))) {
+    const r = await BlogCategory.updateOne({ slug: "uncategorized" }, { $set: { isDefault: true }, $setOnInsert: { name: "Uncategorized", slug: "uncategorized", order: 999 } }, { upsert: true });
+    tally("blogCategories", r.upsertedCount > 0);
+  }
   const cats = new Map<string, unknown>();
   for (const [i, name] of [...new Set(BLOG_CARDS.map((b) => b[1]))].entries()) {
     const slug = slugify(name);

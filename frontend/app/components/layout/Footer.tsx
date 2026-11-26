@@ -3,6 +3,8 @@ import Image from "next/image";
 import Container from "../shared/Container";
 import { getCmsPage, getNavigation, getSettings } from "@/lib/cms";
 import { clientLogos } from "../shared/TrustedBar";
+import { socialIcon, socialLabel } from "../shared/socialIcons";
+import { GLOBAL_PATH } from "@/components/cms/global-sections.data";
 import {
   PhoneIcon,
   MailIcon,
@@ -118,22 +120,28 @@ export default async function Footer() {
     { label: "Terms of Service", href: "/terms" },
     { label: "Refund Policy", href: "/refund" },
   ];
-  const [nav, settings, ...legalPages] = await Promise.all([getNavigation("footer"), getSettings(), ...legalLinks.map((l) => getCmsPage(l.href))]);
+  const [nav, settings, globalPage, ...legalPages] = await Promise.all([getNavigation("footer"), getSettings(), getCmsPage(GLOBAL_PATH), ...legalLinks.map((l) => getCmsPage(l.href))]);
   // A legal link shows only once that page is published in the CMS (Admin → Pages), so it never leads to a 404.
   const legal = legalLinks.map((l, i) => ({ ...l, label: legalPages[i]?.title || l.label })).filter((_, i) => legalPages[i]);
   const columns = nav?.items?.length
     ? nav.items.map((c) => ({ title: c.label, links: (c.children ?? []).map((l) => ({ label: l.label, href: l.href || undefined })) }))
     : linkColumns;
   const f = settings?.footer ?? {};
-  const socials = settings?.socials
-    ? socialLinks.map((sl) => ({ ...sl, href: settings.socials?.[sl.label.toLowerCase()] || "" })).filter((sl) => sl.href)
-    : socialLinks;
+  // Settings → Social: any number of platforms; older sites still have the fixed four-field version
+  const socials = settings?.socialLinks?.some((l) => l.url)
+    ? settings.socialLinks.filter((l) => l.url).map((l) => ({ icon: socialIcon(l.platform), href: l.url!, label: socialLabel(l.platform, l.label) }))
+    : settings?.socials
+      ? socialLinks.map((sl) => ({ ...sl, href: settings.socials?.[sl.label.toLowerCase()] || "" })).filter((sl) => sl.href)
+      : socialLinks;
   const statIcons = [UsersIcon, StarIcon, TrendingUpIcon];
   const statList = f.stats?.filter((s) => s.value || s.label).length
     ? f.stats.filter((s) => s.value || s.label).slice(0, 3).map((s, i) => ({ icon: statIcons[i], value: s.value ?? "", label: s.label ?? "" }))
     : stats;
-  const logos = settings?.clientLogos?.filter((l) => l.image).length
-    ? settings.clientLogos.filter((l) => l.image).map((l) => {
+  // Client logos are edited once in Admin → Global → Client logos slider (older sites: Settings → Client logos)
+  const globalLogos = (globalPage?.sections.find((x) => x.key === "trusted-bar")?.content?.logos as { name?: string; image?: string }[] | undefined) ?? [];
+  const logoSource = globalLogos.some((l) => l.image) ? globalLogos : settings?.clientLogos ?? [];
+  const logos = logoSource.filter((l) => l.image).length
+    ? logoSource.filter((l) => l.image).map((l) => {
         const known = clientLogos.find((k) => k.src === l.image);
         return known ? { ...known, name: l.name || known.name } : { name: l.name || "Client", src: l.image!, w: 150, h: 44, tall: false };
       })

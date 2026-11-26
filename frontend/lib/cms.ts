@@ -42,6 +42,8 @@ export type CmsSettings = {
   address?: string;
   workingHours?: string;
   socials?: Record<string, string | undefined>;
+  /** Settings → Social: platform key (linkedin, x, whatsapp…), URL and optional custom label. */
+  socialLinks?: { platform?: string; url?: string; label?: string }[];
   headerCta?: { label?: string; href?: string };
   topBar?: Record<string, string | undefined>;
   footer?: Record<string, string | undefined> & { stats?: { value?: string; label?: string }[] };
@@ -77,6 +79,8 @@ async function get<T>(path: string, tags: string[]): Promise<T | null> {
 export const getCmsPage = (path: string) => get<CmsPage>(`/api/public/page?path=${encodeURIComponent(path)}`, [`page:${path}`, "pages"]);
 export const getNavigation = (key: string) => get<CmsNavigation>(`/api/public/navigation/${key}`, [`nav:${key}`]);
 export const getSettings = () => get<CmsSettings>("/api/public/settings", ["settings"]);
+/** { image url: alt text } from the CMS Media library (applied to matching images site-wide). */
+export const getMediaAlts = () => get<Record<string, string>>("/api/public/media-alts", ["media-alts"]);
 export const getSitemapEntries = () => get<{ path: string; lastModified: string }[]>("/api/public/sitemap", ["sitemap", "pages"]);
 
 export function getCollection<T = Record<string, unknown>>(name: string, query: Record<string, string | number> = {}) {

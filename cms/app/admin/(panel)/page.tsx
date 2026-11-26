@@ -6,5 +6,5 @@ export const metadata: Metadata = { title: "Dashboard" };
 
 export default async function DashboardPage() {
   const { user, allowed } = await requirePage("dashboard.view");
-  return allowed ? <Dashboard name={user.name} /> : <NoAccess />;
+  return allowed ? <Dashboard name={user.name} role={user.role} /> : <NoAccess />;
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import dynamic from "next/dynamic";
-import { ArrowDown, ArrowUp, ImageIcon, Plus, Trash2, X } from "lucide-react";
+import { ArrowDown, ArrowUp, ChevronDown, Copy, ImageIcon, Plus, Trash2, X } from "lucide-react";
 import { api, qs } from "@/lib/client/api";
 import { MediaPicker, Thumb } from "./MediaPicker";
 import { Button } from "./ui";
@@ -169,38 +169,84 @@ function RelationField({ value, onChange, relation }: { value: string[] | string
   );
 }
 
+/** First meaningful text of a list item (its "name"), and its link if it has one. */
+function itemTitle(item: Values, fallback: string) {
+  const strings = Object.entries(item ?? {}).filter(([, x]) => typeof x === "string" && (x as string).trim()) as [string, string][];
+  const name = strings.find(([k, x]) => !/^(href|url|link|image|icon|src)$/i.test(k) && !/^(\/|https?:|#|mailto:|tel:)/.test(x));
+  const link = strings.find(([k, x]) => /^(href|url|link)$/i.test(k) || /^(\/|https?:|#|mailto:|tel:)/.test(x));
+  return { name: name ? name[1].replace(/<[^>]+>/g, "").slice(0, 80) : fallback, link: link?.[1] };
+}
+
 function ListField({ field, value, onChange, errors, path }: { field: FieldDef; value: Values[]; onChange: (v: Values[]) => void; errors: Errors; path: string }) {
   const items = Array.isArray(value) ? value : [];
   const max = field.maxItems ?? 50;
+  // long lists start collapsed so the whole list fits on screen; short ones start open
+  const [open, setOpen] = useState<Set<number>>(() => new Set(items.length <= 3 ? items.map((_, i) => i) : []));
+  const toggle = (i: number) => setOpen((o) => { const n = new Set(o); if (n.has(i)) n.delete(i); else n.add(i); return n; });
   const move = (i: number, d: -1 | 1) => {
     const next = [...items];
     const [x] = next.splice(i, 1);
     next.splice(i + d, 0, x);
     onChange(next);
+    setOpen((o) => { const n = new Set<number>(); o.forEach((k) => n.add(k === i ? i + d : k === i + d ? i : k)); return n; });
   };
+  const singular = field.label.replace(/s$/, "").toLowerCase();
+  const allOpen = items.length > 0 && open.size === items.length;
   return (
-    <div className="space-y-3">
-      {items.map((item, i) => (
-        <div key={i} className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4">
-          <div className="mb-2 flex items-center justify-between">
-            <span className="flex min-w-0 items-center gap-2">
-              <span className="grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-white text-[11px] font-bold text-slate-500 ring-1 ring-slate-200">{i + 1}</span>
-              <span className="truncate text-sm font-semibold text-slate-700">
-                {String(Object.values(item ?? {}).find((x) => typeof x === "string" && x.trim() && !/^(\/|https?:|#)/.test(x)) ?? `${field.label} #${i + 1}`).replace(/<[^>]+>/g, "").slice(0, 70)}
-              </span>
-            </span>
-            <div className="flex gap-1">
-              <Button type="button" variant="ghost" size="sm" disabled={i === 0} onClick={() => move(i, -1)} aria-label="Move up"><ArrowUp className="h-3.5 w-3.5" /></Button>
-              <Button type="button" variant="ghost" size="sm" disabled={i === items.length - 1} onClick={() => move(i, 1)} aria-label="Move down"><ArrowDown className="h-3.5 w-3.5" /></Button>
-              <Button type="button" variant="ghost" size="sm" onClick={() => onChange(items.filter((_, j) => j !== i))} aria-label="Remove"><Trash2 className="h-3.5 w-3.5 text-rose-500" /></Button>
-            </div>
-          </div>
-          <FieldGroup fields={field.fields ?? []} values={item} onChange={(v) => onChange(items.map((x, j) => (j === i ? v : x)))} errors={errors} prefix={`${path}.${i}`} />
+    <div className="space-y-2.5">
+      {items.length > 3 && (
+        <div className="flex justify-end">
+          <button type="button" className="text-xs font-semibold text-teal hover:underline" onClick={() => setOpen(allOpen ? new Set() : new Set(items.map((_, i) => i)))}>
+            {allOpen ? "Collapse all" : "Expand all"}
+          </button>
         </div>
-      ))}
-      <Button type="button" variant="secondary" size="sm" disabled={items.length >= max} onClick={() => onChange([...items, {}])}>
-        <Plus className="h-4 w-4" /> Add {field.label.replace(/s$/, "").toLowerCase()}
-      </Button>
+      )}
+      {items.map((item, i) => {
+        const isOpen = open.has(i);
+        const { name, link } = itemTitle(item, `${field.label} #${i + 1}`);
+        const hidden = item?.visible === false;
+        return (
+          <div key={i} className={`overflow-hidden rounded-2xl border transition ${isOpen ? "border-teal/40 bg-white shadow-[0_12px_30px_-22px_rgba(13,148,136,0.5)]" : "border-slate-200 bg-white hover:border-slate-300"} ${hidden ? "opacity-70" : ""}`}>
+            <div className="flex items-center gap-2 px-3 py-2.5">
+              <button type="button" onClick={() => toggle(i)} className="flex min-w-0 flex-1 items-center gap-3 text-left">
+                <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-xl text-xs font-bold ${isOpen ? "bg-teal text-white" : "bg-slate-100 text-slate-500"}`}>{i + 1}</span>
+                <span className="min-w-0 flex-1">
+                  <span className="flex flex-wrap items-center gap-1.5">
+                    <span className={`truncate text-sm font-semibold ${hidden ? "text-slate-400 line-through" : "text-slate-800"}`}>{name}</span>
+                    {hidden && <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">Hidden</span>}
+                    {item?.external === true && <span className="rounded-md bg-sky-50 px-1.5 py-0.5 text-[10px] font-semibold text-sky-600">New tab</span>}
+                    {typeof item?.badge === "string" && item.badge && <span className="rounded-md bg-teal/10 px-1.5 py-0.5 text-[10px] font-semibold text-teal">{item.badge as string}</span>}
+                    {Array.isArray(item?.children) && (item.children as unknown[]).length > 0 && (
+                      <span className="rounded-md bg-indigo-50 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-600">{(item.children as unknown[]).length} sub-items</span>
+                    )}
+                  </span>
+                  {link && <span className="block truncate font-mono text-[11px] text-slate-400">{link}</span>}
+                </span>
+                <ChevronDown className={`h-4 w-4 shrink-0 text-slate-400 transition ${isOpen ? "rotate-180" : ""}`} />
+              </button>
+              <div className="flex shrink-0 items-center border-l border-slate-100 pl-1">
+                <Button type="button" variant="ghost" size="sm" disabled={i === 0} onClick={() => move(i, -1)} aria-label="Move up" title="Move up"><ArrowUp className="h-3.5 w-3.5" /></Button>
+                <Button type="button" variant="ghost" size="sm" disabled={i === items.length - 1} onClick={() => move(i, 1)} aria-label="Move down" title="Move down"><ArrowDown className="h-3.5 w-3.5" /></Button>
+                <Button type="button" variant="ghost" size="sm" disabled={items.length >= max} onClick={() => { onChange([...items.slice(0, i + 1), structuredClone(item), ...items.slice(i + 1)]); setOpen(new Set([i + 1])); }} aria-label="Duplicate" title="Duplicate"><Copy className="h-3.5 w-3.5" /></Button>
+                <Button type="button" variant="ghost" size="sm" onClick={() => { onChange(items.filter((_, j) => j !== i)); setOpen(new Set()); }} aria-label="Remove" title="Remove"><Trash2 className="h-3.5 w-3.5 text-rose-500" /></Button>
+              </div>
+            </div>
+            {isOpen && (
+              <div className="border-t border-slate-100 bg-[#fbfcfd] p-4">
+                <FieldGroup fields={field.fields ?? []} values={item} onChange={(v) => onChange(items.map((x, j) => (j === i ? v : x)))} errors={errors} prefix={`${path}.${i}`} />
+              </div>
+            )}
+          </div>
+        );
+      })}
+      <button
+        type="button"
+        disabled={items.length >= max}
+        onClick={() => { onChange([...items, {}]); setOpen(new Set([items.length])); }}
+        className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-slate-200 py-3 text-sm font-semibold text-slate-500 transition hover:border-teal/50 hover:bg-teal/5 hover:text-teal disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        <Plus className="h-4 w-4" /> Add {singular}
+      </button>
     </div>
   );
 }

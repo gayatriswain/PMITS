@@ -1,6 +1,9 @@
 import type { FieldDef } from "@/components/admin/fields";
 
-export type Column = { key: string; label: string; kind?: "text" | "status" | "date" | "image" | "bool" | "list"; className?: string };
+/** ref: the cell holds ids of another resource, shown by name (e.g. blog categories). */
+export type Column = { key: string; label: string; kind?: "text" | "status" | "date" | "image" | "bool" | "list" | "refs"; className?: string; ref?: { resource: string; labelKey: string } };
+/** A list filter; `from` loads its options from another resource (value = id). */
+export type Filter = { key: string; label: string; options: { value: string; label: string }[]; from?: { resource: string; labelKey: string } };
 export type ResourceUI = {
   name: string;
   label: string;
@@ -8,7 +11,7 @@ export type ResourceUI = {
   description: string;
   titleKey: string;
   columns: Column[];
-  filters?: { key: string; label: string; options: { value: string; label: string }[] }[];
+  filters?: Filter[];
   fields: FieldDef[];
   /** Sidebar of the edit form (status, ordering...). */
   side: FieldDef[];
@@ -86,12 +89,16 @@ export const RESOURCE_UI: Record<string, ResourceUI> = {
     titleKey: "title",
     columns: [
       { key: "featuredImage", label: "", kind: "image" },
-      { key: "title", label: "Title" },
+      { key: "title", label: "Post" },
+      { key: "categories", label: "Categories", kind: "refs", ref: { resource: "blog-categories", labelKey: "name" } },
       { key: "author", label: "Author" },
       { key: "publishedAt", label: "Publish date", kind: "date" },
       { key: "status", label: "Status", kind: "status" },
     ],
-    filters: [statusFilter(["draft", "scheduled", "published"])],
+    filters: [
+      statusFilter(["draft", "scheduled", "published"]),
+      { key: "categories", label: "Category", options: [{ value: "", label: "All categories" }], from: { resource: "blog-categories", labelKey: "name" } },
+    ],
     fields: [
       { name: "title", label: "Title", type: "text", required: true, max: 250 },
       { name: "slug", label: "Slug", type: "slug", from: "title", required: true, help: "The post URL becomes /blog/your-slug" },

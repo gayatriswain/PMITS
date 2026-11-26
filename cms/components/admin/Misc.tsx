@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { AlertTriangle, CheckCircle2, Download, KeyRound, Pencil, Plus, Save, Trash2, UserPlus } from "lucide-react";
+import { ChevronDown, Crown, Download, Eye, LayoutGrid, Inbox, KeyRound, Mail, Palette, PanelBottom, PanelTop, Pencil, PenLine, Phone, Plus, Save, Search, Share2, ShieldCheck, Trash2, UserPlus } from "lucide-react";
 import { api, ApiError, qs } from "@/lib/client/api";
 import { ROLE_LABELS, type Role } from "@/lib/permissions";
-import { Badge, Button, Card, EmptyState, Modal, PageHeader, Pagination, SearchInput, Select, Spinner, fmtDate, useConfirm, useToast, useUnsavedWarning } from "./ui";
+import { Avatar, Badge, Button, Card, EmptyState, Modal, PageHeader, Pagination, PerPage, SearchInput, Select, Spinner, fmtDate, useConfirm, usePerPage, useToast, useUnsavedWarning } from "./ui";
 import { FieldGroup, type FieldDef } from "./fields";
 
 type Errs = Record<string, string | string[]>;
@@ -56,6 +56,27 @@ export function NavigationEditor() {
       });
   }, [key]);
 
+  const save = async () => {
+    if (!doc) return;
+    setBusy(true);
+    setErrors({});
+    try {
+      const d = await api<{ name: string; items: Record<string, unknown>[] }>(`/api/admin/navigation/${key}`, { method: "PUT", json: { name: doc.name, items: strip(doc.items) } });
+      const v = { name: d.name, items: d.items };
+      setDoc(v);
+      setBase(JSON.stringify(v));
+      toast("success", "Menu saved and published");
+    } catch (e) {
+      if (e instanceof ApiError && e.errors) setErrors(e.errors);
+      toast("error", (e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  const menu = MENUS.find((m) => m.key === key)!;
+  const MENU_ICON: Record<string, typeof Save> = { header: PanelTop, services: LayoutGrid, footer: PanelBottom };
+  const visibleItems = (doc?.items ?? []).filter((i) => i.visible !== false);
+
   const strip = (items: Record<string, unknown>[]): Record<string, unknown>[] =>
     items.map(({ _id: _x, children, ...i }) => ({ external: false, visible: true, href: "", ...i, children: strip((children as Record<string, unknown>[]) ?? []) }));
 
@@ -63,33 +84,70 @@ export function NavigationEditor() {
     <>
       <PageHeader
         title="Navigation"
-        description="Menus are published as soon as you save."
+        description="The website's menus. Changes go live as soon as you save."
         crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "Navigation" }]}
-        actions={<Button onClick={async () => {
-          if (!doc) return;
-          setBusy(true);
-          setErrors({});
-          try {
-            const d = await api<{ name: string; items: Record<string, unknown>[] }>(`/api/admin/navigation/${key}`, { method: "PUT", json: { name: doc.name, items: strip(doc.items) } });
-            const v = { name: d.name, items: d.items };
-            setDoc(v);
-            setBase(JSON.stringify(v));
-            toast("success", "Menu saved and published");
-          } catch (e) {
-            if (e instanceof ApiError && e.errors) setErrors(e.errors);
-            toast("error", (e as Error).message);
-          } finally {
-            setBusy(false);
-          }
-        }} loading={busy} disabled={!dirty}><Save className="h-4 w-4" /> Save menu</Button>}
+        actions={<Button onClick={save} loading={busy} disabled={!dirty}><Save className="h-4 w-4" /> Save menu</Button>}
       />
-      <div className="mb-4 flex flex-wrap gap-2">
-        {MENUS.map((m) => (
-          <Button key={m.key} variant={key === m.key ? "primary" : "secondary"} size="sm" onClick={() => { if (m.key !== key && (!dirty || window.confirm("Discard unsaved menu changes?"))) { setDoc(null); setKey(m.key); } }}>{m.label}</Button>
-        ))}
+      <div className="mb-5 grid gap-3 sm:grid-cols-3">
+        {MENUS.map((m, i) => {
+          const on = key === m.key;
+          const Icon = MENU_ICON[m.key] ?? PanelTop;
+          return (
+            <button
+              key={m.key}
+              type="button"
+              style={{ animationDelay: `${i * 60}ms` }}
+              onClick={() => { if (m.key !== key && (!dirty || window.confirm("Discard unsaved menu changes?"))) { setDoc(null); setKey(m.key); } }}
+              className={`auth-rise flex items-start gap-3 rounded-2xl border p-4 text-left transition ${on ? "border-teal/40 bg-white shadow-[0_14px_32px_-20px_rgba(13,148,136,0.55)] ring-1 ring-teal/20" : "border-slate-200 bg-white/70 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm"}`}
+            >
+              <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${on ? "bg-teal text-white" : "bg-slate-100 text-slate-500"}`}><Icon className="h-5 w-5" /></span>
+              <span>
+                <span className="block text-sm font-semibold text-slate-900">{m.label}</span>
+                <span className="mt-0.5 block text-xs text-slate-500">{m.help}</span>
+              </span>
+            </button>
+          );
+        })}
       </div>
-      <Card title={MENUS.find((m) => m.key === key)?.label}>
-        <p className="mb-4 text-xs text-slate-500">{MENUS.find((m) => m.key === key)?.help}</p>
+
+      {/* live preview of the top-level items */}
+      {doc && visibleItems.length > 0 && (
+        <div key={`pv-${key}`} className="auth-rise mb-5 rounded-2xl border border-slate-200 bg-white p-4">
+          <p className="mb-3 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400"><Eye className="h-3.5 w-3.5" /> Preview</p>
+          {key === "header" ? (
+            <div className="flex flex-wrap items-center gap-1 rounded-xl bg-slate-50 px-3 py-2.5">
+              <span className="mr-3 text-sm font-extrabold tracking-tight text-navy">PRO<span className="text-teal">MANAGE</span></span>
+              {visibleItems.map((it, i) => (
+                <span key={i} className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-sm font-medium text-slate-700">
+                  {String(it.label ?? "")}
+                  {Array.isArray(it.children) && (it.children as unknown[]).length > 0 && <ChevronDown className="h-3.5 w-3.5 text-slate-400" />}
+                  {typeof it.badge === "string" && it.badge && <span className="rounded bg-teal px-1 text-[9px] font-bold uppercase text-white">{it.badge}</span>}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <div className={`grid gap-3 ${key === "footer" ? "rounded-xl bg-navy p-4 text-white sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-4"}`}>
+              {visibleItems.map((g, i) => {
+                const kids = ((g.children as Record<string, unknown>[]) ?? []).filter((c) => c.visible !== false);
+                return (
+                  <div key={i} className={key === "footer" ? "" : "rounded-xl bg-slate-50 p-3"}>
+                    <p className={`text-xs font-bold uppercase tracking-wider ${key === "footer" ? "text-teal-300" : "text-slate-500"}`}>{String(g.label ?? "")}</p>
+                    <ul className="mt-2 space-y-1">
+                      {kids.slice(0, 7).map((c, j) => (
+                        <li key={j} className={`truncate text-xs ${key === "footer" ? "text-slate-300" : "text-slate-700"}`}>{String(c.label ?? "")}</li>
+                      ))}
+                      {kids.length > 7 && <li className="text-[11px] text-slate-400">+{kids.length - 7} more</li>}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+
+      <Card title={<span className="inline-flex items-center gap-2">{menu.label} <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-500">{doc?.items.length ?? 0} {key === "header" ? "items" : "groups"}</span></span>}>
+        <p className="mb-4 text-xs text-slate-500">Click a row to edit it. Use the arrows to change the order, the copy icon to duplicate, and untick <b>Visible</b> to hide an item without deleting it.</p>
         {!doc ? <Spinner /> : (
           <FieldGroup
             values={doc}
@@ -99,6 +157,17 @@ export function NavigationEditor() {
           />
         )}
       </Card>
+      {dirty && (
+        <div className="sticky bottom-4 z-20 mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-amber-200 bg-white/95 px-4 py-3 shadow-[0_18px_40px_-18px_rgba(15,23,42,0.45)] backdrop-blur">
+          <span className="flex items-center gap-2 text-sm font-medium text-slate-700">
+            <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-amber-400" /> Unsaved menu changes
+          </span>
+          <span className="ml-auto flex gap-2">
+            <Button variant="ghost" onClick={() => setDoc(JSON.parse(base))}>Discard</Button>
+            <Button variant="teal" loading={busy} onClick={save}><Save className="h-4 w-4" /> Save &amp; publish menu</Button>
+          </span>
+        </div>
+      )}
     </>
   );
 }
@@ -106,6 +175,13 @@ export function NavigationEditor() {
 /* ------------------------------------------------------------------ */
 /* Settings                                                            */
 /* ------------------------------------------------------------------ */
+
+const SOCIAL_PLATFORMS = [
+  ["linkedin", "LinkedIn"], ["instagram", "Instagram"], ["facebook", "Facebook"], ["youtube", "YouTube"], ["x", "X (Twitter)"],
+  ["whatsapp", "WhatsApp"], ["telegram", "Telegram"], ["pinterest", "Pinterest"], ["github", "GitHub"], ["behance", "Behance"],
+  ["dribbble", "Dribbble"], ["threads", "Threads"], ["tiktok", "TikTok"], ["google", "Google Business"], ["clutch", "Clutch"],
+  ["website", "Website"], ["other", "Other link"],
+].map(([value, label]) => ({ value, label }));
 
 const SETTINGS_GROUPS: { title: string; fields: FieldDef[] }[] = [
   { title: "Brand", fields: [
@@ -126,16 +202,14 @@ const SETTINGS_GROUPS: { title: string; fields: FieldDef[] }[] = [
     { name: "topBar", label: "Top bar", type: "list", maxItems: 0 },
   ] },
   { title: "Social links", fields: [
-    { name: "socials", label: "Socials", type: "list", maxItems: 0 },
+    { name: "socialLinks", label: "Social profiles", type: "list", maxItems: 20, help: "Shown as icons in the website footer, in this order. Add as many as you like.", fields: [
+      { name: "platform", label: "Platform", type: "select", required: true, options: SOCIAL_PLATFORMS, half: true },
+      { name: "url", label: "Profile link", type: "url", required: true, half: true, placeholder: "https://…" },
+      { name: "label", label: "Name shown on hover (optional)", type: "text", max: 60, help: "Leave empty to use the platform name." },
+    ] },
   ] },
   { title: "Footer", fields: [
     { name: "footer", label: "Footer", type: "list", maxItems: 0 },
-  ] },
-  { title: "Client logos (footer “Trusted by” strip)", fields: [
-    { name: "clientLogos", label: "Logos", type: "list", maxItems: 40, help: "Shown on white tiles in the footer marquee, in this order. SVG or transparent PNG works best.", fields: [
-      { name: "name", label: "Client name", type: "text", max: 120, required: true },
-      { name: "image", label: "Logo", type: "image" },
-    ] },
   ] },
   { title: "Default SEO & tracking", fields: [
     { name: "defaultSeo", label: "SEO", type: "list", maxItems: 0 },
@@ -182,8 +256,19 @@ const NESTED: Record<string, FieldDef[]> = {
   ],
 };
 
+/** Icon + one-line help for each settings tab. */
+const SETTINGS_TABS: Record<string, { icon: typeof Save; short: string; help: string }> = {
+  "Brand": { icon: Palette, short: "Brand", help: "Website name, logos and favicon." },
+  "Contact details (footer & contact sections)": { icon: Phone, short: "Contact", help: "Email, phone and address shown in the footer and contact sections." },
+  "Header top bar": { icon: PanelTop, short: "Top bar", help: "The thin bar above the main menu." },
+  "Social links": { icon: Share2, short: "Social", help: "Your social media profiles - shown as icons in the website footer." },
+  "Footer": { icon: PanelBottom, short: "Footer", help: "Text at the bottom of every page. Footer client logos come from Global → Client logos slider; footer links from Navigation." },
+  "Default SEO & tracking": { icon: Search, short: "SEO & tracking", help: "Fallback SEO for pages without their own, plus Analytics / Tag Manager / Pixel IDs." },
+};
+
 export function SettingsEditor() {
   const toast = useToast();
+  const [tab, setTab] = useState(SETTINGS_GROUPS[0].title);
   const [v, setV] = useState<Record<string, unknown> | null>(null);
   const [base, setBase] = useState("");
   const [errors, setErrors] = useState<Errs>({});
@@ -195,6 +280,11 @@ export function SettingsEditor() {
     api<Record<string, unknown>>("/api/admin/settings").then((d) => {
       const { _id, __v, key, createdAt, updatedAt, ...rest } = d;
       void _id; void __v; void key; void createdAt; void updatedAt;
+      // first time on the new Social list: start it from the old fixed fields (LinkedIn, Instagram…)
+      const old = (rest.socials as Record<string, string | undefined>) ?? {};
+      if (!(rest.socialLinks as unknown[] | undefined)?.length) {
+        rest.socialLinks = Object.entries(old).filter(([, u]) => u).map(([p, u]) => ({ platform: p === "twitter" ? "x" : p, url: u, label: "" }));
+      }
       setV(rest);
       setBase(JSON.stringify(rest));
     }).catch((e) => toast("error", e.message));
@@ -202,13 +292,7 @@ export function SettingsEditor() {
 
   if (!v) return <Spinner />;
   const analytics = (v.analytics as Record<string, unknown>) ?? {};
-  return (
-    <>
-      <PageHeader
-        title="Website settings"
-        description="Global details used across the whole website."
-        crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "Settings" }]}
-        actions={<Button loading={busy} disabled={!dirty} onClick={async () => {
+  const save = async () => {
           setBusy(true);
           setErrors({});
           try {
@@ -224,13 +308,51 @@ export function SettingsEditor() {
           } finally {
             setBusy(false);
           }
-        }}><Save className="h-4 w-4" /> Save settings</Button>}
+  };
+  const tabs = [...SETTINGS_GROUPS.map((g) => ({ id: g.title, ...SETTINGS_TABS[g.title] })), { id: "Notifications", icon: Mail, short: "Notifications", help: "Who gets emailed about new enquiries." }];
+  const current = tabs.find((t) => t.id === tab) ?? tabs[0];
+  return (
+    <>
+      <PageHeader
+        title="Website settings"
+        description="Global details used across the whole website. Pick a tab, change what you need, then save."
+        crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "Settings" }]}
+        actions={<Button loading={busy} disabled={!dirty} onClick={save}><Save className="h-4 w-4" /> Save settings</Button>}
       />
-      <div className="space-y-6">
-        {SETTINGS_GROUPS.map((g) => {
+      <div className="grid gap-6 lg:grid-cols-[250px_1fr]">
+        {/* tab list */}
+        <nav aria-label="Settings sections" className="flex gap-2 overflow-x-auto pb-1 lg:sticky lg:top-24 lg:flex-col lg:self-start lg:overflow-visible">
+          {tabs.map((t) => {
+            const on = t.id === current.id;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setTab(t.id)}
+                className={`group flex shrink-0 items-center gap-3 rounded-2xl px-3 py-2.5 text-left text-sm transition ${on ? "bg-white font-semibold text-slate-900 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.45)] ring-1 ring-slate-200" : "text-slate-500 hover:bg-white/70 hover:text-slate-800"}`}
+              >
+                <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl transition ${on ? "bg-teal text-white shadow-[0_8px_18px_-8px_rgba(13,148,136,0.8)]" : "bg-slate-100 text-slate-500 group-hover:bg-teal/10 group-hover:text-teal"}`}>
+                  <t.icon className="h-4 w-4" />
+                </span>
+                <span className="whitespace-nowrap">{t.short}</span>
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* active tab */}
+        <div key={current.id} className="auth-rise min-w-0">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-teal/10 text-teal"><current.icon className="h-5 w-5" /></span>
+            <div>
+              <h2 className="text-lg font-bold text-slate-900">{current.id}</h2>
+              <p className="text-sm text-slate-500">{current.help}</p>
+            </div>
+          </div>
+        {SETTINGS_GROUPS.filter((g) => g.title === current.id).map((g) => {
           const nestedKey = g.fields.length === 1 && NESTED[g.fields[0].name] ? g.fields[0].name : null;
           return (
-            <Card key={g.title} title={g.title}>
+            <Card key={g.title}>
               {nestedKey ? (
                 <FieldGroup fields={NESTED[nestedKey]} values={(v[nestedKey] as Record<string, unknown>) ?? {}} onChange={(x) => setV({ ...v, [nestedKey]: x })} errors={errors} prefix={nestedKey} />
               ) : (
@@ -254,73 +376,27 @@ export function SettingsEditor() {
             </Card>
           );
         })}
-        <Card title="Notifications">
+        {current.id === "Notifications" && (
+        <Card>
           <p className="text-sm text-slate-600">
             Who gets emailed about new enquiries (To, CC, BCC), the mail server and the test button are on the{" "}
             <Link href="/admin/email" className="font-medium text-teal hover:underline">Email (SMTP)</Link> page.
           </p>
         </Card>
-      </div>
-    </>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* SEO overview                                                        */
-/* ------------------------------------------------------------------ */
-
-type SeoRow = { _id: string; title: string; path: string; status: string; seo?: { title?: string; description?: string; robotsIndex?: boolean; ogImage?: string }; draft?: { seo?: SeoRow["seo"] } };
-
-export function SeoOverview() {
-  const [rows, setRows] = useState<SeoRow[] | null>(null);
-  const [q, setQ] = useState("");
-  useEffect(() => {
-    api<{ items: SeoRow[] }>(`/api/admin/pages${qs({ q, limit: 100 })}`).then((d) => setRows(d.items)).catch(() => setRows([]));
-  }, [q]);
-  const issues = (r: SeoRow) => {
-    const s = r.draft?.seo ?? r.seo ?? {};
-    const out: string[] = [];
-    if (!s.title) out.push("Missing title");
-    else if (s.title.length > 60) out.push("Title longer than 60");
-    if (!s.description) out.push("Missing description");
-    else if (s.description.length > 160) out.push("Description longer than 160");
-    if (!s.ogImage) out.push("No share image");
-    if (s.robotsIndex === false) out.push("noindex");
-    return out;
-  };
-  return (
-    <>
-      <PageHeader title="SEO" description="Search titles, descriptions and indexing for every page. Click a page to edit its SEO tab." crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "SEO" }]} />
-      <Card className="overflow-hidden [&>div]:p-0">
-        <div className="border-b border-slate-100 p-4"><SearchInput value={q} onChange={setQ} placeholder="Search pages…" /></div>
-        {!rows ? <Spinner /> : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead className="bg-slate-50 text-left text-xs font-medium uppercase tracking-wide text-slate-500">
-                <tr><th className="px-4 py-2.5">Page</th><th className="px-4 py-2.5">SEO title</th><th className="px-4 py-2.5">Description</th><th className="px-4 py-2.5">Checks</th></tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {rows.map((r) => {
-                  const s = r.draft?.seo ?? r.seo ?? {};
-                  const list = issues(r);
-                  return (
-                    <tr key={r._id} className="align-top hover:bg-slate-50/60">
-                      <td className="px-4 py-2.5"><Link href={`/admin/pages/${r._id}`} className="font-medium text-slate-800 hover:text-teal">{r.title}</Link><p className="font-mono text-[11px] text-slate-400">{r.path}</p></td>
-                      <td className="max-w-xs px-4 py-2.5 text-xs text-slate-600">{s.title || "—"}</td>
-                      <td className="max-w-sm px-4 py-2.5 text-xs text-slate-500"><span className="line-clamp-2">{s.description || "—"}</span></td>
-                      <td className="px-4 py-2.5">
-                        {list.length === 0 ? <span className="inline-flex items-center gap-1 text-xs text-emerald-600"><CheckCircle2 className="h-3.5 w-3.5" /> Good</span> : (
-                          <ul className="space-y-0.5">{list.map((i) => <li key={i} className="flex items-center gap-1 text-xs text-amber-700"><AlertTriangle className="h-3 w-3" /> {i}</li>)}</ul>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
         )}
-      </Card>
+        </div>
+      </div>
+      {dirty && (
+        <div className="sticky bottom-4 z-20 mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-amber-200 bg-white/95 px-4 py-3 shadow-[0_18px_40px_-18px_rgba(15,23,42,0.45)] backdrop-blur">
+          <span className="flex items-center gap-2 text-sm font-medium text-slate-700">
+            <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-amber-400" /> You have unsaved changes (all tabs are saved together)
+          </span>
+          <span className="ml-auto flex gap-2">
+            <Button variant="ghost" onClick={() => setV(JSON.parse(base))}>Discard</Button>
+            <Button variant="teal" loading={busy} onClick={save}><Save className="h-4 w-4" /> Save settings</Button>
+          </span>
+        </div>
+      )}
     </>
   );
 }
@@ -331,6 +407,13 @@ export function SeoOverview() {
 
 type UserRow = { _id: string; name: string; email: string; role: Role; active: boolean; lastLoginAt?: string; createdAt: string };
 const ROLE_OPTS = (Object.keys(ROLE_LABELS) as Role[]).map((r) => ({ value: r, label: ROLE_LABELS[r] }));
+const ROLE_INFO: Record<Role, { icon: typeof Save; cls: string; text: string }> = {
+  super_admin: { icon: Crown, cls: "bg-amber-100 text-amber-700", text: "Everything, including users" },
+  admin: { icon: ShieldCheck, cls: "bg-teal/10 text-teal", text: "Everything except users" },
+  editor: { icon: PenLine, cls: "bg-indigo-100 text-indigo-700", text: "Pages, content, media, menus" },
+  seo_manager: { icon: Search, cls: "bg-sky-100 text-sky-700", text: "SEO fields and publishing" },
+  lead_manager: { icon: Inbox, cls: "bg-rose-100 text-rose-700", text: "Leads, proposals, applications" },
+};
 
 export function UsersManager({ selfId }: { selfId: string }) {
   const toast = useToast();
@@ -351,15 +434,22 @@ export function UsersManager({ selfId }: { selfId: string }) {
     <>
       <PageHeader title="Users & roles" description="Who can sign in to the CMS and what they can do." crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "Users" }]}
         actions={<Button onClick={() => { setErrors({}); setEdit({ role: "editor", active: true }); }}><UserPlus className="h-4 w-4" /> Add user</Button>} />
-      <Card className="mb-6">
-        <ul className="grid gap-2 text-xs text-slate-600 sm:grid-cols-2 xl:grid-cols-5">
-          <li><b className="text-slate-800">Super Admin</b> – everything, incl. users</li>
-          <li><b className="text-slate-800">Admin</b> – everything except users</li>
-          <li><b className="text-slate-800">Editor</b> – pages, content, media, menus</li>
-          <li><b className="text-slate-800">SEO Manager</b> – SEO fields and publishing</li>
-          <li><b className="text-slate-800">Lead Manager</b> – leads, proposals, applications</li>
-        </ul>
-      </Card>
+      <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+        {(Object.keys(ROLE_INFO) as Role[]).map((r, i) => {
+          const info = ROLE_INFO[r];
+          const count = rows?.filter((u) => u.role === r).length ?? 0;
+          return (
+            <div key={r} style={{ animationDelay: `${i * 60}ms` }} className="auth-rise rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-22px_rgba(15,23,42,0.4)]">
+              <div className="flex items-center justify-between">
+                <span className={`grid h-9 w-9 place-items-center rounded-xl ${info.cls}`}><info.icon className="h-4 w-4" /></span>
+                <span className="text-xl font-bold text-slate-900">{count}</span>
+              </div>
+              <p className="mt-3 text-sm font-semibold text-slate-900">{ROLE_LABELS[r]}</p>
+              <p className="mt-0.5 text-xs text-slate-500">{info.text}</p>
+            </div>
+          );
+        })}
+      </div>
       <Card className="overflow-hidden [&>div]:p-0">
         {!rows ? <Spinner /> : (
           <div className="overflow-x-auto">
@@ -368,8 +458,23 @@ export function UsersManager({ selfId }: { selfId: string }) {
               <tbody className="divide-y divide-slate-100">
                 {rows.map((u) => (
                   <tr key={u._id}>
-                    <td className="px-4 py-2.5"><p className="font-medium text-slate-800">{u.name}{u._id === selfId && <span className="ml-1 text-xs text-slate-400">(you)</span>}</p><p className="text-xs text-slate-500">{u.email}</p></td>
-                    <td className="px-4 py-2.5 text-slate-600">{ROLE_LABELS[u.role]}</td>
+                    <td className="px-4 py-2.5">
+                      <div className="flex items-center gap-3">
+                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-teal to-navy text-xs font-bold uppercase text-white">
+                          {u.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("")}
+                        </span>
+                        <div className="min-w-0">
+                          <p className="font-semibold text-slate-900">{u.name}{u._id === selfId && <span className="ml-1.5 rounded-full bg-teal/10 px-1.5 py-0.5 text-[10px] font-bold text-teal">YOU</span>}</p>
+                          <p className="truncate text-xs text-slate-500">{u.email}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-4 py-2.5">
+                      <span className={`inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-xs font-semibold ${ROLE_INFO[u.role].cls}`}>
+                        {(() => { const I = ROLE_INFO[u.role].icon; return <I className="h-3.5 w-3.5" />; })()}
+                        {ROLE_LABELS[u.role]}
+                      </span>
+                    </td>
                     <td className="px-4 py-2.5"><Badge value={u.active ? "published" : "closed"} label={u.active ? "active" : "disabled"} /></td>
                     <td className="px-4 py-2.5 text-xs text-slate-500">{fmtDate(u.lastLoginAt, true)}</td>
                     <td className="whitespace-nowrap px-4 py-2.5 text-right">
@@ -467,42 +572,6 @@ export function ProfileForm({ name, email, role }: { name: string; email: string
 }
 
 /* ------------------------------------------------------------------ */
-/* Activity                                                            */
-/* ------------------------------------------------------------------ */
-
-export function ActivityList() {
-  const [page, setPage] = useState(1);
-  const [entity, setEntity] = useState("");
-  const [data, setData] = useState<{ items: { _id: string; userName?: string; action: string; entity: string; summary?: string; createdAt: string }[]; total: number; pages: number } | null>(null);
-  useEffect(() => {
-    api<typeof data>(`/api/admin/activity${qs({ page, entity })}`).then(setData).catch(() => setData({ items: [], total: 0, pages: 1 }));
-  }, [page, entity]);
-  return (
-    <>
-      <PageHeader title="Activity log" description="Who changed what, and when." crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "Activity" }]} />
-      <Card className="overflow-hidden [&>div]:p-0">
-        <div className="border-b border-slate-100 p-4">
-          <Select label="Area" value={entity} onChange={(v) => { setEntity(v); setPage(1); }} options={[{ value: "", label: "Everything" }, ...["auth", "pages", "services", "blogs", "testimonials", "portfolio", "careers", "team", "media", "navigation", "settings", "leads", "proposals", "applications", "users"].map((x) => ({ value: x, label: x }))]} />
-        </div>
-        {!data ? <Spinner /> : data.items.length === 0 ? <EmptyState title="No activity" /> : (
-          <ul className="divide-y divide-slate-100">
-            {data.items.map((a) => (
-              <li key={a._id} className="flex flex-col gap-1 px-4 py-3 text-sm sm:flex-row sm:items-center">
-                <span className="w-44 shrink-0 text-xs text-slate-400">{fmtDate(a.createdAt, true)}</span>
-                <span className="w-32 shrink-0 font-medium text-slate-700">{a.userName ?? "System"}</span>
-                <Badge value="draft" label={a.entity} />
-                <span className="flex-1 text-slate-600 sm:pl-2">{a.summary ?? a.action}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        {data && <Pagination page={page} pages={data.pages} total={data.total} onPage={setPage} />}
-      </Card>
-    </>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /* Job applications                                                    */
 /* ------------------------------------------------------------------ */
 
@@ -515,10 +584,11 @@ export function ApplicationsList() {
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("");
   const [page, setPage] = useState(1);
+  const [limit, setLimit] = usePerPage("applications");
   const [data, setData] = useState<{ items: App[]; total: number; pages: number } | null>(null);
   const [sel, setSel] = useState<App | null>(null);
   const [note, setNote] = useState("");
-  const load = useCallback(() => api<typeof data>(`/api/admin/applications${qs({ q, status, page })}`).then(setData).catch((e) => toast("error", e.message)), [q, status, page, toast]);
+  const load = useCallback(() => api<typeof data>(`/api/admin/applications${qs({ q, status, page, limit })}`).then(setData).catch((e) => toast("error", e.message)), [q, status, page, limit, toast]);
   useEffect(() => {
     // Defer to after render (fetch results update state asynchronously).
     const t = setTimeout(load, 0);
@@ -533,9 +603,10 @@ export function ApplicationsList() {
     <>
       <PageHeader title="Job applications" description="Applications sent from the Career page. CVs are stored privately." crumbs={[{ label: "Dashboard", href: "/admin" }, { label: "Applications" }]} />
       <Card className="overflow-hidden [&>div]:p-0">
-        <div className="flex flex-col gap-2 border-b border-slate-100 p-4 sm:flex-row">
+        <div className="flex flex-col gap-2 border-b border-slate-100 bg-slate-50/50 p-4 sm:flex-row">
           <SearchInput value={q} onChange={(v) => { setQ(v); setPage(1); }} placeholder="Name, email or job…" />
           <Select label="Status" value={status} onChange={(v) => { setStatus(v); setPage(1); }} options={[{ value: "", label: "All statuses" }, ...APP_STATUSES.map((s) => ({ value: s, label: s }))]} />
+          <PerPage value={limit} onChange={(n) => { setLimit(n); setPage(1); }} />
         </div>
         {!data ? <Spinner /> : data.items.length === 0 ? <EmptyState title="No applications yet" /> : (
           <div className="overflow-x-auto">
@@ -544,9 +615,9 @@ export function ApplicationsList() {
               <tbody className="divide-y divide-slate-100">
                 {data.items.map((a) => (
                   <tr key={a._id} className="cursor-pointer hover:bg-slate-50/60" onClick={() => setSel(a)}>
-                    <td className="px-4 py-2.5"><p className="font-medium text-slate-800">{a.name}</p><p className="text-xs text-slate-500">{a.email}</p></td>
+                    <td className="px-4 py-2.5"><div className="flex items-center gap-3"><Avatar name={a.name} /><div className="min-w-0"><p className="truncate font-semibold text-slate-900">{a.name}</p><p className="truncate text-xs text-slate-500">{a.email}</p></div></div></td>
                     <td className="px-4 py-2.5 text-slate-600">{a.jobTitle}</td>
-                    <td className="px-4 py-2.5 text-xs">{a.resume ? "Attached" : "—"}</td>
+                    <td className="px-4 py-2.5 text-xs">{a.resume ? <span className="inline-flex items-center rounded-lg bg-teal/10 px-2 py-0.5 font-semibold text-teal">CV attached</span> : <span className="text-slate-300">—</span>}</td>
                     <td className="px-4 py-2.5"><Badge value={a.status} /></td>
                     <td className="px-4 py-2.5 text-xs text-slate-500">{fmtDate(a.createdAt, true)}</td>
                   </tr>
@@ -555,7 +626,7 @@ export function ApplicationsList() {
             </table>
           </div>
         )}
-        {data && <Pagination page={page} pages={data.pages} total={data.total} onPage={setPage} />}
+        {data && <Pagination page={page} pages={data.pages} total={data.total} onPage={setPage} limit={limit} onLimit={(n) => { setLimit(n); setPage(1); }} />}
       </Card>
       {sel && (
         <Modal title={`${sel.name} – ${sel.jobTitle}`} onClose={() => setSel(null)} size="lg">

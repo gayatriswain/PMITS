@@ -1,9 +1,6 @@
-import type { Metadata } from "next";
-import { SeoOverview } from "@/components/admin/Misc";
-import { NoAccess, requirePage } from "@/components/admin/Guard";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "SEO" };
-export default async function Page() {
-  const { allowed } = await requirePage(["pages.read", "seo.write"]);
-  return allowed ? <SeoOverview /> : <NoAccess />;
+/** SEO is edited in each page's "SEO" tab; the page list shows a quick SEO check per page. */
+export default function Page() {
+  redirect("/admin/pages");
 }

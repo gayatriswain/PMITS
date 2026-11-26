@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowDown, ArrowUp, ChevronDown, ChevronRight, Eye, EyeOff, Globe, Link2, Lock, Plus, RotateCcw, Save, Send, Trash2, Undo2 } from "lucide-react";
+import { ArrowDown, ArrowUp, ChevronDown, Eye, EyeOff, Globe, Link2, Lock, PencilLine, Plus, RotateCcw, Save, Send, Trash2, Undo2 } from "lucide-react";
 import { api, ApiError } from "@/lib/client/api";
 import { Badge, Button, Card, Modal, PageHeader, Spinner, fmtDate, useConfirm, useToast, useUnsavedWarning } from "./ui";
 import { FieldGroup, type FieldDef } from "./fields";
@@ -19,6 +19,17 @@ type Raw = { page: PageDoc; sections: (Section & { draftContent?: Record<string,
 const FRONT = process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
 /** Pages that mix inline layout with components cannot reorder sections (see registry generator). */
 const FIXED_ORDER = new Set(["/", "/location", "/hosting", "/web-software/website-development"]);
+
+/** How many texts/images of a coded section differ from the website's original. */
+function editCount(def: SectionDef | undefined, content: Record<string, unknown>) {
+  if (!def?.generated) return 0;
+  return Object.keys(def.defaults).filter((k) => k in content && JSON.stringify(content[k]) !== JSON.stringify(def.defaults[k])).length;
+}
+
+/** Number of editable inputs in a section definition (presentational groups count their children). */
+function fieldCount(fields: FieldDef[]): number {
+  return fields.reduce((n, f) => n + (f.type === "group" && f.flat ? fieldCount(f.fields ?? []) : 1), 0);
+}
 
 function toState(raw: Raw) {
   const p = raw.page;
@@ -65,7 +76,11 @@ export function PageEditor({
   const [sections, setSections] = useState<Section[]>([]);
   const [baseline, setBaseline] = useState("");
   const [open, setOpen] = useState<string | null>(scope?.only?.length === 1 ? scope.only[0] : null);
-  const [tab, setTab] = useState<"sections" | "details" | "seo">("sections");
+  const params = useSearchParams();
+  const [tab, setTab] = useState<"sections" | "details" | "seo">(() => {
+    const t = params.get("tab");
+    return t === "seo" || t === "details" ? t : "sections";
+  });
   const [busy, setBusy] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
   const [errors, setErrors] = useState<Record<string, string | string[]>>({});
@@ -245,8 +260,26 @@ export function PageEditor({
             </p>
           )}
           {coded && !scope && (
-            <p className="mb-4 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
-              This page&apos;s design and animations are built into the website. You can {fixedOrder ? "show/hide sections" : "reorder and show/hide sections"} and edit the content of sections marked <b>Editable</b>.
+            <ol className="mb-5 grid gap-2 rounded-2xl border border-teal/15 bg-gradient-to-r from-teal/[0.06] to-transparent p-3 text-xs text-slate-600 sm:grid-cols-2 xl:grid-cols-4">
+              {[
+                ["1", "Open a section", "Click Edit content on any row"],
+                ["2", "Change texts or images", "Edited fields turn amber"],
+                ["3", "Save draft", "Visitors don't see it yet"],
+                ["4", "Preview, then Publish", "Your changes go live"],
+              ].map(([n, t, d]) => (
+                <li key={n} className="flex items-start gap-2.5 rounded-xl bg-white/80 px-3 py-2.5 ring-1 ring-slate-200/70">
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-teal text-[11px] font-bold text-white">{n}</span>
+                  <span>
+                    <span className="block font-semibold text-slate-800">{t}</span>
+                    {d}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          )}
+          {coded && !scope && (
+            <p className="mb-3 text-xs text-slate-500">
+              The design and animations are built into the website; here you {fixedOrder ? "show/hide sections" : "reorder and show/hide sections"} and change their texts, links and images.
             </p>
           )}
           {sections.length === 0 && <p className="py-8 text-center text-sm text-slate-500">No sections yet. Add the first one.</p>}
@@ -259,15 +292,28 @@ export function PageEditor({
               const editable = !!def?.fields.length && !sharedAt;
               const isOpen = open === s.key;
               return (
-                <li key={s.key} className={`rounded-lg border ${s.enabled ? "border-slate-200 bg-white" : "border-dashed border-slate-300 bg-slate-50"}`}>
-                  <div className="flex items-center gap-2 px-3 py-2.5">
-                    <button type="button" disabled={!editable} onClick={() => setOpen(isOpen ? null : s.key)} className="flex min-w-0 flex-1 items-center gap-2 text-left disabled:cursor-default">
-                      {editable ? isOpen ? <ChevronDown className="h-4 w-4 text-slate-400" /> : <ChevronRight className="h-4 w-4 text-slate-400" /> : <Lock className="h-3.5 w-3.5 text-slate-300" />}
-                      <span className="w-6 text-xs text-slate-400">{i + 1}</span>
-                      <span className={`truncate text-sm font-medium ${s.enabled ? "text-slate-800" : "text-slate-400 line-through"}`}>{s.label || def?.label || s.component}</span>
-                      {editable && <Badge value="published" label="Editable" />}
-                      {sharedAt && <Badge value="changes" label="Shared on all pages" />}
-                      {s.changed && <Badge value="changes" label="draft" />}
+                <li key={s.key} className={`overflow-hidden rounded-2xl border transition ${isOpen ? "border-teal/40 bg-white shadow-[0_12px_32px_-20px_rgba(13,148,136,0.45)]" : s.enabled ? "border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm" : "border-dashed border-slate-300 bg-slate-50"}`}>
+                  <div className={`flex items-center gap-2 px-3 py-3 sm:px-4 ${isOpen ? "bg-teal/[0.04]" : ""}`}>
+                    <button type="button" disabled={!editable} onClick={() => setOpen(isOpen ? null : s.key)} className="flex min-w-0 flex-1 items-center gap-3 text-left disabled:cursor-default">
+                      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl text-xs font-bold ${isOpen ? "bg-teal text-white" : "bg-slate-100 text-slate-500"}`}>{i + 1}</span>
+                      <span className="min-w-0 flex-1">
+                        <span className="flex flex-wrap items-center gap-2">
+                          <span className={`truncate text-[15px] font-semibold ${s.enabled ? "text-slate-900" : "text-slate-400 line-through"}`}>{s.label || def?.label || s.component}</span>
+                          {sharedAt && <Badge value="contacted" label="Shared on all pages" />}
+                          {!s.enabled && <Badge value="draft" label="hidden" />}
+                          {s.changed && <Badge value="changes" label="unpublished" />}
+                          {editCount(def, s.content) > 0 && <Badge value="in_progress" label={`${editCount(def, s.content)} edited`} />}
+                        </span>
+                        <span className="mt-0.5 block text-xs text-slate-500">
+                          {sharedAt ? "Edited once for the whole website" : editable ? `${fieldCount(def!.fields)} texts, links & images you can change` : "Layout only - nothing to edit here"}
+                        </span>
+                      </span>
+                      {editable && (
+                        <span className={`hidden items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold sm:inline-flex ${isOpen ? "bg-white text-slate-600 ring-1 ring-slate-200" : "bg-teal/10 text-teal"}`}>
+                          {isOpen ? <><ChevronDown className="h-3.5 w-3.5" /> Close</> : <><PencilLine className="h-3.5 w-3.5" /> Edit content</>}
+                        </span>
+                      )}
+                      {!editable && !sharedAt && <Lock className="h-4 w-4 text-slate-300" />}
                     </button>
                     {perms.write && (
                       <div className="flex items-center">
@@ -296,12 +342,13 @@ export function PageEditor({
                     </div>
                   )}
                   {isOpen && def && !sharedAt && (
-                    <div className="border-t border-slate-100 p-4">
+                    <div className="border-t border-slate-100 bg-[#fbfcfd] p-4 sm:p-5">
                       {def.description && <p className="mb-3 text-xs text-slate-500">{def.description}</p>}
                       <fieldset disabled={!perms.write}>
                         <FieldGroup
                           fields={def.fields}
                           values={def.generated ? { ...def.defaults, ...s.content } : s.content}
+                          defaults={def.generated ? def.defaults : undefined}
                           onChange={(c) => patch(i, { content: c })}
                           errors={errors}
                         />
@@ -344,6 +391,21 @@ export function PageEditor({
             <FieldGroup values={details} onChange={setDetails} errors={errors} fields={[{ name: "seo", label: "SEO", type: "seo" }]} />
           </fieldset>
         </Card>
+      )}
+
+      {/* always-visible save bar while there are unsaved edits (long sections scroll far from the header buttons) */}
+      {dirty && (
+        <div className="sticky bottom-4 z-20 mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-amber-200 bg-white/95 px-4 py-3 shadow-[0_18px_40px_-18px_rgba(15,23,42,0.45)] backdrop-blur">
+          <span className="flex items-center gap-2 text-sm font-medium text-slate-700">
+            <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-amber-400" /> You have unsaved changes
+          </span>
+          <span className="ml-auto flex flex-wrap gap-2">
+            <Button variant="ghost" onClick={() => raw && apply(raw)}><Undo2 className="h-4 w-4" /> Discard</Button>
+            {(perms.write || perms.seo) && <Button variant="secondary" onClick={saveDraft} loading={busy === "save"}><Save className="h-4 w-4" /> Save draft</Button>}
+            <Button variant="secondary" onClick={preview}><Eye className="h-4 w-4" /> Preview</Button>
+            {perms.publish && <Button variant="teal" onClick={publish} loading={busy === "publish"}><Send className="h-4 w-4" /> Publish</Button>}
+          </span>
+        </div>
       )}
 
       {perms.publish && (
