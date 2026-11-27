@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -548,9 +548,9 @@ export default function WebsiteDevApproach() {
           <div className="w-8 h-[2px] mb-6" style={{ backgroundColor: "#d4a54a" }} />
 
           <h2 className="text-h2 font-serif font-semibold tracking-tight mb-6">
-            <span style={{ color: NAVY }}>{$t("WebsiteDevApproach__t2", "Most Agencies ")}<br className="sm:hidden" />{$t("WebsiteDevApproach__t3", "Start With a Design.")}</span>
+            <span style={{ color: NAVY }}>{rich($t("WebsiteDevApproach__t2m", "Most Agencies <br class=\"sm:hidden\">Start With a Design."))}</span>
             <br />
-            <span className="block mt-2" style={{ color: DEEP_TEAL }}>{$t("WebsiteDevApproach__t4", "We Start With ")}<br className="sm:hidden" />{$t("WebsiteDevApproach__t5", "Your Business.")}</span>
+            <span className="block mt-2" style={{ color: DEEP_TEAL }}>{rich($t("WebsiteDevApproach__t4m", "We Start With <br class=\"sm:hidden\">Your Business."))}</span>
           </h2>
 
           <div className="w-8 h-[2px] mb-6" style={{ backgroundColor: "#d4a54a" }} />
@@ -577,7 +577,7 @@ export default function WebsiteDevApproach() {
                 </svg>
               </span>
               <span className="text-[13px] font-semibold leading-tight whitespace-nowrap" style={{ color: NAVY }}>
-                {$t("WebsiteDevApproach__t10", "See Our Process in Action")}</span>
+                {html($t("WebsiteDevApproach__t10", "See Our Process in Action"))}</span>
             </Link>
           </div>
         </motion.div>

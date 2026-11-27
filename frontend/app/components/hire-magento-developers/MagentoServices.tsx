@@ -7,7 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, DotGrid, Emblem, EdgeChevrons, Eyebrow, Icon, IMG, ease, fadeUp, heading, useSeen, type IconName } from "../shared/MagentoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 type Svc = {
   n: string;
@@ -68,7 +68,7 @@ export default function MagentoServices() {
             viewport={{ once: true }}
             className={`text-h2 ${heading.className} mt-5 font-bold uppercase tracking-tight text-[#0c1e3d]`}
           >
-            {$t("MagentoServices__t2", "7 ")}<span className="text-[#0d9488]">{$t("MagentoServices__t3", "Services.")}</span>
+            {$t("MagentoServices__t2", "7 ")}<span className="text-[#0d9488]">{html($t("MagentoServices__t3", "Services."))}</span>
             <br />
             {$t("MagentoServices__t4", "One Solution.")}</motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-4 text-slate-600">
@@ -295,9 +295,7 @@ export default function MagentoServices() {
             </motion.div>
           </div>
           <div className="flex-1 text-center md:text-left">
-            <h3 className={`text-h4 ${heading.className} font-semibold text-[#0c1e3d]`}>
-              {$t("MagentoServices__t8", "One platform. ")}<span className="text-[#0d9488]">{$t("MagentoServices__t9", "Endless possibilities.")}</span>
-            </h3>
+            <h3 className={`text-h4 ${heading.className} font-semibold text-[#0c1e3d]`}>{rich($t("MagentoServices__t8m", "One platform. <span class=\"text-[#0d9488]\">Endless possibilities.</span>"))}</h3>
             <p className="text-body mt-2 max-w-[520px] text-slate-600">
               {rich($t("MagentoServices__t10", "Whether you’re building from scratch or improving an existing store, get Magento expertise aligned with what you need."))}</p>
           </div>

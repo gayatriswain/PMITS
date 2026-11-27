@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Award, Globe2, Smile, Users, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const BLUE = "#1f5fe0";
@@ -59,12 +59,9 @@ export default function HireAspNetCta() {
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
           >
             <span className="inline-block rounded-full px-3.5 py-1.5 text-[10.5px] font-bold uppercase tracking-[0.08em] text-white" style={{ background: BLUE }}>
-              {$t("HireAspNetCta__t3", "Let's build something great")}
+              {html($t("HireAspNetCta__t3", "Let's build something great"))}
             </span>
-            <h2 className="text-h4 font-heading mt-5 font-bold leading-tight" style={{ color: NAVY }}>
-              {$t("HireAspNetCta__t4", "Ready to build your next big thing with")}{" "}
-              <span style={{ color: BLUE }}>{$t("HireAspNetCta__t5", "ASP.NET")}</span>?
-            </h2>
+            <h2 className="text-h4 font-heading mt-5 font-bold leading-tight" style={{ color: NAVY }}>{rich($t("HireAspNetCta__t4m", "Ready to build your next big thing with <span class=\"text-[#1f5fe0]\">ASP.NET</span>?"))}</h2>
             <i aria-hidden className="mt-4 block h-[3px] w-9 rounded-full" style={{ background: BLUE }} />
             <p className="text-small mt-4 max-w-[380px] text-slate-500">
               {rich($t("HireAspNetCta__t6", "Hire dedicated ASP.NET developers from ProManage and bring your ideas to life."))}

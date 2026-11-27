@@ -6,7 +6,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, Emblem, Eyebrow, Icon, IMG, ease, fadeUp, heading, type IconName } from "../shared/MagentoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 type Card = { title: string; sub?: string; icon: IconName };
 const leftCards__cms: Card[] = [
@@ -87,7 +87,7 @@ export default function MagentoWhyUs() {
             viewport={{ once: true }}
             className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0c1e3d]`}
           >
-            {$t("MagentoWhyUs__t2", "Why Hire Magento Developers from ")}<span className="text-[#0d9488]">{$t("MagentoWhyUs__t3", "ProManage IT Solution")}</span>
+            {$t("MagentoWhyUs__t2", "Why Hire Magento Developers from ")}<span className="text-[#0d9488]">{html($t("MagentoWhyUs__t3", "ProManage IT Solution"))}</span>
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-4 text-slate-600">
             {rich($t("MagentoWhyUs__t4", "Partner with a team that understands Magento inside out and delivers real business value."))}</motion.p>

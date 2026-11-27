@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Activity, ArrowRight, BarChart3, CheckCircle2, CloudUpload, Gauge, Globe, HeartHandshake, Lock, Mail, ShieldCheck, User, Users, Zap, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { submitEnquiry, goToThankYou } from "@/lib/forms";
 import Honeypot from "@/components/cms/Honeypot";
 
@@ -79,12 +79,9 @@ export default function WebHostingResponsibility() {
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white/90">
                 <HeartHandshake className="h-4 w-4" style={{ color: MINT }} />
-                {$t("WebHostingResponsibility__t2", "Let us handle it")}
+                {html($t("WebHostingResponsibility__t2", "Let us handle it"))}
               </span>
-              <h2 className="text-h2 font-heading mt-5 font-bold leading-[1.08] text-white">
-                <span className="block">{$t("WebHostingResponsibility__t3", "Your Website.")}</span>
-                <span className="block" style={{ color: MINT }}>{$t("WebHostingResponsibility__t4", "Our Responsibility.")}</span>
-              </h2>
+              <h2 className="text-h2 font-heading mt-5 font-bold leading-[1.08] text-white">{rich($t("WebHostingResponsibility__t3m", "<span class=\"block\">Your Website.</span><span class=\"block text-[#3fd3b8]\">Our Responsibility.</span>"))}</h2>
               <p className="text-body mt-4 max-w-[440px] text-white/80">{rich($t("WebHostingResponsibility__t5", "Leave the hosting to us. We'll keep your website fast, secure, available, and ready to grow."))}</p>
 
               <div className="relative mx-auto mt-6 grid max-w-[460px] grid-cols-[56px_1fr_56px] items-center gap-3">
@@ -115,11 +112,11 @@ export default function WebHostingResponsibility() {
 
             {/* form */}
             <div className="self-start rounded-2xl bg-white p-6 shadow-xl sm:p-8">
-              <h3 className="text-h5 font-heading font-bold" style={{ color: NAVY }}>{$t("WebHostingResponsibility__t8", "Tell us about your website.")}</h3>
-              <p className="text-caption mt-1 text-slate-500">{$t("WebHostingResponsibility__t9", "We'll recommend the perfect hosting for you.")}</p>
+              <h3 className="text-h5 font-heading font-bold" style={{ color: NAVY }}>{html($t("WebHostingResponsibility__t8", "Tell us about your website."))}</h3>
+              <p className="text-caption mt-1 text-slate-500">{html($t("WebHostingResponsibility__t9", "We'll recommend the perfect hosting for you."))}</p>
               {sent ? (
                 <div className="mt-6 rounded-xl bg-emerald-50 px-4 py-8 text-center">
-                  <p className="text-small font-semibold text-emerald-700">{$t("WebHostingResponsibility__t10", "Thank you! We'll send your hosting recommendation shortly.")}</p>
+                  <p className="text-small font-semibold text-emerald-700">{html($t("WebHostingResponsibility__t10", "Thank you! We'll send your hosting recommendation shortly."))}</p>
                 </div>
               ) : (
                 <form onSubmit={submit} noValidate className="relative mt-5 flex flex-col gap-3">
@@ -136,7 +133,7 @@ export default function WebHostingResponsibility() {
                     <Globe className="h-4 w-4 shrink-0" />
                     <input className={input} type="text" inputMode="url" value={form.website} onChange={set("website")} placeholder={$t("WebHostingResponsibility__t13", "Your Website URL")} />
                   </label>
-                  <p className="-mt-1 pl-11 text-[11px] text-slate-500">{$t("WebHostingResponsibility__t14", "e.g., www.yoursite.com")}</p>
+                  <p className="-mt-1 pl-11 text-[11px] text-slate-500">{html($t("WebHostingResponsibility__t14", "e.g., www.yoursite.com"))}</p>
                   {error && <p role="alert" className="text-caption font-semibold text-red-600">{error}</p>}
                   <button type="submit" disabled={sending} className="group mt-1 flex items-center justify-center gap-2 rounded-lg px-5 py-3.5 text-[15px] font-semibold text-white transition-opacity hover:opacity-95 disabled:opacity-70" style={{ background: TEAL }}>
                     {sending ? $t("WebHostingResponsibility__t15", "Sending…") : $t("WebHostingResponsibility__t16", "Get My Hosting Recommendation")}
@@ -161,12 +158,9 @@ export default function WebHostingResponsibility() {
           <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-4">
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-white/20"><Users className="h-6 w-6" style={{ color: MINT }} /></span>
-              <p className="text-small font-semibold text-white">
-                {$t("WebHostingResponsibility__t17", "You focus on your business.")}
-                <span className="block" style={{ color: MINT }}>{$t("WebHostingResponsibility__t18", "We'll take care of what keeps your website running.")}</span>
-              </p>
+              <p className="text-small font-semibold text-white">{rich($t("WebHostingResponsibility__t17m", "You focus on your business.<span class=\"block text-[#3fd3b8]\">We'll take care of what keeps your website running.</span>"))}</p>
             </div>
-            <p className="font-caveat text-[clamp(22px,2vw,30px)] -rotate-2" style={{ color: MINT }}>{$t("WebHostingResponsibility__t19", "Let's build something great together.")}</p>
+            <p className="font-caveat text-[clamp(22px,2vw,30px)] -rotate-2" style={{ color: MINT }}>{html($t("WebHostingResponsibility__t19", "Let's build something great together."))}</p>
           </div>
         </motion.div>
       </Container>

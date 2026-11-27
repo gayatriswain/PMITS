@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { GoogleWord, Inner, LButton, LPill, LS, Panel, PlayCircle, Stars, Swash, ease, heading } from "./LocalSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /** Soft fade on the left, right and bottom edges of the scene photo. */
 const SCENE_FADE = {
@@ -110,11 +110,9 @@ function PhoneScreen() {
         {rich($t("LocalSeoHero__t1", "Your Business "))}<BadgeCheck className="h-[2.1cqw] w-[2.1cqw] fill-blue-500 text-white" />
       </p>
       <p className="mt-[1cqw] flex items-center gap-[0.6cqw] text-[1.5cqw] text-slate-600">
-        {rich($t("LocalSeoHero__t2", "4.9 "))}<Stars className="h-[1.45cqw] w-[1.45cqw]" /> <span className="text-slate-400">{$t("LocalSeoHero__t3", "(256)")}</span>
+        {rich($t("LocalSeoHero__t2", "4.9 "))}<Stars className="h-[1.45cqw] w-[1.45cqw]" /> <span className="text-slate-400">{html($t("LocalSeoHero__t3", "(256)"))}</span>
       </p>
-      <p className="mt-[0.7cqw] text-[1.5cqw]">
-        <span className="font-semibold text-green-600">{$t("LocalSeoHero__t4", "Open")}</span> <span className="text-slate-500">{$t("LocalSeoHero__t5", "· Closes 9 PM")}</span>
-      </p>
+      <p className="mt-[0.7cqw] text-[1.5cqw]">{rich($t("LocalSeoHero__t4m", "<span class=\"font-semibold text-green-600\">Open</span> <span class=\"text-slate-500\">· Closes 9 PM</span>"))}</p>
       <div className="mt-[1.3cqw] grid grid-cols-4 gap-[0.4cqw] text-center">
         {[
           { I: Phone, l: $t("LocalSeoHero__t6", "Call") },
@@ -143,8 +141,7 @@ function PhoneScreen() {
       </div>
       <p className="mt-[1.4cqw] flex items-start gap-[0.9cqw] text-[1.3cqw] leading-snug text-slate-700">
         <MapPin className="mt-[0.1cqw] h-[1.7cqw] w-[1.7cqw] shrink-0 text-[#0f766e]" />
-        <span>
-          {$t("LocalSeoHero__t14", "123 Main Street,")}<br /> {$t("LocalSeoHero__t15", "Your City, ST 10001")}</span>
+        <span>{rich($t("LocalSeoHero__t14m", "123 Main Street,<br> Your City, ST 10001"))}</span>
       </p>
       <p className="mt-[1.2cqw] flex items-center gap-[0.9cqw] border-t border-slate-100 pt-[1.2cqw] text-[1.3cqw] text-slate-700">
         <Clock3 className="h-[1.7cqw] w-[1.7cqw] shrink-0 text-[#0f766e]" /> {rich($t("LocalSeoHero__t16", "Open · Closes 9 PM "))}<ChevronDown className="h-[1.3cqw] w-[1.3cqw]" />
@@ -174,7 +171,7 @@ export default function LocalSeoHero() {
             >
               {$t("LocalSeoHero__t18", "Be Found.")}<br /> {$t("LocalSeoHero__t19", "Get Chosen.")}<br /> {$t("LocalSeoHero__t20", "Grow")}{" "}
               <span className="relative inline-block text-[#0f766e]">
-                {$t("LocalSeoHero__t21", "Locally.")}<Swash className="-bottom-[0.18em] h-[0.22em]" />
+                {html($t("LocalSeoHero__t21", "Locally."))}<Swash className="-bottom-[0.18em] h-[0.22em]" />
               </span>
             </motion.h1>
             <motion.p
@@ -223,7 +220,7 @@ export default function LocalSeoHero() {
             >
               {[
                 { brand: <GoogleWord className="text-[26px] 2xl:text-[30px]" />, rate: $t("LocalSeoHero__t26", "4.9/5"), red: false, note: $t("LocalSeoHero__t27", "Based on 100+ reviews") },
-                { brand: <span className="text-[26px] font-bold tracking-tight text-[#17313b] 2xl:text-[30px]">{$t("LocalSeoHero__t28", "Clutch")}</span>, rate: $t("LocalSeoHero__t29", "4.9/5"), red: true, note: $t("LocalSeoHero__t30", "Based on 50+ reviews") },
+                { brand: <span className="text-[26px] font-bold tracking-tight text-[#17313b] 2xl:text-[30px]">{html($t("LocalSeoHero__t28", "Clutch"))}</span>, rate: $t("LocalSeoHero__t29", "4.9/5"), red: true, note: $t("LocalSeoHero__t30", "Based on 50+ reviews") },
               ].map((r) => (
                 <div key={r.note} className="flex items-center justify-center gap-3 px-3 py-2 sm:py-0">
                   {r.brand}
@@ -249,7 +246,7 @@ export default function LocalSeoHero() {
                 className="absolute left-[18%] top-[-17%] z-20 flex h-[10%] w-[66%] items-center gap-[1.5cqw] rounded-full border border-white bg-white/95 px-[2cqw] shadow-[0_16px_36px_-20px_rgba(15,40,80,.45)]"
               >
                 <GoogleWord className="text-[2.6cqw]" />
-                <span className="flex h-[72%] flex-1 items-center rounded-full border border-slate-100 px-[1.6cqw] text-[1.45cqw] text-slate-700">{$t("LocalSeoHero__t31", "restaurant near me")}</span>
+                <span className="flex h-[72%] flex-1 items-center rounded-full border border-slate-100 px-[1.6cqw] text-[1.45cqw] text-slate-700">{html($t("LocalSeoHero__t31", "restaurant near me"))}</span>
                 <Mic className="h-[2.2cqw] w-[2.2cqw] text-blue-500" />
                 <Search className="h-[2.2cqw] w-[2.2cqw] text-blue-500" />
               </motion.div>
@@ -260,10 +257,7 @@ export default function LocalSeoHero() {
                 className="absolute left-[18%] top-[-3%] z-20 hidden items-center gap-[1cqw] rounded-[1.2cqw] bg-white px-[1.4cqw] py-[1cqw] shadow-[0_16px_36px_-20px_rgba(15,40,80,.45)] md:flex"
               >
                 <MapPin className="h-[3cqw] w-[3cqw] fill-[#0f766e] text-white" />
-                <span className="leading-tight">
-                  <span className="block text-[1.05cqw] font-semibold uppercase tracking-wide text-[#0f766e]">{$t("LocalSeoHero__t32", "Your Business")}</span>
-                  <span className="block text-[1.3cqw] font-semibold text-[#0b1b33]">{$t("LocalSeoHero__t33", "Right here. Right now.")}</span>
-                </span>
+                <span className="leading-tight">{rich($t("LocalSeoHero__t32m", "<span class=\"block text-[1.05cqw] font-semibold uppercase tracking-wide text-[#0f766e]\">Your Business</span><span class=\"block text-[1.3cqw] font-semibold text-[#0b1b33]\">Right here. Right now.</span>"))}</span>
               </motion.div>
               {/* dashed hint arrow from the callout to the phone */}
               <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 z-10 hidden h-full w-full md:block" aria-hidden>

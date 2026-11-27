@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    SCALE BOX: renders children at a fixed design size and scales them to the available width
@@ -132,7 +132,7 @@ function Dashboard() {
       <aside className="w-[168px] bg-[linear-gradient(180deg,#0a1b45_0%,#0b2a5c_100%)] text-white px-3.5 py-4 flex flex-col">
         <div className="flex items-center gap-2 px-1">
           <CodeLogo className="w-6 h-6" />
-          <span className="text-[13px] font-extrabold tracking-wide">{$t("CustomCrmBuiltAround__t5", "PROMANAGE")}</span>
+          <span className="text-[13px] font-extrabold tracking-wide">{html($t("CustomCrmBuiltAround__t5", "PROMANAGE"))}</span>
         </div>
         <nav className="mt-5 flex flex-col gap-1">
           {navItems.map((item) => (
@@ -150,11 +150,11 @@ function Dashboard() {
       {/* Main */}
       <main className="flex-1 bg-[#f5f9fb] px-5 py-3.5 flex flex-col min-w-0">
         <div className="flex items-center justify-between">
-          <h4 className="text-h6 font-extrabold">{$t("CustomCrmBuiltAround__t6", "Dashboard")}</h4>
+          <h4 className="text-h6 font-extrabold">{html($t("CustomCrmBuiltAround__t6", "Dashboard"))}</h4>
           <div className="flex items-center gap-3">
             <div className="w-[190px] h-8 rounded-full bg-white border border-slate-200 flex items-center gap-2 px-3 text-[11px] text-slate-400">
               <Glyph d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM20 20l-4-4" className="w-3.5 h-3.5" />
-              {$t("CustomCrmBuiltAround__t7", "Search anything...")}</div>
+              {html($t("CustomCrmBuiltAround__t7", "Search anything..."))}</div>
             <Glyph d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15ZM10 21h4" className="w-4 h-4 text-slate-500" />
             <span className="w-7 h-7 rounded-full bg-[linear-gradient(135deg,#f59e0b,#92400e)]" />
           </div>
@@ -173,7 +173,7 @@ function Dashboard() {
 
         {/* Pipeline */}
         <div className="mt-2.5 rounded-xl bg-white border border-slate-100 px-4 py-2.5">
-          <div className="text-[12.5px] font-bold">{$t("CustomCrmBuiltAround__t8", "Sales Pipeline")}</div>
+          <div className="text-[12.5px] font-bold">{html($t("CustomCrmBuiltAround__t8", "Sales Pipeline"))}</div>
           <div className="relative mt-2 grid grid-cols-5">
             <div className="absolute left-[10%] right-[10%] top-[53px] border-t border-dotted border-slate-300" />
             {stages.map((st) => (
@@ -191,7 +191,7 @@ function Dashboard() {
         {/* Bottom row */}
         <div className="mt-2.5 flex-1 min-h-0 grid grid-cols-[1fr_1fr_1.1fr] gap-2.5">
           <div className="rounded-xl bg-white border border-slate-100 px-3 py-2.5 flex flex-col overflow-hidden">
-            <div className="text-[12px] font-bold">{$t("CustomCrmBuiltAround__t9", "Lead Source")}</div>
+            <div className="text-[12px] font-bold">{html($t("CustomCrmBuiltAround__t9", "Lead Source"))}</div>
             <div className="flex-1 flex items-center gap-2">
               <svg viewBox="0 0 80 80" className="w-[50px] h-[50px] -rotate-90 flex-shrink-0">
                 {sources.map((s) => {
@@ -226,7 +226,7 @@ function Dashboard() {
           </div>
 
           <div className="rounded-xl bg-white border border-slate-100 px-3 py-2.5 flex flex-col overflow-hidden">
-            <div className="text-[12px] font-bold">{$t("CustomCrmBuiltAround__t10", "Recent Activities")}</div>
+            <div className="text-[12px] font-bold">{html($t("CustomCrmBuiltAround__t10", "Recent Activities"))}</div>
             <div className="flex-1 flex flex-col justify-around mt-1">
               {[
                 { t: $t("CustomCrmBuiltAround__t11", "Call with Rohit"), w: $t("CustomCrmBuiltAround__t12", "Today, 10:30 AM"), d: "M6.6 2.8l2.2 3-1.4 1.5a12 12 0 0 0 6.3 6.3l1.5-1.4 3 2.2-1.5 2c-.6.8-1.7 1.2-2.7.9C10.6 18.7 5.3 13.4 3.7 7c-.3-1 .1-2.1.9-2.7Z" },
@@ -245,9 +245,9 @@ function Dashboard() {
           </div>
 
           <div className="rounded-xl bg-white border border-slate-100 px-3 py-2.5 flex flex-col overflow-hidden">
-            <div className="text-[12px] font-bold">{$t("CustomCrmBuiltAround__t17", "Revenue Overview")}</div>
-            <div className="mt-1 text-[16px] font-extrabold leading-none">{$t("CustomCrmBuiltAround__t18", "₹24.85 Cr")}</div>
-            <div className="mt-1 text-[9px] font-semibold text-[#16a34a]">{$t("CustomCrmBuiltAround__t19", "↑ 24% ")}<span className="font-normal text-slate-400">{$t("CustomCrmBuiltAround__t20", "vs last month")}</span></div>
+            <div className="text-[12px] font-bold">{html($t("CustomCrmBuiltAround__t17", "Revenue Overview"))}</div>
+            <div className="mt-1 text-[16px] font-extrabold leading-none">{html($t("CustomCrmBuiltAround__t18", "₹24.85 Cr"))}</div>
+            <div className="mt-1 text-[9px] font-semibold text-[#16a34a]">{rich($t("CustomCrmBuiltAround__t19m", "↑ 24% <span class=\"font-normal text-slate-400\">vs last month</span>"))}</div>
             <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="mt-1 flex-1 w-full min-h-0" fill="none">
               <defs>
                 <linearGradient id="baRev" x1="0" y1="0" x2="0" y2="1">
@@ -421,13 +421,9 @@ export default function CustomCrmBuiltAround() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-[11px] sm:text-xs font-bold tracking-[0.18em] text-[#0f8a83] uppercase">{$t("CustomCrmBuiltAround__t29", "Built Around Your Business")}</span>
-            <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0b2447]">
-              {$t("CustomCrmBuiltAround__t30", "Your Process. Your Rules.")}<br />
-              <span className="text-[#0f8a83]">{$t("CustomCrmBuiltAround__t31", "Your CRM.")}</span>
-            </h2>
-            <p className="text-body mt-4 text-slate-600">
-              {rich($t("CustomCrmBuiltAround__t32", "We don't give you a CRM to fit in. We build one"))}<br className="hidden sm:block" /> {rich($t("CustomCrmBuiltAround__t33", "that fits how you work — perfectly."))}</p>
+            <span className="text-[11px] sm:text-xs font-bold tracking-[0.18em] text-[#0f8a83] uppercase">{html($t("CustomCrmBuiltAround__t29", "Built Around Your Business"))}</span>
+            <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0b2447]">{rich($t("CustomCrmBuiltAround__t30m", "Your Process. Your Rules.<br><span class=\"text-[#0f8a83]\">Your CRM.</span>"))}</h2>
+            <p className="text-body mt-4 text-slate-600">{rich($t("CustomCrmBuiltAround__t32m", "We don't give you a CRM to fit in. We build one<br class=\"hidden sm:block\"> that fits how you work — perfectly."))}</p>
           </motion.div>
 
           {/* ======================= DESKTOP STAGE ======================= */}
@@ -474,7 +470,7 @@ export default function CustomCrmBuiltAround() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-[clamp(10px,0.95vw,14px)] font-bold text-[#0b2447] leading-tight">{$t("CustomCrmBuiltAround__t34", "Generic CRM")}</h3>
+              <h3 className="text-[clamp(10px,0.95vw,14px)] font-bold text-[#0b2447] leading-tight">{html($t("CustomCrmBuiltAround__t34", "Generic CRM"))}</h3>
               <p className="text-[clamp(8px,0.75vw,11px)] text-slate-500">{rich($t("CustomCrmBuiltAround__t35", "One-size-fits-all"))}</p>
               <div className="mt-2.5 opacity-90" style={{ transform: "perspective(700px) rotateY(16deg)", transformOrigin: "left center" }}>
                 <ScaleBox width={240} height={380}>
@@ -497,7 +493,7 @@ export default function CustomCrmBuiltAround() {
               transition={{ duration: 0.7, delay: 0.1 }}
             >
               <span className="absolute -top-[10px] left-1/2 -translate-x-1/2 z-10 px-3.5 py-[3px] rounded-md bg-[#14a89a] text-white text-[clamp(8px,0.75vw,11px)] font-bold tracking-wide shadow-[0_6px_14px_-4px_rgba(20,168,154,0.6)]">
-                {$t("CustomCrmBuiltAround__t36", "YOUR CRM")}</span>
+                {html($t("CustomCrmBuiltAround__t36", "YOUR CRM"))}</span>
               <div className="rounded-2xl overflow-hidden border border-[#bfe9ea] shadow-[0_26px_60px_-24px_rgba(15,35,51,0.35),0_0_0_3px_rgba(255,255,255,0.7)]">
                 <ScaleBox width={760} height={484}>
                   <Dashboard />
@@ -513,7 +509,7 @@ export default function CustomCrmBuiltAround() {
 
             {/* Right column */}
             <span className="absolute left-[80.1%] w-[16.4%] top-[-3%] text-center text-[clamp(8px,0.72vw,11px)] font-bold tracking-[0.16em] text-[#0f8a83] uppercase">
-              {$t("CustomCrmBuiltAround__t37", "Built Exactly For You")}</span>
+              {html($t("CustomCrmBuiltAround__t37", "Built Exactly For You"))}</span>
             {builtFor.map((c, i) => (
               <motion.div
                 key={c.title}
@@ -533,7 +529,7 @@ export default function CustomCrmBuiltAround() {
           <div className="lg:hidden mt-8">
             <div className="relative max-w-2xl mx-auto">
               <span className="absolute -top-[10px] left-1/2 -translate-x-1/2 z-10 px-3.5 py-[3px] rounded-md bg-[#14a89a] text-white text-[11px] font-bold tracking-wide">
-                {$t("CustomCrmBuiltAround__t38", "YOUR CRM")}</span>
+                {html($t("CustomCrmBuiltAround__t38", "YOUR CRM"))}</span>
               <div className="rounded-2xl overflow-hidden border border-[#bfe9ea] shadow-[0_26px_60px_-24px_rgba(15,35,51,0.35)]">
                 <ScaleBox width={760} height={484}>
                   <Dashboard />
@@ -560,7 +556,7 @@ export default function CustomCrmBuiltAround() {
               <Puzzle />
             </div>
             <div className="lg:pr-6 lg:w-[27%] flex-shrink-0">
-              <h3 className="text-h6 font-extrabold text-[#0b2447] lg:whitespace-nowrap">{$t("CustomCrmBuiltAround__t40", "We adapt to your business.")}</h3>
+              <h3 className="text-h6 font-extrabold text-[#0b2447] lg:whitespace-nowrap">{html($t("CustomCrmBuiltAround__t40", "We adapt to your business."))}</h3>
               <p className="text-body font-extrabold text-[#0f8a83] lg:whitespace-nowrap">{rich($t("CustomCrmBuiltAround__t41", "Not the other way around."))}</p>
             </div>
             <div className="flex-1 grid grid-cols-2 lg:grid-cols-4">

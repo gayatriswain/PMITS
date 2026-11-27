@@ -18,10 +18,16 @@
     "test:mail": "tsx scripts/mail-test.ts",
     "dev:unlock": "tsx scripts/clear-rate-limits.ts",
     "registry": "tsx scripts/generate-registry.ts && tsx scripts/generate-content-fields.ts",
-    "content:codemod": "tsx scripts/content-codemod.ts"
+    "content:codemod": "tsx scripts/content-codemod.ts",
+    "content:merge-fields": "tsx scripts/merge-text-fields.ts",
+    "content:migrate-merged": "tsx scripts/migrate-merged-fields.ts"
   },
   "dependencies": {
+    "@tiptap/core": "^3.35.0",
+    "@tiptap/extension-bold": "^3.35.0",
+    "@tiptap/extension-hard-break": "^3.35.0",
     "@tiptap/extension-image": "^3.35.0",
+    "@tiptap/extension-italic": "^3.35.0",
     "@tiptap/extension-link": "^3.35.0",
     "@tiptap/react": "^3.35.0",
     "@tiptap/starter-kit": "^3.35.0",

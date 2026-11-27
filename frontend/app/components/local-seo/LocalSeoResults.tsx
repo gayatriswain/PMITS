@@ -26,7 +26,7 @@ import {
 import CountUp from "../shared/CountUp";
 import { Inner, LH2, LPill, LS, Panel, Stars, T, ease, heading } from "./LocalSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 type Biz = { name: string; rating: number; reviews: number; type: string; dist: string; img: string };
 type Case = {
@@ -205,7 +205,7 @@ export default function LocalSeoResults() {
               </div>
               <p className="text-body mt-4 flex items-center justify-between font-medium text-[#0b1b33]">
                 <span className="flex items-center gap-2">
-                  <BarChart3 className="h-4 w-4" /> {$t("LocalSeoResults__t11", "Businesses")}</span>
+                  <BarChart3 className="h-4 w-4" /> {html($t("LocalSeoResults__t11", "Businesses"))}</span>
                 <ChevronRight className="h-4 w-4 text-slate-400" />
               </p>
               <AnimatePresence mode="wait">
@@ -224,7 +224,7 @@ export default function LocalSeoResults() {
                           {b.rating} <Stars n={Math.round(b.rating)} className="h-3 w-3" /> ({b.reviews}) · {b.type}
                         </span>
                         <span>
-                          {b.dist} · <span className="text-green-600">{$t("LocalSeoResults__t12", "Open")}</span> {$t("LocalSeoResults__t13", "· Closes 7 PM")}</span>
+                          {b.dist} · <span className="text-green-600">{html($t("LocalSeoResults__t12", "Open"))}</span> {html($t("LocalSeoResults__t13", "· Closes 7 PM"))}</span>
                       </span>
                       <span className="hidden gap-3 text-center text-[10.5px] text-slate-500 sm:flex">
                         {[
@@ -281,18 +281,18 @@ export default function LocalSeoResults() {
                         <Trophy className="h-4 w-4" />
                       </span>
                       <span className="text-[14px] text-slate-700 2xl:text-[15.5px]">
-                        <span className="block text-[12px] font-bold uppercase tracking-wide text-[#0b1b33]">{$t("LocalSeoResults__t19", "The Result")}</span>
-                        <span className="mt-1 block"><b className="text-[#0f766e]">+{c.views}%</b> {$t("LocalSeoResults__t20", "Profile Views")}</span>
-                        <span className="block"><b className="text-[#0f766e]">+{c.calls}%</b> {$t("LocalSeoResults__t21", "Calls from Profile")}</span>
-                        <span className="block"><b className="text-[#0f766e]">+{c.directions}%</b> {$t("LocalSeoResults__t22", "Direction Requests")}</span>
-                        <span className="block">{$t("LocalSeoResults__t23", "Top 3 Rankings for ")}{c.keywords} {$t("LocalSeoResults__t24", "Keywords")}</span>
+                        <span className="block text-[12px] font-bold uppercase tracking-wide text-[#0b1b33]">{html($t("LocalSeoResults__t19", "The Result"))}</span>
+                        <span className="mt-1 block"><b className="text-[#0f766e]">+{c.views}%</b> {html($t("LocalSeoResults__t20", "Profile Views"))}</span>
+                        <span className="block"><b className="text-[#0f766e]">+{c.calls}%</b> {html($t("LocalSeoResults__t21", "Calls from Profile"))}</span>
+                        <span className="block"><b className="text-[#0f766e]">+{c.directions}%</b> {html($t("LocalSeoResults__t22", "Direction Requests"))}</span>
+                        <span className="block">{html($t("LocalSeoResults__t23", "Top 3 Rankings for "))}{c.keywords} {html($t("LocalSeoResults__t24", "Keywords"))}</span>
                       </span>
                     </div>
                   </div>
                   <div className="relative hidden h-full min-h-[200px] sm:block">
                     <span className="absolute right-6 top-0 z-10 rounded-lg border border-slate-100 bg-white px-3 py-1.5 text-center shadow-md">
                       <span className={`${heading.className} block text-lg font-bold text-[#0f766e]`}>+{c.views}%</span>
-                      <span className="text-[10.5px] text-slate-500">{$t("LocalSeoResults__t25", "Profile Views")}</span>
+                      <span className="text-[10.5px] text-slate-500">{html($t("LocalSeoResults__t25", "Profile Views"))}</span>
                     </span>
                     <div className="absolute inset-x-0 bottom-0 top-12">
                       <Growth />

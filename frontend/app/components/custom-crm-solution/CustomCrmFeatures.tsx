@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ICON GLYPHS (white, sit inside the coloured 3D feature badges)
@@ -341,10 +341,8 @@ function Hub() {
       >
         <CodeLogo className="w-[clamp(30px,3vw,46px)] h-[clamp(30px,3vw,46px)]" />
         <span className="mt-[clamp(4px,0.5vw,8px)] text-[clamp(16px,1.65vw,24px)] font-bold text-white tracking-wide leading-none">
-          {$t("CustomCrmFeatures__t1", "YOUR CRM")}</span>
-        <span className="mt-[clamp(4px,0.6vw,9px)] text-[clamp(9px,0.9vw,13px)] text-white/90 leading-snug">
-          {$t("CustomCrmFeatures__t2", "Your Data. Your Process.")}<br />
-          {$t("CustomCrmFeatures__t3", "One Smart System.")}</span>
+          {html($t("CustomCrmFeatures__t1", "YOUR CRM"))}</span>
+        <span className="mt-[clamp(4px,0.6vw,9px)] text-[clamp(9px,0.9vw,13px)] text-white/90 leading-snug">{rich($t("CustomCrmFeatures__t2m", "Your Data. Your Process.<br>One Smart System."))}</span>
       </div>
     </div>
   );
@@ -467,13 +465,11 @@ function Platform() {
           {/* Deals panel */}
           <div className="rounded-xl bg-white border border-slate-100 p-[clamp(6px,0.8vw,12px)]">
             <div className="flex items-center justify-between gap-1">
-              <span className={`${TXT.title} font-bold text-[#0f2333] whitespace-nowrap`}>{$t("CustomCrmFeatures__t10", "Deals This Month")}</span>
-              <span className={`${TXT.small} text-slate-500 border border-slate-200 rounded px-1 whitespace-nowrap`}>{$t("CustomCrmFeatures__t11", "This Month ▾")}</span>
+              <span className={`${TXT.title} font-bold text-[#0f2333] whitespace-nowrap`}>{html($t("CustomCrmFeatures__t10", "Deals This Month"))}</span>
+              <span className={`${TXT.small} text-slate-500 border border-slate-200 rounded px-1 whitespace-nowrap`}>{html($t("CustomCrmFeatures__t11", "This Month ▾"))}</span>
             </div>
-            <div className={`mt-[clamp(6px,0.8vw,12px)] ${TXT.value} font-extrabold text-[#0f2333] leading-none`}>{$t("CustomCrmFeatures__t12", "₹24.85 Cr")}</div>
-            <div className={`mt-1 ${TXT.small} font-semibold text-[#16a34a]`}>
-              {$t("CustomCrmFeatures__t13", "↑ 24% ")}<span className="font-normal text-slate-500">{$t("CustomCrmFeatures__t14", "vs last month")}</span>
-            </div>
+            <div className={`mt-[clamp(6px,0.8vw,12px)] ${TXT.value} font-extrabold text-[#0f2333] leading-none`}>{html($t("CustomCrmFeatures__t12", "₹24.85 Cr"))}</div>
+            <div className={`mt-1 ${TXT.small} font-semibold text-[#16a34a]`}>{rich($t("CustomCrmFeatures__t13m", "↑ 24% <span class=\"font-normal text-slate-500\">vs last month</span>"))}</div>
             <svg className="mt-[clamp(6px,0.8vw,12px)] w-full h-[clamp(28px,3.4vw,52px)] overflow-visible" viewBox="0 0 100 40" preserveAspectRatio="none" fill="none">
               <defs>
                 <linearGradient id="crmDealsArea" x1="0" y1="0" x2="0" y2="1">
@@ -488,7 +484,7 @@ function Platform() {
 
           {/* Recent activities panel */}
           <div className="rounded-xl bg-white border border-slate-100 p-[clamp(6px,0.8vw,12px)] flex flex-col">
-            <span className={`${TXT.title} font-bold text-[#0f2333]`}>{$t("CustomCrmFeatures__t15", "Recent Activities")}</span>
+            <span className={`${TXT.title} font-bold text-[#0f2333]`}>{html($t("CustomCrmFeatures__t15", "Recent Activities"))}</span>
             <div className="mt-[clamp(6px,0.8vw,12px)] flex-1 flex flex-col justify-around">
               {activities.map((a) => (
                 <div key={a.t} className="flex items-center gap-[clamp(4px,0.55vw,8px)]">
@@ -559,13 +555,9 @@ export default function CustomCrmFeatures() {
       <Container className="relative z-10">
         {/* ======================= HEADER ======================= */}
         <div className="relative text-center max-w-2xl mx-auto">
-          <span className="text-[11px] sm:text-xs font-black tracking-[0.2em] text-[#0f8a83] uppercase">{$t("CustomCrmFeatures__t16", "Do More With Your CRM")}</span>
-          <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0f2333]">
-            {$t("CustomCrmFeatures__t17", "Powerful Features.")}<br />
-            <span className="text-[#0f8a83]">{$t("CustomCrmFeatures__t18", "Real Results.")}</span>
-          </h2>
-          <p className="text-body mt-4 lg:mt-1 text-slate-600">
-            {rich($t("CustomCrmFeatures__t19", "Everything you need to manage, automate and grow your business"))}<br className="hidden sm:block" /> {rich($t("CustomCrmFeatures__t20", "— in one custom-built CRM."))}</p>
+          <span className="text-[11px] sm:text-xs font-black tracking-[0.2em] text-[#0f8a83] uppercase">{html($t("CustomCrmFeatures__t16", "Do More With Your CRM"))}</span>
+          <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0f2333]">{rich($t("CustomCrmFeatures__t17m", "Powerful Features.<br><span class=\"text-[#0f8a83]\">Real Results.</span>"))}</h2>
+          <p className="text-body mt-4 lg:mt-1 text-slate-600">{rich($t("CustomCrmFeatures__t19m", "Everything you need to manage, automate and grow your business<br class=\"hidden sm:block\"> — in one custom-built CRM."))}</p>
         </div>
         <Link
           href={$t("CustomCrmFeatures__u1", "#smart-tools")}
@@ -705,9 +697,7 @@ export default function CustomCrmFeatures() {
               <path d="M38 9h8v8" stroke="#0f5e63" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <div>
-              <h4 className="text-base font-bold text-[#0f2333] leading-snug">
-                {$t("CustomCrmFeatures__t22", "Built to Drive")}<br />
-                {$t("CustomCrmFeatures__t23", "Real Business Impact")}</h4>
+              <h4 className="text-base font-bold text-[#0f2333] leading-snug">{rich($t("CustomCrmFeatures__t22m", "Built to Drive<br>Real Business Impact"))}</h4>
               <p className="mt-1 text-[11.5px] text-slate-500 leading-snug">
                 {rich($t("CustomCrmFeatures__t24", "Smarter workflows. Stronger relationships. Better decisions."))}</p>
               <div className="mt-2 flex gap-1">

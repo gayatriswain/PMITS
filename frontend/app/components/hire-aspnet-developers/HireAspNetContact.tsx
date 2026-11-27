@@ -7,7 +7,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, FileText, Lock, Mail, MessageSquareText, Phone, Rocket, Send, ShieldCheck, User, Zap, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { submitEnquiry, goToThankYou } from "@/lib/forms";
 import Honeypot from "@/components/cms/Honeypot";
 import { AzureLogo, CSharpLogo, EfLogo, GitHubLogo, SqlServerLogo, VisualStudioLogo } from "./TechLogos";
@@ -78,8 +78,8 @@ function ContactForm() {
   if (sent) {
     return (
       <div className="mt-6 rounded-xl bg-emerald-50 px-4 py-8 text-center">
-        <p className="text-small font-semibold text-emerald-700">{$t("HireAspNetContact__t2", "Thank you! We've received your project details.")}</p>
-        <p className="text-caption mt-1 text-emerald-700/80">{$t("HireAspNetContact__t3", "Our ASP.NET team will get back to you shortly.")}</p>
+        <p className="text-small font-semibold text-emerald-700">{html($t("HireAspNetContact__t2", "Thank you! We've received your project details."))}</p>
+        <p className="text-caption mt-1 text-emerald-700/80">{html($t("HireAspNetContact__t3", "Our ASP.NET team will get back to you shortly."))}</p>
       </div>
     );
   }
@@ -138,12 +138,12 @@ export default function HireAspNetContact() {
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }}>
             <motion.p variants={fadeUp} className="flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.22em]" style={{ color: TEAL }}>
               <i aria-hidden className="h-[2px] w-9 bg-[#0d8a91]/70" />
-              {$t("HireAspNetContact__t10", "Let's build the future")}
+              {html($t("HireAspNetContact__t10", "Let's build the future"))}
             </motion.p>
             <h2 className="text-h1 font-heading mt-6 font-extrabold uppercase leading-[1] tracking-[-0.01em]" style={{ color: NAVY }}>
-              <motion.span variants={fadeUp} custom={1} className="block">{$t("HireAspNetContact__t11", "Build")}</motion.span>
+              <motion.span variants={fadeUp} custom={1} className="block">{html($t("HireAspNetContact__t11", "Build"))}</motion.span>
               <motion.span variants={fadeUp} custom={2} className="block bg-[linear-gradient(95deg,#0b6f78,#1596a5_60%,#0d8a91)] bg-clip-text pb-1 text-transparent">
-                {$t("HireAspNetContact__t12", "Beyond.")}
+                {html($t("HireAspNetContact__t12", "Beyond."))}
               </motion.span>
             </h2>
             <motion.p variants={fadeUp} custom={3} className="text-body mt-6 max-w-[380px] text-slate-600">
@@ -227,14 +227,14 @@ export default function HireAspNetContact() {
             <span className="absolute left-1/2 top-0 grid h-[76px] w-[76px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-[linear-gradient(135deg,#0b4a5c,#0d8a91)] text-white shadow-[0_0_0_8px_rgba(13,138,145,0.12),0_16px_30px_-12px_rgba(13,95,110,0.8)]">
               <Send className="h-8 w-8" strokeWidth={1.6} />
             </span>
-            <h3 className="text-h5 font-heading text-center font-extrabold uppercase tracking-[0.02em]" style={{ color: NAVY }}>{$t("HireAspNetContact__t16", "Let's talk")}</h3>
+            <h3 className="text-h5 font-heading text-center font-extrabold uppercase tracking-[0.02em]" style={{ color: NAVY }}>{html($t("HireAspNetContact__t16", "Let's talk"))}</h3>
             <p className="text-small mx-auto mt-2 max-w-[280px] text-center text-slate-500">
               {rich($t("HireAspNetContact__t17", "Share your project details and our team will get back to you shortly."))}
             </p>
             <ContactForm />
             <p className="mt-4 flex items-center justify-center gap-2 text-[11.5px] text-slate-500">
               <Lock className="h-3.5 w-3.5" style={{ color: TEAL }} />
-              {$t("HireAspNetContact__t18", "We respect your privacy. Your information is safe.")}
+              {html($t("HireAspNetContact__t18", "We respect your privacy. Your information is safe."))}
             </p>
           </motion.div>
         </div>
@@ -258,15 +258,9 @@ export default function HireAspNetContact() {
           </div>
           <div className="relative grid gap-8 px-7 pb-6 pt-10 sm:px-12 lg:grid-cols-[auto_1fr] lg:gap-10 lg:pt-12">
             <h2 className="text-h3 font-heading font-extrabold uppercase leading-[1.08] text-white">
-              <span className="block">
-                {$t("HireAspNetContact__t20", "Your")} <span className="text-[#38c6cf]">{$t("HireAspNetContact__t21", "Vision.")}</span>
-              </span>
-              <span className="block">
-                {$t("HireAspNetContact__t22", "Our")} <span className="text-[#38c6cf]">{$t("HireAspNetContact__t23", "Technology.")}</span>
-              </span>
-              <span className="block">
-                {$t("HireAspNetContact__t24", "Real")} <span className="text-[#38c6cf]">{$t("HireAspNetContact__t25", "Impact.")}</span>
-              </span>
+              <span className="block">{rich($t("HireAspNetContact__t20m", "Your <span class=\"text-[#38c6cf]\">Vision.</span>"))}</span>
+              <span className="block">{rich($t("HireAspNetContact__t22m", "Our <span class=\"text-[#38c6cf]\">Technology.</span>"))}</span>
+              <span className="block">{rich($t("HireAspNetContact__t24m", "Real <span class=\"text-[#38c6cf]\">Impact.</span>"))}</span>
             </h2>
             <div className="max-w-[330px] lg:border-l lg:border-white/20 lg:pl-10">
               <p className="text-small text-white/80">
@@ -284,7 +278,7 @@ export default function HireAspNetContact() {
           <div className="relative flex flex-col gap-5 border-t border-white/5 px-7 pb-8 pt-4 sm:px-12 lg:flex-row lg:items-center lg:gap-10">
             <p className="flex shrink-0 items-center gap-4 text-[12px] font-semibold uppercase tracking-[0.3em] text-white/85">
               <i aria-hidden className="hidden h-px w-12 bg-white/30 sm:block" />
-              {$t("HireAspNetContact__t29", "Trusted by businesses worldwide")}
+              {html($t("HireAspNetContact__t29", "Trusted by businesses worldwide"))}
             </p>
             <ul className="flex flex-wrap items-center gap-x-2 gap-y-3 lg:divide-x lg:divide-white/15">
               {logos.map((l, i) => (

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Clock, Rocket, Shield, Server, Headphones, ShieldCheck, CloudLightning, HelpCircle } from 'lucide-react';
 import Container from '../shared/Container';
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 // Data for the radial features
 const radialFeatures__cms = [
@@ -103,7 +103,7 @@ export default function WebHostingFeatures() {
             className="text-h2 font-black text-[#0f2923] mb-4"
           >
             {$t("WebHostingFeatures__t1", "Hosting That Keeps")}<br />
-            <span className="text-[#0f766e]">{$t("WebHostingFeatures__t2", "Your Website Performing")}</span>
+            <span className="text-[#0f766e]">{html($t("WebHostingFeatures__t2", "Your Website Performing"))}</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

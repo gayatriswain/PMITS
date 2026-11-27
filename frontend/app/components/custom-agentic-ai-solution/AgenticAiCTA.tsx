@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { logos } from "./AgenticAiPlatform";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const stroke = {
   fill: "none",
@@ -99,11 +99,8 @@ export default function AgenticAiCTA() {
           >
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-sky-200/80 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.12em] text-[#1b6fa8] uppercase shadow-sm">
               <Sparkle className="w-3.5 h-3.5" />
-              {$t("AgenticAiCTA__t1", "Your advantage. Our intelligence.")}</span>
-            <h2 className="text-h2 mt-6 font-black tracking-tight text-[#0b1f4a]">
-              {$t("AgenticAiCTA__t2", "Ready to")}<br />
-              {$t("AgenticAiCTA__t3", "Lead with ")}<span className="text-[#1b8fd6]">{$t("AgenticAiCTA__t4", "AI?")}</span>
-            </h2>
+              {html($t("AgenticAiCTA__t1", "Your advantage. Our intelligence."))}</span>
+            <h2 className="text-h2 mt-6 font-black tracking-tight text-[#0b1f4a]">{rich($t("AgenticAiCTA__t2m", "Ready to<br>Lead with <span class=\"text-[#1b8fd6]\">AI?</span>"))}</h2>
             <div className="mt-5 w-12 h-[3.5px] rounded-full bg-[#1b8fd6]" />
             <p className="text-body mt-5 text-slate-600 max-w-[440px]">
               {rich($t("AgenticAiCTA__t5", "One conversation can unlock endless possibilities for your business."))}</p>
@@ -178,15 +175,12 @@ export default function AgenticAiCTA() {
               <Sparkle className="w-4 h-4" />
             </span>
 
-            <h3 className="text-h5 font-black text-[#0b1f4a] pr-10">
-              {$t("AgenticAiCTA__t8", "Let's build your")}<br />
-              <span className="text-[#1b8fd6]">{$t("AgenticAiCTA__t9", "AI advantage.")}</span>
-            </h3>
+            <h3 className="text-h5 font-black text-[#0b1f4a] pr-10">{rich($t("AgenticAiCTA__t8m", "Let's build your<br><span class=\"text-[#1b8fd6]\">AI advantage.</span>"))}</h3>
             <p className="text-caption mt-2.5 text-slate-500">{rich($t("AgenticAiCTA__t10", "Share your goal — we'll take it from there."))}</p>
 
             {sent ? (
               <div className="mt-6 rounded-xl bg-emerald-50 border border-emerald-100 px-4 py-6 text-center text-sm text-emerald-700 font-semibold">
-                {$t("AgenticAiCTA__t11", "Thank you! Our team will reach out shortly.")}</div>
+                {html($t("AgenticAiCTA__t11", "Thank you! Our team will reach out shortly."))}</div>
             ) : (
               <form onSubmit={onSubmit} className="relative mt-5 space-y-3">
                 <Honeypot value={hp} onChange={setHp} />
@@ -222,14 +216,14 @@ export default function AgenticAiCTA() {
 
             <div className="mt-4 flex items-center gap-1.5 text-[11px] text-slate-500">
               <Icon d={D.lock} className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-              {$t("AgenticAiCTA__t16", "Your information is safe with us. No spam. Ever.")}</div>
+              {html($t("AgenticAiCTA__t16", "Your information is safe with us. No spam. Ever."))}</div>
           </motion.div>
         </div>
 
         {/* ---------------- TRUSTED BY ---------------- */}
         <div className="mt-10 rounded-2xl bg-white/70 border border-slate-100 px-5 py-5 text-center">
           <div className="text-[10px] font-semibold tracking-[0.2em] text-slate-500 uppercase">
-            {$t("AgenticAiCTA__t17", "Trusted by innovative businesses worldwide")}</div>
+            {html($t("AgenticAiCTA__t17", "Trusted by innovative businesses worldwide"))}</div>
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-4 items-center lg:divide-x divide-slate-200">
             {logos.map((l) => (
               <div key={l.name} className="flex items-center justify-center gap-2 text-[#0b2a4a] opacity-90">

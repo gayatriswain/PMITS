@@ -10,7 +10,7 @@ import { WooBadge } from "./WooHireHero";
 import { Handbag } from "./WooPowered";
 import { Hoodie, Plant, Sneaker } from "../shared/WooWhyHire";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -174,7 +174,7 @@ function TopVisual() {
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1">
                     <WooBadge className="h-[18px] w-[34px] rounded-[5px]" text="text-[10px]" />
-                    <span className="text-[11px] font-extrabold tracking-tight" style={{ color: NAVY }}>{$t("WooSuccess__t1", "COMMERCE")}</span>
+                    <span className="text-[11px] font-extrabold tracking-tight" style={{ color: NAVY }}>{html($t("WooSuccess__t1", "COMMERCE"))}</span>
                   </span>
                   <svg {...base(13, "#64748b", 2)}><path d="M3 4h2.5l2.2 11h10.8l2-8H7" /></svg>
                 </div>
@@ -380,7 +380,7 @@ export default function WooSuccess() {
               {$t("WooSuccess__t7", "Your Success,")}<br />
               {$t("WooSuccess__t8", "Our")}{" "}
               <span className="relative inline-block" style={{ color: DEEP_TEAL }}>
-                {$t("WooSuccess__t9", "Commitment.")}<svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                {html($t("WooSuccess__t9", "Commitment."))}<svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <motion.path
                     d="M3 9C60 3 140 2 197 6"
                     fill="none"
@@ -431,7 +431,7 @@ export default function WooSuccess() {
               <StoreGlobeIcon />
             </span>
             <p className="text-small text-slate-700">
-              <span className="font-bold" style={{ color: NAVY }}>{$t("WooSuccess__t17", "Why share your profits")}</span> {rich($t("WooSuccess__t18", "from business with giant ecommerce platforms like Amazon or Shopify when you can "))}<Hl>{$t("WooSuccess__t19", "create and run your own online store")}</Hl> {rich($t("WooSuccess__t20", "and also attract customers to it? WooCommerce is an open source plugin for ecommerce platform. Give ProManage IT Solution a chance to become a "))}<Hl color={PURPLE}>{$t("WooSuccess__t21", "silent partner")}</Hl> {rich($t("WooSuccess__t22", "in your WooCommerce journey. Our WooCommerce development services are "))}<Hl>{$t("WooSuccess__t23", "loved by clients")}</Hl> {rich($t("WooSuccess__t24", "in diverse industries across the globe."))}</p>
+              <span className="font-bold" style={{ color: NAVY }}>{html($t("WooSuccess__t17", "Why share your profits"))}</span> {rich($t("WooSuccess__t18", "from business with giant ecommerce platforms like Amazon or Shopify when you can "))}<Hl>{$t("WooSuccess__t19", "create and run your own online store")}</Hl> {rich($t("WooSuccess__t20", "and also attract customers to it? WooCommerce is an open source plugin for ecommerce platform. Give ProManage IT Solution a chance to become a "))}<Hl color={PURPLE}>{$t("WooSuccess__t21", "silent partner")}</Hl> {rich($t("WooSuccess__t22", "in your WooCommerce journey. Our WooCommerce development services are "))}<Hl>{$t("WooSuccess__t23", "loved by clients")}</Hl> {rich($t("WooSuccess__t24", "in diverse industries across the globe."))}</p>
           </div>
           <div className="mx-auto w-full max-w-[460px]">
             <MapVisual />
@@ -452,7 +452,7 @@ export default function WooSuccess() {
           <p className="text-body font-bold text-center md:text-left" style={{ color: NAVY }}>
             {rich($t("WooSuccess__t25", "Let's Build Something"))}{" "}
             <span className={`${caveat.className} relative inline-block text-[30px]`} style={{ color: PURPLE }}>
-              {$t("WooSuccess__t26", "Amazing")}<svg className="pointer-events-none absolute -bottom-1 left-0 h-2 w-full" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
+              {html($t("WooSuccess__t26", "Amazing"))}<svg className="pointer-events-none absolute -bottom-1 left-0 h-2 w-full" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
                 <path d="M2 6C30 2 70 2 98 4" fill="none" stroke={PURPLE} strokeWidth="2.5" strokeLinecap="round" />
               </svg>
             </span>{" "}

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { animate, motion, useReducedMotion } from "framer-motion";
 import { BC, Icon, ScreenOverlay, Sneaker, Swoosh, ease, fadeUp, heading, useSeen, useWidth, type IconName } from "./BigCommerceShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* Monitor screen corners in the image's natural pixels (TL, TR, BR, BL). */
 const MON_QUAD: [[number, number], [number, number], [number, number], [number, number]] = [[445, 292], [1085, 252], [1068, 856], [400, 830]];
@@ -88,13 +88,12 @@ function Dashboard({ seen }: { seen: boolean }) {
       {/* main */}
       <div className="flex flex-1 flex-col px-6 py-5">
         <div className="flex items-center justify-between">
-          <p className={`text-body ${heading.className} font-bold tracking-tight text-[#0d1b45]`}>
-            <span className="font-extrabold">{$t("BigCommerceAllInOne__t4", "BIG")}</span>{rich($t("BigCommerceAllInOne__t5", "COMMERCE"))}</p>
+          <p className={`text-body ${heading.className} font-bold tracking-tight text-[#0d1b45]`}>{rich($t("BigCommerceAllInOne__t4m", "<span class=\"font-extrabold\">BIG</span>COMMERCE"))}</p>
           <div className="flex items-center gap-5 text-[13px] text-slate-600">
             {[$t("BigCommerceAllInOne__t6", "Products"), $t("BigCommerceAllInOne__t7", "Orders"), $t("BigCommerceAllInOne__t8", "Customers"), $t("BigCommerceAllInOne__t9", "Analytics")].map((t) => <span key={t}>{t}</span>)}
             <span className="relative text-[#0d1b45]">
               <Icon name="cart" className="h-6 w-6" />
-              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#2348e6] text-[10px] font-bold text-white">{$t("BigCommerceAllInOne__t10", "3")}</span>
+              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#2348e6] text-[10px] font-bold text-white">{html($t("BigCommerceAllInOne__t10", "3"))}</span>
             </span>
           </div>
         </div>
@@ -102,8 +101,8 @@ function Dashboard({ seen }: { seen: boolean }) {
           <div className="flex-1">
             <p className={`${heading.className} text-[34px] font-bold leading-[1.1] text-[#0d1b45]`}>{rich($t("BigCommerceAllInOne__t11", "Your Store."))}</p>
             <p className={`${heading.className} text-[34px] font-bold leading-[1.1] text-[#0d6fa0]`}>{rich($t("BigCommerceAllInOne__t12", "Your Way."))}</p>
-            <p className="text-small mt-3 text-slate-500">{rich($t("BigCommerceAllInOne__t13", "Powerful features. Seamless operations."))}<br />{rich($t("BigCommerceAllInOne__t14", "Endless opportunities."))}</p>
-            <span className="mt-4 inline-flex items-center gap-2 rounded-md bg-[#0d6f8a] px-4 py-2 text-[13px] font-semibold text-white">{$t("BigCommerceAllInOne__t15", "Start Selling →")}</span>
+            <p className="text-small mt-3 text-slate-500">{rich($t("BigCommerceAllInOne__t13m", "Powerful features. Seamless operations.<br>Endless opportunities."))}</p>
+            <span className="mt-4 inline-flex items-center gap-2 rounded-md bg-[#0d6f8a] px-4 py-2 text-[13px] font-semibold text-white">{html($t("BigCommerceAllInOne__t15", "Start Selling →"))}</span>
           </div>
           <div className="w-[200px] rounded-xl bg-white p-3 shadow-sm">
             <div className="flex h-[120px] items-center justify-center rounded-lg bg-gradient-to-br from-slate-50 to-slate-100">
@@ -111,10 +110,7 @@ function Dashboard({ seen }: { seen: boolean }) {
                 <Sneaker className="w-[170px]" />
               </motion.div>
             </div>
-            <div className="mt-2 flex items-center justify-between">
-              <span className="text-[15px] font-bold text-[#0d1b45]">{$t("BigCommerceAllInOne__t16", "$129.99")}</span>
-              <span className="text-[12px] font-semibold text-[#2348e6]">{$t("BigCommerceAllInOne__t17", "Add to Cart")}</span>
-            </div>
+            <div className="mt-2 flex items-center justify-between">{rich($t("BigCommerceAllInOne__t16m", "<span class=\"text-[15px] font-bold text-[#0d1b45]\">$129.99</span><span class=\"text-[12px] font-semibold text-[#2348e6]\">Add to Cart</span>"))}</div>
           </div>
         </div>
         <div className="mt-5 grid flex-1 grid-cols-3 gap-3">
@@ -171,14 +167,13 @@ export default function BigCommerceAllInOne() {
               {$t("BigCommerceAllInOne__t19", "Everything You Need")}<br />
               {$t("BigCommerceAllInOne__t20", "to Sell More.")}<br />
               <span className="bg-gradient-to-r from-[#2348e6] to-[#0d8f9a] bg-clip-text text-transparent">
-                {$t("BigCommerceAllInOne__t21", "All in")}{" "}
+                {html($t("BigCommerceAllInOne__t21", "All in"))}{" "}
                 <span className="relative inline-block">
-                  {$t("BigCommerceAllInOne__t22", "One")}<Swoosh className="-bottom-2 left-0 h-3 w-full" color="#0d8f9a" />
+                  {html($t("BigCommerceAllInOne__t22", "One"))}<Swoosh className="-bottom-2 left-0 h-3 w-full" color="#0d8f9a" />
                 </span>{" "}
-                {$t("BigCommerceAllInOne__t23", "Place.")}</span>
+                {html($t("BigCommerceAllInOne__t23", "Place."))}</span>
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-6 max-w-[440px] text-slate-600">
-              {rich($t("BigCommerceAllInOne__t24", "BigCommerce is the "))}<span className="font-semibold text-[#2348e6]">{$t("BigCommerceAllInOne__t25", "all-in-one ecommerce platform")}</span> {rich($t("BigCommerceAllInOne__t26", "that helps you build, run, and grow a better online business — without limits."))}</motion.p>
+            <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-6 max-w-[440px] text-slate-600">{rich($t("BigCommerceAllInOne__t24m", "BigCommerce is the <span class=\"font-semibold text-[#2348e6]\">all-in-one ecommerce platform</span> that helps you build, run, and grow a better online business — without limits."))}</motion.p>
             <ul className="mt-8 max-w-[480px] divide-y divide-slate-200">
               {points.map((p, i) => (
                 <motion.li key={p.title} variants={fadeUp} custom={2.5 + i * 0.5} initial="hidden" whileInView="show" viewport={{ once: true }} className="group flex items-start gap-5 py-4">

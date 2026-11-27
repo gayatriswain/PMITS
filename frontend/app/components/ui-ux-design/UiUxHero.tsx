@@ -15,7 +15,7 @@ import {
 } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const GlassTile3D = dynamic(() => import("./UiUxGlassTile3D"), {
   ssr: false,
@@ -257,7 +257,7 @@ export default function UiUxHero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               />
               <span className="text-[10.5px] font-semibold uppercase tracking-[0.3em] text-[#0d9488] sm:text-[11.5px]">
-                {$t("UiUxHero__t2", "UI / UX Design")}</span>
+                {html($t("UiUxHero__t2", "UI / UX Design"))}</span>
               <motion.span
                 className="h-px w-8 origin-left bg-teal-600/50 sm:w-14"
                 initial={{ scaleX: 0 }}
@@ -288,10 +288,7 @@ export default function UiUxHero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.75 }}
-            >
-              {rich($t("UiUxHero__t7", "We design digital experiences that are intuitive, meaningful and built to deliver"))}{" "}
-              <strong className="font-semibold text-[#0c1e3d]">{$t("UiUxHero__t8", "real business results.")}</strong>
-            </motion.p>
+            >{rich($t("UiUxHero__t7m", "We design digital experiences that are intuitive, meaningful and built to deliver <strong class=\"font-semibold text-[#0c1e3d]\">real business results.</strong>"))}</motion.p>
 
             <motion.div
               className="mt-6 flex flex-wrap items-center justify-center gap-3"
@@ -307,7 +304,7 @@ export default function UiUxHero() {
                   aria-hidden
                   className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full"
                 />
-                <span className="relative">{$t("UiUxHero__t10", "Start a Project")}</span>
+                <span className="relative">{html($t("UiUxHero__t10", "Start a Project"))}</span>
                 <svg viewBox="0 0 24 24" className="relative h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -441,19 +438,19 @@ export default function UiUxHero() {
                           animate={{ color: swatches[swatch].color === "#ffffff" ? NAVY : swatches[swatch].color }}
                           transition={{ duration: 0.6 }}
                         >
-                          {$t("UiUxHero__t13", "Aa")}</motion.span>
-                        <div className="mt-3 text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-400">{$t("UiUxHero__t14", "Typography")}</div>
-                        <div className="text-[12px] font-semibold text-[#0c1e3d]">{$t("UiUxHero__t15", "DM Serif Display")}</div>
+                          {html($t("UiUxHero__t13", "Aa"))}</motion.span>
+                        <div className="mt-3 text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-400">{html($t("UiUxHero__t14", "Typography"))}</div>
+                        <div className="text-[12px] font-semibold text-[#0c1e3d]">{html($t("UiUxHero__t15", "DM Serif Display"))}</div>
                       </div>
                     </div>
 
                     <div className="mt-3.5 border-t border-slate-200/70 pt-3">
-                      <div className="text-[13px] font-bold text-[#0c1e3d]">{$t("UiUxHero__t16", "Inter")}</div>
-                      <div className="text-[10.5px] font-medium text-slate-400">{$t("UiUxHero__t17", "Regular / Medium / Semibold")}</div>
+                      <div className="text-[13px] font-bold text-[#0c1e3d]">{html($t("UiUxHero__t16", "Inter"))}</div>
+                      <div className="text-[10.5px] font-medium text-slate-400">{html($t("UiUxHero__t17", "Regular / Medium / Semibold"))}</div>
                     </div>
 
                     <div className="mt-3.5 border-t border-slate-200/70 pt-3">
-                      <div className="text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-400">{$t("UiUxHero__t18", "Colors")}</div>
+                      <div className="text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-400">{html($t("UiUxHero__t18", "Colors"))}</div>
                       <div className="mt-2 flex items-center gap-2.5">
                         {swatches.map((s, i) => (
                           <motion.button
@@ -489,8 +486,8 @@ export default function UiUxHero() {
                         </svg>
                       </span>
                       <div>
-                        <div className="text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-400">{$t("UiUxHero__t19", "Components")}</div>
-                        <div className="text-[10.5px] font-medium text-slate-600">{$t("UiUxHero__t20", "Button / Input / Card")}</div>
+                        <div className="text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-400">{html($t("UiUxHero__t19", "Components"))}</div>
+                        <div className="text-[10.5px] font-medium text-slate-600">{html($t("UiUxHero__t20", "Button / Input / Card"))}</div>
                       </div>
                     </div>
                   </motion.div>
@@ -537,10 +534,7 @@ export default function UiUxHero() {
                         </span>
                       </div>
 
-                      <h3 className={`text-h5 ${serif.className} mt-3 font-medium text-[#0c1e3d]`}>
-                        {$t("UiUxHero__t21", "Design")}<br />
-                        that <span className="italic text-[#0d9488]">{$t("UiUxHero__t22", "connects.")}</span>
-                      </h3>
+                      <h3 className={`text-h5 ${serif.className} mt-3 font-medium text-[#0c1e3d]`}>{rich($t("UiUxHero__t21m", "Design<br>that <span class=\"italic text-[#0d9488]\">connects.</span>"))}</h3>
 
                       <div className="relative mt-3 flex-1 overflow-hidden rounded-2xl bg-slate-100 shadow-inner">
                         <AnimatePresence mode="popLayout" initial={false}>
@@ -580,7 +574,7 @@ export default function UiUxHero() {
                           </svg>
                         </motion.button>
                         <div className="flex items-center gap-2 text-[10px] font-bold tracking-wider text-slate-400">
-                          <span className="tabular-nums text-[#0c1e3d]">{$t("UiUxHero__t24", "0")}{slide + 1}</span>
+                          <span className="tabular-nums text-[#0c1e3d]">{html($t("UiUxHero__t24", "0"))}{slide + 1}</span>
                           <span className="relative h-[2px] w-10 overflow-hidden rounded-full bg-slate-200">
                             <motion.span
                               className="absolute inset-y-0 left-0 rounded-full bg-[#0d9488]"
@@ -588,7 +582,7 @@ export default function UiUxHero() {
                               transition={{ duration: 0.7, ease: "easeInOut" }}
                             />
                           </span>
-                          <span className="tabular-nums">{$t("UiUxHero__t25", "0")}{slides.length}</span>
+                          <span className="tabular-nums">{html($t("UiUxHero__t25", "0"))}{slides.length}</span>
                         </div>
                       </div>
                     </div>
@@ -645,8 +639,8 @@ export default function UiUxHero() {
             })}
 
             <div className="col-span-2 border-slate-200 md:col-span-4 lg:col-span-1 lg:border-l lg:pl-6">
-              <div className="text-[12px] text-slate-500">{$t("UiUxHero__t26", "Every detail has a purpose.")}</div>
-              <div className="text-[12.5px] font-bold text-[#0d9488]">{$t("UiUxHero__t27", "Every experience creates value.")}</div>
+              <div className="text-[12px] text-slate-500">{html($t("UiUxHero__t26", "Every detail has a purpose."))}</div>
+              <div className="text-[12.5px] font-bold text-[#0d9488]">{html($t("UiUxHero__t27", "Every experience creates value."))}</div>
             </div>
           </div>
         </motion.div>

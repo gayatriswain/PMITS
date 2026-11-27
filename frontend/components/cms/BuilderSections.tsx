@@ -1,4 +1,5 @@
 import Image from "next/image";
+import EditMark from "./EditMark";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { absoluteUrl, type CmsSection } from "@/lib/cms";
@@ -222,27 +223,33 @@ export default function BuilderSections({ sections }: { sections: CmsSection[] }
   const visible = sections.filter((s) => s.enabled).sort((a, b) => a.order - b.order);
   return (
     <>
-      {visible.map((s, i) => {
+      {visible.map((s, i) => (
+        <EditMark key={s.key} k={s.key}>
+          {builderSection(s, i)}
+        </EditMark>
+      ))}
+    </>
+  );
+}
+
+function builderSection(s: CmsSection, i: number) {
         const c = s.content ?? {};
         switch (s.component) {
           case "BuilderHero":
-            return <BuilderHero key={s.key} c={c} first={i === 0} />;
+            return <BuilderHero c={c} first={i === 0} />;
           case "BuilderRichText":
-            return <BuilderRichText key={s.key} c={c} />;
+            return <BuilderRichText c={c} />;
           case "BuilderCards":
-            return <BuilderCards key={s.key} c={c} />;
+            return <BuilderCards c={c} />;
           case "BuilderImageText":
-            return <BuilderImageText key={s.key} c={c} />;
+            return <BuilderImageText c={c} />;
           case "BuilderStats":
-            return <BuilderStats key={s.key} c={c} />;
+            return <BuilderStats c={c} />;
           case "BuilderFaq":
-            return <BuilderFaq key={s.key} c={c} />;
+            return <BuilderFaq c={c} />;
           case "BuilderCta":
-            return <BuilderCta key={s.key} c={c} />;
+            return <BuilderCta c={c} />;
           default:
             return null;
         }
-      })}
-    </>
-  );
 }

@@ -7,7 +7,7 @@ import { CalendarDays, FileSearch, Globe2, Lightbulb, LineChart, Mail, Search, S
 import CountUp from "../shared/CountUp";
 import { AI, FADE, ArrowRight, Pill, ease, heading, Inner, Panel } from "../shared/AiSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
@@ -107,7 +107,7 @@ export default function AiSeoStrategy() {
               className={`text-h2 ${heading.className} mt-5 font-bold tracking-[-0.025em] text-[#0b1b33]`}
             >
               {$t("AiSeoStrategy__t7", "Let's Build Your")}<br />
-              <span className="bg-gradient-to-r from-[#0f766e] to-[#14a39a] bg-clip-text text-transparent sm:whitespace-nowrap">{$t("AiSeoStrategy__t8", "AI SEO Strategy.")}</span>
+              <span className="bg-gradient-to-r from-[#0f766e] to-[#14a39a] bg-clip-text text-transparent sm:whitespace-nowrap">{html($t("AiSeoStrategy__t8", "AI SEO Strategy."))}</span>
             </motion.h2>
             <p className="text-body mt-4 max-w-md text-slate-600">{rich($t("AiSeoStrategy__t9", "A personalized roadmap to help your business rank, get recommended, and grow."))}</p>
 
@@ -140,7 +140,7 @@ export default function AiSeoStrategy() {
                 className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-[#0f766e] to-[#14a39a] py-3.5 text-[15px] font-semibold text-white shadow-[0_14px_30px_-12px_rgba(15,118,110,.7)] transition hover:-translate-y-0.5"
               >
                 <span className="ai-shine pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,transparent_35%,rgba(255,255,255,.28)_50%,transparent_65%)]" aria-hidden />
-                <span className="relative">{$t("AiSeoStrategy__t10", "Get My AI SEO Strategy")}</span>
+                <span className="relative">{html($t("AiSeoStrategy__t10", "Get My AI SEO Strategy"))}</span>
                 <span className="relative flex h-7 w-7 items-center justify-center rounded-full border border-white/60 transition-transform duration-300 group-hover:translate-x-1">
                   <ArrowRight className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-90" : ""}`} />
                 </span>
@@ -158,7 +158,7 @@ export default function AiSeoStrategy() {
                 href={$t("AiSeoStrategy__t11", "/contact")}
                 className="flex w-full items-center justify-center gap-3 rounded-xl border border-[#0f766e]/50 bg-white py-3.5 text-[15px] font-semibold text-[#0b1b33] transition hover:border-[#0f766e] hover:bg-teal-50/50"
               >
-                <CalendarDays className="h-5 w-5 text-[#0f766e]" /> {$t("AiSeoStrategy__t12", "Book Strategy Call")}</a>
+                <CalendarDays className="h-5 w-5 text-[#0f766e]" /> {html($t("AiSeoStrategy__t12", "Book Strategy Call"))}</a>
               <p className="text-small flex items-center gap-2 pt-1 text-slate-500">
                 <ShieldCheck className="h-4 w-4 text-[#0f766e]" /> {rich($t("AiSeoStrategy__t13", "No obligation. Just a strategy built for your growth."))}</p>
             </div>
@@ -176,8 +176,7 @@ export default function AiSeoStrategy() {
               <Image src={AI.robotStand} alt={$t("AiSeoStrategy__t14", "ProManage AI agent presenting an AI SEO blueprint")} fill sizes="(min-width:1024px) 680px, 95vw" className="object-contain mix-blend-multiply" style={FADE} />
 
               {/* laptop screen text */}
-              <div className="pointer-events-none absolute left-[73%] top-[63%] w-[17%] -rotate-[4deg] text-center text-[1.6vw] leading-tight text-white/90 sm:text-[11px] lg:text-[10px] xl:text-[12px]">
-                {$t("AiSeoStrategy__t15", "Building Your")}<br /> {$t("AiSeoStrategy__t16", "AI SEO Strategy…")}</div>
+              <div className="pointer-events-none absolute left-[73%] top-[63%] w-[17%] -rotate-[4deg] text-center text-[1.6vw] leading-tight text-white/90 sm:text-[11px] lg:text-[10px] xl:text-[12px]">{rich($t("AiSeoStrategy__t15m", "Building Your<br> AI SEO Strategy…"))}</div>
               <div className={`${heading.className} pointer-events-none absolute left-[78%] top-[82%] w-[8%] text-center text-[1.4vw] font-semibold text-teal-300 sm:text-[10px] xl:text-[11px]`}>
                 <CountUp to={87} suffix="%" duration={2.4} />
               </div>
@@ -224,9 +223,7 @@ export default function AiSeoStrategy() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease }}
           className={`${heading.className} mt-12 text-center text-lg font-semibold text-[#0b1b33] sm:text-2xl`}
-        >
-          {rich($t("AiSeoStrategy__t18", "The future of search is here. "))}<span className="text-[#0f766e]">{$t("AiSeoStrategy__t19", "Let's make sure you're leading it.")}</span>
-        </motion.p>
+        >{rich($t("AiSeoStrategy__t18m", "The future of search is here. <span class=\"text-[#0f766e]\">Let's make sure you're leading it.</span>"))}</motion.p>
         <motion.span
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}

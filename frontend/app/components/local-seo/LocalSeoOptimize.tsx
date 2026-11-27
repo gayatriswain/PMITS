@@ -44,10 +44,7 @@ export default function LocalSeoOptimize() {
               transition={{ delay: 0.3, duration: 0.8, ease }}
               className="mt-4 block h-[3px] w-20 origin-left rounded-full bg-[#0f766e]"
             />
-            <p className="text-body mt-5 max-w-[520px] text-slate-600">
-              {rich($t("LocalSeoOptimize__t3", "Let's top-end Local SEO that improves "))}<b className="font-semibold text-[#0f766e]">visibility</b>, <b className="font-semibold text-[#0f766e]">trust</b> and{" "}
-              <b className="font-semibold text-[#0f766e]">{$t("LocalSeoOptimize__t4", "foot traffic.")}</b>
-            </p>
+            <p className="text-body mt-5 max-w-[520px] text-slate-600">{rich($t("LocalSeoOptimize__t3m", "Let's top-end Local SEO that improves <b class=\"font-semibold text-[#0f766e]\">visibility</b>, <b class=\"font-semibold text-[#0f766e]\">trust</b> and <b class=\"font-semibold text-[#0f766e]\">foot traffic.</b>"))}</p>
           </div>
           <motion.div
             initial={{ opacity: 0, x: 30 }}

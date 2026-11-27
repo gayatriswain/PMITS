@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const display = { className: "font-heading" }; // global font from app/layout.tsx
 
@@ -302,7 +302,7 @@ export default function HireAspNetHero() {
               <span style={{ color: TEAL }} className="font-mono text-[13px] font-black tracking-tighter">
                 &lt;/&gt;
               </span>
-              {$t("HireAspNetHero__t5", "ASP.NET Development")}</motion.span>
+              {html($t("HireAspNetHero__t5", "ASP.NET Development"))}</motion.span>
             <motion.i variants={fadeUp} custom={0} aria-hidden className="h-px w-8 bg-[#0d8a91]/50 sm:w-14" />
           </motion.div>
 
@@ -344,7 +344,7 @@ export default function HireAspNetHero() {
               style={{ background: "linear-gradient(180deg,#139aa1,#0c7f87)" }}
             >
               <span aria-hidden className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              <span className="relative">{$t("HireAspNetHero__t11", "Hire ASP.NET Developers")}</span>
+              <span className="relative">{html($t("HireAspNetHero__t11", "Hire ASP.NET Developers"))}</span>
               <svg viewBox="0 0 24 24" className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <line x1="4" y1="12" x2="20" y2="12" />
                 <polyline points="14 6 20 12 14 18" />
@@ -402,7 +402,7 @@ export default function HireAspNetHero() {
               </motion.span>
             ))}
           </span>
-          {rich($t("HireAspNetHero__t14", "Trusted by "))}<strong className="font-semibold" style={{ color: NAVY }}>{$t("HireAspNetHero__t15", "200+")}</strong> {rich($t("HireAspNetHero__t16", "Businesses Worldwide"))}<span aria-hidden className="hidden h-px w-20 bg-gradient-to-l from-transparent to-[#0d8a91]/50 sm:block" />
+          {rich($t("HireAspNetHero__t14", "Trusted by "))}<strong className="font-semibold" style={{ color: NAVY }}>{html($t("HireAspNetHero__t15", "200+"))}</strong> {rich($t("HireAspNetHero__t16", "Businesses Worldwide"))}<span aria-hidden className="hidden h-px w-20 bg-gradient-to-l from-transparent to-[#0d8a91]/50 sm:block" />
         </motion.p>
       </Container>
 

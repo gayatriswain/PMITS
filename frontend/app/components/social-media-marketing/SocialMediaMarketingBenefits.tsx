@@ -3,7 +3,7 @@
 import Container from "../shared/Container";
 import { useInView } from "../shared/useInView";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -165,10 +165,10 @@ export default function SocialMediaMarketingBenefits() {
       <Container>
         <div className="w-full lg:w-[88%] mx-auto grid grid-cols-1 gap-10 lg:grid-cols-[300px_1px_1fr] lg:items-start lg:gap-10">
           <div className="lg:sticky lg:top-28">
-            <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">{$t("SocialMediaMarketingBenefits__t1", "Benefits")}</span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">{html($t("SocialMediaMarketingBenefits__t1", "Benefits"))}</span>
 
             <h2 className="text-h2 mt-3 font-bold" style={{ color: NAVY }}>
-              {$t("SocialMediaMarketingBenefits__t2", "Everything You Need to Grow")}</h2>
+              {html($t("SocialMediaMarketingBenefits__t2", "Everything You Need to Grow"))}</h2>
 
             <p className="text-small mt-4 text-slate-500">
               {rich($t("SocialMediaMarketingBenefits__t3", "A flexible system designed to help brands create, scale and stay ahead across platforms while capturing trends, shaping culture and turning content into scroll-stopping moments."))}</p>

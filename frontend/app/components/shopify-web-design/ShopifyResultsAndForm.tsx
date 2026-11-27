@@ -5,7 +5,7 @@ import { submitEnquiry } from '@/lib/forms';
 import Honeypot from '@/components/cms/Honeypot';
 import { motion } from 'framer-motion';
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 export default function ShopifyResultsAndForm() {
@@ -56,12 +56,9 @@ export default function ShopifyResultsAndForm() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
               </svg>
-              {$t("ShopifyResultsAndForm__t1", "REAL IMPACT. REAL RESULTS.")}</div>
+              {html($t("ShopifyResultsAndForm__t1", "REAL IMPACT. REAL RESULTS."))}</div>
             
-            <h2 className="text-h2 font-black text-[#0f2333] mb-4">
-              {$t("ShopifyResultsAndForm__t2", "Good Design Looks Better.")}<br />
-              {$t("ShopifyResultsAndForm__t3", "Great Design ")}<span className="text-[#0d9488]">{$t("ShopifyResultsAndForm__t4", "Sells Better.")}</span>
-            </h2>
+            <h2 className="text-h2 font-black text-[#0f2333] mb-4">{rich($t("ShopifyResultsAndForm__t2m", "Good Design Looks Better.<br>Great Design <span class=\"text-[#0d9488]\">Sells Better.</span>"))}</h2>
             <p className="text-body text-slate-500 font-medium">
               {rich($t("ShopifyResultsAndForm__t5", "Data-backed results from real Shopify stores we've designed and scaled."))}</p>
           </div>
@@ -78,7 +75,7 @@ export default function ShopifyResultsAndForm() {
                 <div className="text-[32px] font-black text-[#0f2333] mb-1 flex items-center gap-1">
                   <span className="text-[#10b981] text-[20px]">↑</span> 68%
                 </div>
-                <p className="text-[11px] text-slate-500 font-medium">{rich($t("ShopifyResultsAndForm__t6", "Average Increase in"))}<br/>{rich($t("ShopifyResultsAndForm__t7", "Conversion Rate"))}</p>
+                <p className="text-[11px] text-slate-500 font-medium">{rich($t("ShopifyResultsAndForm__t6m", "Average Increase in<br>Conversion Rate"))}</p>
               </div>
 
               {/* Stat 2 */}
@@ -89,7 +86,7 @@ export default function ShopifyResultsAndForm() {
                 <div className="text-[32px] font-black text-[#0f2333] mb-1 flex items-center gap-1">
                   <span className="text-[#10b981] text-[20px]">↑</span> 54%
                 </div>
-                <p className="text-[11px] text-slate-500 font-medium">{rich($t("ShopifyResultsAndForm__t8", "Average Increase in"))}<br/>{rich($t("ShopifyResultsAndForm__t9", "Add-to-Cart Rate"))}</p>
+                <p className="text-[11px] text-slate-500 font-medium">{rich($t("ShopifyResultsAndForm__t8m", "Average Increase in<br>Add-to-Cart Rate"))}</p>
               </div>
 
               {/* Stat 3 */}
@@ -100,7 +97,7 @@ export default function ShopifyResultsAndForm() {
                 <div className="text-[32px] font-black text-[#0f2333] mb-1 flex items-center gap-1">
                   <span className="text-[#10b981] text-[20px]">↑</span> 42%
                 </div>
-                <p className="text-[11px] text-slate-500 font-medium">{rich($t("ShopifyResultsAndForm__t10", "Average Increase in"))}<br/>{rich($t("ShopifyResultsAndForm__t11", "Checkout Completion"))}</p>
+                <p className="text-[11px] text-slate-500 font-medium">{rich($t("ShopifyResultsAndForm__t10m", "Average Increase in<br>Checkout Completion"))}</p>
               </div>
 
               {/* Stat 4 */}
@@ -111,7 +108,7 @@ export default function ShopifyResultsAndForm() {
                 <div className="text-[32px] font-black text-[#0f2333] mb-1 flex items-center gap-1">
                   <span className="text-[#10b981] text-[20px]">↑</span> 35%
                 </div>
-                <p className="text-[11px] text-slate-500 font-medium">{rich($t("ShopifyResultsAndForm__t12", "Average Increase in"))}<br/>{rich($t("ShopifyResultsAndForm__t13", "Revenue"))}</p>
+                <p className="text-[11px] text-slate-500 font-medium">{rich($t("ShopifyResultsAndForm__t12m", "Average Increase in<br>Revenue"))}</p>
               </div>
 
             </div>
@@ -129,12 +126,8 @@ export default function ShopifyResultsAndForm() {
             
             {/* Left Column: Graphics and USP */}
             <div className="lg:w-[50%] flex flex-col">
-              <h3 className="text-h3 font-black text-[#0f2333] mb-4">
-                {$t("ShopifyResultsAndForm__t15", "Let's Build Your")}<br />
-                <span className="text-[#0d9488]">{$t("ShopifyResultsAndForm__t16", "Shopify Store.")}</span>
-              </h3>
-              <p className="text-body text-slate-500 font-medium mb-8 max-w-[280px]">
-                {rich($t("ShopifyResultsAndForm__t17", "Tell us what you're selling."))}<br/>{rich($t("ShopifyResultsAndForm__t18", "We'll show you how we can turn it into your best-selling store."))}</p>
+              <h3 className="text-h3 font-black text-[#0f2333] mb-4">{rich($t("ShopifyResultsAndForm__t15m", "Let's Build Your<br><span class=\"text-[#0d9488]\">Shopify Store.</span>"))}</h3>
+              <p className="text-body text-slate-500 font-medium mb-8 max-w-[280px]">{rich($t("ShopifyResultsAndForm__t17m", "Tell us what you're selling.<br>We'll show you how we can turn it into your best-selling store."))}</p>
 
               <div className="flex gap-4 flex-1">
                 {/* 3 Features */}
@@ -142,21 +135,21 @@ export default function ShopifyResultsAndForm() {
                   <div className="flex items-start gap-3">
                     <div className="text-[#0d9488] shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                     <div>
-                      <h4 className="text-[11px] font-bold text-[#0f2333]">{$t("ShopifyResultsAndForm__t19", "Tailored Strategy")}</h4>
+                      <h4 className="text-[11px] font-bold text-[#0f2333]">{html($t("ShopifyResultsAndForm__t19", "Tailored Strategy"))}</h4>
                       <p className="text-[10px] text-slate-500 leading-tight mt-0.5">{rich($t("ShopifyResultsAndForm__t20", "Built around your brand and goals."))}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="text-[#10b981] shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
                     <div>
-                      <h4 className="text-[11px] font-bold text-[#0f2333]">{$t("ShopifyResultsAndForm__t21", "Conversion Focused")}</h4>
+                      <h4 className="text-[11px] font-bold text-[#0f2333]">{html($t("ShopifyResultsAndForm__t21", "Conversion Focused"))}</h4>
                       <p className="text-[10px] text-slate-500 leading-tight mt-0.5">{rich($t("ShopifyResultsAndForm__t22", "Designed to turn visitors into buyers."))}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="text-[#0ea5e9] shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
                     <div>
-                      <h4 className="text-[11px] font-bold text-[#0f2333]">{$t("ShopifyResultsAndForm__t23", "Growth Driven")}</h4>
+                      <h4 className="text-[11px] font-bold text-[#0f2333]">{html($t("ShopifyResultsAndForm__t23", "Growth Driven"))}</h4>
                       <p className="text-[10px] text-slate-500 leading-tight mt-0.5">{rich($t("ShopifyResultsAndForm__t24", "Optimized to scale your business."))}</p>
                     </div>
                   </div>
@@ -167,7 +160,7 @@ export default function ShopifyResultsAndForm() {
                   <img src={$t("ShopifyResultsAndForm__t25", "/shopify5.webp")} alt={$t("ShopifyResultsAndForm__t26", "Shopify Design")} className="w-full h-auto object-contain drop-shadow-2xl scale-110 origin-bottom-right" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                   {/* Handwritten text */}
                   <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 rotate-[-2deg]">
-                    <span className="font-['Caveat',_cursive] italic text-[#0b3b35] text-[20px] font-bold">{$t("ShopifyResultsAndForm__t27", "Smart Design. Real Results.")}</span>
+                    <span className="font-['Caveat',_cursive] italic text-[#0b3b35] text-[20px] font-bold">{html($t("ShopifyResultsAndForm__t27", "Smart Design. Real Results."))}</span>
                   </div>
                 </div>
               </div>
@@ -181,7 +174,7 @@ export default function ShopifyResultsAndForm() {
                 {sent ? (
                   <div className="rounded-xl border border-emerald-100 bg-white px-6 py-10 text-center">
                     <div className="mx-auto w-12 h-12 rounded-full bg-emerald-50 text-[#0d9488] flex items-center justify-center text-xl font-bold">✓</div>
-                    <h4 className="mt-4 text-lg font-bold text-[#0f2333]">{$t("ShopifyResultsAndForm__t28", "Thank you! Your request is in.")}</h4>
+                    <h4 className="mt-4 text-lg font-bold text-[#0f2333]">{html($t("ShopifyResultsAndForm__t28", "Thank you! Your request is in."))}</h4>
                     <p className="text-small mt-1.5 text-slate-500">{rich($t("ShopifyResultsAndForm__t29", "Our Shopify experts will get back to you within 24 hours."))}</p>
                   </div>
                 ) : (
@@ -243,28 +236,28 @@ export default function ShopifyResultsAndForm() {
                 )}
                 <div className="flex items-center justify-center gap-1.5 mt-1 text-[11px] text-slate-500 font-medium">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  {$t("ShopifyResultsAndForm__t40", "100% Confidential. No spam. Just expert advice.")}</div>
+                  {html($t("ShopifyResultsAndForm__t40", "100% Confidential. No spam. Just expert advice."))}</div>
 
                 {/* Features below form */}
                 <div className="flex items-center justify-between mt-4 px-2">
                   <div className="flex items-center gap-2">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                     <div>
-                      <h4 className="text-[10px] font-bold text-[#0f2333]">{$t("ShopifyResultsAndForm__t41", "Free Strategy Session")}</h4>
+                      <h4 className="text-[10px] font-bold text-[#0f2333]">{html($t("ShopifyResultsAndForm__t41", "Free Strategy Session"))}</h4>
                       <p className="text-[9px] text-slate-500">{rich($t("ShopifyResultsAndForm__t42", "No obligations."))}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
                     <div>
-                      <h4 className="text-[10px] font-bold text-[#0f2333]">{$t("ShopifyResultsAndForm__t43", "Actionable Insights")}</h4>
+                      <h4 className="text-[10px] font-bold text-[#0f2333]">{html($t("ShopifyResultsAndForm__t43", "Actionable Insights"))}</h4>
                       <p className="text-[9px] text-slate-500">{rich($t("ShopifyResultsAndForm__t44", "Clear next steps."))}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     <div>
-                      <h4 className="text-[10px] font-bold text-[#0f2333]">{$t("ShopifyResultsAndForm__t45", "Trusted by Brands")}</h4>
+                      <h4 className="text-[10px] font-bold text-[#0f2333]">{html($t("ShopifyResultsAndForm__t45", "Trusted by Brands"))}</h4>
                       <p className="text-[9px] text-slate-500">{rich($t("ShopifyResultsAndForm__t46", "Worldwide."))}</p>
                     </div>
                   </div>
@@ -278,15 +271,15 @@ export default function ShopifyResultsAndForm() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-4">
             <div className="flex items-center justify-between md:justify-start lg:justify-between gap-8 lg:gap-12 flex-wrap flex-1 opacity-70 grayscale hover:grayscale-0 transition-all duration-300 lg:pr-12">
               {/* Logo 1 */}
-              <div className="font-serif text-[16px] font-bold tracking-widest text-[#0f2333]">{$t("ShopifyResultsAndForm__t47", "LUXEVA ")}<span className="text-[10px] font-sans font-normal tracking-normal block text-center -mt-1">{$t("ShopifyResultsAndForm__t48", "HOME")}</span></div>
+              <div className="font-serif text-[16px] font-bold tracking-widest text-[#0f2333]">{html($t("ShopifyResultsAndForm__t47", "LUXEVA "))}<span className="text-[10px] font-sans font-normal tracking-normal block text-center -mt-1">{html($t("ShopifyResultsAndForm__t48", "HOME"))}</span></div>
               {/* Logo 2 */}
-              <div className="font-sans text-[14px] font-black tracking-tight flex items-center gap-1 text-[#0f2333]"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> {$t("ShopifyResultsAndForm__t49", "URBAN BEAST")}</div>
+              <div className="font-sans text-[14px] font-black tracking-tight flex items-center gap-1 text-[#0f2333]"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> {html($t("ShopifyResultsAndForm__t49", "URBAN BEAST"))}</div>
               {/* Logo 3 */}
-              <div className="font-serif text-[16px] font-light tracking-[0.2em] text-[#0f2333]">{$t("ShopifyResultsAndForm__t50", "NOIR ")}<span className="text-[9px] font-sans font-normal tracking-normal block text-center -mt-1">{$t("ShopifyResultsAndForm__t51", "ATELIER")}</span></div>
+              <div className="font-serif text-[16px] font-light tracking-[0.2em] text-[#0f2333]">{html($t("ShopifyResultsAndForm__t50", "NOIR "))}<span className="text-[9px] font-sans font-normal tracking-normal block text-center -mt-1">{html($t("ShopifyResultsAndForm__t51", "ATELIER"))}</span></div>
               {/* Logo 4 */}
-              <div className="font-sans text-[14px] font-bold text-[#0f2333] flex flex-col items-center leading-none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg> <span className="mt-1">{$t("ShopifyResultsAndForm__t52", "PURELEAF")}</span></div>
+              <div className="font-sans text-[14px] font-bold text-[#0f2333] flex flex-col items-center leading-none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg> <span className="mt-1">{html($t("ShopifyResultsAndForm__t52", "PURELEAF"))}</span></div>
               {/* Logo 5 */}
-              <div className="font-serif text-[15px] tracking-widest text-[#0f2333] italic">{$t("ShopifyResultsAndForm__t53", "Velora")}</div>
+              <div className="font-serif text-[15px] tracking-widest text-[#0f2333] italic">{html($t("ShopifyResultsAndForm__t53", "Velora"))}</div>
             </div>
 
             <div className="flex flex-col items-end shrink-0 border-l border-slate-100 pl-6">
@@ -295,8 +288,7 @@ export default function ShopifyResultsAndForm() {
                   <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 ))}
               </div>
-              <p className="text-[10px] text-slate-500 font-medium text-right">
-                {rich($t("ShopifyResultsAndForm__t54", "Rated 5.0 by our clients"))}<br/>{rich($t("ShopifyResultsAndForm__t55", "for results and experience."))}</p>
+              <p className="text-[10px] text-slate-500 font-medium text-right">{rich($t("ShopifyResultsAndForm__t54m", "Rated 5.0 by our clients<br>for results and experience."))}</p>
             </div>
           </div>
 

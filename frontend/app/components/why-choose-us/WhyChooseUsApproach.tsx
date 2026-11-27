@@ -6,7 +6,7 @@ import { TrendingUp, Flag, Users, Target, Code, Rocket, ArrowRight } from "lucid
 import { motion } from "framer-motion";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0a1f2c";
 const TEAL = "#0d9488";
@@ -74,9 +74,7 @@ export default function WhyChooseUsApproach() {
             <span className="w-8 h-px bg-current opacity-50"></span>
             {rich($t("WhyChooseUsApproach__t1", "WHY BUSINESSES CHOOSE PROMANAGE"))}<span className="w-8 h-px bg-current opacity-50"></span>
           </p>
-          <h2 className="text-h2 font-extrabold mb-5" style={{ color: NAVY }}>
-            {$t("WhyChooseUsApproach__t2", "Clarity. Strategy. ")}<span style={{ color: TEAL }}>{$t("WhyChooseUsApproach__t3", "Results.")}</span>
-          </h2>
+          <h2 className="text-h2 font-extrabold mb-5" style={{ color: NAVY }}>{rich($t("WhyChooseUsApproach__t2m", "Clarity. Strategy. <span class=\"text-[#0d9488]\">Results.</span>"))}</h2>
           <p className="text-body text-slate-600">
             {rich($t("WhyChooseUsApproach__t4", "We turn challenges into growth—step by step."))}</p>
         </div>
@@ -99,12 +97,10 @@ export default function WhyChooseUsApproach() {
               <div className="w-16 h-16 rounded-full bg-[#f0f9ff] flex items-center justify-center mb-6 border-[3px] border-white shadow-sm">
                 <MountainFlagIcon color="#0284c7" size={32} />
               </div>
-              <h3 className="text-[14px] font-bold tracking-widest mb-6 leading-tight" style={{ color: "#0284c7" }}>
-                {$t("WhyChooseUsApproach__t5", "YOUR BUSINESS")}<br />{$t("WhyChooseUsApproach__t6", "CHALLENGE")}</h3>
+              <h3 className="text-[14px] font-bold tracking-widest mb-6 leading-tight" style={{ color: "#0284c7" }}>{rich($t("WhyChooseUsApproach__t5m", "YOUR BUSINESS<br>CHALLENGE"))}</h3>
               <p className="text-small text-slate-600 mb-6 font-medium">
                 {rich($t("WhyChooseUsApproach__t7", "Every business faces unique challenges."))}</p>
-              <p className="text-small text-slate-600 font-medium">
-                {rich($t("WhyChooseUsApproach__t8", "We start by truly "))}<br/><span className="font-bold text-[#0284c7]">understanding</span> {rich($t("WhyChooseUsApproach__t9", "them."))}</p>
+              <p className="text-small text-slate-600 font-medium">{rich($t("WhyChooseUsApproach__t8m", "We start by truly <br><span class=\"font-bold text-[#0284c7]\">understanding</span> them."))}</p>
             </div>
           </motion.div>
 
@@ -139,14 +135,10 @@ export default function WhyChooseUsApproach() {
                  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
               </div>
               <h3 className="text-[11px] font-extrabold tracking-widest text-white/90 mb-1.5 leading-tight uppercase">
-                {$t("WhyChooseUsApproach__t12", "THE PROMANAGE")}</h3>
+                {html($t("WhyChooseUsApproach__t12", "THE PROMANAGE"))}</h3>
               <h3 className="text-h6 font-black tracking-wider mb-5 uppercase" style={{ color: TEAL }}>
-                {$t("WhyChooseUsApproach__t13", "APPROACH")}</h3>
-              <p className="text-caption font-semibold text-white/90">
-                {rich($t("WhyChooseUsApproach__t14", "Smart strategy."))}<br/>
-                {rich($t("WhyChooseUsApproach__t15", "Creative thinking."))}<br/>
-                {rich($t("WhyChooseUsApproach__t16", "Powerful technology."))}<br/>
-                {rich($t("WhyChooseUsApproach__t17", "Real results."))}</p>
+                {html($t("WhyChooseUsApproach__t13", "APPROACH"))}</h3>
+              <p className="text-caption font-semibold text-white/90">{rich($t("WhyChooseUsApproach__t14m", "Smart strategy.<br>Creative thinking.<br>Powerful technology.<br>Real results."))}</p>
             </div>
           </motion.div>
 
@@ -173,22 +165,21 @@ export default function WhyChooseUsApproach() {
               <div className="w-16 h-16 rounded-full bg-[#f7fee7] flex items-center justify-center mb-6 border-[3px] border-white shadow-sm">
                 <TrendingUp color="#65a30d" size={32} />
               </div>
-              <h3 className="text-[14px] font-bold tracking-widest mb-6 leading-tight" style={{ color: "#65a30d" }}>
-                {$t("WhyChooseUsApproach__t18", "YOUR BUSINESS")}<br />{$t("WhyChooseUsApproach__t19", "IMPACT")}</h3>
+              <h3 className="text-[14px] font-bold tracking-widest mb-6 leading-tight" style={{ color: "#65a30d" }}>{rich($t("WhyChooseUsApproach__t18m", "YOUR BUSINESS<br>IMPACT"))}</h3>
               
               <ul className="text-[13px] text-slate-600 font-bold space-y-3.5 text-left w-full max-w-[160px] mx-auto">
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#65a30d] shrink-0"></div>
-                  {$t("WhyChooseUsApproach__t20", "Better performance.")}</li>
+                  {html($t("WhyChooseUsApproach__t20", "Better performance."))}</li>
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#65a30d] shrink-0"></div>
-                  {$t("WhyChooseUsApproach__t21", "Higher efficiency.")}</li>
+                  {html($t("WhyChooseUsApproach__t21", "Higher efficiency."))}</li>
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#65a30d] shrink-0"></div>
-                  {$t("WhyChooseUsApproach__t22", "Sustainable growth.")}</li>
+                  {html($t("WhyChooseUsApproach__t22", "Sustainable growth."))}</li>
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#65a30d] shrink-0"></div>
-                  {$t("WhyChooseUsApproach__t23", "Real impact.")}</li>
+                  {html($t("WhyChooseUsApproach__t23", "Real impact."))}</li>
               </ul>
             </div>
           </motion.div>
@@ -271,10 +262,7 @@ export default function WhyChooseUsApproach() {
               <div className="w-16 h-16 rounded-full bg-[#f0f9ff] flex items-center justify-center shrink-0">
                 <Rocket size={32} color="#0284c7" />
               </div>
-              <h3 className="text-h5 font-bold text-center md:text-left" style={{ color: NAVY }}>
-                {$t("WhyChooseUsApproach__t24", "Ready to turn your challenges ")}<br className="hidden md:block" />
-                into <span style={{ color: "#0284c7" }}>{$t("WhyChooseUsApproach__t25", "measurable growth?")}</span>
-              </h3>
+              <h3 className="text-h5 font-bold text-center md:text-left" style={{ color: NAVY }}>{rich($t("WhyChooseUsApproach__t24m", "Ready to turn your challenges <br class=\"hidden md:block\">into <span class=\"text-[#0284c7]\">measurable growth?</span>"))}</h3>
             </div>
 
             {/* Right: Buttons */}

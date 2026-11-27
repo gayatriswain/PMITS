@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Container from "../shared/Container";
 import { PlusIcon, TagIcon, ArrowIcon, CheckIcon } from "../shared/icons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -219,11 +219,8 @@ export default function ServicesShowcase() {
             className="inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            {$t("ServicesShowcase__t4", "OUR SERVICES")}</span>
-          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>
-            {$t("ServicesShowcase__t5", "Services designed to help your brand")}{" "}
-            <span style={{ color: TEAL }}>{$t("ServicesShowcase__t6", "shine brighter.")}</span>
-          </h2>
+            {html($t("ServicesShowcase__t4", "OUR SERVICES"))}</span>
+          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>{rich($t("ServicesShowcase__t5m", "Services designed to help your brand <span class=\"text-[#0d9488]\">shine brighter.</span>"))}</h2>
         </div>
 
         {/* Left nav (sticky, scrollspy-highlighted) + right cards that scroll normally */}

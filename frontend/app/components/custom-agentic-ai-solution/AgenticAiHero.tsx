@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0b1f4a";
 
@@ -135,12 +135,12 @@ function EmailCard() {
           <span className="w-[18px] h-[18px] rounded bg-[#2563eb] text-white flex items-center justify-center">
             <Icon d={D.mail} className="w-3 h-3" />
           </span>
-          <span className="text-[10.5px] font-bold">{$t("AgenticAiHero__t1", "New Email")}</span>
+          <span className="text-[10.5px] font-bold">{html($t("AgenticAiHero__t1", "New Email"))}</span>
         </div>
-        <span className="text-[8.5px] text-slate-400">{$t("AgenticAiHero__t2", "9:41 AM")}</span>
+        <span className="text-[8.5px] text-slate-400">{html($t("AgenticAiHero__t2", "9:41 AM"))}</span>
       </div>
-      <div className="mt-2 text-[10px] font-bold">{$t("AgenticAiHero__t3", "Project Update")}</div>
-      <div className="text-[9px] text-slate-500">{$t("AgenticAiHero__t4", "From: Sarah Miller")}</div>
+      <div className="mt-2 text-[10px] font-bold">{html($t("AgenticAiHero__t3", "Project Update"))}</div>
+      <div className="text-[9px] text-slate-500">{html($t("AgenticAiHero__t4", "From: Sarah Miller"))}</div>
       <AiChip>{$t("AgenticAiHero__t5", "AI will draft a reply")}</AiChip>
     </>
   );
@@ -160,7 +160,7 @@ function TasksCard() {
         <span className="w-[18px] h-[18px] rounded-full bg-[#2563eb] text-white flex items-center justify-center">
           <Icon d={D.check} className="w-3 h-3" />
         </span>
-        <span className="text-[10.5px] font-bold">{$t("AgenticAiHero__t12", "Today's Tasks")}</span>
+        <span className="text-[10.5px] font-bold">{html($t("AgenticAiHero__t12", "Today's Tasks"))}</span>
       </div>
       <div className="mt-2.5 flex flex-col gap-2">
         {tasks.map((task, i) => {
@@ -181,7 +181,7 @@ function TasksCard() {
         })}
       </div>
       <div className="mt-2.5 flex items-center gap-1.5 text-[9px] text-[#0f8a83]">
-        <Sparkle className="w-2.5 h-2.5" />{$t("AgenticAiHero__t13", "2 tasks automated")}</div>
+        <Sparkle className="w-2.5 h-2.5" />{html($t("AgenticAiHero__t13", "2 tasks automated"))}</div>
     </>
   );
 }
@@ -195,15 +195,15 @@ function MeetingCard() {
           <span className="w-[18px] h-[18px] rounded bg-[#2563eb] text-white flex items-center justify-center">
             <Icon d={D.calendar} className="w-3 h-3" />
           </span>
-          <span className="text-[10.5px] font-bold">{$t("AgenticAiHero__t14", "Upcoming Meeting")}</span>
+          <span className="text-[10.5px] font-bold">{html($t("AgenticAiHero__t14", "Upcoming Meeting"))}</span>
         </div>
-        <span className="text-[8.5px] text-slate-400">{$t("AgenticAiHero__t15", "11:30 AM")}</span>
+        <span className="text-[8.5px] text-slate-400">{html($t("AgenticAiHero__t15", "11:30 AM"))}</span>
       </div>
-      <div className="mt-2 text-[10px] font-bold">{$t("AgenticAiHero__t16", "Strategy Sync")}</div>
-      <div className="text-[9px] text-slate-500">{$t("AgenticAiHero__t17", "30 min • Google Meet")}</div>
+      <div className="mt-2 text-[10px] font-bold">{html($t("AgenticAiHero__t16", "Strategy Sync"))}</div>
+      <div className="text-[9px] text-slate-500">{html($t("AgenticAiHero__t17", "30 min • Google Meet"))}</div>
       <div className="mt-2 flex items-center gap-1.5 text-[9px] text-[#0f8a83]">
         <Sparkle className="w-2.5 h-2.5" />
-        {$t("AgenticAiHero__t18", "AI prepared brief")}</div>
+        {html($t("AgenticAiHero__t18", "AI prepared brief"))}</div>
     </>
   );
 }
@@ -215,7 +215,7 @@ function SummaryCard() {
     <>
       <div className="flex items-center gap-1.5 text-[#1b5fa8]">
         <Sparkle className="w-3.5 h-3.5" />
-        <span className="text-[10.5px] font-bold text-[#0b1f4a]">{$t("AgenticAiHero__t22", "AI Summary")}</span>
+        <span className="text-[10.5px] font-bold text-[#0b1f4a]">{html($t("AgenticAiHero__t22", "AI Summary"))}</span>
       </div>
       <div className="mt-2.5 flex flex-col gap-2">
         {items.map((t, i) => (
@@ -237,7 +237,7 @@ function SummaryCard() {
             <path d="M12 3a9 9 0 1 1-9 9" opacity="0.9" />
             <circle cx="12" cy="12" r="9" opacity="0.15" />
           </svg>
-          <span className="text-[9.5px]">{$t("AgenticAiHero__t23", "Action items assigned")}</span>
+          <span className="text-[9.5px]">{html($t("AgenticAiHero__t23", "Action items assigned"))}</span>
         </div>
       </div>
     </>
@@ -252,7 +252,7 @@ function SystemsCard() {
         <span className="text-[#1b5fa8]">
           <Icon d={D.layers} className="w-4 h-4" />
         </span>
-        <span className="text-[10.5px] font-bold">{$t("AgenticAiHero__t24", "Connected Systems")}</span>
+        <span className="text-[10.5px] font-bold">{html($t("AgenticAiHero__t24", "Connected Systems"))}</span>
       </div>
       <div className="mt-3 flex items-center gap-2.5">
         {/* Salesforce */}
@@ -273,13 +273,13 @@ function SystemsCard() {
           <path d="M21 6.500 19 5l-1.500 1.200V17.500H21Z" fill="#4285f4" />
         </svg>
         {/* Notion */}
-        <span className="w-5 h-5 rounded bg-white border border-slate-800 text-slate-900 text-[11px] font-black flex items-center justify-center">{$t("AgenticAiHero__t25", "N")}</span>
+        <span className="w-5 h-5 rounded bg-white border border-slate-800 text-slate-900 text-[11px] font-black flex items-center justify-center">{html($t("AgenticAiHero__t25", "N"))}</span>
         {/* More */}
         <span className="w-5 h-5 rounded-full border border-slate-300 text-slate-500 text-[12px] leading-none flex items-center justify-center">+</span>
       </div>
       <div className="mt-3 flex items-center gap-1.5 text-[9px] text-slate-500">
         <motion.span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.8, repeat: Infinity }} />
-        {$t("AgenticAiHero__t26", "All systems in sync")}</div>
+        {html($t("AgenticAiHero__t26", "All systems in sync"))}</div>
     </>
   );
 }
@@ -299,12 +299,9 @@ function FilesCard() {
             <path d={D.folder} />
           </svg>
         </span>
-        <span className="text-[10.5px] font-bold">{$t("AgenticAiHero__t30", "Files Organized")}</span>
+        <span className="text-[10.5px] font-bold">{html($t("AgenticAiHero__t30", "Files Organized"))}</span>
       </div>
-      <div className="mt-2 text-[9.5px] leading-snug">
-        {$t("AgenticAiHero__t31", "5 files sorted")}<br />
-        <span className="text-slate-500">{$t("AgenticAiHero__t32", "in Project Folder")}</span>
-      </div>
+      <div className="mt-2 text-[9.5px] leading-snug">{rich($t("AgenticAiHero__t31m", "5 files sorted<br><span class=\"text-slate-500\">in Project Folder</span>"))}</div>
       <div className="mt-2.5 flex items-center gap-2">
         {files.map((f, i) => (
           <motion.span
@@ -317,7 +314,7 @@ function FilesCard() {
             {f.t}
           </motion.span>
         ))}
-        <span className="px-1.5 h-[18px] rounded-full border border-slate-300 text-[8.5px] text-slate-500 flex items-center">{$t("AgenticAiHero__t33", "+2")}</span>
+        <span className="px-1.5 h-[18px] rounded-full border border-slate-300 text-[8.5px] text-slate-500 flex items-center">{html($t("AgenticAiHero__t33", "+2"))}</span>
       </div>
     </>
   );
@@ -443,9 +440,9 @@ function CommandBox() {
           <Sparkle className="w-5 h-5" />
         </motion.span>
         <div>
-          <div className="text-[15px] font-bold leading-tight whitespace-nowrap">{$t("AgenticAiHero__t34", "What should your AI agent handle today?")}</div>
+          <div className="text-[15px] font-bold leading-tight whitespace-nowrap">{html($t("AgenticAiHero__t34", "What should your AI agent handle today?"))}</div>
           <div className="mt-0.5 text-[12px] text-slate-500 flex items-center">
-            {$t("AgenticAiHero__t35", "Describe a task or workflow...")}<motion.span className="ml-0.5 w-px h-3.5 bg-slate-400" animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1.1, repeat: Infinity }} />
+            {html($t("AgenticAiHero__t35", "Describe a task or workflow..."))}<motion.span className="ml-0.5 w-px h-3.5 bg-slate-400" animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1.1, repeat: Infinity }} />
           </div>
         </div>
       </div>
@@ -482,11 +479,7 @@ function Heading() {
   const $t = useCmsText();
   return (
     <>
-      <h1 className="font-extrabold tracking-tight text-[#0b1f4a]" style={{ fontFamily: "inherit" }}>
-        {$t("AgenticAiHero__t40", "AI That ")}<span className="bg-gradient-to-r from-[#1e6fd6] to-[#0f8a83] bg-clip-text text-transparent">{$t("AgenticAiHero__t41", "Thinks.")}</span>
-        <br />
-        {$t("AgenticAiHero__t42", "AI That ")}<span className="bg-gradient-to-r from-[#0f8a83] to-[#12b5a6] bg-clip-text text-transparent">{$t("AgenticAiHero__t43", "Acts.")}</span>
-      </h1>
+      <h1 className="font-extrabold tracking-tight text-[#0b1f4a]" style={{ fontFamily: "inherit" }}>{rich($t("AgenticAiHero__t40m", "AI That <span class=\"bg-gradient-to-r from-[#1e6fd6] to-[#0f8a83] bg-clip-text text-transparent\">Thinks.</span><br>AI That <span class=\"bg-gradient-to-r from-[#0f8a83] to-[#12b5a6] bg-clip-text text-transparent\">Acts.</span>"))}</h1>
     </>
   );
 }
@@ -537,7 +530,7 @@ export default function AgenticAiHero() {
                 <span className="text-[#2f9bf5]">
                   <Sparkle className="w-3 h-3" />
                 </span>
-                {$t("AgenticAiHero__t48", "Custom Agentic AI Solution")}</motion.div>
+                {html($t("AgenticAiHero__t48", "Custom Agentic AI Solution"))}</motion.div>
 
               {/* Title */}
               <motion.div
@@ -641,7 +634,7 @@ export default function AgenticAiHero() {
             <span className="text-[#2f9bf5]">
               <Sparkle className="w-3 h-3" />
             </span>
-            {$t("AgenticAiHero__t52", "Custom Agentic AI Solution")}</span>
+            {html($t("AgenticAiHero__t52", "Custom Agentic AI Solution"))}</span>
           <div className="mt-5 text-4xl sm:text-5xl leading-[1.15]" style={{ color: NAVY }}>
             <Heading />
           </div>
@@ -681,8 +674,8 @@ export default function AgenticAiHero() {
                 <Sparkle className="w-5 h-5" />
               </span>
               <div>
-                <div className="text-sm font-bold text-[#0b1f4a]">{$t("AgenticAiHero__t56", "What should your AI agent handle today?")}</div>
-                <div className="text-xs text-slate-500">{$t("AgenticAiHero__t57", "Describe a task or workflow...")}</div>
+                <div className="text-sm font-bold text-[#0b1f4a]">{html($t("AgenticAiHero__t56", "What should your AI agent handle today?"))}</div>
+                <div className="text-xs text-slate-500">{html($t("AgenticAiHero__t57", "Describe a task or workflow..."))}</div>
               </div>
             </div>
             <Link

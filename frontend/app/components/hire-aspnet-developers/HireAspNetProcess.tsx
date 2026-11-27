@@ -7,7 +7,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, ClipboardList, Code2, Headset, Rocket, ShieldCheck, UserSearch, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const TEAL = "#0d8a91";
@@ -45,14 +45,11 @@ export default function HireAspNetProcess() {
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }} className="relative z-10">
             <motion.p variants={fadeUp} className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: TEAL }}>
               <i aria-hidden className="h-px w-10 bg-[#0d8a91]/60" />
-              {$t("HireAspNetProcess__t1", "Our ASP.NET development process")}
+              {html($t("HireAspNetProcess__t1", "Our ASP.NET development process"))}
             </motion.p>
             <h2 className="text-h1 font-heading mt-6 font-extrabold leading-[1.05] tracking-[-0.025em]" style={{ color: NAVY }}>
-              <motion.span variants={fadeUp} custom={1} className="block">{$t("HireAspNetProcess__t2", "Simple Steps.")}</motion.span>
-              <motion.span variants={fadeUp} custom={2} className="block">
-                <span className="bg-[linear-gradient(100deg,#0b6f78,#18a8ae)] bg-clip-text text-transparent">{$t("HireAspNetProcess__t3", "Powerful")}</span>{" "}
-                {$t("HireAspNetProcess__t4", "Results.")}
-              </motion.span>
+              <motion.span variants={fadeUp} custom={1} className="block">{html($t("HireAspNetProcess__t2", "Simple Steps."))}</motion.span>
+              <motion.span variants={fadeUp} custom={2} className="block">{rich($t("HireAspNetProcess__t3m", "<span class=\"bg-[linear-gradient(100deg,#0b6f78,#18a8ae)] bg-clip-text text-transparent\">Powerful</span> Results."))}</motion.span>
             </h2>
             <motion.p variants={fadeUp} custom={3} className="text-body mt-6 max-w-[470px] text-slate-600">
               {rich($t("HireAspNetProcess__t5", "From concept to long-term success – we build, deploy and evolve ASP.NET solutions that drive real impact."))}

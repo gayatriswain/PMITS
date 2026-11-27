@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Box, Building2, ShieldCheck, Target, TrendingUp, Users, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0f1535";
 const PURPLE = "#5b43e8";
@@ -59,20 +59,18 @@ export default function ArVrResults() {
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_70%,rgba(255,255,255,0.8),transparent_70%)]" />
       <Container className="relative">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE }} className="text-center">
-          <p className="text-[13px] font-bold uppercase tracking-[0.22em]" style={{ color: PURPLE }}>{$t("ArVrResults__t1", "Real results")}</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.22em]" style={{ color: PURPLE }}>{html($t("ArVrResults__t1", "Real results"))}</p>
           <i aria-hidden className="mx-auto mt-2 block h-[2px] w-8 rounded-full" style={{ background: PURPLE }} />
           <h2 className="text-h2 font-heading mt-4 font-bold leading-[1.1] tracking-[-0.02em]" style={{ color: NAVY }}>
-            <span className="block">{$t("ArVrResults__t2", "Step into our world")}</span>
-            <span className="block">
-              {$t("ArVrResults__t3", "of")} <span className="bg-[linear-gradient(90deg,#5b43e8,#7c5cf6)] bg-clip-text text-transparent">{$t("ArVrResults__t4", "real impact.")}</span>
-            </span>
+            <span className="block">{html($t("ArVrResults__t2", "Step into our world"))}</span>
+            <span className="block">{rich($t("ArVrResults__t3m", "of <span class=\"bg-[linear-gradient(90deg,#5b43e8,#7c5cf6)] bg-clip-text text-transparent\">real impact.</span>"))}</span>
           </h2>
           <p className="text-body mx-auto mt-4 max-w-[440px] text-slate-600">{rich($t("ArVrResults__t5", "Explore how immersive experiences drive measurable results in the real world."))}</p>
           <div className="mt-4 flex flex-col items-center gap-2">
             <span aria-hidden className="relative block h-8 w-5 rounded-full border-2 border-slate-400">
               <motion.span className="absolute left-1/2 top-1.5 h-1.5 w-1 -translate-x-1/2 rounded-full bg-slate-500" animate={reduce ? undefined : { y: [0, 8, 0], opacity: [1, 0.2, 1] }} transition={{ duration: 1.8, repeat: Infinity }} />
             </span>
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600">{$t("ArVrResults__t6", "Scroll to explore")}</span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600">{html($t("ArVrResults__t6", "Scroll to explore"))}</span>
           </div>
         </motion.div>
 

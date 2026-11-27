@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CheckCircle2, ChevronLeft, ChevronRight, Globe2, MapPin, ShieldAlert } from "lucide-react";
 import { AI, FADE, BrandIcon, CtaButton, Hl, Pill, ease, heading, type Brand, Inner, Panel } from "../shared/AiSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 type Project = {
   name: string;
@@ -45,7 +45,7 @@ function MiniHead({ brand, title, beta = false }: { brand: Brand; title: string;
     <p className="text-caption flex items-center gap-2 font-bold text-[#0b1b33]">
       <BrandIcon name={brand} className="h-4 w-4" />
       {title}
-      {beta && <span className="ml-auto rounded bg-blue-50 px-1.5 py-0.5 text-[9px] font-semibold text-blue-600">{$t("AiSeoProof__t1", "Beta")}</span>}
+      {beta && <span className="ml-auto rounded bg-blue-50 px-1.5 py-0.5 text-[9px] font-semibold text-blue-600">{html($t("AiSeoProof__t1", "Beta"))}</span>}
     </p>
   );
 }
@@ -344,9 +344,9 @@ export default function AiSeoProof() {
         >
           <p className="text-body italic text-slate-600">
             <span className={`${heading.className} mr-2 align-[-0.2em] text-4xl font-black not-italic text-[#0f766e]`}>“</span>
-            {rich($t("AiSeoProof__t15", "We didn't just improve rankings. "))}<span className="text-[#0f766e]">{$t("AiSeoProof__t16", "We became the answer AI recommends.")}</span>
+            {rich($t("AiSeoProof__t15", "We didn't just improve rankings. "))}<span className="text-[#0f766e]">{html($t("AiSeoProof__t16", "We became the answer AI recommends."))}</span>
           </p>
-          <footer className="mt-2 text-sm text-slate-500">{$t("AiSeoProof__t17", "– Founder, Luxe Interiors")}</footer>
+          <footer className="mt-2 text-sm text-slate-500">{html($t("AiSeoProof__t17", "– Founder, Luxe Interiors"))}</footer>
         </motion.blockquote>
       </Inner>
     </Panel>

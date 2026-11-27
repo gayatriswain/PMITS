@@ -233,7 +233,9 @@ The old `/api/tasks` endpoints from the Express backend are kept for compatibili
 3. Set up outgoing email in *Email (SMTP)*: server details, To/CC/BCC recipients, then **Send test email** and Save.
 4. New `AUTH_SECRET` and `REVALIDATE_SECRET` values, with the same `REVALIDATE_SECRET` on the website. Set `APP_URL`/`FRONTEND_URL` to the real https URLs, and on the website `CMS_URL`, `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_SITE_URL` and `ALLOW_INDEXING=true`.
 5. `npm run seed` once against the production database, then `npm run admin:create` for the first Super Admin.
-6. Replace the placeholder contact details in *Settings* (header top bar and footer currently show different sample phone numbers and addresses). Review the seeded draft blogs and testimonials before publishing them.
+6. Run `npm run content:migrate-merged -- --apply --allow-remote` once against the production database (moves texts edited before headings became single fields into the new fields; safe to repeat). Skip it if the database came from `npm run db:import` of a snapshot that was already migrated.
+7. If the admin is on a different domain than the website, set `CMS_ADMIN_URL` on the website (the visual page editor shows the site in a frame and only talks to that origin). Both must be served over https.
+8. Replace the placeholder contact details in *Settings* (header top bar and footer currently show different sample phone numbers and addresses). Review the seeded draft blogs and testimonials before publishing them.
 
 ## 9. Not migrated (needs a decision)
 

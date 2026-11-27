@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Container from "./Container";
 import { QuoteIcon, PlayIcon, UserIcon, CloseIcon } from "./icons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { html } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -170,14 +171,14 @@ export default function ClientStoriesView({ cms }: { cms?: CmsTestimonial[] }) {
                 <UserIcon className="h-3 w-3" />
               </span>
               <span className="text-xs font-bold tracking-wide" style={{ color: NAVY }}>
-                {$t("ClientStories__t1", "Client Stories")}</span>
+                {html($t("ClientStories__t1", "Client Stories"))}</span>
             </span>
 
             <h2
               className="text-h2 animate-fade-up mt-5 font-bold"
               style={{ color: NAVY, animationDelay: "80ms" }}
             >
-              {$t("ClientStories__t2", "Hear stories")}{" "}
+              {html($t("ClientStories__t2", "Hear stories"))}{" "}
               <span className="mx-1 inline-flex -space-x-2 align-middle">
                 {avatarStack.map((t) => (
                   <span
@@ -189,7 +190,7 @@ export default function ClientStoriesView({ cms }: { cms?: CmsTestimonial[] }) {
                   </span>
                 ))}
               </span>{" "}
-              {$t("ClientStories__t3", "straight from the people we helped!")}</h2>
+              {html($t("ClientStories__t3", "straight from the people we helped!"))}</h2>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

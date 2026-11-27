@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 interface StepItem {
   number: string;
@@ -415,7 +415,7 @@ export default function HireCorePhpApproach() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-[11px] font-bold tracking-[0.26em] text-[#0f8a83] uppercase">{$t("HireCorePhpApproach__t1", "Our Approach")}</div>
+          <div className="text-[11px] font-bold tracking-[0.26em] text-[#0f8a83] uppercase">{html($t("HireCorePhpApproach__t1", "Our Approach"))}</div>
           <div className="mt-2 flex items-center justify-center gap-3 text-slate-300">
             <span className="w-16 h-px bg-gradient-to-r from-transparent to-slate-300" />
             <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-[#0f8a83]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -423,10 +423,7 @@ export default function HireCorePhpApproach() {
             </svg>
             <span className="w-16 h-px bg-gradient-to-l from-transparent to-slate-300" />
           </div>
-          <h2 className="text-h2 mt-5 font-black tracking-tight text-[#0c1e3d]">
-            {$t("HireCorePhpApproach__t2", "From Idea to Impact.")}<br />
-            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpApproach__t3", "We Build It Right.")}</span>
-          </h2>
+          <h2 className="text-h2 mt-5 font-black tracking-tight text-[#0c1e3d]">{rich($t("HireCorePhpApproach__t2m", "From Idea to Impact.<br><span class=\"bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent\">We Build It Right.</span>"))}</h2>
           <motion.div
             className="mt-5 mx-auto h-[2px] rounded-full bg-[#0f8a83]"
             initial={{ width: 0 }}
@@ -434,8 +431,7 @@ export default function HireCorePhpApproach() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           />
-          <p className="text-body mt-5 text-slate-600">
-            {rich($t("HireCorePhpApproach__t4", "A proven process that ensures your project is"))}<br className="hidden sm:inline" /> {rich($t("HireCorePhpApproach__t5", "delivered with precision, performance and scale in mind."))}</p>
+          <p className="text-body mt-5 text-slate-600">{rich($t("HireCorePhpApproach__t4m", "A proven process that ensures your project is<br class=\"hidden sm:inline\"> delivered with precision, performance and scale in mind."))}</p>
         </motion.div>
 
         {/* ---------------- STEPS ---------------- */}
@@ -484,8 +480,8 @@ export default function HireCorePhpApproach() {
           <div className="flex items-center gap-4 shrink-0">
             <span className="w-[3px] h-12 rounded-full bg-[#0f8a83]" />
             <div className="text-left text-[16px] font-bold leading-snug">
-              <div className="text-[#0c1e3d]">{$t("HireCorePhpApproach__t6", "We don't just deliver projects.")}</div>
-              <div className="text-[#0f8a83]">{$t("HireCorePhpApproach__t7", "We build long-term success.")}</div>
+              <div className="text-[#0c1e3d]">{html($t("HireCorePhpApproach__t6", "We don't just deliver projects."))}</div>
+              <div className="text-[#0f8a83]">{html($t("HireCorePhpApproach__t7", "We build long-term success."))}</div>
             </div>
           </div>
 

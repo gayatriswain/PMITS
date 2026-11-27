@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { BadgeCheck, Bookmark, CornerUpRight, Globe2, MapPin, Mic, Phone, Search, Star, Store, TrendingUp, Users } from "lucide-react";
 import { Inner, LH2, LPill, LS, Panel, Stars, Swash, T, ease, heading } from "./LocalSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const STEPS__cms = [
   { Icon: Search, title: "They Search", text: "Customers search for products or services near them." },
@@ -34,7 +34,7 @@ function SearchMock() {
           <Search className="h-3.5 w-3.5 text-[#0f766e]" />
           <span className="flex-1 overflow-hidden whitespace-nowrap">
             <span className="ai-anim inline-block overflow-hidden align-bottom" style={{ animation: "aiType 2.4s steps(19) infinite alternate" }}>
-              {$t("LocalSeoJourney__t1", "coffee shop near me")}</span>
+              {html($t("LocalSeoJourney__t1", "coffee shop near me"))}</span>
           </span>
           <Mic className="h-3.5 w-3.5 text-blue-500" />
         </div>
@@ -55,9 +55,7 @@ function SearchMock() {
         <p className="text-caption font-semibold text-[#0b1b33]">{rich($t("LocalSeoJourney__t2", "Coffee Shop Near Me"))}</p>
         <p className="mt-1 flex items-center gap-1 text-[11px] text-slate-500">
           <Stars n={4} className="h-3 w-3" /> {rich($t("LocalSeoJourney__t3", "(120)"))}</p>
-        <p className="mt-1 text-[11px]">
-          <span className="font-semibold text-green-600">{$t("LocalSeoJourney__t4", "Open")}</span> <span className="text-slate-500">{$t("LocalSeoJourney__t5", "· Cafe · 0.2 mi")}</span>
-        </p>
+        <p className="mt-1 text-[11px]">{rich($t("LocalSeoJourney__t4m", "<span class=\"font-semibold text-green-600\">Open</span> <span class=\"text-slate-500\">· Cafe · 0.2 mi</span>"))}</p>
       </motion.div>
     </div>
   );
@@ -76,12 +74,10 @@ function MapMock() {
           <Image src={LS.gbpThumbs[0]} alt="" fill sizes="44px" className="object-cover" />
         </span>
         <span className="min-w-0 text-[10.5px] leading-tight">
-          <span className="block text-[12px] font-semibold text-[#0b1b33]">{$t("LocalSeoJourney__t6", "Your Business")}</span>
+          <span className="block text-[12px] font-semibold text-[#0b1b33]">{html($t("LocalSeoJourney__t6", "Your Business"))}</span>
           <span className="flex items-center gap-1 text-slate-500">
-            {$t("LocalSeoJourney__t7", "4.9 ")}<Stars className="h-2.5 w-2.5" /> {$t("LocalSeoJourney__t8", "(256)")}</span>
-          <span className="text-slate-500">
-            {$t("LocalSeoJourney__t9", "Cafe · 0.2 mi · ")}<span className="text-green-600">{$t("LocalSeoJourney__t10", "Open")}</span>
-          </span>
+            {html($t("LocalSeoJourney__t7", "4.9 "))}<Stars className="h-2.5 w-2.5" /> {html($t("LocalSeoJourney__t8", "(256)"))}</span>
+          <span className="text-slate-500">{rich($t("LocalSeoJourney__t9m", "Cafe · 0.2 mi · <span class=\"text-green-600\">Open</span>"))}</span>
         </span>
       </div>
     </div>
@@ -101,9 +97,7 @@ function ProfileMock() {
         </p>
         <p className="flex items-center gap-1 text-[11px] text-slate-500">
           {rich($t("LocalSeoJourney__t12", "4.9 "))}<Stars className="h-3 w-3" /> {rich($t("LocalSeoJourney__t13", "(256)"))}</p>
-        <p className="text-[11px]">
-          <span className="font-semibold text-green-600">{$t("LocalSeoJourney__t14", "Open")}</span> <span className="text-slate-500">{$t("LocalSeoJourney__t15", "· Closes 9 PM")}</span>
-        </p>
+        <p className="text-[11px]">{rich($t("LocalSeoJourney__t14m", "<span class=\"font-semibold text-green-600\">Open</span> <span class=\"text-slate-500\">· Closes 9 PM</span>"))}</p>
         <div className="mt-2 grid grid-cols-4 text-center text-[9.5px] text-slate-500">
           {[
             { I: Phone, l: $t("LocalSeoJourney__t16", "Call") },
@@ -168,7 +162,7 @@ function CustomersMock() {
         <p className="mt-0.5 text-[10.5px] leading-snug text-slate-500">{rich($t("LocalSeoJourney__t25", "More reviews. More referrals. More growth."))}</p>
         <div className="mt-2 flex items-center gap-1.5">
           <Image src={LS.avatars} alt="" width={135} height={45} className="h-7 w-auto" />
-          <span className="rounded-full bg-[#0f766e] px-2 py-1 text-[10px] font-bold text-white">{$t("LocalSeoJourney__t26", "+120")}</span>
+          <span className="rounded-full bg-[#0f766e] px-2 py-1 text-[10px] font-bold text-white">{html($t("LocalSeoJourney__t26", "+120"))}</span>
         </div>
       </motion.div>
     </div>

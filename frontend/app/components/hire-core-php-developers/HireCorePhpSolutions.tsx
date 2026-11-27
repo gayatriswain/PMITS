@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 interface SolutionCard {
   step: string;
@@ -105,7 +105,7 @@ export default function HireCorePhpSolutions() {
               transition={{ duration: 0.5 }}
             >
               <span className="text-[11.5px] sm:text-[12.5px] font-bold tracking-[0.24em] text-[#0d9488] uppercase">
-                {$t("HireCorePhpSolutions__t1", "BUILT FOR YOUR BUSINESS")}</span>
+                {html($t("HireCorePhpSolutions__t1", "BUILT FOR YOUR BUSINESS"))}</span>
             </motion.div>
 
             {/* Heading */}
@@ -117,7 +117,7 @@ export default function HireCorePhpSolutions() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               {$t("HireCorePhpSolutions__t2", "Whatever Your Challenge,")}<br />
-              <span className="text-[#0d9488]">{$t("HireCorePhpSolutions__t3", "We Have the Solution.")}</span>
+              <span className="text-[#0d9488]">{html($t("HireCorePhpSolutions__t3", "We Have the Solution."))}</span>
             </motion.h2>
 
             {/* Subtitle */}
@@ -285,11 +285,8 @@ export default function HireCorePhpSolutions() {
             {/* Text Copy */}
             <div className="text-left leading-snug">
               <div className="text-[15px] sm:text-[16.5px] font-bold text-[#0c1e3d]">
-                {$t("HireCorePhpSolutions__t7", "Your challenges.")}</div>
-              <div className="text-[15px] sm:text-[16.5px] font-bold">
-                <span className="text-[#0d9488]">{$t("HireCorePhpSolutions__t8", "Our expertise. ")}</span>
-                <span className="text-[#0c1e3d]">{$t("HireCorePhpSolutions__t9", "Real results.")}</span>
-              </div>
+                {html($t("HireCorePhpSolutions__t7", "Your challenges."))}</div>
+              <div className="text-[15px] sm:text-[16.5px] font-bold">{rich($t("HireCorePhpSolutions__t8m", "<span class=\"text-[#0d9488]\">Our expertise. </span><span class=\"text-[#0c1e3d]\">Real results.</span>"))}</div>
             </div>
           </div>
 
@@ -300,7 +297,7 @@ export default function HireCorePhpSolutions() {
               href={$t("HireCorePhpSolutions__t10", "#contact")}
               className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-xl bg-[#061325] text-white text-[13px] sm:text-[13.5px] font-bold hover:bg-[#0f2340] active:scale-95 transition-all shadow-md cursor-pointer"
             >
-              <span>{$t("HireCorePhpSolutions__t11", "Hire Core PHP Developers")}</span>
+              <span>{html($t("HireCorePhpSolutions__t11", "Hire Core PHP Developers"))}</span>
               <svg
                 viewBox="0 0 24 24"
                 className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform"
@@ -320,7 +317,7 @@ export default function HireCorePhpSolutions() {
               href={$t("HireCorePhpSolutions__t12", "#contact")}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white border border-slate-200/90 hover:border-slate-300 hover:bg-slate-50 text-[#0d9488] text-[13px] sm:text-[13.5px] font-bold transition-all active:scale-95 cursor-pointer shadow-sm"
             >
-              <span>{$t("HireCorePhpSolutions__t13", "Talk to an Expert")}</span>
+              <span>{html($t("HireCorePhpSolutions__t13", "Talk to an Expert"))}</span>
               <svg
                 viewBox="0 0 24 24"
                 className="w-4 h-4 text-[#0d9488]"

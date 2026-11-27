@@ -4,7 +4,7 @@ import { motion, type Variants } from 'framer-motion';
 import Container from '../shared/Container';
 import { useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 // Matches the reference CodePen's technique (JonasBadalic/pen/rNErWw): the line isn't one
 // continuous path — it's one straight `<path>` PER SEGMENT between consecutive points, each with
@@ -69,10 +69,7 @@ export default function GoogleAdsCaseStudy() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-caption text-[#00897b] font-bold tracking-widest uppercase mb-4">{rich($t("GoogleAdsCaseStudy__t1", "Real Results • Real Growth"))}</p>
-          <h2 className="text-h2 font-bold text-[#132a43] mb-4 font-serif">
-            {$t("GoogleAdsCaseStudy__t2", "Stories of Growth.")}<br />
-            {$t("GoogleAdsCaseStudy__t3", "Backed by ")}<span className="text-[#00897b]">{$t("GoogleAdsCaseStudy__t4", "Real Results.")}</span>
-          </h2>
+          <h2 className="text-h2 font-bold text-[#132a43] mb-4 font-serif">{rich($t("GoogleAdsCaseStudy__t2m", "Stories of Growth.<br>Backed by <span class=\"text-[#00897b]\">Real Results.</span>"))}</h2>
           <p className="text-small text-slate-500 max-w-xl mx-auto">
             {rich($t("GoogleAdsCaseStudy__t5", "We help businesses turn ad spend into measurable growth through smart Google Ads strategies."))}</p>
         </div>
@@ -103,7 +100,7 @@ export default function GoogleAdsCaseStudy() {
               <div className="relative z-20 p-8 lg:p-10 h-full flex flex-col">
                 <div>
                   <div className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 border border-teal-100 text-[#00897b] text-[10px] font-bold tracking-wider uppercase mb-8 shadow-sm">
-                    <span>★</span> {$t("GoogleAdsCaseStudy__t8", "Featured Case Study")}</div>
+                    <span>★</span> {html($t("GoogleAdsCaseStudy__t8", "Featured Case Study"))}</div>
                   
                   <div className="flex items-start gap-6">
                     <div className="w-14 h-14 bg-[#004e48] rounded-[1.25rem] flex items-center justify-center text-white shadow-[0_8px_16px_rgba(0,78,72,0.2)] shrink-0">
@@ -113,8 +110,7 @@ export default function GoogleAdsCaseStudy() {
                     <div>
                       <p className="text-[#00897b] text-[11px] font-bold tracking-[0.15em] uppercase mb-4 mt-1">{rich($t("GoogleAdsCaseStudy__t9", "Interior Design Studio"))}</p>
                       
-                      <h3 className="text-h4 font-bold text-[#132a43] mb-4 font-serif relative z-30 tracking-tight">
-                        {$t("GoogleAdsCaseStudy__t10", "Luxury Leads.")}<br />{$t("GoogleAdsCaseStudy__t11", "Lower Costs.")}</h3>
+                      <h3 className="text-h4 font-bold text-[#132a43] mb-4 font-serif relative z-30 tracking-tight">{rich($t("GoogleAdsCaseStudy__t10m", "Luxury Leads.<br>Lower Costs."))}</h3>
                       
                       <p className="text-small text-slate-600 mb-8 max-w-[260px] relative z-30 font-medium">
                         {rich($t("GoogleAdsCaseStudy__t12", "We helped a luxury interior design studio generate high-quality leads while reducing cost per lead by 40%."))}</p>
@@ -126,14 +122,14 @@ export default function GoogleAdsCaseStudy() {
                   <div>
                     <div className="flex items-center gap-1.5 text-slate-500 mb-1">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                      <span className="text-[10px] font-bold tracking-wider uppercase">{$t("GoogleAdsCaseStudy__t13", "Industry")}</span>
+                      <span className="text-[10px] font-bold tracking-wider uppercase">{html($t("GoogleAdsCaseStudy__t13", "Industry"))}</span>
                     </div>
                     <p className="text-small font-semibold text-[#1a2b3c]">{rich($t("GoogleAdsCaseStudy__t14", "Interior Design"))}</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5 text-slate-500 mb-1">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                      <span className="text-[10px] font-bold tracking-wider uppercase">{$t("GoogleAdsCaseStudy__t15", "Duration")}</span>
+                      <span className="text-[10px] font-bold tracking-wider uppercase">{html($t("GoogleAdsCaseStudy__t15", "Duration"))}</span>
                     </div>
                     <p className="text-small font-semibold text-[#1a2b3c]">{rich($t("GoogleAdsCaseStudy__t16", "3 Months"))}</p>
                   </div>
@@ -153,7 +149,7 @@ export default function GoogleAdsCaseStudy() {
                     <div className="w-12 h-12 bg-[#e0f2f1] rounded-2xl flex items-center justify-center text-[#00897b] mb-4">
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <h4 className="text-h4 font-bold text-[#00897b] mb-1">{$t("GoogleAdsCaseStudy__t18", "+186%")}</h4>
+                    <h4 className="text-h4 font-bold text-[#00897b] mb-1">{html($t("GoogleAdsCaseStudy__t18", "+186%"))}</h4>
                     <p className="text-caption font-bold text-[#132a43] mb-1">{rich($t("GoogleAdsCaseStudy__t19", "Qualified Leads"))}</p>
                     <p className="text-[10px] text-slate-400">{rich($t("GoogleAdsCaseStudy__t20", "vs previous 3 months"))}</p>
                   </div>
@@ -169,7 +165,7 @@ export default function GoogleAdsCaseStudy() {
                     <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-[#00897b] mb-4 border border-slate-100">
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
                     </div>
-                    <h4 className="text-h4 font-bold text-[#00897b] mb-1">{$t("GoogleAdsCaseStudy__t23", "6.2x")}</h4>
+                    <h4 className="text-h4 font-bold text-[#00897b] mb-1">{html($t("GoogleAdsCaseStudy__t23", "6.2x"))}</h4>
                     <p className="text-caption font-bold text-[#132a43] mb-1">{rich($t("GoogleAdsCaseStudy__t24", "ROAS Improved"))}</p>
                     <p className="text-[10px] text-slate-400">{rich($t("GoogleAdsCaseStudy__t25", "vs previous 3 months"))}</p>
                   </div>
@@ -179,8 +175,8 @@ export default function GoogleAdsCaseStudy() {
               {/* Animated Chart */}
               <div className="relative pt-4">
                 <div className="flex items-center gap-6 mb-6 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                  <div className="flex items-center gap-2"><span className="w-4 h-1 bg-[#00897b] rounded-full"></span> {$t("GoogleAdsCaseStudy__t26", "Leads")}</div>
-                  <div className="flex items-center gap-2"><span className="w-4 h-1 bg-[#a3b1c6] rounded-full"></span> {$t("GoogleAdsCaseStudy__t27", "Cost Per Lead")}</div>
+                  <div className="flex items-center gap-2"><span className="w-4 h-1 bg-[#00897b] rounded-full"></span> {html($t("GoogleAdsCaseStudy__t26", "Leads"))}</div>
+                  <div className="flex items-center gap-2"><span className="w-4 h-1 bg-[#a3b1c6] rounded-full"></span> {html($t("GoogleAdsCaseStudy__t27", "Cost Per Lead"))}</div>
                 </div>
                 
                 <div className="relative w-full h-[140px]">
@@ -282,18 +278,13 @@ export default function GoogleAdsCaseStudy() {
                     initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 1.8, duration: 0.5 }} viewport={{once: true}}
                     className="absolute right-0 top-[-25px] -translate-y-full transform bg-white shadow-[0_5px_15px_rgba(0,0,0,0.1)] border border-slate-50 rounded-lg px-3 py-1.5 flex flex-col items-center z-30"
                   >
-                    <span className="text-[#00897b] font-bold text-sm leading-tight">{$t("GoogleAdsCaseStudy__t28", "186")}</span>
-                    <span className="text-slate-400 text-[9px] font-bold uppercase tracking-wider">{$t("GoogleAdsCaseStudy__t29", "Leads")}</span>
+                    <span className="text-[#00897b] font-bold text-sm leading-tight">{html($t("GoogleAdsCaseStudy__t28", "186"))}</span>
+                    <span className="text-slate-400 text-[9px] font-bold uppercase tracking-wider">{html($t("GoogleAdsCaseStudy__t29", "Leads"))}</span>
                     <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45 border-b border-r border-slate-50"></div>
                   </motion.div>
 
                   {/* X Axis labels */}
-                  <div className="absolute bottom-0 left-0 w-full flex justify-between text-[10px] text-slate-400 font-medium">
-                    <span>{$t("GoogleAdsCaseStudy__t30", "Week 1")}</span>
-                    <span>{$t("GoogleAdsCaseStudy__t31", "Week 4")}</span>
-                    <span>{$t("GoogleAdsCaseStudy__t32", "Week 8")}</span>
-                    <span>{$t("GoogleAdsCaseStudy__t33", "Week 12")}</span>
-                  </div>
+                  <div className="absolute bottom-0 left-0 w-full flex justify-between text-[10px] text-slate-400 font-medium">{rich($t("GoogleAdsCaseStudy__t30m", "<span>Week 1</span><span>Week 4</span><span>Week 8</span><span>Week 12</span>"))}</div>
                 </div>
               </div>
             </div>
@@ -301,16 +292,14 @@ export default function GoogleAdsCaseStudy() {
             {/* Right Panel - Testimonial */}
             <div className="w-full lg:w-[25%] bg-[#fafdfc] p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-slate-100 flex flex-col justify-center relative z-20">
               <div className="text-[#004e48] text-6xl font-serif leading-none mb-4 opacity-80">“</div>
-              <p className="text-body text-[#132a43] mb-8 font-medium">
-                {rich($t("GoogleAdsCaseStudy__t34", "\"ProManage delivered exactly what they promised. Our "))}<span className="text-[#00897b]">{$t("GoogleAdsCaseStudy__t35", "leads increased")}</span> {rich($t("GoogleAdsCaseStudy__t36", "and our "))}<span className="text-[#00897b]">{$t("GoogleAdsCaseStudy__t37", "cost finally went down.")}</span>"
-              </p>
+              <p className="text-body text-[#132a43] mb-8 font-medium">{rich($t("GoogleAdsCaseStudy__t34m", "\"ProManage delivered exactly what they promised. Our <span class=\"text-[#00897b]\">leads increased</span> and our <span class=\"text-[#00897b]\">cost finally went down.</span>\""))}</p>
               
               <div className="w-10 h-px bg-slate-200 mb-6"></div>
               
               <div className="flex items-center gap-3">
                 <img src={$t("GoogleAdsCaseStudy__t38", "https://i.pravatar.cc/150?img=11")} alt={$t("GoogleAdsCaseStudy__t39", "Rohit Bansal")} className="w-10 h-10 rounded-full object-cover shadow-sm" />
                 <div>
-                  <h5 className="text-sm font-bold text-[#132a43]">{$t("GoogleAdsCaseStudy__t40", "Rohit Bansal")}</h5>
+                  <h5 className="text-sm font-bold text-[#132a43]">{html($t("GoogleAdsCaseStudy__t40", "Rohit Bansal"))}</h5>
                   <p className="text-caption text-slate-500">{rich($t("GoogleAdsCaseStudy__t41", "Founder"))}</p>
                 </div>
               </div>
@@ -332,11 +321,11 @@ export default function GoogleAdsCaseStudy() {
           <p className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase shrink-0">
             {rich($t("GoogleAdsCaseStudy__t42", "Trusted by growing businesses"))}</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 w-full md:w-auto overflow-hidden">
-            <span className="font-sans text-sm font-semibold flex items-center gap-1.5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>{$t("GoogleAdsCaseStudy__t43", "STUDIO OAK")}</span>
-            <span className="font-sans text-sm font-bold tracking-tight">{$t("GoogleAdsCaseStudy__t44", "urban space")}<span className="font-light text-[9px] block">{$t("GoogleAdsCaseStudy__t45", "DESIGNS")}</span></span>
-            <span className="font-serif text-sm">{$t("GoogleAdsCaseStudy__t46", "LUXE")}<span className="font-light text-[9px] block tracking-widest">{$t("GoogleAdsCaseStudy__t47", "INTERIORS")}</span></span>
-            <span className="font-serif text-sm">{$t("GoogleAdsCaseStudy__t48", "HOME NEST")}<span className="font-light text-[8px] block tracking-widest">{$t("GoogleAdsCaseStudy__t49", "COLLECTION")}</span></span>
-            <span className="font-sans text-sm font-light">{$t("GoogleAdsCaseStudy__t50", "DÉCOR")}<span className="font-bold text-[9px] block tracking-widest">{$t("GoogleAdsCaseStudy__t51", "CRAFT")}</span></span>
+            <span className="font-sans text-sm font-semibold flex items-center gap-1.5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>{html($t("GoogleAdsCaseStudy__t43", "STUDIO OAK"))}</span>
+            <span className="font-sans text-sm font-bold tracking-tight">{rich($t("GoogleAdsCaseStudy__t44m", "urban space<span class=\"font-light text-[9px] block\">DESIGNS</span>"))}</span>
+            <span className="font-serif text-sm">{rich($t("GoogleAdsCaseStudy__t46m", "LUXE<span class=\"font-light text-[9px] block tracking-widest\">INTERIORS</span>"))}</span>
+            <span className="font-serif text-sm">{rich($t("GoogleAdsCaseStudy__t48m", "HOME NEST<span class=\"font-light text-[8px] block tracking-widest\">COLLECTION</span>"))}</span>
+            <span className="font-sans text-sm font-light">{rich($t("GoogleAdsCaseStudy__t50m", "DÉCOR<span class=\"font-bold text-[9px] block tracking-widest\">CRAFT</span>"))}</span>
           </div>
         </div>
 
@@ -348,13 +337,11 @@ export default function GoogleAdsCaseStudy() {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><polyline points="2 12 12 2 22 12"/></svg>
             </div>
             <div>
-              <h3 className="text-h6 font-bold text-[#132a43]">
-                {$t("GoogleAdsCaseStudy__t52", "Ready to see ")}<span className="text-[#00897b]">{$t("GoogleAdsCaseStudy__t53", "real results")}</span><br className="hidden sm:block"/> {$t("GoogleAdsCaseStudy__t54", "for your business?")}</h3>
+              <h3 className="text-h6 font-bold text-[#132a43]">{rich($t("GoogleAdsCaseStudy__t52m", "Ready to see <span class=\"text-[#00897b]\">real results</span><br class=\"hidden sm:block\"> for your business?"))}</h3>
             </div>
           </div>
           
-          <div className="hidden lg:block text-sm text-slate-500 font-medium">
-            {$t("GoogleAdsCaseStudy__t55", "Let's build a Google Ads strategy")}<br />{$t("GoogleAdsCaseStudy__t56", "that drives measurable growth.")}</div>
+          <div className="hidden lg:block text-sm text-slate-500 font-medium">{rich($t("GoogleAdsCaseStudy__t55m", "Let's build a Google Ads strategy<br>that drives measurable growth."))}</div>
           
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto shrink-0">
             <Link href={$t("GoogleAdsCaseStudy__u2", "/testimonials")} className="w-full sm:w-auto px-6 py-3.5 bg-white text-[#1a2b3c] border border-slate-200 rounded-lg text-sm font-bold hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">

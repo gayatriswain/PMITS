@@ -7,7 +7,7 @@ import Container from "../shared/Container";
 import CountUp from "../shared/CountUp";
 import { ArrowRight, Eyebrow, Icon, QUOTE_HREF, ease, fadeUp, heading, type IconName } from "./BigCommerceShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* Brands that run on the BigCommerce platform, shown as plain-text wordmarks (not logos). */
 const platformBrands__cms: { name: string; cls: string }[] = [
@@ -65,7 +65,7 @@ export default function BigCommerceTrusted() {
             viewport={{ once: true }}
             className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
           >
-            {$t("BigCommerceTrusted__t2", "Powering ")}<span className="text-[#0d8f9a]">{$t("BigCommerceTrusted__t3", "60,000+")}</span> {$t("BigCommerceTrusted__t4", "Stores")}<br />
+            {$t("BigCommerceTrusted__t2", "Powering ")}<span className="text-[#0d8f9a]">{html($t("BigCommerceTrusted__t3", "60,000+"))}</span> {$t("BigCommerceTrusted__t4", "Stores")}<br />
             {$t("BigCommerceTrusted__t5", "Across the Globe")}</motion.h2>
           <motion.span
             initial={{ scaleX: 0 }}

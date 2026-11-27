@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, CalendarDays, Clock, Mail, MapPin, MessagesSquare, Phone, Quote, Rocket, TrendingUp, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0f1535";
 const PURPLE = "#5b43e8";
@@ -44,13 +44,11 @@ export default function ArVrContact({ details }: { details: ArVrContactDetails }
     <section id="ar-vr-contact" className="relative overflow-hidden bg-[radial-gradient(ellipse_70%_60%_at_50%_60%,#ffffff_0%,#f3f2f6_60%,#eeedf2_100%)] pb-12 pt-16 lg:pt-24">
       <Container className="relative">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE }} className="text-center">
-          <p className="text-[13px] font-bold uppercase tracking-[0.2em]" style={{ color: PURPLE }}>{$t("ArVrContact__t5", "Let's build your next")}</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.2em]" style={{ color: PURPLE }}>{html($t("ArVrContact__t5", "Let's build your next"))}</p>
           <i aria-hidden className="mx-auto mt-2 block h-[2px] w-8 rounded-full" style={{ background: PURPLE }} />
           <h2 className="text-h2 font-heading mt-4 font-bold leading-[1.1] tracking-[-0.02em]" style={{ color: NAVY }}>
-            <span className="block">{$t("ArVrContact__t6", "Ready to create")}</span>
-            <span className="block">
-              <span className="bg-[linear-gradient(90deg,#5b43e8,#7c5cf6)] bg-clip-text text-transparent">{$t("ArVrContact__t7", "real impact")}</span> {$t("ArVrContact__t8", "together?")}
-            </span>
+            <span className="block">{html($t("ArVrContact__t6", "Ready to create"))}</span>
+            <span className="block">{rich($t("ArVrContact__t7m", "<span class=\"bg-[linear-gradient(90deg,#5b43e8,#7c5cf6)] bg-clip-text text-transparent\">real impact</span> together?"))}</span>
           </h2>
           <p className="text-body mx-auto mt-4 max-w-[460px] text-slate-600">{rich($t("ArVrContact__t9", "Whether you have a bold idea or need expert guidance, our team is ready to turn your vision into immersive reality."))}</p>
         </motion.div>
@@ -75,7 +73,7 @@ export default function ArVrContact({ details }: { details: ArVrContactDetails }
           <div className="order-2 lg:order-1">
             {logos.length > 0 && (
               <motion.div className="rounded-2xl border border-white bg-white/70 p-6 shadow-[0_20px_44px_-30px_rgba(15,21,53,0.45)] backdrop-blur lg:-rotate-2" initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE }}>
-                <p className="text-center text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: PURPLE }}>{$t("ArVrContact__t10", "Trusted by innovative leaders")}</p>
+                <p className="text-center text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: PURPLE }}>{html($t("ArVrContact__t10", "Trusted by innovative leaders"))}</p>
                 <ul className="mt-5 grid grid-cols-3 items-center gap-5">
                   {logos.map((l, i) => (
                     <li key={i} className="flex justify-center">
@@ -95,8 +93,8 @@ export default function ArVrContact({ details }: { details: ArVrContactDetails }
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <p className="text-[12px] font-bold uppercase tracking-[0.18em]" style={{ color: PURPLE }}>{$t("ArVrContact__t11", "Start your journey")}</p>
-            <h3 className="text-h4 font-heading mt-2 font-bold" style={{ color: NAVY }}>{$t("ArVrContact__t12", "Book a Free Consultation")}</h3>
+            <p className="text-[12px] font-bold uppercase tracking-[0.18em]" style={{ color: PURPLE }}>{html($t("ArVrContact__t11", "Start your journey"))}</p>
+            <h3 className="text-h4 font-heading mt-2 font-bold" style={{ color: NAVY }}>{html($t("ArVrContact__t12", "Book a Free Consultation"))}</h3>
             <p className="text-small mt-2 text-slate-600">{rich($t("ArVrContact__t13", "Let's explore how we can create measurable results for your business."))}</p>
             <Link href={$t("ArVrContact__t14", "/contact")} className="group mt-6 flex items-center justify-center gap-3 rounded-lg bg-[linear-gradient(90deg,#5b43e8,#6d5ef5)] px-6 py-3.5 text-[13px] font-bold uppercase tracking-[0.1em] text-white shadow-[0_14px_28px_-12px_rgba(91,67,232,0.8)]">
               {$t("ArVrContact__t15", "Book a call")}

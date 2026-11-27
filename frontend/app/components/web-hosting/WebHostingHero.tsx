@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Container from '../shared/Container';
 import { useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 export default function WebHostingHero() {
   const $t = useCmsText();
@@ -42,7 +42,7 @@ export default function WebHostingHero() {
             >
               <Cloud size={16} className="text-[#0f766e]" />
               <span className="text-[11px] font-bold tracking-widest uppercase text-[#0f766e]">
-                {$t("WebHostingHero__t1", "WEBSITE HOSTING")}</span>
+                {html($t("WebHostingHero__t1", "WEBSITE HOSTING"))}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#14b8a6]"></span>
             </motion.div>
             
@@ -55,7 +55,7 @@ export default function WebHostingHero() {
               style={{ fontFamily: "var(--font-heading)" }}
             >
               {$t("WebHostingHero__t2", "Fast Hosting. ")}<br />
-              <span className="text-[#0f766e]">{$t("WebHostingHero__t3", "Zero Hosting Headaches.")}</span>
+              <span className="text-[#0f766e]">{html($t("WebHostingHero__t3", "Zero Hosting Headaches."))}</span>
             </motion.h1>
             
             {/* Description */}
@@ -93,13 +93,13 @@ export default function WebHostingHero() {
             >
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={14} className="text-[#14b8a6]" />
-                {$t("WebHostingHero__t7", "No Hidden Fees")}</div>
+                {html($t("WebHostingHero__t7", "No Hidden Fees"))}</div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={14} className="text-[#14b8a6]" />
-                {$t("WebHostingHero__t8", "Cancel Anytime")}</div>
+                {html($t("WebHostingHero__t8", "Cancel Anytime"))}</div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={14} className="text-[#14b8a6]" />
-                {$t("WebHostingHero__t9", "30-Day Money-Back Guarantee")}</div>
+                {html($t("WebHostingHero__t9", "30-Day Money-Back Guarantee"))}</div>
             </motion.div>
           </div>
                    {/* Center Image Container */}
@@ -140,11 +140,11 @@ export default function WebHostingHero() {
                 <Check className="text-[#0f766e]" size={18} />
               </div>
               <div>
-                <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-1">{$t("WebHostingHero__t12", "YOUR WEBSITE")}</div>
+                <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-1">{html($t("WebHostingHero__t12", "YOUR WEBSITE"))}</div>
                 <div className="font-bold text-[#0f2923] flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#14b8a6]"></span>
-                  {$t("WebHostingHero__t13", "Online")}</div>
-                <div className="text-slate-500 text-[11px] mt-0.5">{$t("WebHostingHero__t14", "Always Available")}</div>
+                  {html($t("WebHostingHero__t13", "Online"))}</div>
+                <div className="text-slate-500 text-[11px] mt-0.5">{html($t("WebHostingHero__t14", "Always Available"))}</div>
               </div>
             </div>
 
@@ -160,9 +160,9 @@ export default function WebHostingHero() {
                 <CloudLightning className="text-slate-600" size={18} />
               </div>
               <div>
-                <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-1">{$t("WebHostingHero__t15", "FAST DELIVERY")}</div>
-                <div className="font-bold text-[#0f2923]">{$t("WebHostingHero__t16", "98-100% Uptime*")}</div>
-                <div className="text-slate-500 text-[11px] mt-0.5">{$t("WebHostingHero__t17", "High Performance")}</div>
+                <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-1">{html($t("WebHostingHero__t15", "FAST DELIVERY"))}</div>
+                <div className="font-bold text-[#0f2923]">{html($t("WebHostingHero__t16", "98-100% Uptime*"))}</div>
+                <div className="text-slate-500 text-[11px] mt-0.5">{html($t("WebHostingHero__t17", "High Performance"))}</div>
               </div>
             </div>
 
@@ -178,9 +178,9 @@ export default function WebHostingHero() {
                 <ShieldCheck className="text-slate-600" size={18} />
               </div>
               <div>
-                <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-1">{$t("WebHostingHero__t18", "SECURED")}</div>
-                <div className="font-bold text-[#0f2923]">{$t("WebHostingHero__t19", "SSL + Firewall")}</div>
-                <div className="text-slate-500 text-[11px] mt-0.5">{$t("WebHostingHero__t20", "Your Data, Protected")}</div>
+                <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-1">{html($t("WebHostingHero__t18", "SECURED"))}</div>
+                <div className="font-bold text-[#0f2923]">{html($t("WebHostingHero__t19", "SSL + Firewall"))}</div>
+                <div className="text-slate-500 text-[11px] mt-0.5">{html($t("WebHostingHero__t20", "Your Data, Protected"))}</div>
               </div>
             </div>
 
@@ -196,9 +196,9 @@ export default function WebHostingHero() {
                 <CheckCircle2 className="text-slate-600" size={18} />
               </div>
               <div>
-                <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-1">{$t("WebHostingHero__t21", "READY FOR VISITORS")}</div>
-                <div className="font-bold text-[#0f2923]">{$t("WebHostingHero__t22", "Always On")}</div>
-                <div className="text-slate-500 text-[11px] mt-0.5">{$t("WebHostingHero__t23", "Built for Every Visitor")}</div>
+                <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-1">{html($t("WebHostingHero__t21", "READY FOR VISITORS"))}</div>
+                <div className="font-bold text-[#0f2923]">{html($t("WebHostingHero__t22", "Always On"))}</div>
+                <div className="text-slate-500 text-[11px] mt-0.5">{html($t("WebHostingHero__t23", "Built for Every Visitor"))}</div>
               </div>
             </div>
           </motion.div>
@@ -219,8 +219,8 @@ export default function WebHostingHero() {
             </div>
             <div>
               <div className="text-xl font-black text-[#0f2923] leading-none mb-1">99.9%</div>
-              <div className="text-[11px] font-bold text-[#0f766e]">{$t("WebHostingHero__t24", "Uptime Commitment")}</div>
-              <div className="text-[10px] text-slate-500 mt-0.5">{$t("WebHostingHero__t25", "Your site. Always on.")}</div>
+              <div className="text-[11px] font-bold text-[#0f766e]">{html($t("WebHostingHero__t24", "Uptime Commitment"))}</div>
+              <div className="text-[10px] text-slate-500 mt-0.5">{html($t("WebHostingHero__t25", "Your site. Always on."))}</div>
             </div>
           </div>
           
@@ -230,9 +230,9 @@ export default function WebHostingHero() {
               <Headphones size={24} className="text-[#0f766e]" strokeWidth={1.5} />
             </div>
             <div>
-              <div className="text-xl font-black text-[#0f2923] leading-none mb-1">{$t("WebHostingHero__t26", "24/7")}</div>
-              <div className="text-[11px] font-bold text-[#0f766e]">{$t("WebHostingHero__t27", "Expert Support")}</div>
-              <div className="text-[10px] text-slate-500 mt-0.5">{$t("WebHostingHero__t28", "Real people. Real help.")}</div>
+              <div className="text-xl font-black text-[#0f2923] leading-none mb-1">{html($t("WebHostingHero__t26", "24/7"))}</div>
+              <div className="text-[11px] font-bold text-[#0f766e]">{html($t("WebHostingHero__t27", "Expert Support"))}</div>
+              <div className="text-[10px] text-slate-500 mt-0.5">{html($t("WebHostingHero__t28", "Real people. Real help."))}</div>
             </div>
           </div>
           
@@ -242,9 +242,9 @@ export default function WebHostingHero() {
               <CloudLightning size={24} className="text-[#0f766e]" strokeWidth={1.5} />
             </div>
             <div>
-              <div className="text-xl font-black text-[#0f2923] leading-none mb-1">{$t("WebHostingHero__t29", "Daily")}</div>
-              <div className="text-[11px] font-bold text-[#0f766e]">{$t("WebHostingHero__t30", "Backups")}</div>
-              <div className="text-[10px] text-slate-500 mt-0.5">{$t("WebHostingHero__t31", "Restore anytime.")}</div>
+              <div className="text-xl font-black text-[#0f2923] leading-none mb-1">{html($t("WebHostingHero__t29", "Daily"))}</div>
+              <div className="text-[11px] font-bold text-[#0f766e]">{html($t("WebHostingHero__t30", "Backups"))}</div>
+              <div className="text-[10px] text-slate-500 mt-0.5">{html($t("WebHostingHero__t31", "Restore anytime."))}</div>
             </div>
           </div>
           
@@ -254,9 +254,9 @@ export default function WebHostingHero() {
               <Lock size={24} className="text-[#0f766e]" strokeWidth={1.5} />
             </div>
             <div>
-              <div className="text-xl font-black text-[#0f2923] leading-none mb-1">{$t("WebHostingHero__t32", "Secure")}</div>
-              <div className="text-[11px] font-bold text-[#0f766e]">{$t("WebHostingHero__t33", "By Design")}</div>
-              <div className="text-[10px] text-slate-500 mt-0.5">{$t("WebHostingHero__t34", "Protection at every layer.")}</div>
+              <div className="text-xl font-black text-[#0f2923] leading-none mb-1">{html($t("WebHostingHero__t32", "Secure"))}</div>
+              <div className="text-[11px] font-bold text-[#0f766e]">{html($t("WebHostingHero__t33", "By Design"))}</div>
+              <div className="text-[10px] text-slate-500 mt-0.5">{html($t("WebHostingHero__t34", "Protection at every layer."))}</div>
             </div>
           </div>
         </motion.div>

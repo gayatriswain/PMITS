@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDown, ArrowRight, ArrowUp, Boxes, Code2, Lock, MessageSquareText, Puzzle, Rocket, ShoppingCart, Sparkles, TrendingUp, Users, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0b1530";
 const TEAL = "#1596a8";
@@ -53,21 +53,16 @@ export default function HireCorePhpCaseStudy() {
       <Container>
         <div className="mx-auto max-w-[1300px]">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE }} className="max-w-[520px]">
-            <p className="text-[13px] font-bold uppercase tracking-[0.16em]" style={{ color: NAVY }}>
-              {$t("HireCorePhpCaseStudy__t1", "Success in")} <span style={{ color: TEAL }}>{$t("HireCorePhpCaseStudy__t2", "action")}</span>
-            </p>
+            <p className="text-[13px] font-bold uppercase tracking-[0.16em]" style={{ color: NAVY }}>{rich($t("HireCorePhpCaseStudy__t1m", "Success in <span class=\"text-[#1596a8]\">action</span>"))}</p>
             <i aria-hidden className="mt-2 block h-[2px] w-14 rounded-full bg-[#1596a8]/70" />
-            <h2 className="text-h1 font-heading mt-5 font-bold leading-[1.05] tracking-[-0.02em]" style={{ color: NAVY }}>
-              <span className="block">{$t("HireCorePhpCaseStudy__t3", "Real Projects.")}</span>
-              <span className="block" style={{ color: TEAL }}>{$t("HireCorePhpCaseStudy__t4", "Real Impact.")}</span>
-            </h2>
+            <h2 className="text-h1 font-heading mt-5 font-bold leading-[1.05] tracking-[-0.02em]" style={{ color: NAVY }}>{rich($t("HireCorePhpCaseStudy__t3m", "<span class=\"block\">Real Projects.</span><span class=\"block text-[#1596a8]\">Real Impact.</span>"))}</h2>
             <p className="text-body mt-5 text-slate-600">{rich($t("HireCorePhpCaseStudy__t5", "We build Core PHP solutions that solve real business challenges and create lasting impact."))}</p>
           </motion.div>
 
           <div className="relative mt-10 grid gap-4 lg:mt-24 lg:grid-cols-[64px_1fr]">
             {/* slider rail */}
             <div className="hidden flex-col items-center rounded-2xl bg-white py-6 shadow-[0_12px_30px_-24px_rgba(11,21,48,0.5)] lg:flex">
-              <span className="text-[12px] font-bold uppercase tracking-[0.18em] [writing-mode:vertical-rl] rotate-180" style={{ color: NAVY }}>{$t("HireCorePhpCaseStudy__t6", "Case study")}</span>
+              <span className="text-[12px] font-bold uppercase tracking-[0.18em] [writing-mode:vertical-rl] rotate-180" style={{ color: NAVY }}>{html($t("HireCorePhpCaseStudy__t6", "Case study"))}</span>
               <i aria-hidden className="my-4 block h-16 w-px bg-slate-200" />
               <button type="button" onClick={() => go(-1)} disabled={total < 2} aria-label={$t("HireCorePhpCaseStudy__t7", "Previous case study")} className="grid h-9 w-9 place-items-center rounded-full text-slate-500 transition hover:bg-slate-100 disabled:opacity-40">
                 <ArrowUp className="h-4 w-4" />
@@ -148,10 +143,8 @@ export default function HireCorePhpCaseStudy() {
             <div className="flex items-center gap-5">
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-[#3cc2d4]/40"><Code2 className="h-6 w-6" style={{ color: "#3cc2d4" }} /></span>
               <p className="text-h5 font-heading font-medium leading-snug text-white">
-                {$t("HireCorePhpCaseStudy__t9", "Have a project in mind?")}
-                <span className="block">
-                  {$t("HireCorePhpCaseStudy__t10", "Let's build something")} <span style={{ color: "#3cc2d4" }}>{$t("HireCorePhpCaseStudy__t11", "great together.")}</span>
-                </span>
+                {html($t("HireCorePhpCaseStudy__t9", "Have a project in mind?"))}
+                <span className="block">{rich($t("HireCorePhpCaseStudy__t10m", "Let's build something <span class=\"text-[#3cc2d4]\">great together.</span>"))}</span>
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

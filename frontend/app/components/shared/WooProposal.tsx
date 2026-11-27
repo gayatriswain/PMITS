@@ -5,7 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "./Container";
 import { Plant } from "./WooWhyHire";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
@@ -341,7 +341,7 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
         <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-teal-300/30 bg-teal-300/10">
           <DocIcon />
         </span>
-        <h3 className="text-h4 mt-4 font-bold text-white">{$t("WooProposal__t5", "Let's Build Something")}</h3>
+        <h3 className="text-h4 mt-4 font-bold text-white">{html($t("WooProposal__t5", "Let's Build Something"))}</h3>
         <p className={`${caveat.className} relative mx-auto -mt-1 inline-block text-[36px] sm:text-[42px] font-bold leading-tight text-teal-300`}>
           {rich($t("WooProposal__t6", "Amazing Together!"))}<svg className="pointer-events-none absolute -bottom-2 left-[10%] h-3 w-[80%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
             <path d="M3 9C60 3 140 2 197 6" fill="none" stroke="#5eead4" strokeWidth="3" strokeLinecap="round" />
@@ -362,7 +362,7 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
           <p className="text-small max-w-sm text-slate-300">
             {rich($t("WooProposal__t8", "Our experts will review your details and send your free proposal within 24 hours."))}</p>
           <button type="button" onClick={() => setStatus("idle")} className="mt-2 text-[13px] font-semibold text-teal-300 underline underline-offset-4">
-            {$t("WooProposal__t9", "Submit another request")}</button>
+            {html($t("WooProposal__t9", "Submit another request"))}</button>
         </motion.div>
       ) : (
         <form id={formId} data-form-id={formId} onSubmit={handleSubmit} noValidate className="mt-7">
@@ -383,9 +383,7 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
                 <input {...bind("phone")} type="tel" autoComplete="tel" aria-label="Phone Number (with country code)" className={`${input} peer`} />
                 {/* two-line placeholder (a native one can't wrap), hidden once there's a value */}
                 {!values.phone && (
-                  <span className="pointer-events-none absolute inset-y-0 left-0 flex flex-col justify-center text-[14px] leading-tight text-slate-300/80">
-                    {$t("WooProposal__t13", "Phone Number*")}<span className="text-[12px] text-slate-300/60">{$t("WooProposal__t14", "(with country code)")}</span>
-                  </span>
+                  <span className="pointer-events-none absolute inset-y-0 left-0 flex flex-col justify-center text-[14px] leading-tight text-slate-300/80">{rich($t("WooProposal__t13m", "Phone Number*<span class=\"text-[12px] text-slate-300/60\">(with country code)</span>"))}</span>
                 )}
               </span>
             </Field>
@@ -415,7 +413,7 @@ function ProposalForm({ formId, fieldPrefix }: { formId: string; fieldPrefix: st
 
           <div className="mt-3 flex items-center gap-3">
             <span className="h-px flex-1 border-t border-dashed border-white/20" />
-            <span className={`${caveat.className} text-[19px] text-teal-200`}>{$t("WooProposal__t17", "No Commitment. Just Possibilities.")}</span>
+            <span className={`${caveat.className} text-[19px] text-teal-200`}>{html($t("WooProposal__t17", "No Commitment. Just Possibilities."))}</span>
             <span className="h-px flex-1 border-t border-dashed border-white/20" />
           </div>
 
@@ -476,16 +474,16 @@ export default function WooProposal({
               className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] shadow-sm"
               style={{ color: DEEP_TEAL }}
             >
-              <PlaneIcon /> {$t("WooProposal__t21", "Let's turn your idea into reality")}</motion.span>
+              <PlaneIcon /> {html($t("WooProposal__t21", "Let's turn your idea into reality"))}</motion.span>
             <motion.h2
               variants={fadeUp}
               className="text-h2 mt-5 font-extrabold tracking-tight"
               style={{ color: NAVY }}
             >
               {$t("WooProposal__t22", "Get My")}<br />
-              <span style={{ color: TEAL }}>{$t("WooProposal__t23", "Free")}</span>{" "}
+              <span style={{ color: TEAL }}>{html($t("WooProposal__t23", "Free"))}</span>{" "}
               <span className="relative inline-block">
-                {$t("WooProposal__t24", "Proposal")}<svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                {html($t("WooProposal__t24", "Proposal"))}<svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={NAVY} strokeWidth="3" strokeLinecap="round" />
                 </svg>
               </span>

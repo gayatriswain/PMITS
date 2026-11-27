@@ -4,7 +4,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import ProposalLink from "./ProposalLink";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -206,7 +206,7 @@ function RetentionRing() {
         style={{ left: 56 + RING_R * Math.cos(end), top: 56 + RING_R * Math.sin(end), backgroundColor: TEAL }}
       />
       <span className="absolute inset-0 flex items-center justify-center text-[34px] font-bold" style={{ color: DEEP_TEAL }}>
-        {$t("WhoWeAreApproach__t1", "92")}<span className="mt-2 text-[18px]">%</span>
+        {html($t("WhoWeAreApproach__t1", "92"))}<span className="mt-2 text-[18px]">%</span>
       </span>
     </div>
   );
@@ -224,8 +224,7 @@ function RetentionStrip() {
     >
       <RetentionRing />
       <span className="hidden h-16 w-px bg-slate-200 md:block" />
-      <p className="text-small flex-1 text-center text-slate-600 md:text-left">
-        {rich($t("WhoWeAreApproach__t2", "We have maintained a "))}<strong className="font-bold" style={{ color: TEAL }}>92%</strong> {rich($t("WhoWeAreApproach__t3", "customer retention rate thanks to our consistent focus on transparency, client satisfaction, and quantifiable return on investment. This accomplishment speaks to the quality of our work and the confidence we gain from our clients."))}</p>
+      <p className="text-small flex-1 text-center text-slate-600 md:text-left">{rich($t("WhoWeAreApproach__t2m", "We have maintained a <strong class=\"font-bold text-[#0d9488]\">92%</strong> customer retention rate thanks to our consistent focus on transparency, client satisfaction, and quantifiable return on investment. This accomplishment speaks to the quality of our work and the confidence we gain from our clients."))}</p>
       <span className="hidden h-16 w-px bg-slate-200 md:block" />
       <span className="relative z-10 flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-2xl bg-white lg:mr-12 shadow-[0_12px_28px_-14px_rgba(13,27,51,0.4)] ring-1 ring-slate-100">
         <ChartUpIcon size={32} color={DEEP_TEAL} />
@@ -281,13 +280,13 @@ export default function WhoWeAreApproach() {
               <span className="flex h-4 w-4 items-center justify-center rounded-full border-2" style={{ borderColor: TEAL }}>
                 <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: TEAL }} />
               </span>
-              {$t("WhoWeAreApproach__t4", "Our Approach")}<span className="text-teal-400">÷</span>
+              {html($t("WhoWeAreApproach__t4", "Our Approach"))}<span className="text-teal-400">÷</span>
             </motion.span>
 
             <motion.h2 variants={fadeUp} className="text-h2 mt-5 font-bold tracking-tight">
-              <span style={{ color: INK }}>{$t("WhoWeAreApproach__t5", "Our ")}</span>
+              <span style={{ color: INK }}>{html($t("WhoWeAreApproach__t5", "Our "))}</span>
               <span className="relative inline-block" style={{ color: TEAL }}>
-                {$t("WhoWeAreApproach__t6", "Approach")}<svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none" aria-hidden>
+                {html($t("WhoWeAreApproach__t6", "Approach"))}<svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none" fill="none" aria-hidden>
                   <path d="M3 7C60 2 140 1 197 5" stroke={TEAL} strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
               </span>

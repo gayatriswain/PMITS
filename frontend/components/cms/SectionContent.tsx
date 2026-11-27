@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useMemo, type ReactNode } from "react";
+import { useLiveContent } from "./editStore";
 
 /**
  * Per-section content from the CMS. Section components read it through:
@@ -12,8 +13,11 @@ import { createContext, useContext, useMemo, type ReactNode } from "react";
 type Content = Record<string, unknown>;
 const SectionContentContext = createContext<Content | null>(null);
 
-export function SectionContentProvider({ value, children }: { value?: Content | null; children: ReactNode }) {
-  return <SectionContentContext.Provider value={value && Object.keys(value).length ? value : null}>{children}</SectionContentContext.Provider>;
+export function SectionContentProvider({ value, sectionKey, children }: { value?: Content | null; sectionKey?: string; children: ReactNode }) {
+  // admin visual editor: unsaved edits of this section, shown while typing (nothing outside the editor)
+  const live = useLiveContent(sectionKey);
+  const v = live ?? value;
+  return <SectionContentContext.Provider value={v && Object.keys(v).length ? v : null}>{children}</SectionContentContext.Provider>;
 }
 
 export function useCmsText() {

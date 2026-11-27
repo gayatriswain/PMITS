@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const NAVY = "#132a43";
@@ -318,11 +318,11 @@ function StartProjectForm() {
   return (
     <div className="relative rounded-[24px] border border-teal-100 bg-white/90 p-6 sm:p-8 shadow-[0_30px_70px_-35px_rgba(13,80,80,0.45)] backdrop-blur">
       <div className="text-center">
-        <h3 className="text-h4 font-serif font-bold" style={{ color: NAVY }}>{$t("CustomDevStartProject__t1", "Start Your Project")}</h3>
+        <h3 className="text-h4 font-serif font-bold" style={{ color: NAVY }}>{html($t("CustomDevStartProject__t1", "Start Your Project"))}</h3>
         <p className="text-body mt-1 font-serif italic text-slate-500">
           {rich($t("CustomDevStartProject__t2", "It all starts with a"))}{" "}
           <span className="relative inline-block font-semibold" style={{ color: DEEP_TEAL }}>
-            {$t("CustomDevStartProject__t3", "conversation.")}<Squiggle className="-bottom-1.5 h-2" />
+            {html($t("CustomDevStartProject__t3", "conversation."))}<Squiggle className="-bottom-1.5 h-2" />
           </span>
         </p>
       </div>
@@ -344,7 +344,7 @@ function StartProjectForm() {
             className="mt-2 text-[13px] font-semibold underline underline-offset-4"
             style={{ color: DEEP_TEAL }}
           >
-            {$t("CustomDevStartProject__t6", "Share another idea")}</button>
+            {html($t("CustomDevStartProject__t6", "Share another idea"))}</button>
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} noValidate className="mt-7 flex flex-col gap-5">
@@ -357,7 +357,7 @@ function StartProjectForm() {
             </span>
             <div className="flex-1 min-w-0">
               <label htmlFor="sp-idea" className="mb-2 block text-[14px] font-semibold" style={{ color: NAVY }}>
-                {$t("CustomDevStartProject__t7", "What are you looking to build?")}</label>
+                {html($t("CustomDevStartProject__t7", "What are you looking to build?"))}</label>
               <div className="relative">
                 <textarea
                   id="sp-idea"
@@ -388,7 +388,7 @@ function StartProjectForm() {
             </span>
             <div className="flex-1 min-w-0">
               <label htmlFor="sp-email" className="mb-2 block text-[14px] font-semibold" style={{ color: NAVY }}>
-                {$t("CustomDevStartProject__t9", "Your Work Email")}</label>
+                {html($t("CustomDevStartProject__t9", "Your Work Email"))}</label>
               <input
                 id="sp-email"
                 name="email"
@@ -423,7 +423,7 @@ function StartProjectForm() {
             {status === "submitting" ? (
               <span className="flex items-center gap-2">
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                {$t("CustomDevStartProject__t11", "Sending...")}</span>
+                {html($t("CustomDevStartProject__t11", "Sending..."))}</span>
             ) : (
               "Let's Build Something Amazing"
             )}
@@ -433,11 +433,11 @@ function StartProjectForm() {
           </button>
 
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[12px] text-slate-500">
-            <span className="flex items-center gap-1.5"><LockIcon /> {$t("CustomDevStartProject__t12", "Free consultation")}</span>
+            <span className="flex items-center gap-1.5"><LockIcon /> {html($t("CustomDevStartProject__t12", "Free consultation"))}</span>
             <span className="h-1 w-1 rounded-full bg-teal-500" />
-            <span>{$t("CustomDevStartProject__t13", "No obligation")}</span>
+            <span>{html($t("CustomDevStartProject__t13", "No obligation"))}</span>
             <span className="h-1 w-1 rounded-full bg-teal-500" />
-            <span>{$t("CustomDevStartProject__t14", "100% confidential")}</span>
+            <span>{html($t("CustomDevStartProject__t14", "100% confidential"))}</span>
           </div>
         </form>
       )}
@@ -464,8 +464,8 @@ function ContactStrip() {
           <PhoneIcon />
         </span>
         <span>
-          <span className="block text-[14px] font-semibold" style={{ color: NAVY }}>{$t("CustomDevStartProject__t16", "We're just a call away.")}</span>
-          <span className="block text-[12px] text-slate-500">{$t("CustomDevStartProject__t17", "Mon - Sat (10 AM - 7 PM IST)")}</span>
+          <span className="block text-[14px] font-semibold" style={{ color: NAVY }}>{html($t("CustomDevStartProject__t16", "We're just a call away."))}</span>
+          <span className="block text-[12px] text-slate-500">{html($t("CustomDevStartProject__t17", "Mon - Sat (10 AM - 7 PM IST)"))}</span>
           <span className="block text-[20px] font-bold" style={{ color: DEEP_TEAL }}>{PHONE_DISPLAY}</span>
         </span>
       </a>
@@ -478,9 +478,7 @@ function ContactStrip() {
             <span key={c} className="h-11 w-11 rounded-full ring-2 ring-white" style={{ background: `linear-gradient(160deg, ${c}, #b88765)` }} />
           ))}
         </div>
-        <p className="text-small max-w-[190px]" style={{ color: NAVY }}>
-          {rich($t("CustomDevStartProject__t18", "Our team is ready to turn your idea into "))}<span className="font-semibold" style={{ color: TEAL }}>{$t("CustomDevStartProject__t19", "reality.")}</span>
-        </p>
+        <p className="text-small max-w-[190px]" style={{ color: NAVY }}>{rich($t("CustomDevStartProject__t18m", "Our team is ready to turn your idea into <span class=\"font-semibold text-[#0d9488]\">reality.</span>"))}</p>
       </div>
 
       <Link
@@ -488,10 +486,7 @@ function ContactStrip() {
         className="group flex items-center gap-4 rounded-2xl border border-teal-200 bg-teal-50/40 px-5 py-3.5 transition hover:border-teal-400 hover:bg-teal-50 shrink-0"
       >
         <CalendarIcon />
-        <span>
-          <span className="block text-[15px] font-semibold" style={{ color: DEEP_TEAL }}>{$t("CustomDevStartProject__t21", "Schedule a Call")}</span>
-          <span className="block text-[11.5px] text-slate-500">{$t("CustomDevStartProject__t22", "Pick a time that works for you")}</span>
-        </span>
+        <span>{rich($t("CustomDevStartProject__t21m", "<span class=\"block text-[15px] font-semibold text-[#0f5c56]\">Schedule a Call</span><span class=\"block text-[11.5px] text-slate-500\">Pick a time that works for you</span>"))}</span>
         <span className="ml-2 transition-transform group-hover:translate-x-1"><ArrowIcon color={TEAL} /></span>
       </Link>
     </motion.div>
@@ -523,21 +518,18 @@ export default function CustomDevStartProject() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full border border-teal-200 bg-teal-50">
                 <BoltIcon />
               </span>
-              {$t("CustomDevStartProject__t23", "Ready to bring your idea to life?")}</span>
+              {html($t("CustomDevStartProject__t23", "Ready to bring your idea to life?"))}</span>
             <h2 className="text-h2 mt-5 font-serif font-bold" style={{ color: NAVY }}>
-              {$t("CustomDevStartProject__t24", "Your Idea.")}<br />
-              {$t("CustomDevStartProject__t25", "Our Code.")}<br />
+              {html($t("CustomDevStartProject__t24", "Your Idea."))}<br />
+              {html($t("CustomDevStartProject__t25", "Our Code."))}<br />
               <span style={{ color: TEAL }}>
-                {$t("CustomDevStartProject__t26", "Real")}{" "}
+                {html($t("CustomDevStartProject__t26", "Real"))}{" "}
                 <span className="relative inline-block">
-                  {$t("CustomDevStartProject__t27", "Impact.")}<Squiggle className="-bottom-1 h-3" />
+                  {html($t("CustomDevStartProject__t27", "Impact."))}<Squiggle className="-bottom-1 h-3" />
                 </span>
               </span>
             </h2>
-            <p className="text-body mt-6 max-w-md text-slate-500">
-              {rich($t("CustomDevStartProject__t28", "Share your vision in a few words and we'll show you how we can"))}{" "}
-              <span className="font-semibold" style={{ color: TEAL }}>{$t("CustomDevStartProject__t29", "build it to scale.")}</span>
-            </p>
+            <p className="text-body mt-6 max-w-md text-slate-500">{rich($t("CustomDevStartProject__t28m", "Share your vision in a few words and we'll show you how we can <span class=\"font-semibold text-[#0d9488]\">build it to scale.</span>"))}</p>
 
             <ul className="mt-7 flex flex-col gap-5">
               {FEATURES.map((f) => (

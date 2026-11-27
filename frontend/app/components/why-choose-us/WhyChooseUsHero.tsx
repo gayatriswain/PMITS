@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import HeroGrowthScene from "./HeroGrowthScene";
 
 const NAVY = "#132a43";
@@ -82,29 +82,23 @@ export default function WhyChooseUsHero() {
             transition={{ duration: 0.6, ease: EASE }}
           >
             <span className="block text-[13px] font-bold uppercase tracking-[0.18em]" style={{ color: TEAL }}>
-              {$t("WhyChooseUsHero__t1", "Why Choose Us?")}
+              {html($t("WhyChooseUsHero__t1", "Why Choose Us?"))}
             </span>
             <i aria-hidden className="mt-3 block h-[2px] w-14 rounded-full" style={{ backgroundColor: TEAL }} />
             <h1 className="font-heading mt-8 text-[clamp(40px,4.6vw,72px)] font-bold leading-[1.08] tracking-[-0.025em]" style={{ color: NAVY }}>
-              <span className="block">{$t("WhyChooseUsHero__t2", "We Build")}</span>
+              <span className="block">{html($t("WhyChooseUsHero__t2", "We Build"))}</span>
+              <span className="block">{rich($t("WhyChooseUsHero__t23m", "What <span class=\"text-[#0d9488]\">Grows</span>"))}</span>
               <span className="block">
-                {$t("WhyChooseUsHero__t23", "What")} <span style={{ color: TEAL }}>{$t("WhyChooseUsHero__t3", "Grows")}</span>
-              </span>
-              <span className="block">
-                {$t("WhyChooseUsHero__t24", "Your")}{" "}
+                {html($t("WhyChooseUsHero__t24", "Your"))}{" "}
                 <span className="relative inline-block" style={{ color: TEAL }}>
-                  {$t("WhyChooseUsHero__t4", "Business.")}
+                  {html($t("WhyChooseUsHero__t4", "Business."))}
                   <svg aria-hidden className="absolute -bottom-3 left-[-8%] w-[112%]" height="14" viewBox="0 0 300 14" fill="none" preserveAspectRatio="none">
                     <path d="M2 10C70 3 200 1 298 8" stroke={TEAL} strokeWidth="3.5" strokeLinecap="round" />
                   </svg>
                 </span>
               </span>
             </h1>
-            <p className="text-body mt-10 max-w-[480px] leading-relaxed text-slate-600">
-              {$t("WhyChooseUsHero__t5", "Strategy. Design. Technology.")} <span className="font-medium" style={{ color: TEAL }}>{$t("WhyChooseUsHero__t6", "Growth.")}</span>
-              <br />
-              {rich($t("WhyChooseUsHero__t7", "Everything aligned to deliver real results that matter to you."))}
-            </p>
+            <p className="text-body mt-10 max-w-[480px] leading-relaxed text-slate-600">{rich($t("WhyChooseUsHero__t5m", "Strategy. Design. Technology. <span class=\"font-medium text-[#0d9488]\">Growth.</span><br>Everything aligned to deliver real results that matter to you."))}</p>
 
             <div className="mt-9 grid max-w-[640px] grid-cols-2 gap-y-7 sm:grid-cols-4 sm:divide-x sm:divide-slate-200">
               {FEATURES.map((f, i) => (
@@ -134,10 +128,7 @@ export default function WhyChooseUsHero() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-full border-2 transition-colors group-hover:bg-[#e6f4f1]" style={{ borderColor: DEEP_TEAL, color: NAVY }}>
                   <PlayIcon />
                 </span>
-                <span className="text-left">
-                  <span className="block text-[15px] font-semibold" style={{ color: NAVY }}>{$t("WhyChooseUsHero__t10", "See How We Do It")}</span>
-                  <span className="block text-[12px] text-slate-500">{$t("WhyChooseUsHero__t11", "Watch 60-sec overview")}</span>
-                </span>
+                <span className="text-left">{rich($t("WhyChooseUsHero__t10m", "<span class=\"block text-[15px] font-semibold text-[#132a43]\">See How We Do It</span><span class=\"block text-[12px] text-slate-500\">Watch 60-sec overview</span>"))}</span>
               </Link>
             </div>
           </motion.div>

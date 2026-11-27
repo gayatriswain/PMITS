@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -352,12 +352,10 @@ export default function ShopifyWebDesignJourney() {
 
           <div className="inline-flex items-center gap-1.5 mb-4">
             <svg width="14" height="14" viewBox="0 0 24 24" fill={TEAL}><path d="M12 2c0 4.5 4.5 9 9 9-4.5 0-9 4.5-9 9 0-4.5-4.5-9-9-9 4.5 0 9-4.5 9-9z" /></svg>
-            <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>{$t("ShopifyWebDesignJourney__t1", "The Shopper Journey")}</span>
+            <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>{html($t("ShopifyWebDesignJourney__t1", "The Shopper Journey"))}</span>
           </div>
 
-          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
-            {$t("ShopifyWebDesignJourney__t2", "Your Store Shouldn't Make ")}<span style={{ color: TEAL }}>{$t("ShopifyWebDesignJourney__t3", "Customers Think.")}</span>
-          </h2>
+          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignJourney__t2m", "Your Store Shouldn't Make <span class=\"text-[#0d9488]\">Customers Think.</span>"))}</h2>
           <p className="text-body text-slate-500 mt-4 max-w-lg mx-auto">
             {rich($t("ShopifyWebDesignJourney__t4", "We remove friction at every step of the buying journey—so customers can find what they need, trust your store, and buy with confidence."))}</p>
         </motion.div>
@@ -444,9 +442,7 @@ export default function ShopifyWebDesignJourney() {
           </div>
 
           <div className="flex-1 text-center lg:text-left">
-            <h3 className="text-h6 font-bold" style={{ color: NAVY }}>
-              {$t("ShopifyWebDesignJourney__t7", "Not sure what's holding ")}<span style={{ color: TEAL }}>{$t("ShopifyWebDesignJourney__t8", "your store back?")}</span>
-            </h3>
+            <h3 className="text-h6 font-bold" style={{ color: NAVY }}>{rich($t("ShopifyWebDesignJourney__t7m", "Not sure what's holding <span class=\"text-[#0d9488]\">your store back?</span>"))}</h3>
             <p className="text-small text-slate-500 mt-1.5 max-w-md mx-auto lg:mx-0">
               {rich($t("ShopifyWebDesignJourney__t9", "Get a free Shopify store review and see exactly where you're losing sales."))}</p>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 mt-4">
@@ -478,7 +474,7 @@ export default function ShopifyWebDesignJourney() {
                   <span key={i} className="h-6 w-6 rounded-full ring-2 ring-white bg-slate-200" />
                 ))}
               </div>
-              <span className="text-[11px] text-slate-500">{$t("ShopifyWebDesignJourney__t12", "Loved by 100+ store owners")}</span>
+              <span className="text-[11px] text-slate-500">{html($t("ShopifyWebDesignJourney__t12", "Loved by 100+ store owners"))}</span>
             </div>
           </div>
         </motion.div>

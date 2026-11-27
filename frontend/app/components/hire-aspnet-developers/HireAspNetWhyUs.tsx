@@ -6,7 +6,7 @@ import { motion, type Variants } from "framer-motion";
 import { Award, Clock3, Code2, Gauge, Globe2, ShieldCheck, TrendingUp, Trophy, Users, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const TEAL = "#0d8a91";
@@ -48,15 +48,12 @@ export default function HireAspNetWhyUs() {
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }} className="mx-auto max-w-[780px] text-center">
           <motion.p variants={fadeUp} className="flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.26em]" style={{ color: TEAL }}>
             <i aria-hidden className="relative h-px w-10 bg-[#0d8a91]/50 sm:w-16"><b className="absolute -left-0.5 -top-[2px] h-[5px] w-[5px] rounded-full bg-[#0d8a91]" /></i>
-            {$t("HireAspNetWhyUs__t1", "Why businesses choose us")}
+            {html($t("HireAspNetWhyUs__t1", "Why businesses choose us"))}
             <i aria-hidden className="relative h-px w-10 bg-[#0d8a91]/50 sm:w-16"><b className="absolute -right-0.5 -top-[2px] h-[5px] w-[5px] rounded-full bg-[#0d8a91]" /></i>
           </motion.p>
           <h2 className="text-h2 font-heading mt-5 font-extrabold tracking-[-0.02em]" style={{ color: NAVY }}>
-            <motion.span variants={fadeUp} custom={1} className="block">{$t("HireAspNetWhyUs__t2", "More than code.")}</motion.span>
-            <motion.span variants={fadeUp} custom={2} className="block">
-              {$t("HireAspNetWhyUs__t3", "Delivering")}{" "}
-              <span className="bg-[linear-gradient(100deg,#0b6f78,#18a8ae_55%,#0d8a91)] bg-clip-text text-transparent">{$t("HireAspNetWhyUs__t4", "business value.")}</span>
-            </motion.span>
+            <motion.span variants={fadeUp} custom={1} className="block">{html($t("HireAspNetWhyUs__t2", "More than code."))}</motion.span>
+            <motion.span variants={fadeUp} custom={2} className="block">{rich($t("HireAspNetWhyUs__t3m", "Delivering <span class=\"bg-[linear-gradient(100deg,#0b6f78,#18a8ae_55%,#0d8a91)] bg-clip-text text-transparent\">business value.</span>"))}</motion.span>
           </h2>
           <motion.p variants={fadeUp} custom={3} className="text-body mx-auto mt-5 max-w-[560px] text-slate-600">
             {rich($t("HireAspNetWhyUs__t5", "Our ASP.NET developers combine deep technical expertise with a business-first approach to build solutions that matter."))}

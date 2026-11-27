@@ -7,7 +7,7 @@ import Container from "../shared/Container";
 import { useCountUp } from "../shared/useCountUp";
 import { BarChartUpIcon, ChevronLeftIcon, ChevronRightIcon, GaugeIcon, LinkedinIcon, TrendingUpIcon } from "../shared/icons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -59,7 +59,7 @@ function CsatCard({ delay }: { delay: number }) {
       style={{ animationDelay: `${delay}ms` }}
     >
       <h3 className="text-base font-bold" style={{ color: NAVY }}>
-        {$t("AboutBento__t1", "CSAT")}</h3>
+        {html($t("AboutBento__t1", "CSAT"))}</h3>
       <p className="text-caption mt-1.5 text-slate-500">
         {rich($t("AboutBento__t2", "Measures and improves client satisfaction."))}</p>
       <p className="text-small mt-4 font-bold uppercase tracking-wide" style={{ color: ACCENT }}>
@@ -172,7 +172,7 @@ function DiscussCard({ delay }: { delay: number }) {
       }}
     >
       <div className="text-center">
-        <h3 className="text-h6 font-bold text-white">{$t("AboutBento__t3", "Discuss your project")}</h3>
+        <h3 className="text-h6 font-bold text-white">{html($t("AboutBento__t3", "Discuss your project"))}</h3>
         <Link
           href={$t("AboutBento__t4", "/contact")}
           className="mt-4 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-transform duration-300 hover:scale-105"
@@ -264,7 +264,7 @@ function SeoStatsCard({ delay }: { delay: number }) {
       style={{ animationDelay: `${delay}ms` }}
     >
       <h3 className="text-lg font-bold" style={{ color: NAVY }}>
-        {$t("AboutBento__t7", "SEO ready & fast performance")}</h3>
+        {html($t("AboutBento__t7", "SEO ready & fast performance"))}</h3>
       <p className="text-small mt-1.5 text-slate-500">
         {rich($t("AboutBento__t8", "Optimized for search rankings and blazing-fast speed."))}</p>
       <div className="mt-8 flex items-end justify-center gap-6 sm:justify-start">
@@ -286,7 +286,7 @@ function AgencyRebuildCard({ delay }: { delay: number }) {
     >
       <div>
         <h3 className="text-base font-bold leading-snug" style={{ color: NAVY }}>
-          {$t("AboutBento__t13", "Agency website rebuild")}</h3>
+          {html($t("AboutBento__t13", "Agency website rebuild"))}</h3>
         <p className="text-small mt-1.5 text-slate-500">{rich($t("AboutBento__t14", "120% more inquiries"))}</p>
       </div>
       <div className="relative mt-3 flex-1 overflow-hidden rounded-lg bg-slate-50">
@@ -370,7 +370,7 @@ function IndustriesTicker({ delay }: { delay: number }) {
       style={{ animationDelay: `${delay}ms` }}
     >
       <h3 className="text-center text-lg font-bold" style={{ color: NAVY }}>
-        {$t("AboutBento__t17", "Industries we work with")}</h3>
+        {html($t("AboutBento__t17", "Industries we work with"))}</h3>
       <div
         ref={containerRef}
         className="relative mt-3 flex-1 overflow-hidden"
@@ -422,10 +422,8 @@ export default function AboutBento() {
             className="inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            {$t("AboutBento__t21", "WHY PROMANAGE")}</span>
-          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>
-            {$t("AboutBento__t22", "What Working With Us ")}<span style={{ color: TEAL }}>{$t("AboutBento__t23", "Feels Like.")}</span>
-          </h2>
+            {html($t("AboutBento__t21", "WHY PROMANAGE"))}</span>
+          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>{rich($t("AboutBento__t22m", "What Working With Us <span class=\"text-[#0d9488]\">Feels Like.</span>"))}</h2>
         </div>
 
         <div className="mx-auto mt-12 max-w-6xl rounded-3xl border border-slate-200 bg-slate-100 p-3 sm:p-5">

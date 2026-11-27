@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -155,7 +155,7 @@ export default function ArVrWhy() {
                 custom={0}
                 className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
               >
-                {$t("ArVrWhy__t1", "Why ProManage")}</motion.span>
+                {html($t("ArVrWhy__t1", "Why ProManage"))}</motion.span>
               <motion.h2
                 variants={fadeUp}
                 custom={1}
@@ -163,7 +163,7 @@ export default function ArVrWhy() {
               >
                 {$t("ArVrWhy__t2", "Technology that solves")}{" "}
                 <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-                  {$t("ArVrWhy__t3", "real business")}</span>{" "}
+                  {html($t("ArVrWhy__t3", "real business"))}</span>{" "}
                 {$t("ArVrWhy__t4", "problems.")}</motion.h2>
               <motion.p
                 variants={fadeUp}
@@ -242,9 +242,7 @@ export default function ArVrWhy() {
               </span>
             </span>
             <div>
-              <h3 className="text-h5 font-bold text-[#0f1535]">
-                {$t("ArVrWhy__t8", "Have a business challenge that")}<br className="hidden sm:block" />{" "}
-                <span className="text-[#5b43e8]">{$t("ArVrWhy__t9", "immersive technology")}</span> {$t("ArVrWhy__t10", "could solve?")}</h3>
+              <h3 className="text-h5 font-bold text-[#0f1535]">{rich($t("ArVrWhy__t8m", "Have a business challenge that<br class=\"hidden sm:block\"> <span class=\"text-[#5b43e8]\">immersive technology</span> could solve?"))}</h3>
               <p className="text-small mt-1.5 text-slate-600">
                 {rich($t("ArVrWhy__t11", "Let's build an experience that makes a real difference."))}</p>
             </div>

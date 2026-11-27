@@ -28,6 +28,8 @@ export type Field = {
   maxItems?: number;
   /** group: fields are stored on the parent object (presentational grouping). */
   flat?: boolean;
+  /** richinline: span classes of the coloured words, offered as accent buttons in the editor. */
+  accents?: string[];
 };
 export type SectionDef = {
   component: string;

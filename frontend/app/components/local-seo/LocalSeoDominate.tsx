@@ -25,7 +25,7 @@ import {
 import CountUp from "../shared/CountUp";
 import { BrandIcon, Inner, LH2, LS, Panel, Spark, Stars, T, ease, heading } from "./LocalSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const ITEMS__cms = [
   { Icon: FileText, title: "Complete & Accurate Information", text: "We ensure every detail is correct, consistent, and compelling." },
@@ -74,11 +74,9 @@ function ProfileCard() {
             {rich($t("LocalSeoDominate__t2", "Your Business "))}<BadgeCheck className="h-5 w-5 fill-blue-500 text-white" />
           </p>
           <p className="text-small mt-1 flex items-center gap-1.5 text-slate-600">
-            {rich($t("LocalSeoDominate__t3", "4.9 "))}<Stars className="h-4 w-4" /> <span className="text-slate-400">{$t("LocalSeoDominate__t4", "(256)")}</span>
+            {rich($t("LocalSeoDominate__t3", "4.9 "))}<Stars className="h-4 w-4" /> <span className="text-slate-400">{html($t("LocalSeoDominate__t4", "(256)"))}</span>
           </p>
-          <p className="text-small mt-0.5">
-            <span className="text-slate-700">{$t("LocalSeoDominate__t5", "Open")}</span> <span className="text-slate-500">{$t("LocalSeoDominate__t6", "· Closes 9 PM")}</span>
-          </p>
+          <p className="text-small mt-0.5">{rich($t("LocalSeoDominate__t5m", "<span class=\"text-slate-700\">Open</span> <span class=\"text-slate-500\">· Closes 9 PM</span>"))}</p>
           <div className="mt-3 grid grid-cols-4 text-center text-[11px] text-slate-600">
             {[
               { I: Phone, l: $t("LocalSeoDominate__t7", "Call") },
@@ -103,14 +101,14 @@ function ProfileCard() {
           </div>
           <ul className="mt-3 space-y-2.5 text-[13px] text-slate-700">
             <li className="flex items-center gap-3">
-              <MapPin className="h-4 w-4 text-slate-500" /> {$t("LocalSeoDominate__t16", "123 Main Street, Your City, ST 10001")}</li>
+              <MapPin className="h-4 w-4 text-slate-500" /> {html($t("LocalSeoDominate__t16", "123 Main Street, Your City, ST 10001"))}</li>
             <li className="flex items-center gap-3">
-              <Clock3 className="h-4 w-4 text-slate-500" /> {$t("LocalSeoDominate__t17", "Open · Closes 9 PM ")}<ChevronDown className="h-3.5 w-3.5" />
+              <Clock3 className="h-4 w-4 text-slate-500" /> {html($t("LocalSeoDominate__t17", "Open · Closes 9 PM "))}<ChevronDown className="h-3.5 w-3.5" />
             </li>
             <li className="flex items-center gap-3">
-              <Phone className="h-4 w-4 text-slate-500" /> {$t("LocalSeoDominate__t18", "(555) 123-4567")}</li>
+              <Phone className="h-4 w-4 text-slate-500" /> {html($t("LocalSeoDominate__t18", "(555) 123-4567"))}</li>
             <li className="flex items-center gap-3">
-              <Globe2 className="h-4 w-4 text-slate-500" /> {$t("LocalSeoDominate__t19", "yourbusiness.com")}</li>
+              <Globe2 className="h-4 w-4 text-slate-500" /> {html($t("LocalSeoDominate__t19", "yourbusiness.com"))}</li>
           </ul>
           <div className="mt-3 grid grid-cols-3 gap-2">
             {LS.gbpThumbs.map((src) => (
@@ -190,9 +188,7 @@ export default function LocalSeoDominate() {
               {$t("LocalSeoDominate__t23", "Dominate Local Search.")}<br />
               <T>{$t("LocalSeoDominate__t24", "Win More Customers.")}</T>
             </LH2>
-            <p className="text-body mt-4 max-w-[470px] text-slate-600">
-              {rich($t("LocalSeoDominate__t25", "We optimize your Google Business Profile to attract more views, build trust, and drive "))}<span className="font-semibold text-[#0f766e] underline decoration-[#0f766e]/40 underline-offset-4">{$t("LocalSeoDominate__t26", "real-world actions.")}</span>
-            </p>
+            <p className="text-body mt-4 max-w-[470px] text-slate-600">{rich($t("LocalSeoDominate__t25m", "We optimize your Google Business Profile to attract more views, build trust, and drive <span class=\"font-semibold text-[#0f766e] underline decoration-[#0f766e]/40 underline-offset-4\">real-world actions.</span>"))}</p>
             <ul className="mt-6 divide-y divide-slate-100">
               {ITEMS.map(({ Icon, title, text }, i) => (
                 <motion.li
@@ -217,8 +213,7 @@ export default function LocalSeoDominate() {
               <svg viewBox="0 0 50 20" className="h-5 w-12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden>
                 <path d="M48 12C34 4 18 4 3 10M3 10l7-6M3 10l8 4" />
               </svg>
-              <span>
-                {$t("LocalSeoDominate__t27", "Every detail optimized.")}<br /> {$t("LocalSeoDominate__t28", "Every action maximized.")}</span>
+              <span>{rich($t("LocalSeoDominate__t27m", "Every detail optimized.<br> Every action maximized."))}</span>
             </p>
           </div>
 
@@ -236,15 +231,10 @@ export default function LocalSeoDominate() {
               {rich($t("LocalSeoDominate__t29", "Real Results."))}<br />
               <T>{$t("LocalSeoDominate__t30", "Real Growth.")}</T>
             </p>
-            <p className="text-small mt-4 text-slate-600">
-              {rich($t("LocalSeoDominate__t31", "Since working with ProManage, our profile views increased by "))}<b className="text-[#0f766e]">215%</b> {rich($t("LocalSeoDominate__t32", "and calls by "))}<b className="text-[#0f766e]">160%</b>.
-            </p>
+            <p className="text-small mt-4 text-slate-600">{rich($t("LocalSeoDominate__t31m", "Since working with ProManage, our profile views increased by <b class=\"text-[#0f766e]\">215%</b> and calls by <b class=\"text-[#0f766e]\">160%</b>."))}</p>
             <div className="mt-5 flex items-center gap-3">
               <Image src={LS.sarah} alt={$t("LocalSeoDominate__t33", "Sarah Johnson")} width={48} height={49} className="h-12 w-12 rounded-full object-cover" />
-              <span>
-                <span className="block text-sm font-semibold text-[#0b1b33]">{$t("LocalSeoDominate__t34", "Sarah Johnson")}</span>
-                <span className="block text-xs text-slate-500">{$t("LocalSeoDominate__t35", "Marketing Manager")}</span>
-              </span>
+              <span>{rich($t("LocalSeoDominate__t34m", "<span class=\"block text-sm font-semibold text-[#0b1b33]\">Sarah Johnson</span><span class=\"block text-xs text-slate-500\">Marketing Manager</span>"))}</span>
             </div>
             <div className="mt-5 grid grid-cols-2 gap-3">
               {[

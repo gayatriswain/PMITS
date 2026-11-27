@@ -73,7 +73,7 @@ export async function createPage(user: SessionUser, body: unknown) {
 }
 
 /** Saves page details into the draft copy. Visitors keep seeing the published version until publish. */
-export async function savePageDraft(user: SessionUser, id: string, body: unknown) {
+export async function savePageDraft(user: SessionUser, id: string, body: unknown, opts: { auto?: boolean } = {}) {
   const { page } = await getPageWithSections(id);
   const data = pageSchema.parse(body);
   const seoOnly = !can(user.role, "pages.write") && can(user.role, "seo.write");
@@ -86,7 +86,7 @@ export async function savePageDraft(user: SessionUser, id: string, body: unknown
   }
   const prevDetails = page.draft ?? { title: page.title, description: page.description, featuredImage: page.featuredImage, group: page.group, seo: page.seo };
   await Page.updateOne({ _id: page._id }, { $set: { draft, hasUnpublishedChanges: true, updatedBy: user.id } });
-  logActivity(user, "save-draft", "pages", id, `Saved page details of ${page.path}`, { changes: diffObjects(prevDetails, draft, prettyPath) });
+  logActivity(user, "save-draft", "pages", id, `Saved page details of ${page.path}`, { changes: diffObjects(prevDetails, draft, prettyPath), merge: opts.auto });
   return getPageWithSections(id);
 }
 
@@ -120,7 +120,7 @@ function sectionChanges(def: NonNullable<ReturnType<typeof getSectionDef>>, prev
 }
 
 /** Replace the section list (order, visibility, content) in draft. */
-export async function saveSectionsDraft(user: SessionUser, id: string, body: unknown) {
+export async function saveSectionsDraft(user: SessionUser, id: string, body: unknown, opts: { auto?: boolean } = {}) {
   const { page, sections } = await getPageWithSections(id);
   const { sections: incoming } = sectionSaveSchema.parse(body);
   const existingByKey = new Map(sections.map((s) => [s.key, s]));
@@ -153,7 +153,7 @@ export async function saveSectionsDraft(user: SessionUser, id: string, body: unk
     if (removed.length) await PageSection.deleteMany({ _id: { $in: removed } });
   }
   await Page.updateOne({ _id: page._id }, { $set: { hasUnpublishedChanges: true, updatedBy: user.id } });
-  logActivity(user, "save-draft", "pages", id, `Edited sections of ${page.path}`, { changes });
+  logActivity(user, "save-draft", "pages", id, `Edited sections of ${page.path}`, { changes, merge: opts.auto });
   return getPageWithSections(id);
 }
 

@@ -113,8 +113,7 @@ function TeamStack() {
         </span>
       </div>
       <span className="h-10 w-px bg-slate-200" />
-      <p className="text-small max-w-[230px] text-slate-600">
-        {rich($t("CareerHero__t1", "Join "))}<span className="font-bold" style={{ color: INK }}>{$t("CareerHero__t2", "100+")}</span> {rich($t("CareerHero__t3", "passionate problem solvers building digital solutions that matter."))}</p>
+      <p className="text-small max-w-[230px] text-slate-600">{rich($t("CareerHero__t1m", "Join <span class=\"font-bold text-[#0d1b33]\">100+</span> passionate problem solvers building digital solutions that matter."))}</p>
     </div>
   );
 }
@@ -146,12 +145,7 @@ function IdeaBadge() {
         style={{ background: "radial-gradient(circle at 35% 25%, #1c5a63, #0c3a42 60%, #082a31)" }}
       >
         <RocketIcon size={30} />
-        <p className="text-body mt-3 font-semibold text-white">
-          {rich($t("CareerHero__t4", "Great ideas"))}<br />
-          {rich($t("CareerHero__t5", "start here."))}<br />
-          {rich($t("CareerHero__t6", "Big "))}<span className="text-teal-300">impact</span>
-          <br />
-          {rich($t("CareerHero__t7", "starts with you."))}</p>
+        <p className="text-body mt-3 font-semibold text-white">{rich($t("CareerHero__t4m", "Great ideas<br>start here.<br>Big <span class=\"text-teal-300\">impact</span><br>starts with you."))}</p>
         <span className="mt-3 h-[2px] w-10 rounded-full bg-teal-300" />
       </motion.div>
     </motion.div>
@@ -234,10 +228,7 @@ export default function CareerHero() {
                 <path d="M4 8C90 2 220 2 296 6" fill="none" stroke={TEAL} strokeWidth="3" strokeLinecap="round" />
               </svg>
             </motion.p>
-            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[460px] text-slate-600">
-              {rich($t("CareerHero__t13", "Work with people who turn "))}<span className="font-semibold" style={{ color: TEAL }}>ideas</span> {rich($t("CareerHero__t14", "into technology—and technology into"))}{" "}
-              <span className="font-semibold" style={{ color: TEAL }}>impact</span>.
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[460px] text-slate-600">{rich($t("CareerHero__t13m", "Work with people who turn <span class=\"font-semibold text-[#0d9488]\">ideas</span> into technology—and technology into <span class=\"font-semibold text-[#0d9488]\">impact</span>."))}</motion.p>
 
             <motion.div variants={fadeUp} className="mt-9">
               <Link

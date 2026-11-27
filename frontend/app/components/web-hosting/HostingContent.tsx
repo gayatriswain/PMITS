@@ -4,7 +4,7 @@ import Link from "next/link";
 import Container from "../shared/Container";
 import { BoltIcon, ArrowIcon, CheckIcon, CloudIcon, BrowserCheckIcon, ShieldLockIcon, ShieldCheckIcon, GaugeIcon, HeadsetIcon, CloudUploadIcon, LockIcon, UsersIcon } from "../shared/icons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 
@@ -85,13 +85,10 @@ export default function HostingContent() {
           className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
           style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
         >
-          <CloudIcon /> {$t("HostingContent__t2", "WEBSITE HOSTING ")}<span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <CloudIcon /> {html($t("HostingContent__t2", "WEBSITE HOSTING "))}<span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
         </span>
 
-        <h1 className="text-h1 mt-5 font-bold" style={{ color: NAVY }}>
-          {$t("HostingContent__t3", "Fast Hosting.")}<br />
-          <span style={{ color: TEAL }}>{$t("HostingContent__t4", "Zero Hosting Headaches.")}</span>
-        </h1>
+        <h1 className="text-h1 mt-5 font-bold" style={{ color: NAVY }}>{rich($t("HostingContent__t3m", "Fast Hosting.<br><span class=\"text-[#0d9488]\">Zero Hosting Headaches.</span>"))}</h1>
 
         <p className="text-body mt-5 max-w-lg text-slate-600">
           {rich($t("HostingContent__t5", "Reliable, secure, and high-performance hosting built to keep your website online, fast, and ready for every visitor."))}</p>

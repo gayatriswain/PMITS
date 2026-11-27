@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const RealEstateIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -144,10 +144,8 @@ export default function IndustriesWeEmpower() {
       <div className="relative z-10 mx-auto w-full max-w-[1640px] px-5">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-2xl">
-            <h4 className="text-[#0D9488] font-bold tracking-widest text-xs sm:text-sm uppercase mb-3">{$t("IndustriesWeEmpower__t1", "INDUSTRIES WE EMPOWER")}</h4>
-            <h2 className="text-h2 font-extrabold text-[#0F172A] mb-4 font-serif">
-              {$t("IndustriesWeEmpower__t2", "Helping Businesses Across ")}<br className="hidden md:block" /> {$t("IndustriesWeEmpower__t3", "Every Industry ")}<span className="text-[#0D9488]">{$t("IndustriesWeEmpower__t4", "in Noida")}</span>
-            </h2>
+            <h4 className="text-[#0D9488] font-bold tracking-widest text-xs sm:text-sm uppercase mb-3">{html($t("IndustriesWeEmpower__t1", "INDUSTRIES WE EMPOWER"))}</h4>
+            <h2 className="text-h2 font-extrabold text-[#0F172A] mb-4 font-serif">{rich($t("IndustriesWeEmpower__t2m", "Helping Businesses Across <br class=\"hidden md:block\"> Every Industry <span class=\"text-[#0D9488]\">in Noida</span>"))}</h2>
             <p className="text-body text-gray-600 max-w-md">
               {rich($t("IndustriesWeEmpower__t5", "We create customized digital solutions for businesses of all sizes and industries."))}</p>
           </div>

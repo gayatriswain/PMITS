@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -186,7 +186,7 @@ function DiscoverScreen() {
   return (
     <div className="absolute inset-[3px] rounded-[30px] overflow-hidden bg-white flex flex-col">
       <div className="flex items-center justify-between px-4 pt-3 pb-1.5 text-[9px] font-semibold" style={{ color: NAVY }}>
-        <span>{$t("AppDevProcess__t1", "9:41")}</span>
+        <span>{html($t("AppDevProcess__t1", "9:41"))}</span>
         <span className="w-3 h-2 rounded-sm border border-current" />
       </div>
 
@@ -197,7 +197,7 @@ function DiscoverScreen() {
 
       <div className="mx-4 mb-3 flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
         <SearchIcon color="#94a3b8" size={11} />
-        <span className="text-[8.5px] text-slate-400">{$t("AppDevProcess__t4", "Search anything...")}</span>
+        <span className="text-[8.5px] text-slate-400">{html($t("AppDevProcess__t4", "Search anything..."))}</span>
       </div>
 
       <div className="px-4 mb-1 flex items-center justify-between">
@@ -235,7 +235,7 @@ function DiscoverScreen() {
         <div className="absolute inset-0" style={{ background: `linear-gradient(100deg, ${DEEP_TEAL} 40%, transparent 95%)` }} />
         <p className="relative text-[8px] font-semibold uppercase tracking-wide text-white/70">{rich($t("AppDevProcess__t18", "Summer Sale"))}</p>
         <p className="text-caption relative font-bold text-white mt-1">{rich($t("AppDevProcess__t19", "Up to 40% Off"))}</p>
-        <span className="relative inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: DEEP_TEAL }}>{$t("AppDevProcess__t20", "Shop Now")}</span>
+        <span className="relative inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: DEEP_TEAL }}>{html($t("AppDevProcess__t20", "Shop Now"))}</span>
       </div>
 
       <div className="mt-auto flex items-center justify-around border-t border-slate-100 px-1 pt-2 pb-3">
@@ -270,11 +270,8 @@ export default function AppDevProcess() {
             style={{ borderColor: "#e8d9b8", backgroundColor: CREAM, color: GOLD }}
           >
             <SparkleIcon color={GOLD} size={12} />
-            {$t("AppDevProcess__t26", "Let's Build What's Next")}</span>
-          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
-            {$t("AppDevProcess__t27", "The Next App They'll Love.")}<br />
-            <span style={{ color: TEAL }}>{$t("AppDevProcess__t28", "It Starts With You.")}</span>
-          </h2>
+            {html($t("AppDevProcess__t26", "Let's Build What's Next"))}</span>
+          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>{rich($t("AppDevProcess__t27m", "The Next App They'll Love.<br><span class=\"text-[#0d9488]\">It Starts With You.</span>"))}</h2>
           <p className="text-body text-slate-500 max-w-lg mt-4">
             {rich($t("AppDevProcess__t29", "You bring the vision. We'll handle everything else to turn it into a powerful digital product."))}</p>
         </motion.div>
@@ -347,9 +344,9 @@ export default function AppDevProcess() {
             {/* Left */}
             <div className="flex flex-col justify-center lg:pr-10 lg:border-r border-slate-200/80">
               <h3 className="text-h4 font-serif font-bold" style={{ color: NAVY }}>
-                {$t("AppDevProcess__t30", "From an idea in your mind")}<br />
+                {html($t("AppDevProcess__t30", "From an idea in your mind"))}<br />
                 to <span className="relative" style={{ color: TEAL }}>
-                  {$t("AppDevProcess__t31", "millions in their hands.")}<svg className="absolute -bottom-1.5 left-0 w-full h-2" viewBox="0 0 200 10" fill="none" preserveAspectRatio="none" aria-hidden>
+                  {html($t("AppDevProcess__t31", "millions in their hands."))}<svg className="absolute -bottom-1.5 left-0 w-full h-2" viewBox="0 0 200 10" fill="none" preserveAspectRatio="none" aria-hidden>
                     <path d="M2 8 Q 100 -2 198 8" stroke={GOLD} strokeWidth="2.5" fill="none" />
                   </svg>
                 </span>
@@ -386,11 +383,10 @@ export default function AppDevProcess() {
                     </div>
                   ))}
                 </div>
-                <p className="text-[11px] text-slate-500">
-                  <span className="font-bold" style={{ color: NAVY }}>{$t("AppDevProcess__t37", "50+ businesses")}</span> {rich($t("AppDevProcess__t38", "transformed with ProManage"))}</p>
+                <p className="text-[11px] text-slate-500">{rich($t("AppDevProcess__t37m", "<span class=\"font-bold text-[#132a43]\">50+ businesses</span> transformed with ProManage"))}</p>
               </div>
 
-              <h3 className="text-h6 font-bold" style={{ color: NAVY }}>{$t("AppDevProcess__t39", "Let's Build Your Success Story")}</h3>
+              <h3 className="text-h6 font-bold" style={{ color: NAVY }}>{html($t("AppDevProcess__t39", "Let's Build Your Success Story"))}</h3>
 
               <Link
                 href={$t("AppDevProcess__t40", "/contact")}
@@ -421,7 +417,7 @@ export default function AppDevProcess() {
           className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 mt-8"
         >
           <HeartIcon color="#cbd5e1" size={13} />
-          {rich($t("AppDevProcess__t42", "Trusted by "))}<span className="font-semibold" style={{ color: TEAL }}>{$t("AppDevProcess__t43", "ambitious brands")}</span> worldwide
+          {rich($t("AppDevProcess__t42", "Trusted by "))}<span className="font-semibold" style={{ color: TEAL }}>{html($t("AppDevProcess__t43", "ambitious brands"))}</span> worldwide
         </motion.p>
       </Container>
     </section>

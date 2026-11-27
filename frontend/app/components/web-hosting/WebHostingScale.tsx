@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, BarChart3, CheckCircle2, Headphones, Layers, Rocket, ShieldCheck, ShoppingCart, TrendingUp, Zap, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0f2333";
 const TEAL = "#0f766e";
@@ -102,11 +102,9 @@ export default function WebHostingScale() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE }} className="text-center">
             <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: TEAL }}>
               <span className="grid h-6 w-6 place-items-center rounded-md bg-[#e1f3ef]"><BarChart3 className="h-3.5 w-3.5" /></span>
-              {$t("WebHostingScale__t1", "Built to scale")}
+              {html($t("WebHostingScale__t1", "Built to scale"))}
             </span>
-            <h2 className="text-h2 font-heading mt-4 font-bold tracking-[-0.02em]" style={{ color: NAVY }}>
-              {$t("WebHostingScale__t2", "More Traffic?")} <span style={{ color: TEAL }}>{$t("WebHostingScale__t3", "No Problem.")}</span>
-            </h2>
+            <h2 className="text-h2 font-heading mt-4 font-bold tracking-[-0.02em]" style={{ color: NAVY }}>{rich($t("WebHostingScale__t2m", "More Traffic? <span class=\"text-[#0f766e]\">No Problem.</span>"))}</h2>
             <p className="text-body mx-auto mt-3 max-w-[560px] text-slate-600">{rich($t("WebHostingScale__t4", "Your hosting grows with your business—so you never have to slow down."))}</p>
             <span aria-hidden className="mx-auto mt-5 flex w-fit items-center gap-1.5"><i className="h-[3px] w-10 rounded-full" style={{ background: TEAL }} /><i className="h-[3px] w-[3px] rounded-full" style={{ background: TEAL }} /></span>
           </motion.div>
@@ -120,11 +118,7 @@ export default function WebHostingScale() {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <span className="grid h-10 w-10 place-items-center rounded-full bg-[#eef7f5]"><TrendingUp className="h-5 w-5" style={{ color: TEAL }} /></span>
-            <p className="text-[12px] font-bold uppercase leading-snug tracking-wide" style={{ color: NAVY }}>
-              {$t("WebHostingScale__t5", "Your business")} <span style={{ color: TEAL }}>{$t("WebHostingScale__t6", "grows")}</span>
-              <br />
-              {$t("WebHostingScale__t7", "Your hosting")} <span style={{ color: TEAL }}>{$t("WebHostingScale__t8", "keeps up")}</span>
-            </p>
+            <p className="text-[12px] font-bold uppercase leading-snug tracking-wide" style={{ color: NAVY }}>{rich($t("WebHostingScale__t5m", "Your business <span class=\"text-[#0f766e]\">grows</span><br>Your hosting <span class=\"text-[#0f766e]\">keeps up</span>"))}</p>
           </motion.div>
 
           {/* stages */}
@@ -138,7 +132,7 @@ export default function WebHostingScale() {
             <div className="grid items-center gap-6 lg:grid-cols-[90px_1fr_32px_1fr_32px_1fr_90px] lg:gap-3">
               <div className="hidden flex-col items-center gap-2 lg:flex">
                 <span className="grid h-16 w-16 place-items-center rounded-full bg-white shadow-[0_10px_24px_-14px_rgba(15,35,51,0.45)] ring-1 ring-slate-100"><Rocket className="h-7 w-7" style={{ color: TEAL }} /></span>
-                <span className="text-caption font-medium text-slate-600">{$t("WebHostingScale__t9", "Get Started")}</span>
+                <span className="text-caption font-medium text-slate-600">{html($t("WebHostingScale__t9", "Get Started"))}</span>
               </div>
               {stages.map((s, i) => (
                 <React.Fragment key={i}>
@@ -169,7 +163,7 @@ export default function WebHostingScale() {
               ))}
               <div className="hidden flex-col items-center gap-2 lg:flex">
                 <span className="grid h-16 w-16 place-items-center rounded-full bg-white shadow-[0_10px_24px_-14px_rgba(15,35,51,0.45)] ring-1 ring-slate-100"><BarChart3 className="h-7 w-7" style={{ color: TEAL }} /></span>
-                <span className="text-caption font-medium text-slate-600">{$t("WebHostingScale__t10", "Keep Scaling")}</span>
+                <span className="text-caption font-medium text-slate-600">{html($t("WebHostingScale__t10", "Keep Scaling"))}</span>
               </div>
             </div>
           </div>
@@ -201,8 +195,8 @@ export default function WebHostingScale() {
             <div className="grid items-center gap-6 lg:grid-cols-[150px_1fr_auto]">
               <Image src={$t("WebHostingScale__t11", "/web-hosting/server-stack.webp")} alt={$t("WebHostingScale__t12", "Cloud server stack")} width={222} height={180} className="edge-fade mx-auto h-auto w-[130px] mix-blend-screen" />
               <div>
-                <p className="text-h5 font-heading font-semibold text-white">{$t("WebHostingScale__t13", "Start with what you need today.")}</p>
-                <p className="text-h5 font-heading font-semibold text-[#3fd3b8]">{$t("WebHostingScale__t14", "Scale when your business demands more.")}</p>
+                <p className="text-h5 font-heading font-semibold text-white">{html($t("WebHostingScale__t13", "Start with what you need today."))}</p>
+                <p className="text-h5 font-heading font-semibold text-[#3fd3b8]">{html($t("WebHostingScale__t14", "Scale when your business demands more."))}</p>
                 <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
                   {promises.map((p, i) => {
                     const Icon = PROMISE_ICONS[i % PROMISE_ICONS.length];

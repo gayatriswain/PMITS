@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Container from '../shared/Container';
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const SearchIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
@@ -80,7 +80,7 @@ const EcosystemCircle = () => {
       <foreignObject x={cx - 60} y={cy - 50} width="120" height="100">
         <div style={{ display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'100%' }}>
           <img src={$t("GoogleAdsFunnel__t1", "/google-ads-icon.webp")} alt={$t("GoogleAdsFunnel__t2", "Google Ads")} style={{ width: '48px', height: '48px', objectFit: 'contain', marginBottom: '4px' }} />
-          <span style={{ fontSize:'12px', fontWeight:700, color:'#132a43', textAlign:'center', lineHeight:1.3 }}>{$t("GoogleAdsFunnel__t3", "Google Ads")}<br/>{$t("GoogleAdsFunnel__t4", "Ecosystem")}</span>
+          <span style={{ fontSize:'12px', fontWeight:700, color:'#132a43', textAlign:'center', lineHeight:1.3 }}>{rich($t("GoogleAdsFunnel__t3m", "Google Ads<br>Ecosystem"))}</span>
         </div>
       </foreignObject>
     </svg>
@@ -109,15 +109,11 @@ export default function GoogleAdsFunnel() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="h-px w-10 bg-[#00acc1]"></span>
-            <span className="text-[#00acc1] text-xs font-bold tracking-widest uppercase">{$t("GoogleAdsFunnel__t5", "How We Do It")}</span>
+            <span className="text-[#00acc1] text-xs font-bold tracking-widest uppercase">{html($t("GoogleAdsFunnel__t5", "How We Do It"))}</span>
             <span className="h-px w-10 bg-[#00acc1]"></span>
           </div>
-          <h2 className="text-h2 font-bold text-[#132a43] mb-5 font-serif">
-            {$t("GoogleAdsFunnel__t6", "A Full-Funnel Approach")}<br />{$t("GoogleAdsFunnel__t7", "Across ")}<span className="text-[#00acc1]">{$t("GoogleAdsFunnel__t8", "Google.")}</span>
-          </h2>
-          <p className="text-body text-slate-500 max-w-xl mx-auto">
-            {rich($t("GoogleAdsFunnel__t9", "We combine the power of all Google Ads networks"))}<br className="hidden md:block" />
-            {rich($t("GoogleAdsFunnel__t10", "to attract, engage and convert your ideal customers at every stage."))}</p>
+          <h2 className="text-h2 font-bold text-[#132a43] mb-5 font-serif">{rich($t("GoogleAdsFunnel__t6m", "A Full-Funnel Approach<br>Across <span class=\"text-[#00acc1]\">Google.</span>"))}</h2>
+          <p className="text-body text-slate-500 max-w-xl mx-auto">{rich($t("GoogleAdsFunnel__t9m", "We combine the power of all Google Ads networks<br class=\"hidden md:block\">to attract, engage and convert your ideal customers at every stage."))}</p>
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-0 w-full relative z-0">

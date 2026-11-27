@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, Emblem, Eyebrow, Icon, ease, fadeUp, heading, type IconName } from "../shared/MagentoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const outcomes__cms: { n: string; title: string; text: string; icon: IconName }[] = [
   { n: "01", title: "Faster Stores", text: "Optimized performance for speed that converts.", icon: "gauge" },
@@ -65,7 +65,7 @@ export default function MagentoOutcome() {
               className={`text-h2 ${heading.className} mt-5 font-semibold tracking-tight text-[#0c1e3d]`}
             >
               {$t("MagentoOutcome__t2", "Real impact.")}<br />
-              {$t("MagentoOutcome__t3", "Measurable ")}<span className="font-playfair italic text-[#0d9488]">{$t("MagentoOutcome__t4", "growth.")}</span>
+              {$t("MagentoOutcome__t3", "Measurable ")}<span className="font-playfair italic text-[#0d9488]">{html($t("MagentoOutcome__t4", "growth."))}</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-5 max-w-[370px] text-slate-600">
               {rich($t("MagentoOutcome__t5", "When expert Magento developers build your store the right way, everything starts working better."))}</motion.p>
@@ -131,8 +131,8 @@ export default function MagentoOutcome() {
             className="relative mt-12 rounded-2xl border border-slate-200/80 px-5 pb-6 pt-8 sm:px-8"
             onMouseLeave={() => setRow(null)}
           >
-            <span className="absolute -top-3 left-[18%] rounded-md bg-[#0c1e3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">{$t("MagentoOutcome__t6", "What we do")}</span>
-            <span className="absolute -top-3 right-[18%] rounded-md bg-[#0d9488] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white md:right-auto md:left-[62%]">{$t("MagentoOutcome__t7", "What you get")}</span>
+            <span className="absolute -top-3 left-[18%] rounded-md bg-[#0c1e3d] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">{html($t("MagentoOutcome__t6", "What we do"))}</span>
+            <span className="absolute -top-3 right-[18%] rounded-md bg-[#0d9488] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white md:right-auto md:left-[62%]">{html($t("MagentoOutcome__t7", "What you get"))}</span>
 
             <div className="grid gap-0 md:grid-cols-[1fr_80px_1fr]">
               <ul className="divide-y divide-slate-100">
@@ -213,9 +213,7 @@ export default function MagentoOutcome() {
                 </svg>
                 <Emblem sizes="48px" className="w-[46px]" />
               </div>
-              <h3 className={`text-h5 ${heading.className} font-semibold lg:max-w-[230px] lg:border-r lg:border-white/15 lg:pr-8`}>
-                {$t("MagentoOutcome__t8", "See what your Magento store ")}<span className="text-[#2dd4bf]">{$t("MagentoOutcome__t9", "could improve.")}</span>
-              </h3>
+              <h3 className={`text-h5 ${heading.className} font-semibold lg:max-w-[230px] lg:border-r lg:border-white/15 lg:pr-8`}>{rich($t("MagentoOutcome__t8m", "See what your Magento store <span class=\"text-[#2dd4bf]\">could improve.</span>"))}</h3>
               <p className="text-small max-w-[260px] text-slate-300">
                 {rich($t("MagentoOutcome__t10", "Tell us about your store and our Magento experts will review it and show you what’s possible."))}</p>
               <div className="flex flex-col items-center gap-2 lg:ml-auto">

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const heavy = { className: "font-heading" }; // global font from app/layout.tsx
@@ -258,9 +258,7 @@ export default function HireShopifyContact() {
               className="mt-6 block h-[3px] w-14 origin-left rounded-full"
               style={{ background: GREEN }}
             />
-            <motion.p variants={fadeUp} custom={5} className="text-body mt-5 max-w-[330px] text-white/85 lg:text-slate-700">
-              {rich($t("HireShopifyContact__t16", "Get a tailored Shopify solution"))}<br />
-              {rich($t("HireShopifyContact__t17", "for your business."))}</motion.p>
+            <motion.p variants={fadeUp} custom={5} className="text-body mt-5 max-w-[330px] text-white/85 lg:text-slate-700">{rich($t("HireShopifyContact__t16m", "Get a tailored Shopify solution<br>for your business."))}</motion.p>
 
             <motion.p
               variants={fadeUp}
@@ -269,9 +267,9 @@ export default function HireShopifyContact() {
               style={{ color: DEEP }}
             >
               {rich($t("HireShopifyContact__t18", "Your"))}<br />
-              <span className="ml-3 inline-block">{$t("HireShopifyContact__t19", "Ecommerce")}</span>
+              <span className="ml-3 inline-block">{html($t("HireShopifyContact__t19", "Ecommerce"))}</span>
               <br />
-              <span className="ml-8 inline-block">{$t("HireShopifyContact__t20", "Growth Partner")}</span>
+              <span className="ml-8 inline-block">{html($t("HireShopifyContact__t20", "Growth Partner"))}</span>
               <svg viewBox="0 0 150 14" className="mt-0.5 h-3 w-[150px]" fill="none" aria-hidden>
                 <motion.path d="M2 9C40 2 90 12 148 4" stroke={GREEN} strokeWidth="1.6" strokeLinecap="round" initial={{ pathLength: 0 }} animate={show ? { pathLength: 1 } : {}} transition={{ duration: 1, delay: 1.3 }} />
               </svg>
@@ -293,10 +291,7 @@ export default function HireShopifyContact() {
               <p className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-500">
                 <span className="h-px w-5 bg-slate-400/70" />
                 {rich($t("HireShopifyContact__t21", "Get started today"))}</p>
-              <h3 className="text-h4 mt-3 font-extrabold tracking-[-0.02em]" style={{ color: INK }}>
-                {$t("HireShopifyContact__t22", "Get My")}<br />
-                <span style={{ color: DEEP }}>{$t("HireShopifyContact__t23", "Free Proposal")}</span>
-              </h3>
+              <h3 className="text-h4 mt-3 font-extrabold tracking-[-0.02em]" style={{ color: INK }}>{rich($t("HireShopifyContact__t22m", "Get My<br><span class=\"text-[#0e4d2f]\">Free Proposal</span>"))}</h3>
               <div className="mt-5">
                 <ProposalForm inView={show} />
               </div>

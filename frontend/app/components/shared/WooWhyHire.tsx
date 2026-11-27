@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "./Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -186,18 +186,18 @@ export default function WooWhyHire() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full" style={{ backgroundColor: PURPLE }}>
               <StarIcon />
             </span>
-            {$t("WooWhyHire__t3", "Built for growth. Designed to convert.")}</motion.span>
+            {html($t("WooWhyHire__t3", "Built for growth. Designed to convert."))}</motion.span>
 
           <motion.h2
             variants={fadeUp}
             className="text-h2 mt-5 font-extrabold tracking-tight"
             style={{ color: NAVY }}
           >
-            {$t("WooWhyHire__t4", "Why Hire ")}<span style={{ color: PURPLE }}>{$t("WooWhyHire__t5", "Woo-commerce")}</span>
+            {$t("WooWhyHire__t4", "Why Hire ")}<span style={{ color: PURPLE }}>{html($t("WooWhyHire__t5", "Woo-commerce"))}</span>
             <br />
             {$t("WooWhyHire__t6", "Developers")}{" "}
             <span className="relative inline-block">
-              {$t("WooWhyHire__t7", "from Us?")}<svg className="pointer-events-none absolute -bottom-2.5 left-0 h-3 w-[88%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+              {html($t("WooWhyHire__t7", "from Us?"))}<svg className="pointer-events-none absolute -bottom-2.5 left-0 h-3 w-[88%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                 <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={TEAL} strokeWidth="3.2" strokeLinecap="round" />
               </svg>
             </span>

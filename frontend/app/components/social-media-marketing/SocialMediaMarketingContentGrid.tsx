@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 // Matches Tailwind's `sm` breakpoint (640px) — below it we're on a phone-sized viewport.
 function useIsMobile() {
@@ -233,21 +233,21 @@ export default function SocialMediaMarketingContentGrid() {
             variants={fadeUp}
             className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-1.5 text-[11px] font-semibold text-slate-500 shadow-sm mb-6"
           >
-            {$t("SocialMediaMarketingContentGrid__t1", "UGC · Short-form · Creator marketing")}</motion.span>
+            {html($t("SocialMediaMarketingContentGrid__t1", "UGC · Short-form · Creator marketing"))}</motion.span>
 
           <motion.h2
             variants={fadeUp}
             className="text-h2 font-sans font-black uppercase tracking-tight"
             style={{ color: NAVY }}
           >
-            <span className="block">{$t("SocialMediaMarketingContentGrid__t2", "Content That")}</span>
+            <span className="block">{html($t("SocialMediaMarketingContentGrid__t2", "Content That"))}</span>
             <span className="block">
-              {$t("SocialMediaMarketingContentGrid__t3", "St")}<OSlashIcon />{$t("SocialMediaMarketingContentGrid__t4", "ps The")}{" "}
+              {html($t("SocialMediaMarketingContentGrid__t3", "St"))}<OSlashIcon />{html($t("SocialMediaMarketingContentGrid__t4", "ps The"))}{" "}
               <span
                 className="inline-flex items-center rounded-full px-5 sm:px-7 py-0.5 sm:py-1 text-white"
                 style={{ backgroundColor: ACCENT }}
               >
-                {$t("SocialMediaMarketingContentGrid__t5", "Scroll.")}</span>
+                {html($t("SocialMediaMarketingContentGrid__t5", "Scroll."))}</span>
             </span>
           </motion.h2>
 

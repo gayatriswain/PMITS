@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    SCALE BOX: lays children out at a fixed design size and scales them to the available width
@@ -179,7 +180,7 @@ function LightCodeWindow({ className = "" }: { className?: string }) {
                 <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
               </div>
-              <span className="font-mono text-[13px] font-semibold text-[#2dd4bf]">{$t("HireCorePhpSignature__t1", "<?php")}</span>
+              <span className="font-mono text-[13px] font-semibold text-[#2dd4bf]">{html($t("HireCorePhpSignature__t1", "<?php"))}</span>
             </div>
 
             {/* code */}
@@ -231,7 +232,7 @@ function CtaCard({ className = "" }: { className?: string }) {
   const $t = useCmsText();
   return (
     <div className={`rounded-2xl bg-white border border-slate-100 shadow-[0_22px_44px_-22px_rgba(15,35,80,0.28)] px-7 py-6 text-center ${className}`}>
-      <div className="text-[20px] font-extrabold text-[#0c1e3d]">{$t("HireCorePhpSignature__t2", "Let's Build What's Next.")}</div>
+      <div className="text-[20px] font-extrabold text-[#0c1e3d]">{html($t("HireCorePhpSignature__t2", "Let's Build What's Next."))}</div>
       <Link
         href={$t("HireCorePhpSignature__t3", "#contact")}
         className="group mt-4 flex items-center justify-center gap-3 h-[46px] rounded-lg bg-[linear-gradient(90deg,#0f8a99,#1aa6a6)] text-white text-[13.5px] font-semibold shadow-[0_12px_24px_-10px_rgba(26,166,166,0.8)] hover:brightness-110 transition"
@@ -293,7 +294,7 @@ export default function HireCorePhpSignature() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="text-[12px] font-bold tracking-[0.22em] text-[#0f6f8f] uppercase">{$t("HireCorePhpSignature__t9", "The ProManage Signature")}</div>
+                <div className="text-[12px] font-bold tracking-[0.22em] text-[#0f6f8f] uppercase">{html($t("HireCorePhpSignature__t9", "The ProManage Signature"))}</div>
                 <div className="mt-3 w-9 h-[2px] rounded-full bg-[#0f8a83]" />
               </motion.div>
               <motion.h2
@@ -302,9 +303,9 @@ export default function HireCorePhpSignature() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <span className="text-[#0c1e3d]">{$t("HireCorePhpSignature__t10", "BUILT TO MOVE")}</span>
+                <span className="text-[#0c1e3d]">{html($t("HireCorePhpSignature__t10", "BUILT TO MOVE"))}</span>
                 <br />
-                <span className="bg-gradient-to-r from-[#0f6f8f] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpSignature__t11", "BUSINESS FORWARD.")}</span>
+                <span className="bg-gradient-to-r from-[#0f6f8f] to-[#1aa6a6] bg-clip-text text-transparent">{html($t("HireCorePhpSignature__t11", "BUSINESS FORWARD."))}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[50px] top-[206px] text-[15px] leading-[1.55] text-slate-600"
@@ -382,13 +383,9 @@ export default function HireCorePhpSignature() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.22em] text-[#0f6f8f] uppercase">{$t("HireCorePhpSignature__t12", "The ProManage Signature")}</div>
+          <div className="text-[11.5px] font-bold tracking-[0.22em] text-[#0f6f8f] uppercase">{html($t("HireCorePhpSignature__t12", "The ProManage Signature"))}</div>
           <div className="mt-3 w-9 h-[2px] rounded-full bg-[#0f8a83]" />
-          <h2 className="text-h2 mt-5 font-black tracking-tight">
-            <span className="text-[#0c1e3d]">{$t("HireCorePhpSignature__t13", "BUILT TO MOVE")}</span>
-            <br />
-            <span className="text-[#0f6f8f]">{$t("HireCorePhpSignature__t14", "BUSINESS FORWARD.")}</span>
-          </h2>
+          <h2 className="text-h2 mt-5 font-black tracking-tight">{rich($t("HireCorePhpSignature__t13m", "<span class=\"text-[#0c1e3d]\">BUILT TO MOVE</span><br><span class=\"text-[#0f6f8f]\">BUSINESS FORWARD.</span>"))}</h2>
           <p className="text-body mt-4 text-slate-600">{subtitle}</p>
 
           <CtaCard className="mt-6 max-w-sm" />

@@ -4,7 +4,7 @@ import ConsultationForm from "../shared/ConsultationForm";
 import Container from "../shared/Container";
 import { ClockIcon, LockIcon, MailIcon, PhoneIcon, PinIcon } from "../shared/icons";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -29,11 +29,9 @@ export default function ContactHero({ details }: { details: ContactDetails }) {
       <Container className="relative grid items-start gap-12 lg:grid-cols-[1fr_440px] xl:gap-20">
         <div>
           <span className="inline-block rounded-full border border-[#0d9488]/25 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest" style={{ color: TEAL }}>
-            {$t("ContactHero__t5", "Contact Us")}
+            {html($t("ContactHero__t5", "Contact Us"))}
           </span>
-          <h1 className="text-h1 mt-5 font-bold" style={{ color: NAVY }}>
-            {$t("ContactHero__t6", "Let's talk about")} <span style={{ color: TEAL }}>{$t("ContactHero__t7", "your project")}</span>
-          </h1>
+          <h1 className="text-h1 mt-5 font-bold" style={{ color: NAVY }}>{rich($t("ContactHero__t6m", "Let's talk about <span class=\"text-[#0d9488]\">your project</span>"))}</h1>
           <p className="text-body mt-5 max-w-xl text-slate-600">
             {rich($t("ContactHero__t8", "Tell us what you need and our team will get back to you shortly."))}
           </p>
@@ -64,7 +62,7 @@ export default function ContactHero({ details }: { details: ContactDetails }) {
         <div id="contact-form" className="relative w-full overflow-hidden rounded-3xl bg-white shadow-[0_20px_60px_-15px_rgba(15,23,42,0.25)] ring-1 ring-slate-100">
           <div className="px-6 pb-10 pt-7 sm:px-8" style={{ backgroundImage: `linear-gradient(135deg, ${DARK}, ${TEAL})` }}>
             <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: ACCENT }}>{rich($t("ContactHero__t9", "Let's Talk"))}</p>
-            <h2 className="text-h5 mt-2 font-bold text-white">{$t("ContactHero__t10", "Get a Free Consultation")}</h2>
+            <h2 className="text-h5 mt-2 font-bold text-white">{html($t("ContactHero__t10", "Get a Free Consultation"))}</h2>
             <p className="text-small mt-2 text-white/80">{rich($t("ContactHero__t11", "Share your details and our experts will get back to you shortly."))}</p>
           </div>
           <div className="relative -mt-6 rounded-t-3xl bg-white px-6 pb-6 pt-6 sm:px-8">

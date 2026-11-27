@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ANIMATION SERVICES ICONS (Teal #0d9488)
@@ -178,16 +178,12 @@ export default function VisualCommunicationSolutions() {
           {/* Top Tag: WHAT WE DO */}
           <div className="inline-block mb-4">
             <span className="text-[11px] sm:text-[12px] font-black tracking-[0.25em] text-[#0d9488] uppercase block">
-              {$t("VisualCommunicationSolutions__t1", "WHAT WE DO")}</span>
+              {html($t("VisualCommunicationSolutions__t1", "WHAT WE DO"))}</span>
             <div className="w-8 h-[2.5px] bg-[#0d9488] rounded-full mx-auto mt-1.5" />
           </div>
 
           {/* Main Title: Complete Visual Communication Solutions */}
-          <h2 className="text-h2 font-black tracking-tight mb-4 text-[#0f2333]">
-            {$t("VisualCommunicationSolutions__t2", "Complete ")}<span className="text-[#0284c7]">{$t("VisualCommunicationSolutions__t3", "Visual")}</span> <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0d9488] via-[#0284c7] to-[#7c3aed]">
-              {$t("VisualCommunicationSolutions__t4", "Communication")}</span>{" "}
-            {$t("VisualCommunicationSolutions__t5", "Solutions")}</h2>
+          <h2 className="text-h2 font-black tracking-tight mb-4 text-[#0f2333]">{rich($t("VisualCommunicationSolutions__t2m", "Complete <span class=\"text-[#0284c7]\">Visual</span> <br class=\"hidden sm:inline\"><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#0d9488] via-[#0284c7] to-[#7c3aed]\">Communication</span> Solutions"))}</h2>
 
           {/* Subtitle */}
           <p className="text-body text-slate-500 max-w-xl mx-auto font-normal">
@@ -215,7 +211,7 @@ export default function VisualCommunicationSolutions() {
                 </div>
                 <div>
                   <h3 className="text-h5 font-black text-slate-900 tracking-tight">
-                    {$t("VisualCommunicationSolutions__t7", "Animation Services")}</h3>
+                    {html($t("VisualCommunicationSolutions__t7", "Animation Services"))}</h3>
                   <div className="w-8 h-[2.5px] bg-[#0d9488] rounded-full mt-2 mb-2" />
                   <p className="text-small text-slate-500 font-normal max-w-md">
                     {rich($t("VisualCommunicationSolutions__t8", "Engaging animations that simplify complex ideas, showcase products and create memorable brand experiences."))}</p>
@@ -234,7 +230,7 @@ export default function VisualCommunicationSolutions() {
                       <Cube3dIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t9", "2D & 3D Animation")}</span>
+                      {html($t("VisualCommunicationSolutions__t9", "2D & 3D Animation"))}</span>
                   </div>
 
                   {/* 2. Product Animation */}
@@ -243,7 +239,7 @@ export default function VisualCommunicationSolutions() {
                       <ProductCubeIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t10", "Product Animation")}</span>
+                      {html($t("VisualCommunicationSolutions__t10", "Product Animation"))}</span>
                   </div>
 
                   {/* 3. Explainer Videos */}
@@ -252,7 +248,7 @@ export default function VisualCommunicationSolutions() {
                       <PlayVideoIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t11", "Explainer Videos")}</span>
+                      {html($t("VisualCommunicationSolutions__t11", "Explainer Videos"))}</span>
                   </div>
 
                   {/* 4. Character Animation */}
@@ -261,7 +257,7 @@ export default function VisualCommunicationSolutions() {
                       <CharacterIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t12", "Character Animation")}</span>
+                      {html($t("VisualCommunicationSolutions__t12", "Character Animation"))}</span>
                   </div>
 
                   {/* 5. Motion Graphics */}
@@ -270,7 +266,7 @@ export default function VisualCommunicationSolutions() {
                       <WaveformIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t13", "Motion Graphics")}</span>
+                      {html($t("VisualCommunicationSolutions__t13", "Motion Graphics"))}</span>
                   </div>
 
                   {/* 6. GIF & Lottie Animation */}
@@ -279,7 +275,7 @@ export default function VisualCommunicationSolutions() {
                       <LottieSpinIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t14", "GIF & Lottie Animation")}</span>
+                      {html($t("VisualCommunicationSolutions__t14", "GIF & Lottie Animation"))}</span>
                   </div>
 
                 </div>
@@ -325,7 +321,7 @@ export default function VisualCommunicationSolutions() {
                 href={$t("VisualCommunicationSolutions__t17", "#contact-form")}
                 className="group inline-flex items-center gap-2 text-sm font-bold text-[#0d9488] hover:text-[#0b7a70] transition-colors"
               >
-                <span>{$t("VisualCommunicationSolutions__t18", "Explore Animation")}</span>
+                <span>{html($t("VisualCommunicationSolutions__t18", "Explore Animation"))}</span>
                 <span className="text-base font-normal transition-transform duration-200 group-hover:translate-x-1.5">
                   →
                 </span>
@@ -351,7 +347,7 @@ export default function VisualCommunicationSolutions() {
                 </div>
                 <div>
                   <h3 className="text-h5 font-black text-slate-900 tracking-tight">
-                    {$t("VisualCommunicationSolutions__t19", "Graphic Design Services")}</h3>
+                    {html($t("VisualCommunicationSolutions__t19", "Graphic Design Services"))}</h3>
                   <div className="w-8 h-[2.5px] bg-[#7c3aed] rounded-full mt-2 mb-2" />
                   <p className="text-small text-slate-500 font-normal max-w-md">
                     {rich($t("VisualCommunicationSolutions__t20", "Creative designs that build strong brand identity, communicate clearly and leave a lasting impression."))}</p>
@@ -370,7 +366,7 @@ export default function VisualCommunicationSolutions() {
                       <DiamondBrandIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t21", "Brand Identity Design")}</span>
+                      {html($t("VisualCommunicationSolutions__t21", "Brand Identity Design"))}</span>
                   </div>
 
                   {/* 2. Packaging Design */}
@@ -379,7 +375,7 @@ export default function VisualCommunicationSolutions() {
                       <PackagingIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t22", "Packaging Design")}</span>
+                      {html($t("VisualCommunicationSolutions__t22", "Packaging Design"))}</span>
                   </div>
 
                   {/* 3. Marketing Collateral */}
@@ -388,7 +384,7 @@ export default function VisualCommunicationSolutions() {
                       <MarketingBrochureIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t23", "Marketing Collateral")}</span>
+                      {html($t("VisualCommunicationSolutions__t23", "Marketing Collateral"))}</span>
                   </div>
 
                   {/* 4. Presentation Design */}
@@ -397,7 +393,7 @@ export default function VisualCommunicationSolutions() {
                       <PresentationSlidesIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t24", "Presentation Design")}</span>
+                      {html($t("VisualCommunicationSolutions__t24", "Presentation Design"))}</span>
                   </div>
 
                   {/* 5. Social Media Graphics */}
@@ -406,7 +402,7 @@ export default function VisualCommunicationSolutions() {
                       <SocialMediaPostIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t25", "Social Media Graphics")}</span>
+                      {html($t("VisualCommunicationSolutions__t25", "Social Media Graphics"))}</span>
                   </div>
 
                   {/* 6. Print & Digital Design */}
@@ -415,7 +411,7 @@ export default function VisualCommunicationSolutions() {
                       <PrintDigitalIcon />
                     </div>
                     <span className="text-[12px] sm:text-[12.5px] font-bold text-slate-700 leading-tight">
-                      {$t("VisualCommunicationSolutions__t26", "Print & Digital Design")}</span>
+                      {html($t("VisualCommunicationSolutions__t26", "Print & Digital Design"))}</span>
                   </div>
 
                 </div>
@@ -461,7 +457,7 @@ export default function VisualCommunicationSolutions() {
                 href={$t("VisualCommunicationSolutions__t29", "#contact-form")}
                 className="group inline-flex items-center gap-2 text-sm font-bold text-[#7c3aed] hover:text-[#6d28d9] transition-colors"
               >
-                <span>{$t("VisualCommunicationSolutions__t30", "Explore Graphic Design")}</span>
+                <span>{html($t("VisualCommunicationSolutions__t30", "Explore Graphic Design"))}</span>
                 <span className="text-base font-normal transition-transform duration-200 group-hover:translate-x-1.5">
                   →
                 </span>
@@ -499,7 +495,7 @@ export default function VisualCommunicationSolutions() {
             </div>
             <div>
               <h4 className="text-base sm:text-[17px] font-black text-slate-900 tracking-tight leading-tight">
-                {$t("VisualCommunicationSolutions__t31", "Have a project in mind?")}</h4>
+                {html($t("VisualCommunicationSolutions__t31", "Have a project in mind?"))}</h4>
               <p className="text-small text-slate-500 mt-0.5">
                 {rich($t("VisualCommunicationSolutions__t32", "Let's create something amazing together."))}</p>
             </div>
@@ -522,7 +518,7 @@ export default function VisualCommunicationSolutions() {
             href={$t("VisualCommunicationSolutions__t33", "#contact-form")}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#0a4d47] hover:bg-[#073833] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md shadow-teal-950/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shrink-0"
           >
-            <span>{$t("VisualCommunicationSolutions__t34", "Get in Touch")}</span>
+            <span>{html($t("VisualCommunicationSolutions__t34", "Get in Touch"))}</span>
             <span className="text-base font-normal">→</span>
           </Link>
         </motion.div>

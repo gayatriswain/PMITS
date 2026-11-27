@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { Emblem, Eyebrow, Icon, IMG, ease, fadeUp, heading, useSeen, type IconName } from "../shared/MagentoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 type Item = { text: string; icon: IconName };
 const left__cms: Item[] = [
@@ -73,7 +73,7 @@ export default function MagentoExpertise() {
             className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0c1e3d]`}
           >
             {$t("MagentoExpertise__t2", "Magento Developers Having")}<br />
-            <span className="text-[#0d9488]">{$t("MagentoExpertise__t3", "Industry Specific Expertise")}</span>
+            <span className="text-[#0d9488]">{html($t("MagentoExpertise__t3", "Industry Specific Expertise"))}</span>
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mx-auto mt-5 max-w-[760px] text-slate-600">
             {rich($t("MagentoExpertise__t4", "When you choose ProManage IT Solution over its competitors, you get a unique benefit of hiring certified Magento developers having experience in your chosen niche. Yes, we have a team of very talented Magento developers coming from different backgrounds and industries. What this means is that besides hiring Magento developers on an hourly, monthly, or contractual basis, you also get industry specific experience in your Magento developers."))}</motion.p>

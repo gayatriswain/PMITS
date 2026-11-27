@@ -196,13 +196,7 @@ export default function CareerLife() {
               <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={TEAL} strokeWidth="2.5" strokeLinecap="round" />
             </svg>
           </motion.p>
-          <motion.p variants={fadeUp} className="text-body mx-auto mt-6 max-w-[560px] text-slate-600">
-            {rich($t("CareerLife__t4", "At ProManage, we believe great work happens in an environment where people feel"))}{" "}
-            <span className="font-medium" style={{ color: TEAL }}>valued</span>,{" "}
-            <span className="font-medium" style={{ color: TEAL }}>inspired</span>{rich($t("CareerLife__t5", ", and"))}{" "}
-            <span className="font-medium" style={{ color: TEAL }}>empowered</span> to{" "}
-            <span className="font-medium" style={{ color: TEAL }}>{$t("CareerLife__t6", "grow together")}</span>.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body mx-auto mt-6 max-w-[560px] text-slate-600">{rich($t("CareerLife__t4m", "At ProManage, we believe great work happens in an environment where people feel <span class=\"font-medium text-[#0d9488]\">valued</span>, <span class=\"font-medium text-[#0d9488]\">inspired</span>, and <span class=\"font-medium text-[#0d9488]\">empowered</span> to <span class=\"font-medium text-[#0d9488]\">grow together</span>."))}</motion.p>
         </motion.div>
 
         <div className="relative mt-14">

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -72,7 +72,7 @@ function ProfileScreen({
       </div>
 
       <div className="flex items-center gap-2.5 mb-2.5">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white font-bold text-[11px]" style={{ backgroundColor: NAVY }}>{$t("SocialMediaMarketingFinalCTA__t1", "B")}</span>
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white font-bold text-[11px]" style={{ backgroundColor: NAVY }}>{html($t("SocialMediaMarketingFinalCTA__t1", "B"))}</span>
         <div className="flex flex-1 justify-between text-center">
           {[[$t("SocialMediaMarketingFinalCTA__t2", "872"), $t("SocialMediaMarketingFinalCTA__t3", "Posts")], [$t("SocialMediaMarketingFinalCTA__t4", "28.6K"), $t("SocialMediaMarketingFinalCTA__t5", "Followers")], [$t("SocialMediaMarketingFinalCTA__t6", "129"), $t("SocialMediaMarketingFinalCTA__t7", "Following")]].map(([n, l]) => (
             <div key={l}>
@@ -84,8 +84,8 @@ function ProfileScreen({
       </div>
 
       <div className="flex gap-1.5 mb-3">
-        <span className="flex-1 rounded-md py-1 text-center font-semibold text-white text-[8px]" style={{ backgroundColor: TEAL }}>{$t("SocialMediaMarketingFinalCTA__t8", "Follow")}</span>
-        <span className="flex-1 rounded-md border border-slate-300 py-1 text-center font-semibold text-[8px]" style={{ color: NAVY }}>{$t("SocialMediaMarketingFinalCTA__t9", "Message")}</span>
+        <span className="flex-1 rounded-md py-1 text-center font-semibold text-white text-[8px]" style={{ backgroundColor: TEAL }}>{html($t("SocialMediaMarketingFinalCTA__t8", "Follow"))}</span>
+        <span className="flex-1 rounded-md border border-slate-300 py-1 text-center font-semibold text-[8px]" style={{ color: NAVY }}>{html($t("SocialMediaMarketingFinalCTA__t9", "Message"))}</span>
       </div>
 
       <div className="flex justify-between mb-3">
@@ -213,13 +213,13 @@ export default function SocialMediaMarketingFinalCTA() {
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
             <span className="w-6 h-[2px]" style={{ backgroundColor: TEAL }} />
             <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              {$t("SocialMediaMarketingFinalCTA__t10", "Ready To Own Attention?")}</span>
+              {html($t("SocialMediaMarketingFinalCTA__t10", "Ready To Own Attention?"))}</span>
           </motion.div>
 
           <motion.h2 variants={fadeUp} className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
             {$t("SocialMediaMarketingFinalCTA__t11", "The Next Brand")}<br />
             {$t("SocialMediaMarketingFinalCTA__t12", "Everyone Talks About")}<br />
-            {$t("SocialMediaMarketingFinalCTA__t13", "Could Be ")}<span style={{ color: TEAL }}>{$t("SocialMediaMarketingFinalCTA__t14", "Yours.")}</span>
+            {$t("SocialMediaMarketingFinalCTA__t13", "Could Be ")}<span style={{ color: TEAL }}>{html($t("SocialMediaMarketingFinalCTA__t14", "Yours."))}</span>
           </motion.h2>
 
           <motion.p variants={fadeUp} className="text-body text-slate-600 mt-4 max-w-md">

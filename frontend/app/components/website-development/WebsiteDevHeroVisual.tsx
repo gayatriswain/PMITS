@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion, type MotionProps } from "framer-motion";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const ENTRY_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 // Last element (conversion card) finishes entering at 1.3s + 1.2s
@@ -69,28 +69,20 @@ export default function WebsiteDevHeroVisual() {
                   <div className="w-5 h-5 rounded bg-[#eff8f7] flex items-center justify-center border border-[#d6efee]">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-[#0d827f]" strokeWidth="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                   </div>
-                  <span className="text-[9px] font-bold text-slate-800">{$t("WebsiteDevHeroVisual__t3", "Your Brand")}</span>
+                  <span className="text-[9px] font-bold text-slate-800">{html($t("WebsiteDevHeroVisual__t3", "Your Brand"))}</span>
                 </div>
-                <div className="hidden sm:flex items-center gap-4 text-[8px] font-bold text-slate-600">
-                  <span className="text-slate-900">{$t("WebsiteDevHeroVisual__t4", "Home")}</span>
-                  <span>{$t("WebsiteDevHeroVisual__t5", "About")}</span>
-                  <span>{$t("WebsiteDevHeroVisual__t6", "Services")}</span>
-                  <span>{$t("WebsiteDevHeroVisual__t7", "Work")}</span>
-                  <span>{$t("WebsiteDevHeroVisual__t8", "Contact")}</span>
-                </div>
+                <div className="hidden sm:flex items-center gap-4 text-[8px] font-bold text-slate-600">{rich($t("WebsiteDevHeroVisual__t4m", "<span class=\"text-slate-900\">Home</span><span>About</span><span>Services</span><span>Work</span><span>Contact</span>"))}</div>
                 <div className="bg-[#0d827f] text-white text-[8px] font-bold px-3 py-1.5 rounded-full shadow-sm shadow-[#0d827f]/20">
-                  {$t("WebsiteDevHeroVisual__t9", "Get Started")}</div>
+                  {html($t("WebsiteDevHeroVisual__t9", "Get Started"))}</div>
               </div>
               {/* Content */}
               <div className="flex h-[calc(100%-3rem)] p-6 gap-5">
                 <div className="flex-[1.1] flex flex-col justify-start pt-4 md:pt-8">
-                  <h2 className="text-h5 text-[#132a43] font-extrabold mb-3 font-sans tracking-tight">
-                    {$t("WebsiteDevHeroVisual__t10", "A Website")}<br />{$t("WebsiteDevHeroVisual__t11", "That Works")}<br />{$t("WebsiteDevHeroVisual__t12", "As Hard As")}<br /><span className="text-[#0d827f]">{$t("WebsiteDevHeroVisual__t13", "You Do")}</span>
-                  </h2>
+                  <h2 className="text-h5 text-[#132a43] font-extrabold mb-3 font-sans tracking-tight">{rich($t("WebsiteDevHeroVisual__t10m", "A Website<br>That Works<br>As Hard As<br><span class=\"text-[#0d827f]\">You Do</span>"))}</h2>
                   <p className="text-[9px] font-medium text-slate-500 mb-4 max-w-[150px] leading-relaxed">
                     {rich($t("WebsiteDevHeroVisual__t14", "Custom websites built for performance, built for growth, built for you."))}</p>
                   <div className="bg-[#0d827f] text-white text-[9px] font-bold px-4 py-2 rounded-full self-start shadow-md shadow-[#0d827f]/30">
-                    {$t("WebsiteDevHeroVisual__t15", "Get Started")}</div>
+                    {html($t("WebsiteDevHeroVisual__t15", "Get Started"))}</div>
                 </div>
                 <div className="flex-[0.9] relative rounded-2xl overflow-hidden shadow-inner ring-1 ring-black/5">
                   <Image src={$t("WebsiteDevHeroVisual__t16", "/image1.webp")} alt={$t("WebsiteDevHeroVisual__t17", "Website Content")} fill className="object-cover" />
@@ -234,7 +226,7 @@ export default function WebsiteDevHeroVisual() {
                 className="relative pointer-events-auto origin-bottom w-[190px] h-[125px] bg-gradient-to-br from-[#0d8580] to-[#075955] rounded-[1.25rem] shadow-[0_30px_60px_-15px_rgba(11,122,117,0.3),0_15px_20px_-10px_rgba(0,0,0,0.2),5px_0px_0px_0px_#043e3b,inset_0_1px_1px_rgba(255,255,255,0.4),inset_1px_0_1px_rgba(255,255,255,0.2)] ring-1 ring-white/20 p-4"
               >
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-white text-[10px] font-bold tracking-wide">{$t("WebsiteDevHeroVisual__t19", "Mobile")}</span>
+                  <span className="text-white text-[10px] font-bold tracking-wide">{html($t("WebsiteDevHeroVisual__t19", "Mobile"))}</span>
                   <span className="w-3.5 h-3.5 rounded-full bg-[#1abc9c] flex items-center justify-center shadow-inner">
                     <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white" strokeWidth="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   </span>

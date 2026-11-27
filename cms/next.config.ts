@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   experimental: {
     // Media uploads go through route handlers; keep request bodies bounded.
     serverActions: { bodySizeLimit: "2mb" },
+    // The website's draft-mode cookie is not ours: never clear it. Cookies ignore the port, so on
+    // localhost (site :3000, admin :4000) every admin request carries it, and Next would otherwise
+    // delete it - switching the visual editor's preview out of draft mode after each save.
+    multiZoneDraftMode: true,
   },
   async headers() {
     return [

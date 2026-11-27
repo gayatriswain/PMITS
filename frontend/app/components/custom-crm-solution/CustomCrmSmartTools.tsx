@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    VISUALS: every illustration is drawn in code (HTML + SVG), no image files
@@ -60,9 +60,9 @@ function AnalyticsVisual() {
   return (
     <Panel className="px-4 pb-2 pt-3">
       <div className="flex items-center justify-between">
-        <span className="text-[9px] font-semibold text-slate-700">{$t("CustomCrmSmartTools__t1", "Sandro Tavares")}</span>
+        <span className="text-[9px] font-semibold text-slate-700">{html($t("CustomCrmSmartTools__t1", "Sandro Tavares"))}</span>
         <span className="flex items-center gap-1.5 rounded-md border border-slate-200 px-2 py-1 text-[8px] font-medium text-slate-600">
-          {$t("CustomCrmSmartTools__t2", "Last 15 Days")}<svg viewBox="0 0 10 10" className="h-2 w-2" fill="none" stroke="currentColor" strokeWidth="1.5">
+          {html($t("CustomCrmSmartTools__t2", "Last 15 Days"))}<svg viewBox="0 0 10 10" className="h-2 w-2" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M2 3.5l3 3 3-3" />
           </svg>
         </span>
@@ -113,12 +113,12 @@ function RelationshipVisual() {
         <div>
           <p className="text-[8.5px] font-semibold text-slate-800">{rich($t("CustomCrmSmartTools__t3", "Intelligent CRM Framework"))}</p>
           <p className="mt-1 text-[6.5px] text-slate-400">
-            {rich($t("CustomCrmSmartTools__t4", "Participant: "))}<span className="text-slate-600">{$t("CustomCrmSmartTools__t5", "Alex Tarafe")}</span>
+            {rich($t("CustomCrmSmartTools__t4", "Participant: "))}<span className="text-slate-600">{html($t("CustomCrmSmartTools__t5", "Alex Tarafe"))}</span>
             <span className="mx-2">·</span>
-            {rich($t("CustomCrmSmartTools__t6", "Date added: "))}<span className="text-slate-600">{$t("CustomCrmSmartTools__t7", "18/08/2024")}</span>
+            {rich($t("CustomCrmSmartTools__t6", "Date added: "))}<span className="text-slate-600">{html($t("CustomCrmSmartTools__t7", "18/08/2024"))}</span>
           </p>
         </div>
-        <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[6.5px] font-semibold text-blue-600">{$t("CustomCrmSmartTools__t8", "Medium")}</span>
+        <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[6.5px] font-semibold text-blue-600">{html($t("CustomCrmSmartTools__t8", "Medium"))}</span>
       </div>
 
       <div className="mt-3 grid grid-cols-[1fr_auto] gap-3">
@@ -164,10 +164,10 @@ function RelationshipVisual() {
           <div className="mt-1.5 flex items-center gap-2 text-[5.5px] text-slate-500">
             <span className="flex items-center gap-0.5">
               <i className="h-1 w-1 rounded-full" style={{ background: BLUE }} />
-              {$t("CustomCrmSmartTools__t13", "Completed")}</span>
+              {html($t("CustomCrmSmartTools__t13", "Completed"))}</span>
             <span className="flex items-center gap-0.5">
               <i className="h-1 w-1 rounded-full bg-slate-200" />
-              {$t("CustomCrmSmartTools__t14", "In progress")}</span>
+              {html($t("CustomCrmSmartTools__t14", "In progress"))}</span>
           </div>
         </div>
       </div>
@@ -269,11 +269,7 @@ function PlannerVisual() {
   const $t = useCmsText();
   return (
     <Panel className="px-4 pb-3 pt-3">
-      <div className="flex items-center justify-between text-[7px]">
-        <span className="font-semibold text-slate-700">{$t("CustomCrmSmartTools__t15", "Task filters")}</span>
-        <span className="font-medium" style={{ color: BLUE }}>
-          {$t("CustomCrmSmartTools__t16", "Reset filter")}</span>
-      </div>
+      <div className="flex items-center justify-between text-[7px]">{rich($t("CustomCrmSmartTools__t15m", "<span class=\"font-semibold text-slate-700\">Task filters</span><span class=\"font-medium text-[#1d63ff]\">Reset filter</span>"))}</div>
 
       <div className="mt-2.5 grid grid-cols-[34px_1fr_8px] items-center gap-x-2 gap-y-2">
         {[
@@ -294,9 +290,9 @@ function PlannerVisual() {
         {rich($t("CustomCrmSmartTools__t25", "+ Add Filter"))}</p>
 
       <div className="mt-2.5 flex justify-end gap-2">
-        <span className="rounded border border-slate-200 px-2.5 py-1 text-[7px] font-medium text-slate-600">{$t("CustomCrmSmartTools__t26", "Cancel")}</span>
+        <span className="rounded border border-slate-200 px-2.5 py-1 text-[7px] font-medium text-slate-600">{html($t("CustomCrmSmartTools__t26", "Cancel"))}</span>
         <span className="rounded px-3 py-1 text-[7px] font-semibold text-white" style={{ background: BLUE }}>
-          {$t("CustomCrmSmartTools__t27", "Apply")}</span>
+          {html($t("CustomCrmSmartTools__t27", "Apply"))}</span>
       </div>
     </Panel>
   );
@@ -368,12 +364,9 @@ export default function CustomCrmSmartTools() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] text-slate-700 uppercase">{$t("CustomCrmSmartTools__t28", "Features")}</span>
-          <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0f2333]">
-            {$t("CustomCrmSmartTools__t29", "Smarter Tools to")}<br />
-            {$t("CustomCrmSmartTools__t30", "Accelerate Your Growth")}</h2>
-          <p className="text-body mt-4 text-slate-500">
-            {rich($t("CustomCrmSmartTools__t31", "Explore powerful features designed to simplify"))}<br className="hidden sm:block" /> {rich($t("CustomCrmSmartTools__t32", "workflows and boost team productivity."))}</p>
+          <span className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] text-slate-700 uppercase">{html($t("CustomCrmSmartTools__t28", "Features"))}</span>
+          <h2 className="text-h2 mt-3 font-extrabold tracking-tight text-[#0f2333]">{rich($t("CustomCrmSmartTools__t29m", "Smarter Tools to<br>Accelerate Your Growth"))}</h2>
+          <p className="text-body mt-4 text-slate-500">{rich($t("CustomCrmSmartTools__t31m", "Explore powerful features designed to simplify<br class=\"hidden sm:block\"> workflows and boost team productivity."))}</p>
         </motion.div>
 
         {/* Cards */}

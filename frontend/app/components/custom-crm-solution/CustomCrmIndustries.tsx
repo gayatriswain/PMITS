@@ -6,7 +6,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ICONS
@@ -207,11 +207,8 @@ export default function CustomCrmIndustries() {
           {/* ======================= LEFT: COPY ======================= */}
           <div className="relative z-20">
             <span className="text-[11px] sm:text-xs font-black tracking-[0.2em] text-[#0f8a83] uppercase">
-              {$t("CustomCrmIndustries__t1", "Our Work. Real Impact.")}</span>
-            <h2 className="text-h2 mt-4 font-extrabold tracking-tight text-[#0f2333]">
-              {$t("CustomCrmIndustries__t2", "Custom CRMs.")}<br />
-              <span className="text-[#0f8a83]">{$t("CustomCrmIndustries__t3", "Built for Every Business.")}</span>
-            </h2>
+              {html($t("CustomCrmIndustries__t1", "Our Work. Real Impact."))}</span>
+            <h2 className="text-h2 mt-4 font-extrabold tracking-tight text-[#0f2333]">{rich($t("CustomCrmIndustries__t2m", "Custom CRMs.<br><span class=\"text-[#0f8a83]\">Built for Every Business.</span>"))}</h2>
             <p className="text-body mt-5 text-slate-600 max-w-md">
               {rich($t("CustomCrmIndustries__t4", "Explore how we've helped businesses streamline their processes, improve visibility and drive real growth."))}</p>
 
@@ -225,7 +222,7 @@ export default function CustomCrmIndustries() {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.35 }}
                 >
-                  <span className="text-[10.5px] font-black tracking-[0.2em] text-[#0f8a83] uppercase">{$t("CustomCrmIndustries__t5", "Featured CRM")}</span>
+                  <span className="text-[10.5px] font-black tracking-[0.2em] text-[#0f8a83] uppercase">{html($t("CustomCrmIndustries__t5", "Featured CRM"))}</span>
                   <div className="mt-2 flex items-center gap-4 flex-wrap">
                     <h3 className="text-h4 font-extrabold text-[#0f2333]">{active.title}</h3>
                     <span className="px-3 py-1 rounded-full border border-slate-300 text-xs font-semibold text-slate-600">
@@ -239,21 +236,21 @@ export default function CustomCrmIndustries() {
                       <span className="w-10 h-10 rounded-full bg-[#e8f6f4] text-[#0f8a83] flex items-center justify-center">
                         <PeopleIcon />
                       </span>
-                      <h4 className="mt-2.5 text-[13px] font-bold text-[#0f2333]">{$t("CustomCrmIndustries__t6", "What it manages")}</h4>
+                      <h4 className="mt-2.5 text-[13px] font-bold text-[#0f2333]">{html($t("CustomCrmIndustries__t6", "What it manages"))}</h4>
                       <p className="mt-1 text-[11.5px] text-slate-600 leading-snug">{active.manages}</p>
                     </div>
                     <div>
                       <span className="w-10 h-10 rounded-full bg-[#e8f6f4] text-[#0f8a83] flex items-center justify-center">
                         <RouteIcon />
                       </span>
-                      <h4 className="mt-2.5 text-[13px] font-bold text-[#0f2333]">{$t("CustomCrmIndustries__t7", "Key Workflow")}</h4>
+                      <h4 className="mt-2.5 text-[13px] font-bold text-[#0f2333]">{html($t("CustomCrmIndustries__t7", "Key Workflow"))}</h4>
                       <p className="mt-1 text-[11.5px] text-slate-600 leading-snug">{active.workflow.join(" › ")}</p>
                     </div>
                     <div>
                       <span className="w-10 h-10 rounded-full bg-[#e8f6f4] text-[#0f8a83] flex items-center justify-center">
                         <TargetIcon />
                       </span>
-                      <h4 className="mt-2.5 text-[13px] font-bold text-[#0f2333]">{$t("CustomCrmIndustries__t8", "The Result")}</h4>
+                      <h4 className="mt-2.5 text-[13px] font-bold text-[#0f2333]">{html($t("CustomCrmIndustries__t8", "The Result"))}</h4>
                       <p className="mt-1 text-2xl font-extrabold text-[#0f8a83] leading-none">
                         {active.stat} <span className="text-base">↗</span>
                       </p>

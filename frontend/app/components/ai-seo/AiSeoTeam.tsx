@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Code2, FileEdit, Globe2, LineChart, Network, SearchCode } from "lucide-react";
 import { AI, H2, Hl, Pill, ease, Inner, Panel } from "../shared/AiSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const AGENTS__cms = [
   { Icon: SearchCode, title: "Search Intelligence", text: "Finds how your customers search and what AI shows.", tone: "teal" },
@@ -59,7 +59,7 @@ export default function AiSeoTeam() {
                 <Image src={AI.robotPoint} alt={$t("AiSeoTeam__t1", "AI SEO agent robot pointing at its team")} fill sizes="(min-width:1536px) 480px, 360px" className="ai-float object-contain mix-blend-multiply" />
               </div>
               <div className="absolute -top-2 right-0 hidden rotate-[-8deg] font-[cursive] text-[15px] leading-tight text-blue-600 sm:block lg:-right-6 lg:-top-6">
-                {$t("AiSeoTeam__t2", "Multiple AI specialists.")}<br /> {$t("AiSeoTeam__t3", "One goal – Your Growth.")}<svg viewBox="0 0 40 30" className="ml-2 mt-1 h-7 w-9 text-blue-500" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
+                {html($t("AiSeoTeam__t2", "Multiple AI specialists."))}<br /> {html($t("AiSeoTeam__t3", "One goal – Your Growth."))}<svg viewBox="0 0 40 30" className="ml-2 mt-1 h-7 w-9 text-blue-500" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden>
                   <path d="M30 2C30 16 20 24 6 24M6 24l7-5M6 24l7 4" />
                 </svg>
               </div>
@@ -101,7 +101,7 @@ export default function AiSeoTeam() {
                         <p className="mt-2 flex-1 text-[11.5px] leading-relaxed text-slate-500">{text}</p>
                         <span className={`mt-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10.5px] font-semibold ${t.chip}`}>
                           <span className={`ai-anim h-1.5 w-1.5 rounded-full ${t.dot}`} style={{ animation: "aiBlink 1.6s ease-in-out infinite" }} />
-                          {$t("AiSeoTeam__t9", "Active")}</span>
+                          {html($t("AiSeoTeam__t9", "Active"))}</span>
                       </motion.div>
                     );
                   })}

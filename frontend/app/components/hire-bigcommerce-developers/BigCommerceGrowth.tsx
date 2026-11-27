@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { BC, CtaStrip, Eyebrow, Icon, Icon3D, ScreenOverlay, Sneaker, ease, fadeUp, heading, useSeen, useWidth, type Glyph3D } from "./BigCommerceShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const LAP_QUAD: [[number, number], [number, number], [number, number], [number, number]] = [[498, 250], [1072, 132], [1042, 692], [460, 700]];
 const IW = BC.laptop.w, IH = BC.laptop.h;
@@ -28,16 +28,16 @@ function Storefront() {
   return (
     <div className="h-full w-full bg-white px-8 py-6">
       <div className="flex items-center justify-between">
-        <p className={`text-body ${heading.className} font-bold tracking-tight text-[#0d1b45]`}><span className="font-extrabold">{$t("BigCommerceGrowth__t1", "BIG")}</span>{rich($t("BigCommerceGrowth__t2", "COMMERCE"))}</p>
+        <p className={`text-body ${heading.className} font-bold tracking-tight text-[#0d1b45]`}>{rich($t("BigCommerceGrowth__t1m", "<span class=\"font-extrabold\">BIG</span>COMMERCE"))}</p>
         <div className="flex items-center gap-6 text-[15px] text-slate-600">
-          <span>{$t("BigCommerceGrowth__t3", "Shop")}</span><span>{$t("BigCommerceGrowth__t4", "New in")}</span><span>{$t("BigCommerceGrowth__t5", "Best Sellers")}</span>
+          <span>{html($t("BigCommerceGrowth__t3", "Shop"))}</span><span>{html($t("BigCommerceGrowth__t4", "New in"))}</span><span>{html($t("BigCommerceGrowth__t5", "Best Sellers"))}</span>
           <Icon name="cart" className="h-6 w-6 text-[#0d1b45]" />
         </div>
       </div>
       <div className="mt-12 flex items-center">
         <div className="w-[44%]">
-          <p className={`${heading.className} text-[40px] font-bold italic leading-[1.1] text-[#0d1b45]`}>{rich($t("BigCommerceGrowth__t6", "Elevate Your"))}<br />{rich($t("BigCommerceGrowth__t7", "Store."))}</p>
-          <span className="mt-6 inline-block rounded-full bg-[#2348e6] px-6 py-2.5 text-[15px] font-semibold text-white">{$t("BigCommerceGrowth__t8", "Shop Now")}</span>
+          <p className={`${heading.className} text-[40px] font-bold italic leading-[1.1] text-[#0d1b45]`}>{rich($t("BigCommerceGrowth__t6m", "Elevate Your<br>Store."))}</p>
+          <span className="mt-6 inline-block rounded-full bg-[#2348e6] px-6 py-2.5 text-[15px] font-semibold text-white">{html($t("BigCommerceGrowth__t8", "Shop Now"))}</span>
         </div>
         <motion.div className="flex-1" animate={reduce ? undefined : { y: [0, -8, 0], rotate: [-6, -3, -6] }} transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}>
           <Sneaker className="w-full" />
@@ -93,13 +93,11 @@ export default function BigCommerceGrowth() {
             viewport={{ once: true }}
             className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
           >
-            {$t("BigCommerceGrowth__t10", "Built for ")}<span className="text-[#2348e6]">{$t("BigCommerceGrowth__t11", "Growth.")}</span>
+            {$t("BigCommerceGrowth__t10", "Built for ")}<span className="text-[#2348e6]">{html($t("BigCommerceGrowth__t11", "Growth."))}</span>
             <br />
-            {$t("BigCommerceGrowth__t12", "Designed for ")}<span className="bg-gradient-to-r from-[#0d8f9a] to-[#14b1b8] bg-clip-text text-transparent">{$t("BigCommerceGrowth__t13", "Results.")}</span>
+            {$t("BigCommerceGrowth__t12", "Designed for ")}<span className="bg-gradient-to-r from-[#0d8f9a] to-[#14b1b8] bg-clip-text text-transparent">{html($t("BigCommerceGrowth__t13", "Results."))}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mx-auto mt-5 max-w-[620px] text-slate-600">
-            {rich($t("BigCommerceGrowth__t14", "BigCommerce combines enterprise-grade features with unmatched flexibility so you can focus on what matters most—"))}<span className="font-semibold text-[#2348e6]">{$t("BigCommerceGrowth__t15", "growing your business.")}</span>
-          </motion.p>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mx-auto mt-5 max-w-[620px] text-slate-600">{rich($t("BigCommerceGrowth__t14m", "BigCommerce combines enterprise-grade features with unmatched flexibility so you can focus on what matters most—<span class=\"font-semibold text-[#2348e6]\">growing your business.</span>"))}</motion.p>
         </div>
 
         <div className="mt-10 grid items-center gap-10 xl:grid-cols-[1fr_1.65fr_1fr] xl:gap-10">

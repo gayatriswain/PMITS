@@ -6,7 +6,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, Eyebrow, Icon, fadeUp, heading, type IconName } from "../shared/MagentoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const steps__cms: { title: [string, string]; text: string; icon: IconName }[] = [
   { title: ["Book a Free", "Consultation"], text: "Anyone with a Magento development project can book a free consultation with one of our representatives.", icon: "chat" },
@@ -47,7 +47,7 @@ export default function MagentoProcess() {
             viewport={{ once: true }}
             className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0c1e3d]`}
           >
-            {$t("MagentoProcess__t2", "The Hiring Process is ")}<span className="text-[#0d9488]">{$t("MagentoProcess__t3", "Simple and Straightforward")}</span>
+            {$t("MagentoProcess__t2", "The Hiring Process is ")}<span className="text-[#0d9488]">{html($t("MagentoProcess__t3", "Simple and Straightforward"))}</span>
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-5 text-slate-600">
             {rich($t("MagentoProcess__t4", "We have kept the process of hiring Magento developers very easy and simple for our clients. Anyone with a Magento development project can book a free consultation with one of our representatives. On the scheduled day and time, the business analyst from ProManage IT Solution visits your company and discusses your Magento development needs. On the basis of this meeting, we prepare a proposal containing terms and condition and deadlines for the project. Once this proposal is accepted, ProManage IT Solution sets the ball rolling and our Magento developers get down to work."))}</motion.p>
@@ -99,7 +99,7 @@ export default function MagentoProcess() {
                     aria-hidden
                     className={`absolute left-[4%] top-[-6px] text-5xl font-bold tracking-tight transition-colors duration-500 lg:left-[-2%] ${on ? "text-[#0d9488]/25" : "text-slate-200/90"}`}
                   >
-                    {$t("MagentoProcess__t5", "0")}{i + 1}
+                    {html($t("MagentoProcess__t5", "0"))}{i + 1}
                   </span>
                   <span className="relative">
                     <span
@@ -156,7 +156,7 @@ export default function MagentoProcess() {
               <span className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-transform group-hover:scale-110">
                 <Icon name="play" className="ml-0.5 h-4 w-4" />
               </span>
-              <span className="border-b border-[#0d9488] pb-1 group-hover:text-[#0d9488]">{$t("MagentoProcess__t11", "Talk to Our Experts")}</span>
+              <span className="border-b border-[#0d9488] pb-1 group-hover:text-[#0d9488]">{html($t("MagentoProcess__t11", "Talk to Our Experts"))}</span>
             </Link>
           </motion.div>
 

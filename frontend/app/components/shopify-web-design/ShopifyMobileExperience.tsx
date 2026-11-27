@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 export default function ShopifyMobileExperience() {
   const $t = useCmsText();
@@ -39,7 +39,7 @@ export default function ShopifyMobileExperience() {
                   <path d="M23 7H28V12" stroke="#0f766e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 <div>
-                  <h4 className="text-[#0f2333] font-extrabold text-[16px] leading-tight mb-0.5">{$t("ShopifyMobileExperience__t2", "3x Higher")}</h4>
+                  <h4 className="text-[#0f2333] font-extrabold text-[16px] leading-tight mb-0.5">{html($t("ShopifyMobileExperience__t2", "3x Higher"))}</h4>
                   <p className="text-caption text-[#475569] font-bold">{rich($t("ShopifyMobileExperience__t3", "Mobile Conversions"))}</p>
                 </div>
               </div>
@@ -50,8 +50,8 @@ export default function ShopifyMobileExperience() {
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
                 <div className="flex flex-col">
-                  <h4 className="text-[#0f2333] font-extrabold text-[14px] leading-snug">{$t("ShopifyMobileExperience__t4", "Designed for")}</h4>
-                  <h4 className="text-[#0f2333] font-extrabold text-[14px] leading-snug">{$t("ShopifyMobileExperience__t5", "Real Shoppers")}</h4>
+                  <h4 className="text-[#0f2333] font-extrabold text-[14px] leading-snug">{html($t("ShopifyMobileExperience__t4", "Designed for"))}</h4>
+                  <h4 className="text-[#0f2333] font-extrabold text-[14px] leading-snug">{html($t("ShopifyMobileExperience__t5", "Real Shoppers"))}</h4>
                 </div>
               </div>
             </div>
@@ -63,21 +63,17 @@ export default function ShopifyMobileExperience() {
               {/* Badge */}
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#e6f4f1]/90 backdrop-blur-sm mb-4">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0b3b35" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
-                <span className="text-[9px] font-bold text-[#0b3b35] uppercase tracking-wider">{$t("ShopifyMobileExperience__t6", "Mobile Experience")}</span>
+                <span className="text-[9px] font-bold text-[#0b3b35] uppercase tracking-wider">{html($t("ShopifyMobileExperience__t6", "Mobile Experience"))}</span>
               </div>
 
               {/* Hand-drawn text */}
               <div className="absolute top-0 right-0 hidden md:block rotate-[-5deg]">
-                <span className="text-[#0d9488] font-medium text-[16px] italic leading-tight block text-right">
-                  {$t("ShopifyMobileExperience__t7", "Shopping.")}<br />{$t("ShopifyMobileExperience__t8", "Anytime.")}<br />{$t("ShopifyMobileExperience__t9", "Anywhere.")}</span>
+                <span className="text-[#0d9488] font-medium text-[16px] italic leading-tight block text-right">{rich($t("ShopifyMobileExperience__t7m", "Shopping.<br>Anytime.<br>Anywhere."))}</span>
                 <svg className="w-12 h-3 absolute -bottom-2 right-0 stroke-[#0d9488]" viewBox="0 0 100 20" fill="none" strokeWidth="3"><path d="M5,15 Q50,0 95,10" /></svg>
               </div>
 
               {/* Heading */}
-              <h2 className="text-h2 font-black text-[#0f2333] mb-3">
-                {$t("ShopifyMobileExperience__t10", "Your Customers")}<br />
-                {$t("ShopifyMobileExperience__t11", "Are ")}<span className="text-[#0d9488]">{$t("ShopifyMobileExperience__t12", "Already on Mobile.")}</span>
-              </h2>
+              <h2 className="text-h2 font-black text-[#0f2333] mb-3">{rich($t("ShopifyMobileExperience__t10m", "Your Customers<br>Are <span class=\"text-[#0d9488]\">Already on Mobile.</span>"))}</h2>
 
               {/* Subheading */}
               <p className="text-small text-[#475569] font-medium max-w-[420px] mb-8">
@@ -96,7 +92,7 @@ export default function ShopifyMobileExperience() {
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#f4fdfa] flex items-center justify-center shadow-[0_4px_20px_rgba(13,148,136,0.15)] mb-3 border-[3px] border-white">
                     <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="#0a4a40" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
                   </div>
-                  <h4 className="text-[11px] md:text-[13px] font-bold text-[#0f2333] mb-0.5">{$t("ShopifyMobileExperience__t14", "Search")}</h4>
+                  <h4 className="text-[11px] md:text-[13px] font-bold text-[#0f2333] mb-0.5">{html($t("ShopifyMobileExperience__t14", "Search"))}</h4>
                   <p className="text-[9px] md:text-[11px] text-[#64748b] font-medium text-center">{rich($t("ShopifyMobileExperience__t15", "Find in seconds"))}</p>
                 </div>
 
@@ -110,7 +106,7 @@ export default function ShopifyMobileExperience() {
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#f4fdfa] flex items-center justify-center shadow-[0_4px_20px_rgba(13,148,136,0.15)] mb-3 border-[3px] border-white">
                     <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="#0a4a40" stroke="#0a4a40" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.38 3.46L16 2a8.5 8.5 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" /><path d="M9 13.5l2 1.5 4-3" stroke="white" strokeWidth="2.5" fill="none" /></svg>
                   </div>
-                  <h4 className="text-[11px] md:text-[13px] font-bold text-[#0f2333] mb-0.5">{$t("ShopifyMobileExperience__t16", "Product")}</h4>
+                  <h4 className="text-[11px] md:text-[13px] font-bold text-[#0f2333] mb-0.5">{html($t("ShopifyMobileExperience__t16", "Product"))}</h4>
                   <p className="text-[9px] md:text-[11px] text-[#64748b] font-medium text-center">{rich($t("ShopifyMobileExperience__t17", "See what they love"))}</p>
                 </div>
 
@@ -124,7 +120,7 @@ export default function ShopifyMobileExperience() {
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#f4fdfa] flex items-center justify-center shadow-[0_4px_20px_rgba(13,148,136,0.15)] mb-3 border-[3px] border-white">
                     <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="#0a4a40" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
                   </div>
-                  <h4 className="text-[11px] md:text-[13px] font-bold text-[#0f2333] mb-0.5">{$t("ShopifyMobileExperience__t18", "Add to Cart")}</h4>
+                  <h4 className="text-[11px] md:text-[13px] font-bold text-[#0f2333] mb-0.5">{html($t("ShopifyMobileExperience__t18", "Add to Cart"))}</h4>
                   <p className="text-[9px] md:text-[11px] text-[#64748b] font-medium text-center">{rich($t("ShopifyMobileExperience__t19", "One tap away"))}</p>
                 </div>
 
@@ -138,7 +134,7 @@ export default function ShopifyMobileExperience() {
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#f4fdfa] flex items-center justify-center shadow-[0_4px_20px_rgba(13,148,136,0.15)] mb-3 border-[3px] border-white">
                     <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="#0a4a40" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" ry="2" /><line x1="2" y1="10" x2="22" y2="10" /><circle cx="16" cy="15" r="1" fill="#0a4a40" stroke="none" /><circle cx="12" cy="15" r="1" fill="#0a4a40" stroke="none" /></svg>
                   </div>
-                  <h4 className="text-[11px] md:text-[13px] font-bold text-[#0f2333] mb-0.5">{$t("ShopifyMobileExperience__t20", "Checkout")}</h4>
+                  <h4 className="text-[11px] md:text-[13px] font-bold text-[#0f2333] mb-0.5">{html($t("ShopifyMobileExperience__t20", "Checkout"))}</h4>
                   <p className="text-[9px] md:text-[11px] text-[#64748b] font-medium text-center">{rich($t("ShopifyMobileExperience__t21", "Buy with confidence"))}</p>
                 </div>
               </div>
@@ -151,7 +147,7 @@ export default function ShopifyMobileExperience() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0b3b35" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
                 </div>
                 <div>
-                  <h4 className="text-[12px] md:text-[14px] font-bold text-[#0b3b35] leading-tight">{$t("ShopifyMobileExperience__t22", "Mobile-First Design")}</h4>
+                  <h4 className="text-[12px] md:text-[14px] font-bold text-[#0b3b35] leading-tight">{html($t("ShopifyMobileExperience__t22", "Mobile-First Design"))}</h4>
                   <p className="text-[10px] md:text-[11px] text-[#2c544d] font-medium">{rich($t("ShopifyMobileExperience__t23", "for a shopping experience that feels effortless."))}</p>
                 </div>
               </div>

@@ -2,15 +2,20 @@ import { Fragment, createElement, type ReactNode } from "react";
 import Link from "next/link";
 
 /**
- * Paragraph text from the CMS may carry light formatting written in the admin's paragraph editor:
- * <strong>/<b>, <em>/<i>, <u>, <s>, <a href> and <br>. `rich()` turns exactly those into React
- * elements (no innerHTML); any other markup is shown as plain text. Text without tags is returned
- * unchanged, so un-edited copy renders exactly as before.
+ * Text from the CMS may carry light formatting: <strong>/<b>, <em>/<i>, <u>, <s>, <a href>, <br>,
+ * and <span>/<mark>/<small>/<sup>/<sub> with a class (e.g. the accent colour of a heading:
+ * `Our Core Expertise, <span class="text-teal">Your Advantage</span>`). `rich()` turns exactly those
+ * into React elements (no innerHTML; only the class attribute is kept); any other markup is shown as
+ * plain text. Text without tags is returned unchanged, so un-edited copy renders exactly as before.
  *
- *   <p>{rich($t("File__t3", "Original text"))}</p>
+ *   <p>{rich($t("File__t3", "Original text"))}</p>    paragraph / heading: formatting editor in the admin
+ *   <p>{html($t("File__t4", "Short text"))}</p>        plain input in the admin; HTML typed there still works
  */
-const TAG = /<(\/?)(strong|b|em|i|u|s|a|br)(\s[^<>]*)?\/?>/gi;
-const HAS_TAG = /<\/?(strong|b|em|i|u|s|a|br)(\s[^<>]*)?\/?>/i;
+const TAGS = "strong|b|em|i|u|s|a|br|span|mark|small|sup|sub";
+const TAG = new RegExp(String.raw`<(\/?)(${TAGS})(\s[^<>]*)?\/?>`, "gi");
+const HAS_TAG = new RegExp(String.raw`<\/?(${TAGS})(\s[^<>]*)?\/?>`, "i");
+/** Tailwind-style class names only (letters, digits, - _ : / . [ ] % # ( ) , and spaces). */
+const SAFE_CLASS = /^[\w\-:/.[\]%#(),\s]*$/;
 const SAFE_HREF = /^(\/(?!\/)|#|https?:\/\/|mailto:|tel:)/i;
 
 const decode = (s: string) =>
@@ -21,7 +26,12 @@ const attr = (attrs: string | undefined, name: string) => {
   return m ? decode(m[2] ?? m[3] ?? "") : "";
 };
 
-type Node = { tag: string; href?: string; children: (Node | string)[] };
+type Node = { tag: string; href?: string; cls?: string; children: (Node | string)[] };
+
+const classOf = (attrs: string | undefined) => {
+  const c = attr(attrs, "class").trim();
+  return c && SAFE_CLASS.test(c) ? c : undefined;
+};
 
 export function rich(value: string): ReactNode {
   if (typeof value !== "string") return value;
@@ -36,12 +46,12 @@ export function rich(value: string): ReactNode {
     last = m.index! + m[0].length;
     const [, close, rawTag, attrs] = m;
     const tag = rawTag.toLowerCase();
-    if (tag === "br") top.children.push({ tag: "br", children: [] });
+    if (tag === "br") top.children.push({ tag: "br", cls: classOf(attrs), children: [] });
     else if (close) {
       const i = stack.map((n) => n.tag).lastIndexOf(tag);
       if (i > 0) stack.length = i; // close it (and anything left open inside it)
     } else {
-      const node: Node = { tag, children: [] };
+      const node: Node = { tag, cls: classOf(attrs), children: [] };
       if (tag === "a") {
         const href = attr(attrs, "href");
         node.href = SAFE_HREF.test(href) ? href : "";
@@ -57,7 +67,7 @@ export function rich(value: string): ReactNode {
 function render(children: (Node | string)[]): ReactNode {
   return children.map((c, i) => {
     if (typeof c === "string") return <Fragment key={i}>{c}</Fragment>;
-    if (c.tag === "br") return <br key={i} />;
+    if (c.tag === "br") return <br key={i} className={c.cls} />;
     const inner = render(c.children);
     if (c.tag === "a") {
       if (!c.href) return <Fragment key={i}>{inner}</Fragment>;
@@ -67,7 +77,12 @@ function render(children: (Node | string)[]): ReactNode {
         <Link key={i} href={c.href} className="underline underline-offset-2">{inner}</Link>
       );
     }
-    const tag = c.tag === "b" ? "strong" : c.tag === "i" ? "em" : c.tag;
-    return createElement(tag, { key: i, className: tag === "strong" ? "font-bold" : undefined }, inner);
+    // <b>/<i> written in the code stay <b>/<i> (same markup as before); the admin's editor writes <strong>/<em>
+    const tag = c.tag;
+    const className = [tag === "strong" && !c.cls ? "font-bold" : "", c.cls ?? ""].filter(Boolean).join(" ") || undefined;
+    return createElement(tag, { key: i, className }, inner);
   });
 }
+
+/** Same as rich(); used for short texts whose admin field is a plain input (keeps that input simple). */
+export const html = (value: string): ReactNode => rich(value);

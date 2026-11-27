@@ -6,7 +6,7 @@ import Link from "next/link";
 import { animate, motion, useInView, useMotionValueEvent, useMotionValue, type Variants } from "framer-motion";
 import Container from "./Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -248,10 +248,7 @@ function ProofStrip() {
 
       {/* CTA */}
       <motion.div variants={item} className="relative md:col-span-2 xl:col-span-1 xl:border-l border-[#e2d7c7] xl:pl-8">
-        <h3 className="text-h5 font-serif font-semibold mb-3">
-          <span className="block" style={{ color: NAVY }}>{$t("WebsiteDevStrategyCta__t9", "Let's build something")}</span>
-          <span className="block" style={{ color: DEEP_TEAL }}>{$t("WebsiteDevStrategyCta__t10", "extraordinary together.")}</span>
-        </h3>
+        <h3 className="text-h5 font-serif font-semibold mb-3">{rich($t("WebsiteDevStrategyCta__t9m", "<span class=\"block text-[#132a43]\">Let's build something</span><span class=\"block text-[#0f5c56]\">extraordinary together.</span>"))}</h3>
         <p className="text-caption text-slate-600 mb-5">
           {rich($t("WebsiteDevStrategyCta__t11", "Tell us about your project and let's create a website that sets you ahead of your competition."))}</p>
         <Link href={$t("WebsiteDevStrategyCta__t12", "/contact")} className="group inline-flex items-center gap-3 text-[13px] font-semibold" style={{ color: DEEP_TEAL }}>
@@ -300,7 +297,7 @@ export default function WebsiteDevStrategyCta() {
             ))}
             <span className="block overflow-hidden pb-2">
               <motion.span variants={lineReveal} className="block italic" style={{ color: GOLD }}>
-                {$t("WebsiteDevStrategyCta__t18", "your growth engine?")}</motion.span>
+                {html($t("WebsiteDevStrategyCta__t18", "your growth engine?"))}</motion.span>
             </span>
           </h2>
 
@@ -315,9 +312,7 @@ export default function WebsiteDevStrategyCta() {
             />
           </svg>
 
-          <motion.p variants={fadeUp} className="text-body text-slate-700 mb-10">
-            {rich($t("WebsiteDevStrategyCta__t19", "The right website does more than look good."))}<br />
-            {rich($t("WebsiteDevStrategyCta__t20", "It attracts, engages and converts — every single day."))}</motion.p>
+          <motion.p variants={fadeUp} className="text-body text-slate-700 mb-10">{rich($t("WebsiteDevStrategyCta__t19m", "The right website does more than look good.<br>It attracts, engages and converts — every single day."))}</motion.p>
 
           <motion.div variants={stagger(0, 0.1)} className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 mb-10">
             {FEATURES.map((f, i) => (
@@ -339,10 +334,7 @@ export default function WebsiteDevStrategyCta() {
             ))}
           </motion.div>
 
-          <motion.p variants={fadeUp} className={`${caveat.className} text-2xl leading-snug`}>
-            <span className="block" style={{ color: TEAL }}>{$t("WebsiteDevStrategyCta__t21", "Great websites don't happen by chance.")}</span>
-            <span className="block" style={{ color: GOLD }}>{$t("WebsiteDevStrategyCta__t22", "They happen by strategy.")}</span>
-          </motion.p>
+          <motion.p variants={fadeUp} className={`${caveat.className} text-2xl leading-snug`}>{rich($t("WebsiteDevStrategyCta__t21m", "<span class=\"block text-[#1b8a80]\">Great websites don't happen by chance.</span><span class=\"block text-[#c29245]\">They happen by strategy.</span>"))}</motion.p>
         </motion.div>
 
         {/* Right: booking card */}
@@ -376,9 +368,7 @@ export default function WebsiteDevStrategyCta() {
               <span className="h-px flex-1 max-w-8" style={{ backgroundColor: GOLD }} />
             </div>
 
-            <h3 className="text-h4 font-serif font-semibold text-center mb-4" style={{ color: NAVY }}>
-              {$t("WebsiteDevStrategyCta__t24", "Book Your Free")}<br />
-              {$t("WebsiteDevStrategyCta__t25", "Strategy Session")}</h3>
+            <h3 className="text-h4 font-serif font-semibold text-center mb-4" style={{ color: NAVY }}>{rich($t("WebsiteDevStrategyCta__t24m", "Book Your Free<br>Strategy Session"))}</h3>
             <p className="text-small text-slate-600 text-center mb-7 max-w-sm mx-auto">
               {rich($t("WebsiteDevStrategyCta__t26", "A personalized 30-minute session to explore your goals, challenges and the right website strategy to grow your business."))}</p>
 
@@ -422,7 +412,7 @@ export default function WebsiteDevStrategyCta() {
                   <path d="M16 3 V7 M8 3 V7 M3 11 H21" />
                   <rect x="8" y="14" width="3" height="3" rx="0.5" />
                 </svg>
-                <span className="relative">{$t("WebsiteDevStrategyCta__t28", "Book My Free Strategy Session")}</span>
+                <span className="relative">{html($t("WebsiteDevStrategyCta__t28", "Book My Free Strategy Session"))}</span>
                 <svg {...svgBase("#ffffff", 18)} className="relative ml-auto transition-transform group-hover:translate-x-1">
                   <path d="M5 12h14" />
                   <path d="M12 5l7 7-7 7" />
@@ -442,7 +432,7 @@ export default function WebsiteDevStrategyCta() {
               >
                 <path d="M5 4 H9 L11 9 L8.5 10.5 C9.5 12.5 11.5 14.5 13.5 15.5 L15 13 L20 15 V19 C20 20 19 21 18 21 C10 20.5 3.5 14 3 6 C3 5 4 4 5 4 Z" />
               </motion.svg>
-              <span className="underline underline-offset-4">{$t("WebsiteDevStrategyCta__t30", "Schedule a Call")}</span>
+              <span className="underline underline-offset-4">{html($t("WebsiteDevStrategyCta__t30", "Schedule a Call"))}</span>
             </Link>
           </motion.div>
         </motion.div>

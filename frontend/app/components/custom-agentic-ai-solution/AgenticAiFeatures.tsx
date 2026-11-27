@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 export default function AgenticAiFeatures() {
   const $t = useCmsText();
@@ -21,12 +21,9 @@ export default function AgenticAiFeatures() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-[11px] font-bold tracking-[0.2em] text-slate-700 uppercase">
-            {$t("AgenticAiFeatures__t1", "FEATURES")}</span>
-          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0b1f4a]">
-            {$t("AgenticAiFeatures__t2", "Smarter Tools to")}<br />
-            {$t("AgenticAiFeatures__t3", "Accelerate Your Growth")}</h2>
-          <p className="text-body mt-4 text-slate-500 max-w-xl mx-auto">
-            {rich($t("AgenticAiFeatures__t4", "Explore powerful capabilities designed to simplify"))}<br className="hidden sm:inline" /> {rich($t("AgenticAiFeatures__t5", "workflows and boost team productivity."))}</p>
+            {html($t("AgenticAiFeatures__t1", "FEATURES"))}</span>
+          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0b1f4a]">{rich($t("AgenticAiFeatures__t2m", "Smarter Tools to<br>Accelerate Your Growth"))}</h2>
+          <p className="text-body mt-4 text-slate-500 max-w-xl mx-auto">{rich($t("AgenticAiFeatures__t4m", "Explore powerful capabilities designed to simplify<br class=\"hidden sm:inline\"> workflows and boost team productivity."))}</p>
         </motion.div>
 
         {/* 2x2 Feature Cards Grid */}
@@ -55,7 +52,7 @@ export default function AgenticAiFeatures() {
             {/* 2. Title & 3. Description */}
             <div className="mt-4">
               <h3 className="text-h5 font-black text-[#0b1f4a] tracking-tight">
-                {$t("AgenticAiFeatures__t8", "Advanced Analytics Dashboard")}</h3>
+                {html($t("AgenticAiFeatures__t8", "Advanced Analytics Dashboard"))}</h3>
               <p className="text-small mt-2 text-slate-800 font-normal">
                 {rich($t("AgenticAiFeatures__t9", "Turn raw data into clear insights with real-time reports, smart visualizations, and performance metrics."))}</p>
             </div>
@@ -83,7 +80,7 @@ export default function AgenticAiFeatures() {
             {/* 2. Title & 3. Description */}
             <div className="mt-4">
               <h3 className="text-h5 font-black text-[#0b1f4a] tracking-tight">
-                {$t("AgenticAiFeatures__t12", "Streamlined Relationship Organization")}</h3>
+                {html($t("AgenticAiFeatures__t12", "Streamlined Relationship Organization"))}</h3>
               <p className="text-small mt-2 text-slate-500">
                 {rich($t("AgenticAiFeatures__t13", "Simplify how you manage connections with streamlined relationship organization — effortlessly."))}</p>
             </div>
@@ -111,7 +108,7 @@ export default function AgenticAiFeatures() {
             {/* 2. Title & 3. Description */}
             <div className="mt-4">
               <h3 className="text-h5 font-black text-[#0b1f4a] tracking-tight">
-                {$t("AgenticAiFeatures__t16", "Smart and Effortless Data Analysis")}</h3>
+                {html($t("AgenticAiFeatures__t16", "Smart and Effortless Data Analysis"))}</h3>
               <p className="text-small mt-2 text-slate-500">
                 {rich($t("AgenticAiFeatures__t17", "Experience smart and effortless data analysis with advanced AI tools that simplify insights, visualize patterns."))}</p>
             </div>
@@ -139,7 +136,7 @@ export default function AgenticAiFeatures() {
             {/* 2. Title & 3. Description */}
             <div className="mt-4">
               <h3 className="text-h5 font-black text-[#0b1f4a] tracking-tight">
-                {$t("AgenticAiFeatures__t20", "Intelligent Automated Task Planner")}</h3>
+                {html($t("AgenticAiFeatures__t20", "Intelligent Automated Task Planner"))}</h3>
               <p className="text-small mt-2 text-slate-500">
                 {rich($t("AgenticAiFeatures__t21", "Boost efficiency with an intelligent automated task planner — effortlessly schedule, prioritize and manage."))}</p>
             </div>

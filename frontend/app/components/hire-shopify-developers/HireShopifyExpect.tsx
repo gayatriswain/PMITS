@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { BarChart3, Bell, Box, ChevronRight, CreditCard, LayoutTemplate, Megaphone, Play, Puzzle, Search, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const INK = "#0b1220";
 const GREEN = "#0f7a4e";
@@ -39,13 +39,10 @@ export default function HireShopifyExpect() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE }}>
             <p className="flex items-center gap-4 text-[13px] font-medium uppercase tracking-[0.22em]" style={{ color: TEAL }}>
               <i aria-hidden className="h-px w-10 bg-current" />
-              {$t("HireShopifyExpect__t1", "More than just development")}
+              {html($t("HireShopifyExpect__t1", "More than just development"))}
               <i aria-hidden className="h-px w-10 bg-current" />
             </p>
-            <h2 className="text-h2 font-heading mt-5 font-extrabold leading-[1.08] tracking-[-0.02em]" style={{ color: INK }}>
-              <span className="block">{$t("HireShopifyExpect__t2", "What Can You Expect From")}</span>
-              <span className="block bg-[linear-gradient(90deg,#0f7a6e,#18a99a)] bg-clip-text text-transparent">{$t("HireShopifyExpect__t3", "Our Shopify Developers")}</span>
-            </h2>
+            <h2 className="text-h2 font-heading mt-5 font-extrabold leading-[1.08] tracking-[-0.02em]" style={{ color: INK }}>{rich($t("HireShopifyExpect__t2m", "<span class=\"block\">What Can You Expect From</span><span class=\"block bg-[linear-gradient(90deg,#0f7a6e,#18a99a)] bg-clip-text text-transparent\">Our Shopify Developers</span>"))}</h2>
             <p className="text-small mt-5 leading-relaxed text-slate-600">
               {rich($t("HireShopifyExpect__t4", "Shopify is a very popular Canadian ecommerce platform. Anyone can use this platform to set up shop on the web and start selling his products and services. Shopify provides more value for money than Amazon and more and more businesses are getting attracted to it. You are most welcome if you have come here in search of a qualified and experienced Shopify developer. We are Promanage IT Solution, the most popular and much loved Shopify development company. Our Shopify solutions have helped many clients and their businesses have become success stories on this ecommerce platform."))}
             </p>
@@ -84,7 +81,7 @@ export default function HireShopifyExpect() {
               </Link>
               <Link href={$t("HireShopifyExpect__t7", "/contact")} className="group flex items-center gap-3">
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-white shadow-md transition-transform group-hover:scale-105"><Play className="h-4 w-4 fill-current" style={{ color: INK }} /></span>
-                <span className="border-b-2 border-[#139b8c]/60 pb-0.5 text-[15px] font-medium" style={{ color: INK }}>{$t("HireShopifyExpect__t8", "Talk to Our Shopify Experts")}</span>
+                <span className="border-b-2 border-[#139b8c]/60 pb-0.5 text-[15px] font-medium" style={{ color: INK }}>{html($t("HireShopifyExpect__t8", "Talk to Our Shopify Experts"))}</span>
               </Link>
             </div>
           </motion.div>

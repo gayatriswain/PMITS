@@ -20,7 +20,7 @@ import {
 import Container from "../shared/Container";
 import CountUp from "../shared/CountUp";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const display = { className: "font-heading" }; // global font from app/layout.tsx
 const script = { className: "font-caveat" }; // global font from app/layout.tsx
@@ -124,10 +124,10 @@ export default function HireShopifySolutions() {
             className={`${script.className} absolute -right-[18%] -top-1 hidden w-[150px] rotate-[8deg] text-left text-[22px] leading-[1.05] lg:block xl:-right-[22%]`}
             style={{ color: DEEP }}
           >
-            {$t("HireShopifySolutions__t7", "More")}<br />
-            {$t("HireShopifySolutions__t8", "Sales")}<br />
-            {$t("HireShopifySolutions__t9", "Bigger")}<br />
-            {$t("HireShopifySolutions__t10", "Possibilities")}<Swoosh d="M2 12C40 14 90 8 138 2" className="-ml-1 mt-0.5 h-3 w-[140px]" />
+            {html($t("HireShopifySolutions__t7", "More"))}<br />
+            {html($t("HireShopifySolutions__t8", "Sales"))}<br />
+            {html($t("HireShopifySolutions__t9", "Bigger"))}<br />
+            {html($t("HireShopifySolutions__t10", "Possibilities"))}<Swoosh d="M2 12C40 14 90 8 138 2" className="-ml-1 mt-0.5 h-3 w-[140px]" />
           </motion.div>
         </motion.div>
 
@@ -144,10 +144,10 @@ export default function HireShopifySolutions() {
               className={`${script.className} absolute -top-2 left-1 z-10 w-[110px] -rotate-[10deg] text-[22px] leading-[1.05]`}
               style={{ color: DEEP }}
             >
-              {$t("HireShopifySolutions__t11", "Ideas")}<br />
+              {html($t("HireShopifySolutions__t11", "Ideas"))}<br />
               <span className="ml-3 inline-block">into</span>
               <br />
-              <span className="ml-5 inline-block">{$t("HireShopifySolutions__t12", "Impact")}</span>
+              <span className="ml-5 inline-block">{html($t("HireShopifySolutions__t12", "Impact"))}</span>
               <Swoosh d="M2 10C30 14 70 10 100 3" className="mt-0.5 h-3 w-[100px]" />
             </motion.div>
 
@@ -199,9 +199,7 @@ export default function HireShopifySolutions() {
 
             <p className="mt-5 flex items-center gap-3 text-[9.5px] font-semibold uppercase leading-snug tracking-[0.22em] text-slate-500">
               <i aria-hidden className="h-px w-6 bg-slate-300" />
-              <span>
-                {$t("HireShopifySolutions__t17", "Scalable Stores")}<br />
-                {$t("HireShopifySolutions__t18", "Happier Customers")}</span>
+              <span>{rich($t("HireShopifySolutions__t17m", "Scalable Stores<br>Happier Customers"))}</span>
             </p>
           </div>
 
@@ -228,7 +226,7 @@ export default function HireShopifySolutions() {
                       <p className="text-caption mt-1.5 text-slate-500">{f.text}</p>
                     </div>
                     <span className="absolute right-3.5 top-3 text-[13px] font-medium tabular-nums text-slate-300 transition-colors duration-300 group-hover:text-[#1f7a3f]">
-                      {$t("HireShopifySolutions__t19", ".0")}{i + 1}
+                      {html($t("HireShopifySolutions__t19", ".0"))}{i + 1}
                     </span>
                   </motion.li>
                 );
@@ -248,7 +246,7 @@ export default function HireShopifySolutions() {
                 style={{ background: `linear-gradient(180deg,#2a8a4a,${DEEP})` }}
               >
                 <span aria-hidden className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                <span className="relative">{$t("HireShopifySolutions__t21", "Get My Free Proposal")}</span>
+                <span className="relative">{html($t("HireShopifySolutions__t21", "Get My Free Proposal"))}</span>
                 <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link href={$t("HireShopifySolutions__t22", "#contact")} className="group inline-flex items-center gap-3 text-[13px] font-semibold" style={{ color: INK }}>
@@ -256,7 +254,7 @@ export default function HireShopifySolutions() {
                   {!reduce && <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-[#111]/30" />}
                   <Play className="relative ml-0.5 h-3.5 w-3.5 fill-current" />
                 </span>
-                <span className="border-b border-slate-400 pb-0.5 transition-colors group-hover:border-[#1f7a3f] group-hover:text-[#1f7a3f]">{$t("HireShopifySolutions__t23", "Talk to Our Shopify Experts")}</span>
+                <span className="border-b border-slate-400 pb-0.5 transition-colors group-hover:border-[#1f7a3f] group-hover:text-[#1f7a3f]">{html($t("HireShopifySolutions__t23", "Talk to Our Shopify Experts"))}</span>
               </Link>
             </motion.div>
           </div>

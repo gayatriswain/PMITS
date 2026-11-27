@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, BarChart3, Crosshair, Euro, Filter, RefreshCw, TrendingUp, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const INK = "#0b1a2a";
 const TEAL = "#0f5c5a";
@@ -37,11 +37,9 @@ export default function GoogleAdsPerformance() {
               <span className="absolute inset-0 animate-ping rounded-full bg-[#0f8a6e]/60" />
               <span className="relative h-2 w-2 rounded-full bg-[#0f8a6e]" />
             </span>
-            {$t("GoogleAdsPerformance__t1", "Live performance snapshot")}
+            {html($t("GoogleAdsPerformance__t1", "Live performance snapshot"))}
           </span>
-          <h2 className="text-h2 font-heading mt-4 font-bold tracking-[-0.02em]" style={{ color: INK }}>
-            {$t("GoogleAdsPerformance__t2", "Real Campaigns.")} <span style={{ color: TEAL }}>{$t("GoogleAdsPerformance__t3", "Real Performance.")}</span>
-          </h2>
+          <h2 className="text-h2 font-heading mt-4 font-bold tracking-[-0.02em]" style={{ color: INK }}>{rich($t("GoogleAdsPerformance__t2m", "Real Campaigns. <span class=\"text-[#0f5c5a]\">Real Performance.</span>"))}</h2>
           <p className="text-body mx-auto mt-3 max-w-[520px] text-slate-600">{rich($t("GoogleAdsPerformance__t4", "Our data-driven Google Ads strategies deliver measurable results that grow your business."))}</p>
         </motion.div>
 
@@ -72,11 +70,8 @@ export default function GoogleAdsPerformance() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
-              <p className="text-[12px] font-semibold uppercase tracking-[0.18em]" style={{ color: INK }}>{$t("GoogleAdsPerformance__t7", "Google Ads • Google Partner")}</p>
-              <h3 className="text-h3 font-heading mt-4 font-bold leading-[1.1] tracking-[-0.02em]" style={{ color: INK }}>
-                <span className="block">{$t("GoogleAdsPerformance__t8", "Stop Paying For Clicks.")}</span>
-                <span className="block" style={{ color: TEAL }}>{$t("GoogleAdsPerformance__t9", "Start Paying For Customers.")}</span>
-              </h3>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.18em]" style={{ color: INK }}>{html($t("GoogleAdsPerformance__t7", "Google Ads • Google Partner"))}</p>
+              <h3 className="text-h3 font-heading mt-4 font-bold leading-[1.1] tracking-[-0.02em]" style={{ color: INK }}>{rich($t("GoogleAdsPerformance__t8m", "<span class=\"block\">Stop Paying For Clicks.</span><span class=\"block text-[#0f5c5a]\">Start Paying For Customers.</span>"))}</h3>
               <i aria-hidden className="mt-4 block h-[3px] w-12 rounded-full" style={{ background: TEAL }} />
               <p className="text-small mt-4 max-w-[380px] leading-relaxed text-slate-600">{rich($t("GoogleAdsPerformance__t10", "We build, manage and optimize Google Ads campaigns that bring qualified leads, reduce wasted spend, and deliver measurable business growth."))}</p>
               <div className="mt-6 flex flex-wrap items-center gap-5">

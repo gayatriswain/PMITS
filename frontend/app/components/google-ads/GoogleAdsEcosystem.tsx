@@ -5,7 +5,7 @@ import Image from "next/image";
 import Container from "../shared/Container";
 import { motion } from "framer-motion";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const TargetIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00acc1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -126,14 +126,11 @@ export default function GoogleAdsEcosystem() {
         <div className="text-center mb-12 lg:mb-20">
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="h-px w-8 bg-[#00acc1]"></span>
-            <span className="text-[#00acc1] font-bold text-xs tracking-widest uppercase">{$t("GoogleAdsEcosystem__t1", "Why Google Ads")}</span>
+            <span className="text-[#00acc1] font-bold text-xs tracking-widest uppercase">{html($t("GoogleAdsEcosystem__t1", "Why Google Ads"))}</span>
             <span className="h-px w-8 bg-[#00acc1]"></span>
           </div>
-          <h2 className="text-h2 font-bold text-[#132a43] mb-4 font-serif">
-            {$t("GoogleAdsEcosystem__t2", "Someone Is Searching")}<br/>
-            {$t("GoogleAdsEcosystem__t3", "For ")}<span className="text-[#00acc1]">{$t("GoogleAdsEcosystem__t4", "Your Business")}</span> {$t("GoogleAdsEcosystem__t5", "Right Now.")}</h2>
-          <p className="text-body text-slate-500 max-w-2xl mx-auto">
-            {rich($t("GoogleAdsEcosystem__t6", "Every day, potential customers search Google looking for businesses they can trust. The question isn't whether they're searching—it's whether they find "))}<span className="font-semibold text-[#00acc1]">{$t("GoogleAdsEcosystem__t7", "your business")}</span> {rich($t("GoogleAdsEcosystem__t8", "or your competitor's."))}</p>
+          <h2 className="text-h2 font-bold text-[#132a43] mb-4 font-serif">{rich($t("GoogleAdsEcosystem__t2m", "Someone Is Searching<br>For <span class=\"text-[#00acc1]\">Your Business</span> Right Now."))}</h2>
+          <p className="text-body text-slate-500 max-w-2xl mx-auto">{rich($t("GoogleAdsEcosystem__t6m", "Every day, potential customers search Google looking for businesses they can trust. The question isn't whether they're searching—it's whether they find <span class=\"font-semibold text-[#00acc1]\">your business</span> or your competitor's."))}</p>
         </div>
 
         {/* Ecosystem Layout */}
@@ -221,9 +218,9 @@ export default function GoogleAdsEcosystem() {
           {/* Heading */}
           <div className="text-center mb-16">
             <h3 className="text-h4 font-bold text-[#132a43] font-serif flex flex-col items-center">
-              <span>{$t("GoogleAdsEcosystem__t17", "The Goal Was Never More Clicks.")}</span>
+              <span>{html($t("GoogleAdsEcosystem__t17", "The Goal Was Never More Clicks."))}</span>
               <span className="relative mt-2">
-                {$t("GoogleAdsEcosystem__t18", "The Goal Is ")}<span className="text-[#00acc1]">{$t("GoogleAdsEcosystem__t19", "More Customers.")}</span>
+                {html($t("GoogleAdsEcosystem__t18", "The Goal Is "))}<span className="text-[#00acc1]">{html($t("GoogleAdsEcosystem__t19", "More Customers."))}</span>
                 <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-10 h-[2px] bg-[#00acc1]"></span>
               </span>
             </h3>

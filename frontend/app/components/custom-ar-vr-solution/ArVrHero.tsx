@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 // Opening inside ARVR-frame.webp (fractions of the image box)
 const LENS_CENTER_Y = 0.556;
@@ -252,13 +252,9 @@ export default function ArVrHero() {
         >
           <Container className="flex flex-col items-center text-center pt-5 sm:pt-6">
             <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.28em] text-[#6d5ef5] uppercase mb-3">
-              {$t("ArVrHero__t2", "Custom Solutions for AR/VR")}</span>
+              {html($t("ArVrHero__t2", "Custom Solutions for AR/VR"))}</span>
 
-            <h1 className="text-h1 font-black text-[#0f1535] tracking-tight font-sans">
-              {$t("ArVrHero__t3", "Step Into. Experience.")}<br />
-              <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-                {$t("ArVrHero__t4", "Transform.")}</span>
-            </h1>
+            <h1 className="text-h1 font-black text-[#0f1535] tracking-tight font-sans">{rich($t("ArVrHero__t3m", "Step Into. Experience.<br><span class=\"bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent\">Transform.</span>"))}</h1>
 
             <p className="text-small mt-2 max-w-2xl text-slate-600">
               {rich($t("ArVrHero__t5", "We create immersive AR/VR experiences that connect imagination with real-world impact."))}</p>
@@ -268,7 +264,7 @@ export default function ArVrHero() {
                 href={$t("ArVrHero__t6", "#contact-form")}
                 className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-2.5 rounded-full bg-[#5b43e8] hover:bg-[#4a35cc] text-white font-semibold text-sm shadow-[0_8px_20px_-4px_rgba(91,67,232,0.45)] transition-colors duration-200"
               >
-                <span>{$t("ArVrHero__t7", "Explore Our Work")}</span>
+                <span>{html($t("ArVrHero__t7", "Explore Our Work"))}</span>
                 <span aria-hidden>→</span>
               </Link>
               <Link
@@ -276,7 +272,7 @@ export default function ArVrHero() {
                 className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-2.5 rounded-full text-[#0f1535] hover:text-[#5b43e8] font-semibold text-sm transition-colors duration-200"
               >
                 <span aria-hidden className="text-[#5b43e8]">▶</span>
-                <span>{$t("ArVrHero__t9", "Watch Showreel")}</span>
+                <span>{html($t("ArVrHero__t9", "Watch Showreel"))}</span>
               </Link>
             </div>
           </Container>

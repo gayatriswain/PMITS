@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -179,7 +179,7 @@ function ResultCard({ onShown }: { onShown: () => void }) {
         </div>
 
         <h3 className="font-serif font-semibold leading-tight mb-[1.8cqw]" style={{ fontSize: `${base * 2.8}cqw`, color: "#2b36b8" }}>
-          {$t("SeoHero__t4", "ProManage – Digital Growth Partner")}</h3>
+          {html($t("SeoHero__t4", "ProManage – Digital Growth Partner"))}</h3>
         <p className="text-slate-700 leading-relaxed mb-[2.6cqw] max-w-[60cqw]" style={{ fontSize: `${base * 1.4}cqw` }}>
           {rich($t("SeoHero__t5", "Helping businesses rank higher, attract the right audience, and grow consistently with proven SEO strategies."))}</p>
 
@@ -217,9 +217,9 @@ function ResultCard({ onShown }: { onShown: () => void }) {
               </motion.svg>
             ))}
           </span>
-          <span>{$t("SeoHero__t6", "300+ reviews")}</span>
+          <span>{html($t("SeoHero__t6", "300+ reviews"))}</span>
           <span className="w-px h-[2cqw] bg-slate-300" />
-          <span>{$t("SeoHero__t7", "Trusted by 1000+ Clients")}</span>
+          <span>{html($t("SeoHero__t7", "Trusted by 1000+ Clients"))}</span>
         </div>
       </div>
     </motion.div>
@@ -455,7 +455,7 @@ export default function SeoHero() {
         <motion.div variants={container} initial="hidden" animate="show" className="relative z-10 max-w-xl lg:-translate-y-10">
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
             <span className="text-[11px] lg:text-xs font-bold tracking-[0.15em] uppercase" style={{ color: ORANGE }}>
-              {$t("SeoHero__t10", "Premium SEO Services")}</span>
+              {html($t("SeoHero__t10", "Premium SEO Services"))}</span>
             <span className="flex items-center gap-1" aria-hidden>
               <span className="w-10 h-px" style={{ backgroundColor: ORANGE }} />
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: ORANGE }} />
@@ -463,9 +463,9 @@ export default function SeoHero() {
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="text-h1 font-serif font-bold tracking-tight mb-6">
-            <span className="block" style={{ color: NAVY }}>{$t("SeoHero__t11", "Others Search.")}</span>
+            <span className="block" style={{ color: NAVY }}>{html($t("SeoHero__t11", "Others Search."))}</span>
             <span className="block" style={{ color: DEEP_TEAL }}>
-              {$t("SeoHero__t12", "You Stay On Top")}<motion.span
+              {html($t("SeoHero__t12", "You Stay On Top"))}<motion.span
                 className="inline-block"
                 style={{ color: ORANGE }}
                 animate={{ y: [0, -6, 0] }}
@@ -476,12 +476,7 @@ export default function SeoHero() {
             </span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="text-body text-slate-600 mb-9 max-w-lg">
-            {rich($t("SeoHero__t13", "We put your business at the top of search where it matters—driving more"))}{" "}
-            <span className="font-bold" style={{ color: DEEP_TEAL }}>visibility</span>{rich($t("SeoHero__t14", ", more"))}{" "}
-            <span className="font-bold" style={{ color: DEEP_TEAL }}>traffic</span>{rich($t("SeoHero__t15", ", and more"))}{" "}
-            <span className="font-bold" style={{ color: DEEP_TEAL }}>revenue</span>.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body text-slate-600 mb-9 max-w-lg">{rich($t("SeoHero__t13m", "We put your business at the top of search where it matters—driving more <span class=\"font-bold text-[#0f5c56]\">visibility</span>, more <span class=\"font-bold text-[#0f5c56]\">traffic</span>, and more <span class=\"font-bold text-[#0f5c56]\">revenue</span>."))}</motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-10">
             <Link
@@ -516,9 +511,7 @@ export default function SeoHero() {
                   <path d="M8.5 12 L11 14.5 L15.5 9.5" />
                 </svg>
               </span>
-              <p className="text-caption font-semibold" style={{ color: NAVY }}>
-                {rich($t("SeoHero__t20", "Trusted by"))}<br />
-                {rich($t("SeoHero__t21", "300+ Businesses"))}</p>
+              <p className="text-caption font-semibold" style={{ color: NAVY }}>{rich($t("SeoHero__t20m", "Trusted by<br>300+ Businesses"))}</p>
             </div>
 
             <Divider />
@@ -556,9 +549,7 @@ export default function SeoHero() {
                   <path d="M8.5 12 L11 14.5 L15.5 9.5" />
                 </svg>
               </span>
-              <p className="text-caption font-semibold" style={{ color: NAVY }}>
-                {rich($t("SeoHero__t24", "Proven Strategies."))}<br />
-                {rich($t("SeoHero__t25", "Real Results."))}</p>
+              <p className="text-caption font-semibold" style={{ color: NAVY }}>{rich($t("SeoHero__t24m", "Proven Strategies.<br>Real Results."))}</p>
             </div>
           </motion.div>
         </motion.div>

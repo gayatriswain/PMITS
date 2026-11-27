@@ -6,7 +6,7 @@ import { BarChart3, Brain, Clock3, Crown, Globe2, Search, TrendingUp } from "luc
 import CountUp from "../shared/CountUp";
 import { AI, BrandIcon, ClientWordmarks, CtaButton, Inner, Panel, Pill, Sparkle, ease, fadeUp, heading, oval, type Brand } from "../shared/AiSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const AGENTS__cms: { brand: Brand; title: string; sub: string; pos: string; delay: number }[] = [
   { brand: "chatgpt", title: "ChatGPT", sub: "Content Strategy & Optimization", pos: "left-[6%] top-[11%]", delay: 0.35 },
@@ -73,16 +73,14 @@ export default function AiSeoHero() {
               transition={{ duration: 0.8, ease }}
               className={`text-h1 ${heading.className} mt-6 font-bold tracking-[-0.025em] text-[#0b1b33]`}
             >
-              {$t("AiSeoHero__t2", "Your ")}<span className="bg-gradient-to-r from-[#0f766e] to-[#14a39a] bg-clip-text text-transparent">{$t("AiSeoHero__t3", "AI SEO")}</span>
+              {$t("AiSeoHero__t2", "Your ")}<span className="bg-gradient-to-r from-[#0f766e] to-[#14a39a] bg-clip-text text-transparent">{html($t("AiSeoHero__t3", "AI SEO"))}</span>
               <br /> {$t("AiSeoHero__t4", "Agent. Always")}<br /> {$t("AiSeoHero__t5", "Optimizing.")}</motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease }}
               className="text-body mx-auto mt-6 max-w-[460px] text-slate-600 lg:mx-0"
-            >
-              {rich($t("AiSeoHero__t6", "Powered by multiple AI agents that work together to grow your visibility, rankings and revenue across"))}{" "}
-              <span className="font-semibold text-[#0f766e]">{$t("AiSeoHero__t7", "every search")}</span> {rich($t("AiSeoHero__t8", "experience."))}</motion.p>
+            >{rich($t("AiSeoHero__t6m", "Powered by multiple AI agents that work together to grow your visibility, rankings and revenue across <span class=\"font-semibold text-[#0f766e]\">every search</span> experience."))}</motion.p>
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -136,8 +134,8 @@ export default function AiSeoHero() {
                   aria-hidden
                   className={`${heading.className} absolute left-[28.7%] top-[66%] flex w-[22%] flex-col items-center text-center text-[clamp(9px,1.25vw,24px)] font-bold leading-[1.05] tracking-wide text-[#8ff3ff] [text-shadow:0_0_12px_rgba(56,232,255,.9)]`}
                 >
-                  <span className="ai-anim" style={{ animation: "aiBlink 3s ease-in-out infinite" }}>{$t("AiSeoHero__t15", "AI SEO")}</span>
-                  <span className="text-[0.82em]">{$t("AiSeoHero__t16", "AGENT")}</span>
+                  <span className="ai-anim" style={{ animation: "aiBlink 3s ease-in-out infinite" }}>{html($t("AiSeoHero__t15", "AI SEO"))}</span>
+                  <span className="text-[0.82em]">{html($t("AiSeoHero__t16", "AGENT"))}</span>
                 </span>
               </div>
               {/* speech bubble */}
@@ -148,8 +146,8 @@ export default function AiSeoHero() {
                 className="absolute left-[48%] top-0 -translate-x-1/2"
               >
                 <div className="ai-float relative whitespace-nowrap rounded-2xl bg-white px-4 py-2.5 text-center text-[11px] font-medium leading-snug text-slate-700 shadow-[0_16px_36px_-20px_rgba(15,40,80,.4)] sm:text-[13px] 2xl:px-6 2xl:py-3.5 2xl:text-[15px]">
-                  {$t("AiSeoHero__t17", "Analyzing. Optimizing.")}<br />
-                  {$t("AiSeoHero__t18", "Growing your business ")}<span className="font-bold text-[#0f766e]">{$t("AiSeoHero__t19", "24/7")}</span>
+                  {html($t("AiSeoHero__t17", "Analyzing. Optimizing."))}<br />
+                  {html($t("AiSeoHero__t18", "Growing your business "))}<span className="font-bold text-[#0f766e]">{html($t("AiSeoHero__t19", "24/7"))}</span>
                   <span className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-white" />
                 </div>
                 <span className="mx-auto mt-2 block h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />

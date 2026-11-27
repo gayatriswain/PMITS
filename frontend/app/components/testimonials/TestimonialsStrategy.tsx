@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const INK = "#0d1b33";
@@ -256,11 +256,8 @@ function StrategyForm() {
         <span className="flex h-6 w-6 items-center justify-center rounded-full" style={{ backgroundColor: TEAL }}>
           <PlaneIcon size={13} />
         </span>
-        {$t("TestimonialsStrategy__t1", "Take the next step")}</span>
-      <h3 className="text-h4 mt-4 font-bold" style={{ color: INK }}>
-        {$t("TestimonialsStrategy__t2", "Book Your ")}<span className="italic" style={{ color: TEAL }}>{$t("TestimonialsStrategy__t3", "Free")}</span>
-        <br />
-        {$t("TestimonialsStrategy__t4", "Strategy Session")}</h3>
+        {html($t("TestimonialsStrategy__t1", "Take the next step"))}</span>
+      <h3 className="text-h4 mt-4 font-bold" style={{ color: INK }}>{rich($t("TestimonialsStrategy__t2m", "Book Your <span class=\"italic text-[#0d9488]\">Free</span><br>Strategy Session"))}</h3>
       <p className="text-small mt-2 text-slate-500">{rich($t("TestimonialsStrategy__t5", "Tell us about your project and our experts will get back to you within 24 hours."))}</p>
 
       {status === "success" ? (
@@ -278,7 +275,7 @@ function StrategyForm() {
             {rich($t("TestimonialsStrategy__t6", "Thank you! Your request is in."))}</p>
           <p className="text-small max-w-sm text-slate-600">{rich($t("TestimonialsStrategy__t7", "Our team will reach out within 24 hours to schedule your free strategy session."))}</p>
           <button type="button" onClick={() => setStatus("idle")} className="mt-1 text-[13px] font-semibold underline underline-offset-4" style={{ color: TEAL }}>
-            {$t("TestimonialsStrategy__t8", "Submit another request")}</button>
+            {html($t("TestimonialsStrategy__t8", "Submit another request"))}</button>
         </motion.div>
       ) : (
         <form id={FORM_ID} data-form-id={FORM_ID} onSubmit={handleSubmit} noValidate className="mt-6 flex flex-col gap-3">
@@ -374,7 +371,7 @@ function StrategyForm() {
             <PhoneIcon size={14} color={TEAL} />
             {rich($t("TestimonialsStrategy__t20", "Prefer to talk?"))}{" "}
             <a href={$t("TestimonialsStrategy__t21", "tel:+919999988888")} className="font-semibold underline underline-offset-2" style={{ color: TEAL }}>
-              {$t("TestimonialsStrategy__t22", "Schedule a Call")}</a>
+              {html($t("TestimonialsStrategy__t22", "Schedule a Call"))}</a>
           </p>
         </form>
       )}
@@ -419,12 +416,12 @@ export default function TestimonialsStrategy() {
                   className="inline-flex rounded-full bg-teal-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.1em]"
                   style={{ color: DEEP_TEAL }}
                 >
-                  {$t("TestimonialsStrategy__t23", "Let's build your next big thing")}</motion.span>
+                  {html($t("TestimonialsStrategy__t23", "Let's build your next big thing"))}</motion.span>
                 <motion.h2 variants={fadeUp} className="text-h2 mt-5 font-bold tracking-tight" style={{ color: INK }}>
                   {$t("TestimonialsStrategy__t24", "Let's Turn Your")}<br />
                   {$t("TestimonialsStrategy__t25", "Traffic Into")}<br />
                   <span className="relative inline-block" style={{ color: TEAL }}>
-                    {$t("TestimonialsStrategy__t26", "Real Growth")}<svg className="absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                    {html($t("TestimonialsStrategy__t26", "Real Growth"))}<svg className="absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                       <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={TEAL} strokeWidth="3" strokeLinecap="round" />
                     </svg>
                   </span>
@@ -492,7 +489,7 @@ export default function TestimonialsStrategy() {
                   <p className="text-small font-semibold" style={{ color: INK }}>
                     {rich($t("TestimonialsStrategy__t30", "Businesses that work with us see real results."))}</p>
                   <a href={$t("TestimonialsStrategy__t31", "#client-stories")} className="mt-1.5 inline-flex items-center gap-1 text-[12px] font-semibold" style={{ color: TEAL }}>
-                    {$t("TestimonialsStrategy__t32", "— And our results speak for themselves.")}</a>
+                    {html($t("TestimonialsStrategy__t32", "— And our results speak for themselves."))}</a>
                 </div>
               </div>
               {NUMBERS.map((n, i) => (

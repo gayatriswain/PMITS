@@ -7,7 +7,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const oswald = { className: "font-heading" }; // global font from app/layout.tsx
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
@@ -480,29 +480,26 @@ function Partners() {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 items-center rounded-2xl border border-white/70 bg-white/85 px-4 py-3 shadow-[0_20px_45px_-25px_rgba(15,40,60,0.45)] backdrop-blur-md">
       <div className="flex items-center justify-center gap-1.5 px-3 py-2">
-        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#95bf47] text-[13px] font-extrabold text-white">{$t("WhoWeAreHero__t1", "S")}</span>
+        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#95bf47] text-[13px] font-extrabold text-white">{html($t("WhoWeAreHero__t1", "S"))}</span>
         <span className="text-[15px] font-bold tracking-tight text-slate-800">
           shopify<span className="font-normal italic text-slate-500">partners</span>
         </span>
       </div>
       <div className="flex items-center justify-center gap-1.5 px-3 py-2 sm:border-l sm:border-slate-200">
-        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#34313f] text-[13px] font-extrabold text-white">{$t("WhoWeAreHero__t2", "B")}</span>
-        <span className="leading-none">
-          <span className="block text-[11.5px] font-bold tracking-wide text-slate-800">{$t("WhoWeAreHero__t3", "BIGCOMMERCE")}</span>
-          <span className="block text-[9.5px] text-slate-500">{$t("WhoWeAreHero__t4", "Partner")}</span>
-        </span>
+        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#34313f] text-[13px] font-extrabold text-white">{html($t("WhoWeAreHero__t2", "B"))}</span>
+        <span className="leading-none">{rich($t("WhoWeAreHero__t3m", "<span class=\"block text-[11.5px] font-bold tracking-wide text-slate-800\">BIGCOMMERCE</span><span class=\"block text-[9.5px] text-slate-500\">Partner</span>"))}</span>
       </div>
       <div className="flex items-center justify-center px-3 py-2 border-t border-slate-200 sm:border-t-0 sm:border-l">
         <span className="leading-none text-center">
           <span className="block text-[15px] font-semibold">
-            <span className="text-[#4285f4]">{$t("WhoWeAreHero__t5", "G")}</span>
+            <span className="text-[#4285f4]">{html($t("WhoWeAreHero__t5", "G"))}</span>
             <span className="text-[#ea4335]">o</span>
             <span className="text-[#fbbc05]">o</span>
             <span className="text-[#4285f4]">g</span>
             <span className="text-[#34a853]">l</span>
             <span className="text-[#ea4335]">e</span>
           </span>
-          <span className="block text-[14px] text-slate-600">{$t("WhoWeAreHero__t6", "Partner")}</span>
+          <span className="block text-[14px] text-slate-600">{html($t("WhoWeAreHero__t6", "Partner"))}</span>
         </span>
       </div>
       <div className="flex items-center justify-center gap-1.5 px-3 py-2 border-t border-l border-slate-200 sm:border-t-0">
@@ -510,7 +507,7 @@ function Partners() {
           <span className="-rotate-45 text-[12px] font-extrabold text-white">e</span>
         </span>
         <span className="text-[15px] font-semibold text-slate-700">
-          <span className="text-[#16a34a]">eLearning</span>{$t("WhoWeAreHero__t7", ".com")}</span>
+          <span className="text-[#16a34a]">eLearning</span>{html($t("WhoWeAreHero__t7", ".com"))}</span>
       </div>
     </div>
   );
@@ -556,9 +553,9 @@ export default function WhoWeAreHero() {
               variants={fadeUp}
               className={`text-h1 ${oswald.className} mt-3 font-bold uppercase tracking-tight`}
             >
-              <span className="block" style={{ color: NAVY }}>{$t("WhoWeAreHero__t11", "Solutions Today.")}</span>
+              <span className="block" style={{ color: NAVY }}>{html($t("WhoWeAreHero__t11", "Solutions Today."))}</span>
               <span className="relative inline-block bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL} 55%, #14b8a6)` }}>
-                {$t("WhoWeAreHero__t12", "Success Tomorrow.")}<svg className="pointer-events-none absolute -right-9 -top-5 hidden sm:block" width="40" height="34" viewBox="0 0 40 34" fill="none" aria-hidden>
+                {html($t("WhoWeAreHero__t12", "Success Tomorrow."))}<svg className="pointer-events-none absolute -right-9 -top-5 hidden sm:block" width="40" height="34" viewBox="0 0 40 34" fill="none" aria-hidden>
                   <path d="M4 30C14 26 26 16 34 6" stroke={TEAL} strokeWidth="2.4" strokeLinecap="round" />
                   <path d="M26 5l9-1-1 9" stroke={TEAL} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -571,14 +568,8 @@ export default function WhoWeAreHero() {
               </svg>
             </motion.p>
 
-            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[520px] text-slate-600">
-              {rich($t("WhoWeAreHero__t14", "Founded on a commitment to empowering businesses through advanced IT services, ProManage IT Solution has grown from a dedicated team of tech professionals into a global agency serving clients across"))}{" "}
-              <span className="font-semibold" style={{ color: DEEP_TEAL }}>{$t("WhoWeAreHero__t15", "75+ global cities.")}</span>
-            </motion.p>
-            <motion.p variants={fadeUp} className="text-body mt-4 max-w-[520px] text-slate-600">
-              {rich($t("WhoWeAreHero__t16", "We combine strategic insight, strong methodology, and a passion for innovation to help organizations"))}{" "}
-              <span className="font-semibold" style={{ color: DEEP_TEAL }}>{$t("WhoWeAreHero__t17", "thrive in a fast-changing digital landscape.")}</span>
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[520px] text-slate-600">{rich($t("WhoWeAreHero__t14m", "Founded on a commitment to empowering businesses through advanced IT services, ProManage IT Solution has grown from a dedicated team of tech professionals into a global agency serving clients across <span class=\"font-semibold text-[#0f5c56]\">75+ global cities.</span>"))}</motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-4 max-w-[520px] text-slate-600">{rich($t("WhoWeAreHero__t16m", "We combine strategic insight, strong methodology, and a passion for innovation to help organizations <span class=\"font-semibold text-[#0f5c56]\">thrive in a fast-changing digital landscape.</span>"))}</motion.p>
 
             <motion.ul variants={fadeUp} className="mt-8 grid max-w-[520px] grid-cols-2 sm:grid-cols-4 gap-y-6">
               {HIGHLIGHTS.map((h, i) => (
@@ -607,7 +598,7 @@ export default function WhoWeAreHero() {
                   <ArrowIcon />
                 </span>
                 <span className="relative text-[15px] font-bold uppercase tracking-[0.06em]" style={{ color: NAVY }}>
-                  {$t("WhoWeAreHero__t19", "Get My Free Proposal")}<span className="absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-75 rounded-full transition-transform group-hover:scale-x-100" style={{ backgroundColor: TEAL }} />
+                  {html($t("WhoWeAreHero__t19", "Get My Free Proposal"))}<span className="absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-75 rounded-full transition-transform group-hover:scale-x-100" style={{ backgroundColor: TEAL }} />
                 </span>
               </Link>
             </motion.div>
@@ -625,10 +616,7 @@ export default function WhoWeAreHero() {
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
                 <QuoteIcon />
               </span>
-              <p className="text-body mt-3">
-                {rich($t("WhoWeAreHero__t20", "We don't just build solutions, we build"))}{" "}
-                <span className="font-bold">{$t("WhoWeAreHero__t21", "digital success stories.")}</span>
-              </p>
+              <p className="text-body mt-3">{rich($t("WhoWeAreHero__t20m", "We don't just build solutions, we build <span class=\"font-bold\">digital success stories.</span>"))}</p>
               <svg className="mt-2" width="70" height="8" viewBox="0 0 70 8" fill="none" aria-hidden>
                 <path d="M2 6C24 2 46 2 68 4" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" opacity="0.8" />
               </svg>

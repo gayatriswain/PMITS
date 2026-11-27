@@ -3,7 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -72,14 +72,14 @@ const ClutchMark = () => {
   const $t = useCmsText();
   return ((
   <span className="flex h-full w-full items-center justify-center rounded-full bg-[#17313b] text-[15px] font-bold tracking-tight text-white">
-    {$t("TestimonialsPlatforms__t1", "Clutch")}</span>
+    {html($t("TestimonialsPlatforms__t1", "Clutch"))}</span>
 ));
 };
 const GoodFirmsMark = () => {
   const $t = useCmsText();
   return ((
   <span className="flex h-full w-full items-center justify-center rounded-full bg-white">
-    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d6af2] text-[22px] font-black leading-none text-white">{$t("TestimonialsPlatforms__t2", "F")}</span>
+    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d6af2] text-[22px] font-black leading-none text-white">{html($t("TestimonialsPlatforms__t2", "F"))}</span>
   </span>
 ));
 };
@@ -87,7 +87,7 @@ const UpworkMark = () => {
   const $t = useCmsText();
   return ((
   <span className="flex h-full w-full items-center justify-center rounded-full bg-white text-[24px] font-bold tracking-tight text-[#14a800]">
-    {$t("TestimonialsPlatforms__t3", "Up")}</span>
+    {html($t("TestimonialsPlatforms__t3", "Up"))}</span>
 ));
 };
 const TrustpilotMark = () => (
@@ -155,7 +155,7 @@ function PlatformCard({ p, i }: { p: Platform; i: number }) {
           className="mt-5 flex items-center justify-between rounded-lg border border-slate-200 px-3.5 py-2.5 text-[12.5px] font-medium transition-colors hover:bg-slate-50"
           style={{ color: p.accent === "#17313b" ? INK : p.accent }}
         >
-          {$t("TestimonialsPlatforms__t4", "View on ")}{p.name}
+          {html($t("TestimonialsPlatforms__t4", "View on "))}{p.name}
           <ExternalIcon size={14} color={p.accent === "#17313b" ? INK : p.accent} />
         </a>
       </div>
@@ -199,16 +199,13 @@ export default function TestimonialsPlatforms() {
               {rich($t("TestimonialsPlatforms__t5", "Loved Across Platforms"))}</motion.p>
             <motion.h2 variants={fadeUp} className="text-h2 mt-4 font-bold tracking-tight">
               <span className="block" style={{ color: INK }}>
-                {$t("TestimonialsPlatforms__t6", "Reviews That")}</span>
-              <span style={{ color: TEAL }}>{$t("TestimonialsPlatforms__t7", "Speak for Us")}</span>
+                {html($t("TestimonialsPlatforms__t6", "Reviews That"))}</span>
+              <span style={{ color: TEAL }}>{html($t("TestimonialsPlatforms__t7", "Speak for Us"))}</span>
             </motion.h2>
             <motion.svg variants={fadeUp} className="mt-2" width="180" height="12" viewBox="0 0 180 12" fill="none" aria-hidden>
               <path d="M3 9C60 3 120 2 177 5" stroke={TEAL} strokeWidth="2.5" strokeLinecap="round" />
             </motion.svg>
-            <motion.p variants={fadeUp} className="text-body mt-5 text-slate-600">
-              {rich($t("TestimonialsPlatforms__t8", "Real feedback from real platforms."))}<br />
-              {rich($t("TestimonialsPlatforms__t9", "See why businesses trust and recommend "))}<span className="font-semibold" style={{ color: TEAL }}>{$t("TestimonialsPlatforms__t10", "ProManage IT Solutions.")}</span>
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-5 text-slate-600">{rich($t("TestimonialsPlatforms__t8m", "Real feedback from real platforms.<br>See why businesses trust and recommend <span class=\"font-semibold text-[#0e7490]\">ProManage IT Solutions.</span>"))}</motion.p>
 
             <Bubble className="left-[10%] top-[calc(100%-80px)] hidden lg:block" tilt="perspective(700px) rotateY(18deg) rotateZ(-8deg)" delay={0.6}>
               <span

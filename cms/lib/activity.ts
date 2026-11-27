@@ -4,7 +4,8 @@ import { ActivityLog } from "@/models";
 import type { SessionUser } from "./auth";
 
 export type Change = { field: string; before?: string; after?: string };
-export type ActivityExtra = { changes?: Change[]; path?: string };
+/** merge: fold into this user's last identical entry from the last 30 minutes (visual-editor autosaves). */
+export type ActivityExtra = { changes?: Change[]; path?: string; merge?: boolean };
 
 /** "Chrome on Windows", "Safari on iPhone"… (good enough for an audit log; no external library). */
 export function deviceFromUA(ua: string) {
@@ -48,6 +49,20 @@ export function logActivity(user: SessionUser | null, action: string, entity: st
   }
   void (async () => {
     const meta = requestMeta(h ? await h.catch(() => null) : null);
+    if (extra.merge && user) {
+      const last = await ActivityLog.findOne({ user: user.id, action, entity, entityId, createdAt: { $gte: new Date(Date.now() - 30 * 60_000) } })
+        .sort({ createdAt: -1 })
+        .lean<{ _id: unknown; changes?: Change[] }>();
+      if (last) {
+        // keep each field's first "before" and its latest "after"
+        const byField = new Map((last.changes ?? []).map((c) => [c.field, { field: c.field, before: c.before, after: c.after }]));
+        for (const c of extra.changes ?? []) byField.set(c.field, { field: c.field, before: byField.get(c.field)?.before ?? c.before, after: c.after });
+        const changes = [...byField.values()].filter((c) => (c.before ?? "") !== (c.after ?? "")).slice(0, 40);
+        // raw driver: Mongoose treats createdAt as immutable, but the entry should move to "now"
+        await ActivityLog.collection.updateOne({ _id: last._id as never }, { $set: { changes, summary: summary?.slice(0, 500), createdAt: new Date(), ...meta } });
+        return;
+      }
+    }
     await ActivityLog.create({
       user: user?.id,
       userName: user?.name ?? "system",

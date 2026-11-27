@@ -67,10 +67,7 @@ export default function WhyChooseUsValue() {
             <span className="w-8 h-px bg-current opacity-50"></span>
             {rich($t("WhyChooseUsValue__t1", "WHAT YOU GET WITH PROMANAGE"))}<span className="w-8 h-px bg-current opacity-50"></span>
           </p>
-          <h2 className="text-h2 font-heading font-bold leading-[1.1] tracking-[-0.025em] mb-5" style={{ color: NAVY }}>
-            {$t("WhyChooseUsValue__t2", "More Than Solutions.")}<br />
-            <span style={{ color: TEAL }}>{$t("WhyChooseUsValue__t3", "Real Business Value.")}</span>
-          </h2>
+          <h2 className="text-h2 font-heading font-bold leading-[1.1] tracking-[-0.025em] mb-5" style={{ color: NAVY }}>{rich($t("WhyChooseUsValue__t2m", "More Than Solutions.<br><span class=\"text-[#0d9488]\">Real Business Value.</span>"))}</h2>
           <p className="text-body text-slate-600">
             {rich($t("WhyChooseUsValue__t4", "We don't just deliver. We create impact that lasts."))}</p>
         </div>
@@ -163,10 +160,7 @@ export default function WhyChooseUsValue() {
               <Rocket size={32} color="#bae6fd" />
             </div>
             <div>
-              <h3 className="text-h5 font-bold" style={{ color: NAVY }}>
-                {$t("WhyChooseUsValue__t5", "Ready to unlock ")}<br />
-                <span style={{ color: TEAL }}>{$t("WhyChooseUsValue__t6", "real business growth?")}</span>
-              </h3>
+              <h3 className="text-h5 font-bold" style={{ color: NAVY }}>{rich($t("WhyChooseUsValue__t5m", "Ready to unlock <br><span class=\"text-[#0d9488]\">real business growth?</span>"))}</h3>
             </div>
           </div>
 
@@ -174,10 +168,7 @@ export default function WhyChooseUsValue() {
           <div className="hidden md:block w-px h-16 bg-slate-200 mx-4 shrink-0"></div>
 
           <div className="relative z-10 w-full xl:w-auto text-center xl:text-left">
-            <p className="text-small text-slate-600 font-medium">
-              {rich($t("WhyChooseUsValue__t7", "Let's build something great together. "))}<br className="hidden sm:block" />
-              {rich($t("WhyChooseUsValue__t8", "Your goals. Our expertise. "))}<span className="font-bold" style={{ color: TEAL }}>{$t("WhyChooseUsValue__t9", "Real results.")}</span>
-            </p>
+            <p className="text-small text-slate-600 font-medium">{rich($t("WhyChooseUsValue__t7m", "Let's build something great together. <br class=\"hidden sm:block\">Your goals. Our expertise. <span class=\"font-bold text-[#0d9488]\">Real results.</span>"))}</p>
           </div>
 
           {/* Right: Buttons */}

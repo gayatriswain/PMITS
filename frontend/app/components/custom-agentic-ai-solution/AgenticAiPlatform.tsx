@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ICONS (24px stroke paths)
@@ -214,8 +214,8 @@ function PlatformHub() {
         />
       </motion.div>
 
-      <div className="relative mt-3 text-[16px] font-black leading-tight text-[#0b1f4a]">{$t("AgenticAiPlatform__t3", "One platform.")}</div>
-      <div className="relative text-[16px] font-black leading-tight bg-gradient-to-r from-[#0f8a83] to-[#1b6fa8] bg-clip-text text-transparent">{$t("AgenticAiPlatform__t4", "Infinite impact.")}</div>
+      <div className="relative mt-3 text-[16px] font-black leading-tight text-[#0b1f4a]">{html($t("AgenticAiPlatform__t3", "One platform."))}</div>
+      <div className="relative text-[16px] font-black leading-tight bg-gradient-to-r from-[#0f8a83] to-[#1b6fa8] bg-clip-text text-transparent">{html($t("AgenticAiPlatform__t4", "Infinite impact."))}</div>
     </div>
   );
 }
@@ -256,13 +256,9 @@ export default function AgenticAiPlatform() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-sky-200 px-3 py-1 text-[9.5px] font-extrabold tracking-[0.14em] text-[#0f6f78] uppercase shadow-sm">
-            <span>#</span> {$t("AgenticAiPlatform__t5", "Custom Agentic AI Solutions")}</span>
-          <h2 className="text-h2 mt-4 font-black tracking-tight text-[#0b1f4a]">
-            {$t("AgenticAiPlatform__t6", "Intelligent Agents.")}{" "}
-            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1b6fa8] bg-clip-text text-transparent">{$t("AgenticAiPlatform__t7", "Real Results.")}</span>
-          </h2>
-          <p className="text-body mt-3 text-slate-600">
-            {rich($t("AgenticAiPlatform__t8", "Custom-built AI agents that automate work, optimize operations,"))}<br className="hidden sm:inline" /> {rich($t("AgenticAiPlatform__t9", "and deliver measurable impact across your business."))}</p>
+            <span>#</span> {html($t("AgenticAiPlatform__t5", "Custom Agentic AI Solutions"))}</span>
+          <h2 className="text-h2 mt-4 font-black tracking-tight text-[#0b1f4a]">{rich($t("AgenticAiPlatform__t6m", "Intelligent Agents. <span class=\"bg-gradient-to-r from-[#0f8a83] to-[#1b6fa8] bg-clip-text text-transparent\">Real Results.</span>"))}</h2>
+          <p className="text-body mt-3 text-slate-600">{rich($t("AgenticAiPlatform__t8m", "Custom-built AI agents that automate work, optimize operations,<br class=\"hidden sm:inline\"> and deliver measurable impact across your business."))}</p>
         </motion.div>
 
         {/* Benefits row */}
@@ -298,10 +294,7 @@ export default function AgenticAiPlatform() {
           {/* B2B */}
           <div>
             <Tag tone="teal">{$t("AgenticAiPlatform__t10", "Built for B2B")}</Tag>
-            <h3 className="mt-3 text-[17px] font-black leading-tight text-[#0b1f4a]">
-              {$t("AgenticAiPlatform__t11", "Power Operations.")}<br />
-              <span className="text-[#0f8a83]">{$t("AgenticAiPlatform__t12", "Scale Smarter.")}</span>
-            </h3>
+            <h3 className="mt-3 text-[17px] font-black leading-tight text-[#0b1f4a]">{rich($t("AgenticAiPlatform__t11m", "Power Operations.<br><span class=\"text-[#0f8a83]\">Scale Smarter.</span>"))}</h3>
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3.5">
               {b2b.map((f) => (
                 <FeatureItem key={f.label} icon={f.icon} label={f.label} />
@@ -314,10 +307,7 @@ export default function AgenticAiPlatform() {
           {/* B2C */}
           <div className="lg:pl-2">
             <Tag tone="purple">{$t("AgenticAiPlatform__t13", "Built for B2C")}</Tag>
-            <h3 className="mt-3 text-[17px] font-black leading-tight text-[#0b1f4a]">
-              {$t("AgenticAiPlatform__t14", "Delight Customers.")}<br />
-              <span className="text-[#7c4dff]">{$t("AgenticAiPlatform__t15", "Build Loyalty.")}</span>
-            </h3>
+            <h3 className="mt-3 text-[17px] font-black leading-tight text-[#0b1f4a]">{rich($t("AgenticAiPlatform__t14m", "Delight Customers.<br><span class=\"text-[#7c4dff]\">Build Loyalty.</span>"))}</h3>
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3.5">
               {b2c.map((f) => (
                 <div key={f.label} className="flex items-center gap-2.5 text-[11.5px] leading-snug font-medium text-slate-700">
@@ -368,14 +358,14 @@ export default function AgenticAiPlatform() {
             >
               {$t("AgenticAiPlatform__t18", "Book a Free Consultation")}<Icon d={I.arrow} className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
-            <span className="mt-2 text-[10px] text-white/70">{$t("AgenticAiPlatform__t19", "No commitment. Just possibilities.")}</span>
+            <span className="mt-2 text-[10px] text-white/70">{html($t("AgenticAiPlatform__t19", "No commitment. Just possibilities."))}</span>
           </div>
         </motion.div>
 
         {/* Trusted by */}
         <div className="mt-8 text-center">
           <div className="text-[10.5px] font-extrabold tracking-[0.16em] text-[#0f4a6a] uppercase">
-            {$t("AgenticAiPlatform__t20", "Trusted by forward-thinking businesses worldwide")}</div>
+            {html($t("AgenticAiPlatform__t20", "Trusted by forward-thinking businesses worldwide"))}</div>
           <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-5 items-center lg:divide-x divide-slate-200">
             {logos.map((l) => (
               <div key={l.name} className="flex items-center justify-center gap-2 text-[#0b2a4a] opacity-90">

@@ -7,7 +7,7 @@ import { animate, motion, useMotionValue, useReducedMotion, useSpring, useTransf
 import Container from "../shared/Container";
 import { ArrowRight, BC, Eyebrow, Icon, QUOTE_HREF, ease, heading, type IconName } from "./BigCommerceShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* Stage geometry (1560×590) taken from the design mock. Card rows are centred on these y values. */
 const SW = 1560, SH = 590;
@@ -28,7 +28,7 @@ function MiniStorefront() {
       <div className="mb-1 flex gap-1">{["bg-rose-400", "bg-amber-400", "bg-emerald-400"].map((c) => <span key={c} className={`h-1 w-1 rounded-full ${c}`} />)}</div>
       <div className="flex h-[58px] items-center gap-1 rounded bg-gradient-to-r from-slate-50 to-sky-50 px-1.5">
         <div className="flex-1">
-          <p className="text-[8px] font-bold leading-tight text-[#0b1a4a]">{rich($t("BigCommerceHero__t1", "Summer"))}<br />{rich($t("BigCommerceHero__t2", "Collection"))}</p>
+          <p className="text-[8px] font-bold leading-tight text-[#0b1a4a]">{rich($t("BigCommerceHero__t1m", "Summer<br>Collection"))}</p>
           <span className="mt-1 block h-2 w-8 rounded-sm bg-[#0b1a4a]" />
         </div>
         <div className="h-[50px] w-[34px] rounded-t-full bg-gradient-to-b from-amber-200 via-[#0d8f9a] to-[#0b5f6a]" />
@@ -66,7 +66,7 @@ function MiniPay() {
     <div className="w-[124px] rounded-lg border border-slate-100 bg-white p-2 shadow-sm">
       <p className="text-[7px] text-slate-400">{rich($t("BigCommerceHero__t5", "Credit Card"))}</p>
       <p className="mt-1 rounded border border-slate-100 px-1 py-0.5 text-[8px] tracking-wider text-slate-600">{rich($t("BigCommerceHero__t6", "•••• •••• •••• 4242"))}</p>
-      <span className="mt-1.5 block rounded bg-[#0d8f9a] py-1 text-center text-[8px] font-semibold text-white">{$t("BigCommerceHero__t7", "Pay Securely")}</span>
+      <span className="mt-1.5 block rounded bg-[#0d8f9a] py-1 text-center text-[8px] font-semibold text-white">{html($t("BigCommerceHero__t7", "Pay Securely"))}</span>
     </div>
   );
 }
@@ -90,7 +90,7 @@ function MiniTheme() {
     <div className="w-[120px] overflow-hidden rounded-lg border border-slate-100 bg-white shadow-sm">
       <div className="flex gap-1 p-1">{["bg-rose-400", "bg-amber-400", "bg-emerald-400"].map((c) => <span key={c} className={`h-1 w-1 rounded-full ${c}`} />)}</div>
       <div className="flex h-[54px] items-end bg-gradient-to-br from-slate-700 via-slate-500 to-slate-300 p-1.5">
-        <p className="text-[8px] font-bold leading-tight text-white">{rich($t("BigCommerceHero__t10", "NEW"))}<br />{rich($t("BigCommerceHero__t11", "ARRIVALS"))}</p>
+        <p className="text-[8px] font-bold leading-tight text-white">{rich($t("BigCommerceHero__t10m", "NEW<br>ARRIVALS"))}</p>
       </div>
     </div>
   );
@@ -127,9 +127,9 @@ function MiniGauge({ start }: { start: boolean }) {
       </svg>
       <span className="absolute inset-x-0 top-[34%] text-center">
         <span className={`${heading.className} text-xl font-bold text-[#0b1a4a]`}>{v}</span>
-        <span className="text-[9px] text-slate-500">{$t("BigCommerceHero__t12", "/100")}</span>
+        <span className="text-[9px] text-slate-500">{html($t("BigCommerceHero__t12", "/100"))}</span>
       </span>
-      <span className="absolute inset-x-0 bottom-0 text-center text-[8px] text-slate-400">{$t("BigCommerceHero__t13", "Site Speed")}</span>
+      <span className="absolute inset-x-0 bottom-0 text-center text-[8px] text-slate-400">{html($t("BigCommerceHero__t13", "Site Speed"))}</span>
     </div>
   );
 }
@@ -285,11 +285,7 @@ export default function BigCommerceHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6, ease }}
             className="text-body mt-5 text-slate-600"
-          >
-            {rich($t("BigCommerceHero__t37", "End-to-end BigCommerce development for stores that"))}<br className="hidden sm:block" />{" "}
-            <span className="font-semibold text-[#0d8f9a]">{$t("BigCommerceHero__t38", "grow bigger")}</span>, <span className="font-semibold text-[#0d8f9a]">{$t("BigCommerceHero__t39", "sell smarter")}</span>{rich($t("BigCommerceHero__t40", ", and"))}{" "}
-            <span className="font-semibold text-[#0d8f9a]">{$t("BigCommerceHero__t41", "scale faster")}</span>.
-          </motion.p>
+          >{rich($t("BigCommerceHero__t37m", "End-to-end BigCommerce development for stores that<br class=\"hidden sm:block\"> <span class=\"font-semibold text-[#0d8f9a]\">grow bigger</span>, <span class=\"font-semibold text-[#0d8f9a]\">sell smarter</span>, and <span class=\"font-semibold text-[#0d8f9a]\">scale faster</span>."))}</motion.p>
         </div>
 
         {/* Stage (xl): cards around the developer, dashed connectors into the glowing ring */}
@@ -369,8 +365,7 @@ export default function BigCommerceHero() {
               className="absolute inset-x-0 text-center"
               style={{ top: "80.5%" }}
             >
-              <p className={`${heading.className} text-[clamp(18px,3.2vw,38px)] font-bold leading-none tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]`}>
-                <span className="font-extrabold">{$t("BigCommerceHero__t43", "BIG")}</span>{rich($t("BigCommerceHero__t44", "COMMERCE"))}</p>
+              <p className={`${heading.className} text-[clamp(18px,3.2vw,38px)] font-bold leading-none tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]`}>{rich($t("BigCommerceHero__t43m", "<span class=\"font-extrabold\">BIG</span>COMMERCE"))}</p>
               <p className="mt-1 text-[clamp(7px,0.9vw,12px)] font-semibold tracking-[0.3em] text-white/90">{rich($t("BigCommerceHero__t45", "POWERING YOUR COMMERCE"))}</p>
             </motion.div>
             {!reduce && (

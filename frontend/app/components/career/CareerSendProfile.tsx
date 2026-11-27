@@ -26,7 +26,7 @@ import {
   FileText,
 } from "lucide-react";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 import { onApplyForJob, type JobOption } from "./careerJobs";
 
@@ -206,7 +206,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
             >
               <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.25em] text-[#008f9c] uppercase flex items-center gap-1.5">
                 <span className="text-amber-500/80 font-normal">· · ·</span>
-                {$t("CareerSendProfile__t1", "DON'T SEE YOUR ROLE?")}<span className="text-amber-500/80 font-normal">· · ·</span>
+                {html($t("CareerSendProfile__t1", "DON'T SEE YOUR ROLE?"))}<span className="text-amber-500/80 font-normal">· · ·</span>
               </span>
             </motion.div>
 
@@ -232,15 +232,13 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
               <h2
                 className="text-h2 font-extrabold tracking-tight"
                 style={{ color: INK }}
-              >
-                {$t("CareerSendProfile__t2", "Maybe we haven't")}<span className="block">{$t("CareerSendProfile__t3", "created it yet.")}</span>
-              </h2>
+              >{rich($t("CareerSendProfile__t2m", "Maybe we haven't<span class=\"block\">created it yet.</span>"))}</h2>
 
               <span
                 className={`${caveat.className} block text-4xl sm:text-5xl lg:text-[54px] font-bold leading-tight mt-1`}
                 style={{ color: DEEP_TEAL }}
               >
-                {$t("CareerSendProfile__t4", "But we're looking for you.")}</span>
+                {html($t("CareerSendProfile__t4", "But we're looking for you."))}</span>
             </motion.div>
 
             {/* Subtitle & Dashed Flying Arrow */}
@@ -251,10 +249,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative mt-4"
             >
-              <p className="text-body text-slate-600 max-w-[420px]">
-                {rich($t("CareerSendProfile__t5", "Great people build great companies."))}<br />
-                {rich($t("CareerSendProfile__t6", "Send us your details and let's"))}{" "}
-                <strong className="text-[#008f9c] font-bold">{$t("CareerSendProfile__t7", "create something amazing")}</strong> {rich($t("CareerSendProfile__t8", "together."))}</p>
+              <p className="text-body text-slate-600 max-w-[420px]">{rich($t("CareerSendProfile__t5m", "Great people build great companies.<br>Send us your details and let's <strong class=\"text-[#008f9c] font-bold\">create something amazing</strong> together."))}</p>
 
               {/* Dashed hand-drawn loop arrow pointing to the right form card */}
               <div className="absolute right-0 -bottom-8 hidden md:block pointer-events-none select-none">
@@ -337,7 +332,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                       {/* ProManage "P" Logo */}
                       <div className="relative z-20 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center mt-1">
                         <span className="text-[15px] font-black tracking-tighter text-[#008f9c]">
-                          {$t("CareerSendProfile__t9", "P")}</span>
+                          {html($t("CareerSendProfile__t9", "P"))}</span>
                       </div>
                     </div>
                   </div>
@@ -348,7 +343,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                   {/* Card Title with sparkle */}
                   <div className="relative">
                     <h3 className="text-[15px] font-bold text-[#0a1f2c] flex items-center gap-1.5">
-                      {$t("CareerSendProfile__t10", "Why send us your profile?")}<svg className="w-3.5 h-3.5 text-[#008f9c]" viewBox="0 0 16 16" fill="none">
+                      {html($t("CareerSendProfile__t10", "Why send us your profile?"))}<svg className="w-3.5 h-3.5 text-[#008f9c]" viewBox="0 0 16 16" fill="none">
                         <path d="M3 11L1 8M6 7L5 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                       </svg>
                     </h3>
@@ -362,7 +357,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     </div>
                     <div>
                       <h4 className="text-[13px] font-bold text-[#0a1f2c] leading-tight">
-                        {$t("CareerSendProfile__t11", "We're always growing")}</h4>
+                        {html($t("CareerSendProfile__t11", "We're always growing"))}</h4>
                       <p className="text-[11.5px] text-slate-500 leading-snug mt-0.5">
                         {rich($t("CareerSendProfile__t12", "New roles open up regularly."))}</p>
                     </div>
@@ -375,7 +370,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     </div>
                     <div>
                       <h4 className="text-[13px] font-bold text-[#0a1f2c] leading-tight">
-                        {$t("CareerSendProfile__t13", "The right match matters")}</h4>
+                        {html($t("CareerSendProfile__t13", "The right match matters"))}</h4>
                       <p className="text-[11.5px] text-slate-500 leading-snug mt-0.5">
                         {rich($t("CareerSendProfile__t14", "We'll reach out when the perfect opportunity comes along."))}</p>
                     </div>
@@ -388,7 +383,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     </div>
                     <div>
                       <h4 className="text-[13px] font-bold text-[#0a1f2c] leading-tight">
-                        {$t("CareerSendProfile__t15", "Your skills can inspire")}</h4>
+                        {html($t("CareerSendProfile__t15", "Your skills can inspire"))}</h4>
                       <p className="text-[11.5px] text-slate-500 leading-snug mt-0.5">
                         {rich($t("CareerSendProfile__t16", "You might be the missing piece we didn't know we needed."))}</p>
                     </div>
@@ -409,11 +404,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
               <p
                 className={`${caveat.className} text-[26px] sm:text-[30px] font-bold leading-tight`}
                 style={{ color: INK }}
-              >
-                {rich($t("CareerSendProfile__t17", "Your next big opportunity could"))}{" "}
-                <span className="text-[#008f9c] underline decoration-[#00a8b5] decoration-2 underline-offset-4">
-                  {$t("CareerSendProfile__t18", "start here!")}</span>
-              </p>
+              >{rich($t("CareerSendProfile__t17m", "Your next big opportunity could <span class=\"text-[#008f9c] underline decoration-[#00a8b5] decoration-2 underline-offset-4\">start here!</span>"))}</p>
             </motion.div>
           </div>
 
@@ -436,7 +427,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                 <div>
                   <div className="relative inline-block">
                     <h3 className="text-h5 font-extrabold tracking-tight text-[#0a1f2c]">
-                      {$t("CareerSendProfile__t19", "Send Us Your Profile")}</h3>
+                      {html($t("CareerSendProfile__t19", "Send Us Your Profile"))}</h3>
                     <svg
                       className="absolute -top-1.5 -right-5 w-4 h-4 text-[#008f9c]"
                       viewBox="0 0 16 16"
@@ -463,14 +454,14 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     <div className="w-16 h-16 rounded-full bg-teal-50 border-2 border-teal-200 text-[#008f9c] flex items-center justify-center shadow-lg mb-4">
                       <CheckCircle2 size={36} strokeWidth={2.4} />
                     </div>
-                    <h4 className="text-h5 font-bold text-[#0a1f2c]">{$t("CareerSendProfile__t21", "Profile Submitted!")}</h4>
+                    <h4 className="text-h5 font-bold text-[#0a1f2c]">{html($t("CareerSendProfile__t21", "Profile Submitted!"))}</h4>
                     <p className="text-small text-slate-600 mt-2 max-w-md">
                       {rich($t("CareerSendProfile__t22", "Thank you for sharing your profile. Our talent team will review your qualifications and reach out if there's a great match!"))}</p>
                     <button
                       onClick={handleReset}
                       className="mt-6 px-6 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-all"
                     >
-                      {$t("CareerSendProfile__t23", "Submit Another Profile")}</button>
+                      {html($t("CareerSendProfile__t23", "Submit Another Profile"))}</button>
                   </motion.div>
                 ) : (
                   <form key="form" onSubmit={handleSubmit} className="relative space-y-4 sm:space-y-4.5">
@@ -480,7 +471,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                          {$t("CareerSendProfile__t24", "Full Name")}</label>
+                          {html($t("CareerSendProfile__t24", "Full Name"))}</label>
                         <div className="relative">
                           <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
                             <User size={15} />
@@ -499,7 +490,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
 
                       <div>
                         <label className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                          {$t("CareerSendProfile__t26", "Email Address")}</label>
+                          {html($t("CareerSendProfile__t26", "Email Address"))}</label>
                         <div className="relative">
                           <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
                             <Mail size={15} />
@@ -521,7 +512,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                          {$t("CareerSendProfile__t28", "Phone Number")}</label>
+                          {html($t("CareerSendProfile__t28", "Phone Number"))}</label>
                         <div className="relative">
                           <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
                             <Phone size={15} />
@@ -540,7 +531,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
 
                       <div>
                         <label className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                          {$t("CareerSendProfile__t30", "Experience")}</label>
+                          {html($t("CareerSendProfile__t30", "Experience"))}</label>
                         <div className="relative">
                           <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
                             <Briefcase size={15} />
@@ -569,7 +560,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     {/* Position applying for (open jobs from the CMS) */}
                     <div>
                       <label htmlFor="career-position" className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                        {$t("CareerSendProfile__t60", "Position Applying For")}</label>
+                        {html($t("CareerSendProfile__t60", "Position Applying For"))}</label>
                       <div className="relative">
                         <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
                           <Target size={15} />
@@ -595,7 +586,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     {/* Row 3: Current Role / Most Recent Role */}
                     <div>
                       <label className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                        {$t("CareerSendProfile__t37", "Current Role / Most Recent Role")}</label>
+                        {html($t("CareerSendProfile__t37", "Current Role / Most Recent Role"))}</label>
                       <div className="relative">
                         <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
                           <Briefcase size={15} />
@@ -614,7 +605,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     {/* Row 4: Skills / Expertise (optional) */}
                     <div>
                       <label className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                        {$t("CareerSendProfile__t39", "Skills / Expertise (optional)")}</label>
+                        {html($t("CareerSendProfile__t39", "Skills / Expertise (optional)"))}</label>
                       <div className="relative">
                         <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
                           <Sparkles size={15} />
@@ -633,7 +624,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     {/* Row 5: Tell us about yourself */}
                     <div>
                       <label className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                        {$t("CareerSendProfile__t41", "Tell us about yourself")}</label>
+                        {html($t("CareerSendProfile__t41", "Tell us about yourself"))}</label>
                       <div className="relative">
                         <span className="absolute left-3.5 top-3 text-slate-400">
                           <PenLine size={15} />
@@ -652,7 +643,7 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                     {/* Row 6: Upload Resume Dropzone */}
                     <div>
                       <label className="block text-[12px] font-bold text-slate-700 mb-1.5">
-                        {$t("CareerSendProfile__t43", "Upload Resume")}</label>
+                        {html($t("CareerSendProfile__t43", "Upload Resume"))}</label>
                       
                       <input
                         type="file"
@@ -717,8 +708,8 @@ export default function CareerSendProfile({ jobs = [] }: { jobs?: JobOption[] })
                             </div>
 
                             <div className="text-right text-[10.5px] sm:text-[11px] text-slate-400 font-medium leading-tight">
-                              <div>{$t("CareerSendProfile__t46", "PDF, DOCX")}</div>
-                              <div>{$t("CareerSendProfile__t47", "(Up to 5MB)")}</div>
+                              <div>{html($t("CareerSendProfile__t46", "PDF, DOCX"))}</div>
+                              <div>{html($t("CareerSendProfile__t47", "(Up to 5MB)"))}</div>
                             </div>
                           </>
                         )}

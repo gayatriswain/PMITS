@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BarChart3, Eye, Mic, Search, TrendingUp, Users } from "lucide-react";
 import { AI, BrandIcon, ClientWordmarks, CtaButton, Pill, Spark, display, ease, type Brand, Inner, Panel } from "../shared/AiSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const CHANNELS__cms: { brand: Brand; label: string }[] = [
   { brand: "google", label: "Google Search" },
@@ -134,7 +134,7 @@ export default function AiSeoRankEverywhere() {
             className={`text-h2 ${display.className} mt-5 font-bold uppercase tracking-tight text-[#0b1b33]`}
           >
             {$t("AiSeoRankEverywhere__t7", "Rank Everywhere.")}<br />
-            <span className="bg-gradient-to-r from-[#0b4f4a] via-[#0f766e] to-[#0b4f4a] bg-clip-text text-transparent">{$t("AiSeoRankEverywhere__t8", "Grow Faster.")}</span>
+            <span className="bg-gradient-to-r from-[#0b4f4a] via-[#0f766e] to-[#0b4f4a] bg-clip-text text-transparent">{html($t("AiSeoRankEverywhere__t8", "Grow Faster."))}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -171,8 +171,7 @@ export default function AiSeoRankEverywhere() {
             transition={{ duration: 0.7, ease }}
             className="relative order-2 xl:order-1"
           >
-            <p className="text-caption font-semibold uppercase tracking-[0.14em] text-slate-500">
-              {rich($t("AiSeoRankEverywhere__t10", "We show up where"))}<br className="hidden xl:block" /> {rich($t("AiSeoRankEverywhere__t11", "your customers search"))}</p>
+            <p className="text-caption font-semibold uppercase tracking-[0.14em] text-slate-500">{rich($t("AiSeoRankEverywhere__t10m", "We show up where<br class=\"hidden xl:block\"> your customers search"))}</p>
             <div className="relative mt-4">
             <Spine side="left" />
             <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 xl:grid-cols-1">
@@ -246,8 +245,7 @@ export default function AiSeoRankEverywhere() {
             transition={{ duration: 0.7, ease }}
             className="relative order-3"
           >
-            <p className="text-caption font-semibold uppercase tracking-[0.14em] text-slate-500">
-              {rich($t("AiSeoRankEverywhere__t12", "More of what"))}<br className="hidden xl:block" /> {rich($t("AiSeoRankEverywhere__t13", "your business needs"))}</p>
+            <p className="text-caption font-semibold uppercase tracking-[0.14em] text-slate-500">{rich($t("AiSeoRankEverywhere__t12m", "More of what<br class=\"hidden xl:block\"> your business needs"))}</p>
             <div className="relative mt-4">
             <Spine side="right" />
             <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 xl:grid-cols-1">

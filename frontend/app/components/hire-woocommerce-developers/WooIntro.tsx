@@ -7,7 +7,7 @@ import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { WooBadge } from "./WooHireHero";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -123,9 +123,7 @@ function IntroVisual() {
             {rich($t("WooIntro__t3", "Built For"))}<br />
             {rich($t("WooIntro__t4", "Performance"))}</p>
           <div className="mt-2 flex items-end justify-between gap-2">
-            <p className="text-[10px] leading-snug text-slate-500">
-              {rich($t("WooIntro__t5", "High speed. Better"))}<br />
-              {rich($t("WooIntro__t6", "experience. More sales."))}</p>
+            <p className="text-[10px] leading-snug text-slate-500">{rich($t("WooIntro__t5m", "High speed. Better<br>experience. More sales."))}</p>
             <TrendIcon size={16} />
           </div>
         </motion.div>
@@ -187,22 +185,17 @@ export default function WooIntro() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-teal-100">
                 <CartIcon size={12} />
               </span>
-              {$t("WooIntro__t10", "WooCommerce Experts You Can Trust")}</span>
+              {html($t("WooIntro__t10", "WooCommerce Experts You Can Trust"))}</span>
 
             <h2
               className="text-h2 mt-5 font-extrabold tracking-tight"
               style={{ color: NAVY }}
-            >
-              {$t("WooIntro__t11", "Dedicated")}<br />
-              <span style={{ color: TEAL }}>{$t("WooIntro__t12", "Woo-Commerce")}</span>
-              <br />
-              {$t("WooIntro__t13", "Developers")}</h2>
+            >{rich($t("WooIntro__t11m", "Dedicated<br><span class=\"text-[#0d9488]\">Woo-Commerce</span><br>Developers"))}</h2>
             <span className="mt-5 block h-[3px] w-14 rounded-full" style={{ backgroundColor: TEAL }} />
 
             <p className="text-small mt-6 max-w-[520px] text-slate-600">
               {rich($t("WooIntro__t14", "Do you have a WordPress website that you want to convert into an online store? Have you heard a lot about ecommerce plugin WooCommerce and have a desire to use it to add ecommerce functionality to your website? If yes, then you have come to the right place."))}</p>
-            <p className="text-small mt-4 max-w-[520px] text-slate-600">
-              {rich($t("WooIntro__t15", "We are "))}<span className="font-semibold" style={{ color: TEAL }}>{$t("WooIntro__t16", "ProManage IT Solution")}</span>{rich($t("WooIntro__t17", ", the most respected name in the world of WooCommerce."))}</p>
+            <p className="text-small mt-4 max-w-[520px] text-slate-600">{rich($t("WooIntro__t15m", "We are <span class=\"font-semibold text-[#0d9488]\">ProManage IT Solution</span>, the most respected name in the world of WooCommerce."))}</p>
 
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <Link

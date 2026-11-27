@@ -19,7 +19,7 @@ import {
 import CountUp from "../shared/CountUp";
 import { AI, BrandIcon, H2, Hl, Pill, Sparkle, ease, heading, type Brand, Inner, Panel } from "../shared/AiSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const BEFORE__cms = [
   { Icon: TrendingDown, title: "Low Visibility", text: "Hard to find on Google and not shown in AI results." },
@@ -206,11 +206,11 @@ export default function AiSeoDifference() {
           <div className="mt-8 flex items-center justify-center gap-4 text-[11px] font-medium uppercase tracking-[0.3em] text-slate-500 sm:gap-6">
             <span className="hidden h-px w-16 bg-slate-200 sm:block" />
             <span className="flex items-center gap-1.5">
-              <Sparkle className="h-3 w-3 text-[#0b1b33]" /> {$t("AiSeoDifference__t13", "AI Powered.")}</span>
+              <Sparkle className="h-3 w-3 text-[#0b1b33]" /> {html($t("AiSeoDifference__t13", "AI Powered."))}</span>
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-[#1e3a8a]">
               <Sparkle className="ai-anim h-5 w-5" />
             </span>
-            <span>{$t("AiSeoDifference__t14", "Human Driven.")}</span>
+            <span>{html($t("AiSeoDifference__t14", "Human Driven."))}</span>
             <span className="hidden h-px w-16 bg-slate-200 sm:block" />
           </div>
         </div>

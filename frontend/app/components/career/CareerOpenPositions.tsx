@@ -23,7 +23,7 @@ import {
   CalendarClock,
 } from "lucide-react";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { applyForJob, type CmsJob } from "./careerJobs";
 
 export type { CmsJob };
@@ -221,7 +221,7 @@ export default function CareerOpenPositions({ jobs }: { jobs?: CmsJob[] }) {
               style={{ color: TEAL }}
             >
               <span className="text-[9px]">•</span>
-              {$t("CareerOpenPositions__t1", "OPEN POSITIONS")}<span className="text-[9px]">•</span>
+              {html($t("CareerOpenPositions__t1", "OPEN POSITIONS"))}<span className="text-[9px]">•</span>
             </span>
             <span
               className="mt-1.5 h-[2.5px] w-12 rounded-full"
@@ -241,7 +241,7 @@ export default function CareerOpenPositions({ jobs }: { jobs?: CmsJob[] }) {
                 className={`${caveat.className} inline-block text-[44px] sm:text-[54px] lg:text-[62px] font-bold tracking-normal`}
                 style={{ color: TEAL }}
               >
-                {$t("CareerOpenPositions__t3", "Opportunity")}</span>
+                {html($t("CareerOpenPositions__t3", "Opportunity"))}</span>
               {/* Hand-drawn sparkle accents on top-right of Opportunity */}
               <svg
                 className="absolute -top-1 -right-6 w-6 h-6 text-[#00a8b5] pointer-events-none"
@@ -259,16 +259,7 @@ export default function CareerOpenPositions({ jobs }: { jobs?: CmsJob[] }) {
           <motion.p
             variants={fadeUp}
             className="text-body mt-3.5 text-slate-600 max-w-xl mx-auto"
-          >
-            {rich($t("CareerOpenPositions__t4", "Explore roles where your skills can"))}{" "}
-            <strong className="font-bold" style={{ color: TEAL }}>
-              {$t("CareerOpenPositions__t5", "create impact")}</strong>
-            <br className="hidden sm:inline" />
-            {rich($t("CareerOpenPositions__t6", "and your ideas can"))}{" "}
-            <strong className="font-bold" style={{ color: TEAL }}>
-              {$t("CareerOpenPositions__t7", "shape the future")}</strong>
-            .
-          </motion.p>
+          >{rich($t("CareerOpenPositions__t4m", "Explore roles where your skills can <strong class=\"font-bold text-[#00a8b5]\">create impact</strong><br class=\"hidden sm:inline\">and your ideas can <strong class=\"font-bold text-[#00a8b5]\">shape the future</strong>."))}</motion.p>
         </motion.div>
 
         {/* ========================================================
@@ -343,7 +334,7 @@ export default function CareerOpenPositions({ jobs }: { jobs?: CmsJob[] }) {
                 {/* Card Footer: View Role */}
                 <div className="pt-2 border-t border-slate-100/80 flex items-center justify-between">
                   <span className="text-[13px] font-bold text-[#0a1f2c] group-hover:text-[#00a8b5] transition-colors">
-                    {$t("CareerOpenPositions__t8", "View Role")}</span>
+                    {html($t("CareerOpenPositions__t8", "View Role"))}</span>
                   <div className="w-7 h-7 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-[#00a8b5] group-hover:text-white group-hover:border-[#00a8b5] transition-all">
                     <ArrowRight size={14} strokeWidth={2.2} />
                   </div>
@@ -416,14 +407,14 @@ export default function CareerOpenPositions({ jobs }: { jobs?: CmsJob[] }) {
                     <path d="M10 4 L10 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                   </svg>
                   <h3 className="text-h5 font-bold tracking-tight text-white">
-                    {$t("CareerOpenPositions__t10", "Don't see the right role?")}</h3>
+                    {html($t("CareerOpenPositions__t10", "Don't see the right role?"))}</h3>
                 </div>
 
                 <div
                   className={`${caveat.className} text-[28px] sm:text-[34px] font-bold leading-none mt-1 tracking-normal`}
                   style={{ color: "#38bdf8" }}
                 >
-                  {$t("CareerOpenPositions__t11", "Let's build it together.")}</div>
+                  {html($t("CareerOpenPositions__t11", "Let's build it together."))}</div>
 
                 <p className="text-small text-slate-300/90 mt-2.5 max-w-[320px]">
                   {rich($t("CareerOpenPositions__t12", "We're always looking for curious minds who love solving problems and creating impact."))}</p>
@@ -438,7 +429,7 @@ export default function CareerOpenPositions({ jobs }: { jobs?: CmsJob[] }) {
             {/* Middle-Right Column: Send us your profile */}
             <div className="lg:col-span-3 flex flex-col justify-center">
               <h4 className="text-h6 font-bold text-white tracking-tight">
-                {$t("CareerOpenPositions__t13", "Send us your profile")}</h4>
+                {html($t("CareerOpenPositions__t13", "Send us your profile"))}</h4>
               <p className="text-small text-slate-300/90 mt-1.5 mb-4 max-w-[260px]">
                 {rich($t("CareerOpenPositions__t14", "Share your details and we'll reach out when the perfect opportunity comes up."))}</p>
 
@@ -448,7 +439,7 @@ export default function CareerOpenPositions({ jobs }: { jobs?: CmsJob[] }) {
                 whileTap={{ scale: 0.98 }}
                 className="group inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white text-[#0a1f2c] font-bold text-[13px] shadow-md hover:bg-slate-50 transition-all w-fit cursor-pointer"
               >
-                <span>{$t("CareerOpenPositions__t15", "Send Your Profile")}</span>
+                <span>{html($t("CareerOpenPositions__t15", "Send Your Profile"))}</span>
                 <span className="w-6 h-6 rounded-full bg-[#00a8b5] text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5">
                   <ArrowRight size={13} strokeWidth={2.4} />
                 </span>
@@ -654,7 +645,7 @@ function RoleDialog({ role, onClose }: { role: Role; onClose: () => void }) {
         {/* footer */}
         <div className="flex flex-col-reverse gap-3 border-t border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-end sm:px-8">
           <button type="button" onClick={onClose} className="rounded-full px-5 py-2.5 text-[14px] font-semibold text-slate-600 hover:text-[#0a1f2c]">
-            {$t("CareerOpenPositions__t27", "Maybe later")}
+            {html($t("CareerOpenPositions__t27", "Maybe later"))}
           </button>
           <button
             type="button"
@@ -662,7 +653,7 @@ function RoleDialog({ role, onClose }: { role: Role; onClose: () => void }) {
             className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#0a1f2c] px-6 py-3 text-[14px] font-bold text-white shadow-lg transition-colors hover:bg-[#073646]"
           >
             <Send size={15} />
-            {$t("CareerOpenPositions__t28", "Apply for this role")}
+            {html($t("CareerOpenPositions__t28", "Apply for this role"))}
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </button>
         </div>

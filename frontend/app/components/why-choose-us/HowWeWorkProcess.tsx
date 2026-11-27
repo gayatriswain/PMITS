@@ -54,13 +54,8 @@ export default function HowWeWorkProcess() {
             <span className="w-8 h-px bg-current opacity-50"></span>
             {rich($t("HowWeWorkProcess__t1", "How We Work"))}<span className="w-8 h-px bg-current opacity-50"></span>
           </p>
-          <h2 className="text-h2 font-extrabold mb-6" style={{ color: NAVY }}>
-            {$t("HowWeWorkProcess__t2", "A Process That's Simple.")}<br/>
-            <span style={{ color: TEAL }}>{$t("HowWeWorkProcess__t3", "Results That Speak.")}</span>
-          </h2>
-          <p className="text-body text-slate-600">
-            {rich($t("HowWeWorkProcess__t4", "We follow a proven approach to turn your goals into powerful digital solutions that drive "))}<strong className="font-bold" style={{ color: TEAL }}>{$t("HowWeWorkProcess__t5", "real business growth")}</strong>.
-          </p>
+          <h2 className="text-h2 font-extrabold mb-6" style={{ color: NAVY }}>{rich($t("HowWeWorkProcess__t2m", "A Process That's Simple.<br><span class=\"text-[#0d9488]\">Results That Speak.</span>"))}</h2>
+          <p className="text-body text-slate-600">{rich($t("HowWeWorkProcess__t4m", "We follow a proven approach to turn your goals into powerful digital solutions that drive <strong class=\"font-bold text-[#0d9488]\">real business growth</strong>."))}</p>
         </div>
 
         {/* Steps Grid */}
@@ -124,9 +119,7 @@ export default function HowWeWorkProcess() {
             <div className="w-16 h-16 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#e6f6f4' }}>
               <Rocket size={32} style={{ color: TEAL }} />
             </div>
-            <h3 className="text-h5 font-bold max-w-[320px]" style={{ color: NAVY }}>
-              {$t("HowWeWorkProcess__t6", "Ready to turn your ideas into ")}<span style={{ color: TEAL }}>{$t("HowWeWorkProcess__t7", "real results?")}</span>
-            </h3>
+            <h3 className="text-h5 font-bold max-w-[320px]" style={{ color: NAVY }}>{rich($t("HowWeWorkProcess__t6m", "Ready to turn your ideas into <span class=\"text-[#0d9488]\">real results?</span>"))}</h3>
           </div>
 
           {/* Middle: Features */}

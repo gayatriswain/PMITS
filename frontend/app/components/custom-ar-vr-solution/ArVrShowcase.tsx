@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -335,7 +335,7 @@ export default function ArVrShowcase() {
             custom={0}
             className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
           >
-            {$t("ArVrShowcase__t3", "What we create")}</motion.span>
+            {html($t("ArVrShowcase__t3", "What we create"))}</motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
@@ -344,7 +344,7 @@ export default function ArVrShowcase() {
             {$t("ArVrShowcase__t4", "Powerful AR/VR Solutions")}<br />
             {$t("ArVrShowcase__t5", "That Drive")}{" "}
             <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-              {$t("ArVrShowcase__t6", "Real Results.")}</span>
+              {html($t("ArVrShowcase__t6", "Real Results."))}</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}

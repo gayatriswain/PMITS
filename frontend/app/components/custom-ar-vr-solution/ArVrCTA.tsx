@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -222,7 +222,7 @@ function ConsultForm() {
               <path d="M5 12.5l4.5 4.5L19 7.5" />
             </svg>
           </span>
-          {$t("ArVrCTA__t1", "Thank you! We'll get back to you shortly.")}</div>
+          {html($t("ArVrCTA__t1", "Thank you! We'll get back to you shortly."))}</div>
       ) : (
         <form onSubmit={onSubmit} noValidate className="flex flex-col gap-3 sm:flex-row">
           {/* Honeypot: hidden from real users */}
@@ -235,7 +235,7 @@ function ConsultForm() {
             className="absolute -left-[9999px] h-0 w-0 opacity-0"
           />
           <label className="relative flex-1">
-            <span className="sr-only">{$t("ArVrCTA__t2", "Your work email")}</span>
+            <span className="sr-only">{html($t("ArVrCTA__t2", "Your work email"))}</span>
             <input
               type="email"
               value={email}
@@ -310,7 +310,7 @@ export default function ArVrCTA() {
               custom={0}
               className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
             >
-              {$t("ArVrCTA__t7", "Ready to make an impact?")}</motion.span>
+              {html($t("ArVrCTA__t7", "Ready to make an impact?"))}</motion.span>
 
             <motion.h2
               variants={fadeUp}
@@ -319,7 +319,7 @@ export default function ArVrCTA() {
             >
               {$t("ArVrCTA__t8", "Let's build something that's real.")}{" "}
               <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-                {$t("ArVrCTA__t9", "Measurable. Remarkable.")}</span>
+                {html($t("ArVrCTA__t9", "Measurable. Remarkable."))}</span>
             </motion.h2>
 
             <motion.p
@@ -390,10 +390,7 @@ export default function ArVrCTA() {
                   <path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" />
                 </svg>
               </span>
-              <p className="text-small mt-2 font-bold text-[#0f1535]">
-                {rich($t("ArVrCTA__t13", "Your Next"))}<br />
-                {rich($t("ArVrCTA__t14", "Success Story"))}<br />
-                {rich($t("ArVrCTA__t15", "Starts Here"))}</p>
+              <p className="text-small mt-2 font-bold text-[#0f1535]">{rich($t("ArVrCTA__t13m", "Your Next<br>Success Story<br>Starts Here"))}</p>
               <a
                 href={$t("ArVrCTA__t16", "#cta-form")}
                 aria-label="Get started"
@@ -439,7 +436,7 @@ export default function ArVrCTA() {
               </svg>
             </span>
             <div>
-              <h3 className="text-h5 font-bold text-[#0f1535]">{$t("ArVrCTA__t17", "Ready to get started?")}</h3>
+              <h3 className="text-h5 font-bold text-[#0f1535]">{html($t("ArVrCTA__t17", "Ready to get started?"))}</h3>
               <p className="text-small mt-1 max-w-sm text-slate-600">
                 {rich($t("ArVrCTA__t18", "Let's discuss how we can create immersive solutions that drive real impact for your business."))}</p>
             </div>

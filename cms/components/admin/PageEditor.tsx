@@ -1,19 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowDown, ArrowUp, ChevronDown, Eye, EyeOff, Globe, Link2, Lock, PencilLine, Plus, RotateCcw, Save, Send, Trash2, Undo2 } from "lucide-react";
+import { ArrowDown, ArrowUp, ChevronDown, Eye, EyeOff, Globe, Link2, Lock, MousePointerClick, PencilLine, Plus, RotateCcw, Save, Send, Trash2, Undo2 } from "lucide-react";
 import { api, ApiError } from "@/lib/client/api";
 import { Badge, Button, Card, Modal, PageHeader, Spinner, fmtDate, useConfirm, useToast, useUnsavedWarning } from "./ui";
 import { FieldGroup, type FieldDef } from "./fields";
-
-type SectionDef = { component: string; label: string; kind: "coded" | "builder"; description?: string; fields: FieldDef[]; defaults: Record<string, unknown>; generated?: boolean };
-type Section = { _id?: string; key: string; component: string; label?: string; enabled: boolean; content: Record<string, unknown>; changed?: boolean };
-type PageDoc = {
-  _id: string; title: string; slug: string; path: string; kind: "coded" | "builder"; status: string; group?: string; description?: string; featuredImage?: string;
-  seo: Record<string, unknown>; draft?: Record<string, unknown>; hasUnpublishedChanges?: boolean; publishedAt?: string; updatedAt: string;
-};
+import { VisualEditor, type PageDoc, type SaveState, type Section, type SectionDef } from "./VisualEditor";
 type Raw = { page: PageDoc; sections: (Section & { draftContent?: Record<string, unknown>; draftEnabled?: boolean; draftOrder?: number; order: number; hasUnpublishedChanges?: boolean })[] };
 
 const FRONT = process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
@@ -84,6 +78,14 @@ export function PageEditor({
   const [busy, setBusy] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
   const [errors, setErrors] = useState<Record<string, string | string[]>>({});
+  // visual editor (live preview, click to edit) for pages; global screens keep the form view
+  const [view, setView] = useState<"visual" | "form">(scope ? "form" : "visual");
+  const [saveState, setSaveState] = useState<SaveState>("idle");
+  const [saveError, setSaveError] = useState("");
+  const [saveTick, setSaveTick] = useState(0);
+  const [failedAt, setFailedAt] = useState("");
+  const bridge = useRef<((m: Record<string, unknown>) => void) | null>(null);
+  const saving = useRef(false);
 
   const apply = useCallback((r: Raw) => {
     setRaw(r);
@@ -112,6 +114,16 @@ export function PageEditor({
   const current = JSON.stringify({ details, sections });
   const dirty = !!raw && current !== baseline;
   useUnsavedWarning(dirty);
+  const latest = useRef(current);
+  useEffect(() => {
+    latest.current = current;
+  }, [current]);
+  // small admin screens: the three-column editor does not fit
+  useEffect(() => {
+    if (scope || window.innerWidth >= 1024) return;
+    const t = setTimeout(() => setView("form"), 0);
+    return () => clearTimeout(t);
+  }, [scope]);
   const page = raw?.page;
   const coded = page?.kind === "coded";
   const fixedOrder = !!scope || (!!page && FIXED_ORDER.has(page.path));
@@ -126,29 +138,71 @@ export function PageEditor({
     return JSON.stringify(details) !== JSON.stringify(toState(raw).details);
   }, [raw, details]);
 
-  const saveDraft = async () => {
-    setBusy("save");
+  /** Saves the draft. auto: visual-editor autosave (quiet; edits typed meanwhile are kept). */
+  const persist = async (auto: boolean) => {
+    const snapshot = current;
+    saving.current = true;
+    setSaveState("saving");
     setErrors({});
+    const q = auto ? "?auto=1" : "";
     try {
       let r: Raw | null = null;
-      if (detailsChanged) r = await api<Raw>(`/api/admin/pages/${id}`, { method: "PUT", json: { ...details, status: page!.status } });
+      if (detailsChanged) r = await api<Raw>(`/api/admin/pages/${id}${q}`, { method: "PUT", json: { ...details, status: page!.status } });
       if (sectionsChanged && perms.write) {
-        r = await api<Raw>(`/api/admin/pages/${id}/sections`, {
+        r = await api<Raw>(`/api/admin/pages/${id}/sections${q}`, {
           method: "PUT",
           json: { sections: sections.map((s) => ({ id: s._id, key: s.key, component: s.component, label: s.label, enabled: s.enabled, content: s.content })) },
         });
       }
-      if (r) apply(r);
-      toast("success", "Draft saved. Visitors still see the published version until you publish.");
+      if (r) {
+        if (latest.current === snapshot) apply(r);
+        else {
+          setRaw(r);
+          setBaseline(snapshot);
+        }
+      }
+      setSaveState("saved");
+      setSaveError("");
+      bridge.current?.({ type: "refresh" });
       return true;
     } catch (e) {
       if (e instanceof ApiError && e.errors) setErrors(e.errors);
-      toast("error", (e as Error).message);
+      setSaveState("error");
+      setSaveError((e as Error).message);
+      setFailedAt(snapshot);
+      if (!auto) toast("error", (e as Error).message);
       return false;
+    } finally {
+      saving.current = false;
+      setSaveTick((n) => n + 1);
+    }
+  };
+
+  const saveDraft = async () => {
+    setBusy("save");
+    try {
+      const done = await persist(false);
+      if (done) toast("success", "Draft saved. Visitors still see the published version until you publish.");
+      return done;
     } finally {
       setBusy(null);
     }
   };
+
+  // visual editor: save the draft a moment after typing stops, then the preview refreshes
+  const canSave = perms.write || perms.seo;
+  const persistRef = useRef(persist);
+  useEffect(() => {
+    persistRef.current = persist;
+  });
+  useEffect(() => {
+    // after a failed save, wait for the next edit instead of retrying the same content
+    if (view !== "visual" || !dirty || !canSave || current === failedAt) return;
+    const t = setTimeout(() => {
+      if (!saving.current) void persistRef.current(true);
+    }, 1200);
+    return () => clearTimeout(t);
+  }, [view, dirty, canSave, current, saveTick, failedAt]);
 
   const publish = async () => {
     if (dirty && !(await saveDraft())) return;
@@ -163,6 +217,8 @@ export function PageEditor({
       setBusy(null);
     }
   };
+
+  const previewUrl = useCallback(async () => (await api<{ url: string }>(`/api/admin/pages/${id}/preview`)).url, [id]);
 
   const preview = async () => {
     if (dirty && !(await saveDraft())) return;
@@ -190,6 +246,7 @@ export function PageEditor({
         return;
       }
       apply(await api<Raw>(`/api/admin/pages/${id}/${kind}`, { method: "POST" }));
+      bridge.current?.({ type: "refresh" });
       toast("success", kind === "unpublish" ? "Page unpublished" : "Changes discarded");
     } catch (e) {
       toast("error", (e as Error).message);
@@ -207,6 +264,74 @@ export function PageEditor({
   const patch = (i: number, p: Partial<Section>) => setSections((s) => s.map((x, j) => (j === i ? { ...x, ...p } : x)));
 
   if (!raw || !page) return <Spinner />;
+
+  const addModal = (
+    <>
+      {adding && (
+        <Modal title="Add a section" onClose={() => setAdding(false)}>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {builder.map((c) => (
+              <button
+                key={c}
+                type="button"
+                className="rounded-lg border border-slate-200 p-3 text-left hover:border-teal hover:bg-teal/5"
+                onClick={() => {
+                  const def = defs[c];
+                  let key = def.label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                  let n = 2;
+                  while (sections.some((s) => s.key === key)) key = `${key.replace(/-\d+$/, "")}-${n++}`;
+                  setSections((x) => [...x, { key, component: c, label: def.label, enabled: true, content: structuredClone(def.defaults) }]);
+                  setOpen(key);
+                  setAdding(false);
+                }}
+              >
+                <p className="text-sm font-medium text-slate-800">{defs[c]?.label}</p>
+                <p className="text-xs text-slate-500">{defs[c]?.fields.map((f) => f.label).slice(0, 4).join(", ")}</p>
+              </button>
+            ))}
+          </div>
+        </Modal>
+      )}
+    </>
+  );
+
+  if (view === "visual" && !scope) {
+    return (
+      <>
+        <VisualEditor
+          page={page}
+          details={details}
+          setDetails={setDetails}
+          sections={sections}
+          patch={patch}
+          move={move}
+          remove={(i) => setSections((x) => x.filter((_, j) => j !== i))}
+          defs={defs}
+          sharedLinks={sharedLinks}
+          perms={perms}
+          coded={coded}
+          fixedOrder={fixedOrder}
+          errors={errors}
+          dirty={dirty}
+          pending={pending}
+          saveState={saveState}
+          saveError={saveError}
+          busy={busy}
+          selected={open}
+          onSelect={setOpen}
+          onSave={saveDraft}
+          onPublish={publish}
+          onAction={action}
+          onDiscardLocal={() => raw && apply(raw)}
+          onAdd={() => setAdding(true)}
+          onFormView={() => setView("form")}
+          getPreviewUrl={previewUrl}
+          bridgeRef={bridge}
+        />
+        {addModal}
+      </>
+    );
+  }
 
   return (
     <>
@@ -231,6 +356,9 @@ export function PageEditor({
         actions={
           <>
             {dirty && <span className="text-xs font-medium text-amber-600">Unsaved edits</span>}
+            {!scope && (
+              <Button variant="secondary" onClick={() => setView("visual")} className="hidden lg:inline-flex"><MousePointerClick className="h-4 w-4" /> Visual editor</Button>
+            )}
             {page.status === "published" && !scope && (
               <a href={`${FRONT}${page.path}`} target="_blank" rel="noreferrer"><Button variant="ghost"><Globe className="h-4 w-4" /> Live</Button></a>
             )}
@@ -416,31 +544,7 @@ export function PageEditor({
         </div>
       )}
 
-      {adding && (
-        <Modal title="Add a section" onClose={() => setAdding(false)}>
-          <div className="grid gap-2 sm:grid-cols-2">
-            {builder.map((c) => (
-              <button
-                key={c}
-                type="button"
-                className="rounded-lg border border-slate-200 p-3 text-left hover:border-teal hover:bg-teal/5"
-                onClick={() => {
-                  const def = defs[c];
-                  let key = def.label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-                  let n = 2;
-                  while (sections.some((s) => s.key === key)) key = `${key.replace(/-\d+$/, "")}-${n++}`;
-                  setSections((x) => [...x, { key, component: c, label: def.label, enabled: true, content: structuredClone(def.defaults) }]);
-                  setOpen(key);
-                  setAdding(false);
-                }}
-              >
-                <p className="text-sm font-medium text-slate-800">{defs[c]?.label}</p>
-                <p className="text-xs text-slate-500">{defs[c]?.fields.map((f) => f.label).slice(0, 4).join(", ")}</p>
-              </button>
-            ))}
-          </div>
-        </Modal>
-      )}
+      {addModal}
     </>
   );
 }

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import ProposalLink from "./ProposalLink";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -184,7 +184,7 @@ function MissionWheel() {
           <span className="absolute inset-[8px] rounded-full border-2" style={{ borderColor: `${TEAL}33` }} />
           <TargetIcon size={62} color={TEAL} />
           <span className="mt-2 text-[34px] font-semibold tracking-[0.1em]" style={{ color: INK }}>
-            {$t("WhoWeAreMission__t1", "MISSION")}</span>
+            {html($t("WhoWeAreMission__t1", "MISSION"))}</span>
           <span className="mt-3 h-[3px] w-12 rounded-full" style={{ backgroundColor: TEAL }} />
         </motion.div>
       </motion.div>
@@ -311,9 +311,7 @@ function MissionCopy() {
       <motion.div variants={fadeUp} className="text-center">
         <p className={`${caveat.className} text-[30px] leading-none`} style={{ color: TEAL }}>
           {rich($t("WhoWeAreMission__t4", "Driven by Purpose"))}</p>
-        <p className="text-body mt-1 font-bold" style={{ color: INK }}>
-          {rich($t("WhoWeAreMission__t5", "Focused on "))}<span style={{ color: TEAL }}>{$t("WhoWeAreMission__t6", "Impact")}</span>
-        </p>
+        <p className="text-body mt-1 font-bold" style={{ color: INK }}>{rich($t("WhoWeAreMission__t5m", "Focused on <span class=\"text-[#0d9488]\">Impact</span>"))}</p>
       </motion.div>
 
       <motion.div variants={fadeUp} className="relative mt-8 text-center">
@@ -321,9 +319,9 @@ function MissionCopy() {
           &ldquo;
         </span>
         <h2 className="text-h2 font-bold tracking-tight">
-          <span style={{ color: INK }}>{$t("WhoWeAreMission__t7", "Our ")}</span>
+          <span style={{ color: INK }}>{html($t("WhoWeAreMission__t7", "Our "))}</span>
           <span className="relative inline-block" style={{ color: TEAL }}>
-            {$t("WhoWeAreMission__t8", "Mission")}<svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" aria-hidden>
+            {html($t("WhoWeAreMission__t8", "Mission"))}<svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" aria-hidden>
               <path d="M3 9C60 3 140 1 197 6" stroke={TEAL} strokeWidth="3" strokeLinecap="round" />
             </svg>
           </span>
@@ -343,10 +341,7 @@ function MissionCopy() {
 
       <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-3">
         <div className="relative flex items-center">
-          <p className={`text-body ${caveat.className} -rotate-6 text-center`} style={{ color: DEEP_TEAL }}>
-            {rich($t("WhoWeAreMission__t11", "Let's build"))}<br />
-            {rich($t("WhoWeAreMission__t12", "something impactful"))}<br />
-            {rich($t("WhoWeAreMission__t13", "together!"))}</p>
+          <p className={`text-body ${caveat.className} -rotate-6 text-center`} style={{ color: DEEP_TEAL }}>{rich($t("WhoWeAreMission__t11m", "Let's build<br>something impactful<br>together!"))}</p>
           {/* hand-drawn arrow from the note to the button */}
           <svg className="ml-1 hidden sm:block" width="44" height="34" viewBox="0 0 56 40" fill="none" aria-hidden>
             <path d="M3 8c10 22 26 26 46 20" stroke={DEEP_TEAL} strokeWidth="2" strokeLinecap="round" />

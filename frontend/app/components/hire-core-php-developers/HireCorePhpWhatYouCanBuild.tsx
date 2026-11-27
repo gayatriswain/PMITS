@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { html, rich } from "@/components/cms/rich";
 
 interface BuildCard {
   id: string;
@@ -280,7 +281,7 @@ export default function HireCorePhpWhatYouCanBuild() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                {$t("HireCorePhpWhatYouCanBuild__t3", "What you can build —")}</motion.div>
+                {html($t("HireCorePhpWhatYouCanBuild__t3", "What you can build —"))}</motion.div>
               <motion.h2
                 className="absolute left-[38px] top-[52px] text-[40px] font-black tracking-tight leading-[1.1] text-[#0c1e3d]"
                 initial={{ opacity: 0, y: 16 }}
@@ -288,7 +289,7 @@ export default function HireCorePhpWhatYouCanBuild() {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 {$t("HireCorePhpWhatYouCanBuild__t4", "Powerful Solutions.")}<br />
-                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpWhatYouCanBuild__t5", "Built With Core PHP.")}</span>
+                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{html($t("HireCorePhpWhatYouCanBuild__t5", "Built With Core PHP."))}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[38px] top-[176px] w-[262px] text-[13px] leading-[1.55] text-slate-600"
@@ -375,11 +376,8 @@ export default function HireCorePhpWhatYouCanBuild() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">{$t("HireCorePhpWhatYouCanBuild__t6", "What you can build —")}</div>
-          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0c1e3d]">
-            {$t("HireCorePhpWhatYouCanBuild__t7", "Powerful Solutions.")}<br />
-            <span className="text-[#0f8a83]">{$t("HireCorePhpWhatYouCanBuild__t8", "Built With Core PHP.")}</span>
-          </h2>
+          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">{html($t("HireCorePhpWhatYouCanBuild__t6", "What you can build —"))}</div>
+          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0c1e3d]">{rich($t("HireCorePhpWhatYouCanBuild__t7m", "Powerful Solutions.<br><span class=\"text-[#0f8a83]\">Built With Core PHP.</span>"))}</h2>
           <p className="text-body mt-4 text-slate-600 max-w-xl">{subtitle}</p>
           <div className="mt-5 w-11 h-[3px] rounded-full bg-[#0f8a83]" />
 
@@ -417,9 +415,7 @@ export default function HireCorePhpWhatYouCanBuild() {
           <div className="absolute -left-16 -bottom-16 w-72 h-72 rounded-full bg-teal-500/15 blur-3xl pointer-events-none" />
 
           <div className="relative xl:w-[330px] shrink-0">
-            <div className="text-[22px] sm:text-[24px] font-semibold leading-snug text-white">
-              {$t("HireCorePhpWhatYouCanBuild__t9", "Tell us ")}<span className="text-[#3fd6cf]">{$t("HireCorePhpWhatYouCanBuild__t10", "what you need")}</span> {$t("HireCorePhpWhatYouCanBuild__t11", "built.")}<br />
-              {$t("HireCorePhpWhatYouCanBuild__t12", "We'll build the right solution for you.")}</div>
+            <div className="text-[22px] sm:text-[24px] font-semibold leading-snug text-white">{rich($t("HireCorePhpWhatYouCanBuild__t9m", "Tell us <span class=\"text-[#3fd6cf]\">what you need</span> built.<br>We'll build the right solution for you."))}</div>
             <div className="mt-6 flex items-center gap-3 flex-wrap">
               <Link
                 href={$t("HireCorePhpWhatYouCanBuild__t13", "#contact")}

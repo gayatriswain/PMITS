@@ -8,7 +8,7 @@ import Container from "../shared/Container";
 import CountUp from "../shared/CountUp";
 import { CakeMark } from "./HireCakePhpExpertise";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -295,7 +295,7 @@ export default function HireCakePhpWhy() {
           >
             <motion.div variants={fadeUp} custom={0} className="flex items-center gap-2.5">
               <span className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: RED }}>
-                {$t("HireCakePhpWhy__t1", "WHY PROMANAGE")}</span>
+                {html($t("HireCakePhpWhy__t1", "WHY PROMANAGE"))}</span>
               <span className="h-[1.5px] w-6 opacity-60" style={{ background: RED }} />
             </motion.div>
 
@@ -306,7 +306,7 @@ export default function HireCakePhpWhy() {
               style={{ color: INK }}
             >
               {$t("HireCakePhpWhy__t2", "More than developers.")}<br />
-              {$t("HireCakePhpWhy__t3", "Your ")}<span style={{ color: RED }}>{$t("HireCakePhpWhy__t4", "CakePHP")}</span> {$t("HireCakePhpWhy__t5", "partner.")}</motion.h2>
+              {$t("HireCakePhpWhy__t3", "Your ")}<span style={{ color: RED }}>{html($t("HireCakePhpWhy__t4", "CakePHP"))}</span> {$t("HireCakePhpWhy__t5", "partner.")}</motion.h2>
 
             <motion.p
               variants={fadeUp}
@@ -437,7 +437,7 @@ export default function HireCakePhpWhy() {
                 <CakeMark />
               </span>
               <h3 className="mt-1 text-[13px] font-bold leading-tight" style={{ color: INK }}>
-                {$t("HireCakePhpWhy__t9", "CakePHP")}</h3>
+                {html($t("HireCakePhpWhy__t9", "CakePHP"))}</h3>
               <p className="mt-0.5 text-[9.5px] leading-snug text-slate-500">
                 {rich($t("HireCakePhpWhy__t10", "The solid foundation for your next big idea."))}</p>
             </motion.div>
@@ -484,7 +484,7 @@ export default function HireCakePhpWhy() {
           <div className="flex flex-col items-center text-center">
             <CakeMark />
             <h3 className="mt-2 text-[16px] font-bold" style={{ color: INK }}>
-              {$t("HireCakePhpWhy__t12", "CakePHP")}</h3>
+              {html($t("HireCakePhpWhy__t12", "CakePHP"))}</h3>
             <p className="text-caption mt-1 text-slate-500">
               {rich($t("HireCakePhpWhy__t13", "The solid foundation for your next big idea."))}</p>
           </div>
@@ -526,9 +526,7 @@ export default function HireCakePhpWhy() {
         >
           {/* Col 1: Global Clients */}
           <div>
-            <p className="text-small font-semibold" style={{ color: INK }}>
-              {rich($t("HireCakePhpWhy__t15", "Working with clients"))}<br />
-              {rich($t("HireCakePhpWhy__t16", "across the globe"))}</p>
+            <p className="text-small font-semibold" style={{ color: INK }}>{rich($t("HireCakePhpWhy__t15m", "Working with clients<br>across the globe"))}</p>
             <ul className="mt-2.5 flex flex-wrap gap-x-3.5 gap-y-1.5">
               {COUNTRIES.map((c, i) => (
                 <motion.li
@@ -572,14 +570,14 @@ export default function HireCakePhpWhy() {
           {/* Col 3: Have a Project in Mind CTA */}
           <div className="relative overflow-hidden rounded-xl bg-[linear-gradient(110deg,#fff2f2_0%,#ffe8e8_100%)] px-5 py-4">
             <h3 className="font-playfair text-[15.5px] font-bold" style={{ color: INK }}>
-              {$t("HireCakePhpWhy__t19", "Have a project in mind?")}</h3>
+              {html($t("HireCakePhpWhy__t19", "Have a project in mind?"))}</h3>
             <p className="mt-0.5 text-[11px] text-slate-500">{rich($t("HireCakePhpWhy__t20", "Let's build something great together."))}</p>
             <Link
               href={$t("HireCakePhpWhy__t21", "#cakephp-contact")}
               className="group relative mt-3 inline-flex items-center gap-1.5 overflow-hidden rounded-lg px-4 py-2 text-[11.5px] font-semibold text-white shadow-[0_8px_18px_-6px_rgba(217,43,50,0.7)] transition-transform hover:-translate-y-0.5 active:scale-95"
               style={{ background: RED }}
             >
-              <span className="relative">{$t("HireCakePhpWhy__t22", "Get In Touch")}</span>
+              <span className="relative">{html($t("HireCakePhpWhy__t22", "Get In Touch"))}</span>
               <span className="relative transition-transform duration-300 group-hover:translate-x-1">
                 {ic.arrow}
               </span>

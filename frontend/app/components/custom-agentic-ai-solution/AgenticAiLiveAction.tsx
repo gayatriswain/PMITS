@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    VECTOR LOGOS FOR "WORKS ACROSS YOUR CONNECTED SYSTEMS"
@@ -135,19 +135,14 @@ export default function AgenticAiLiveAction() {
             <svg className="w-3.5 h-3.5 text-[#0d9488]" viewBox="0 0 24 24" fill="currentColor">
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
             </svg>
-            <span>{$t("AgenticAiLiveAction__t2", "SEE IT IN ACTION")}</span>
+            <span>{html($t("AgenticAiLiveAction__t2", "SEE IT IN ACTION"))}</span>
           </div>
 
           {/* Heading */}
-          <h2 className="text-h2 mt-4 font-black tracking-tight text-[#0b1f4a]">
-            {$t("AgenticAiLiveAction__t3", "Watch Your Agent")}<br />
-            <span className="bg-gradient-to-r from-[#0284c7] via-[#2563eb] to-[#38bdf8] bg-clip-text text-transparent">
-              {$t("AgenticAiLiveAction__t4", "Go to Work.")}</span>
-          </h2>
+          <h2 className="text-h2 mt-4 font-black tracking-tight text-[#0b1f4a]">{rich($t("AgenticAiLiveAction__t3m", "Watch Your Agent<br><span class=\"bg-gradient-to-r from-[#0284c7] via-[#2563eb] to-[#38bdf8] bg-clip-text text-transparent\">Go to Work.</span>"))}</h2>
 
           {/* Subtitle */}
-          <p className="text-body mt-4 text-slate-500 max-w-xl mx-auto">
-            {rich($t("AgenticAiLiveAction__t5", "Give your agent a goal. It handles the steps,"))}<br className="hidden sm:inline" /> {rich($t("AgenticAiLiveAction__t6", "decisions and actions behind it."))}</p>
+          <p className="text-body mt-4 text-slate-500 max-w-xl mx-auto">{rich($t("AgenticAiLiveAction__t5m", "Give your agent a goal. It handles the steps,<br class=\"hidden sm:inline\"> decisions and actions behind it."))}</p>
         </motion.div>
 
         {/* =========================================================================
@@ -168,7 +163,7 @@ export default function AgenticAiLiveAction() {
               <div className="w-full max-w-[320px] rounded-[28px] bg-white border border-slate-200/80 shadow-[0_15px_40px_-15px_rgba(15,35,80,0.07)] p-6 transition-all duration-300 hover:shadow-lg">
                 {/* Header */}
                 <div className="text-[11px] font-extrabold tracking-widest text-[#0d9488] uppercase">
-                  {$t("AgenticAiLiveAction__t7", "YOUR REQUEST")}</div>
+                  {html($t("AgenticAiLiveAction__t7", "YOUR REQUEST"))}</div>
 
                 {/* Quotation mark */}
                 <div className="text-3xl font-serif text-[#06b6d4] leading-none mt-3">
@@ -191,7 +186,7 @@ export default function AgenticAiLiveAction() {
                       <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     </svg>
-                    <span>{$t("AgenticAiLiveAction__t9", "New leads detected")}</span>
+                    <span>{html($t("AgenticAiLiveAction__t9", "New leads detected"))}</span>
                   </div>
                   <span className="px-2.5 py-0.5 rounded-full bg-cyan-50 text-[#0284c7] font-black text-xs border border-cyan-100/80">
                     {leadsCount}
@@ -296,10 +291,8 @@ export default function AgenticAiLiveAction() {
               {/* Agent Floating Badge */}
               <div className="-mt-4 relative z-10 px-5 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-[0_6px_20px_-8px_rgba(15,35,80,0.1)]">
                 <div className="text-[10.5px] font-black tracking-wider text-[#0b1f4a] uppercase">
-                  {$t("AgenticAiLiveAction__t14", "YOUR CUSTOM AI AGENT")}</div>
-                <div className="text-[9px] font-medium text-slate-500">
-                  {$t("AgenticAiLiveAction__t15", "Built by ")}<span className="text-[#0284c7] font-bold">{$t("AgenticAiLiveAction__t16", "ProManage")}</span>
-                </div>
+                  {html($t("AgenticAiLiveAction__t14", "YOUR CUSTOM AI AGENT"))}</div>
+                <div className="text-[9px] font-medium text-slate-500">{rich($t("AgenticAiLiveAction__t15m", "Built by <span class=\"text-[#0284c7] font-bold\">ProManage</span>"))}</div>
               </div>
 
               {/* 3 Step Pills: 01 UNDERSTAND, 02 DECIDE, 03 ACT */}
@@ -321,12 +314,10 @@ export default function AgenticAiLiveAction() {
                       <line x1="16" y1="17" x2="8" y2="17" />
                     </svg>
                   </div>
-                  <div className="mt-2 text-[9px] font-bold text-slate-400">{$t("AgenticAiLiveAction__t17", "01")}</div>
+                  <div className="mt-2 text-[9px] font-bold text-slate-400">{html($t("AgenticAiLiveAction__t17", "01"))}</div>
                   <div className="text-[10px] sm:text-[11px] font-black text-[#0d9488] tracking-wider uppercase">
-                    {$t("AgenticAiLiveAction__t18", "UNDERSTAND")}</div>
-                  <div className="mt-0.5 text-[9px] text-slate-500 leading-tight">
-                    {$t("AgenticAiLiveAction__t19", "Reads your business")}<br />
-                    {$t("AgenticAiLiveAction__t20", "context and data.")}</div>
+                    {html($t("AgenticAiLiveAction__t18", "UNDERSTAND"))}</div>
+                  <div className="mt-0.5 text-[9px] text-slate-500 leading-tight">{rich($t("AgenticAiLiveAction__t19m", "Reads your business<br>context and data."))}</div>
                 </div>
 
                 {/* Arrow 1 */}
@@ -351,12 +342,10 @@ export default function AgenticAiLiveAction() {
                       <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z" />
                     </svg>
                   </div>
-                  <div className="mt-2 text-[9px] font-bold text-slate-400">{$t("AgenticAiLiveAction__t21", "02")}</div>
+                  <div className="mt-2 text-[9px] font-bold text-slate-400">{html($t("AgenticAiLiveAction__t21", "02"))}</div>
                   <div className="text-[10px] sm:text-[11px] font-black text-[#8b5cf6] tracking-wider uppercase">
-                    {$t("AgenticAiLiveAction__t22", "DECIDE")}</div>
-                  <div className="mt-0.5 text-[9px] text-slate-500 leading-tight">
-                    {$t("AgenticAiLiveAction__t23", "Determines the best")}<br />
-                    {$t("AgenticAiLiveAction__t24", "next action.")}</div>
+                    {html($t("AgenticAiLiveAction__t22", "DECIDE"))}</div>
+                  <div className="mt-0.5 text-[9px] text-slate-500 leading-tight">{rich($t("AgenticAiLiveAction__t23m", "Determines the best<br>next action."))}</div>
                 </div>
 
                 {/* Arrow 2 */}
@@ -380,12 +369,10 @@ export default function AgenticAiLiveAction() {
                       <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                     </svg>
                   </div>
-                  <div className="mt-2 text-[9px] font-bold text-slate-400">{$t("AgenticAiLiveAction__t25", "03")}</div>
+                  <div className="mt-2 text-[9px] font-bold text-slate-400">{html($t("AgenticAiLiveAction__t25", "03"))}</div>
                   <div className="text-[10px] sm:text-[11px] font-black text-[#2563eb] tracking-wider uppercase">
-                    {$t("AgenticAiLiveAction__t26", "ACT")}</div>
-                  <div className="mt-0.5 text-[9px] text-slate-500 leading-tight">
-                    {$t("AgenticAiLiveAction__t27", "Executes across your")}<br />
-                    {$t("AgenticAiLiveAction__t28", "connected systems.")}</div>
+                    {html($t("AgenticAiLiveAction__t26", "ACT"))}</div>
+                  <div className="mt-0.5 text-[9px] text-slate-500 leading-tight">{rich($t("AgenticAiLiveAction__t27m", "Executes across your<br>connected systems."))}</div>
                 </div>
 
               </div>
@@ -402,7 +389,7 @@ export default function AgenticAiLiveAction() {
               <div className="w-full max-w-[320px] rounded-[28px] bg-white border border-slate-200/80 shadow-[0_15px_40px_-15px_rgba(15,35,80,0.07)] p-6 transition-all duration-300 hover:shadow-lg">
                 {/* Header */}
                 <div className="text-[11px] font-extrabold tracking-widest text-[#2563eb] uppercase">
-                  {$t("AgenticAiLiveAction__t29", "RESULT")}</div>
+                  {html($t("AgenticAiLiveAction__t29", "RESULT"))}</div>
 
                 {/* Big Green Circle Checkmark */}
                 <div className="mt-4 flex flex-col items-center text-center">
@@ -416,7 +403,7 @@ export default function AgenticAiLiveAction() {
                     </svg>
                   </motion.div>
                   <h4 className="mt-2.5 text-base sm:text-[17px] font-black text-[#0b1f4a] tracking-tight">
-                    {$t("AgenticAiLiveAction__t30", "Workflow completed")}</h4>
+                    {html($t("AgenticAiLiveAction__t30", "Workflow completed"))}</h4>
                 </div>
 
                 {/* 3 Result Stats */}
@@ -432,7 +419,7 @@ export default function AgenticAiLiveAction() {
                     </div>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xl font-black text-teal-600 tracking-tight">{followups}</span>
-                      <span className="text-xs font-semibold text-slate-700">{$t("AgenticAiLiveAction__t31", "Follow-ups Sent")}</span>
+                      <span className="text-xs font-semibold text-slate-700">{html($t("AgenticAiLiveAction__t31", "Follow-ups Sent"))}</span>
                     </div>
                   </div>
 
@@ -448,7 +435,7 @@ export default function AgenticAiLiveAction() {
                     </div>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xl font-black text-[#2563eb] tracking-tight">{meetings}</span>
-                      <span className="text-xs font-semibold text-slate-700">{$t("AgenticAiLiveAction__t32", "Meetings Scheduled")}</span>
+                      <span className="text-xs font-semibold text-slate-700">{html($t("AgenticAiLiveAction__t32", "Meetings Scheduled"))}</span>
                     </div>
                   </div>
 
@@ -463,16 +450,14 @@ export default function AgenticAiLiveAction() {
                     </div>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xl font-black text-[#0284c7] tracking-tight">{records}</span>
-                      <span className="text-xs font-semibold text-slate-700">{$t("AgenticAiLiveAction__t33", "CRM Records Updated")}</span>
+                      <span className="text-xs font-semibold text-slate-700">{html($t("AgenticAiLiveAction__t33", "CRM Records Updated"))}</span>
                     </div>
                   </div>
 
                 </div>
 
                 {/* Footer Message */}
-                <div className="mt-6 pt-3.5 border-t border-slate-100 text-center text-[10.5px] text-slate-500 leading-snug">
-                  {$t("AgenticAiLiveAction__t34", "Your team steps in only")}<br />
-                  {$t("AgenticAiLiveAction__t35", "when it matters.")}</div>
+                <div className="mt-6 pt-3.5 border-t border-slate-100 text-center text-[10.5px] text-slate-500 leading-snug">{rich($t("AgenticAiLiveAction__t34m", "Your team steps in only<br>when it matters."))}</div>
               </div>
             </motion.div>
 
@@ -492,7 +477,7 @@ export default function AgenticAiLiveAction() {
         >
           {/* Label */}
           <div className="text-center text-[10.5px] font-extrabold tracking-[0.16em] text-slate-400 uppercase">
-            {$t("AgenticAiLiveAction__t36", "WORKS ACROSS YOUR CONNECTED SYSTEMS")}</div>
+            {html($t("AgenticAiLiveAction__t36", "WORKS ACROSS YOUR CONNECTED SYSTEMS"))}</div>
 
           {/* 6 Logos Row with Vertical Dividers */}
           <div className="mt-5 grid grid-cols-2 sm:grid-cols-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 items-center">
@@ -502,7 +487,7 @@ export default function AgenticAiLiveAction() {
               <div className="transition-transform group-hover:scale-110 duration-200">
                 <SalesforceLogo />
               </div>
-              <span className="mt-1.5 text-xs font-bold text-slate-700">{$t("AgenticAiLiveAction__t37", "Salesforce")}</span>
+              <span className="mt-1.5 text-xs font-bold text-slate-700">{html($t("AgenticAiLiveAction__t37", "Salesforce"))}</span>
             </div>
 
             {/* 2. Gmail */}
@@ -510,7 +495,7 @@ export default function AgenticAiLiveAction() {
               <div className="transition-transform group-hover:scale-110 duration-200">
                 <GmailLogo />
               </div>
-              <span className="mt-1.5 text-xs font-bold text-slate-700">{$t("AgenticAiLiveAction__t38", "Gmail")}</span>
+              <span className="mt-1.5 text-xs font-bold text-slate-700">{html($t("AgenticAiLiveAction__t38", "Gmail"))}</span>
             </div>
 
             {/* 3. Calendar */}
@@ -518,7 +503,7 @@ export default function AgenticAiLiveAction() {
               <div className="transition-transform group-hover:scale-110 duration-200">
                 <CalendarLogo />
               </div>
-              <span className="mt-1.5 text-xs font-bold text-slate-700">{$t("AgenticAiLiveAction__t39", "Calendar")}</span>
+              <span className="mt-1.5 text-xs font-bold text-slate-700">{html($t("AgenticAiLiveAction__t39", "Calendar"))}</span>
             </div>
 
             {/* 4. Slack */}
@@ -526,7 +511,7 @@ export default function AgenticAiLiveAction() {
               <div className="transition-transform group-hover:scale-110 duration-200">
                 <SlackLogo />
               </div>
-              <span className="mt-1.5 text-xs font-bold text-slate-700">{$t("AgenticAiLiveAction__t40", "Slack")}</span>
+              <span className="mt-1.5 text-xs font-bold text-slate-700">{html($t("AgenticAiLiveAction__t40", "Slack"))}</span>
             </div>
 
             {/* 5. Drive */}
@@ -534,7 +519,7 @@ export default function AgenticAiLiveAction() {
               <div className="transition-transform group-hover:scale-110 duration-200">
                 <DriveLogo />
               </div>
-              <span className="mt-1.5 text-xs font-bold text-slate-700">{$t("AgenticAiLiveAction__t41", "Drive")}</span>
+              <span className="mt-1.5 text-xs font-bold text-slate-700">{html($t("AgenticAiLiveAction__t41", "Drive"))}</span>
             </div>
 
             {/* 6. & More */}
@@ -542,7 +527,7 @@ export default function AgenticAiLiveAction() {
               <div className="w-8 h-8 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-500 font-bold text-base transition-transform group-hover:scale-110 duration-200 group-hover:border-sky-300 group-hover:text-sky-600">
                 +
               </div>
-              <span className="mt-1.5 text-xs font-bold text-slate-700">{$t("AgenticAiLiveAction__t42", "& More")}</span>
+              <span className="mt-1.5 text-xs font-bold text-slate-700">{html($t("AgenticAiLiveAction__t42", "& More"))}</span>
             </div>
 
           </div>

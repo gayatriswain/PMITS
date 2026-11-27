@@ -6,7 +6,7 @@ import Honeypot from "@/components/cms/Honeypot";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    SMALL ICONS
@@ -154,10 +154,10 @@ function ConsultationForm() {
         <span className="w-14 h-14 rounded-full bg-[#e8f6f4] text-[#0f8a83] flex items-center justify-center">
           <Icon d="m5 12.5 4.5 4.5L19 7.5" className="w-7 h-7" />
         </span>
-        <h4 className="text-h6 mt-4 font-extrabold text-[#0b2447]">{$t("CustomCrmStartJourney__t1", "Thank you, ")}{form.name}!</h4>
+        <h4 className="text-h6 mt-4 font-extrabold text-[#0b2447]">{html($t("CustomCrmStartJourney__t1", "Thank you, "))}{form.name}!</h4>
         <p className="text-small mt-1.5 text-slate-600 max-w-xs">{rich($t("CustomCrmStartJourney__t2", "Our CRM experts will reach out within 24 hours to schedule your free consultation."))}</p>
         <button type="button" onClick={reset} className="mt-4 text-sm font-semibold text-[#0f8a83] underline cursor-pointer">
-          {$t("CustomCrmStartJourney__t3", "Send another request")}</button>
+          {html($t("CustomCrmStartJourney__t3", "Send another request"))}</button>
       </div>
     );
   }
@@ -251,10 +251,7 @@ export default function CustomCrmStartJourney() {
               {/* Left: copy */}
               <div className="lg:pr-6">
                 <div className="relative inline-block">
-                  <h2 className="text-h2 font-extrabold tracking-tight text-[#0b2447]">
-                    {$t("CustomCrmStartJourney__t14", "Start Your")}<br />
-                    <span className="text-[#0f8a83]">{$t("CustomCrmStartJourney__t15", "CRM Journey")}</span>
-                  </h2>
+                  <h2 className="text-h2 font-extrabold tracking-tight text-[#0b2447]">{rich($t("CustomCrmStartJourney__t14m", "Start Your<br><span class=\"text-[#0f8a83]\">CRM Journey</span>"))}</h2>
                   {/* Hand-drawn underline + curly arrow towards the form */}
                   <svg className="hidden lg:block absolute left-0 top-full -mt-1 w-[130%] h-[84px] pointer-events-none overflow-visible" viewBox="0 0 420 84" fill="none" stroke="#0f8a83" strokeWidth="2" strokeLinecap="round">
                     <path d="M0 14C70 22 190 6 330 3" />
@@ -316,7 +313,7 @@ export default function CustomCrmStartJourney() {
               href={$t("CustomCrmStartJourney__t20", "#contact")}
               className="mt-7 inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#0b1220] text-white text-sm font-semibold hover:bg-[#0f6b6b] transition-colors"
             >
-              {$t("CustomCrmStartJourney__t21", "Let's Talk")}<span aria-hidden>→</span>
+              {html($t("CustomCrmStartJourney__t21", "Let's Talk"))}<span aria-hidden>→</span>
             </a>
           </motion.div>
         </div>

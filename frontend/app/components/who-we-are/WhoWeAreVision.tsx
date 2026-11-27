@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -225,8 +225,8 @@ export default function WhoWeAreVision() {
               variants={fadeUp}
               className="text-h2 mt-5 font-bold tracking-tight"
             >
-              <span style={{ color: INK }}>{$t("WhoWeAreVision__t3", "Our ")}</span>
-              <span style={{ color: TEAL }}>{$t("WhoWeAreVision__t4", "Vision")}</span>
+              <span style={{ color: INK }}>{html($t("WhoWeAreVision__t3", "Our "))}</span>
+              <span style={{ color: TEAL }}>{html($t("WhoWeAreVision__t4", "Vision"))}</span>
             </motion.h2>
             <motion.span
               variants={fadeUp}
@@ -250,14 +250,7 @@ export default function WhoWeAreVision() {
                 <span className="absolute -bottom-3 left-1/2 h-2 w-px -translate-x-1/2 bg-teal-300" />
               </span>
               <span className="h-14 w-px bg-slate-200" />
-              <p className="text-body" style={{ color: INK }}>
-                {rich($t("WhoWeAreVision__t6", "Shaping a better tomorrow through"))}{" "}
-                <span className="font-semibold" style={{ color: TEAL }}>
-                  {$t("WhoWeAreVision__t7", "digital innovation")}</span>{" "}
-                and{" "}
-                <span className="font-semibold" style={{ color: TEAL }}>
-                  {$t("WhoWeAreVision__t8", "strategic insights.")}</span>
-              </p>
+              <p className="text-body" style={{ color: INK }}>{rich($t("WhoWeAreVision__t6m", "Shaping a better tomorrow through <span class=\"font-semibold text-[#0d9488]\">digital innovation</span> and <span class=\"font-semibold text-[#0d9488]\">strategic insights.</span>"))}</p>
             </motion.div>
 
             <Dots

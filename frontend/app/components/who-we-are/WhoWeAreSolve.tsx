@@ -5,7 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const oswald = { className: "font-heading" }; // global font from app/layout.tsx
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
@@ -396,12 +396,8 @@ function PromiseCard() {
       <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-300">
         <ShieldIcon />
         {rich($t("WhoWeAreSolve__t4", "Our Promise"))}</p>
-      <h3 className={`text-h5 ${oswald.className} mt-5 font-semibold uppercase tracking-wide`}>
-        {$t("WhoWeAreSolve__t5", "We don't just")}<br />
-        {$t("WhoWeAreSolve__t6", "deliver projects.")}</h3>
-      <p className={`${oswald.className} mt-3 text-[24px] font-semibold uppercase leading-[1.15] tracking-wide text-teal-300`}>
-        {rich($t("WhoWeAreSolve__t7", "We build what"))}<br />
-        {rich($t("WhoWeAreSolve__t8", "makes it possible."))}</p>
+      <h3 className={`text-h5 ${oswald.className} mt-5 font-semibold uppercase tracking-wide`}>{rich($t("WhoWeAreSolve__t5m", "We don't just<br>deliver projects."))}</h3>
+      <p className={`${oswald.className} mt-3 text-[24px] font-semibold uppercase leading-[1.15] tracking-wide text-teal-300`}>{rich($t("WhoWeAreSolve__t7m", "We build what<br>makes it possible."))}</p>
       <span className="mt-5 block h-[2px] w-10 rounded-full bg-teal-300" />
       <p className="text-small mt-5 text-slate-300">
         {rich($t("WhoWeAreSolve__t9", "Every line of code, every design decision and every strategy we craft is aimed at one thing — helping your business move forward, faster."))}</p>
@@ -504,10 +500,10 @@ export default function WhoWeAreSolve() {
               variants={fadeUp}
               className={`text-h2 ${oswald.className} mt-4 font-bold uppercase tracking-tight`}
             >
-              <span className="block" style={{ color: INK }}>{$t("WhoWeAreSolve__t11", "We Solve.")}</span>
-              <span className="block" style={{ color: INK }}>{$t("WhoWeAreSolve__t12", "We Build.")}</span>
+              <span className="block" style={{ color: INK }}>{html($t("WhoWeAreSolve__t11", "We Solve."))}</span>
+              <span className="block" style={{ color: INK }}>{html($t("WhoWeAreSolve__t12", "We Build."))}</span>
               <span className="relative inline-block bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(90deg, ${DEEP_TEAL}, ${TEAL} 60%, #22d3ee)` }}>
-                {$t("WhoWeAreSolve__t13", "We Grow")}<svg className="pointer-events-none absolute -right-12 top-0" width="40" height="38" viewBox="0 0 48 46" fill="none" aria-hidden>
+                {html($t("WhoWeAreSolve__t13", "We Grow"))}<svg className="pointer-events-none absolute -right-12 top-0" width="40" height="38" viewBox="0 0 48 46" fill="none" aria-hidden>
                   <path d="M4 42C16 36 30 22 40 8" stroke="#2563eb" strokeWidth="3" strokeLinecap="round" />
                   <path d="M31 7l11-3-1 12" stroke="#2563eb" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -537,7 +533,7 @@ export default function WhoWeAreSolve() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-full border-2 transition-transform group-hover:scale-105" style={{ borderColor: INK }}>
                   <PlayIcon color={INK} />
                 </span>
-                <span className="text-[14.5px] font-semibold" style={{ color: INK }}>{$t("WhoWeAreSolve__t19", "See How We Work")}</span>
+                <span className="text-[14.5px] font-semibold" style={{ color: INK }}>{html($t("WhoWeAreSolve__t19", "See How We Work"))}</span>
               </Link>
             </motion.div>
           </motion.div>

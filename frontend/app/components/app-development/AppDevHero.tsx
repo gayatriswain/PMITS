@@ -7,7 +7,7 @@ import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -281,7 +281,7 @@ function FoodScreen() {
       <div className="flex items-center justify-between px-4 pb-2.5">
         <MenuIcon color={NAVY} size={15} />
         <span className="flex items-center gap-1 text-[9px] font-semibold" style={{ color: NAVY }}>
-          {$t("AppDevHero__t1", "Deliver to ")}<span className="font-bold">{$t("AppDevHero__t2", "Home")}</span>
+          {html($t("AppDevHero__t1", "Deliver to "))}<span className="font-bold">{html($t("AppDevHero__t2", "Home"))}</span>
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke={NAVY} strokeWidth="3"><path d="m6 9 6 6 6-6" /></svg>
         </span>
         <span className="relative">
@@ -294,13 +294,13 @@ function FoodScreen() {
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round">
           <circle cx="11" cy="11" r="6.5" /><path d="M16 16 L20.5 20.5" />
         </svg>
-        <span className="text-[8.5px] text-slate-400">{$t("AppDevHero__t3", "Search for restaurants or dishes")}</span>
+        <span className="text-[8.5px] text-slate-400">{html($t("AppDevHero__t3", "Search for restaurants or dishes"))}</span>
       </div>
 
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl p-3.5" style={{ backgroundColor: "#ea580c" }}>
         <p className="inline-block rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-extrabold" style={{ color: "#ea580c" }}>{rich($t("AppDevHero__t4", "30% OFF"))}</p>
         <p className="text-[10px] font-semibold leading-snug text-white mt-1.5 max-w-[62%]">{rich($t("AppDevHero__t5", "on your first order"))}</p>
-        <span className="inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: "#ea580c" }}>{$t("AppDevHero__t6", "Order Now")}</span>
+        <span className="inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: "#ea580c" }}>{html($t("AppDevHero__t6", "Order Now"))}</span>
         <span className="absolute right-1.5 bottom-1.5"><BurgerIcon size={40} /></span>
       </div>
 
@@ -317,7 +317,7 @@ function FoodScreen() {
         ))}
         <div className="flex flex-col items-center gap-1">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-400 text-[13px]">•••</span>
-          <span className="text-[7.5px] text-slate-500">{$t("AppDevHero__t9", "More")}</span>
+          <span className="text-[7.5px] text-slate-500">{html($t("AppDevHero__t9", "More"))}</span>
         </div>
       </div>
 
@@ -358,7 +358,7 @@ function EcommerceScreen() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(100deg, rgba(219,39,119,0.9) 30%, rgba(219,39,119,0.15) 90%)" }} />
         <p className="relative text-[8px] font-bold uppercase tracking-wide text-white/85">{rich($t("AppDevHero__t18", "Today's Deals"))}</p>
         <p className="relative text-[10.5px] font-bold leading-snug mt-1 max-w-[60%] text-white">{rich($t("AppDevHero__t19", "Summer Collection up to 40% off"))}</p>
-        <span className="relative inline-block mt-2 rounded-full px-2.5 py-1 text-[8px] font-bold text-white" style={{ backgroundColor: "#db2777" }}>{$t("AppDevHero__t20", "Shop Now")}</span>
+        <span className="relative inline-block mt-2 rounded-full px-2.5 py-1 text-[8px] font-bold text-white" style={{ backgroundColor: "#db2777" }}>{html($t("AppDevHero__t20", "Shop Now"))}</span>
       </div>
 
       <div className="px-4 mb-3">
@@ -410,7 +410,7 @@ function HealthcareScreen() {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="6.5" /><path d="M16 16 L20.5 20.5" /></svg>
       </div>
       <div className="mx-4 mb-3 flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
-        <span className="text-[8.5px] text-slate-400">{$t("AppDevHero__t41", "Search doctors, clinics...")}</span>
+        <span className="text-[8.5px] text-slate-400">{html($t("AppDevHero__t41", "Search doctors, clinics..."))}</span>
       </div>
 
       <div className="mx-4 mb-4 rounded-2xl border border-slate-100 p-3">
@@ -424,7 +424,7 @@ function HealthcareScreen() {
             <p className="flex items-center gap-1 text-[7.5px] text-slate-400 mt-0.5"><StarFillIcon />{rich($t("AppDevHero__t44", "4.8 (120)"))}</p>
           </div>
         </div>
-        <span className="mt-2.5 block rounded-lg py-1.5 text-center text-[8.5px] font-bold text-white" style={{ backgroundColor: "#0284c7" }}>{$t("AppDevHero__t45", "Book Now")}</span>
+        <span className="mt-2.5 block rounded-lg py-1.5 text-center text-[8.5px] font-bold text-white" style={{ backgroundColor: "#0284c7" }}>{html($t("AppDevHero__t45", "Book Now"))}</span>
       </div>
 
       <div className="px-4 flex flex-1 flex-col pb-2">
@@ -655,7 +655,7 @@ function PeekCard({ cat, side, depth }: { cat: Category; side: "left" | "right";
       <div className="h-full w-full" style={{ transform: "scale(0.58)", transformOrigin: "top left", width: "172.4%", height: "172.4%" }}>
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between px-4 pt-3 pb-1 text-[9px] font-semibold" style={{ color: NAVY }}>
-            <span>{$t("AppDevHero__t97", "9:41")}</span>
+            <span>{html($t("AppDevHero__t97", "9:41"))}</span>
           </div>
           <div className="flex flex-1 min-h-0 flex-col">
             <ScreenBody id={cat.id} />
@@ -685,7 +685,7 @@ function PhoneScreen({ cat }: { cat: Category }) {
         >
           {/* status bar */}
           <div className="flex items-center justify-between px-4 pt-2.5 pb-1.5 text-[9px] font-semibold" style={{ color: NAVY }}>
-            <span>{$t("AppDevHero__t98", "9:41")}</span>
+            <span>{html($t("AppDevHero__t98", "9:41"))}</span>
             <span className="flex items-center gap-1">
               <svg width="12" height="9" viewBox="0 0 16 12" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M1 4 C4 1 12 1 15 4 M3.5 6.5 C5.5 4.7 10.5 4.7 12.5 6.5 M6 9 C7 8 9 8 10 9" /></svg>
               <span className="w-3 h-2 rounded-sm border border-current" />
@@ -751,12 +751,12 @@ export default function AppDevHero() {
             style={{ color: TEAL }}
           >
             <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: TEAL }} />
-            {$t("AppDevHero__t99", "App Development")}</motion.span>
+            {html($t("AppDevHero__t99", "App Development"))}</motion.span>
 
           <motion.h1 variants={fadeUp} className="font-heading text-[clamp(32px,3.4vw,52px)] font-bold leading-[1.16] tracking-[-0.025em] mb-6">
-            <span className="block" style={{ color: NAVY }}>{$t("AppDevHero__t100", "Powerful Apps.")}</span>
-            <span className="block" style={{ color: NAVY }}>{$t("AppDevHero__t101", "Meaningful Experiences.")}</span>
-            <span className="block" style={{ color: DEEP_TEAL }}>{$t("AppDevHero__t102", "Real Business Growth.")}</span>
+            <span className="block" style={{ color: NAVY }}>{html($t("AppDevHero__t100", "Powerful Apps."))}</span>
+            <span className="block" style={{ color: NAVY }}>{html($t("AppDevHero__t101", "Meaningful Experiences."))}</span>
+            <span className="block" style={{ color: DEEP_TEAL }}>{html($t("AppDevHero__t102", "Real Business Growth."))}</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} className="text-small text-slate-600 leading-relaxed max-w-[470px]">
@@ -919,8 +919,7 @@ export default function AppDevHero() {
           className="w-full bg-white rounded-[24px] shadow-[0_15px_40px_-25px_rgba(15,40,60,0.25)] border border-slate-100 p-6 lg:p-7 flex flex-col lg:flex-row items-center gap-6 lg:gap-10"
         >
           <div className="flex flex-col items-center lg:items-start gap-2 shrink-0">
-            <p className="text-[11px] font-bold uppercase leading-relaxed tracking-[0.12em] text-center lg:text-left" style={{ color: NAVY }}>
-              {rich($t("AppDevHero__t108", "Trusted by Businesses"))}<br className="hidden lg:block" /> {rich($t("AppDevHero__t109", "Worldwide"))}</p>
+            <p className="text-[11px] font-bold uppercase leading-relaxed tracking-[0.12em] text-center lg:text-left" style={{ color: NAVY }}>{rich($t("AppDevHero__t108m", "Trusted by Businesses<br class=\"hidden lg:block\"> Worldwide"))}</p>
             <div className="mt-1 flex -space-x-2">
               {AVATARS.map((a, i) => (
                 <div key={i} className="h-10 w-10 rounded-full ring-[3px] ring-white overflow-hidden relative bg-slate-200 shadow-sm">

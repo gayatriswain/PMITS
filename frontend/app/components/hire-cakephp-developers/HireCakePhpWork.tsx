@@ -6,7 +6,7 @@ import Link from "next/link";
 import { animate, motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -82,7 +82,7 @@ function StoreScreen() {
   return (
     <div className="relative h-full w-full bg-[#f4f3f1] text-[#222]" style={{ fontSize: cq(2) }}>
       <div className="flex items-center justify-between" style={{ padding: `${cq(2)} ${cq(4)}` }}>
-        <span className="font-bold tracking-[0.3em]" style={{ fontSize: cq(2.6) }}>{$t("HireCakePhpWork__t6", "LUXORA")}</span>
+        <span className="font-bold tracking-[0.3em]" style={{ fontSize: cq(2.6) }}>{html($t("HireCakePhpWork__t6", "LUXORA"))}</span>
         <span className="flex text-[#555]" style={{ gap: cq(2.2) }}>
           {nav.map((n) => (
             <span key={n}>{n}</span>
@@ -111,12 +111,10 @@ function StoreScreen() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
-        >
-          {rich($t("HireCakePhpWork__t8", "New"))}<br />
-          {rich($t("HireCakePhpWork__t9", "Collection"))}</motion.p>
+        >{rich($t("HireCakePhpWork__t8m", "New<br>Collection"))}</motion.p>
         <p className="text-[#666]" style={{ marginTop: cq(1.6), fontSize: cq(1.9) }}>{rich($t("HireCakePhpWork__t10", "Spring / Summer 2024"))}</p>
         <span className="inline-block rounded-sm bg-[#111] text-white" style={{ marginTop: cq(2.4), padding: `${cq(1.1)} ${cq(2.8)}`, fontSize: cq(1.8) }}>
-          {$t("HireCakePhpWork__t11", "Shop Now")}</span>
+          {html($t("HireCakePhpWork__t11", "Shop Now"))}</span>
       </div>
 
       {/* products */}
@@ -394,14 +392,14 @@ export default function HireCakePhpWork() {
               className="inline-block text-[11px] font-bold uppercase tracking-[0.24em]"
               style={{ color: RED }}
             >
-              {$t("HireCakePhpWork__t52", "Our Work")}</motion.span>
+              {html($t("HireCakePhpWork__t52", "Our Work"))}</motion.span>
             <motion.h2
               variants={fadeUp}
               custom={1}
               className="text-h2 mt-4 font-playfair font-bold tracking-tight"
               style={{ color: INK }}
             >
-              {$t("HireCakePhpWork__t53", "Built with ")}<span style={{ color: RED }}>{$t("HireCakePhpWork__t54", "CakePHP.")}</span>
+              {$t("HireCakePhpWork__t53", "Built with ")}<span style={{ color: RED }}>{html($t("HireCakePhpWork__t54", "CakePHP."))}</span>
               <br />
               {$t("HireCakePhpWork__t55", "Built to perform.")}</motion.h2>
             <motion.span
@@ -467,7 +465,7 @@ export default function HireCakePhpWork() {
             style={{ borderColor: RED, color: RED }}
           >
             <span aria-hidden className="absolute inset-0 origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100" style={{ background: RED }} />
-            <span className="relative">{$t("HireCakePhpWork__t57", "View More Case Studies")}</span>
+            <span className="relative">{html($t("HireCakePhpWork__t57", "View More Case Studies"))}</span>
             <svg viewBox="0 0 24 24" className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <line x1="4" y1="12" x2="20" y2="12" />
               <polyline points="14 6 20 12 14 18" />

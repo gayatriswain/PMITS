@@ -164,9 +164,7 @@ export default function GrowthDashboardCard() {
           <path d="M4 22c3-10 12-14 20-10" />
           <path d="M18 9l6 3-2 6" />
         </svg>
-        <p className="text-caption max-w-[220px] italic text-slate-600">
-          {rich($t("GrowthDashboardCard__t3", "We turn ideas into "))}<span className="font-medium" style={{ color: TEAL }}>{$t("GrowthDashboardCard__t4", "digital growth engines.")}</span>
-        </p>
+        <p className="text-caption max-w-[220px] italic text-slate-600">{rich($t("GrowthDashboardCard__t3m", "We turn ideas into <span class=\"font-medium text-[#12a883]\">digital growth engines.</span>"))}</p>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import Container from "../shared/Container";
 import CountUp from "../shared/CountUp";
 import { ArrowRight, Emblem, Icon, ease, fadeUp, heading, useSeen, type IconName } from "../shared/MagentoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
@@ -99,9 +99,7 @@ function ProposalPocket() {
             style={{ transform: "rotate(9deg)" }}
           >
             <Emblem sizes="48px" className="w-[42px]" />
-            <p className={`text-body ${heading.className} mt-5 font-semibold text-[#111]`}>
-              {rich($t("MagentoProposal__t1", "Your"))}<br />
-              {rich($t("MagentoProposal__t2", "Custom Proposal"))}</p>
+            <p className={`text-body ${heading.className} mt-5 font-semibold text-[#111]`}>{rich($t("MagentoProposal__t1m", "Your<br>Custom Proposal"))}</p>
             <ul className="mt-5 space-y-2.5">
               {proposalItems.map((t, k) => (
                 <motion.li
@@ -224,7 +222,7 @@ export default function MagentoProposal() {
               viewport={{ once: true }}
               className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#111]`}
             >
-              {$t("MagentoProposal__t4", "Get My ")}<span className="text-[#1b7a6e]">{$t("MagentoProposal__t5", "Free Proposal")}</span>
+              {$t("MagentoProposal__t4", "Get My ")}<span className="text-[#1b7a6e]">{html($t("MagentoProposal__t5", "Free Proposal"))}</span>
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-4 max-w-[420px] text-slate-600">
               {rich($t("MagentoProposal__t6", "Share a few details about your Magento project and our experts will get back to you with a tailored proposal — no obligation, just real solutions."))}</motion.p>
@@ -245,7 +243,7 @@ export default function MagentoProposal() {
 
             <div className="mt-10 text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-500">
               <span className="mb-3 block h-px w-10 bg-slate-400" />
-              {$t("MagentoProposal__t7", "Build  |  Grow  |  Scale")}<span className="mt-1 block font-medium tracking-[0.2em] text-slate-400">{$t("MagentoProposal__t8", "With certified Magento experts")}</span>
+              {html($t("MagentoProposal__t7", "Build  |  Grow  |  Scale"))}<span className="mt-1 block font-medium tracking-[0.2em] text-slate-400">{html($t("MagentoProposal__t8", "With certified Magento experts"))}</span>
             </div>
 
           </div>
@@ -273,18 +271,15 @@ export default function MagentoProposal() {
                     <motion.circle cx="40" cy="40" r="36" stroke="#0d9488" strokeWidth="4" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.7 }} />
                     <motion.path d="m25 41 10 10 20-22" stroke="#0d9488" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.6 }} />
                   </svg>
-                  <h3 className={`text-h5 ${heading.className} mt-6 font-bold text-[#111]`}>{$t("MagentoProposal__t9", "Thank you!")}</h3>
+                  <h3 className={`text-h5 ${heading.className} mt-6 font-bold text-[#111]`}>{html($t("MagentoProposal__t9", "Thank you!"))}</h3>
                   <p className="text-small mt-2 max-w-[300px] text-slate-600">{rich($t("MagentoProposal__t10", "Your request is in. A Magento expert will get back to you within 24 hours."))}</p>
                   <button type="button" onClick={() => setStatus("idle")} className="mt-6 text-sm font-semibold text-[#1b7a6e] underline-offset-4 hover:underline">
-                    {$t("MagentoProposal__t11", "Send another request")}</button>
+                    {html($t("MagentoProposal__t11", "Send another request"))}</button>
                 </motion.div>
               ) : (
                 <motion.form key="form" onSubmit={submit} noValidate initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-slate-500">{rich($t("MagentoProposal__t12", "Tell us about your project"))}</p>
-                  <h3 className={`text-h4 ${heading.className} mt-3 font-bold text-[#111]`}>
-                    {$t("MagentoProposal__t13", "Request Your")}<br />
-                    <span className="text-[#1b7a6e]">{$t("MagentoProposal__t14", "Free Proposal")}</span>
-                  </h3>
+                  <h3 className={`text-h4 ${heading.className} mt-3 font-bold text-[#111]`}>{rich($t("MagentoProposal__t13m", "Request Your<br><span class=\"text-[#1b7a6e]\">Free Proposal</span>"))}</h3>
                   <p className="text-small mt-3 text-slate-500">{rich($t("MagentoProposal__t15", "Fill in the details below and our Magento experts will get back to you shortly."))}</p>
 
                   {/* honeypot */}
@@ -306,7 +301,7 @@ export default function MagentoProposal() {
                       <input className={inputCls} type="tel" placeholder={$t("MagentoProposal__t23", "Phone Number *")} value={f.phone} onChange={set("phone")} autoComplete="tel" />
                     </Field>
                     <label className="block">
-                      <span className="sr-only">{$t("MagentoProposal__t24", "Project type")}</span>
+                      <span className="sr-only">{html($t("MagentoProposal__t24", "Project type"))}</span>
                       <span className={`group relative flex items-center gap-2.5 rounded-lg border bg-white px-3 transition-all focus-within:border-[#0d9488] focus-within:shadow-[0_0_0_3px_rgba(13,148,136,0.12)] ${errors.type ? "border-rose-300" : "border-slate-200"}`}>
                         <Icon name="grid" className="h-4 w-4 shrink-0 text-slate-400 group-focus-within:text-[#0d9488]" />
                         <select value={f.type} onChange={set("type")} className={`w-full appearance-none bg-transparent py-3 pr-6 text-sm focus:outline-none ${f.type ? "text-[#0c1e3d]" : "text-slate-400"}`}>
@@ -318,7 +313,7 @@ export default function MagentoProposal() {
                       {errors.type && <span className="mt-1 block text-[11px] text-rose-500">{errors.type}</span>}
                     </label>
                     <label className="block">
-                      <span className="sr-only">{$t("MagentoProposal__t26", "Tell us about your project")}</span>
+                      <span className="sr-only">{html($t("MagentoProposal__t26", "Tell us about your project"))}</span>
                       <span className={`group relative flex gap-2.5 rounded-lg border bg-white px-3 pt-3 transition-all focus-within:border-[#0d9488] focus-within:shadow-[0_0_0_3px_rgba(13,148,136,0.12)] ${errors.message ? "border-rose-300" : "border-slate-200"}`}>
                         <Icon name="docText" className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 group-focus-within:text-[#0d9488]" />
                         <textarea

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { animate, motion, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -288,7 +288,7 @@ export default function ArVrApproach() {
             custom={0}
             className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
           >
-            {$t("ArVrApproach__t1", "Our Approach")}</motion.span>
+            {html($t("ArVrApproach__t1", "Our Approach"))}</motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
@@ -297,7 +297,7 @@ export default function ArVrApproach() {
             {$t("ArVrApproach__t2", "From Imagination")}<br />
             {$t("ArVrApproach__t3", "to Immersive")}{" "}
             <span className="bg-gradient-to-r from-[#7c3aed] via-[#a855f7] to-[#ec4899] bg-clip-text text-transparent">
-              {$t("ArVrApproach__t4", "Reality.")}</span>
+              {html($t("ArVrApproach__t4", "Reality."))}</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}

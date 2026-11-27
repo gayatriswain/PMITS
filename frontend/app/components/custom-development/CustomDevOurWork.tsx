@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -272,10 +272,7 @@ function Donut() {
           return el;
         })}
       </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center leading-none">
-        <span className="text-[10px] font-bold" style={{ color: NAVY }}>{$t("CustomDevOurWork__t1", "128")}</span>
-        <span className="text-[5px] text-slate-400">{$t("CustomDevOurWork__t2", "Total")}</span>
-      </div>
+      <div className="absolute inset-0 flex flex-col items-center justify-center leading-none">{rich($t("CustomDevOurWork__t1m", "<span class=\"text-[10px] font-bold text-[#132a43]\">128</span><span class=\"text-[5px] text-slate-400\">Total</span>"))}</div>
     </div>
   );
 }
@@ -293,7 +290,7 @@ function DashboardMock() {
           <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full" style={{ backgroundColor: DEEP_TEAL }}>
             <span className="h-1.5 w-1.5 rounded-full bg-white" />
           </span>
-          <span className="text-[9px] font-bold" style={{ color: NAVY }}>{$t("CustomDevOurWork__t3", "OpsHub")}</span>
+          <span className="text-[9px] font-bold" style={{ color: NAVY }}>{html($t("CustomDevOurWork__t3", "OpsHub"))}</span>
         </div>
         <ul className="flex flex-col gap-1">
           {NAV.map((n, i) => (
@@ -317,7 +314,7 @@ function DashboardMock() {
             <p className="text-[6px] text-slate-400 mt-0.5">{rich($t("CustomDevOurWork__t5", "Welcome back, Admin"))}</p>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[6px] text-slate-500">{$t("CustomDevOurWork__t6", "May 01 – May 31, 2024")}</span>
+            <span className="rounded-md border border-slate-200 bg-white px-1.5 py-0.5 text-[6px] text-slate-500">{html($t("CustomDevOurWork__t6", "May 01 – May 31, 2024"))}</span>
             <span className="h-4 w-4 rounded-full bg-gradient-to-br from-slate-300 to-slate-400" />
           </div>
         </div>
@@ -341,13 +338,11 @@ function DashboardMock() {
           <div className="rounded-md bg-white border border-slate-100 p-1.5 flex flex-col">
             <div className="flex items-center justify-between">
               <p className="text-[7px] font-semibold" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t7", "Project Overview"))}</p>
-              <span className="text-[5.5px] text-slate-400">{$t("CustomDevOurWork__t8", "This Month ▾")}</span>
+              <span className="text-[5.5px] text-slate-400">{html($t("CustomDevOurWork__t8", "This Month ▾"))}</span>
             </div>
             <div className="relative flex-1 min-h-[50px] mt-1">
               <LineChart />
-              <span className="absolute right-[12%] top-[8%] rounded bg-white px-1 py-0.5 text-[5px] shadow border border-slate-100" style={{ color: NAVY }}>
-                {$t("CustomDevOurWork__t9", "May")}<br /><b>{$t("CustomDevOurWork__t10", "128 Projects")}</b>
-              </span>
+              <span className="absolute right-[12%] top-[8%] rounded bg-white px-1 py-0.5 text-[5px] shadow border border-slate-100" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t9m", "May<br><b>128 Projects</b>"))}</span>
             </div>
             <div className="flex justify-between text-[5px] text-slate-400 mt-0.5">
               {[$t("CustomDevOurWork__t11", "Jan"), $t("CustomDevOurWork__t12", "Feb"), $t("CustomDevOurWork__t13", "Mar"), $t("CustomDevOurWork__t14", "Apr"), $t("CustomDevOurWork__t15", "May")].map((m) => <span key={m}>{m}</span>)}
@@ -357,7 +352,7 @@ function DashboardMock() {
           <div className="rounded-md bg-white border border-slate-100 p-1.5">
             <div className="flex items-center justify-between mb-1">
               <p className="text-[7px] font-semibold" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t16", "Recent Activity"))}</p>
-              <span className="text-[5.5px]" style={{ color: TEAL }}>{$t("CustomDevOurWork__t17", "View All")}</span>
+              <span className="text-[5.5px]" style={{ color: TEAL }}>{html($t("CustomDevOurWork__t17", "View All"))}</span>
             </div>
             <ul className="flex flex-col gap-1.5">
               {ACTIVITY.map((a) => (
@@ -392,7 +387,7 @@ function DashboardMock() {
           <div className="rounded-md bg-white border border-slate-100 p-1.5">
             <div className="flex items-center justify-between mb-1">
               <p className="text-[7px] font-semibold" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t22", "Team Workload"))}</p>
-              <span className="text-[5.5px]" style={{ color: TEAL }}>{$t("CustomDevOurWork__t23", "+ Add Member")}</span>
+              <span className="text-[5.5px]" style={{ color: TEAL }}>{html($t("CustomDevOurWork__t23", "+ Add Member"))}</span>
             </div>
             <div className="flex items-end justify-around h-[46px]">
               {WORKLOAD.map((w, i) => (
@@ -446,7 +441,7 @@ function FeaturedContent({ project }: { project: Project }) {
   return (
     <div className="relative flex flex-col">
       <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[9px] font-semibold tracking-[0.12em] uppercase text-teal-200">
-        <SparkIcon size={8} color="#5eead4" /> {$t("CustomDevOurWork__t24", "Featured Project")}</span>
+        <SparkIcon size={8} color="#5eead4" /> {html($t("CustomDevOurWork__t24", "Featured Project"))}</span>
       <h3 className="text-h4 mt-4 font-serif font-bold text-white">
         {project.title.map((line) => <span key={line} className="block">{line}</span>)}
       </h3>
@@ -545,7 +540,7 @@ function ShowcaseCanvas({ project }: { project: Project }) {
           className="absolute left-[56px] top-[104px] w-[225px]"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] uppercase text-teal-200">
-            <SparkIcon size={9} color="#5eead4" /> {$t("CustomDevOurWork__t27", "Featured Project")}</span>
+            <SparkIcon size={9} color="#5eead4" /> {html($t("CustomDevOurWork__t27", "Featured Project"))}</span>
           <h3 className="text-h4 mt-5 font-serif font-bold text-white">
             {project.title.map((line) => <span key={line} className="block">{line}</span>)}
           </h3>
@@ -593,8 +588,7 @@ function ShowcaseCanvas({ project }: { project: Project }) {
           className="absolute left-[722px] top-[490px] flex items-center gap-4 rounded-2xl bg-white/95 backdrop-blur pl-5 pr-4 py-4 shadow-[0_24px_45px_-15px_rgba(15,40,60,0.4)] border border-slate-100"
         >
           <ShieldIcon size={42} />
-          <p className="text-body font-bold" style={{ color: NAVY }}>
-            {rich($t("CustomDevOurWork__t30", "Secure"))}<br />{rich($t("CustomDevOurWork__t31", "& Scalable"))}</p>
+          <p className="text-body font-bold" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t30m", "Secure<br>& Scalable"))}</p>
           <span className="self-end"><CheckBadge /></span>
         </motion.div>
       </div>
@@ -715,11 +709,7 @@ function SuccessCta() {
               <CubeIcon size={34} />
             </span>
           </div>
-          <p className="text-[22px] sm:text-[26px] leading-tight text-white font-medium">
-            {rich($t("CustomDevOurWork__t32", "Your idea could be"))}<br />
-            <span className="font-semibold text-teal-300 underline decoration-teal-300/70 decoration-2 underline-offset-[6px]">
-              {$t("CustomDevOurWork__t33", "our next success story.")}</span>
-          </p>
+          <p className="text-[22px] sm:text-[26px] leading-tight text-white font-medium">{rich($t("CustomDevOurWork__t32m", "Your idea could be<br><span class=\"font-semibold text-teal-300 underline decoration-teal-300/70 decoration-2 underline-offset-[6px]\">our next success story.</span>"))}</p>
         </div>
 
         {/* Points */}
@@ -752,7 +742,7 @@ function SuccessCta() {
                 <span key={c} className="h-6 w-6 rounded-full ring-2 ring-[#0b2a2a]" style={{ backgroundColor: c }} />
               ))}
             </div>
-            <span className="text-[11.5px] text-slate-300 whitespace-nowrap">{$t("CustomDevOurWork__t36", "Trusted by 500+ businesses")}</span>
+            <span className="text-[11.5px] text-slate-300 whitespace-nowrap">{html($t("CustomDevOurWork__t36", "Trusted by 500+ businesses"))}</span>
           </div>
         </div>
       </div>
@@ -787,11 +777,8 @@ export default function CustomDevOurWork() {
                 style={{ backgroundColor: "#e6f6f4", color: DEEP_TEAL }}
               >
                 <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: TEAL }} />
-                {$t("CustomDevOurWork__t37", "Our Work in Action")}</span>
-              <h2 className="text-h2 mt-5 font-serif font-bold" style={{ color: NAVY }}>
-                {$t("CustomDevOurWork__t38", "Real Problems.")}<br />
-                <span style={{ color: TEAL }}>{$t("CustomDevOurWork__t39", "Real Solutions.")}</span>
-              </h2>
+                {html($t("CustomDevOurWork__t37", "Our Work in Action"))}</span>
+              <h2 className="text-h2 mt-5 font-serif font-bold" style={{ color: NAVY }}>{rich($t("CustomDevOurWork__t38m", "Real Problems.<br><span class=\"text-[#0d9488]\">Real Solutions.</span>"))}</h2>
               <p className="text-body mt-5 text-slate-500 max-w-md">
                 {rich($t("CustomDevOurWork__t40", "Custom software we've built for businesses to simplify operations and drive real results."))}</p>
             </motion.div>

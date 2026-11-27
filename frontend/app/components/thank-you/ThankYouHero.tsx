@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, CalendarCheck, Home, Mail, MessageSquareText, Phone, Rocket, Search } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0f2333";
 const TEAL = "#0d9488";
@@ -103,7 +103,7 @@ export default function ThankYouHero({ contact = {} }: { contact?: ThankYouConta
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
           >
             <span className="h-2 w-2 rounded-full bg-[#0d9488]" />
-            {$t("ThankYouHero__t1", "Request received")}
+            {html($t("ThankYouHero__t1", "Request received"))}
           </motion.p>
           <motion.h1
             className="text-h1 font-heading mt-5 font-bold leading-[1.08] tracking-[-0.025em]"
@@ -114,7 +114,7 @@ export default function ThankYouHero({ contact = {} }: { contact?: ThankYouConta
           >
             {$t("ThankYouHero__t2", "Thank you!")}
             <span className="block bg-[linear-gradient(100deg,#0b6f78,#18a8ae_50%,#0d9488)] bg-clip-text text-transparent">
-              {$t("ThankYouHero__t3", "We've got your message.")}
+              {html($t("ThankYouHero__t3", "We've got your message."))}
             </span>
           </motion.h1>
           <motion.p
@@ -153,7 +153,7 @@ export default function ThankYouHero({ contact = {} }: { contact?: ThankYouConta
 
         {/* what happens next */}
         <div className="mx-auto mt-14 max-w-[1000px]">
-          <p className="text-center text-[12px] font-bold uppercase tracking-[0.18em]" style={{ color: TEAL }}>{$t("ThankYouHero__t9", "What happens next")}</p>
+          <p className="text-center text-[12px] font-bold uppercase tracking-[0.18em]" style={{ color: TEAL }}>{html($t("ThankYouHero__t9", "What happens next"))}</p>
           <ol className="relative mt-6 grid gap-5 md:grid-cols-3">
             <span aria-hidden className="absolute left-[16%] right-[16%] top-8 hidden border-t-2 border-dashed border-[#0d9488]/25 md:block" />
             {steps.map((s, i) => {
@@ -191,7 +191,7 @@ export default function ThankYouHero({ contact = {} }: { contact?: ThankYouConta
           >
             <p className="flex items-center gap-3 text-[15px] font-semibold">
               <MessageSquareText className="h-6 w-6 text-[#5eead4]" />
-              {$t("ThankYouHero__t10", "Need something urgent? Talk to us right away.")}
+              {html($t("ThankYouHero__t10", "Need something urgent? Talk to us right away."))}
             </p>
             <div className="flex flex-wrap gap-3">
               {contact.phone && (

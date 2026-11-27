@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    OUR WORK DATA (Coverflow carousel + filter tabs)
@@ -158,10 +158,10 @@ function TrustedLogos() {
   return (
     <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-slate-700">
       <div className="flex items-center gap-1.5">
-        <div className="w-6 h-6 rounded bg-slate-700 text-white text-[11px] font-black flex items-center justify-center">{$t("AnimationOurWork__t1", "B")}</div>
+        <div className="w-6 h-6 rounded bg-slate-700 text-white text-[11px] font-black flex items-center justify-center">{html($t("AnimationOurWork__t1", "B"))}</div>
         <div className="leading-none">
-          <div className="text-[13px] font-black tracking-tight">{$t("AnimationOurWork__t2", "BYJU'S")}</div>
-          <div className="text-[7px] font-bold text-slate-500">{$t("AnimationOurWork__t3", "The Learning App")}</div>
+          <div className="text-[13px] font-black tracking-tight">{html($t("AnimationOurWork__t2", "BYJU'S"))}</div>
+          <div className="text-[7px] font-bold text-slate-500">{html($t("AnimationOurWork__t3", "The Learning App"))}</div>
         </div>
       </div>
       <div className="flex items-center gap-1">
@@ -172,12 +172,12 @@ function TrustedLogos() {
         </svg>
         <span className="text-[14px] font-bold lowercase">lenskart</span>
       </div>
-      <span className="text-[18px] font-black tracking-tighter">{$t("AnimationOurWork__t4", "OYO")}</span>
+      <span className="text-[18px] font-black tracking-tighter">{html($t("AnimationOurWork__t4", "OYO"))}</span>
       <div className="flex items-center gap-1">
         <svg className="w-4 h-3.5" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
           <path d="M2 17L7 4L12 14L17 4L22 17" />
         </svg>
-        <span className="text-[13px] font-extrabold">{$t("AnimationOurWork__t5", "Myntra")}</span>
+        <span className="text-[13px] font-extrabold">{html($t("AnimationOurWork__t5", "Myntra"))}</span>
       </div>
       <span className="text-[17px] font-black lowercase">boat</span>
       <span className="text-[15px] font-black italic lowercase">zomato</span>
@@ -253,8 +253,8 @@ export default function AnimationOurWork() {
       {/* Giant faint brush watermark */}
       <div className="absolute top-6 right-[4%] hidden md:block pointer-events-none select-none">
         <div className="font-caveat font-bold uppercase text-[110px] lg:text-[150px] leading-[0.85] text-slate-200/60 -rotate-6 tracking-wide">
-          {$t("AnimationOurWork__t6", "Crafted")}<br />
-          <span className="pl-16">{$t("AnimationOurWork__t7", "To Impact")}</span>
+          {html($t("AnimationOurWork__t6", "Crafted"))}<br />
+          <span className="pl-16">{html($t("AnimationOurWork__t7", "To Impact"))}</span>
         </div>
       </div>
 
@@ -264,11 +264,8 @@ export default function AnimationOurWork() {
           {/* Left: Heading block */}
           <div className="lg:col-span-6">
             <span className="text-[11px] font-black tracking-[0.22em] text-[#0d9488] uppercase block mb-3">
-              {$t("AnimationOurWork__t8", "Our Work")}</span>
-            <h2 className="text-h2 font-extrabold text-[#0f2333] tracking-tight">
-              {$t("AnimationOurWork__t9", "Real Projects.")}<br />
-              {$t("AnimationOurWork__t10", "Real ")}<span className="text-[#0d9488]">{$t("AnimationOurWork__t11", "Impact.")}</span>
-            </h2>
+              {html($t("AnimationOurWork__t8", "Our Work"))}</span>
+            <h2 className="text-h2 font-extrabold text-[#0f2333] tracking-tight">{rich($t("AnimationOurWork__t9m", "Real Projects.<br>Real <span class=\"text-[#0d9488]\">Impact.</span>"))}</h2>
             <div className="w-14 h-[3px] bg-[#0d9488] rounded-full mt-5 mb-5" />
             <p className="text-body text-slate-500 max-w-md">
               {rich($t("AnimationOurWork__t12", "Explore how our animation and design solutions help brands communicate, engage and grow."))}</p>
@@ -276,7 +273,7 @@ export default function AnimationOurWork() {
             {/* Script tagline with squiggle */}
             <div className="mt-4 inline-flex items-center gap-1.5">
               <span className="font-caveat text-lg sm:text-xl font-bold text-[#0d9488]">
-                {$t("AnimationOurWork__t13", "Ideas. Crafted. Delivered.")}</span>
+                {html($t("AnimationOurWork__t13", "Ideas. Crafted. Delivered."))}</span>
               <svg className="w-5 h-4 text-[#0d9488]" viewBox="0 0 20 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                 <path d="M3 13 L8 3" />
                 <path d="M9 13 L14 5" />
@@ -294,7 +291,7 @@ export default function AnimationOurWork() {
                   </svg>
                 </span>
                 <span className="text-sm font-bold text-slate-800 group-hover:text-[#0d9488] transition-colors">
-                  {$t("AnimationOurWork__t15", "View All Projects")}</span>
+                  {html($t("AnimationOurWork__t15", "View All Projects"))}</span>
               </Link>
               {/* Dashed doodle arrow */}
               <svg className="w-14 h-6 text-[#0d9488]/70 hidden sm:block" viewBox="0 0 60 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
@@ -311,9 +308,7 @@ export default function AnimationOurWork() {
                 <path d="M44 8 C 30 10, 14 18, 10 40" />
                 <path d="M5 33 L10 40 L16 34" />
               </svg>
-              <div className="font-caveat text-lg font-bold text-slate-700 leading-tight -rotate-6 mb-6">
-                {$t("AnimationOurWork__t16", "Design + Motion")}<br />
-                {$t("AnimationOurWork__t17", "that drives results")}</div>
+              <div className="font-caveat text-lg font-bold text-slate-700 leading-tight -rotate-6 mb-6">{rich($t("AnimationOurWork__t16m", "Design + Motion<br>that drives results"))}</div>
             </div>
 
             {/* Filter Tabs */}
@@ -512,7 +507,7 @@ export default function AnimationOurWork() {
               </div>
             </div>
             <div className="flex-1 sm:ml-2">
-              <h4 className="text-h6 font-bold text-[#0f2333]">{$t("AnimationOurWork__t19", "Have a project in mind?")}</h4>
+              <h4 className="text-h6 font-bold text-[#0f2333]">{html($t("AnimationOurWork__t19", "Have a project in mind?"))}</h4>
               <p className="text-small text-[#0d9488] mt-0.5">{rich($t("AnimationOurWork__t20", "Let's create something amazing together."))}</p>
               <svg className="w-28 h-2 mt-1 text-[#0d9488]" viewBox="0 0 120 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M2 5 C 30 1, 60 7, 118 3" />

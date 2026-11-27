@@ -7,7 +7,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const dmSerif = { className: "font-heading" }; // global font from app/layout.tsx
 
@@ -243,7 +243,7 @@ export default function UiUxContactCTA() {
             >
               <span className="w-8 h-px bg-cyan-400/60" />
               <span className="text-[11px] font-bold tracking-[0.25em] text-cyan-300 uppercase">
-                {$t("UiUxContactCTA__t3", "LET'S START A CONVERSATION")}</span>
+                {html($t("UiUxContactCTA__t3", "LET'S START A CONVERSATION"))}</span>
               <span className="w-8 h-px bg-cyan-400/60" />
             </motion.div>
 
@@ -255,10 +255,10 @@ export default function UiUxContactCTA() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className={`${dmSerif.className} block`}>{$t("UiUxContactCTA__t4", "Have a project")}</span>
-              <span className={`${dmSerif.className} block`}>{$t("UiUxContactCTA__t5", "in mind?")}</span>
+              <span className={`${dmSerif.className} block`}>{html($t("UiUxContactCTA__t4", "Have a project"))}</span>
+              <span className={`${dmSerif.className} block`}>{html($t("UiUxContactCTA__t5", "in mind?"))}</span>
               <span className={`${dmSerif.className} block italic text-[#2dd4bf]`}>
-                {$t("UiUxContactCTA__t6", "It starts here.")}</span>
+                {html($t("UiUxContactCTA__t6", "It starts here."))}</span>
             </motion.h2>
 
             {/* Subtitle */}
@@ -268,10 +268,7 @@ export default function UiUxContactCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              {rich($t("UiUxContactCTA__t7", "Share your idea and let's turn it into an exceptional"))}{" "}
-              <strong className="text-white font-semibold">{$t("UiUxContactCTA__t8", "digital experience.")}</strong>
-            </motion.p>
+            >{rich($t("UiUxContactCTA__t7m", "Share your idea and let's turn it into an exceptional <strong class=\"text-white font-semibold\">digital experience.</strong>"))}</motion.p>
 
             {/* 3 Trust Badges */}
             <motion.div
@@ -314,13 +311,7 @@ export default function UiUxContactCTA() {
 
           {/* Far Right Elegant Quote */}
           <div className="absolute right-2 bottom-12 text-right hidden xl:block pointer-events-none opacity-80">
-            <p className={`text-body ${dmSerif.className} italic text-slate-300`}>
-              {rich($t("UiUxContactCTA__t9", "Great"))}<br />
-              products
-              <br />
-              {rich($t("UiUxContactCTA__t10", "begin with"))}<br />
-              {rich($t("UiUxContactCTA__t11", "a simple"))}<br />
-              {rich($t("UiUxContactCTA__t12", "conversation."))}</p>
+            <p className={`text-body ${dmSerif.className} italic text-slate-300`}>{rich($t("UiUxContactCTA__t9m", "Great<br>products<br>begin with<br>a simple<br>conversation."))}</p>
           </div>
         </div>
 
@@ -338,7 +329,7 @@ export default function UiUxContactCTA() {
                 ✓
               </span>
               <h3 className={`text-h5 ${dmSerif.className} mt-3 text-white font-normal`}>
-                {$t("UiUxContactCTA__t13", "Thank you! We've received your project details.")}</h3>
+                {html($t("UiUxContactCTA__t13", "Thank you! We've received your project details."))}</h3>
               <p className="text-small mt-1 text-slate-300">
                 {rich($t("UiUxContactCTA__t14", "Our design experts will reach out within 24 hours to schedule your consultation."))}</p>
             </div>
@@ -349,16 +340,14 @@ export default function UiUxContactCTA() {
               <div className="flex items-center gap-4 shrink-0 w-full lg:w-auto">
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-cyan-400/25 via-slate-900 to-[#071329] border border-cyan-400 shadow-[0_0_25px_rgba(45,212,191,0.35)] flex items-center justify-center shrink-0">
                   <span className={`${dmSerif.className} text-2xl sm:text-3xl font-extrabold text-[#2dd4bf] drop-shadow-[0_0_10px_#2dd4bf]`}>
-                    {$t("UiUxContactCTA__t15", "P")}</span>
+                    {html($t("UiUxContactCTA__t15", "P"))}</span>
                 </div>
                 <div className="text-left leading-tight">
                   <div className={`${dmSerif.className} text-xl sm:text-2xl text-white font-normal`}>
-                    {$t("UiUxContactCTA__t16", "Tell us about")}</div>
+                    {html($t("UiUxContactCTA__t16", "Tell us about"))}</div>
                   <div className={`${dmSerif.className} text-xl sm:text-2xl text-[#2dd4bf] font-normal`}>
-                    {$t("UiUxContactCTA__t17", "your project")}</div>
-                  <div className="mt-1 text-[11px] text-slate-400">
-                    {$t("UiUxContactCTA__t18", "We'll get back to you within ")}<strong className="text-white">{$t("UiUxContactCTA__t19", "24 hours.")}</strong>
-                  </div>
+                    {html($t("UiUxContactCTA__t17", "your project"))}</div>
+                  <div className="mt-1 text-[11px] text-slate-400">{rich($t("UiUxContactCTA__t18m", "We'll get back to you within <strong class=\"text-white\">24 hours.</strong>"))}</div>
                 </div>
               </div>
 
@@ -453,7 +442,7 @@ export default function UiUxContactCTA() {
 
                 {/* Subtext */}
                 <div className="text-center text-[11px] text-slate-400 pt-1">
-                  {$t("UiUxContactCTA__t26", "Free Consultation • No Obligation • Expert Guidance")}</div>
+                  {html($t("UiUxContactCTA__t26", "Free Consultation • No Obligation • Expert Guidance"))}</div>
               </div>
             </form>
           )}

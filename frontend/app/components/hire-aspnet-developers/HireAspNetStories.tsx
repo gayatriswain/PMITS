@@ -7,7 +7,7 @@ import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { ArrowDown, ArrowRight, ArrowUp, Gauge, ShoppingCart, TrendingUp, Users, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { techLogo } from "./TechLogos";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -58,14 +58,14 @@ export default function HireAspNetStories() {
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }}>
               <motion.p variants={fadeUp} className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: NAVY }}>
                 <i aria-hidden className="relative h-px w-7 bg-[#1a4fa8]"><b className="absolute -left-0.5 -top-[3px] h-[7px] w-[7px] rounded-full border-2 border-[#1a4fa8] bg-white" /></i>
-                {$t("HireAspNetStories__t1", "Our ASP.NET success stories")}
+                {html($t("HireAspNetStories__t1", "Our ASP.NET success stories"))}
               </motion.p>
               <h2 className="font-heading mt-6 font-extrabold uppercase leading-[0.98] tracking-[-0.01em]" style={{ color: NAVY }}>
-                <motion.span variants={fadeUp} custom={1} className="text-h2 block">{$t("HireAspNetStories__t2", "Built on")}</motion.span>
+                <motion.span variants={fadeUp} custom={1} className="text-h2 block">{html($t("HireAspNetStories__t2", "Built on"))}</motion.span>
                 <motion.span variants={fadeUp} custom={2} className="text-h1 block bg-[linear-gradient(95deg,#1a3f8f,#1f6fd1_55%,#3aa0e6)] bg-clip-text py-1 text-transparent">
-                  {$t("HireAspNetStories__t3", "ASP.NET.")}
+                  {html($t("HireAspNetStories__t3", "ASP.NET."))}
                 </motion.span>
-                <motion.span variants={fadeUp} custom={3} className="text-h3 block">{$t("HireAspNetStories__t4", "Driven by results.")}</motion.span>
+                <motion.span variants={fadeUp} custom={3} className="text-h3 block">{html($t("HireAspNetStories__t4", "Driven by results."))}</motion.span>
               </h2>
               <motion.p variants={fadeUp} custom={4} className="text-body mt-5 max-w-[300px] text-slate-600">
                 {rich($t("HireAspNetStories__t5", "Real projects. Real impact. Powered by ASP.NET."))}
@@ -113,14 +113,14 @@ export default function HireAspNetStories() {
                   exit={{ opacity: 0, y: -18 }}
                   transition={{ duration: 0.45, ease: EASE }}
                 >
-                  <p className="text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BLUE }}>{$t("HireAspNetStories__t8", "Featured project")}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.16em]" style={{ color: BLUE }}>{html($t("HireAspNetStories__t8", "Featured project"))}</p>
                   <i aria-hidden className="mt-2 block h-[2px] w-7 rounded-full" style={{ background: BLUE }} />
                   <h3 className="text-h4 font-heading mt-3 font-extrabold uppercase" style={{ color: NAVY }}>{p.name}</h3>
                   <p className="text-small mt-3 max-w-[330px] text-slate-600">{p.description}</p>
                   {p.technologies?.length > 0 && (
                     <>
                       <p className="mt-5 border-t border-slate-200 pt-4 text-[10.5px] font-bold uppercase tracking-[0.14em]" style={{ color: BLUE }}>
-                        {$t("HireAspNetStories__t9", "Technologies used")}
+                        {html($t("HireAspNetStories__t9", "Technologies used"))}
                       </p>
                       <ul className="mt-3 flex flex-wrap gap-6">
                         {p.technologies.map((t) => (
@@ -190,7 +190,7 @@ export default function HireAspNetStories() {
               <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-[linear-gradient(90deg,transparent,#3fb8ff,transparent)]" />
               <div className="relative grid gap-8 lg:grid-cols-[140px_1fr] lg:items-center">
                 <div>
-                  <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-white">{$t("HireAspNetStories__t11", "The results")}</p>
+                  <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-white">{html($t("HireAspNetStories__t11", "The results"))}</p>
                   <i aria-hidden className="mt-2 block h-[2px] w-8 rounded-full bg-[#3fb8ff]" />
                 </div>
                 <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-white/15">

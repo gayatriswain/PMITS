@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -98,7 +98,7 @@ export default function HireCakePhpHero() {
               className="block text-[11px] font-bold uppercase tracking-[0.24em]"
               style={{ color: RED }}
             >
-              {$t("HireCakePhpHero__t1", "Hire CakePHP Developers")}</motion.span>
+              {html($t("HireCakePhpHero__t1", "Hire CakePHP Developers"))}</motion.span>
 
             <motion.h1
               variants={fadeUp}
@@ -176,9 +176,7 @@ export default function HireCakePhpHero() {
                 <circle cx="17" cy="9" r="2.4" />
                 <path d="M17 14.2c2.4 0 4 1.7 4 4.3" />
               </svg>
-              <span>
-                {$t("HireCakePhpHero__t9", "Trusted by ")}<strong className="font-semibold text-[#0f1a2e]">{$t("HireCakePhpHero__t10", "2,700+")}</strong> {$t("HireCakePhpHero__t11", "businesses across ")}<strong className="font-semibold text-[#0f1a2e]">{$t("HireCakePhpHero__t12", "75+")}</strong> cities
-              </span>
+              <span>{rich($t("HireCakePhpHero__t9m", "Trusted by <strong class=\"font-semibold text-[#0f1a2e]\">2,700+</strong> businesses across <strong class=\"font-semibold text-[#0f1a2e]\">75+</strong> cities"))}</span>
             </motion.p>
           </motion.div>
 

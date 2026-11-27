@@ -7,7 +7,7 @@ import { motion, useInView, type Variants } from "framer-motion";
 import { Counter } from "../shared/useCountUp";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -260,9 +260,9 @@ export default function SocialMediaMarketingBrandCompare() {
             transition={{ duration: 0.7, ease: EASE }}
           >
             <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              {$t("SocialMediaMarketingBrandCompare__t1", "Why Some Brands Get Remembered")}</span>
+              {html($t("SocialMediaMarketingBrandCompare__t1", "Why Some Brands Get Remembered"))}</span>
             <h2 className="text-h2 font-serif font-bold mt-3" style={{ color: NAVY }}>
-              {$t("SocialMediaMarketingBrandCompare__t2", "While Others Get Scrolled Past.")}</h2>
+              {html($t("SocialMediaMarketingBrandCompare__t2", "While Others Get Scrolled Past."))}</h2>
             <p className="text-body text-slate-600 mt-4 max-w-md">
               {rich($t("SocialMediaMarketingBrandCompare__t3", "A beautiful social presence isn't about posting more. It's about creating a brand people instantly recognize, trust and remember every time they scroll."))}</p>
             <Link
@@ -287,8 +287,8 @@ export default function SocialMediaMarketingBrandCompare() {
               transition={{ duration: 0.6, ease: EASE }}
               className="flex flex-col items-center"
             >
-              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-slate-400 text-center">{$t("SocialMediaMarketingBrandCompare__t6", "Ordinary Brand")}</span>
-              <span className="text-[11px] text-slate-400 mb-3 text-center">{$t("SocialMediaMarketingBrandCompare__t7", "Just Another Feed")}</span>
+              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-slate-400 text-center">{html($t("SocialMediaMarketingBrandCompare__t6", "Ordinary Brand"))}</span>
+              <span className="text-[11px] text-slate-400 mb-3 text-center">{html($t("SocialMediaMarketingBrandCompare__t7", "Just Another Feed"))}</span>
               <div className="relative w-[120px] sm:w-[170px]" style={{ aspectRatio: "501/970" }}>
                 <Image src={$t("SocialMediaMarketingBrandCompare__t8", "/social-media.webp")} alt={$t("SocialMediaMarketingBrandCompare__t9", "Ordinary brand's inconsistent social feed")} fill sizes="170px" className="object-contain" />
               </div>
@@ -317,8 +317,8 @@ export default function SocialMediaMarketingBrandCompare() {
               transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
               className="flex flex-col items-center"
             >
-              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-center" style={{ color: TEAL }}>{$t("SocialMediaMarketingBrandCompare__t10", "ProManage Brand")}</span>
-              <span className="text-[11px] text-slate-400 mb-3 text-center">{$t("SocialMediaMarketingBrandCompare__t11", "Built to Stand Out")}</span>
+              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-center" style={{ color: TEAL }}>{html($t("SocialMediaMarketingBrandCompare__t10", "ProManage Brand"))}</span>
+              <span className="text-[11px] text-slate-400 mb-3 text-center">{html($t("SocialMediaMarketingBrandCompare__t11", "Built to Stand Out"))}</span>
               <div className="relative w-[120px] sm:w-[170px]" style={{ aspectRatio: "500/941" }}>
                 <Image src={$t("SocialMediaMarketingBrandCompare__t12", "/social media2.webp")} alt={$t("SocialMediaMarketingBrandCompare__t13", "ProManage's consistent, branded social feed")} fill sizes="170px" className="object-contain" />
               </div>
@@ -368,8 +368,8 @@ export default function SocialMediaMarketingBrandCompare() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="flex flex-col items-center"
               >
-                <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-slate-400">{$t("SocialMediaMarketingBrandCompare__t14", "Ordinary Brand")}</span>
-                <span className="text-[11px] text-slate-400 mb-3">{$t("SocialMediaMarketingBrandCompare__t15", "Just Another Feed")}</span>
+                <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-slate-400">{html($t("SocialMediaMarketingBrandCompare__t14", "Ordinary Brand"))}</span>
+                <span className="text-[11px] text-slate-400 mb-3">{html($t("SocialMediaMarketingBrandCompare__t15", "Just Another Feed"))}</span>
                 <div className="relative w-[170px]" style={{ aspectRatio: "501/970" }}>
                   <Image src={$t("SocialMediaMarketingBrandCompare__t16", "/social-media.webp")} alt={$t("SocialMediaMarketingBrandCompare__t17", "Ordinary brand's inconsistent social feed")} fill sizes="170px" className="object-contain" />
                 </div>
@@ -383,7 +383,7 @@ export default function SocialMediaMarketingBrandCompare() {
                 className="mt-24 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[12px] font-extrabold text-white ring-4 ring-white"
                 style={{ backgroundColor: DEEP_TEAL }}
               >
-                {$t("SocialMediaMarketingBrandCompare__t18", "VS")}</motion.span>
+                {html($t("SocialMediaMarketingBrandCompare__t18", "VS"))}</motion.span>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -392,8 +392,8 @@ export default function SocialMediaMarketingBrandCompare() {
                 transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
                 className="flex flex-col items-center"
               >
-                <span className="text-[10px] font-bold tracking-[0.12em] uppercase" style={{ color: TEAL }}>{$t("SocialMediaMarketingBrandCompare__t19", "ProManage Brand")}</span>
-                <span className="text-[11px] text-slate-400 mb-3">{$t("SocialMediaMarketingBrandCompare__t20", "Built to Stand Out")}</span>
+                <span className="text-[10px] font-bold tracking-[0.12em] uppercase" style={{ color: TEAL }}>{html($t("SocialMediaMarketingBrandCompare__t19", "ProManage Brand"))}</span>
+                <span className="text-[11px] text-slate-400 mb-3">{html($t("SocialMediaMarketingBrandCompare__t20", "Built to Stand Out"))}</span>
                 <div className="relative w-[170px]" style={{ aspectRatio: "500/941" }}>
                   <Image src={$t("SocialMediaMarketingBrandCompare__t21", "/social media2.webp")} alt={$t("SocialMediaMarketingBrandCompare__t22", "ProManage's consistent, branded social feed")} fill sizes="170px" className="object-contain" />
                 </div>
@@ -431,8 +431,7 @@ export default function SocialMediaMarketingBrandCompare() {
           transition={{ duration: 0.6, ease: EASE }}
           className="flex flex-col items-center text-center"
         >
-          <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5">
-            {rich($t("SocialMediaMarketingBrandCompare__t23", "Trusted by "))}<span style={{ color: DEEP_TEAL }}>{$t("SocialMediaMarketingBrandCompare__t24", "Ambitious Brands")}</span> {rich($t("SocialMediaMarketingBrandCompare__t25", "Worldwide"))}</p>
+          <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5">{rich($t("SocialMediaMarketingBrandCompare__t23m", "Trusted by <span class=\"text-[#0f5c56]\">Ambitious Brands</span> Worldwide"))}</p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
             {BRANDS.map((b) => (
               <span key={b.name} className="relative h-7 sm:h-8 w-[110px] opacity-60 grayscale">

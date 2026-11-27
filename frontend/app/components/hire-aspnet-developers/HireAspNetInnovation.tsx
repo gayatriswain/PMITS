@@ -7,7 +7,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, BarChart3, Gauge, Lock, MessageSquareText, Scaling, ShieldCheck, Users, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const TEAL = "#0d8a91";
@@ -45,12 +45,12 @@ export default function HireAspNetInnovation() {
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }}>
             <motion.p variants={fadeUp} className="flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.24em]" style={{ color: TEAL }}>
               <i aria-hidden className="h-[2px] w-10 bg-[#0d8a91]/70" />
-              {$t("HireAspNetInnovation__t1", "Built on innovation")}
+              {html($t("HireAspNetInnovation__t1", "Built on innovation"))}
             </motion.p>
             <h2 className="text-h1 font-heading mt-6 font-extrabold uppercase leading-[1] tracking-[-0.01em]" style={{ color: NAVY }}>
-              <motion.span variants={fadeUp} custom={1} className="block">{$t("HireAspNetInnovation__t2", "Code that")}</motion.span>
+              <motion.span variants={fadeUp} custom={1} className="block">{html($t("HireAspNetInnovation__t2", "Code that"))}</motion.span>
               <motion.span variants={fadeUp} custom={2} className="block bg-[linear-gradient(95deg,#0b6f78,#1596a5_55%,#0d8a91)] bg-clip-text pb-1 text-transparent">
-                {$t("HireAspNetInnovation__t3", "Performs.")}
+                {html($t("HireAspNetInnovation__t3", "Performs."))}
               </motion.span>
             </h2>
             <motion.p variants={fadeUp} custom={3} className="text-body mt-6 max-w-[440px] text-slate-600">

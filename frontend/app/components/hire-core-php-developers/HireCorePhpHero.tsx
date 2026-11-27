@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { html, rich } from "@/components/cms/rich";
 
 const leftFeatures__cms = [
   {
@@ -201,8 +202,8 @@ function BottomBanner({ className = "" }: { className?: string }) {
             </svg>
           </span>
           <div className="text-left leading-snug text-[13.5px] font-bold">
-            <div className="text-[#0c1e3d]">{$t("HireCorePhpHero__t1", "Your product deserves")}</div>
-            <div className="text-[#0d9488]">{$t("HireCorePhpHero__t2", "the right PHP team.")}</div>
+            <div className="text-[#0c1e3d]">{html($t("HireCorePhpHero__t1", "Your product deserves"))}</div>
+            <div className="text-[#0d9488]">{html($t("HireCorePhpHero__t2", "the right PHP team."))}</div>
           </div>
         </div>
 
@@ -248,10 +249,7 @@ function BottomBanner({ className = "" }: { className?: string }) {
 function Heading({ className = "" }: { className?: string }) {
   const $t = useCmsText();
   return (
-    <h1 className={`font-black tracking-tight text-[#0c1e3d] ${className}`}>
-      {$t("HireCorePhpHero__t7", "Hire Core PHP")}<br />
-      <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpHero__t8", "Developers")}</span>
-    </h1>
+    <h1 className={`font-black tracking-tight text-[#0c1e3d] ${className}`}>{rich($t("HireCorePhpHero__t7m", "Hire Core PHP<br><span class=\"bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent\">Developers</span>"))}</h1>
   );
 }
 
@@ -282,7 +280,7 @@ export default function HireCorePhpHero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                {$t("HireCorePhpHero__t11", "Core PHP Development")}</motion.div>
+                {html($t("HireCorePhpHero__t11", "Core PHP Development"))}</motion.div>
               <motion.div
                 className="absolute inset-x-0 top-[38px] text-center"
                 initial={{ opacity: 0, y: 18 }}
@@ -381,7 +379,7 @@ export default function HireCorePhpHero() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden text-center">
-          <div className="text-[11px] font-bold tracking-[0.22em] text-[#0f8a83] uppercase">{$t("HireCorePhpHero__t16", "Core PHP Development")}</div>
+          <div className="text-[11px] font-bold tracking-[0.22em] text-[#0f8a83] uppercase">{html($t("HireCorePhpHero__t16", "Core PHP Development"))}</div>
           <Heading className="mt-3 text-4xl sm:text-5xl leading-[1.08]" />
           <p className="text-body mt-4 mx-auto max-w-md text-slate-600">{subtitle}</p>
 

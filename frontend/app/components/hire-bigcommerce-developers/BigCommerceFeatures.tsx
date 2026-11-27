@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, BC, DotGrid, Eyebrow, Icon, QUOTE_HREF, ease, fadeUp, heading, useSeen, type IconName } from "./BigCommerceShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* Stage 900×400 (from the design). Icons are 74 across. */
 const SW = 900, SH = 400, ICON = 74;
@@ -53,12 +53,9 @@ export default function BigCommerceFeatures() {
             className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0b1a4a]`}
           >
             {$t("BigCommerceFeatures__t2", "Build Commerce.")}<br />
-            {$t("BigCommerceFeatures__t3", "Scale ")}<span className="text-[#0d8f9a]">{$t("BigCommerceFeatures__t4", "Success.")}</span>
+            {$t("BigCommerceFeatures__t3", "Scale ")}<span className="text-[#0d8f9a]">{html($t("BigCommerceFeatures__t4", "Success."))}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-4 text-slate-600">
-            {rich($t("BigCommerceFeatures__t5", "End-to-end BigCommerce development for stores that"))}<br className="hidden sm:block" />{" "}
-            <span className="font-semibold text-[#0d8f9a]">{$t("BigCommerceFeatures__t6", "grow bigger, sell smarter, and scale faster.")}</span>
-          </motion.p>
+          <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-4 text-slate-600">{rich($t("BigCommerceFeatures__t5m", "End-to-end BigCommerce development for stores that<br class=\"hidden sm:block\"> <span class=\"font-semibold text-[#0d8f9a]\">grow bigger, sell smarter, and scale faster.</span>"))}</motion.p>
         </div>
 
         {/* desktop stage */}
@@ -193,7 +190,7 @@ export default function BigCommerceFeatures() {
                 <span key={t} className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br text-[10px] font-bold text-white ${g}`}>{t}</span>
               ))}
             </span>
-            <span>{$t("BigCommerceFeatures__t15", "Let’s build something ")}<span className="font-semibold text-[#0d8f9a]">amazing</span> {$t("BigCommerceFeatures__t16", "together.")}</span>
+            <span>{rich($t("BigCommerceFeatures__t15m", "Let’s build something <span class=\"font-semibold text-[#0d8f9a]\">amazing</span> together."))}</span>
           </div>
         </motion.div>
       </Container>

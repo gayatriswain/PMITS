@@ -6,7 +6,7 @@ import Honeypot from '@/components/cms/Honeypot';
 import { motion } from 'framer-motion';
 import { Rocket, Clock, ShieldCheck, Lock, ArrowRight } from 'lucide-react';
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 export default function LeadFormSection() {
@@ -63,13 +63,11 @@ export default function LeadFormSection() {
             
             {/* Left Content */}
             <div>
-              <div className="text-[#14b8a6] text-[11px] font-bold tracking-[0.15em] uppercase mb-4">{$t("LeadFormSection__t2", "Let's Grow Together")}</div>
+              <div className="text-[#14b8a6] text-[11px] font-bold tracking-[0.15em] uppercase mb-4">{html($t("LeadFormSection__t2", "Let's Grow Together"))}</div>
               
-              <h2 className="text-h2 font-black text-white mb-6 tracking-tight">
-                {$t("LeadFormSection__t3", "Ready to Grow")}<br/>{$t("LeadFormSection__t4", "Your Store?")}</h2>
+              <h2 className="text-h2 font-black text-white mb-6 tracking-tight">{rich($t("LeadFormSection__t3m", "Ready to Grow<br>Your Store?"))}</h2>
               
-              <p className="text-body text-white/90 mb-10 font-medium">
-                <span className="text-[#34d399]">{$t("LeadFormSection__t5", "Give us your store.")}</span> {rich($t("LeadFormSection__t6", "We'll show you"))}<br className="hidden md:block" /> {rich($t("LeadFormSection__t7", "where SEO can take it."))}</p>
+              <p className="text-body text-white/90 mb-10 font-medium">{rich($t("LeadFormSection__t5m", "<span class=\"text-[#34d399]\">Give us your store.</span> We'll show you<br class=\"hidden md:block\"> where SEO can take it."))}</p>
               
               {/* Trust Features */}
               <div className="flex flex-col sm:flex-row gap-6 mb-12">
@@ -78,7 +76,7 @@ export default function LeadFormSection() {
                     <Rocket size={16} className="text-white" />
                   </div>
                   <div>
-                    <h4 className="text-white text-[13px] font-bold mb-1">{$t("LeadFormSection__t8", "Free SEO Strategy")}</h4>
+                    <h4 className="text-white text-[13px] font-bold mb-1">{html($t("LeadFormSection__t8", "Free SEO Strategy"))}</h4>
                     <p className="text-teal-50/60 text-[11px] leading-relaxed">{rich($t("LeadFormSection__t9", "A custom plan for your store, free of cost."))}</p>
                   </div>
                 </div>
@@ -88,7 +86,7 @@ export default function LeadFormSection() {
                     <Clock size={16} className="text-white" />
                   </div>
                   <div>
-                    <h4 className="text-white text-[13px] font-bold mb-1">{$t("LeadFormSection__t10", "Quick Turnaround")}</h4>
+                    <h4 className="text-white text-[13px] font-bold mb-1">{html($t("LeadFormSection__t10", "Quick Turnaround"))}</h4>
                     <p className="text-teal-50/60 text-[11px] leading-relaxed">{rich($t("LeadFormSection__t11", "Get your report within 2-3 business days."))}</p>
                   </div>
                 </div>
@@ -98,7 +96,7 @@ export default function LeadFormSection() {
                     <ShieldCheck size={16} className="text-white" />
                   </div>
                   <div>
-                    <h4 className="text-white text-[13px] font-bold mb-1">{$t("LeadFormSection__t12", "No Sales Pitch")}</h4>
+                    <h4 className="text-white text-[13px] font-bold mb-1">{html($t("LeadFormSection__t12", "No Sales Pitch"))}</h4>
                     <p className="text-teal-50/60 text-[11px] leading-relaxed">{rich($t("LeadFormSection__t13", "We'll review your store before we recommend anything."))}</p>
                   </div>
                 </div>
@@ -129,7 +127,7 @@ export default function LeadFormSection() {
               {sent ? (
                 <div className="py-10 text-center">
                   <div className="mx-auto w-12 h-12 rounded-full bg-[#e6f4f1] text-[#0f766e] flex items-center justify-center text-xl font-bold">✓</div>
-                  <h4 className="mt-4 text-lg font-bold text-[#0f2923]">{$t("LeadFormSection__t15", "Thank you! Your request is in.")}</h4>
+                  <h4 className="mt-4 text-lg font-bold text-[#0f2923]">{html($t("LeadFormSection__t15", "Thank you! Your request is in."))}</h4>
                   <p className="text-small mt-1.5 text-slate-500">{rich($t("LeadFormSection__t16", "Our SEO team will review your store and get back to you within 24 hours."))}</p>
                 </div>
               ) : (
@@ -141,7 +139,7 @@ export default function LeadFormSection() {
                 
                 {/* Form Field */}
                 <div>
-                  <label className="block text-[11px] font-bold text-[#0f2923] mb-1.5">{$t("LeadFormSection__t17", "Your Name ")}<span className="text-red-500">*</span></label>
+                  <label className="block text-[11px] font-bold text-[#0f2923] mb-1.5">{html($t("LeadFormSection__t17", "Your Name "))}<span className="text-red-500">*</span></label>
                   <input 
                     type="text" 
                     name="name"
@@ -153,7 +151,7 @@ export default function LeadFormSection() {
                 
                 {/* Form Field */}
                 <div>
-                  <label className="block text-[11px] font-bold text-[#0f2923] mb-1.5">{$t("LeadFormSection__t19", "Work Email ")}<span className="text-red-500">*</span></label>
+                  <label className="block text-[11px] font-bold text-[#0f2923] mb-1.5">{html($t("LeadFormSection__t19", "Work Email "))}<span className="text-red-500">*</span></label>
                   <input 
                     type="email" 
                     name="email"
@@ -165,7 +163,7 @@ export default function LeadFormSection() {
                 
                 {/* Form Field */}
                 <div>
-                  <label className="block text-[11px] font-bold text-[#0f2923] mb-1.5">{$t("LeadFormSection__t21", "Store / Website URL ")}<span className="text-red-500">*</span></label>
+                  <label className="block text-[11px] font-bold text-[#0f2923] mb-1.5">{html($t("LeadFormSection__t21", "Store / Website URL "))}<span className="text-red-500">*</span></label>
                   <input 
                     type="url" 
                     name="storeUrl"
@@ -177,7 +175,7 @@ export default function LeadFormSection() {
                 
                 {/* Form Field */}
                 <div>
-                  <label className="block text-[11px] font-bold text-[#0f2923] mb-1.5">{$t("LeadFormSection__t23", "Monthly Revenue (Optional)")}</label>
+                  <label className="block text-[11px] font-bold text-[#0f2923] mb-1.5">{html($t("LeadFormSection__t23", "Monthly Revenue (Optional)"))}</label>
                   <select 
                     name="revenue"
                     defaultValue=""
@@ -206,11 +204,11 @@ export default function LeadFormSection() {
                 {/* Footer Note */}
                 <div className="flex items-center justify-center gap-1.5 mt-2 text-[10px] text-slate-500 font-medium">
                   <Lock size={10} className="text-slate-400" />
-                  <span>{$t("LeadFormSection__t31", "Free consultation")}</span>
+                  <span>{html($t("LeadFormSection__t31", "Free consultation"))}</span>
                   <span className="w-1 h-1 rounded-full bg-slate-300 mx-1"></span>
-                  <span>{$t("LeadFormSection__t32", "No obligation")}</span>
+                  <span>{html($t("LeadFormSection__t32", "No obligation"))}</span>
                   <span className="w-1 h-1 rounded-full bg-slate-300 mx-1"></span>
-                  <span>{$t("LeadFormSection__t33", "Confidential")}</span>
+                  <span>{html($t("LeadFormSection__t33", "Confidential"))}</span>
                 </div>
                 
               </form>

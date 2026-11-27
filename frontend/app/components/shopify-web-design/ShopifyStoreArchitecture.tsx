@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -82,9 +82,9 @@ function MockupHomepage() {
         {/* Subtle white gradient so text is always readable */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent z-0"></div>
         
-        <h5 className="text-[12px] font-black text-[#0f2333] leading-tight z-10 relative">{$t("ShopifyStoreArchitecture__t3", "New Arrivals")}</h5>
+        <h5 className="text-[12px] font-black text-[#0f2333] leading-tight z-10 relative">{html($t("ShopifyStoreArchitecture__t3", "New Arrivals"))}</h5>
         <p className="text-[7px] text-slate-700 font-medium mb-2 mt-1 z-10 relative">{rich($t("ShopifyStoreArchitecture__t4", "Curated picks for you"))}</p>
-        <button className="bg-[#0b3b35] text-white text-[6px] font-bold px-3 py-1.5 rounded-[4px] shadow-md z-10 relative">{$t("ShopifyStoreArchitecture__t5", "Shop Now")}</button>
+        <button className="bg-[#0b3b35] text-white text-[6px] font-bold px-3 py-1.5 rounded-[4px] shadow-md z-10 relative">{html($t("ShopifyStoreArchitecture__t5", "Shop Now"))}</button>
       </div>
       <div className="flex justify-between px-0.5 shrink-0">
         {[ 
@@ -110,7 +110,7 @@ function MockupCollections() {
   return (
     <div className="flex flex-col w-full h-full p-2">
       <div className="mb-1.5">
-        <h5 className="text-[11px] font-black text-[#0f2333] leading-tight">{$t("ShopifyStoreArchitecture__t14", "Living Room")}</h5>
+        <h5 className="text-[11px] font-black text-[#0f2333] leading-tight">{html($t("ShopifyStoreArchitecture__t14", "Living Room"))}</h5>
         <p className="text-[6px] text-slate-400 mt-1">{rich($t("ShopifyStoreArchitecture__t15", "42 items"))}</p>
       </div>
       <div className="grid grid-cols-2 gap-1.5 flex-1">
@@ -121,7 +121,7 @@ function MockupCollections() {
         ))}
       </div>
       <div className="mt-2.5 shrink-0">
-        <button className="w-full bg-[#0b3b35] text-white text-[6px] font-bold py-1.5 rounded-md shadow-sm">{$t("ShopifyStoreArchitecture__t17", "Explore Collection")}</button>
+        <button className="w-full bg-[#0b3b35] text-white text-[6px] font-bold py-1.5 rounded-md shadow-sm">{html($t("ShopifyStoreArchitecture__t17", "Explore Collection"))}</button>
       </div>
     </div>
   );
@@ -134,18 +134,18 @@ function MockupProduct() {
       <div className="flex-1 bg-[#f1f3f2] rounded-xl relative overflow-hidden mb-3 shrink-0 shadow-sm">
         <img src={$t("ShopifyStoreArchitecture__t18", "/product1.webp")} alt={$t("ShopifyStoreArchitecture__t19", "Modern Armchair")} className="absolute inset-0 w-full h-full object-cover mix-blend-multiply" />
         <div className="absolute top-2 left-2 bg-[#c6e1d5] px-2.5 py-1 rounded-[6px] flex items-center justify-center z-10">
-          <span className="text-[6.5px] font-bold text-[#143d34] leading-none mt-[0.5px]">{$t("ShopifyStoreArchitecture__t20", "Best Seller")}</span>
+          <span className="text-[6.5px] font-bold text-[#143d34] leading-none mt-[0.5px]">{html($t("ShopifyStoreArchitecture__t20", "Best Seller"))}</span>
         </div>
       </div>
       <div className="px-1 flex flex-col shrink-0">
-        <h5 className="text-[12px] font-black text-[#0f2333] leading-tight">{$t("ShopifyStoreArchitecture__t21", "Modern Armchair")}</h5>
+        <h5 className="text-[12px] font-black text-[#0f2333] leading-tight">{html($t("ShopifyStoreArchitecture__t21", "Modern Armchair"))}</h5>
         <p className="text-[10px] font-extrabold text-[#0b3b35] mt-1">{rich($t("ShopifyStoreArchitecture__t22", "$249.00"))}</p>
         <div className="flex items-center gap-0.5 mt-1">
           {[1,2,3,4,5].map(i=><svg key={i} width="8" height="8" viewBox="0 0 24 24" fill="#8da379"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>)}
-          <span className="text-[7px] text-slate-500 ml-1 font-medium">{$t("ShopifyStoreArchitecture__t23", "(128 reviews)")}</span>
+          <span className="text-[7px] text-slate-500 ml-1 font-medium">{html($t("ShopifyStoreArchitecture__t23", "(128 reviews)"))}</span>
         </div>
         <div className="mt-2.5">
-          <p className="text-[7px] text-[#0f2333] font-bold mb-1">{rich($t("ShopifyStoreArchitecture__t24", "Color: "))}<span className="font-normal text-slate-500">{$t("ShopifyStoreArchitecture__t25", "Sage Green")}</span></p>
+          <p className="text-[7px] text-[#0f2333] font-bold mb-1">{rich($t("ShopifyStoreArchitecture__t24m", "Color: <span class=\"font-normal text-slate-500\">Sage Green</span>"))}</p>
           <div className="flex gap-1.5 mt-1.5">
             <div className="w-4 h-4 rounded-full bg-[#e3dfd6] shadow-sm"></div>
             <div className="w-4 h-4 rounded-full bg-[#91a78d] shadow-sm"></div>
@@ -154,7 +154,7 @@ function MockupProduct() {
           </div>
         </div>
         <div className="flex items-center gap-2 mt-4 mb-0.5">
-          <button className="flex-1 bg-[#0b3b35] text-white text-[8px] font-bold py-2 rounded-lg shadow-md">{$t("ShopifyStoreArchitecture__t26", "Add to Cart")}</button>
+          <button className="flex-1 bg-[#0b3b35] text-white text-[8px] font-bold py-2 rounded-lg shadow-md">{html($t("ShopifyStoreArchitecture__t26", "Add to Cart"))}</button>
           <button className="w-8 h-8 bg-[#f0f7f5] border border-[#d6ebe4] rounded-lg flex items-center justify-center shrink-0 shadow-sm">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b3b35" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
           </button>
@@ -168,7 +168,7 @@ function MockupCart() {
   const $t = useCmsText();
   return (
     <div className="flex flex-col w-full h-full relative p-2.5">
-      <h5 className="text-[12px] font-black text-[#0f2333] mb-3 mt-1.5">{$t("ShopifyStoreArchitecture__t27", "Your Cart ")}<span className="text-slate-400 font-semibold text-[10px] ml-0.5">{$t("ShopifyStoreArchitecture__t28", "(2)")}</span></h5>
+      <h5 className="text-[12px] font-black text-[#0f2333] mb-3 mt-1.5">{html($t("ShopifyStoreArchitecture__t27", "Your Cart "))}<span className="text-slate-400 font-semibold text-[10px] ml-0.5">{html($t("ShopifyStoreArchitecture__t28", "(2)"))}</span></h5>
       
       <div className="flex-1 flex flex-col gap-3">
         {/* Item 1 */}
@@ -178,7 +178,7 @@ function MockupCart() {
           </div>
           <div className="flex-1 flex flex-col pt-0.5">
             <div className="flex justify-between items-start">
-               <h6 className="text-[8.5px] font-bold text-[#0f2333]">{$t("ShopifyStoreArchitecture__t31", "Modern Armchair")}</h6>
+               <h6 className="text-[8.5px] font-bold text-[#0f2333]">{html($t("ShopifyStoreArchitecture__t31", "Modern Armchair"))}</h6>
                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#0f2333" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
             <p className="text-[6.5px] text-slate-500 mt-0.5">{rich($t("ShopifyStoreArchitecture__t32", "Sage Green"))}</p>
@@ -189,7 +189,7 @@ function MockupCart() {
                <div className="flex items-center gap-2">
                  <div className="flex items-center gap-2 bg-white border border-slate-100 shadow-sm px-2 py-0.5 rounded-[5px]">
                    <span className="text-[7px] text-slate-300 font-bold">-</span>
-                   <span className="text-[7.5px] font-bold text-slate-600">{$t("ShopifyStoreArchitecture__t35", "1")}</span>
+                   <span className="text-[7.5px] font-bold text-slate-600">{html($t("ShopifyStoreArchitecture__t35", "1"))}</span>
                    <span className="text-[7px] text-slate-300 font-bold">+</span>
                  </div>
                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
@@ -205,7 +205,7 @@ function MockupCart() {
           </div>
           <div className="flex-1 flex flex-col pt-0.5">
             <div className="flex justify-between items-start">
-               <h6 className="text-[8.5px] font-bold text-[#0f2333]">{$t("ShopifyStoreArchitecture__t38", "Wooden Side Table")}</h6>
+               <h6 className="text-[8.5px] font-bold text-[#0f2333]">{html($t("ShopifyStoreArchitecture__t38", "Wooden Side Table"))}</h6>
                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#0f2333" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
             <p className="text-[6.5px] text-slate-500 mt-0.5">{rich($t("ShopifyStoreArchitecture__t39", "Natural"))}</p>
@@ -216,7 +216,7 @@ function MockupCart() {
                <div className="flex items-center gap-2">
                  <div className="flex items-center gap-2 bg-white border border-slate-100 shadow-sm px-2 py-0.5 rounded-[5px]">
                    <span className="text-[7px] text-slate-300 font-bold">-</span>
-                   <span className="text-[7.5px] font-bold text-slate-600">{$t("ShopifyStoreArchitecture__t42", "1")}</span>
+                   <span className="text-[7.5px] font-bold text-slate-600">{html($t("ShopifyStoreArchitecture__t42", "1"))}</span>
                    <span className="text-[7px] text-slate-300 font-bold">+</span>
                  </div>
                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
@@ -227,12 +227,9 @@ function MockupCart() {
       </div>
       
       <div className="mt-auto shrink-0 border-t border-slate-100 pt-3">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-[9.5px] font-black text-[#0f2333]">{$t("ShopifyStoreArchitecture__t43", "Subtotal")}</span>
-          <span className="text-[10px] font-black text-[#0f2333]">{$t("ShopifyStoreArchitecture__t44", "$378.00")}</span>
-        </div>
+        <div className="flex justify-between items-center mb-3">{rich($t("ShopifyStoreArchitecture__t43m", "<span class=\"text-[9.5px] font-black text-[#0f2333]\">Subtotal</span><span class=\"text-[10px] font-black text-[#0f2333]\">$378.00</span>"))}</div>
         <button className="w-full bg-[#0b3b35] text-white text-[9px] font-bold py-2.5 rounded-[6px] shadow-sm">
-          {$t("ShopifyStoreArchitecture__t45", "Checkout Securely")}</button>
+          {html($t("ShopifyStoreArchitecture__t45", "Checkout Securely"))}</button>
       </div>
     </div>
   );
@@ -244,7 +241,7 @@ function MockupCheckout() {
     <div className="flex flex-col w-full h-full relative p-1.5">
       <div className="flex flex-col items-center pt-2 mb-4">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b3b35" strokeWidth="2.5" className="mb-1"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-        <h5 className="text-[12px] font-black text-[#0f2333]">{$t("ShopifyStoreArchitecture__t46", "Secure Checkout")}</h5>
+        <h5 className="text-[12px] font-black text-[#0f2333]">{html($t("ShopifyStoreArchitecture__t46", "Secure Checkout"))}</h5>
         <p className="text-[8px] text-slate-400 mt-1 font-medium">{rich($t("ShopifyStoreArchitecture__t47", "You're almost there!"))}</p>
       </div>
       
@@ -253,39 +250,39 @@ function MockupCheckout() {
         <div className="absolute top-1.5 left-6 right-6 h-[1.5px] bg-[#e6f4f1] z-0"></div>
         <div className="flex flex-col items-center gap-1.5 z-10">
           <div className="w-3.5 h-3.5 rounded-full bg-[#c6e3d8] flex items-center justify-center shadow-sm"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#0b3b35" strokeWidth="3.5"><polyline points="20 6 9 17 4 12" /></svg></div>
-          <span className="text-[7.5px] font-bold text-[#0f2333]">{$t("ShopifyStoreArchitecture__t48", "Information")}</span>
+          <span className="text-[7.5px] font-bold text-[#0f2333]">{html($t("ShopifyStoreArchitecture__t48", "Information"))}</span>
         </div>
         <div className="flex flex-col items-center gap-1.5 z-10">
           <div className="w-3.5 h-3.5 rounded-full bg-[#c6e3d8] flex items-center justify-center shadow-sm"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#0b3b35" strokeWidth="3.5"><polyline points="20 6 9 17 4 12" /></svg></div>
-          <span className="text-[7.5px] font-bold text-[#0f2333]">{$t("ShopifyStoreArchitecture__t49", "Shipping")}</span>
+          <span className="text-[7.5px] font-bold text-[#0f2333]">{html($t("ShopifyStoreArchitecture__t49", "Shipping"))}</span>
         </div>
         <div className="flex flex-col items-center gap-1.5 z-10">
           <div className="w-3.5 h-3.5 rounded-full bg-[#c6e3d8] flex items-center justify-center shadow-sm"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#0b3b35" strokeWidth="3.5"><polyline points="20 6 9 17 4 12" /></svg></div>
-          <span className="text-[7.5px] font-bold text-[#0f2333]">{$t("ShopifyStoreArchitecture__t50", "Payment")}</span>
+          <span className="text-[7.5px] font-bold text-[#0f2333]">{html($t("ShopifyStoreArchitecture__t50", "Payment"))}</span>
         </div>
       </div>
       
       {/* Fields */}
       <div className="flex flex-col gap-2.5 px-2 flex-1">
         <div className="border border-slate-100 rounded-[8px] flex justify-between items-center bg-white shadow-sm px-2.5 py-2">
-          <span className="text-[8.5px] text-[#475569] font-medium">{$t("ShopifyStoreArchitecture__t51", "Contact")}</span>
+          <span className="text-[8.5px] text-[#475569] font-medium">{html($t("ShopifyStoreArchitecture__t51", "Contact"))}</span>
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div className="border border-slate-100 rounded-[8px] flex justify-between items-center bg-white shadow-sm px-2.5 py-2">
-          <span className="text-[8.5px] text-[#475569] font-medium">{$t("ShopifyStoreArchitecture__t52", "Shipping Address")}</span>
+          <span className="text-[8.5px] text-[#475569] font-medium">{html($t("ShopifyStoreArchitecture__t52", "Shipping Address"))}</span>
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div className="border border-slate-100 rounded-[8px] flex justify-between items-center bg-white shadow-sm px-2.5 py-2">
-          <span className="text-[8.5px] text-[#475569] font-medium">{$t("ShopifyStoreArchitecture__t53", "Payment Method")}</span>
+          <span className="text-[8.5px] text-[#475569] font-medium">{html($t("ShopifyStoreArchitecture__t53", "Payment Method"))}</span>
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
       </div>
       
       <div className="mt-auto px-2 pb-2">
-        <button className="w-full bg-[#0b3b35] text-white text-[9.5px] font-bold py-2.5 rounded-[6px] mb-2 shadow-sm">{$t("ShopifyStoreArchitecture__t54", "Place Order")}</button>
+        <button className="w-full bg-[#0b3b35] text-white text-[9.5px] font-bold py-2.5 rounded-[6px] mb-2 shadow-sm">{html($t("ShopifyStoreArchitecture__t54", "Place Order"))}</button>
         <div className="flex items-center justify-center gap-1.5">
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-          <span className="text-[7.5px] text-slate-500 font-medium">{$t("ShopifyStoreArchitecture__t55", "SSL Secured • 256-bit Encryption")}</span>
+          <span className="text-[7.5px] text-slate-500 font-medium">{html($t("ShopifyStoreArchitecture__t55", "SSL Secured • 256-bit Encryption"))}</span>
         </div>
       </div>
     </div>
@@ -313,12 +310,10 @@ export default function ShopifyStoreArchitecture() {
           <div className="w-full xl:w-[320px] shrink-0 text-center xl:text-left pt-0 xl:pt-16">
             <div className="flex items-center justify-center xl:justify-start gap-2 mb-4">
               <span className="w-5 h-0.5" style={{ backgroundColor: TEAL }} />
-              <span className="text-[10px] font-extrabold tracking-widest text-[#0b3b35] uppercase">{$t("ShopifyStoreArchitecture__t56", "Store Architecture")}</span>
+              <span className="text-[10px] font-extrabold tracking-widest text-[#0b3b35] uppercase">{html($t("ShopifyStoreArchitecture__t56", "Store Architecture"))}</span>
             </div>
             
-            <h2 className="text-h2 font-black mb-4" style={{ color: NAVY }}>
-              {$t("ShopifyStoreArchitecture__t57", "A Better Store Starts With ")}<span style={{ color: TEAL }}>{$t("ShopifyStoreArchitecture__t58", "Better Structure.")}</span>
-            </h2>
+            <h2 className="text-h2 font-black mb-4" style={{ color: NAVY }}>{rich($t("ShopifyStoreArchitecture__t57m", "A Better Store Starts With <span class=\"text-[#0d9488]\">Better Structure.</span>"))}</h2>
             
             <p className="text-small text-slate-600 font-medium mb-8 max-w-lg mx-auto xl:mx-0">
               {rich($t("ShopifyStoreArchitecture__t59", "We design the entire shopping journey with purpose and conversion in mind. Every step is crafted to guide customers from discovery to purchase—seamlessly."))}</p>
@@ -356,7 +351,7 @@ export default function ShopifyStoreArchitecture() {
             <div className="flex justify-center mb-8 w-full">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#e6f4f1] border border-[#ccede5]">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
-                <span className="text-[9px] font-black tracking-widest text-[#0b3b35] uppercase">{$t("ShopifyStoreArchitecture__t65", "The Shopping Journey We Design")}</span>
+                <span className="text-[9px] font-black tracking-widest text-[#0b3b35] uppercase">{html($t("ShopifyStoreArchitecture__t65", "The Shopping Journey We Design"))}</span>
                 <span className="w-3 h-[1.5px] bg-[#0d9488] ml-1" />
               </div>
             </div>
@@ -417,7 +412,7 @@ export default function ShopifyStoreArchitecture() {
                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
             </div>
             <div>
-              <h3 className="text-h5 font-black text-[#0f2333] mb-2">{$t("ShopifyStoreArchitecture__t66", "Better Structure. Better Flow. Better Results.")}</h3>
+              <h3 className="text-h5 font-black text-[#0f2333] mb-2">{html($t("ShopifyStoreArchitecture__t66", "Better Structure. Better Flow. Better Results."))}</h3>
               <p className="text-small font-medium text-slate-500 max-w-lg mx-auto sm:mx-0">
                 {rich($t("ShopifyStoreArchitecture__t67", "A well-structured store improves user experience, builds trust, and increases conversions at every step of the journey."))}</p>
             </div>
@@ -435,7 +430,7 @@ export default function ShopifyStoreArchitecture() {
                </div>
                <div>
                  <p className="text-[26px] font-black text-[#0b3b35] leading-none mb-1">{rich($t("ShopifyStoreArchitecture__t68", "2.5x"))}</p>
-                 <p className="text-[9px] font-bold text-[#0f2333] leading-snug">{rich($t("ShopifyStoreArchitecture__t69", "Higher Conversion"))}<br/>{rich($t("ShopifyStoreArchitecture__t70", "with Better Structure"))}</p>
+                 <p className="text-[9px] font-bold text-[#0f2333] leading-snug">{rich($t("ShopifyStoreArchitecture__t69m", "Higher Conversion<br>with Better Structure"))}</p>
                </div>
             </div>
 
@@ -448,7 +443,7 @@ export default function ShopifyStoreArchitecture() {
                </div>
                <div>
                  <p className="text-[26px] font-black text-[#0b3b35] leading-none mb-1">35%</p>
-                 <p className="text-[9px] font-bold text-[#0f2333] leading-snug">{rich($t("ShopifyStoreArchitecture__t71", "Increase in AOV with"))}<br/>{rich($t("ShopifyStoreArchitecture__t72", "Optimized Flow"))}</p>
+                 <p className="text-[9px] font-bold text-[#0f2333] leading-snug">{rich($t("ShopifyStoreArchitecture__t71m", "Increase in AOV with<br>Optimized Flow"))}</p>
                </div>
             </div>
 
@@ -461,7 +456,7 @@ export default function ShopifyStoreArchitecture() {
                </div>
                <div>
                  <p className="text-[26px] font-black text-[#0b3b35] leading-none mb-1">60%</p>
-                 <p className="text-[9px] font-bold text-[#0f2333] leading-snug">{rich($t("ShopifyStoreArchitecture__t73", "Fewer Drop-offs with"))}<br/>{rich($t("ShopifyStoreArchitecture__t74", "Seamless Checkout"))}</p>
+                 <p className="text-[9px] font-bold text-[#0f2333] leading-snug">{rich($t("ShopifyStoreArchitecture__t73m", "Fewer Drop-offs with<br>Seamless Checkout"))}</p>
                </div>
             </div>
           </div>

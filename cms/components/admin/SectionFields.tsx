@@ -2,7 +2,7 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import { AlignLeft, FormInput, Heading, ImageIcon, Link2, List, MousePointerClick, RotateCcw, Search, Type } from "lucide-react";
-import { FieldInput, type FieldDef } from "./fields";
+import { FieldInput, useOnFocus, type FieldDef } from "./fields";
 
 type Values = Record<string, unknown>;
 type Errors = Record<string, string | string[]>;
@@ -113,6 +113,14 @@ export function SectionFields({
 }) {
   const [tab, setTab] = useState<Tab>("all");
   const [q, setQ] = useState("");
+  // the visual editor asks for one of these fields: make sure no tab/search hides it
+  useOnFocus((fp) => {
+    const first = (prefix && fp.startsWith(`${prefix}.`) ? fp.slice(prefix.length + 1) : fp).split(".")[0];
+    if (fields.some((f) => f.name === first) && (tab !== "all" || q)) {
+      setTab("all");
+      setQ("");
+    }
+  });
   const blocks = useMemo(() => toBlocks(fields), [fields]);
   const v = values ?? {};
   const isEdited = (f: FieldDef) => f.name in defaults && !same(v[f.name], defaults[f.name]);

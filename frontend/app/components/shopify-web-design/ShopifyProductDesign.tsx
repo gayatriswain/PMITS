@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import Link from "next/link";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const TEAL = "#0d9488";
 const NAVY = "#0f2333";
@@ -85,22 +85,15 @@ export default function ShopifyProductDesign() {
             transition={{ duration: 0.6 }}
           >
             <div className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase mb-5" style={{ color: TEAL }}>
-              {$t("ShopifyProductDesign__t1", "Product Experience")}<svg width="12" height="12" viewBox="0 0 24 24" fill={TEAL}><path d="M12 2c0 4.5 4.5 9 9 9-4.5 0-9 4.5-9 9 0-4.5-4.5-9-9-9 4.5 0 9-4.5 9-9z"/></svg>
+              {html($t("ShopifyProductDesign__t1", "Product Experience"))}<svg width="12" height="12" viewBox="0 0 24 24" fill={TEAL}><path d="M12 2c0 4.5 4.5 9 9 9-4.5 0-9 4.5-9 9 0-4.5-4.5-9-9-9 4.5 0 9-4.5 9-9z"/></svg>
             </div>
 
-            <h2 className="text-h2 font-black mb-4" style={{ color: NAVY }}>
-              {$t("ShopifyProductDesign__t2", "We Design the Moment Before")}{" "}
-              <span style={{ color: TEAL }}>{$t("ShopifyProductDesign__t3", "\"Add to Cart.\"")}</span>
-            </h2>
+            <h2 className="text-h2 font-black mb-4" style={{ color: NAVY }}>{rich($t("ShopifyProductDesign__t2m", "We Design the Moment Before <span class=\"text-[#0d9488]\">\"Add to Cart.\"</span>"))}</h2>
 
             {/* teal accent dash */}
             <div className="w-10 h-1.5 rounded-full mb-5" style={{ background: TEAL }} />
 
-            <p className="text-body text-slate-500 mb-10 max-w-[280px]">
-              {rich($t("ShopifyProductDesign__t4", "Every element on your product page is designed to"))}{" "}
-              <span className="font-bold text-[#0f2333]">{$t("ShopifyProductDesign__t5", "build confidence")}</span>{" "}
-              and <span className="font-bold text-[#0f2333]">{$t("ShopifyProductDesign__t6", "drive action.")}</span>
-            </p>
+            <p className="text-body text-slate-500 mb-10 max-w-[280px]">{rich($t("ShopifyProductDesign__t4m", "Every element on your product page is designed to <span class=\"font-bold text-[#0f2333]\">build confidence</span> and <span class=\"font-bold text-[#0f2333]\">drive action.</span>"))}</p>
 
             {/* 3 stat icons */}
             <div className="flex gap-7">
@@ -168,7 +161,7 @@ export default function ShopifyProductDesign() {
 
                 {/* Browser nav */}
                 <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-100 bg-white">
-                  <span className="text-[12px] font-black tracking-widest text-[#0f2333]">{$t("ShopifyProductDesign__t16", "LUMEN")}</span>
+                  <span className="text-[12px] font-black tracking-widest text-[#0f2333]">{html($t("ShopifyProductDesign__t16", "LUMEN"))}</span>
                   <div className="flex gap-3 text-[8px] font-medium text-slate-400">
                     {[$t("ShopifyProductDesign__t17", "Shop"),$t("ShopifyProductDesign__t18", "Best Sellers"),$t("ShopifyProductDesign__t19", "About"),$t("ShopifyProductDesign__t20", "Journal")].map(n=><span key={n}>{n}</span>)}
                   </div>
@@ -197,7 +190,7 @@ export default function ShopifyProductDesign() {
                       
                       {/* BEST SELLER badge */}
                       <div className="bg-white px-3 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.06)] flex items-center justify-center z-10 relative">
-                        <span className="text-[8px] font-black text-[#0f2333] tracking-wide uppercase">{$t("ShopifyProductDesign__t23", "BEST SELLER")}</span>
+                        <span className="text-[8px] font-black text-[#0f2333] tracking-wide uppercase">{html($t("ShopifyProductDesign__t23", "BEST SELLER"))}</span>
                       </div>
 
                       {/* Thumbnail Strip */}
@@ -210,7 +203,7 @@ export default function ShopifyProductDesign() {
                           </div>
                         ))}
                         <div className="w-10 h-10 rounded-[12px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)] flex items-center justify-center">
-                          <span className="text-[12px] text-[#0f2333] font-black">{$t("ShopifyProductDesign__t25", "+4")}</span>
+                          <span className="text-[12px] text-[#0f2333] font-black">{html($t("ShopifyProductDesign__t25", "+4"))}</span>
                         </div>
                       </div>
 
@@ -225,13 +218,13 @@ export default function ShopifyProductDesign() {
                   {/* Product info */}
                   <div className="flex-1 py-1 pr-1 flex flex-col justify-between overflow-hidden" style={{minWidth:0}}>
                     <div>
-                      <h3 className="text-[14px] font-black text-[#0f2333] leading-tight mb-1.5">{$t("ShopifyProductDesign__t26", "Hydrating Face Serum")}</h3>
+                      <h3 className="text-[14px] font-black text-[#0f2333] leading-tight mb-1.5">{html($t("ShopifyProductDesign__t26", "Hydrating Face Serum"))}</h3>
 
                       {/* Stars */}
                       <div className="flex items-center gap-0.5 mb-1.5">
                         {[1,2,3,4].map(i=><StarIcon key={i} filled/>)}
                         <StarIcon filled={false}/>
-                        <span className="text-[7.5px] text-slate-400 ml-1">{$t("ShopifyProductDesign__t27", "(125 reviews)")}</span>
+                        <span className="text-[7.5px] text-slate-400 ml-1">{html($t("ShopifyProductDesign__t27", "(125 reviews)"))}</span>
                       </div>
 
                       <p className="text-body font-black text-[#0f2333] mb-2">{rich($t("ShopifyProductDesign__t28", "$49.00"))}</p>
@@ -258,7 +251,7 @@ export default function ShopifyProductDesign() {
                       <p className="text-[8px] font-bold text-slate-500 mb-1">{rich($t("ShopifyProductDesign__t37", "Quantity"))}</p>
                       <div className="flex items-center gap-2 mb-3">
                         <button className="w-5 h-5 rounded-md border border-slate-200 flex items-center justify-center text-slate-400 text-[11px] font-bold">−</button>
-                        <span className="text-[11px] font-bold text-[#0f2333]">{$t("ShopifyProductDesign__t38", "1")}</span>
+                        <span className="text-[11px] font-bold text-[#0f2333]">{html($t("ShopifyProductDesign__t38", "1"))}</span>
                         <button className="w-5 h-5 rounded-md border border-slate-200 flex items-center justify-center text-slate-400 text-[11px] font-bold">+</button>
                       </div>
                     </div>
@@ -267,7 +260,7 @@ export default function ShopifyProductDesign() {
                     <div>
                       <div className="flex items-center gap-1.5 mb-2">
                         <button className="flex-1 bg-[#0d9488] text-white text-[9px] font-bold py-2 rounded-lg flex items-center justify-center gap-1.5">
-                          {$t("ShopifyProductDesign__t39", "Add to Cart")}<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                          {html($t("ShopifyProductDesign__t39", "Add to Cart"))}<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                         </button>
                         <button className="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center shrink-0">
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -335,9 +328,7 @@ export default function ShopifyProductDesign() {
 
           {/* Center Content */}
           <div className="flex-1 text-center lg:text-left">
-            <h3 className="text-h5 font-extrabold tracking-tight" style={{ color: NAVY }}>
-              {$t("ShopifyProductDesign__t49", "Want a product page that ")}<span style={{ color: TEAL }}>{$t("ShopifyProductDesign__t50", "sells for you?")}</span>
-            </h3>
+            <h3 className="text-h5 font-extrabold tracking-tight" style={{ color: NAVY }}>{rich($t("ShopifyProductDesign__t49m", "Want a product page that <span class=\"text-[#0d9488]\">sells for you?</span>"))}</h3>
             <p className="text-small text-slate-600 mt-2 font-medium max-w-md mx-auto lg:mx-0">
               {rich($t("ShopifyProductDesign__t51", "Get a free audit of your store's product experience."))}</p>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2.5 mt-5">
@@ -374,7 +365,7 @@ export default function ShopifyProductDesign() {
                   <span key={i} className="h-[22px] w-[22px] rounded-full ring-[1.5px] ring-[#f4fcf9] bg-slate-200 shadow-sm" />
                 ))}
               </div>
-              <span className="text-[10px] font-bold text-slate-600">{$t("ShopifyProductDesign__t57", "Trusted by 100+ Shopify store owners")}</span>
+              <span className="text-[10px] font-bold text-slate-600">{html($t("ShopifyProductDesign__t57", "Trusted by 100+ Shopify store owners"))}</span>
             </div>
           </div>
         </motion.div>

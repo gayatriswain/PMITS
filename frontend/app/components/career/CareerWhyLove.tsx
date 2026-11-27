@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -151,13 +151,10 @@ export default function CareerWhyLove() {
             </span>
           </motion.p>
           <motion.h2 variants={fadeUp} className="text-h2 mt-3 font-bold tracking-tight">
-            <span style={{ color: INK }}>{$t("CareerWhyLove__t2", "Working at ")}</span>
-            <span style={{ color: TEAL }}>{$t("CareerWhyLove__t3", "ProManage")}</span>
+            <span style={{ color: INK }}>{html($t("CareerWhyLove__t2", "Working at "))}</span>
+            <span style={{ color: TEAL }}>{html($t("CareerWhyLove__t3", "ProManage"))}</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-body mt-4 text-slate-600">
-            {rich($t("CareerWhyLove__t4", "We're more than a workplace — we're a community of thinkers, builders, and dreamers who"))}{" "}
-            <span className="font-medium" style={{ color: TEAL }}>{$t("CareerWhyLove__t5", "grow together")}</span> and{" "}
-            <span className="font-medium" style={{ color: TEAL }}>{$t("CareerWhyLove__t6", "create impact")}</span> {rich($t("CareerWhyLove__t7", "every day."))}</motion.p>
+          <motion.p variants={fadeUp} className="text-body mt-4 text-slate-600">{rich($t("CareerWhyLove__t4m", "We're more than a workplace — we're a community of thinkers, builders, and dreamers who <span class=\"font-medium text-[#0d9488]\">grow together</span> and <span class=\"font-medium text-[#0d9488]\">create impact</span> every day."))}</motion.p>
         </motion.div>
 
         <div className="mx-auto mt-12 flex max-w-[960px] flex-col items-stretch gap-12 md:flex-row md:gap-6">

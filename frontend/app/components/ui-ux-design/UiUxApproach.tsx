@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const serif = { className: "font-heading" }; // global font from app/layout.tsx
 
@@ -119,7 +119,7 @@ export default function UiUxApproach() {
             transition={{ duration: 0.5 }}
           >
             <motion.span className="h-px w-8 origin-right bg-teal-600/45 sm:w-12" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }} />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0d9488] sm:text-[12px]">{$t("UiUxApproach__t1", "Our Approach")}</span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0d9488] sm:text-[12px]">{html($t("UiUxApproach__t1", "Our Approach"))}</span>
             <motion.span className="h-px w-8 origin-left bg-teal-600/45 sm:w-12" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }} />
           </motion.div>
 
@@ -145,8 +145,7 @@ export default function UiUxApproach() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {rich($t("UiUxApproach__t4", "We follow a human-centered design process to solve the right problems,"))}<br className="hidden sm:inline" /> {rich($t("UiUxApproach__t5", "create meaningful experiences and deliver measurable results."))}</motion.p>
+          >{rich($t("UiUxApproach__t4m", "We follow a human-centered design process to solve the right problems,<br class=\"hidden sm:inline\"> create meaningful experiences and deliver measurable results."))}</motion.p>
         </div>
 
         {/* ---------------- 5-STEP FLOW ---------------- */}
@@ -313,7 +312,7 @@ export default function UiUxApproach() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="text-[14px] font-semibold tracking-wide text-[#0c1e3d] sm:text-[15px]">
-            {$t("UiUxApproach__t6", "Great process. Great experiences.")}</div>
+            {html($t("UiUxApproach__t6", "Great process. Great experiences."))}</div>
           <div className="relative mx-auto mt-1 inline-block">
             <motion.div
               className={`${caveat.className} -rotate-2 select-none pr-2 text-[40px] leading-none text-[#0d9488] sm:text-[48px]`}
@@ -322,7 +321,7 @@ export default function UiUxApproach() {
               viewport={{ once: true }}
               transition={{ duration: 1.3, delay: 0.7, ease: "easeInOut" }}
             >
-              {$t("UiUxApproach__t7", "Real impact.")}</motion.div>
+              {html($t("UiUxApproach__t7", "Real impact."))}</motion.div>
             <svg viewBox="0 0 200 16" className="absolute -bottom-2 left-1/2 h-4 w-[88%] -translate-x-1/2 overflow-visible" fill="none" aria-hidden>
               <motion.path
                 d="M 4 11 C 50 4, 120 14, 196 5"

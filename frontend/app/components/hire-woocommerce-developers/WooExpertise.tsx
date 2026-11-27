@@ -5,7 +5,7 @@ import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { WooBadge } from "./WooHireHero";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -448,7 +448,7 @@ export default function WooExpertise() {
           >
             <span className="h-px w-12 bg-teal-400" />
             <span className="h-1.5 w-1.5 rotate-45 bg-teal-500" />
-            {$t("WooExpertise__t3", "Our WooCommerce Expertise")}<span className="h-1.5 w-1.5 rotate-45 bg-teal-500" />
+            {html($t("WooExpertise__t3", "Our WooCommerce Expertise"))}<span className="h-1.5 w-1.5 rotate-45 bg-teal-500" />
             <span className="h-px w-12 bg-teal-400" />
           </motion.div>
           <motion.h2

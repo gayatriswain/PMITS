@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -212,7 +212,7 @@ function SmallCard({
             {title}
           </h4>
           {active && (
-            <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded ml-auto">{$t("SeoOpportunity__t2", "#1")}</span>
+            <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded ml-auto">{html($t("SeoOpportunity__t2", "#1"))}</span>
           )}
         </div>
         <p className={`text-caption truncate mt-0.5 ${active ? 'text-teal-700' : 'text-slate-500'}`}>
@@ -268,7 +268,7 @@ export default function SeoOpportunity() {
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-px bg-slate-200" />
             <span className="text-[11px] lg:text-xs font-bold tracking-[0.15em] text-teal-800 uppercase">
-              {$t("SeoOpportunity__t3", "The opportunity you can't ignore")}</span>
+              {html($t("SeoOpportunity__t3", "The opportunity you can't ignore"))}</span>
             <div className="w-16 h-px bg-slate-200" />
           </div>
         </div>
@@ -283,10 +283,10 @@ export default function SeoOpportunity() {
             className="max-w-xl"
           >
             <h2 className="text-h2 font-serif font-bold tracking-tight mb-8">
-              <span className="block text-slate-900">{$t("SeoOpportunity__t4", "Every Search Is")}</span>
-              <span className="block text-slate-900">{$t("SeoOpportunity__t5", "A Missed")}</span>
+              <span className="block text-slate-900">{html($t("SeoOpportunity__t4", "Every Search Is"))}</span>
+              <span className="block text-slate-900">{html($t("SeoOpportunity__t5", "A Missed"))}</span>
               <span className="block text-teal-800">
-                {$t("SeoOpportunity__t6", "Opportunity")}<span className="text-amber-500">.</span>
+                {html($t("SeoOpportunity__t6", "Opportunity"))}<span className="text-amber-500">.</span>
               </span>
             </h2>
             <div className="w-12 h-[3px] bg-amber-400 mb-8" />
@@ -309,9 +309,7 @@ export default function SeoOpportunity() {
                   <path d="M12 11c-1.5 2.5-3 4-3 7h6c0-3-1.5-4.5-3-7z" />
                 </svg>
               </div>
-              <p className="text-body text-teal-900 font-medium">
-                <span className="font-bold">{$t("SeoOpportunity__t8", "SEO isn't just about rankings.")}</span><br />
-                {rich($t("SeoOpportunity__t9", "It's about owning the moments that drive your business forward."))}</p>
+              <p className="text-body text-teal-900 font-medium">{rich($t("SeoOpportunity__t8m", "<span class=\"font-bold\">SEO isn't just about rankings.</span><br>It's about owning the moments that drive your business forward."))}</p>
             </div>
           </motion.div>
 
@@ -333,7 +331,7 @@ export default function SeoOpportunity() {
               {/* Without SEO */}
               <div className="flex-1 basis-0 min-w-0 bg-white rounded-[24px] shadow-sm border border-slate-100 px-3 md:px-4 pb-6 md:pb-8 pt-10 relative opacity-90 z-10">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#a3b1c6] text-white text-[11px] font-bold px-5 py-1.5 rounded-full tracking-wider shadow-sm">
-                  {$t("SeoOpportunity__t10", "WITHOUT SEO")}</div>
+                  {html($t("SeoOpportunity__t10", "WITHOUT SEO"))}</div>
                 
                 <div className="flex flex-col mb-8">
                   <SmallCard rank={1} title={$t("SeoOpportunity__t11", "Competitor A")} subtitle={$t("SeoOpportunity__t12", "www.competitorA.com")} rankColor="bg-[#6b72bd]" />
@@ -348,7 +346,7 @@ export default function SeoOpportunity() {
                     <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
                     <polyline points="16 17 22 17 22 11" />
                   </svg>
-                  <span>{$t("SeoOpportunity__t17", "Low Visibility • Less Traffic • Lost Customers")}</span>
+                  <span>{html($t("SeoOpportunity__t17", "Low Visibility • Less Traffic • Lost Customers"))}</span>
                 </div>
               </div>
 
@@ -369,7 +367,7 @@ export default function SeoOpportunity() {
               {/* With SEO */}
               <div className="flex-1 basis-0 min-w-0 bg-white rounded-[24px] shadow-sm border border-slate-100 px-3 md:px-4 pb-6 md:pb-8 pt-10 relative z-10">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0f5c56] text-white text-[11px] font-bold px-5 py-1.5 rounded-full tracking-wider shadow-sm">
-                  {$t("SeoOpportunity__t18", "WITH PROMANAGE SEO")}</div>
+                  {html($t("SeoOpportunity__t18", "WITH PROMANAGE SEO"))}</div>
 
                 <div className="flex flex-col mb-8">
                   <SmallCard rank={1} title={$t("SeoOpportunity__t19", "ProManage")} subtitle={$t("SeoOpportunity__t20", "www.promanage.com")} active />
@@ -384,7 +382,7 @@ export default function SeoOpportunity() {
                     <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
                     <polyline points="16 7 22 7 22 13" />
                   </svg>
-                  <span>{$t("SeoOpportunity__t25", "High Visibility • More Traffic • More Revenue")}</span>
+                  <span>{html($t("SeoOpportunity__t25", "High Visibility • More Traffic • More Revenue"))}</span>
                 </div>
               </div>
 
@@ -393,7 +391,7 @@ export default function SeoOpportunity() {
         </div>
         <div className="flex flex-col items-center mt-12 md:mt-16">
           <h2 className="text-h2 font-serif font-semibold mb-6 text-center" style={{ color: NAVY }}>
-            {$t("SeoOpportunity__t26", "More Visibility Drives Real Business Growth")}</h2>
+            {html($t("SeoOpportunity__t26", "More Visibility Drives Real Business Growth"))}</h2>
 
           {/* Workflow */}
           <div className="w-full max-w-4xl flex flex-col md:flex-row items-start justify-between gap-8 md:gap-0 mb-8">

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -135,7 +135,7 @@ export default function TestimonialsAwards() {
             <motion.span variants={fadeUp} className="mt-2 block h-[2px] w-10 rounded-full" style={{ backgroundColor: TEAL }} />
             <motion.h2 variants={fadeUp} className="text-h2 mt-5 font-bold tracking-tight" style={{ color: INK }}>
               {$t("TestimonialsAwards__t2", "Milestones that")}<br />
-              <span style={{ color: TEAL }}>{$t("TestimonialsAwards__t3", "Reflect Our")}</span> {$t("TestimonialsAwards__t4", "Mission.")}</motion.h2>
+              <span style={{ color: TEAL }}>{html($t("TestimonialsAwards__t3", "Reflect Our"))}</span> {$t("TestimonialsAwards__t4", "Mission.")}</motion.h2>
             <motion.p variants={fadeUp} className="text-body mt-6 max-w-[440px] text-slate-600">
               {rich($t("TestimonialsAwards__t5", "Every award is a reflection of our commitment to deliver excellence, innovation and impact."))}</motion.p>
             <motion.svg variants={fadeUp} className="mt-4" width="60" height="10" viewBox="0 0 60 10" fill="none" aria-hidden>
@@ -166,7 +166,7 @@ export default function TestimonialsAwards() {
               {rich($t("TestimonialsAwards__t8", "Recognized."))}<br />
               {rich($t("TestimonialsAwards__t9", "Trusted."))}<br />
               <span className="relative">
-                {$t("TestimonialsAwards__t10", "Chosen.")}<svg className="absolute -bottom-2 left-0 h-2 w-full" viewBox="0 0 80 8" preserveAspectRatio="none" aria-hidden>
+                {html($t("TestimonialsAwards__t10", "Chosen."))}<svg className="absolute -bottom-2 left-0 h-2 w-full" viewBox="0 0 80 8" preserveAspectRatio="none" aria-hidden>
                   <path d="M2 6C25 2 55 1 78 3" stroke={TEAL} strokeWidth="2" strokeLinecap="round" fill="none" />
                 </svg>
               </span>

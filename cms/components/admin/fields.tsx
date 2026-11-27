@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { ArrowDown, ArrowUp, ChevronDown, Copy, ImageIcon, Plus, Trash2, X } from "lucide-react";
 import { api, qs } from "@/lib/client/api";
@@ -41,10 +41,30 @@ export type FieldDef = {
   half?: boolean;
   /** group: its fields read/write the parent object directly (presentational grouping only). */
   flat?: boolean;
+  /** richinline: span classes of the coloured words in the design (accent buttons in the editor). */
+  accents?: string[];
 };
 
 type Errors = Record<string, string | string[]>;
 type Values = Record<string, unknown>;
+
+/**
+ * Field the visual page editor wants shown (e.g. "items.2.title"); `n` changes on every request.
+ * Lists open that item, collapsed groups and filtered section views open up; the editor then
+ * scrolls to the element with the matching data-fpath.
+ */
+export type FieldFocusValue = { path: string; n: number } | null;
+export const FieldFocus = createContext<FieldFocusValue>(null);
+
+/** Runs `fn` once per new focus request (state is adjusted during render, React's recommended way). */
+export function useOnFocus(fn: (path: string) => void) {
+  const focus = useContext(FieldFocus);
+  const [seen, setSeen] = useState(0);
+  if (focus && focus.n !== seen) {
+    setSeen(focus.n);
+    fn(focus.path);
+  }
+}
 
 const inputCls =
   "w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.04)] outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal focus:ring-4 focus:ring-teal/10 disabled:bg-slate-50";
@@ -190,6 +210,12 @@ function ListField({ field, value, onChange, errors, path }: { field: FieldDef; 
     onChange(next);
     setOpen((o) => { const n = new Set<number>(); o.forEach((k) => n.add(k === i ? i + d : k === i + d ? i : k)); return n; });
   };
+  useOnFocus((fp) => {
+    const pre = `${path}.`;
+    if (!fp.startsWith(pre)) return;
+    const i = Number(fp.slice(pre.length).split(".")[0]);
+    if (Number.isInteger(i) && !open.has(i)) setOpen(new Set(open).add(i));
+  });
   const singular = field.label.replace(/s$/, "").toLowerCase();
   const allOpen = items.length > 0 && open.size === items.length;
   return (
@@ -212,7 +238,7 @@ function ListField({ field, value, onChange, errors, path }: { field: FieldDef; 
                 <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-xl text-xs font-bold ${isOpen ? "bg-teal text-white" : "bg-slate-100 text-slate-500"}`}>{i + 1}</span>
                 <span className="min-w-0 flex-1">
                   <span className="flex flex-wrap items-center gap-1.5">
-                    <span className={`truncate text-sm font-semibold ${hidden ? "text-slate-400 line-through" : "text-slate-800"}`}>{name}</span>
+                    <span data-list-title title={name} className={`truncate text-sm font-semibold ${hidden ? "text-slate-400 line-through" : "text-slate-800"}`}>{name}</span>
                     {hidden && <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">Hidden</span>}
                     {item?.external === true && <span className="rounded-md bg-sky-50 px-1.5 py-0.5 text-[10px] font-semibold text-sky-600">New tab</span>}
                     {typeof item?.badge === "string" && item.badge && <span className="rounded-md bg-teal/10 px-1.5 py-0.5 text-[10px] font-semibold text-teal">{item.badge as string}</span>}
@@ -302,14 +328,14 @@ export function FieldInput({ field, value, onChange, errors, path, hideLabel = f
       control = <RichTextEditor value={str} onChange={onChange} placeholder={field.placeholder} />;
       break;
     case "richinline":
-      control = <InlineRichText id={id} value={str} onChange={onChange} placeholder={field.placeholder} />;
+      control = <InlineRichText id={id} value={str} onChange={onChange} placeholder={field.placeholder} accents={field.accents} />;
       break;
     case "number":
       control = <input id={id} type="number" className={inputCls} value={str} onChange={(e) => onChange(e.target.value === "" ? undefined : Number(e.target.value))} />;
       break;
     case "boolean":
       return (
-        <label className={`flex cursor-pointer items-center gap-2.5 text-sm text-slate-700 ${field.half ? "" : "sm:col-span-2"}`}>
+        <label data-fpath={path} className={`flex cursor-pointer items-center gap-2.5 text-sm text-slate-700 ${field.half ? "" : "sm:col-span-2"}`}>
           <input type="checkbox" className="h-4 w-4 accent-teal" checked={Boolean(value)} onChange={(e) => onChange(e.target.checked)} />
           {field.label}
         </label>
@@ -401,7 +427,7 @@ export function FieldInput({ field, value, onChange, errors, path, hideLabel = f
   }
   const wide = ["richtext", "richinline", "list", "seo", "textarea", "image", "json", "textlist", "relation", "link", "group"].includes(field.type);
   return (
-    <div className={wide && !field.half ? "sm:col-span-2" : ""}>
+    <div data-fpath={path} className={wide && !field.half ? "sm:col-span-2" : ""}>
       {!hideLabel && (
         <Label htmlFor={id} required={field.required} help={field.help}>
           {field.label}
@@ -417,6 +443,11 @@ export function FieldInput({ field, value, onChange, errors, path, hideLabel = f
 function FlatGroup({ field, values, defaults, onChange, errors, prefix, single }: { field: FieldDef; values: Values; defaults?: Values; onChange: (v: Values) => void; errors: Errors; prefix: string; single: boolean }) {
   const [open, setOpen] = useState(single);
   const all = field.fields ?? [];
+  useOnFocus((fp) => {
+    const names = (fs: FieldDef[]): string[] => fs.flatMap((f) => (f.type === "group" && f.flat ? names(f.fields ?? []) : [f.name]));
+    const first = (prefix && fp.startsWith(`${prefix}.`) ? fp.slice(prefix.length + 1) : fp).split(".")[0];
+    if (!open && names(all).includes(first)) setOpen(true);
+  });
   const body = <SectionFields fields={all} values={values} defaults={defaults} onChange={onChange} errors={errors} prefix={prefix} />;
   // one part only: no extra box around it
   if (single) return body;

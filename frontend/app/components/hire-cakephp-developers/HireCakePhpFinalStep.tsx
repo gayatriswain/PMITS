@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -98,7 +98,7 @@ export default function HireCakePhpFinalStep() {
           >
             <motion.div variants={fadeUp} custom={0} className="flex items-center gap-2.5">
               <span className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: RED }}>
-                {$t("HireCakePhpFinalStep__t1", "FINAL STEP")}</span>
+                {html($t("HireCakePhpFinalStep__t1", "FINAL STEP"))}</span>
               <span className="h-[1.5px] w-7 opacity-60" style={{ background: RED }} />
             </motion.div>
 
@@ -111,7 +111,7 @@ export default function HireCakePhpFinalStep() {
               {$t("HireCakePhpFinalStep__t2", "Ready to build")}<br />
               something
               <br />
-              <span style={{ color: RED }}>{$t("HireCakePhpFinalStep__t3", "extraordinary?")}</span>
+              <span style={{ color: RED }}>{html($t("HireCakePhpFinalStep__t3", "extraordinary?"))}</span>
             </motion.h2>
 
             <motion.p
@@ -275,8 +275,7 @@ export default function HireCakePhpFinalStep() {
             transition={{ duration: 0.75, delay: 0.2, ease: EASE }}
             className="relative rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_24px_60px_-20px_rgba(15,26,46,0.08)] sm:p-7"
           >
-            <h3 className="text-h5 font-playfair font-bold" style={{ color: INK }}>
-              {$t("HireCakePhpFinalStep__t11", "What would ")}<span style={{ color: RED }}>you</span> {$t("HireCakePhpFinalStep__t12", "like to do?")}</h3>
+            <h3 className="text-h5 font-playfair font-bold" style={{ color: INK }}>{rich($t("HireCakePhpFinalStep__t11m", "What would <span class=\"text-[#d92b32]\">you</span> like to do?"))}</h3>
 
             {/* 4 Action Cards */}
             <div className="mt-5 flex flex-col gap-3">
@@ -331,7 +330,7 @@ export default function HireCakePhpFinalStep() {
                 <rect x="4" y="11" width="16" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0110 0v4" />
               </svg>
-              <span>{$t("HireCakePhpFinalStep__t14", "No spam. Just real conversations.")}</span>
+              <span>{html($t("HireCakePhpFinalStep__t14", "No spam. Just real conversations."))}</span>
             </div>
           </motion.div>
         </div>
@@ -359,9 +358,7 @@ export default function HireCakePhpFinalStep() {
             </svg>
 
             <div>
-              <p className="text-body font-playfair font-bold" style={{ color: INK }}>
-                {rich($t("HireCakePhpFinalStep__t15", "Let's build it "))}<span style={{ color: RED }}>{$t("HireCakePhpFinalStep__t16", "the right way.")}</span>
-              </p>
+              <p className="text-body font-playfair font-bold" style={{ color: INK }}>{rich($t("HireCakePhpFinalStep__t15m", "Let's build it <span class=\"text-[#d92b32]\">the right way.</span>"))}</p>
               <p className="mt-0.5 text-[11px] text-slate-500">
                 {rich($t("HireCakePhpFinalStep__t17", "Simple conversation. Real solutions."))}</p>
             </div>
@@ -397,8 +394,7 @@ export default function HireCakePhpFinalStep() {
               />
             </div>
 
-            <p className="text-caption font-medium text-slate-600">
-              {rich($t("HireCakePhpFinalStep__t24", "Your idea is safe"))}<br className="hidden sm:inline" /> {rich($t("HireCakePhpFinalStep__t25", "with us."))}</p>
+            <p className="text-caption font-medium text-slate-600">{rich($t("HireCakePhpFinalStep__t24m", "Your idea is safe<br class=\"hidden sm:inline\"> with us."))}</p>
 
             {/* Red Heart with subtle ripple ring */}
             <div className="relative grid h-9 w-9 place-items-center">

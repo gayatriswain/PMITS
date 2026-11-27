@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -139,7 +139,7 @@ export default function WooWhy() {
               className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-4 py-1.5 text-[13px] font-semibold"
               style={{ color: DEEP_TEAL }}
             >
-              <TrophyIcon /> {$t("WooWhy__t2", "Why WooCommerce?")}</span>
+              <TrophyIcon /> {html($t("WooWhy__t2", "Why WooCommerce?"))}</span>
             <span className="hidden sm:block h-px w-16 bg-gradient-to-l from-transparent to-teal-300" />
           </motion.div>
 
@@ -151,14 +151,14 @@ export default function WooWhy() {
           >
             {$t("WooWhy__t3", "More Than Just a Website —")}<br />
             <span style={{ color: TEAL }}>
-              {$t("WooWhy__t4", "A Powerful")}{" "}
+              {html($t("WooWhy__t4", "A Powerful"))}{" "}
               <span className="relative inline-block">
-                {$t("WooWhy__t5", "Online")}<svg className="pointer-events-none absolute -bottom-3 left-[-6%] h-4 w-[112%]" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden>
+                {html($t("WooWhy__t5", "Online"))}<svg className="pointer-events-none absolute -bottom-3 left-[-6%] h-4 w-[112%]" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden>
                   <path d="M3 11C60 3 140 2 197 7" fill="none" stroke={TEAL} strokeWidth="3.2" strokeLinecap="round" />
                   <path d="M30 15C80 9 130 8 170 11" fill="none" stroke={TEAL} strokeWidth="1.6" strokeLinecap="round" opacity="0.6" />
                 </svg>
               </span>{" "}
-              {$t("WooWhy__t6", "Store")}</span>
+              {html($t("WooWhy__t6", "Store"))}</span>
           </motion.h2>
 
           <motion.p variants={fadeUp} className="text-body mt-8 max-w-[880px] text-slate-600">
@@ -211,8 +211,7 @@ export default function WooWhy() {
               <RocketIcon />
               {$t("WooWhy__t9", "Build Your WooCommerce Store")}<span className="transition-transform group-hover:translate-x-1"><ArrowIcon /></span>
             </Link>
-            <p className="text-small text-slate-600">
-              {rich($t("WooWhy__t10", "Better Design. "))}<span className="font-bold" style={{ color: TEAL }}>{$t("WooWhy__t11", "Higher Sales.")}</span> {rich($t("WooWhy__t12", "Stronger Business."))}</p>
+            <p className="text-small text-slate-600">{rich($t("WooWhy__t10m", "Better Design. <span class=\"font-bold text-[#0d9488]\">Higher Sales.</span> Stronger Business."))}</p>
           </motion.div>
         </motion.div>
       </Container>

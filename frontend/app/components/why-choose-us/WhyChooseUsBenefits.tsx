@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -166,16 +166,10 @@ export default function WhyChooseUsBenefits() {
           className="text-center max-w-[900px] mx-auto mb-10"
         >
           <span className="inline-flex items-center gap-1.5 text-[13px] font-bold tracking-[0.16em] uppercase" style={{ color: TEAL }}>
-            {$t("WhyChooseUsBenefits__t1", "Why Choose Us?")}</span>
+            {html($t("WhyChooseUsBenefits__t1", "Why Choose Us?"))}</span>
           <span className="block mx-auto mt-2 h-[3px] w-10 rounded-full" style={{ backgroundColor: TEAL }} />
-          <h2 className="text-h2 font-heading mt-5 font-bold leading-[1.12] tracking-[-0.025em]" style={{ color: NAVY }}>
-            {$t("WhyChooseUsBenefits__t2", "Because You Deserve More")}<br />
-            {$t("WhyChooseUsBenefits__t3", "Than Just a ")}<span style={{ color: TEAL }}>{$t("WhyChooseUsBenefits__t4", "Service Provider.")}</span>
-          </h2>
-          <p className="text-body mx-auto mt-5 max-w-[620px] text-slate-600">
-            {rich($t("WhyChooseUsBenefits__t5", "We combine strategy, creativity, and technology to build digital solutions that drive growth, engagement, and"))}{" "}
-            <span className="font-semibold" style={{ color: TEAL }}>{$t("WhyChooseUsBenefits__t6", "real business impact.")}</span>
-          </p>
+          <h2 className="text-h2 font-heading mt-5 font-bold leading-[1.12] tracking-[-0.025em]" style={{ color: NAVY }}>{rich($t("WhyChooseUsBenefits__t2m", "Because You Deserve More<br>Than Just a <span class=\"text-[#0d9488]\">Service Provider.</span>"))}</h2>
+          <p className="text-body mx-auto mt-5 max-w-[620px] text-slate-600">{rich($t("WhyChooseUsBenefits__t5m", "We combine strategy, creativity, and technology to build digital solutions that drive growth, engagement, and <span class=\"font-semibold text-[#0d9488]\">real business impact.</span>"))}</p>
         </motion.div>
 
         {/* Main 3-column grid */}

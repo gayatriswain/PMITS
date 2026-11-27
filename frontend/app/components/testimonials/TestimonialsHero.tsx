@@ -6,7 +6,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -186,12 +186,8 @@ function QuoteCard() {
       </div>
       <div className="mt-5 flex items-center gap-3">
         <span className="flex h-11 w-11 items-center justify-center rounded-full text-[13px] font-bold text-white ring-2 ring-white" style={{ background: AVATARS[0].bg }}>
-          {$t("TestimonialsHero__t2", "JC")}</span>
-        <span>
-          <span className="block text-[14px] font-semibold" style={{ color: INK }}>
-            {$t("TestimonialsHero__t3", "James Carter")}</span>
-          <span className="block text-[12px] text-slate-500">{$t("TestimonialsHero__t4", "CEO, ModuLux")}</span>
-        </span>
+          {html($t("TestimonialsHero__t2", "JC"))}</span>
+        <span>{rich($t("TestimonialsHero__t3m", "<span class=\"block text-[14px] font-semibold text-[#0d1b33]\">James Carter</span><span class=\"block text-[12px] text-slate-500\">CEO, ModuLux</span>"))}</span>
       </div>
     </div>
   );
@@ -324,18 +320,15 @@ export default function TestimonialsHero() {
             <motion.span variants={fadeUp} className="mt-2 block h-[2px] w-10 rounded-full" style={{ backgroundColor: TEAL }} />
             <motion.h1 variants={fadeUp} className="text-h1 mt-5 font-bold tracking-tight">
               <span className="block" style={{ color: INK }}>
-                {$t("TestimonialsHero__t7", "Results")}</span>
+                {html($t("TestimonialsHero__t7", "Results"))}</span>
               <span className="relative inline-block" style={{ color: DEEP_TEAL }}>
-                {$t("TestimonialsHero__t8", "Speak Louder")}<span style={{ color: TEAL }}>.</span>
+                {html($t("TestimonialsHero__t8", "Speak Louder"))}<span style={{ color: TEAL }}>.</span>
                 <svg className="pointer-events-none absolute -bottom-2 left-0 h-3 w-[62%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={TEAL} strokeWidth="3" strokeLinecap="round" />
                 </svg>
               </span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-body mt-7 text-slate-600">
-              {rich($t("TestimonialsHero__t9", "Real feedback. Real relationships."))}<br />
-              {rich($t("TestimonialsHero__t10", "Real results that "))}<span className="font-semibold" style={{ color: TEAL }}>{$t("TestimonialsHero__t11", "drive businesses forward.")}</span>
-            </motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-7 text-slate-600">{rich($t("TestimonialsHero__t9m", "Real feedback. Real relationships.<br>Real results that <span class=\"font-semibold text-[#0d9488]\">drive businesses forward.</span>"))}</motion.p>
 
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-5">
               <div className="flex -space-x-1.5">
@@ -354,9 +347,9 @@ export default function TestimonialsHero() {
                   className="flex h-12 w-12 items-center justify-center rounded-full text-[13px] font-bold text-white shadow-[0_10px_20px_-10px_rgba(15,92,86,0.8)]"
                   style={{ background: `linear-gradient(135deg, ${DEEP_TEAL}, ${TEAL})` }}
                 >
-                  {$t("TestimonialsHero__t12", "200+")}</span>
+                  {html($t("TestimonialsHero__t12", "200+"))}</span>
                 <span className="text-[14px] leading-snug text-slate-600">
-                  {$t("TestimonialsHero__t13", "Happy clients")}<br />
+                  {html($t("TestimonialsHero__t13", "Happy clients"))}<br />
                   worldwide
                 </span>
               </span>

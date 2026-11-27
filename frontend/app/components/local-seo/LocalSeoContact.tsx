@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BarChart3, Clock3, Globe2, Mail, MapPinned, PhoneCall, ShieldCheck, Target, TrendingUp, User, Users } from "lucide-react";
 import { Inner, LPill, LS, Panel, Stars, ease, heading } from "./LocalSeoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
@@ -72,7 +72,7 @@ function LeadForm() {
           <p className={`text-body ${heading.className} mt-4 font-bold text-[#0b1b33]`}>{rich($t("LocalSeoContact__t1", "Thanks — we’re on it!"))}</p>
           <p className="text-small mt-1 text-slate-600">{rich($t("LocalSeoContact__t2", "Your Local SEO strategy will reach you within 24–48 hrs."))}</p>
           <button type="button" onClick={() => setStatus("idle")} className="mt-4 text-sm font-semibold text-[#0f766e] hover:underline">
-            {$t("LocalSeoContact__t3", "Send another request")}</button>
+            {html($t("LocalSeoContact__t3", "Send another request"))}</button>
         </motion.div>
       ) : (
         <motion.form key="form" onSubmit={submit} noValidate className="space-y-3.5">
@@ -132,7 +132,7 @@ export default function LocalSeoContact() {
               transition={{ duration: 0.7, ease }}
               className={`text-h2 ${heading.className} mt-6 font-bold tracking-[-0.02em] text-[#0b1b33]`}
             >
-              {$t("LocalSeoContact__t11", "Your Customers")}<br /> {$t("LocalSeoContact__t12", "Are Searching.")}<span className="mt-2 block text-[0.72em] text-[#0f766e]">{$t("LocalSeoContact__t13", "Let's Make Sure They Find You.")}</span>
+              {$t("LocalSeoContact__t11", "Your Customers")}<br /> {$t("LocalSeoContact__t12", "Are Searching.")}<span className="mt-2 block text-[0.72em] text-[#0f766e]">{html($t("LocalSeoContact__t13", "Let's Make Sure They Find You."))}</span>
             </motion.h2>
             <p className="text-body mt-5 max-w-[520px] text-slate-600">
               {rich($t("LocalSeoContact__t14", "We help local businesses stand out in their neighborhood, get more calls, more visits, and more customers."))}</p>
@@ -162,9 +162,9 @@ export default function LocalSeoContact() {
             >
               <Image src={LS.avatars} alt={$t("LocalSeoContact__t15", "Local business owners")} width={135} height={45} className="h-10 w-auto" />
               <span>
-                <span className="block text-[13px] text-slate-600">{$t("LocalSeoContact__t16", "500+ Local Businesses Trust Us")}</span>
+                <span className="block text-[13px] text-slate-600">{html($t("LocalSeoContact__t16", "500+ Local Businesses Trust Us"))}</span>
                 <span className="flex items-center gap-1.5 text-[13px] text-slate-700">
-                  <Stars className="h-3.5 w-3.5" /> <b>{$t("LocalSeoContact__t17", "4.9")}</b> {$t("LocalSeoContact__t18", "(120+ Reviews)")}</span>
+                  <Stars className="h-3.5 w-3.5" /> <b>{html($t("LocalSeoContact__t17", "4.9"))}</b> {html($t("LocalSeoContact__t18", "(120+ Reviews)"))}</span>
               </span>
             </motion.div>
           </div>

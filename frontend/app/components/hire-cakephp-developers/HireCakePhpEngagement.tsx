@@ -8,7 +8,7 @@ import DottedMap from "dotted-map/without-countries";
 import Container from "../shared/Container";
 import WORLD_DOT_MAP from "../shared/worldDotMap";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -344,7 +344,7 @@ export default function HireCakePhpEngagement() {
               className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em]"
               style={{ color: RED }}
             >
-              {$t("HireCakePhpEngagement__t10", "Engagement Models")}<i aria-hidden className="h-px w-9" style={{ background: RED, opacity: 0.45 }} />
+              {html($t("HireCakePhpEngagement__t10", "Engagement Models"))}<i aria-hidden className="h-px w-9" style={{ background: RED, opacity: 0.45 }} />
             </motion.span>
             <motion.h2
               variants={fadeUp}
@@ -463,7 +463,7 @@ export default function HireCakePhpEngagement() {
                   animate={reduce ? undefined : { y: [0, -2, 0] }}
                   transition={{ duration: 2.4, repeat: Infinity }}
                 >
-                  {$t("HireCakePhpEngagement__t14", "Most Popular")}</motion.span>
+                  {html($t("HireCakePhpEngagement__t14", "Most Popular"))}</motion.span>
               )}
               <div className="flex gap-5">
                 <span className="grid h-[64px] w-[64px] shrink-0 place-items-center rounded-full border border-[#f3d3d5] bg-[#fff4f4] text-[#d92b32] transition-colors duration-300 group-hover:bg-[#d92b32] group-hover:text-white">
@@ -523,10 +523,7 @@ export default function HireCakePhpEngagement() {
 
           <div className="relative grid gap-8 lg:grid-cols-[0.8fr_1.25fr_0.85fr] lg:gap-10">
             <div>
-              <h3 className="text-h5 font-playfair font-bold" style={{ color: INK }}>
-                {$t("HireCakePhpEngagement__t16", "Ready to build something")}<br />
-                {$t("HireCakePhpEngagement__t17", "amazing with ")}<span style={{ color: RED }}>{$t("HireCakePhpEngagement__t18", "CakePHP?")}</span>
-              </h3>
+              <h3 className="text-h5 font-playfair font-bold" style={{ color: INK }}>{rich($t("HireCakePhpEngagement__t16m", "Ready to build something<br>amazing with <span class=\"text-[#d92b32]\">CakePHP?</span>"))}</h3>
               <p className="text-caption mt-3 max-w-[260px] text-slate-500">
                 {rich($t("HireCakePhpEngagement__t19", "Let's discuss your idea and create a solution that drives real impact."))}</p>
               <div className="mt-6 flex flex-wrap gap-3">

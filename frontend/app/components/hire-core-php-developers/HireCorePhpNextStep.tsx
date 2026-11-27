@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    SCALE BOX: lays children out at a fixed design size and scales them to the available width
@@ -226,10 +227,8 @@ function ExpertsCard({ className = "" }: { className?: string }) {
         </Icon>
       </span>
       <div className="text-left">
-        <div className="text-[14px] font-bold text-[#0c1e3d]">{$t("HireCorePhpNextStep__t1", "Core PHP Experts")}</div>
-        <div className="mt-1 text-[11.5px] text-slate-500 leading-snug">
-          {$t("HireCorePhpNextStep__t2", "Clean code. Scalable solutions.")}<br />
-          {$t("HireCorePhpNextStep__t3", "On-time delivery.")}</div>
+        <div className="text-[14px] font-bold text-[#0c1e3d]">{html($t("HireCorePhpNextStep__t1", "Core PHP Experts"))}</div>
+        <div className="mt-1 text-[11.5px] text-slate-500 leading-snug">{rich($t("HireCorePhpNextStep__t2m", "Clean code. Scalable solutions.<br>On-time delivery."))}</div>
       </div>
     </div>
   );
@@ -263,10 +262,7 @@ function TalkBanner({ className = "" }: { className?: string }) {
               <path d="M9 11h.01M12.500 11h.01M16 11h.01" />
             </Icon>
           </motion.span>
-          <div className="text-left text-[18px] font-semibold leading-snug text-white">
-            {$t("HireCorePhpNextStep__t4", "Have a PHP project in mind?")}<br />
-            <span className="text-[#3fd6cf] font-bold">{$t("HireCorePhpNextStep__t5", "Let's talk about it.")}</span>
-          </div>
+          <div className="text-left text-[18px] font-semibold leading-snug text-white">{rich($t("HireCorePhpNextStep__t4m", "Have a PHP project in mind?<br><span class=\"text-[#3fd6cf] font-bold\">Let's talk about it.</span>"))}</div>
         </div>
 
         <Link
@@ -335,7 +331,7 @@ export default function HireCorePhpNextStep() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                {$t("HireCorePhpNextStep__t10", "Your next step")}</motion.div>
+                {html($t("HireCorePhpNextStep__t10", "Your next step"))}</motion.div>
               <motion.h2
                 className="absolute left-[77px] top-[62px] text-[56px] font-black tracking-tight leading-[1.08] text-[#0c1e3d] whitespace-nowrap"
                 initial={{ opacity: 0, y: 16 }}
@@ -343,7 +339,7 @@ export default function HireCorePhpNextStep() {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 {$t("HireCorePhpNextStep__t11", "From First Call.")}<br />
-                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpNextStep__t12", "To First Commit.")}</span>
+                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{html($t("HireCorePhpNextStep__t12", "To First Commit."))}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[77px] top-[216px] text-[15px] leading-[1.55] text-slate-600"
@@ -417,16 +413,14 @@ export default function HireCorePhpNextStep() {
                 />
                 <span className="absolute -inset-[14px] rounded-full border border-dashed border-sky-300/70" />
                 <div className="absolute inset-[22px] rounded-full bg-[radial-gradient(circle_at_35%_30%,#17406b,#0a2038_65%,#071a31)] border border-sky-300/40 shadow-[0_26px_44px_-14px_rgba(7,22,43,0.7)] flex flex-col items-center justify-center text-center">
-                  <div className="text-[9.5px] font-bold tracking-[0.18em] text-sky-200/80">{$t("HireCorePhpNextStep__t13", "YOUR REQUIREMENT")}</div>
+                  <div className="text-[9.5px] font-bold tracking-[0.18em] text-sky-200/80">{html($t("HireCorePhpNextStep__t13", "YOUR REQUIREMENT"))}</div>
                   <span className="mt-2 w-11 h-11 rounded-full border border-sky-300/50 text-sky-100 flex items-center justify-center">
                     <Icon className="w-6 h-6">
                       <circle cx="12" cy="8" r="4" />
                       <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" />
                     </Icon>
                   </span>
-                  <div className="mt-2.5 text-[12px] font-semibold text-white leading-snug">
-                    {$t("HireCorePhpNextStep__t14", "We start")}<br />
-                    {$t("HireCorePhpNextStep__t15", "with your goals.")}</div>
+                  <div className="mt-2.5 text-[12px] font-semibold text-white leading-snug">{rich($t("HireCorePhpNextStep__t14m", "We start<br>with your goals."))}</div>
                 </div>
               </motion.div>
 
@@ -451,7 +445,7 @@ export default function HireCorePhpNextStep() {
                       <path d="M4.500 16.500c-1.500 1.260-2 5-2 5s3.740-.5 5-2c.710-.840.700-2.130-.090-2.910a2.180 2.180 0 0 0-2.910-.090z" />
                       <path d="m12 15-3-3a22 22 0 0 1 2-3.950A12.880 12.880 0 0 1 22 2c0 2.720-.780 7.500-6 11a22.350 22.350 0 0 1-4 2z" />
                     </Icon>
-                    <span className="mt-1 text-[10px] font-bold tracking-[0.18em] text-[#0f6f78]">{$t("HireCorePhpNextStep__t16", "YOUR PRODUCT")}</span>
+                    <span className="mt-1 text-[10px] font-bold tracking-[0.18em] text-[#0f6f78]">{html($t("HireCorePhpNextStep__t16", "YOUR PRODUCT"))}</span>
                   </div>
                 </div>
               </div>
@@ -463,11 +457,8 @@ export default function HireCorePhpNextStep() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">{$t("HireCorePhpNextStep__t17", "Your next step")}</div>
-          <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight leading-[1.08] text-[#0c1e3d]">
-            {$t("HireCorePhpNextStep__t18", "From First Call.")}<br />
-            <span className="text-[#0f8a83]">{$t("HireCorePhpNextStep__t19", "To First Commit.")}</span>
-          </h2>
+          <div className="text-[11.5px] font-bold tracking-[0.24em] text-[#0f8a83] uppercase">{html($t("HireCorePhpNextStep__t17", "Your next step"))}</div>
+          <h2 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight leading-[1.08] text-[#0c1e3d]">{rich($t("HireCorePhpNextStep__t18m", "From First Call.<br><span class=\"text-[#0f8a83]\">To First Commit.</span>"))}</h2>
           <p className="mt-4 text-sm sm:text-base text-slate-600">{subtitle}</p>
 
           <ExpertsCard className="mt-6" />
@@ -477,16 +468,14 @@ export default function HireCorePhpNextStep() {
           </div>
 
           <div className="mt-10 mx-auto w-[190px] h-[190px] rounded-full bg-[radial-gradient(circle_at_35%_30%,#17406b,#0a2038_65%,#071a31)] border border-sky-300/40 shadow-[0_26px_44px_-14px_rgba(7,22,43,0.7)] flex flex-col items-center justify-center text-center">
-            <div className="text-[9.5px] font-bold tracking-[0.18em] text-sky-200/80">{$t("HireCorePhpNextStep__t20", "YOUR REQUIREMENT")}</div>
+            <div className="text-[9.5px] font-bold tracking-[0.18em] text-sky-200/80">{html($t("HireCorePhpNextStep__t20", "YOUR REQUIREMENT"))}</div>
             <span className="mt-2 w-11 h-11 rounded-full border border-sky-300/50 text-sky-100 flex items-center justify-center">
               <Icon className="w-6 h-6">
                 <circle cx="12" cy="8" r="4" />
                 <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" />
               </Icon>
             </span>
-            <div className="mt-2.5 text-[12px] font-semibold text-white leading-snug">
-              {$t("HireCorePhpNextStep__t21", "We start")}<br />
-              {$t("HireCorePhpNextStep__t22", "with your goals.")}</div>
+            <div className="mt-2.5 text-[12px] font-semibold text-white leading-snug">{rich($t("HireCorePhpNextStep__t21m", "We start<br>with your goals."))}</div>
           </div>
 
           <div className="mt-8 space-y-4 max-w-md mx-auto">

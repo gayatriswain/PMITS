@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -150,12 +150,9 @@ export default function CustomDevWhatWeBuild() {
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full" style={{ backgroundColor: "#e6f6f4", color: TEAL }}>
             <span className="w-1 h-1 rounded-full" style={{ backgroundColor: TEAL }} />
-            {$t("CustomDevWhatWeBuild__t1", "What We Build")}<span className="w-1 h-1 rounded-full" style={{ backgroundColor: TEAL }} />
+            {html($t("CustomDevWhatWeBuild__t1", "What We Build"))}<span className="w-1 h-1 rounded-full" style={{ backgroundColor: TEAL }} />
           </span>
-          <h2 className="text-h2 mt-5 font-serif font-bold" style={{ color: NAVY }}>
-            {$t("CustomDevWhatWeBuild__t2", "Custom Software for")}<br />
-            <span style={{ color: TEAL }}>{$t("CustomDevWhatWeBuild__t3", "Real Business Needs.")}</span>
-          </h2>
+          <h2 className="text-h2 mt-5 font-serif font-bold" style={{ color: NAVY }}>{rich($t("CustomDevWhatWeBuild__t2m", "Custom Software for<br><span class=\"text-[#0d9488]\">Real Business Needs.</span>"))}</h2>
           <p className="text-body mt-4 text-slate-500">
             {rich($t("CustomDevWhatWeBuild__t4", "From internal tools to customer-facing platforms, we build secure, scalable and future-ready software that solves real problems."))}</p>
         </motion.div>
@@ -241,7 +238,7 @@ export default function CustomDevWhatWeBuild() {
             </div>
             <div className="min-w-0">
               <h3 className="text-[15px] sm:text-base font-bold leading-snug" style={{ color: NAVY }}>
-                {$t("CustomDevWhatWeBuild__t5", "Got an idea? Let's build it together.")}</h3>
+                {html($t("CustomDevWhatWeBuild__t5", "Got an idea? Let's build it together."))}</h3>
               <p className="text-caption text-slate-500 mt-1">
                 {rich($t("CustomDevWhatWeBuild__t6", "Share your requirements and we'll turn it into a powerful software solution."))}</p>
             </div>
@@ -276,7 +273,7 @@ export default function CustomDevWhatWeBuild() {
                   <span key={i} className="h-6 w-6 rounded-full ring-2 ring-white bg-slate-200" />
                 ))}
               </div>
-              <span className="text-[11px] text-slate-500 whitespace-nowrap">{$t("CustomDevWhatWeBuild__t9", "Trusted by 500+ businesses")}</span>
+              <span className="text-[11px] text-slate-500 whitespace-nowrap">{html($t("CustomDevWhatWeBuild__t9", "Trusted by 500+ businesses"))}</span>
             </div>
           </div>
         </motion.div>

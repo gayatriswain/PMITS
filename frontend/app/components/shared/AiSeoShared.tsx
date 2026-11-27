@@ -4,6 +4,7 @@ import React from "react";
 import { motion, type Variants } from "framer-motion";
 import { display, heading } from "./MagentoShared";
 import { useCmsText } from "@/components/cms/SectionContent";
+import { html } from "@/components/cms/rich";
 
 export { display, heading };
 
@@ -357,7 +358,7 @@ export function ClientWordmarks({ className = "" }: { className?: string }) {
         <span className="flex h-7 w-7 items-end justify-center rounded-full border-[1.5px] border-[#4b5675] pb-1">
           <span className="h-3.5 w-2.5 rounded-t-full border-[1.5px] border-b-0 border-[#4b5675]" />
         </span>
-        <span className="text-[17px] tracking-tight sm:text-lg 2xl:text-[23px]">{$t("AiSeoShared__t10", "studio oak")}</span>
+        <span className="text-[17px] tracking-tight sm:text-lg 2xl:text-[23px]">{html($t("AiSeoShared__t10", "studio oak"))}</span>
       </div>
     </div>
   );

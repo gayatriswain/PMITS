@@ -4,7 +4,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const INK = "#0d1b33";
 const TEAL = "#0d9488";
@@ -245,9 +245,9 @@ function Hub() {
             <DiamondIcon size={44} color={TEAL} />
           </motion.span>
           <span className="mt-3 text-[18px] font-medium" style={{ color: INK }}>
-            {$t("WhoWeAreValues__t1", "Guided by")}</span>
+            {html($t("WhoWeAreValues__t1", "Guided by"))}</span>
           <span className="text-[30px] font-bold leading-tight" style={{ color: TEAL }}>
-            {$t("WhoWeAreValues__t2", "Principles")}</span>
+            {html($t("WhoWeAreValues__t2", "Principles"))}</span>
           <span className="mt-3 h-[3px] w-12 rounded-full" style={{ backgroundColor: TEAL }} />
         </motion.div>
       </motion.div>
@@ -329,9 +329,9 @@ function ValuesList() {
       <div className="mx-auto flex h-[200px] w-[200px] flex-col items-center justify-center rounded-full bg-white shadow-[0_24px_50px_-20px_rgba(13,27,51,0.4),0_0_0_14px_rgba(255,255,255,0.7),0_0_0_15px_rgba(203,213,225,0.7)]">
         <DiamondIcon size={36} color={TEAL} />
         <span className="mt-2 text-[15px] font-medium" style={{ color: INK }}>
-          {$t("WhoWeAreValues__t3", "Guided by")}</span>
+          {html($t("WhoWeAreValues__t3", "Guided by"))}</span>
         <span className="text-[24px] font-bold leading-tight" style={{ color: TEAL }}>
-          {$t("WhoWeAreValues__t4", "Principles")}</span>
+          {html($t("WhoWeAreValues__t4", "Principles"))}</span>
       </div>
       <motion.ul
         variants={stagger}
@@ -387,10 +387,10 @@ export default function WhoWeAreValues() {
             className="pointer-events-none absolute left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-serif -top-6 text-[120px] italic leading-none text-slate-200/30"
             aria-hidden
           >
-            {$t("WhoWeAreValues__t5", "Values")}</span>
+            {html($t("WhoWeAreValues__t5", "Values"))}</span>
           <motion.h2 variants={fadeUp} className="text-h2 relative font-bold tracking-tight">
-            <span style={{ color: INK }}>{$t("WhoWeAreValues__t6", "Our ")}</span>
-            <span style={{ color: TEAL }}>{$t("WhoWeAreValues__t7", "Values")}</span>
+            <span style={{ color: INK }}>{html($t("WhoWeAreValues__t6", "Our "))}</span>
+            <span style={{ color: TEAL }}>{html($t("WhoWeAreValues__t7", "Values"))}</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-body relative mt-4 text-slate-600">
             {rich($t("WhoWeAreValues__t8", "Every choice we make is guided by our principles, which are based on honesty, quality, and a dedication to the success of our clients."))}</motion.p>

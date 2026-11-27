@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /* =========================================================================
    ICONS (solid, colour-coded: navy for sources, teal for outcomes)
@@ -243,13 +243,9 @@ export default function CustomCrmHero() {
         {/* ======================= HEADLINE BLOCK ======================= */}
         <div className="text-center max-w-3xl mx-auto">
           <span className="text-[11px] sm:text-xs font-black tracking-[0.22em] text-[#0f8a83] uppercase">
-            {$t("CustomCrmHero__t1", "Custom CRM Solution")}</span>
-          <h1 className="text-h1 mt-3 font-extrabold tracking-tight text-[#0f2333]">
-            {$t("CustomCrmHero__t2", "A CRM Built Around")}<br />
-            <span className="text-[#0f8a83]">{$t("CustomCrmHero__t3", "Your Business.")}</span>
-          </h1>
-          <p className="text-body mt-5 text-slate-600">
-            {rich($t("CustomCrmHero__t4", "We don't force you to adapt to software."))}<br className="hidden sm:block" /> {rich($t("CustomCrmHero__t5", "We build a CRM that adapts to the way you work."))}</p>
+            {html($t("CustomCrmHero__t1", "Custom CRM Solution"))}</span>
+          <h1 className="text-h1 mt-3 font-extrabold tracking-tight text-[#0f2333]">{rich($t("CustomCrmHero__t2m", "A CRM Built Around<br><span class=\"text-[#0f8a83]\">Your Business.</span>"))}</h1>
+          <p className="text-body mt-5 text-slate-600">{rich($t("CustomCrmHero__t4m", "We don't force you to adapt to software.<br class=\"hidden sm:block\"> We build a CRM that adapts to the way you work."))}</p>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
@@ -321,10 +317,7 @@ export default function CustomCrmHero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: LINE_START }}
           >
-            <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase leading-snug">
-              {$t("CustomCrmHero__t12", "From Disconnected")}<br />
-              <span className="text-[#0f2333]">{$t("CustomCrmHero__t13", "to Connected")}</span>
-            </h3>
+            <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase leading-snug">{rich($t("CustomCrmHero__t12m", "From Disconnected<br><span class=\"text-[#0f2333]\">to Connected</span>"))}</h3>
             <p className="text-caption mt-2 text-slate-600">
               {rich($t("CustomCrmHero__t14", "Bring your people, data and processes together in one intelligent system."))}</p>
           </motion.div>
@@ -358,10 +351,7 @@ export default function CustomCrmHero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: LINE_START }}
           >
-            <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase leading-snug">
-              {$t("CustomCrmHero__t15", "Outcomes That")}<br />
-              <span className="text-[#0f2333]">{$t("CustomCrmHero__t16", "Drive Growth")}</span>
-            </h3>
+            <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase leading-snug">{rich($t("CustomCrmHero__t15m", "Outcomes That<br><span class=\"text-[#0f2333]\">Drive Growth</span>"))}</h3>
             <p className="text-caption mt-2 text-slate-600">
               {rich($t("CustomCrmHero__t17", "Make smarter decisions, build stronger relationships and close more deals."))}</p>
           </motion.div>
@@ -407,9 +397,7 @@ export default function CustomCrmHero() {
           </motion.div>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase">
-                {$t("CustomCrmHero__t20", "From Disconnected ")}<span className="text-[#0f2333]">{$t("CustomCrmHero__t21", "to Connected")}</span>
-              </h3>
+              <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase">{rich($t("CustomCrmHero__t20m", "From Disconnected <span class=\"text-[#0f2333]\">to Connected</span>"))}</h3>
               <p className="text-small mt-2 text-slate-600">
                 {rich($t("CustomCrmHero__t22", "Bring your people, data and processes together in one intelligent system."))}</p>
               <div className="mt-4 grid gap-2.5">
@@ -419,9 +407,7 @@ export default function CustomCrmHero() {
               </div>
             </div>
             <div>
-              <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase">
-                {$t("CustomCrmHero__t23", "Outcomes That ")}<span className="text-[#0f2333]">{$t("CustomCrmHero__t24", "Drive Growth")}</span>
-              </h3>
+              <h3 className="text-[11px] font-black tracking-[0.16em] text-[#0f8a83] uppercase">{rich($t("CustomCrmHero__t23m", "Outcomes That <span class=\"text-[#0f2333]\">Drive Growth</span>"))}</h3>
               <p className="text-small mt-2 text-slate-600">
                 {rich($t("CustomCrmHero__t25", "Make smarter decisions, build stronger relationships and close more deals."))}</p>
               <div className="mt-4 grid gap-2.5">

@@ -5,7 +5,7 @@ import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const noopSubscribe = () => () => {};
 
@@ -178,15 +178,12 @@ export default function EcommerceSeoResults() {
         >
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-px bg-slate-300 w-12"></div>
-            <span className="text-teal-700 font-bold tracking-widest text-sm uppercase">{$t("EcommerceSeoResults__t3", "Proven Results")}</span>
+            <span className="text-teal-700 font-bold tracking-widest text-sm uppercase">{html($t("EcommerceSeoResults__t3", "Proven Results"))}</span>
             <div className="h-px bg-slate-300 w-12"></div>
           </div>
-          <h2 className="text-h2 font-extrabold text-[#132a43] mb-4 tracking-tight">
-            {$t("EcommerceSeoResults__t4", "Real Stores. Real Results. ")}<br />
-            <span className="text-teal-700">{$t("EcommerceSeoResults__t5", "Verifiable Growth.")}</span>
-          </h2>
+          <h2 className="text-h2 font-extrabold text-[#132a43] mb-4 tracking-tight">{rich($t("EcommerceSeoResults__t4m", "Real Stores. Real Results. <br><span class=\"text-teal-700\">Verifiable Growth.</span>"))}</h2>
           <p className="text-body text-slate-600 font-medium">
-            {rich($t("EcommerceSeoResults__t6", "We help eCommerce brands turn SEO into "))}<span className="text-teal-700 relative inline-block">{$t("EcommerceSeoResults__t7", "measurable business impact.")}<svg className="absolute w-full h-2 -bottom-1 left-0 text-teal-300 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 2" stroke="currentColor" strokeWidth="2" fill="none"/></svg></span>
+            {rich($t("EcommerceSeoResults__t6", "We help eCommerce brands turn SEO into "))}<span className="text-teal-700 relative inline-block">{html($t("EcommerceSeoResults__t7", "measurable business impact."))}<svg className="absolute w-full h-2 -bottom-1 left-0 text-teal-300 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 2" stroke="currentColor" strokeWidth="2" fill="none"/></svg></span>
           </p>
         </motion.div>
 
@@ -224,10 +221,10 @@ export default function EcommerceSeoResults() {
                     <div className="flex justify-between items-center mb-12 relative z-10 gap-4">
                       <div className="font-bold text-lg tracking-tight truncate mr-auto">{currentData.company}</div>
                       <div className="flex gap-2 xl:gap-4 text-[10px] xl:text-[11px] font-medium text-slate-400 hidden sm:flex shrink-0">
-                        <span className="text-white hover:text-white cursor-pointer transition-colors">{$t("EcommerceSeoResults__t8", "Shop")}</span>
-                        <span className="hover:text-white cursor-pointer transition-colors">{$t("EcommerceSeoResults__t9", "Categories")}</span>
-                        <span className="hover:text-white cursor-pointer transition-colors">{$t("EcommerceSeoResults__t10", "Deals")}</span>
-                        <span className="hover:text-white cursor-pointer transition-colors">{$t("EcommerceSeoResults__t11", "Support")}</span>
+                        <span className="text-white hover:text-white cursor-pointer transition-colors">{html($t("EcommerceSeoResults__t8", "Shop"))}</span>
+                        <span className="hover:text-white cursor-pointer transition-colors">{html($t("EcommerceSeoResults__t9", "Categories"))}</span>
+                        <span className="hover:text-white cursor-pointer transition-colors">{html($t("EcommerceSeoResults__t10", "Deals"))}</span>
+                        <span className="hover:text-white cursor-pointer transition-colors">{html($t("EcommerceSeoResults__t11", "Support"))}</span>
                       </div>
                       <div className="flex gap-3 text-slate-400 shrink-0">
                         <svg className="cursor-pointer hover:text-white transition-colors" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
@@ -239,7 +236,7 @@ export default function EcommerceSeoResults() {
                       <h3 className="text-h4 font-bold mb-4" dangerouslySetInnerHTML={{ __html: currentData.headline.replace('.', '.<br/>') }}></h3>
                       <p className="text-small text-slate-400 mb-6">{currentData.subHeadline}</p>
                       <button className="bg-white text-black px-6 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 hover:bg-slate-200 transition-colors">
-                        {$t("EcommerceSeoResults__t12", "SHOP NOW ")}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        {html($t("EcommerceSeoResults__t12", "SHOP NOW "))}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                       </button>
                     </div>
 
@@ -272,7 +269,7 @@ export default function EcommerceSeoResults() {
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                       </div>
                       <div>
-                        <h4 className="text-[14px] font-bold text-[#132a43] mb-1">{$t("EcommerceSeoResults__t13", "The Challenge")}</h4>
+                        <h4 className="text-[14px] font-bold text-[#132a43] mb-1">{html($t("EcommerceSeoResults__t13", "The Challenge"))}</h4>
                         <p className="text-small text-slate-500">{currentData.challenge}</p>
                       </div>
                     </div>
@@ -281,7 +278,7 @@ export default function EcommerceSeoResults() {
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
                       </div>
                       <div>
-                        <h4 className="text-[14px] font-bold text-[#132a43] mb-1">{$t("EcommerceSeoResults__t14", "Our Approach")}</h4>
+                        <h4 className="text-[14px] font-bold text-[#132a43] mb-1">{html($t("EcommerceSeoResults__t14", "Our Approach"))}</h4>
                         <p className="text-small text-slate-500">{currentData.approach}</p>
                       </div>
                     </div>
@@ -290,7 +287,7 @@ export default function EcommerceSeoResults() {
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="3"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
                       </div>
                       <div>
-                        <h4 className="text-[14px] font-bold text-[#132a43] mb-1">{$t("EcommerceSeoResults__t15", "The Outcome")}</h4>
+                        <h4 className="text-[14px] font-bold text-[#132a43] mb-1">{html($t("EcommerceSeoResults__t15", "The Outcome"))}</h4>
                         <p className="text-small text-slate-500">{currentData.outcome}</p>
                       </div>
                     </div>
@@ -299,25 +296,25 @@ export default function EcommerceSeoResults() {
 
                 {/* Right Column: Metrics & Graph */}
                 <motion.div variants={itemVariants} className="lg:w-[38%] p-8 lg:p-10 lg:px-7 flex flex-col">
-                  <div className="text-[11px] font-bold text-slate-400 tracking-widest uppercase mb-6">{$t("EcommerceSeoResults__t16", "Organic Traffic")}</div>
+                  <div className="text-[11px] font-bold text-slate-400 tracking-widest uppercase mb-6">{html($t("EcommerceSeoResults__t16", "Organic Traffic"))}</div>
                   
                   <div className="flex items-center gap-6 mb-8">
                     <div>
-                      <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">{$t("EcommerceSeoResults__t17", "Before SEO")}</div>
+                      <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">{html($t("EcommerceSeoResults__t17", "Before SEO"))}</div>
                       <div className="text-3xl font-bold text-slate-800">{currentData.beforeTraffic}</div>
-                      <div className="text-[12px] text-slate-400">{$t("EcommerceSeoResults__t18", "visits / month")}</div>
+                      <div className="text-[12px] text-slate-400">{html($t("EcommerceSeoResults__t18", "visits / month"))}</div>
                     </div>
                     <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </div>
                     <div>
-                      <div className="text-[11px] font-semibold text-teal-600 uppercase tracking-wider mb-1">{$t("EcommerceSeoResults__t19", "After SEO")}</div>
+                      <div className="text-[11px] font-semibold text-teal-600 uppercase tracking-wider mb-1">{html($t("EcommerceSeoResults__t19", "After SEO"))}</div>
                       <div className="text-3xl font-bold text-teal-700">{currentData.afterTraffic}</div>
-                      <div className="text-[12px] text-slate-400">{$t("EcommerceSeoResults__t20", "visits / month")}</div>
+                      <div className="text-[12px] text-slate-400">{html($t("EcommerceSeoResults__t20", "visits / month"))}</div>
                     </div>
                     <div className="ml-auto text-right">
                       <div className="text-2xl font-bold text-teal-600">{currentData.trafficIncrease}</div>
-                      <div className="text-[12px] font-medium text-teal-700">{$t("EcommerceSeoResults__t21", "Increase")}</div>
+                      <div className="text-[12px] font-medium text-teal-700">{html($t("EcommerceSeoResults__t21", "Increase"))}</div>
                     </div>
                   </div>
 
@@ -384,8 +381,8 @@ export default function EcommerceSeoResults() {
 
                     {/* X-Axis Labels Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 flex text-[10px] font-bold uppercase tracking-wider px-2">
-                      <div className="w-1/2 text-slate-400 text-left">{$t("EcommerceSeoResults__t22", "Before SEO")}</div>
-                      <div className="w-1/2 text-[#0d9488] text-left pl-2">{$t("EcommerceSeoResults__t23", "After 6 Months")}</div>
+                      <div className="w-1/2 text-slate-400 text-left">{html($t("EcommerceSeoResults__t22", "Before SEO"))}</div>
+                      <div className="w-1/2 text-[#0d9488] text-left pl-2">{html($t("EcommerceSeoResults__t23", "After 6 Months"))}</div>
                     </div>
                   </div>
 
@@ -397,7 +394,7 @@ export default function EcommerceSeoResults() {
                       </div>
                       <div className="text-left">
                         <div className="font-bold text-[#0f766e] text-[18px] xl:text-[20px] leading-none mb-1">{currentData.revIncrease}</div>
-                        <div className="text-[9.5px] xl:text-[10.5px] text-[#132a43] font-semibold leading-[1.2]">{$t("EcommerceSeoResults__t24", "Organic")}<br/>{$t("EcommerceSeoResults__t25", "Revenue")}</div>
+                        <div className="text-[9.5px] xl:text-[10.5px] text-[#132a43] font-semibold leading-[1.2]">{rich($t("EcommerceSeoResults__t24m", "Organic<br>Revenue"))}</div>
                       </div>
                     </div>
                     <div className="bg-white rounded-[1rem] p-3 border border-slate-100 shadow-sm flex items-center gap-2.5 xl:gap-3 justify-center sm:justify-start">
@@ -406,7 +403,7 @@ export default function EcommerceSeoResults() {
                       </div>
                       <div className="text-left">
                         <div className="font-bold text-[#0f766e] text-[18px] xl:text-[20px] leading-none mb-1">{currentData.transIncrease}</div>
-                        <div className="text-[9.5px] xl:text-[10.5px] text-[#132a43] font-semibold leading-[1.2]">{$t("EcommerceSeoResults__t26", "Transactions")}</div>
+                        <div className="text-[9.5px] xl:text-[10.5px] text-[#132a43] font-semibold leading-[1.2]">{html($t("EcommerceSeoResults__t26", "Transactions"))}</div>
                       </div>
                     </div>
                     <div className="bg-white rounded-[1rem] p-3 border border-slate-100 shadow-sm flex items-center gap-2.5 xl:gap-3 justify-center sm:justify-start">
@@ -415,7 +412,7 @@ export default function EcommerceSeoResults() {
                       </div>
                       <div className="text-left">
                         <div className="font-bold text-[#0f766e] text-[18px] xl:text-[20px] leading-none mb-1">{currentData.rankIncrease}</div>
-                        <div className="text-[9.5px] xl:text-[10.5px] text-[#132a43] font-semibold leading-[1.2]">{$t("EcommerceSeoResults__t27", "Top 10")}<br/>{$t("EcommerceSeoResults__t28", "Rankings")}</div>
+                        <div className="text-[9.5px] xl:text-[10.5px] text-[#132a43] font-semibold leading-[1.2]">{rich($t("EcommerceSeoResults__t27m", "Top 10<br>Rankings"))}</div>
                       </div>
                     </div>
                   </div>
@@ -456,7 +453,7 @@ export default function EcommerceSeoResults() {
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f766e" strokeWidth="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
                   </div>
                   <div>
-                    <div className="text-[9px] font-bold text-[#0f766e] uppercase tracking-widest mb-1">{$t("EcommerceSeoResults__t31", "Duration")}</div>
+                    <div className="text-[9px] font-bold text-[#0f766e] uppercase tracking-widest mb-1">{html($t("EcommerceSeoResults__t31", "Duration"))}</div>
                     <div className="font-bold text-[#132a43] text-[12px]">{currentData.duration}</div>
                   </div>
                 </div>
@@ -470,7 +467,7 @@ export default function EcommerceSeoResults() {
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f766e" strokeWidth="2"><path d="m15 5 4 4"/><path d="M13 14 8.5 9.5a2.12 2.12 0 0 0-3 0l-1 1a2.12 2.12 0 0 0 0 3l4.5 4.5a2.12 2.12 0 0 0 3 0l1-1a2.12 2.12 0 0 0 0-3Z"/><path d="M17.5 15 15 17.5a2.12 2.12 0 0 1-3 0l-6-6"/><path d="M17.5 15 22 10.5a2.12 2.12 0 0 0 0-3l-1-1a2.12 2.12 0 0 0-3 0L13.5 11"/></svg>
                   </div>
                   <div>
-                    <div className="text-[9px] font-bold text-[#0f766e] uppercase tracking-widest mb-1">{$t("EcommerceSeoResults__t32", "Industry")}</div>
+                    <div className="text-[9px] font-bold text-[#0f766e] uppercase tracking-widest mb-1">{html($t("EcommerceSeoResults__t32", "Industry"))}</div>
                     <div className="font-bold text-[#132a43] text-[12px]">{currentData.industry}</div>
                   </div>
                 </div>
@@ -489,13 +486,13 @@ export default function EcommerceSeoResults() {
             </div>
           ))}
           <div className="font-bold text-[16px] tracking-wide text-slate-400 flex flex-col items-center hover:text-slate-600 cursor-pointer transition-colors leading-none">
-            {$t("EcommerceSeoResults__t33", "GearUp")}<span className="text-[8px] tracking-[0.2em] mt-1 font-medium">{$t("EcommerceSeoResults__t34", "SPORTS")}</span>
+            {html($t("EcommerceSeoResults__t33", "GearUp"))}<span className="text-[8px] tracking-[0.2em] mt-1 font-medium">{html($t("EcommerceSeoResults__t34", "SPORTS"))}</span>
           </div>
           <div className="font-bold text-[16px] tracking-wide text-slate-400 flex flex-col items-center hover:text-slate-600 cursor-pointer transition-colors leading-none">
-            {$t("EcommerceSeoResults__t35", "BabyNest")}<span className="text-[8px] tracking-[0.2em] mt-1 font-medium">{$t("EcommerceSeoResults__t36", "BABY & KIDS")}</span>
+            {html($t("EcommerceSeoResults__t35", "BabyNest"))}<span className="text-[8px] tracking-[0.2em] mt-1 font-medium">{html($t("EcommerceSeoResults__t36", "BABY & KIDS"))}</span>
           </div>
           <div className="font-bold text-[16px] tracking-wide text-slate-400 flex flex-col items-center hover:text-slate-600 cursor-pointer transition-colors leading-none">
-            {$t("EcommerceSeoResults__t37", "BookWagon")}<span className="text-[8px] tracking-[0.2em] mt-1 font-medium">{$t("EcommerceSeoResults__t38", "BOOKS & MORE")}</span>
+            {html($t("EcommerceSeoResults__t37", "BookWagon"))}<span className="text-[8px] tracking-[0.2em] mt-1 font-medium">{html($t("EcommerceSeoResults__t38", "BOOKS & MORE"))}</span>
           </div>
         </div>
 
@@ -514,7 +511,7 @@ export default function EcommerceSeoResults() {
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
             </div>
             <div>
-              <h4 className="text-h6 text-white font-bold mb-1">{$t("EcommerceSeoResults__t39", "Your store can be next.")}</h4>
+              <h4 className="text-h6 text-white font-bold mb-1">{html($t("EcommerceSeoResults__t39", "Your store can be next."))}</h4>
               <p className="text-small text-teal-100">{rich($t("EcommerceSeoResults__t40", "Let's build your growth story together."))}</p>
             </div>
           </div>

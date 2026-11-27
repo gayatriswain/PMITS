@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -219,7 +219,7 @@ export default function ArVrSolutions() {
             custom={0}
             className="block text-[11px] font-bold uppercase tracking-[0.28em] text-[#6d5ef5]"
           >
-            {$t("ArVrSolutions__t3", "What can we build for you?")}</motion.span>
+            {html($t("ArVrSolutions__t3", "What can we build for you?"))}</motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
@@ -228,7 +228,7 @@ export default function ArVrSolutions() {
             {$t("ArVrSolutions__t4", "Immersive Solutions.")}<br />
             {$t("ArVrSolutions__t5", "Real-World")}{" "}
             <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-              {$t("ArVrSolutions__t6", "Impact.")}</span>
+              {html($t("ArVrSolutions__t6", "Impact."))}</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -245,7 +245,7 @@ export default function ArVrSolutions() {
               href={$t("ArVrSolutions__t8", "#contact-form")}
               className="inline-flex items-center gap-2.5 rounded-full bg-[#5b43e8] px-6 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_-4px_rgba(91,67,232,0.45)] transition-colors duration-200 hover:bg-[#4a35cc] sm:px-7"
             >
-              <span>{$t("ArVrSolutions__t9", "Explore All Solutions")}</span>
+              <span>{html($t("ArVrSolutions__t9", "Explore All Solutions"))}</span>
               <span aria-hidden>→</span>
             </Link>
             <Link
@@ -253,7 +253,7 @@ export default function ArVrSolutions() {
               className="inline-flex items-center gap-2.5 rounded-full border border-[#d9d9f5] bg-white px-6 py-2.5 text-sm font-semibold text-[#0f1535] transition-colors duration-200 hover:border-[#5b43e8] hover:text-[#5b43e8] sm:px-7"
             >
               <span aria-hidden className="text-[#5b43e8]">▶</span>
-              <span>{$t("ArVrSolutions__t11", "Watch Showreel")}</span>
+              <span>{html($t("ArVrSolutions__t11", "Watch Showreel"))}</span>
             </Link>
           </motion.div>
         </motion.div>

@@ -38,8 +38,14 @@ export function sanitizeInlineRichText(html: string | undefined | null): string 
       .replace(/<\/p>\s*<p[^>]*>/gi, "<br><br>")
       .replace(/<\/?p[^>]*>/gi, ""),
     {
-      allowedTags: ["strong", "b", "em", "i", "u", "s", "a", "br"],
-      allowedAttributes: { a: ["href", "target", "rel"] },
+      allowedTags: ["strong", "b", "em", "i", "u", "s", "a", "br", "span", "mark", "small", "sup", "sub"],
+      // class: the design's styling of words in a heading (accent colour, line breaks per screen size)
+      allowedAttributes: {
+        a: ["href", "target", "rel"],
+        ...Object.fromEntries(["strong", "b", "em", "i", "u", "s", "br", "span", "mark", "small", "sup", "sub"].map((t) => [t, ["class"]])),
+      },
+      // Tailwind class names only (the website renders nothing else)
+      allowedClasses: { "*": [/^[\w\-:/.[\]%#(),]+$/] },
       allowedSchemes: ["http", "https", "mailto", "tel"],
       allowProtocolRelative: false,
       transformTags: {

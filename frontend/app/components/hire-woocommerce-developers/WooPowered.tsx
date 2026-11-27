@@ -5,7 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const PURPLE = "#7f54b3";
@@ -203,9 +203,7 @@ function PoweredVisual() {
             <UsersIcon />
           </span>
           <div className="leading-tight">
-            <p className="text-caption font-bold" style={{ color: NAVY }}>
-              {rich($t("WooPowered__t5", "Happy"))}<br />
-              {rich($t("WooPowered__t6", "Customers"))}</p>
+            <p className="text-caption font-bold" style={{ color: NAVY }}>{rich($t("WooPowered__t5m", "Happy<br>Customers"))}</p>
             <p className="mt-0.5 flex gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => <Star key={i} />)}
             </p>
@@ -241,7 +239,7 @@ export default function WooPowered() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full" style={{ backgroundColor: PURPLE }}>
                 <WpIcon size={14} />
               </span>
-              {$t("WooPowered__t7", "WooCommerce Powered")}</motion.span>
+              {html($t("WooPowered__t7", "WooCommerce Powered"))}</motion.span>
 
             <motion.h2
               variants={fadeUp}
@@ -251,7 +249,7 @@ export default function WooPowered() {
               {$t("WooPowered__t8", "Build Powerful Online Stores")}<br />
               with{" "}
               <span className="relative inline-block" style={{ color: PURPLE }}>
-                {$t("WooPowered__t9", "WooCommerce")}<svg className="pointer-events-none absolute -bottom-2.5 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                {html($t("WooPowered__t9", "WooCommerce"))}<svg className="pointer-events-none absolute -bottom-2.5 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={PURPLE} strokeWidth="3" strokeLinecap="round" />
                 </svg>
               </span>

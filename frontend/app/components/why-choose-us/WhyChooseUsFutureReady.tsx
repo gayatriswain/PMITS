@@ -6,7 +6,7 @@ import { Layers, Puzzle, Shield, LineChart, UserCheck, Lightbulb, Rocket, Users,
 import { motion } from "framer-motion";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0a1f2c";
 const TEAL = "#0d9488";
@@ -63,14 +63,8 @@ export default function WhyChooseUsFutureReady() {
             <span className="w-8 h-px bg-current opacity-50"></span>
             {rich($t("WhyChooseUsFutureReady__t1", "BUILT FOR TODAY. READY FOR TOMORROW."))}<span className="w-8 h-px bg-current opacity-50"></span>
           </p>
-          <h2 className="text-h2 font-extrabold mb-5" style={{ color: NAVY }}>
-            {$t("WhyChooseUsFutureReady__t2", "Future-Ready Solutions ")}<br />
-            <span style={{ color: "#00647a" }}>{$t("WhyChooseUsFutureReady__t3", "Built Around You.")}</span>
-          </h2>
-          <p className="text-body text-slate-600 font-medium">
-            {rich($t("WhyChooseUsFutureReady__t4", "Technology moves fast. We build solutions that stay "))}<br className="hidden md:block" />
-            {rich($t("WhyChooseUsFutureReady__t5", "relevant, adaptable, and "))}<span className="font-bold" style={{ color: TEAL }}>{$t("WhyChooseUsFutureReady__t6", "ahead of what's next.")}</span>
-          </p>
+          <h2 className="text-h2 font-extrabold mb-5" style={{ color: NAVY }}>{rich($t("WhyChooseUsFutureReady__t2m", "Future-Ready Solutions <br><span class=\"text-[#00647a]\">Built Around You.</span>"))}</h2>
+          <p className="text-body text-slate-600 font-medium">{rich($t("WhyChooseUsFutureReady__t4m", "Technology moves fast. We build solutions that stay <br class=\"hidden md:block\">relevant, adaptable, and <span class=\"font-bold text-[#0d9488]\">ahead of what's next.</span>"))}</p>
         </div>
 
         {/* Main Content: Left Cards & Right Image */}
@@ -137,11 +131,9 @@ export default function WhyChooseUsFutureReady() {
               {/* Top Left Quote */}
               <div className="absolute top-7 left-7 lg:top-9 lg:left-9 max-w-[300px] z-10">
                 <Quote size={30} className="text-[#0e7490] mb-3 rotate-180" fill="currentColor" strokeWidth={0} />
-                <h3 className="text-[clamp(19px,1.6vw,24px)] font-bold leading-snug text-[#0a1f2c] mb-2 tracking-tight">
-                  {$t("WhyChooseUsFutureReady__t7", "We don't just keep up ")}<br />
-                  {$t("WhyChooseUsFutureReady__t8", "with the future.")}</h3>
+                <h3 className="text-[clamp(19px,1.6vw,24px)] font-bold leading-snug text-[#0a1f2c] mb-2 tracking-tight">{rich($t("WhyChooseUsFutureReady__t7m", "We don't just keep up <br>with the future."))}</h3>
                 <h3 className="text-[clamp(19px,1.6vw,24px)] font-bold leading-snug text-[#0e7490] tracking-tight">
-                  {$t("WhyChooseUsFutureReady__t9", "We build it.")}</h3>
+                  {html($t("WhyChooseUsFutureReady__t9", "We build it."))}</h3>
               </div>
             </div>
 
@@ -155,7 +147,7 @@ export default function WhyChooseUsFutureReady() {
                     <Rocket size={22} className="text-[#0ea5e9]" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h4 className="text-h5 text-white font-bold mb-1">{$t("WhyChooseUsFutureReady__t10", "200+")}</h4>
+                    <h4 className="text-h5 text-white font-bold mb-1">{html($t("WhyChooseUsFutureReady__t10", "200+"))}</h4>
                     <p className="text-caption text-slate-300 font-medium">{rich($t("WhyChooseUsFutureReady__t11", "Projects Delivered"))}</p>
                   </div>
                 </div>
@@ -181,7 +173,7 @@ export default function WhyChooseUsFutureReady() {
                     <Clock size={22} className="text-[#0ea5e9]" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h4 className="text-h5 text-white font-bold mb-1">{$t("WhyChooseUsFutureReady__t13", "5+")}</h4>
+                    <h4 className="text-h5 text-white font-bold mb-1">{html($t("WhyChooseUsFutureReady__t13", "5+"))}</h4>
                     <p className="text-caption text-slate-300 font-medium">{rich($t("WhyChooseUsFutureReady__t14", "Years of Impact"))}</p>
                   </div>
                 </div>
@@ -208,9 +200,7 @@ export default function WhyChooseUsFutureReady() {
               <Send size={24} color="#bae6fd" />
             </div>
             <div>
-              <h3 className="text-h6 font-bold mb-1" style={{ color: NAVY }}>
-                {$t("WhyChooseUsFutureReady__t15", "Ready to build ")}<span style={{ color: TEAL }}>{$t("WhyChooseUsFutureReady__t16", "what's next?")}</span>
-              </h3>
+              <h3 className="text-h6 font-bold mb-1" style={{ color: NAVY }}>{rich($t("WhyChooseUsFutureReady__t15m", "Ready to build <span class=\"text-[#0d9488]\">what's next?</span>"))}</h3>
               <p className="text-small text-slate-500 font-medium">
                 {rich($t("WhyChooseUsFutureReady__t17", "Let's create future-ready solutions that drive real results."))}</p>
             </div>

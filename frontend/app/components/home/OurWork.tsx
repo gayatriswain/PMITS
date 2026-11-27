@@ -5,7 +5,7 @@ import Image from "next/image";
 import Container from "../shared/Container";
 import { ArrowIcon } from "../shared/icons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -105,7 +105,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             className="translate-y-2 rounded-full bg-white px-4 py-2 text-xs font-bold shadow-lg transition-transform duration-500 group-hover:translate-y-0"
             style={{ color: NAVY }}
           >
-            {$t("OurWork__t1", "View Project")}</span>
+            {html($t("OurWork__t1", "View Project"))}</span>
         </div>
       </Link>
 
@@ -132,10 +132,7 @@ function Heading() {
           {"//"}
         </span>
         {rich($t("OurWork__t2", "Our Work"))}</p>
-      <h2 className="text-h2 mt-3 font-bold" style={{ color: NAVY }}>
-        {$t("OurWork__t3", "Projects That Reflect Our")}{" "}
-        <span style={{ color: TEAL }}>{$t("OurWork__t4", "Design Excellence")}</span>
-      </h2>
+      <h2 className="text-h2 mt-3 font-bold" style={{ color: NAVY }}>{rich($t("OurWork__t3m", "Projects That Reflect Our <span class=\"text-[#0d9488]\">Design Excellence</span>"))}</h2>
     </div>
   );
 }
@@ -169,7 +166,7 @@ export default function OurWork() {
                   className="group mt-4 flex max-w-[280px] items-center justify-between gap-4 rounded-2xl bg-slate-100 py-2 pl-5 pr-2 transition-colors hover:bg-slate-200"
                 >
                   <span className="text-sm font-bold" style={{ color: NAVY }}>
-                    {$t("OurWork__t7", "View All Projects")}</span>
+                    {html($t("OurWork__t7", "View All Projects"))}</span>
                   <span
                     className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border-2 bg-white transition-colors duration-300 group-hover:bg-[#0be881] group-hover:text-white"
                     style={{ borderColor: GREEN, color: GREEN }}

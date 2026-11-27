@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { CtaStrip, Eyebrow, Grad, Icon3D, Swoosh, fadeUp, heading, useSeen, type Glyph3D } from "./BigCommerceShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const steps__cms: { n: string; title: string; text: string; g: Glyph3D }[] = [
   { n: "01", title: "Launch Faster", text: "Get your store up and running quickly with built-in features.", g: "rocket" },
@@ -58,7 +58,7 @@ export default function BigCommerceBenefits() {
             <Grad>
               {$t("BigCommerceBenefits__t3", "More")}{" "}
               <span className="relative inline-block">
-                {$t("BigCommerceBenefits__t4", "Success.")}<Swoosh className="-bottom-2 left-0 h-3 w-[90%]" />
+                {html($t("BigCommerceBenefits__t4", "Success."))}<Swoosh className="-bottom-2 left-0 h-3 w-[90%]" />
               </span>
             </Grad>
           </motion.h2>

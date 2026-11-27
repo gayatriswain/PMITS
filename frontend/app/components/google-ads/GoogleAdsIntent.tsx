@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const ArrowRight = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -117,16 +117,11 @@ export default function GoogleAdsIntent() {
           {/* Left Column */}
           <div className="xl:w-[35%] flex flex-col items-start relative z-10">
             <div className="flex items-center gap-4 mb-6">
-              <span className="text-[#00acc1] font-bold text-xs tracking-widest uppercase">{$t("GoogleAdsIntent__t3", "WHY GOOGLE ADS?")}</span>
+              <span className="text-[#00acc1] font-bold text-xs tracking-widest uppercase">{html($t("GoogleAdsIntent__t3", "WHY GOOGLE ADS?"))}</span>
               <span className="h-px w-8 bg-[#00acc1]"></span>
             </div>
 
-            <h2 className="text-h2 font-bold text-[#132a43] mb-6 font-serif">
-              {$t("GoogleAdsIntent__t4", "Your Customers")}<br />
-              {$t("GoogleAdsIntent__t5", "Are Searching.")}<br />
-              <span className="text-[#0B4F55]">{$t("GoogleAdsIntent__t6", "We Make Sure")}</span><br />
-              <span className="text-[#00acc1]">{$t("GoogleAdsIntent__t7", "They Find You.")}</span>
-            </h2>
+            <h2 className="text-h2 font-bold text-[#132a43] mb-6 font-serif">{rich($t("GoogleAdsIntent__t4m", "Your Customers<br>Are Searching.<br><span class=\"text-[#0B4F55]\">We Make Sure</span><br><span class=\"text-[#00acc1]\">They Find You.</span>"))}</h2>
 
             <p className="text-body text-slate-600 mb-10 max-w-sm">
               {rich($t("GoogleAdsIntent__t8", "Google Ads puts your business in front of people at the exact moment they're ready to take action."))}</p>
@@ -166,8 +161,7 @@ export default function GoogleAdsIntent() {
             <div className="w-full max-w-[480px] bg-white rounded-full shadow-[0_4px_20px_rgb(0,0,0,0.08)] border border-slate-200 py-3 px-5 flex items-center justify-between mb-16 xl:mb-20">
               <div className="flex items-center gap-3">
                 <Image src={$t("GoogleAdsIntent__t12", "/Google_2015_logo.svg.webp")} alt={$t("GoogleAdsIntent__t13", "Google")} width={32} height={32} className="object-contain shrink-0" />
-                <p className="text-small text-slate-600">
-                  {rich($t("GoogleAdsIntent__t14", "Someone "))}<span className="font-bold text-[#132a43]">searches</span> {rich($t("GoogleAdsIntent__t15", "on Google..."))}</p>
+                <p className="text-small text-slate-600">{rich($t("GoogleAdsIntent__t14m", "Someone <span class=\"font-bold text-[#132a43]\">searches</span> on Google..."))}</p>
               </div>
               <div className="text-slate-400">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -197,11 +191,11 @@ export default function GoogleAdsIntent() {
                 </div>
 
                 {/* Circle 01 */}
-                <div className="relative z-10 w-9 h-9 rounded-full bg-[#0B4F55] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{$t("GoogleAdsIntent__t16", "01")}</div>
+                <div className="relative z-10 w-9 h-9 rounded-full bg-[#0B4F55] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{html($t("GoogleAdsIntent__t16", "01"))}</div>
                 {/* Circle 02 */}
-                <div className="relative z-10 w-9 h-9 rounded-full bg-[#34A853] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{$t("GoogleAdsIntent__t17", "02")}</div>
+                <div className="relative z-10 w-9 h-9 rounded-full bg-[#34A853] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{html($t("GoogleAdsIntent__t17", "02"))}</div>
                 {/* Circle 03 */}
-                <div className="relative z-10 w-9 h-9 rounded-full bg-[#673AB7] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{$t("GoogleAdsIntent__t18", "03")}</div>
+                <div className="relative z-10 w-9 h-9 rounded-full bg-[#673AB7] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{html($t("GoogleAdsIntent__t18", "03"))}</div>
               </div>
 
               {/* === ROW 2: Images + content grid === */}
@@ -211,7 +205,7 @@ export default function GoogleAdsIntent() {
                 <div className="flex flex-col items-center bg-transparent group">
                   {/* Mobile only circle */}
                   <div className="relative z-20 mb-4 flex items-center gap-2 lg:hidden">
-                    <div className="w-9 h-9 rounded-full bg-[#0B4F55] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{$t("GoogleAdsIntent__t19", "01")}</div>
+                    <div className="w-9 h-9 rounded-full bg-[#0B4F55] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{html($t("GoogleAdsIntent__t19", "01"))}</div>
                   </div>
                   <div
                     className="relative w-full overflow-hidden shadow-xl"
@@ -229,10 +223,10 @@ export default function GoogleAdsIntent() {
                     <PhoneIcon />
                   </div>
                   <div className="text-center mt-6">
-                    <h3 className="text-lg font-bold text-[#132a43] mb-2">{$t("GoogleAdsIntent__t22", "High Intent")}</h3>
+                    <h3 className="text-lg font-bold text-[#132a43] mb-2">{html($t("GoogleAdsIntent__t22", "High Intent"))}</h3>
                     <p className="text-caption text-slate-500 mb-6 max-w-[200px] mx-auto">{rich($t("GoogleAdsIntent__t23", "They are actively looking for a solution like yours."))}</p>
                     <div className="bg-slate-50 rounded-xl p-4 w-full text-left">
-                      <div className="inline-block bg-teal-50 text-teal-600 text-[10px] font-bold px-3 py-1 rounded-full mb-4">{$t("GoogleAdsIntent__t24", "Example Searches")}</div>
+                      <div className="inline-block bg-teal-50 text-teal-600 text-[10px] font-bold px-3 py-1 rounded-full mb-4">{html($t("GoogleAdsIntent__t24", "Example Searches"))}</div>
                       <ul className="flex flex-col gap-3">
                         {[$t("GoogleAdsIntent__t25", 'dentist near me'), $t("GoogleAdsIntent__t26", 'interior designer in delhi'), $t("GoogleAdsIntent__t27", 'erp software for business')].map(q => (
                           <li key={q} className="flex items-center gap-2 text-xs text-slate-600"><SearchIcon />{q}</li>
@@ -245,7 +239,7 @@ export default function GoogleAdsIntent() {
                 {/* Step 2 */}
                 <div className="flex flex-col items-center bg-transparent group">
                   <div className="relative z-20 mb-4 flex items-center gap-2 lg:hidden">
-                    <div className="w-9 h-9 rounded-full bg-[#34A853] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{$t("GoogleAdsIntent__t28", "02")}</div>
+                    <div className="w-9 h-9 rounded-full bg-[#34A853] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{html($t("GoogleAdsIntent__t28", "02"))}</div>
                   </div>
                   <div
                     className="relative w-full overflow-hidden shadow-xl"
@@ -263,10 +257,10 @@ export default function GoogleAdsIntent() {
                     <CalendarIcon />
                   </div>
                   <div className="text-center mt-6">
-                    <h3 className="text-lg font-bold text-[#132a43] mb-2">{$t("GoogleAdsIntent__t31", "Decision Intent")}</h3>
+                    <h3 className="text-lg font-bold text-[#132a43] mb-2">{html($t("GoogleAdsIntent__t31", "Decision Intent"))}</h3>
                     <p className="text-caption text-slate-500 mb-6 max-w-[200px] mx-auto">{rich($t("GoogleAdsIntent__t32", "They compare, evaluate and decide."))}</p>
                     <div className="bg-slate-50 rounded-xl p-4 w-full text-left">
-                      <div className="inline-block bg-green-50 text-green-600 text-[10px] font-bold px-3 py-1 rounded-full mb-4">{$t("GoogleAdsIntent__t33", "Example Searches")}</div>
+                      <div className="inline-block bg-green-50 text-green-600 text-[10px] font-bold px-3 py-1 rounded-full mb-4">{html($t("GoogleAdsIntent__t33", "Example Searches"))}</div>
                       <ul className="flex flex-col gap-3">
                         {[$t("GoogleAdsIntent__t34", 'best immigration consultant'), $t("GoogleAdsIntent__t35", 'top digital marketing agency'), $t("GoogleAdsIntent__t36", 'compare crm software')].map(q => (
                           <li key={q} className="flex items-center gap-2 text-xs text-slate-600"><SearchIcon />{q}</li>
@@ -279,7 +273,7 @@ export default function GoogleAdsIntent() {
                 {/* Step 3 */}
                 <div className="flex flex-col items-center bg-transparent group">
                   <div className="relative z-20 mb-4 flex items-center gap-2 lg:hidden">
-                    <div className="w-9 h-9 rounded-full bg-[#673AB7] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{$t("GoogleAdsIntent__t37", "03")}</div>
+                    <div className="w-9 h-9 rounded-full bg-[#673AB7] text-white flex items-center justify-center text-xs font-bold shadow-lg border-2 border-white">{html($t("GoogleAdsIntent__t37", "03"))}</div>
                   </div>
                   <div
                     className="relative w-full overflow-hidden shadow-xl"
@@ -297,10 +291,10 @@ export default function GoogleAdsIntent() {
                     <ChartIcon />
                   </div>
                   <div className="text-center mt-6">
-                    <h3 className="text-lg font-bold text-[#132a43] mb-2">{$t("GoogleAdsIntent__t40", "Solution Intent")}</h3>
+                    <h3 className="text-lg font-bold text-[#132a43] mb-2">{html($t("GoogleAdsIntent__t40", "Solution Intent"))}</h3>
                     <p className="text-caption text-slate-500 mb-6 max-w-[200px] mx-auto">{rich($t("GoogleAdsIntent__t41", "They're ready to take action and invest."))}</p>
                     <div className="bg-slate-50 rounded-xl p-4 w-full text-left">
-                      <div className="inline-block bg-purple-50 text-purple-600 text-[10px] font-bold px-3 py-1 rounded-full mb-4">{$t("GoogleAdsIntent__t42", "Example Searches")}</div>
+                      <div className="inline-block bg-purple-50 text-purple-600 text-[10px] font-bold px-3 py-1 rounded-full mb-4">{html($t("GoogleAdsIntent__t42", "Example Searches"))}</div>
                       <ul className="flex flex-col gap-3">
                         {[$t("GoogleAdsIntent__t43", 'hire interior designer'), $t("GoogleAdsIntent__t44", 'buy crm software'), $t("GoogleAdsIntent__t45", 'google ads expert near me')].map(q => (
                           <li key={q} className="flex items-center gap-2 text-xs text-slate-600"><SearchIcon />{q}</li>
@@ -322,8 +316,7 @@ export default function GoogleAdsIntent() {
           <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-teal-800/50 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="xl:w-1/3 z-10 text-center xl:text-left">
-            <h3 className="text-h5 font-bold text-white">
-              {$t("GoogleAdsIntent__t46", "When we put your business in front of the ")}<span className="text-[#00acc1]">{$t("GoogleAdsIntent__t47", "right person")}</span>{$t("GoogleAdsIntent__t48", ", you get:")}</h3>
+            <h3 className="text-h5 font-bold text-white">{rich($t("GoogleAdsIntent__t46m", "When we put your business in front of the <span class=\"text-[#00acc1]\">right person</span>, you get:"))}</h3>
           </div>
 
           <div className="xl:w-2/3 z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
@@ -332,7 +325,7 @@ export default function GoogleAdsIntent() {
                 <EyeIcon />
               </div>
               <div>
-                <h4 className="text-white font-bold text-sm mb-1">{$t("GoogleAdsIntent__t49", "More Visibility")}</h4>
+                <h4 className="text-white font-bold text-sm mb-1">{html($t("GoogleAdsIntent__t49", "More Visibility"))}</h4>
                 <p className="text-caption text-teal-100">{rich($t("GoogleAdsIntent__t50", "Show up where your customers are looking."))}</p>
               </div>
             </div>
@@ -342,7 +335,7 @@ export default function GoogleAdsIntent() {
                 <UsersGroupIcon />
               </div>
               <div>
-                <h4 className="text-white font-bold text-sm mb-1">{$t("GoogleAdsIntent__t51", "Better Quality Leads")}</h4>
+                <h4 className="text-white font-bold text-sm mb-1">{html($t("GoogleAdsIntent__t51", "Better Quality Leads"))}</h4>
                 <p className="text-caption text-teal-100">{rich($t("GoogleAdsIntent__t52", "Attract people who are actually interested."))}</p>
               </div>
             </div>
@@ -352,7 +345,7 @@ export default function GoogleAdsIntent() {
                 <RupeeIcon />
               </div>
               <div>
-                <h4 className="text-white font-bold text-sm mb-1">{$t("GoogleAdsIntent__t53", "Higher Conversions")}</h4>
+                <h4 className="text-white font-bold text-sm mb-1">{html($t("GoogleAdsIntent__t53", "Higher Conversions"))}</h4>
                 <p className="text-caption text-teal-100">{rich($t("GoogleAdsIntent__t54", "Turn intent into action and paying customers."))}</p>
               </div>
             </div>
@@ -362,7 +355,7 @@ export default function GoogleAdsIntent() {
                 <RocketIcon />
               </div>
               <div>
-                <h4 className="text-white font-bold text-sm mb-1">{$t("GoogleAdsIntent__t55", "Sustainable Growth")}</h4>
+                <h4 className="text-white font-bold text-sm mb-1">{html($t("GoogleAdsIntent__t55", "Sustainable Growth"))}</h4>
                 <p className="text-caption text-teal-100">{rich($t("GoogleAdsIntent__t56", "Scale your business with long-term results."))}</p>
               </div>
             </div>

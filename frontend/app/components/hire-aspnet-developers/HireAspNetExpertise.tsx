@@ -6,7 +6,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Code2, Cloud, Database, Building2, ShoppingCart, ShieldCheck, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const display = { className: "font-heading" }; // global font from app/layout.tsx
 
@@ -158,7 +158,7 @@ export default function HireAspNetExpertise() {
               <>{$t("HireAspNetExpertise__t3", "ASP.NET expertise")}</>,
               <>
                 {$t("HireAspNetExpertise__t4", "built for")}{" "}
-                <span className="bg-[linear-gradient(100deg,#0b6f78_10%,#18a8ae_45%,#0d8a91_75%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[aspExShine_6s_linear_infinite]">{$t("HireAspNetExpertise__t12", "real-world")}</span> {$t("HireAspNetExpertise__t5", "impact.")}</>,
+                <span className="bg-[linear-gradient(100deg,#0b6f78_10%,#18a8ae_45%,#0d8a91_75%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[aspExShine_6s_linear_infinite]">{html($t("HireAspNetExpertise__t12", "real-world"))}</span> {$t("HireAspNetExpertise__t5", "impact.")}</>,
             ].map((l, i) => (
               <span key={i} className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
                 <motion.span
@@ -270,8 +270,7 @@ export default function HireAspNetExpertise() {
         >
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: NAVY }}>{rich($t("HireAspNetExpertise__t9", "Built on the powerful"))}</p>
-            <p className={`text-body ${display.className} mt-1 whitespace-nowrap font-extrabold`} style={{ color: TEAL }}>
-              <span style={{ color: NAVY }}>{$t("HireAspNetExpertise__t10", ".NET")}</span> {rich($t("HireAspNetExpertise__t11", "ECOSYSTEM"))}</p>
+            <p className={`text-body ${display.className} mt-1 whitespace-nowrap font-extrabold`} style={{ color: TEAL }}>{rich($t("HireAspNetExpertise__t10m", "<span class=\"text-[#16264d]\">.NET</span> ECOSYSTEM"))}</p>
           </div>
           <ul className="grid grid-cols-3 gap-y-5 lg:grid-cols-6 lg:divide-x lg:divide-slate-200/80">
             {ECOSYSTEM.map((e, i) => (

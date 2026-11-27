@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -250,15 +250,12 @@ export default function CareerHowWeWork() {
           <motion.h2 variants={fadeUp} className="text-h2 mt-4 font-bold tracking-tight" style={{ color: INK }}>
             {$t("CareerHowWeWork__t3", "Turning Ideas into Impact,")}{" "}
             <span className={`${caveat.className} relative inline-block text-[46px] font-bold sm:text-[60px]`} style={{ color: TEAL }}>
-              {$t("CareerHowWeWork__t4", "Together.")}<svg className="pointer-events-none absolute -bottom-1 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+              {html($t("CareerHowWeWork__t4", "Together."))}<svg className="pointer-events-none absolute -bottom-1 left-0 h-3 w-full" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                 <path d="M3 9C60 3 140 2 197 6" fill="none" stroke={TEAL} strokeWidth="2.5" strokeLinecap="round" />
               </svg>
             </span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-body mx-auto mt-5 max-w-[520px] text-slate-600">
-            {rich($t("CareerHowWeWork__t5", "Our process is simple. Our focus is you. We think, collaborate, create, and continuously improve to deliver"))}{" "}
-            <span className="font-semibold" style={{ color: TEAL }}>{$t("CareerHowWeWork__t6", "real results")}</span>.
-          </motion.p>
+          <motion.p variants={fadeUp} className="text-body mx-auto mt-5 max-w-[520px] text-slate-600">{rich($t("CareerHowWeWork__t5m", "Our process is simple. Our focus is you. We think, collaborate, create, and continuously improve to deliver <span class=\"font-semibold text-[#0d9488]\">real results</span>."))}</motion.p>
         </motion.div>
 
         <div className="relative mx-auto mt-14 max-w-[1200px]">
@@ -281,10 +278,10 @@ export default function CareerHowWeWork() {
             <HeartIcon size={22} color={TEAL} />
           </span>
           <span className="text-[15px] font-medium" style={{ color: INK }}>
-            {$t("CareerHowWeWork__t7", "Different steps. One goal.")}</span>
+            {html($t("CareerHowWeWork__t7", "Different steps. One goal."))}</span>
           <span className="hidden h-8 w-px bg-slate-200 sm:block" />
           <span className={`${caveat.className} relative text-[28px] font-bold leading-none`} style={{ color: DEEP_TEAL }}>
-            {$t("CareerHowWeWork__t8", "Your success.")}<svg className="pointer-events-none absolute -bottom-1.5 left-0 h-2 w-full" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden>
+            {html($t("CareerHowWeWork__t8", "Your success."))}<svg className="pointer-events-none absolute -bottom-1.5 left-0 h-2 w-full" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden>
               <path d="M2 6C60 2 140 1 198 4" fill="none" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
             </svg>
           </span>

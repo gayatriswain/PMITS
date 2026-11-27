@@ -7,7 +7,7 @@ import { motion, AnimatePresence, useInView, type Variants } from "framer-motion
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -402,7 +402,7 @@ function ShopScreenBody() {
   return (
     <div className="h-full w-full overflow-hidden bg-white flex flex-col">
       <div className="flex items-center justify-between px-4 pt-3 pb-1.5 text-[9px] font-semibold" style={{ color: NAVY }}>
-        <span>{$t("AppDevShowcase__t1", "9:41")}</span>
+        <span>{html($t("AppDevShowcase__t1", "9:41"))}</span>
         <span className="w-3 h-2 rounded-sm border border-current" />
       </div>
       <div className="px-4 pb-2.5 flex items-center justify-between">
@@ -414,7 +414,7 @@ function ShopScreenBody() {
       </div>
       <div className="mx-4 mb-3 flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="6.5" /><path d="M16 16 L20.5 20.5" /></svg>
-        <span className="text-[8.5px] text-slate-400">{$t("AppDevShowcase__t3", "Search anything...")}</span>
+        <span className="text-[8.5px] text-slate-400">{html($t("AppDevShowcase__t3", "Search anything..."))}</span>
       </div>
 
       <div className="px-4 mb-1"><p className="text-[9px] font-bold" style={{ color: NAVY }}>{rich($t("AppDevShowcase__t4", "Featured"))}</p></div>
@@ -423,7 +423,7 @@ function ShopScreenBody() {
         <div className="absolute inset-0" style={{ background: `linear-gradient(100deg, ${DEEP_TEAL} 38%, transparent 90%)` }} />
         <p className="relative text-[8px] font-semibold uppercase tracking-wide text-white/70">{rich($t("AppDevShowcase__t6", "New Collection"))}</p>
         <p className="relative text-[11.5px] font-bold text-white mt-1 max-w-[62%]">{rich($t("AppDevShowcase__t7", "Summer Essentials"))}</p>
-        <span className="relative inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: DEEP_TEAL }}>{$t("AppDevShowcase__t8", "Shop Now")}</span>
+        <span className="relative inline-block mt-2 rounded-full bg-white px-2.5 py-1 text-[8px] font-bold" style={{ color: DEEP_TEAL }}>{html($t("AppDevShowcase__t8", "Shop Now"))}</span>
       </div>
 
       <div className="px-4 mb-3">
@@ -490,7 +490,7 @@ function CategoryScreenBody({ cat }: { cat: (typeof PEEK_CATEGORIES__cms)[number
   return (
     <div className="h-full w-full overflow-hidden bg-white flex flex-col">
       <div className="flex items-center justify-between px-4 pt-3 pb-1.5 text-[9px] font-semibold" style={{ color: NAVY }}>
-        <span>{$t("AppDevShowcase__t33", "9:41")}</span>
+        <span>{html($t("AppDevShowcase__t33", "9:41"))}</span>
         <span className="w-3 h-2 rounded-sm border border-current" />
       </div>
 
@@ -506,7 +506,7 @@ function CategoryScreenBody({ cat }: { cat: (typeof PEEK_CATEGORIES__cms)[number
 
       <div className="mx-4 mb-3 flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="6.5" /><path d="M16 16 L20.5 20.5" /></svg>
-        <span className="text-[8.5px] text-slate-400">{$t("AppDevShowcase__t34", "Search ")}{cat.label.toLowerCase()}...</span>
+        <span className="text-[8.5px] text-slate-400">{html($t("AppDevShowcase__t34", "Search "))}{cat.label.toLowerCase()}...</span>
       </div>
 
       <div className="relative mx-4 mb-4 overflow-hidden rounded-2xl" style={{ backgroundColor: cat.color }}>
@@ -515,7 +515,7 @@ function CategoryScreenBody({ cat }: { cat: (typeof PEEK_CATEGORIES__cms)[number
         </div>
         <div className="absolute inset-0 flex flex-col justify-end p-3" style={{ background: "linear-gradient(0deg, rgba(0,0,0,0.55), transparent 60%)" }}>
           <p className="text-[10.5px] font-bold text-white max-w-[80%] leading-snug">{cat.tagline}</p>
-          <span className="inline-block mt-2 w-fit rounded-full bg-white px-2.5 py-1 text-[7.5px] font-bold" style={{ color: cat.color }}>{$t("AppDevShowcase__t35", "Explore")}</span>
+          <span className="inline-block mt-2 w-fit rounded-full bg-white px-2.5 py-1 text-[7.5px] font-bold" style={{ color: cat.color }}>{html($t("AppDevShowcase__t35", "Explore"))}</span>
         </div>
       </div>
 
@@ -640,13 +640,10 @@ export default function AppDevShowcase() {
           >
             <div className="flex items-center gap-3 mb-4">
               <span className="h-1 w-1 rounded-full" style={{ backgroundColor: TEAL }} />
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: TEAL }}>{$t("AppDevShowcase__t36", "Real Results, Real Growth")}</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: TEAL }}>{html($t("AppDevShowcase__t36", "Real Results, Real Growth"))}</span>
               <span className="h-1 w-1 rounded-full" style={{ backgroundColor: TEAL }} />
             </div>
-            <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
-              {$t("AppDevShowcase__t37", "Imagine Your Business.")}<br />
-              <span style={{ color: TEAL }}>{$t("AppDevShowcase__t38", "In Every Customer's Pocket.")}</span>
-            </h2>
+            <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>{rich($t("AppDevShowcase__t37m", "Imagine Your Business.<br><span class=\"text-[#0d9488]\">In Every Customer's Pocket.</span>"))}</h2>
             <p className="text-body text-slate-600 max-w-xl mt-4">
               {rich($t("AppDevShowcase__t39", "From idea to impact, we design and build mobile apps that delight users and drive real business growth."))}</p>
           </motion.div>
@@ -662,9 +659,8 @@ export default function AppDevShowcase() {
                 transition={{ duration: 0.6, ease: EASE }}
                 className="relative pl-1"
               >
-                <span className="font-serif italic text-lg" style={{ color: GOLD }}>{$t("AppDevShowcase__t40", "Your Idea")}</span>
-                <p className="text-caption text-slate-500 mt-1.5 max-w-[220px]">
-                  {rich($t("AppDevShowcase__t41", "We turn it into "))}<span className="font-semibold" style={{ color: NAVY }}>extraordinary</span> {rich($t("AppDevShowcase__t42", "digital experiences."))}</p>
+                <span className="font-serif italic text-lg" style={{ color: GOLD }}>{html($t("AppDevShowcase__t40", "Your Idea"))}</span>
+                <p className="text-caption text-slate-500 mt-1.5 max-w-[220px]">{rich($t("AppDevShowcase__t41m", "We turn it into <span class=\"font-semibold text-[#132a43]\">extraordinary</span> digital experiences."))}</p>
                 <svg className="mt-2 w-10 h-8 text-slate-300" viewBox="0 0 40 32" fill="none" aria-hidden>
                   <path d="M4 4 C10 20 22 26 34 24" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" fill="none" />
                   <path d="M28 20 L36 25 L30 29" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -747,8 +743,7 @@ export default function AppDevShowcase() {
                       </div>
                     ))}
                   </div>
-                  <p className="text-[10px] text-slate-500 leading-tight">
-                    {rich($t("AppDevShowcase__t52", "50+ businesses"))}<br />{rich($t("AppDevShowcase__t53", "transformed with ProManage"))}</p>
+                  <p className="text-[10px] text-slate-500 leading-tight">{rich($t("AppDevShowcase__t52m", "50+ businesses<br>transformed with ProManage"))}</p>
                 </div>
               </motion.div>
 
@@ -782,7 +777,7 @@ export default function AppDevShowcase() {
                   <Image src={$t("AppDevShowcase__t57", "/image1.webp")} alt={$t("AppDevShowcase__t58", "Rohit Sharma")} fill className="object-cover" />
                 </div>
                 <div>
-                  <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">{$t("AppDevShowcase__t59", "Rohit Sharma")}</h4>
+                  <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">{html($t("AppDevShowcase__t59", "Rohit Sharma"))}</h4>
                   <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-tight">{rich($t("AppDevShowcase__t60", "Co-founder, FitLife"))}</p>
                 </div>
               </div>
@@ -794,7 +789,7 @@ export default function AppDevShowcase() {
             <div className="flex-1 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 xl:pl-10">
               <div className="flex flex-col gap-1.5 max-w-[300px]">
                 <h3 className="text-[15px] sm:text-[16px] font-bold text-[#132a43] leading-snug">
-                  {$t("AppDevShowcase__t61", "Ready to build your success story?")}</h3>
+                  {html($t("AppDevShowcase__t61", "Ready to build your success story?"))}</h3>
                 <p className="text-caption text-slate-500 font-medium">
                   {rich($t("AppDevShowcase__t62", "Let's turn your idea into the next big thing."))}</p>
               </div>
@@ -804,7 +799,7 @@ export default function AppDevShowcase() {
                 </Link>
                 <div className="flex items-center gap-1.5 text-[#0d9488]/80 sm:mr-1 mt-0.5">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 15c0-4.4 3.6-8 8-8s8 3.6 8 8" /><polyline points="17 11 21 15 17 19" /></svg>
-                  <span className="text-[9px] font-bold tracking-wide">{$t("AppDevShowcase__t65", "Explore more transformations")}</span>
+                  <span className="text-[9px] font-bold tracking-wide">{html($t("AppDevShowcase__t65", "Explore more transformations"))}</span>
                 </div>
               </div>
             </div>

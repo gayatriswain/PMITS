@@ -6,7 +6,7 @@ import { motion, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -539,7 +539,7 @@ export default function WebsiteDevGrowthPlan() {
             <DottedRule />
           </div>
           <h2 className="text-h2 font-serif font-semibold mb-3" style={{ color: NAVY }}>
-            {$t("WebsiteDevGrowthPlan__t2", "Choose Your Growth Plan")}</h2>
+            {html($t("WebsiteDevGrowthPlan__t2", "Choose Your Growth Plan"))}</h2>
           <p className="text-body text-slate-600 max-w-xl">
             {rich($t("WebsiteDevGrowthPlan__t3", "Different businesses. Different goals. We create the right website solution to help you grow, scale and lead in your industry."))}</p>
         </motion.div>
@@ -613,7 +613,7 @@ export default function WebsiteDevGrowthPlan() {
                 className="text-[10px] font-bold tracking-[0.25em] uppercase whitespace-nowrap [writing-mode:vertical-rl] rotate-180"
                 style={{ color: TEAL }}
               >
-                {$t("WebsiteDevGrowthPlan__t4", "Our Core Focus")}</span>
+                {html($t("WebsiteDevGrowthPlan__t4", "Our Core Focus"))}</span>
               <motion.span
                 className="w-px flex-1 origin-top"
                 style={{ backgroundColor: `${TEAL}80` }}
@@ -627,11 +627,7 @@ export default function WebsiteDevGrowthPlan() {
 
             {/* Content */}
             <div className="relative pt-[184px] pb-10 pl-14 pr-5">
-              <h3 className="text-h5 font-serif font-semibold mb-4">
-                <span style={{ color: NAVY }}>{$t("WebsiteDevGrowthPlan__t5", "Website")}<br />{$t("WebsiteDevGrowthPlan__t6", "Development")}</span>
-                <br />
-                <span style={{ color: TEAL }}>{$t("WebsiteDevGrowthPlan__t7", "Solutions That Drive")}<br />{$t("WebsiteDevGrowthPlan__t8", "Real Business Growth")}</span>
-              </h3>
+              <h3 className="text-h5 font-serif font-semibold mb-4">{rich($t("WebsiteDevGrowthPlan__t5m", "<span class=\"text-[#132a43]\">Website<br>Development</span><br><span class=\"text-[#1b8a80]\">Solutions That Drive<br>Real Business Growth</span>"))}</h3>
               <span className="block w-8 h-[2px] mb-6" style={{ backgroundColor: GOLD }} />
 
               <motion.ul
@@ -665,7 +661,7 @@ export default function WebsiteDevGrowthPlan() {
                   </svg>
                 </Link>
                 <Link href={$t("WebsiteDevGrowthPlan__t11", "/portfolio")} className="group shrink-0 inline-flex items-center gap-2 text-[12px] font-semibold whitespace-nowrap" style={{ color: DEEP_TEAL }}>
-                  <span className="border-b" style={{ borderColor: DEEP_TEAL }}>{$t("WebsiteDevGrowthPlan__t12", "View Our Work")}</span>
+                  <span className="border-b" style={{ borderColor: DEEP_TEAL }}>{html($t("WebsiteDevGrowthPlan__t12", "View Our Work"))}</span>
                   <span className="w-7 h-7 rounded-full border flex items-center justify-center transition-transform group-hover:translate-x-1" style={{ borderColor: DEEP_TEAL }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14" />

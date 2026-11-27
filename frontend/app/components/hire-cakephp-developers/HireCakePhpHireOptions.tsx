@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -182,14 +182,14 @@ export default function HireCakePhpHireOptions() {
             style={{ color: RED }}
           >
             <i aria-hidden className="h-px w-8" style={{ background: RED, opacity: 0.5 }} />
-            {$t("HireCakePhpHireOptions__t1", "Hire the Right Expertise")}<i aria-hidden className="h-px w-8" style={{ background: RED, opacity: 0.5 }} />
+            {html($t("HireCakePhpHireOptions__t1", "Hire the Right Expertise"))}<i aria-hidden className="h-px w-8" style={{ background: RED, opacity: 0.5 }} />
           </motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
             className="text-h2 mt-4 font-playfair font-bold tracking-tight text-[#0f1a2e]"
           >
-            {$t("HireCakePhpHireOptions__t2", "Hire ")}<span style={{ color: RED }}>{$t("HireCakePhpHireOptions__t3", "CakePHP")}</span> {$t("HireCakePhpHireOptions__t4", "Developers")}</motion.h2>
+            {$t("HireCakePhpHireOptions__t2", "Hire ")}<span style={{ color: RED }}>{html($t("HireCakePhpHireOptions__t3", "CakePHP"))}</span> {$t("HireCakePhpHireOptions__t4", "Developers")}</motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
@@ -245,7 +245,7 @@ export default function HireCakePhpHireOptions() {
                       className="absolute right-4 top-0 -translate-y-1/2 rounded-full px-3 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-white shadow-md"
                       style={{ background: RED }}
                     >
-                      {$t("HireCakePhpHireOptions__t7", "★ Most Popular")}</span>
+                      {html($t("HireCakePhpHireOptions__t7", "★ Most Popular"))}</span>
                   )}
 
                   <div className="flex items-center gap-3">
@@ -329,7 +329,7 @@ export default function HireCakePhpHireOptions() {
                 style={{ borderColor: "#f1c9cb", background: "#fff8f8" }}
               >
                 <h4 className="text-[12.5px] font-bold leading-snug text-[#0f1a2e]">
-                  {$t("HireCakePhpHireOptions__t9", "Need help choosing the right developer?")}</h4>
+                  {html($t("HireCakePhpHireOptions__t9", "Need help choosing the right developer?"))}</h4>
                 <p className="mt-1 text-[10.5px] leading-snug text-slate-500">
                   {rich($t("HireCakePhpHireOptions__t10", "Our experts will help you find the perfect fit for your project."))}</p>
                 <Link

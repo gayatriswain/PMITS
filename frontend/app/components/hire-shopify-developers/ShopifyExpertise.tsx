@@ -4,7 +4,7 @@ import React from "react";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -239,9 +239,9 @@ export default function ShopifyExpertise() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          {$t("ShopifyExpertise__t3", "More")}<br />
-          {$t("ShopifyExpertise__t4", "Sales, Happier")}<br />
-          {$t("ShopifyExpertise__t5", "Customers")}<svg className="mt-1 ml-auto" width="150" height="16" viewBox="0 0 150 16" fill="none">
+          {html($t("ShopifyExpertise__t3", "More"))}<br />
+          {html($t("ShopifyExpertise__t4", "Sales, Happier"))}<br />
+          {html($t("ShopifyExpertise__t5", "Customers"))}<svg className="mt-1 ml-auto" width="150" height="16" viewBox="0 0 150 16" fill="none">
             <motion.path d="M2 12 C 40 12, 100 8, 146 2" stroke="#2f9e4f" strokeWidth="2.5" strokeLinecap="round" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 1 }} />
           </svg>
         </motion.div>
@@ -256,10 +256,9 @@ export default function ShopifyExpertise() {
         >
           <div className="flex items-center justify-center gap-3 text-[11px] font-medium tracking-[0.28em] uppercase text-slate-500">
             <span className="w-12 h-px bg-slate-300" />
-            {$t("ShopifyExpertise__t6", "What we do best")}<span className="w-12 h-px bg-slate-300" />
+            {html($t("ShopifyExpertise__t6", "What we do best"))}<span className="w-12 h-px bg-slate-300" />
           </div>
-          <h2 className="text-h2 mt-3 font-black tracking-tight" style={{ color: NAVY }}>
-            {$t("ShopifyExpertise__t7", "Our ")}<span className="bg-gradient-to-r from-[#2f9e4f] to-[#0e5a33] bg-clip-text text-transparent">{$t("ShopifyExpertise__t8", "Shopify")}</span> {$t("ShopifyExpertise__t9", "Expertise")}</h2>
+          <h2 className="text-h2 mt-3 font-black tracking-tight" style={{ color: NAVY }}>{rich($t("ShopifyExpertise__t7m", "Our <span class=\"bg-gradient-to-r from-[#2f9e4f] to-[#0e5a33] bg-clip-text text-transparent\">Shopify</span> Expertise"))}</h2>
           <p className="text-body mt-3 text-slate-600">{rich($t("ShopifyExpertise__t10", "We Build Beautiful Shopify Websites That Engage Your Audience."))}</p>
         </motion.div>
 
@@ -310,15 +309,15 @@ export default function ShopifyExpertise() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            {$t("ShopifyExpertise__t11", "Built for")}<br />
-            {$t("ShopifyExpertise__t12", "What's Next")}<svg className="mt-1" width="120" height="14" viewBox="0 0 120 14" fill="none">
+            {html($t("ShopifyExpertise__t11", "Built for"))}<br />
+            {html($t("ShopifyExpertise__t12", "What's Next"))}<svg className="mt-1" width="120" height="14" viewBox="0 0 120 14" fill="none">
               <motion.path d="M2 11 C 30 11, 80 7, 116 2" stroke="#2f9e4f" strokeWidth="2.5" strokeLinecap="round" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.4 }} />
             </svg>
           </motion.div>
           <div className="hidden sm:flex items-center gap-3 text-[9.5px] font-medium tracking-[0.22em] uppercase text-slate-400">
             <span className="w-10 h-px bg-slate-300" />
-            {$t("ShopifyExpertise__t13", "Your ecommerce")}<br />
-            {$t("ShopifyExpertise__t14", "growth partner")}</div>
+            {html($t("ShopifyExpertise__t13", "Your ecommerce"))}<br />
+            {html($t("ShopifyExpertise__t14", "growth partner"))}</div>
         </div>
       </Container>
     </section>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const dmSerif = { className: "font-heading" }; // global font from app/layout.tsx
 
@@ -225,7 +225,7 @@ export default function UiUxClientStories() {
           >
             <span className="w-8 sm:w-12 h-px bg-teal-500/40" />
             <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.25em] text-[#0d9488] uppercase">
-              {$t("UiUxClientStories__t1", "CLIENT STORIES")}</span>
+              {html($t("UiUxClientStories__t1", "CLIENT STORIES"))}</span>
             <span className="w-8 sm:w-12 h-px bg-teal-500/40" />
           </motion.div>
 
@@ -237,9 +237,7 @@ export default function UiUxClientStories() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className={`${dmSerif.className} font-normal tracking-[-0.015em]`}>
-              {$t("UiUxClientStories__t2", "Good design is ")}<span className="text-[#0d9488]">{$t("UiUxClientStories__t3", "felt.")}</span>
-            </span>
+            <span className={`${dmSerif.className} font-normal tracking-[-0.015em]`}>{rich($t("UiUxClientStories__t2m", "Good design is <span class=\"text-[#0d9488]\">felt.</span>"))}</span>
           </motion.h2>
 
           {/* Subtitle */}
@@ -249,8 +247,7 @@ export default function UiUxClientStories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {rich($t("UiUxClientStories__t4", "The best experiences don't need to explain themselves."))}<br className="hidden sm:inline" /> {rich($t("UiUxClientStories__t5", "They simply feel right."))}</motion.p>
+          >{rich($t("UiUxClientStories__t4m", "The best experiences don't need to explain themselves.<br class=\"hidden sm:inline\"> They simply feel right."))}</motion.p>
         </div>
 
         {/* ---------------- CAROUSEL SHOWCASE SECTION ---------------- */}
@@ -324,7 +321,7 @@ export default function UiUxClientStories() {
                   <div className="flex items-center gap-1.5 text-base font-bold">
                     <span className="text-[#0d9488] text-lg">{story.id}</span>
                     <span className="text-slate-300">/</span>
-                    <span className="text-slate-400 text-sm">{$t("UiUxClientStories__t6", "0")}{clientStories.length}</span>
+                    <span className="text-slate-400 text-sm">{html($t("UiUxClientStories__t6", "0"))}{clientStories.length}</span>
                   </div>
 
                   {/* Left & Right Arrow Buttons */}
@@ -389,15 +386,9 @@ export default function UiUxClientStories() {
                             {story.companyIcon}
                             {story.company}
                           </span>
-                          <div className="hidden sm:flex items-center gap-4 text-[10px] text-slate-500 font-medium">
-                            <span>{$t("UiUxClientStories__t7", "Home")}</span>
-                            <span>{$t("UiUxClientStories__t8", "Solutions")}</span>
-                            <span>{$t("UiUxClientStories__t9", "Projects")}</span>
-                            <span>{$t("UiUxClientStories__t10", "Resources")}</span>
-                            <span>{$t("UiUxClientStories__t11", "About")}</span>
-                          </div>
+                          <div className="hidden sm:flex items-center gap-4 text-[10px] text-slate-500 font-medium">{rich($t("UiUxClientStories__t7m", "<span>Home</span><span>Solutions</span><span>Projects</span><span>Resources</span><span>About</span>"))}</div>
                           <span className="px-3 py-1 rounded-full bg-[#0c1e3d] text-white text-[9px] font-bold">
-                            {$t("UiUxClientStories__t12", "Get a Quote")}</span>
+                            {html($t("UiUxClientStories__t12", "Get a Quote"))}</span>
                         </div>
 
                         {/* Mockup Body Content */}
@@ -410,7 +401,7 @@ export default function UiUxClientStories() {
                           </p>
                           <div className="mt-4">
                             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#0c1e3d] text-white text-[10px] font-bold shadow-sm">
-                              {$t("UiUxClientStories__t13", "Explore Solutions →")}</span>
+                              {html($t("UiUxClientStories__t13", "Explore Solutions →"))}</span>
                           </div>
                         </div>
 
@@ -436,7 +427,7 @@ export default function UiUxClientStories() {
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                      {$t("UiUxClientStories__t15", "Overview")}</div>
+                      {html($t("UiUxClientStories__t15", "Overview"))}</div>
                     <div className="mt-2 grid grid-cols-4 gap-2 text-center divide-x divide-slate-100">
                       {story.laptop.metrics.map((m) => (
                         <div key={m.label} className="px-1 first:pl-0">
@@ -461,7 +452,7 @@ export default function UiUxClientStories() {
                     <div className="rounded-[24px] bg-white overflow-hidden p-3 h-[250px] sm:h-[280px] flex flex-col justify-between border border-slate-100 text-left">
                       {/* Phone Header */}
                       <div className="flex items-center justify-between text-[9px] text-slate-600 font-bold">
-                        <span>{$t("UiUxClientStories__t16", "9:41")}</span>
+                        <span>{html($t("UiUxClientStories__t16", "9:41"))}</span>
                         <span className="w-2 h-2 rounded-full bg-emerald-500" />
                       </div>
 
@@ -477,7 +468,7 @@ export default function UiUxClientStories() {
 
                       {/* Energy Metric Card */}
                       <div className="rounded-xl bg-slate-50 border border-slate-100 p-2 my-2">
-                        <div className="text-[8px] text-slate-400">{$t("UiUxClientStories__t17", "Energy Generated")}</div>
+                        <div className="text-[8px] text-slate-400">{html($t("UiUxClientStories__t17", "Energy Generated"))}</div>
                         <div className="text-base font-black text-[#0c1e3d] leading-none mt-0.5">
                           {story.mobile.statValue} <span className="text-[9px] font-normal text-slate-500">{story.mobile.statUnit}</span>
                         </div>

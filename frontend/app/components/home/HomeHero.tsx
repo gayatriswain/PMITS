@@ -7,7 +7,7 @@ import Image from "next/image";
 import Container from "../shared/Container";
 import { PinIcon, ArrowIcon, PlayIcon, StarIcon, GiftIcon, ShieldCheckIcon, SparkleIcon } from "../shared/icons";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 
@@ -27,17 +27,17 @@ export default function HomeHero({ slot1 }: { slot1: ReactNode }) {
             className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            <PinIcon /> {$t("HomeHero__t1", "YOUR GROWTH PARTNER, NATIONWIDE")}</span>
+            <PinIcon /> {html($t("HomeHero__t1", "YOUR GROWTH PARTNER, NATIONWIDE"))}</span>
 
           <p className="text-caption mt-6 flex items-center gap-2 font-bold tracking-widest text-slate-500">
             {rich($t("HomeHero__t2", "WEBSITE DESIGN "))}<span className="h-1 w-1 rounded-full bg-slate-400" /> {rich($t("HomeHero__t3", "DEVELOPMENT"))}{" "}
             <span className="h-1 w-1 rounded-full bg-slate-400" /> {rich($t("HomeHero__t4", "SEO"))}</p>
 
           <h1 className="text-h1 mt-4 font-serif font-bold" style={{ color: NAVY }}>
-            {$t("HomeHero__t5", "Digital Experiences.")}<br />
-            {$t("HomeHero__t6", "Real Business")}{" "}
+            {html($t("HomeHero__t5", "Digital Experiences."))}<br />
+            {html($t("HomeHero__t6", "Real Business"))}{" "}
             <span className="relative inline-block" style={{ color: TEAL }}>
-              {$t("HomeHero__t7", "Growth.")}<svg
+              {html($t("HomeHero__t7", "Growth."))}<svg
                 className="absolute -bottom-1.5 left-0 h-3 w-full"
                 viewBox="0 0 160 12"
                 preserveAspectRatio="none"
@@ -81,7 +81,7 @@ export default function HomeHero({ slot1 }: { slot1: ReactNode }) {
               <div>
                 <div className="flex items-center gap-1">
                   <span className="text-sm font-bold" style={{ color: NAVY }}>
-                    {$t("HomeHero__t15", "4.9/5")}</span>
+                    {html($t("HomeHero__t15", "4.9/5"))}</span>
                   <span className="flex items-center gap-0.5 text-amber-400">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <StarIcon key={i} />
@@ -99,7 +99,7 @@ export default function HomeHero({ slot1 }: { slot1: ReactNode }) {
               <div>
                 <div className="flex items-center gap-1">
                   <span className="text-sm font-bold" style={{ color: NAVY }}>
-                    {$t("HomeHero__t19", "4.9/5")}</span>
+                    {html($t("HomeHero__t19", "4.9/5"))}</span>
                   <span className="flex items-center gap-0.5 text-red-500">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <StarIcon key={i} />
@@ -136,9 +136,7 @@ export default function HomeHero({ slot1 }: { slot1: ReactNode }) {
             <p className="flex items-center justify-center gap-2 text-center text-[11px] font-bold tracking-wide" style={{ color: TEAL }}>
               <span aria-hidden>&rarr;</span> {rich($t("HomeHero__t21", "FREE CONSULTATION "))}<span aria-hidden>&larr;</span>
             </p>
-            <h3 className="mt-1 text-center text-lg font-bold leading-snug" style={{ color: NAVY }}>
-              {$t("HomeHero__t22", "Let's Grow Your Business ")}<span style={{ color: TEAL }}>{$t("HomeHero__t23", "Together.")}</span>
-            </h3>
+            <h3 className="mt-1 text-center text-lg font-bold leading-snug" style={{ color: NAVY }}>{rich($t("HomeHero__t22m", "Let's Grow Your Business <span class=\"text-[#0d9488]\">Together.</span>"))}</h3>
             <p className="text-caption mt-2 text-center text-slate-500">
               {rich($t("HomeHero__t24", "Book your free consultation and get expert advice tailored to your business goals."))}</p>
 

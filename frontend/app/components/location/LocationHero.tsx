@@ -6,7 +6,7 @@ import Link from "next/link";
 import Container from "../shared/Container";
 import { ArrowIcon, CheckIcon, ClockIcon, GridIcon, LockIcon, PinIcon, PlayIcon, ShieldCheckIcon, StarIcon, UsersIcon } from "../shared/icons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 
@@ -42,12 +42,12 @@ export default function LocationHero() {
             className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            <PinIcon /> {$t("LocationHero__t1", "NOIDA, NCR")}</span>
+            <PinIcon /> {html($t("LocationHero__t1", "NOIDA, NCR"))}</span>
 
           <h1 className="text-h1 mt-4 font-serif font-bold" style={{ color: NAVY }}>
-            {$t("LocationHero__t2", "Your Local")}<br />
-            <span style={{ color: TEAL }}>{$t("LocationHero__t3", "Digital")}</span> {$t("LocationHero__t4", "Growth")}<br />
-            {$t("LocationHero__t5", "Partner in Noida.")}<span
+            {html($t("LocationHero__t2", "Your Local"))}<br />
+            <span style={{ color: TEAL }}>{html($t("LocationHero__t3", "Digital"))}</span> {html($t("LocationHero__t4", "Growth"))}<br />
+            {html($t("LocationHero__t5", "Partner in Noida."))}<span
               className="ml-1 inline-block h-2 w-2 rounded-full align-middle"
               style={{ backgroundColor: ACCENT }}
             />
@@ -116,7 +116,7 @@ export default function LocationHero() {
             <div className="px-6 pb-10 pt-7" style={{ backgroundImage: `linear-gradient(135deg, ${DARK}, ${TEAL})` }}>
               <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: ACCENT }}>
                 {rich($t("LocationHero__t13", "Let's Talk"))}</p>
-              <h3 className="text-h5 mt-2 font-bold text-white">{$t("LocationHero__t14", "Get a Free Consultation")}</h3>
+              <h3 className="text-h5 mt-2 font-bold text-white">{html($t("LocationHero__t14", "Get a Free Consultation"))}</h3>
               <p className="text-small mt-2 text-white/80">
                 {rich($t("LocationHero__t15", "Share your details and our experts will get back to you shortly."))}</p>
             </div>
@@ -153,7 +153,7 @@ export default function LocationHero() {
               <div>
                 <div className="flex items-center gap-1">
                   <span className="text-sm font-bold" style={{ color: NAVY }}>
-                    {$t("LocationHero__t21", "4.9")}</span>
+                    {html($t("LocationHero__t21", "4.9"))}</span>
                   <span className="flex items-center gap-0.5 text-amber-400">
                     <StarIcon />
                   </span>
@@ -169,7 +169,7 @@ export default function LocationHero() {
               <div>
                 <div className="flex items-center gap-1">
                   <span className="text-sm font-bold" style={{ color: NAVY }}>
-                    {$t("LocationHero__t25", "4.8")}</span>
+                    {html($t("LocationHero__t25", "4.8"))}</span>
                   <span className="flex items-center gap-0.5 text-red-500">
                     <StarIcon />
                   </span>

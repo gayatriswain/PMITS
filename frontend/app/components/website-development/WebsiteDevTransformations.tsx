@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Container from '../shared/Container';
 import BeforeAfterShowcase from './BeforeAfterShowcase';
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -34,14 +34,11 @@ export default function WebsiteDevTransformations({ showcase }: { showcase?: Rea
                 </svg>
               </span>
               <span className="text-[10px] font-bold tracking-widest text-[#0d9488] uppercase pr-2">
-                {$t("WebsiteDevTransformations__t1", "Real Results, Real Growth")}</span>
+                {html($t("WebsiteDevTransformations__t1", "Real Results, Real Growth"))}</span>
             </div>
 
             {/* Heading */}
-            <h2 className="text-h2 font-serif font-bold mb-3 tracking-tight">
-              <span style={{ color: NAVY }}>{$t("WebsiteDevTransformations__t2", "Real Businesses.")}</span><br />
-              <span style={{ color: GOLD }}>{$t("WebsiteDevTransformations__t3", "Real Transformations.")}</span>
-            </h2>
+            <h2 className="text-h2 font-serif font-bold mb-3 tracking-tight">{rich($t("WebsiteDevTransformations__t2m", "<span class=\"text-[#132a43]\">Real Businesses.</span><br><span class=\"text-[#b58e3a]\">Real Transformations.</span>"))}</h2>
 
             {/* Subheading */}
             <p className="text-body text-slate-700 max-w-[28rem] font-medium mb-3">
@@ -50,7 +47,7 @@ export default function WebsiteDevTransformations({ showcase }: { showcase?: Rea
             {/* Imagine Text */}
             <div className="relative inline-block mt-0 mb-4">
               <span className="font-serif italic text-[22px] md:text-[26px] tracking-wide" style={{ color: TEAL }}>
-                {$t("WebsiteDevTransformations__t5", "Imagine your business here next.")}</span>
+                {html($t("WebsiteDevTransformations__t5", "Imagine your business here next."))}</span>
               <svg className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-[115%] h-3" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
                 <path d="M5 10 Q 100 -2 195 10 Q 100 2 5 10 Z" fill={GOLD} />
               </svg>
@@ -82,7 +79,7 @@ export default function WebsiteDevTransformations({ showcase }: { showcase?: Rea
                 </div>
                 <div className="pt-0.5">
                   <h4 className="text-[14px] font-bold text-slate-900 leading-snug mb-1.5">
-                    {$t("WebsiteDevTransformations__t6", "Curious what we can do for your business?")}</h4>
+                    {html($t("WebsiteDevTransformations__t6", "Curious what we can do for your business?"))}</h4>
                   <p className="text-[11px] text-slate-500 leading-relaxed font-medium pr-2">
                     {rich($t("WebsiteDevTransformations__t7", "Let's discuss your goals in a free strategy call."))}</p>
                 </div>
@@ -105,10 +102,7 @@ export default function WebsiteDevTransformations({ showcase }: { showcase?: Rea
                   </div>
                 ))}
               </div>
-              <p className="text-[10px] font-bold text-slate-700 leading-tight">
-                {rich($t("WebsiteDevTransformations__t12", "50+ businesses"))}<br/>
-                <span className="text-slate-400 font-medium">{$t("WebsiteDevTransformations__t13", "transformed with ProManage")}</span>
-              </p>
+              <p className="text-[10px] font-bold text-slate-700 leading-tight">{rich($t("WebsiteDevTransformations__t12m", "50+ businesses<br><span class=\"text-slate-400 font-medium\">transformed with ProManage</span>"))}</p>
             </div>
 
           </div>
@@ -135,7 +129,7 @@ export default function WebsiteDevTransformations({ showcase }: { showcase?: Rea
                  <Image src={$t("WebsiteDevTransformations__t15", "/image1.webp")} alt={$t("WebsiteDevTransformations__t16", "Rahul Mehta")} fill className="object-cover" />
               </div>
               <div>
-                 <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">{$t("WebsiteDevTransformations__t17", "Rahul Mehta")}</h4>
+                 <h4 className="text-[12px] sm:text-[13px] font-bold text-slate-900 leading-tight mb-0.5">{html($t("WebsiteDevTransformations__t17", "Rahul Mehta"))}</h4>
                  <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-tight">{rich($t("WebsiteDevTransformations__t18", "Founder, Organic Harvest"))}</p>
               </div>
             </div>
@@ -149,7 +143,7 @@ export default function WebsiteDevTransformations({ showcase }: { showcase?: Rea
           <div className="flex-1 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 xl:pl-10">
             <div className="flex flex-col gap-1.5 max-w-[300px]">
                <h3 className="text-[15px] sm:text-[16px] font-bold text-[#132a43] leading-snug">
-                 {$t("WebsiteDevTransformations__t19", "What could your business look like with the right website?")}</h3>
+                 {html($t("WebsiteDevTransformations__t19", "What could your business look like with the right website?"))}</h3>
                <p className="text-caption text-slate-500 font-medium">
                  {rich($t("WebsiteDevTransformations__t20", "Let's build something that drives real results for you."))}</p>
             </div>
@@ -160,7 +154,7 @@ export default function WebsiteDevTransformations({ showcase }: { showcase?: Rea
               </Link>
               <div className="flex items-center gap-1.5 text-[#0d9488]/80 sm:mr-1 mt-0.5">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 15c0-4.4 3.6-8 8-8s8 3.6 8 8"></path><polyline points="17 11 21 15 17 19"></polyline></svg>
-                <span className="text-[9px] font-bold tracking-wide">{$t("WebsiteDevTransformations__t23", "Explore more transformations")}</span>
+                <span className="text-[9px] font-bold tracking-wide">{html($t("WebsiteDevTransformations__t23", "Explore more transformations"))}</span>
               </div>
             </div>
           </div>

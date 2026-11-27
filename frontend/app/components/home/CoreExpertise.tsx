@@ -6,7 +6,7 @@ import Container from "../shared/Container";
 import OrganicTrafficChart from "./OrganicTrafficChart";
 import { DrawMonitorCodeIcon, DrawSearchIcon, DrawCheckIcon, DrawBarChartUpIcon, DrawArrowIcon } from "../shared/drawIcons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -67,12 +67,9 @@ export default function CoreExpertise() {
             className="inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            {$t("CoreExpertise__t1", "OUR CORE EXPERTISE")}</span>
-          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>
-            {$t("CoreExpertise__t2", "Our Core Expertise, ")}<span style={{ color: TEAL }}>{$t("CoreExpertise__t3", "Your Competitive Advantage")}</span>
-          </h2>
-          <p className="text-body mt-4 text-slate-500">
-            {rich($t("CoreExpertise__t4", "We specialize in two core areas that drive real results for your business."))}<br className="hidden sm:block" /> {rich($t("CoreExpertise__t5", "Beautiful websites that convert visitors and SEO strategies that bring qualified traffic."))}</p>
+            {html($t("CoreExpertise__t1", "OUR CORE EXPERTISE"))}</span>
+          <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>{rich($t("CoreExpertise__t2m", "Our Core Expertise, <span class=\"text-[#0d9488]\">Your Competitive Advantage</span>"))}</h2>
+          <p className="text-body mt-4 text-slate-500">{rich($t("CoreExpertise__t4m", "We specialize in two core areas that drive real results for your business.<br class=\"hidden sm:block\"> Beautiful websites that convert visitors and SEO strategies that bring qualified traffic."))}</p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -89,7 +86,7 @@ export default function CoreExpertise() {
                     <DrawMonitorCodeIcon />
                   </span>
                   <h3 className="text-h6 font-bold" style={{ color: NAVY }}>
-                    {$t("CoreExpertise__t6", "Website Design & Development")}</h3>
+                    {html($t("CoreExpertise__t6", "Website Design & Development"))}</h3>
                 </div>
 
                 <p className="text-small mt-4 text-slate-500">
@@ -119,9 +116,7 @@ export default function CoreExpertise() {
                   <div>
                     <p className="text-small font-bold" style={{ color: NAVY }}>
                       {rich($t("CoreExpertise__t12", "3.2X"))}</p>
-                    <p className="text-[10px] leading-tight text-slate-500">
-                      {rich($t("CoreExpertise__t13", "Higher Conversion Rate"))}<br />
-                      {rich($t("CoreExpertise__t14", "For Our Clients"))}</p>
+                    <p className="text-[10px] leading-tight text-slate-500">{rich($t("CoreExpertise__t13m", "Higher Conversion Rate<br>For Our Clients"))}</p>
                   </div>
                 </div>
               </div>
@@ -141,7 +136,7 @@ export default function CoreExpertise() {
                     <DrawSearchIcon />
                   </span>
                   <h3 className="text-h6 font-bold" style={{ color: NAVY }}>
-                    {$t("CoreExpertise__t15", "Search Engine Optimization (SEO)")}</h3>
+                    {html($t("CoreExpertise__t15", "Search Engine Optimization (SEO)"))}</h3>
                 </div>
 
                 <p className="text-small mt-4 text-slate-500">

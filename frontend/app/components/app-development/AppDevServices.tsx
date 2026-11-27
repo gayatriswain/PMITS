@@ -7,7 +7,7 @@ import { motion, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -240,14 +240,10 @@ export default function AppDevServices() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="h-1 w-1 rounded-full" style={{ backgroundColor: TEAL }} />
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: TEAL }}>{$t("AppDevServices__t1", "App Development Services")}</span>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: TEAL }}>{html($t("AppDevServices__t1", "App Development Services"))}</span>
             <span className="h-1 w-1 rounded-full" style={{ backgroundColor: TEAL }} />
           </div>
-          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>
-            {$t("AppDevServices__t2", "Powerful Apps.")}<br />
-            {$t("AppDevServices__t3", "Seamless Experiences.")}<br />
-            <span style={{ color: TEAL }}>{$t("AppDevServices__t4", "Built For Growth.")}</span>
-          </h2>
+          <h2 className="text-h2 font-serif font-bold" style={{ color: NAVY }}>{rich($t("AppDevServices__t2m", "Powerful Apps.<br>Seamless Experiences.<br><span class=\"text-[#0d9488]\">Built For Growth.</span>"))}</h2>
           <p className="text-body text-slate-500 max-w-xl mt-4">
             {rich($t("AppDevServices__t5", "From idea to launch and beyond, we build high-performance mobile apps that engage users, streamline operations, and drive measurable business success."))}</p>
         </motion.div>
@@ -350,7 +346,7 @@ export default function AppDevServices() {
               <RocketIcon color="#fff" size={22} />
             </span>
             <div className="relative z-10">
-              <h3 className="text-[15px] font-bold text-white leading-snug">{$t("AppDevServices__t12", "Have an App Idea?")}</h3>
+              <h3 className="text-[15px] font-bold text-white leading-snug">{html($t("AppDevServices__t12", "Have an App Idea?"))}</h3>
               <p className="text-[11px] text-white/70 leading-relaxed mt-1 mb-3">
                 {rich($t("AppDevServices__t13", "We turn your idea into a powerful mobile experience that drives real impact."))}</p>
               <Link

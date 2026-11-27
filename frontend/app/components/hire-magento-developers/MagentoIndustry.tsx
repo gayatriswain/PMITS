@@ -7,7 +7,7 @@ import { motion, useInView, useMotionValue, useReducedMotion, useSpring, useTran
 import Container from "../shared/Container";
 import { ArrowRight, Eyebrow, Icon, IMG, ease, fadeUp, heading, type IconName } from "../shared/MagentoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const industries__cms: { label: [string, string?]; icon: IconName; tint: string; color: string }[] = [
   { label: ["Retail &", "eCommerce"], icon: "cart", tint: "bg-teal-50", color: "text-[#0d9488]" },
@@ -174,7 +174,7 @@ export default function MagentoIndustry() {
               className={`text-h2 ${heading.className} mt-5 font-bold tracking-tight text-[#0c1e3d]`}
             >
               {$t("MagentoIndustry__t5", "Magento Developers Having")}<br />
-              <span className="text-[#0d9488]">{$t("MagentoIndustry__t6", "Industry Specific Expertise")}</span>
+              <span className="text-[#0d9488]">{html($t("MagentoIndustry__t6", "Industry Specific Expertise"))}</span>
             </motion.h2>
             <motion.div variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-6 max-w-[600px] space-y-4 text-[15px] leading-relaxed text-slate-600">
               <p>
@@ -212,7 +212,7 @@ export default function MagentoIndustry() {
                       {it.label[0]}
                       {it.label[1] && (<><br />{it.label[1]}</>)}
                     </span>
-                    <span className={`absolute bottom-1 right-2 text-xl font-bold transition-colors ${on ? "text-[#0d9488]/30" : "text-slate-200"}`}>{$t("MagentoIndustry__t9", "0")}{i + 1}</span>
+                    <span className={`absolute bottom-1 right-2 text-xl font-bold transition-colors ${on ? "text-[#0d9488]/30" : "text-slate-200"}`}>{html($t("MagentoIndustry__t9", "0"))}{i + 1}</span>
                   </motion.button>
                 );
               })}
@@ -230,7 +230,7 @@ export default function MagentoIndustry() {
                   {!reduce && <span className="absolute inset-0 animate-ping rounded-full border border-[#0d9488]/40 [animation-duration:2.4s]" />}
                   <Icon name="play" className="ml-0.5 h-4 w-4 text-[#0c1e3d]" />
                 </span>
-                <span className="border-b border-[#0c1e3d]/30 pb-1 transition-colors group-hover:border-[#0d9488] group-hover:text-[#0d9488]">{$t("MagentoIndustry__t13", "Talk to Our Experts")}</span>
+                <span className="border-b border-[#0c1e3d]/30 pb-1 transition-colors group-hover:border-[#0d9488] group-hover:text-[#0d9488]">{html($t("MagentoIndustry__t13", "Talk to Our Experts"))}</span>
               </Link>
             </motion.div>
           </div>

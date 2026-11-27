@@ -7,7 +7,7 @@ import Container from "../shared/Container";
 import CountUp from "../shared/CountUp";
 import { BC, BrandRow, CtaStrip, Eyebrow, Icon, Swoosh, ease, fadeUp, heading, useSeen, type IconName } from "./BigCommerceShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 /*
  * NOTE: the case study below is placeholder content ("Hearth & Haven" is a fictional brand and
@@ -64,7 +64,7 @@ export default function BigCommerceImpact() {
             {$t("BigCommerceImpact__t2", "Your Growth.")}<br />
             {$t("BigCommerceImpact__t3", "Our")}{" "}
             <span className="relative inline-block text-[#2348e6]">
-              {$t("BigCommerceImpact__t4", "Real Impact.")}<Swoosh className="-bottom-2 left-0 h-3 w-[60%]" />
+              {html($t("BigCommerceImpact__t4", "Real Impact."))}<Swoosh className="-bottom-2 left-0 h-3 w-[60%]" />
             </span>
           </motion.h2>
           <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-5 text-slate-600">
@@ -75,10 +75,10 @@ export default function BigCommerceImpact() {
           {/* story */}
           <div>
             <motion.span variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="inline-block rounded-full bg-gradient-to-r from-[#2348e6] to-[#3b6cf6] px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white">
-              {$t("BigCommerceImpact__t6", "Success story")}</motion.span>
+              {html($t("BigCommerceImpact__t6", "Success story"))}</motion.span>
             <motion.p variants={fadeUp} custom={0.5} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-4 font-serif text-[34px] italic leading-none text-[#1f2937]">
               {BRAND}
-              <span className="ml-1 align-top text-[10px] not-italic tracking-[0.3em] text-slate-500">{$t("BigCommerceImpact__t7", "HOME")}</span>
+              <span className="ml-1 align-top text-[10px] not-italic tracking-[0.3em] text-slate-500">{html($t("BigCommerceImpact__t7", "HOME"))}</span>
             </motion.p>
             <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="show" viewport={{ once: true }} className="text-body mt-3 max-w-[340px] text-slate-600">
               {rich($t("BigCommerceImpact__t8", "From inspiration to impact—scaling globally with BigCommerce."))}</motion.p>
@@ -111,11 +111,8 @@ export default function BigCommerceImpact() {
                   {rich($t("BigCommerceImpact__t9", "BigCommerce gave us the flexibility, performance, and scalability to take our brand to the next level globally."))}</blockquote>
               </div>
               <figcaption className="mt-4 flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-rose-300 to-amber-300 text-sm font-bold text-white">{$t("BigCommerceImpact__t10", "EM")}</span>
-                <span>
-                  <span className="block text-sm font-semibold text-[#0b1a4a]">{$t("BigCommerceImpact__t11", "Elena Marsh")}</span>
-                  <span className="block text-xs text-slate-500">{$t("BigCommerceImpact__t12", "Founder & Creative Director")}</span>
-                </span>
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-rose-300 to-amber-300 text-sm font-bold text-white">{html($t("BigCommerceImpact__t10", "EM"))}</span>
+                <span>{rich($t("BigCommerceImpact__t11m", "<span class=\"block text-sm font-semibold text-[#0b1a4a]\">Elena Marsh</span><span class=\"block text-xs text-slate-500\">Founder &amp; Creative Director</span>"))}</span>
               </figcaption>
             </motion.figure>
           </div>
@@ -136,7 +133,7 @@ export default function BigCommerceImpact() {
               <div className="absolute flex items-center justify-between" style={{ left: px(480), top: py(80), width: px(760), height: py(60) }}>
                 <span className="font-serif text-[1.55cqw] italic text-[#1f2937]">{BRAND}</span>
                 <span className="flex items-center gap-[1.4cqw] text-[0.62cqw] font-medium tracking-wider text-slate-600">
-                  <span>{$t("BigCommerceImpact__t13", "SHOP")}</span><span>{$t("BigCommerceImpact__t14", "COLLECTIONS")}</span><span>{$t("BigCommerceImpact__t15", "ABOUT US")}</span><span>{$t("BigCommerceImpact__t16", "SALE")}</span>
+                  <span>{html($t("BigCommerceImpact__t13", "SHOP"))}</span><span>{html($t("BigCommerceImpact__t14", "COLLECTIONS"))}</span><span>{html($t("BigCommerceImpact__t15", "ABOUT US"))}</span><span>{html($t("BigCommerceImpact__t16", "SALE"))}</span>
                   <Icon name="search" className="h-[1cqw] w-[1cqw]" />
                   <Icon name="cart" className="h-[1cqw] w-[1cqw]" />
                 </span>
@@ -149,8 +146,8 @@ export default function BigCommerceImpact() {
                 className="absolute"
                 style={{ left: px(500), top: py(215) }}
               >
-                <p className={`${heading.className} text-[2cqw] font-medium leading-[1.2] text-[#1f2937]`}>{rich($t("BigCommerceImpact__t17", "Timeless Style."))}<br />{rich($t("BigCommerceImpact__t18", "Inspired Living."))}</p>
-                <span className="mt-[1cqw] inline-block rounded-full bg-[#1f2937] px-[1.2cqw] py-[0.45cqw] text-[0.6cqw] font-semibold tracking-wider text-white">{$t("BigCommerceImpact__t19", "SHOP NOW")}</span>
+                <p className={`${heading.className} text-[2cqw] font-medium leading-[1.2] text-[#1f2937]`}>{rich($t("BigCommerceImpact__t17m", "Timeless Style.<br>Inspired Living."))}</p>
+                <span className="mt-[1cqw] inline-block rounded-full bg-[#1f2937] px-[1.2cqw] py-[0.45cqw] text-[0.6cqw] font-semibold tracking-wider text-white">{html($t("BigCommerceImpact__t19", "SHOP NOW"))}</span>
               </motion.div>
               {/* category labels */}
               {[
@@ -167,7 +164,7 @@ export default function BigCommerceImpact() {
                 <span className="font-serif text-[0.8cqw] italic">{BRAND}</span>
                 <Icon name="cart" className="h-[0.9cqw] w-[0.9cqw]" />
               </div>
-              <p className={`${heading.className} absolute text-[0.95cqw] font-medium leading-[1.2] text-[#1f2937]`} style={{ left: px(218), top: py(345) }}>{rich($t("BigCommerceImpact__t24", "Timeless Style."))}<br />{rich($t("BigCommerceImpact__t25", "Inspired Living."))}</p>
+              <p className={`${heading.className} absolute text-[0.95cqw] font-medium leading-[1.2] text-[#1f2937]`} style={{ left: px(218), top: py(345) }}>{rich($t("BigCommerceImpact__t24m", "Timeless Style.<br>Inspired Living."))}</p>
               <p className="absolute text-[0.75cqw] font-semibold text-[#1f2937]" style={{ left: px(222), top: py(565) }}>{rich($t("BigCommerceImpact__t26", "Best Sellers"))}</p>
 
               {/* milestones */}
@@ -195,9 +192,9 @@ export default function BigCommerceImpact() {
                 className="absolute w-[10%] rounded-2xl border border-white bg-white/95 py-[0.8cqw] text-center shadow-[0_18px_36px_-18px_rgba(35,72,230,0.6)]"
                 style={{ left: px(1310), top: py(60) }}
               >
-                <span className="mx-auto block w-fit rounded-full bg-blue-50 px-[0.7cqw] text-[0.6cqw] font-bold tracking-wider text-[#2348e6]">{$t("BigCommerceImpact__t27", "12 MONTHS")}</span>
-                <span className={`${heading.className} mt-[0.3cqw] block text-[2.4cqw] font-bold text-[#1d3fd8]`}>{$t("BigCommerceImpact__t28", "3.2x")}</span>
-                <span className="block text-[0.75cqw] leading-tight text-slate-600">{$t("BigCommerceImpact__t29", "Revenue")}<br />{$t("BigCommerceImpact__t30", "Growth")}</span>
+                <span className="mx-auto block w-fit rounded-full bg-blue-50 px-[0.7cqw] text-[0.6cqw] font-bold tracking-wider text-[#2348e6]">{html($t("BigCommerceImpact__t27", "12 MONTHS"))}</span>
+                <span className={`${heading.className} mt-[0.3cqw] block text-[2.4cqw] font-bold text-[#1d3fd8]`}>{html($t("BigCommerceImpact__t28", "3.2x"))}</span>
+                <span className="block text-[0.75cqw] leading-tight text-slate-600">{rich($t("BigCommerceImpact__t29m", "Revenue<br>Growth"))}</span>
               </motion.div>
             </motion.div>
           </div>

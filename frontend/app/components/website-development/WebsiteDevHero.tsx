@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 
@@ -20,12 +20,9 @@ export default function WebsiteDevHero({ slot1 }: { slot1: ReactNode }) {
         {/* Left Column Content */}
         <div className="max-w-xl">
           <h4 className="text-xs lg:text-sm font-bold tracking-[0.15em] uppercase mb-4" style={{ color: TEAL }}>
-            {$t("WebsiteDevHero__t1", "WEBSITE DEVELOPMENT SERVICES")}</h4>
+            {html($t("WebsiteDevHero__t1", "WEBSITE DEVELOPMENT SERVICES"))}</h4>
 
-          <h1 className="text-h1 font-serif font-extrabold mb-5 tracking-tight">
-            <span style={{ color: NAVY }}>{$t("WebsiteDevHero__t2", "We Build Websites")}<br />{$t("WebsiteDevHero__t3", "That Do More.")}</span><br />
-            <span style={{ color: TEAL }}>{$t("WebsiteDevHero__t4", "So You Can Grow")}<br />{$t("WebsiteDevHero__t5", "Without Limits.")}</span>
-          </h1>
+          <h1 className="text-h1 font-serif font-extrabold mb-5 tracking-tight">{rich($t("WebsiteDevHero__t2m", "<span class=\"text-[#132a43]\">We Build Websites<br>That Do More.</span><br><span class=\"text-[#0d9488]\">So You Can Grow<br>Without Limits.</span>"))}</h1>
 
           <p className="text-body text-slate-600 mb-10 max-w-lg font-medium">
             {rich($t("WebsiteDevHero__t6", "Strategy-led websites that attract the right audience, build trust and turn clicks into loyal customers."))}</p>
@@ -49,7 +46,7 @@ export default function WebsiteDevHero({ slot1 }: { slot1: ReactNode }) {
                 </svg>
               </span>
               <span className="font-bold text-sm" style={{ color: NAVY }}>
-                {$t("WebsiteDevHero__t10", "See Our Work")}</span>
+                {html($t("WebsiteDevHero__t10", "See Our Work"))}</span>
             </Link>
           </div>
 
@@ -62,10 +59,9 @@ export default function WebsiteDevHero({ slot1 }: { slot1: ReactNode }) {
                 </div>
               ))}
               <div className="w-10 h-10 rounded-full border-2 border-white bg-teal-50 flex items-center justify-center text-[11px] font-bold text-teal-700 shadow-sm z-10 relative">
-                {$t("WebsiteDevHero__t13", "25+")}</div>
+                {html($t("WebsiteDevHero__t13", "25+"))}</div>
             </div>
-            <p className="text-caption font-medium text-slate-500">
-              {rich($t("WebsiteDevHero__t14", "Trusted by 250+"))}<br />{rich($t("WebsiteDevHero__t15", "businesses worldwide"))}</p>
+            <p className="text-caption font-medium text-slate-500">{rich($t("WebsiteDevHero__t14m", "Trusted by 250+<br>businesses worldwide"))}</p>
           </div>
         </div>
 

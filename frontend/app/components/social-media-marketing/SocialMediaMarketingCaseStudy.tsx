@@ -6,7 +6,7 @@ import { motion, AnimatePresence, animate, useMotionValue, type Variants } from 
 import { Counter } from "../shared/useCountUp";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -359,11 +359,11 @@ export default function SocialMediaMarketingCaseStudy() {
             transition={{ duration: 0.6, ease: EASE }}
           >
             <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              {$t("SocialMediaMarketingCaseStudy__t1", "04 · Proof & Results")}</span>
+              {html($t("SocialMediaMarketingCaseStudy__t1", "04 · Proof & Results"))}</span>
             <h2 className="text-h2 font-serif font-bold mt-3">
-              <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingCaseStudy__t2", "Real Strategies.")}</span>
+              <span className="block" style={{ color: NAVY }}>{html($t("SocialMediaMarketingCaseStudy__t2", "Real Strategies."))}</span>
               <span className="block font-serif italic underline" style={{ color: TEAL, textDecorationColor: TEAL }}>
-                {$t("SocialMediaMarketingCaseStudy__t3", "Real Growth.")}</span>
+                {html($t("SocialMediaMarketingCaseStudy__t3", "Real Growth."))}</span>
             </h2>
             <p className="text-small text-slate-500 mt-3 max-w-md">
               {rich($t("SocialMediaMarketingCaseStudy__t4", "We turn strategy into impact. Here's how we've helped brands grow, scale, and lead their market."))}</p>
@@ -561,9 +561,7 @@ export default function SocialMediaMarketingCaseStudy() {
           className="mt-10 lg:mt-14 rounded-2xl border border-slate-200 p-6 lg:px-8 lg:py-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
         >
           <div>
-            <h3 className="text-h5 font-serif font-bold" style={{ color: NAVY }}>
-              {$t("SocialMediaMarketingCaseStudy__t9", "We don't chase")}<br />
-              {$t("SocialMediaMarketingCaseStudy__t10", "vanity metrics.")}</h3>
+            <h3 className="text-h5 font-serif font-bold" style={{ color: NAVY }}>{rich($t("SocialMediaMarketingCaseStudy__t9m", "We don't chase<br>vanity metrics."))}</h3>
             <p className="text-body font-serif italic mt-1" style={{ color: TEAL }}>
               {rich($t("SocialMediaMarketingCaseStudy__t11", "We drive real business impact."))}</p>
           </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 interface FeatureCard {
   id: string;
@@ -93,14 +93,10 @@ export default function HireCorePhpWhyItMatters() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-[11px] font-bold tracking-[0.26em] text-[#0f8a83] uppercase">{$t("HireCorePhpWhyItMatters__t1", "Why It Matters")}</div>
+          <div className="text-[11px] font-bold tracking-[0.26em] text-[#0f8a83] uppercase">{html($t("HireCorePhpWhyItMatters__t1", "Why It Matters"))}</div>
           <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-[#0f8a83]" />
-          <h2 className="text-h2 mt-4 font-black tracking-tight text-[#0c1e3d]">
-            {$t("HireCorePhpWhyItMatters__t2", "Powerful Applications.")}<br />
-            <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpWhyItMatters__t3", "Real Business Impact.")}</span>
-          </h2>
-          <p className="text-body mt-5 text-slate-600">
-            {rich($t("HireCorePhpWhyItMatters__t4", "Our Core PHP solutions are built to perform,"))}<br className="hidden sm:inline" /> {rich($t("HireCorePhpWhyItMatters__t5", "scale and drive measurable results for your business."))}</p>
+          <h2 className="text-h2 mt-4 font-black tracking-tight text-[#0c1e3d]">{rich($t("HireCorePhpWhyItMatters__t2m", "Powerful Applications.<br><span class=\"bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent\">Real Business Impact.</span>"))}</h2>
+          <p className="text-body mt-5 text-slate-600">{rich($t("HireCorePhpWhyItMatters__t4m", "Our Core PHP solutions are built to perform,<br class=\"hidden sm:inline\"> scale and drive measurable results for your business."))}</p>
           <motion.div
             className="mt-5 mx-auto h-[2px] rounded-full bg-[#0f8a83]"
             initial={{ width: 0 }}
@@ -179,9 +175,7 @@ export default function HireCorePhpWhyItMatters() {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </motion.span>
-            <div className="text-left text-[19px] font-semibold leading-snug text-white">
-              {$t("HireCorePhpWhyItMatters__t6", "Let's build something")}<br />
-              <span className="text-[#3fd6cf]">powerful</span> {$t("HireCorePhpWhyItMatters__t7", "together.")}</div>
+            <div className="text-left text-[19px] font-semibold leading-snug text-white">{rich($t("HireCorePhpWhyItMatters__t6m", "Let's build something<br><span class=\"text-[#3fd6cf]\">powerful</span> together."))}</div>
           </div>
 
           <div className="relative flex items-center gap-4 flex-wrap justify-center">

@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 export default function EcommerceSeoLayers() {
   const $t = useCmsText();
@@ -15,13 +15,10 @@ export default function EcommerceSeoLayers() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="h-[1px] w-12 bg-slate-200"></div>
-            <span className="text-[#00897b] text-xs font-bold tracking-[0.2em] uppercase">{$t("EcommerceSeoLayers__t1", "How We Optimize")}</span>
+            <span className="text-[#00897b] text-xs font-bold tracking-[0.2em] uppercase">{html($t("EcommerceSeoLayers__t1", "How We Optimize"))}</span>
             <div className="h-[1px] w-12 bg-slate-200"></div>
           </div>
-          <h2 className="text-h2 font-bold text-[#132a43] mb-6 font-serif tracking-tight">
-            {$t("EcommerceSeoLayers__t2", "Your Store Has Layers.")}<br />
-            <span className="text-[#00897b]">{$t("EcommerceSeoLayers__t3", "We Optimize Every One.")}</span>
-          </h2>
+          <h2 className="text-h2 font-bold text-[#132a43] mb-6 font-serif tracking-tight">{rich($t("EcommerceSeoLayers__t2m", "Your Store Has Layers.<br><span class=\"text-[#00897b]\">We Optimize Every One.</span>"))}</h2>
           <p className="text-body text-slate-500 font-medium max-w-2xl mx-auto">
             {rich($t("EcommerceSeoLayers__t4", "From search intent to site structure, we optimize every layer of your store so search engines understand it and shoppers love it."))}</p>
         </div>
@@ -42,7 +39,7 @@ export default function EcommerceSeoLayers() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f766e" strokeWidth="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               </div>
               <div className="relative z-10">
-                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{$t("EcommerceSeoLayers__t5", "1. Search Intent")}<br/>{$t("EcommerceSeoLayers__t6", "& Keyword Research")}</h4>
+                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{rich($t("EcommerceSeoLayers__t5m", "1. Search Intent<br>&amp; Keyword Research"))}</h4>
                 <p className="text-caption text-slate-500">{rich($t("EcommerceSeoLayers__t7", "We analyze what your ideal customers search for and target high-intent keywords that drive sales."))}</p>
               </div>
             </div>
@@ -58,7 +55,7 @@ export default function EcommerceSeoLayers() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" strokeWidth="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
               </div>
               <div className="relative z-10">
-                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{$t("EcommerceSeoLayers__t8", "2. Product & Category SEO")}</h4>
+                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{html($t("EcommerceSeoLayers__t8", "2. Product & Category SEO"))}</h4>
                 <p className="text-caption text-slate-500">{rich($t("EcommerceSeoLayers__t9", "We optimize titles, descriptions, attributes, tags and category pages to rank higher and convert better."))}</p>
               </div>
             </div>
@@ -74,7 +71,7 @@ export default function EcommerceSeoLayers() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
               <div className="relative z-10">
-                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{$t("EcommerceSeoLayers__t10", "3. Technical SEO")}</h4>
+                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{html($t("EcommerceSeoLayers__t10", "3. Technical SEO"))}</h4>
                 <p className="text-caption text-slate-500">{rich($t("EcommerceSeoLayers__t11", "We improve site speed, mobile experience, indexing, crawlability and fix technical issues that hold rankings back."))}</p>
               </div>
             </div>
@@ -88,14 +85,9 @@ export default function EcommerceSeoLayers() {
                 <div className="w-6 h-6 bg-[#00897b] rounded flex items-center justify-center">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                 </div>
-                <span className="font-bold text-[#132a43] text-sm">{$t("EcommerceSeoLayers__t12", "YourStore")}</span>
+                <span className="font-bold text-[#132a43] text-sm">{html($t("EcommerceSeoLayers__t12", "YourStore"))}</span>
               </div>
-              <div className="hidden sm:flex items-center gap-6 text-[11px] font-bold text-slate-500">
-                <span className="text-[#00897b]">{$t("EcommerceSeoLayers__t13", "Shop")}</span>
-                <span>{$t("EcommerceSeoLayers__t14", "Categories")}</span>
-                <span>{$t("EcommerceSeoLayers__t15", "New Arrivals")}</span>
-                <span>{$t("EcommerceSeoLayers__t16", "Sale")}</span>
-              </div>
+              <div className="hidden sm:flex items-center gap-6 text-[11px] font-bold text-slate-500">{rich($t("EcommerceSeoLayers__t13m", "<span class=\"text-[#00897b]\">Shop</span><span>Categories</span><span>New Arrivals</span><span>Sale</span>"))}</div>
               <div className="flex items-center gap-4 text-slate-400">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -107,13 +99,13 @@ export default function EcommerceSeoLayers() {
               {/* Product Image */}
               <div className="w-full sm:w-1/2 flex flex-col gap-4">
                 <div className="text-[9px] font-bold text-slate-400 flex items-center gap-2 mb-2">
-                  <span>{$t("EcommerceSeoLayers__t17", "Home")}</span>
+                  <span>{html($t("EcommerceSeoLayers__t17", "Home"))}</span>
                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
-                  <span>{$t("EcommerceSeoLayers__t18", "Men")}</span>
+                  <span>{html($t("EcommerceSeoLayers__t18", "Men"))}</span>
                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
-                  <span>{$t("EcommerceSeoLayers__t19", "Jackets")}</span>
+                  <span>{html($t("EcommerceSeoLayers__t19", "Jackets"))}</span>
                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
-                  <span className="text-slate-600">{$t("EcommerceSeoLayers__t20", "Performance Jacket")}</span>
+                  <span className="text-slate-600">{html($t("EcommerceSeoLayers__t20", "Performance Jacket"))}</span>
                 </div>
                 <div className="aspect-[4/3] bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 p-4">
                   <img src={$t("EcommerceSeoLayers__t21", "/red-jacket.webp")} alt={$t("EcommerceSeoLayers__t22", "Jacket")} className="w-full h-full object-contain mix-blend-multiply" style={{ filter: 'hue-rotate(150deg)' }} />
@@ -129,34 +121,34 @@ export default function EcommerceSeoLayers() {
 
               {/* Product Info */}
               <div className="w-full sm:w-1/2 flex flex-col justify-center">
-                <div className="inline-flex bg-green-50 text-green-700 text-[8px] font-bold px-2 py-1 rounded border border-green-100 self-start mb-3">{$t("EcommerceSeoLayers__t25", "Best Seller")}</div>
-                <h3 className="text-[17px] font-bold text-[#132a43] leading-tight mb-0.5">{$t("EcommerceSeoLayers__t26", "Men's Performance Jacket")}</h3>
+                <div className="inline-flex bg-green-50 text-green-700 text-[8px] font-bold px-2 py-1 rounded border border-green-100 self-start mb-3">{html($t("EcommerceSeoLayers__t25", "Best Seller"))}</div>
+                <h3 className="text-[17px] font-bold text-[#132a43] leading-tight mb-0.5">{html($t("EcommerceSeoLayers__t26", "Men's Performance Jacket"))}</h3>
                 <div className="flex items-center gap-1 mb-2">
                   {[1,2,3,4,5].map((star) => (
                     <svg key={star} width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                   ))}
-                  <span className="text-[9px] text-slate-500 font-medium ml-1">{$t("EcommerceSeoLayers__t27", "(230 reviews)")}</span>
+                  <span className="text-[9px] text-slate-500 font-medium ml-1">{html($t("EcommerceSeoLayers__t27", "(230 reviews)"))}</span>
                 </div>
                 
                 <div className="flex items-center gap-4 mb-3 pb-3 border-b border-slate-100">
-                  <span className="text-[22px] font-bold text-[#132a43]">{$t("EcommerceSeoLayers__t28", "$129.00")}</span>
+                  <span className="text-[22px] font-bold text-[#132a43]">{html($t("EcommerceSeoLayers__t28", "$129.00"))}</span>
                   <div className="flex items-center gap-1 text-[9px] font-bold text-green-600">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div> {$t("EcommerceSeoLayers__t29", "In Stock")}</div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div> {html($t("EcommerceSeoLayers__t29", "In Stock"))}</div>
                 </div>
 
                 <div className="flex items-center gap-3 text-[7px] text-slate-500 font-bold mb-4">
-                  <div className="flex items-center gap-1 whitespace-nowrap"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> {$t("EcommerceSeoLayers__t30", "Lightweight")}</div>
-                  <div className="flex items-center gap-1 leading-tight whitespace-nowrap"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> <span>{$t("EcommerceSeoLayers__t31", "Water Resistant")}</span></div>
-                  <div className="flex items-center gap-1 whitespace-nowrap"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg> {$t("EcommerceSeoLayers__t32", "Breathable")}</div>
+                  <div className="flex items-center gap-1 whitespace-nowrap"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> {html($t("EcommerceSeoLayers__t30", "Lightweight"))}</div>
+                  <div className="flex items-center gap-1 leading-tight whitespace-nowrap"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> <span>{html($t("EcommerceSeoLayers__t31", "Water Resistant"))}</span></div>
+                  <div className="flex items-center gap-1 whitespace-nowrap"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg> {html($t("EcommerceSeoLayers__t32", "Breathable"))}</div>
                 </div>
 
                 <button className="w-full bg-[#00605a] hover:bg-[#004e48] text-white py-2 rounded-lg font-bold text-[9px] flex items-center justify-center gap-2 mb-3 shadow-[0_4px_14px_rgba(0,137,123,0.3)]">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                  {$t("EcommerceSeoLayers__t33", "Add to Cart")}</button>
+                  {html($t("EcommerceSeoLayers__t33", "Add to Cart"))}</button>
 
                 <div className="flex items-center gap-4 justify-center text-[7px] font-bold text-slate-500 mb-4">
-                  <div className="flex items-center gap-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> {$t("EcommerceSeoLayers__t34", "Free Shipping")}</div>
-                  <div className="flex items-center gap-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> {$t("EcommerceSeoLayers__t35", "Easy Returns")}</div>
+                  <div className="flex items-center gap-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> {html($t("EcommerceSeoLayers__t34", "Free Shipping"))}</div>
+                  <div className="flex items-center gap-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> {html($t("EcommerceSeoLayers__t35", "Easy Returns"))}</div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 border border-slate-200 rounded-xl p-3 mt-2">
@@ -179,16 +171,16 @@ export default function EcommerceSeoLayers() {
             {/* Schema Code Block Overlay at Bottom */}
             <div className="bg-slate-50 border-t border-slate-100 p-4 font-mono text-[9px] sm:text-[10px] text-slate-500 relative flex justify-between items-center z-10">
               <pre className="whitespace-pre-wrap leading-relaxed">
-{$t("EcommerceSeoLayers__t42", `{
+{html($t("EcommerceSeoLayers__t42", `{
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Men's Performance Jacket",
   "aggregateRating": { "ratingValue": "4.9", "reviewCount": "230" },
   "offers": { "price": "129.00", "availability": "InStock" }
-}`)}
+}`))}
               </pre>
               <div className="bg-white px-3 py-2 rounded shadow-sm border border-slate-100 flex flex-col items-center gap-1">
-                <span className="font-sans font-bold text-[10px] text-[#132a43] text-center leading-tight">{$t("EcommerceSeoLayers__t43", "Schema")}<br/>{$t("EcommerceSeoLayers__t44", "Markup")}</span>
+                <span className="font-sans font-bold text-[10px] text-[#132a43] text-center leading-tight">{rich($t("EcommerceSeoLayers__t43m", "Schema<br>Markup"))}</span>
                 <div className="w-4 h-4 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
@@ -210,7 +202,7 @@ export default function EcommerceSeoLayers() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" strokeWidth="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               </div>
               <div className="relative z-10">
-                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{$t("EcommerceSeoLayers__t45", "4. Schema &")}<br/>{$t("EcommerceSeoLayers__t46", "Rich Results")}</h4>
+                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{rich($t("EcommerceSeoLayers__t45m", "4. Schema &amp;<br>Rich Results"))}</h4>
                 <p className="text-caption text-slate-500">{rich($t("EcommerceSeoLayers__t47", "We implement structured data so your products get rich results, ratings and more visibility in search."))}</p>
               </div>
             </div>
@@ -226,7 +218,7 @@ export default function EcommerceSeoLayers() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c2410c" strokeWidth="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
               </div>
               <div className="relative z-10">
-                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{$t("EcommerceSeoLayers__t48", "5. Image & Shopping Optimization")}</h4>
+                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{html($t("EcommerceSeoLayers__t48", "5. Image & Shopping Optimization"))}</h4>
                 <p className="text-caption text-slate-500">{rich($t("EcommerceSeoLayers__t49", "We optimize images, file names, alt text and product feeds to improve visibility in Google Images and Shopping."))}</p>
               </div>
             </div>
@@ -242,7 +234,7 @@ export default function EcommerceSeoLayers() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f766e" strokeWidth="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
               </div>
               <div className="relative z-10">
-                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{$t("EcommerceSeoLayers__t50", "6. Internal Linking &")}<br/>{$t("EcommerceSeoLayers__t51", "Site Structure")}</h4>
+                <h4 className="text-[#132a43] font-bold text-[15px] mb-2 leading-tight">{rich($t("EcommerceSeoLayers__t50m", "6. Internal Linking &amp;<br>Site Structure"))}</h4>
                 <p className="text-caption text-slate-500">{rich($t("EcommerceSeoLayers__t52", "We build a strong internal linking structure that helps search engines discover and rank your most important pages."))}</p>
               </div>
             </div>
@@ -258,7 +250,7 @@ export default function EcommerceSeoLayers() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00897b" strokeWidth="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </div>
             <div>
-              <h5 className="font-bold text-[13px] text-[#132a43] mb-0.5">{$t("EcommerceSeoLayers__t53", "Stronger Structure")}</h5>
+              <h5 className="font-bold text-[13px] text-[#132a43] mb-0.5">{html($t("EcommerceSeoLayers__t53", "Stronger Structure"))}</h5>
               <p className="text-[11px] text-slate-500">{rich($t("EcommerceSeoLayers__t54", "Search engines can crawl, understand and trust your store."))}</p>
             </div>
           </div>
@@ -270,7 +262,7 @@ export default function EcommerceSeoLayers() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00897b" strokeWidth="2.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
             </div>
             <div>
-              <h5 className="font-bold text-[13px] text-[#132a43] mb-0.5">{$t("EcommerceSeoLayers__t55", "Better Visibility")}</h5>
+              <h5 className="font-bold text-[13px] text-[#132a43] mb-0.5">{html($t("EcommerceSeoLayers__t55", "Better Visibility"))}</h5>
               <p className="text-[11px] text-slate-500">{rich($t("EcommerceSeoLayers__t56", "Your products rank higher across more searches."))}</p>
             </div>
           </div>
@@ -282,7 +274,7 @@ export default function EcommerceSeoLayers() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00897b" strokeWidth="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div>
-              <h5 className="font-bold text-[13px] text-[#132a43] mb-0.5">{$t("EcommerceSeoLayers__t57", "Qualified Shoppers")}</h5>
+              <h5 className="font-bold text-[13px] text-[#132a43] mb-0.5">{html($t("EcommerceSeoLayers__t57", "Qualified Shoppers"))}</h5>
               <p className="text-[11px] text-slate-500">{rich($t("EcommerceSeoLayers__t58", "You attract people who are ready to compare and buy."))}</p>
             </div>
           </div>
@@ -294,7 +286,7 @@ export default function EcommerceSeoLayers() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00897b" strokeWidth="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
             </div>
             <div>
-              <h5 className="font-bold text-[13px] text-[#132a43] mb-0.5">{$t("EcommerceSeoLayers__t59", "More Sales")}</h5>
+              <h5 className="font-bold text-[13px] text-[#132a43] mb-0.5">{html($t("EcommerceSeoLayers__t59", "More Sales"))}</h5>
               <p className="text-[11px] text-slate-500">{rich($t("EcommerceSeoLayers__t60", "More visibility. More clicks. More revenue for your business."))}</p>
             </div>
           </div>

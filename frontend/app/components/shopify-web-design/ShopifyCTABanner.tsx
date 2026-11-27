@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 export default function ShopifyCTABanner() {
   const $t = useCmsText();
@@ -20,10 +20,7 @@ export default function ShopifyCTABanner() {
         {/* Left Side: Content */}
         <div className="flex-1 w-full relative z-10">
           
-          <h2 className="text-h2 font-black text-[#0f2333] mb-3">
-            {$t("ShopifyCTABanner__t1", "Let's build a store that")}<br />
-            looks <span className="text-[#0d9488]">amazing</span> and <span className="text-[#0d9488]">{$t("ShopifyCTABanner__t2", "sells even better.")}</span>
-          </h2>
+          <h2 className="text-h2 font-black text-[#0f2333] mb-3">{rich($t("ShopifyCTABanner__t1m", "Let's build a store that<br>looks <span class=\"text-[#0d9488]\">amazing</span> and <span class=\"text-[#0d9488]\">sells even better.</span>"))}</h2>
           <p className="text-body text-slate-500 font-medium mb-10">
             {rich($t("ShopifyCTABanner__t3", "Get a tailored strategy for your Shopify store."))}</p>
 
@@ -47,7 +44,7 @@ export default function ShopifyCTABanner() {
                     <path d="M8 10h.01M12 10h.01M16 10h.01" strokeWidth="3" stroke="#0d9488"/>
                   </svg>
                 </div>
-                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{$t("ShopifyCTABanner__t6", "Free Expert")}<br/>{$t("ShopifyCTABanner__t7", "Consultation")}</h4>
+                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{rich($t("ShopifyCTABanner__t6m", "Free Expert<br>Consultation"))}</h4>
                 <p className="text-[10px] text-slate-500 font-medium">{rich($t("ShopifyCTABanner__t8", "No obligations."))}</p>
               </div>
 
@@ -59,7 +56,7 @@ export default function ShopifyCTABanner() {
                     <polyline points="12 6 12 12 16 14" stroke="#0d9488" strokeWidth="2.5"/>
                   </svg>
                 </div>
-                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{$t("ShopifyCTABanner__t9", "Actionable")}<br/>{$t("ShopifyCTABanner__t10", "Recommendations")}</h4>
+                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{rich($t("ShopifyCTABanner__t9m", "Actionable<br>Recommendations"))}</h4>
                 <p className="text-[10px] text-slate-500 font-medium">{rich($t("ShopifyCTABanner__t11", "Clear next steps."))}</p>
               </div>
 
@@ -72,7 +69,7 @@ export default function ShopifyCTABanner() {
                     <rect x="2" y="13" width="4" height="8" rx="1" fill="#14b8a6" stroke="none" />
                   </svg>
                 </div>
-                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{$t("ShopifyCTABanner__t12", "Growth-Focused")}<br/>{$t("ShopifyCTABanner__t13", "Strategy")}</h4>
+                <h4 className="text-[12px] font-bold text-[#0f2333] leading-tight mb-1 whitespace-nowrap">{rich($t("ShopifyCTABanner__t12m", "Growth-Focused<br>Strategy"))}</h4>
                 <p className="text-[10px] text-slate-500 font-medium">{rich($t("ShopifyCTABanner__t14", "Built for results."))}</p>
               </div>
 
@@ -85,7 +82,7 @@ export default function ShopifyCTABanner() {
           
           <div className="flex items-center gap-2 mb-4">
             <span className="text-xl">✨</span>
-            <h3 className="text-[18px] font-bold text-[#0f2333]">{$t("ShopifyCTABanner__t15", "Ready to get started?")}</h3>
+            <h3 className="text-[18px] font-bold text-[#0f2333]">{html($t("ShopifyCTABanner__t15", "Ready to get started?"))}</h3>
           </div>
           
           <Link href={$t("ShopifyCTABanner__t16", "/contact")} className="w-full bg-[#0d9488] text-white font-bold rounded-xl py-4 px-6 flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(13,148,136,0.25)] hover:shadow-[0_8px_25px_rgba(13,148,136,0.35)] hover:-translate-y-1 transition-all duration-300 mb-6">
@@ -108,8 +105,7 @@ export default function ShopifyCTABanner() {
               ))}
             </div>
             
-            <p className="text-[11px] text-slate-500 font-medium leading-tight">
-              {rich($t("ShopifyCTABanner__t18", "Trusted by"))}<br/>{rich($t("ShopifyCTABanner__t19", "businesses worldwide"))}</p>
+            <p className="text-[11px] text-slate-500 font-medium leading-tight">{rich($t("ShopifyCTABanner__t18m", "Trusted by<br>businesses worldwide"))}</p>
           </div>
 
         </div>

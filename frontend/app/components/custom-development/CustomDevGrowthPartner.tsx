@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -141,11 +141,8 @@ export default function CustomDevGrowthPartner() {
               className="w-full"
             >
               <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full" style={{ backgroundColor: "#e6f6f4", color: TEAL }}>
-                <StarIcon /> {$t("CustomDevGrowthPartner__t1", "Why Businesses Choose ProManage")}</span>
-              <h2 className="text-h2 mt-4 font-serif font-bold" style={{ color: NAVY }}>
-                {$t("CustomDevGrowthPartner__t2", "More Than Code.")}<br />
-                <span style={{ color: TEAL }}>{$t("CustomDevGrowthPartner__t3", "A True Growth Partner.")}</span>
-              </h2>
+                <StarIcon /> {html($t("CustomDevGrowthPartner__t1", "Why Businesses Choose ProManage"))}</span>
+              <h2 className="text-h2 mt-4 font-serif font-bold" style={{ color: NAVY }}>{rich($t("CustomDevGrowthPartner__t2m", "More Than Code.<br><span class=\"text-[#0d9488]\">A True Growth Partner.</span>"))}</h2>
               <p className="text-body mt-4 text-slate-500 max-w-md">
                 {rich($t("CustomDevGrowthPartner__t4", "We go beyond development to deliver long-term value through partnership, transparency, and results."))}</p>
             </motion.div>
@@ -246,7 +243,7 @@ export default function CustomDevGrowthPartner() {
               </span>
             </div>
             <div className="min-w-0">
-              <h3 className="text-[15px] font-bold leading-snug" style={{ color: NAVY }}>{$t("CustomDevGrowthPartner__t10", "Let's build something extraordinary together.")}</h3>
+              <h3 className="text-[15px] font-bold leading-snug" style={{ color: NAVY }}>{html($t("CustomDevGrowthPartner__t10", "Let's build something extraordinary together."))}</h3>
               <p className="text-caption text-slate-500 mt-1">{rich($t("CustomDevGrowthPartner__t11", "Your vision + our expertise = software that drives real results."))}</p>
             </div>
           </div>
@@ -278,7 +275,7 @@ export default function CustomDevGrowthPartner() {
                   <span key={i} className="h-6 w-6 rounded-full ring-2 ring-white bg-slate-200" />
                 ))}
               </div>
-              <span className="text-[11px] text-slate-500 whitespace-nowrap">{$t("CustomDevGrowthPartner__t14", "Trusted by 500+ businesses")}</span>
+              <span className="text-[11px] text-slate-500 whitespace-nowrap">{html($t("CustomDevGrowthPartner__t14", "Trusted by 500+ businesses"))}</span>
             </div>
           </div>
         </motion.div>

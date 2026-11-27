@@ -27,6 +27,8 @@ type Field = {
   fields?: Field[];
   maxItems?: number;
   flat?: boolean;
+  /** formatted text: span classes used for coloured words (offered as "accent" buttons in the admin editor) */
+  accents?: string[];
 };
 
 const IMAGE_EXT = /\.(png|jpe?g|webp|svg|gif|avif)(\?.*)?$/i;
@@ -45,7 +47,7 @@ const words = (s: string) =>
     .replace(/^./, (c) => c.toUpperCase())
     .trim();
 const preview = (s: string, n = 60) => {
-  const one = s.replace(/\s+/g, " ").trim();
+  const one = s.replace(/<br[^>]*>/gi, " ").replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
   return one.length > n ? `${one.slice(0, n - 1)}…` : one;
 };
 
@@ -197,7 +199,12 @@ function analyse(sf: SourceFile): FileInfo {
       const field = stringField(key, label, value, hint);
       // {rich($t(...))} in the frontend renders bold/italic/links -> formatting editor in the admin
       const parent = n.getParent();
-      if (parent && Node.isCallExpression(parent) && parent.getExpression().getText() === "rich") Object.assign(field, { type: "richinline", max: 5000 });
+      if (parent && Node.isCallExpression(parent) && parent.getExpression().getText() === "rich") {
+        Object.assign(field, { type: "richinline", max: 5000 });
+        // coloured words (<span class="text-[#0d9488]">…) -> accent buttons in the editor
+        const accents = [...new Set([...value.matchAll(/<span class="([^"]+)">/g)].map((m) => m[1]).filter((c) => /(^|\s)(text-|bg-|from-|italic|underline|font-)/.test(c)))].slice(0, 4);
+        if (accents.length) field.accents = accents;
+      }
       items.push({ pos: n.getStart(), field, def: value });
     } else if (callee === "useCmsData" && d && Node.isIdentifier(d)) {
       const decl = sf.getVariableDeclaration(d.getText());

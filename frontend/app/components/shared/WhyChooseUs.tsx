@@ -14,7 +14,7 @@ import {
   DrawAwardIcon,
 } from "./drawIcons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -96,11 +96,11 @@ export default function WhyChooseUs() {
             className="inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold tracking-wide"
             style={{ borderColor: "rgba(13,148,136,0.3)", color: TEAL, backgroundColor: "#e6f6f4" }}
           >
-            {$t("WhyChooseUs__t1", "WHY BUSINESSES CHOOSE PROMANAGE")}</span>
+            {html($t("WhyChooseUs__t1", "WHY BUSINESSES CHOOSE PROMANAGE"))}</span>
           <h2 className="text-h2 mt-4 font-bold" style={{ color: NAVY }}>
-            {$t("WhyChooseUs__t2", "More Than a Service, ")}<br className="hidden sm:block" />
+            {html($t("WhyChooseUs__t2", "More Than a Service, "))}<br className="hidden sm:block" />
             <span className="relative inline-block" style={{ color: TEAL }}>
-              {$t("WhyChooseUs__t3", "A Growth Partnership.")}<svg
+              {html($t("WhyChooseUs__t3", "A Growth Partnership."))}<svg
                 className="absolute -bottom-1.5 left-0 h-3 w-full"
                 viewBox="0 0 220 12"
                 preserveAspectRatio="none"
@@ -187,25 +187,19 @@ export default function WhyChooseUs() {
                     <StarIcon key={i} />
                   ))}
                 </span>
-                <p className="text-caption text-slate-500">
-                  <span className="font-bold" style={{ color: NAVY }}>
-                    {$t("WhyChooseUs__t5", "4.9/5")}</span>{" "}
-                  {rich($t("WhyChooseUs__t6", "Google Reviews"))}</p>
+                <p className="text-caption text-slate-500">{rich($t("WhyChooseUs__t5m", "<span class=\"font-bold text-[#132a43]\">4.9/5</span> Google Reviews"))}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-base font-extrabold" style={{ color: NAVY }}>
-                {$t("WhyChooseUs__t7", "Clutch")}</span>
+                {html($t("WhyChooseUs__t7", "Clutch"))}</span>
               <div>
                 <span className="flex items-center gap-0.5 text-red-500">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <StarIcon key={i} />
                   ))}
                 </span>
-                <p className="text-caption text-slate-500">
-                  <span className="font-bold" style={{ color: NAVY }}>
-                    {$t("WhyChooseUs__t8", "4.9/5")}</span>{" "}
-                  {rich($t("WhyChooseUs__t9", "Clutch Reviews"))}</p>
+                <p className="text-caption text-slate-500">{rich($t("WhyChooseUs__t8m", "<span class=\"font-bold text-[#132a43]\">4.9/5</span> Clutch Reviews"))}</p>
               </div>
             </div>
           </div>

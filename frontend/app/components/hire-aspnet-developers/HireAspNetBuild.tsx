@@ -5,7 +5,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Rocket, Puzzle, RefreshCw, Target, ShieldCheck, ChartColumn, Gauge, Users, Plus, Check, Braces, Database } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const display = { className: "font-heading" }; // global font from app/layout.tsx
 
@@ -51,7 +51,7 @@ function BuildMock({ reduce }: { reduce: boolean }) {
             <i className="h-1.5 w-1.5 rounded-full bg-[#ffbd2e]" />
             <i className="h-1.5 w-1.5 rounded-full bg-[#27c93f]" />
           </span>
-          <span className="text-[8px] text-slate-500">{$t("HireAspNetBuild__t10", "C#")}</span>
+          <span className="text-[8px] text-slate-500">{html($t("HireAspNetBuild__t10", "C#"))}</span>
         </div>
         <pre className="font-mono text-[8.5px] leading-[1.55]">
           {code.map((line, i) => (
@@ -94,7 +94,7 @@ function BuildMock({ reduce }: { reduce: boolean }) {
             <i className="h-8 rounded bg-slate-100" />
             <i className="h-8 rounded bg-slate-100" />
           </div>
-          <span className="ml-auto mt-2 block w-fit rounded px-2 py-1 text-[8px] font-semibold text-white" style={{ background: TEAL }}>{$t("HireAspNetBuild__t13", "Launch")}</span>
+          <span className="ml-auto mt-2 block w-fit rounded px-2 py-1 text-[8px] font-semibold text-white" style={{ background: TEAL }}>{html($t("HireAspNetBuild__t13", "Launch"))}</span>
         </motion.div>
       </motion.div>
 
@@ -111,7 +111,7 @@ function BuildMock({ reduce }: { reduce: boolean }) {
           animate={reduce ? undefined : { y: [0, -5, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
-          {$t("HireAspNetBuild__t14", ".NET")}</motion.span>
+          {html($t("HireAspNetBuild__t14", ".NET"))}</motion.span>
       </motion.div>
     </div>
   );
@@ -185,7 +185,7 @@ function ExtendMock({ reduce }: { reduce: boolean }) {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.9 }}
       >
-        <Plus className="h-3 w-3" /> {$t("HireAspNetBuild__t16", "Add Feature")}</motion.span>
+        <Plus className="h-3 w-3" /> {html($t("HireAspNetBuild__t16", "Add Feature"))}</motion.span>
 
       {/* chips sit on the lower part of the dashboard */}
       <motion.div
@@ -197,9 +197,7 @@ function ExtendMock({ reduce }: { reduce: boolean }) {
       >
         <motion.span className="flex items-center gap-2.5" animate={reduce ? undefined : { y: [0, -4, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
           <Braces className="h-5 w-5" style={{ color: TEAL }} />
-          <span className="text-[8.5px] leading-tight text-slate-500">
-            <b className="block text-[9.5px]" style={{ color: NAVY }}>{$t("HireAspNetBuild__t17", "New Module")}</b>
-            {$t("HireAspNetBuild__t18", "Integration")}</span>
+          <span className="text-[8.5px] leading-tight text-slate-500">{rich($t("HireAspNetBuild__t17m", "<b class=\"block text-[9.5px] text-[#16264d]\">New Module</b>Integration"))}</span>
         </motion.span>
       </motion.div>
       <motion.div
@@ -211,9 +209,7 @@ function ExtendMock({ reduce }: { reduce: boolean }) {
       >
         <motion.span className="flex items-center gap-2.5" animate={reduce ? undefined : { y: [0, 4, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
           <Database className="h-5 w-5" style={{ color: TEAL }} />
-          <span className="text-[8.5px] leading-tight text-slate-500">
-            <b className="block text-[9.5px]" style={{ color: NAVY }}>{$t("HireAspNetBuild__t19", "API")}</b>
-            {$t("HireAspNetBuild__t20", "Connection")}</span>
+          <span className="text-[8.5px] leading-tight text-slate-500">{rich($t("HireAspNetBuild__t19m", "<b class=\"block text-[9.5px] text-[#16264d]\">API</b>Connection"))}</span>
         </motion.span>
       </motion.div>
 
@@ -270,11 +266,7 @@ function ModernizeMock({ reduce }: { reduce: boolean }) {
             transition={{ duration: 1.4, delay: 0.8, ease: EASE }}
           />
         </span>
-        <p className="mt-2 flex justify-between text-[7.5px] text-slate-400">
-          <span>{$t("HireAspNetBuild__t23", "Slow")}</span>
-          <span>{$t("HireAspNetBuild__t24", "Heavy")}</span>
-          <span className="text-right leading-tight">{$t("HireAspNetBuild__t25", "Hard to")}<br />{$t("HireAspNetBuild__t26", "Scale")}</span>
-        </p>
+        <p className="mt-2 flex justify-between text-[7.5px] text-slate-400">{rich($t("HireAspNetBuild__t23m", "<span>Slow</span><span>Heavy</span><span class=\"text-right leading-tight\">Hard to<br>Scale</span>"))}</p>
       </motion.div>
 
       <motion.div
@@ -367,10 +359,7 @@ export default function HireAspNetBuild() {
               <motion.span
                 className="block"
                 variants={{ hidden: { y: "110%" }, show: { y: "0%", transition: { duration: 0.8, delay: 0.1, ease: EASE } } }}
-              >
-                {$t("HireAspNetBuild__t31", "What do you want to")}{" "}
-                <span className="bg-[linear-gradient(100deg,#0b6f78_10%,#18a8ae_45%,#0d8a91_75%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[aspBuildShine_6s_linear_infinite]">{$t("HireAspNetBuild__t32", "build?")}</span>
-              </motion.span>
+              >{rich($t("HireAspNetBuild__t31m", "What do you want to <span class=\"bg-[linear-gradient(100deg,#0b6f78_10%,#18a8ae_45%,#0d8a91_75%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[aspBuildShine_6s_linear_infinite]\">build?</span>"))}</motion.span>
             </span>
           </h2>
           <motion.p variants={fadeUp} custom={2} className="text-body mx-auto mt-4 max-w-[560px] text-slate-600">
@@ -433,7 +422,7 @@ export default function HireAspNetBuild() {
               <Target className="relative h-7 w-7" strokeWidth={1.6} />
             </span>
             <div>
-              <h3 className="text-[15px] font-bold" style={{ color: NAVY }}>{$t("HireAspNetBuild__t34", "Focused on your success")}</h3>
+              <h3 className="text-[15px] font-bold" style={{ color: NAVY }}>{html($t("HireAspNetBuild__t34", "Focused on your success"))}</h3>
               <p className="text-caption mt-1 max-w-[300px] text-slate-500">
                 {rich($t("HireAspNetBuild__t35", "We align the right ASP.NET expertise with your business goals to deliver measurable impact, faster."))}</p>
             </div>

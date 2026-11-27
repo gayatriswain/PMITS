@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Container from "../shared/Container";
 import { ArrowRight, DotGrid, Emblem, Eyebrow, Icon, IMG, ease, fadeUp, heading, type IconName } from "../shared/MagentoShared";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 type Model = { n: string; title: string; tag: string; points: string[]; icon: IconName; featured?: boolean };
 const models__cms: Model[] = [
@@ -140,7 +140,7 @@ function ModelCard({ m, i, active, onEnter }: { m: Model; i: number; active: boo
           {orange && (
             <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 overflow-hidden rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-7 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-[0_10px_22px_-6px_rgba(249,115,22,0.8)]">
               <span className="mag-anim pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,transparent_30%,rgba(255,255,255,0.5)_50%,transparent_70%)] bg-[length:200%_100%]" style={{ animation: "magShine 2.8s linear infinite" }} />
-              <span className="relative">{$t("MagentoEngage__t1", "Most Popular")}</span>
+              <span className="relative">{html($t("MagentoEngage__t1", "Most Popular"))}</span>
             </span>
           )}
         </div>
@@ -175,7 +175,7 @@ export default function MagentoEngage() {
           >
             {$t("MagentoEngage__t3", "Engage")}{" "}
             <span className="relative inline-block text-[#0d9488]">
-              {$t("MagentoEngage__t4", "your way")}<svg aria-hidden className="absolute -bottom-3 left-0 w-full" viewBox="0 0 220 18" preserveAspectRatio="none" fill="none">
+              {html($t("MagentoEngage__t4", "your way"))}<svg aria-hidden className="absolute -bottom-3 left-0 w-full" viewBox="0 0 220 18" preserveAspectRatio="none" fill="none">
                 <motion.path
                   d="M4 12 C 60 2, 150 2, 216 10"
                   stroke="#0b5f5a"
@@ -285,7 +285,7 @@ export default function MagentoEngage() {
               ))}
             </div>
             <div className="flex-1 text-center lg:text-left">
-              <h3 className={`text-h5 ${heading.className} font-semibold`}>{$t("MagentoEngage__t6", "Not sure which fits?")}</h3>
+              <h3 className={`text-h5 ${heading.className} font-semibold`}>{html($t("MagentoEngage__t6", "Not sure which fits?"))}</h3>
               <p className={`text-body ${heading.className} font-medium text-[#2dd4bf]`}>{rich($t("MagentoEngage__t7", "We’ll help you find the right setup."))}</p>
               <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-3 lg:flex-nowrap lg:justify-start">
                 {helpSteps.map((h) => (

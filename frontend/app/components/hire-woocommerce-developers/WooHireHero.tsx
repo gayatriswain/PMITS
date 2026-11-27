@@ -6,7 +6,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -128,7 +128,7 @@ export function WooBadge({ className = "", text = "text-[26px]" }: { className?:
       className={`relative inline-flex items-center justify-center rounded-[10px] font-extrabold tracking-tight text-white ${text} ${className}`}
       style={{ backgroundColor: WOO_PURPLE }}
     >
-      {$t("WooHireHero__t1", "Woo")}<span
+      {html($t("WooHireHero__t1", "Woo"))}<span
         className="absolute -bottom-[7px] left-[22%] h-0 w-0 border-l-[7px] border-r-[3px] border-t-[8px] border-l-transparent border-r-transparent"
         style={{ borderTopColor: WOO_PURPLE }}
       />
@@ -221,11 +221,7 @@ function HeroVisual() {
               style={{ transform: "perspective(700px) rotateY(24deg) rotateX(7deg) rotateZ(-2deg)", transformOrigin: "left center" }}
             >
               <WooBadge className="h-[36px] w-[64px]" text="text-[20px]" />
-              <p className={`text-body ${caveat.className} mt-3 font-semibold`} style={{ color: NAVY }}>
-                {rich($t("WooHireHero__t3", "Better"))}<br />
-                {rich($t("WooHireHero__t4", "Stores"))}<br />
-                {rich($t("WooHireHero__t5", "Bigger"))}<br />
-                {rich($t("WooHireHero__t6", "Possibilities"))}</p>
+              <p className={`text-body ${caveat.className} mt-3 font-semibold`} style={{ color: NAVY }}>{rich($t("WooHireHero__t3m", "Better<br>Stores<br>Bigger<br>Possibilities"))}</p>
               <svg className="absolute right-4 bottom-11" width="26" height="23" viewBox="0 0 34 30" fill="none" aria-hidden>
                 <path d="M3 26C10 24 22 18 28 6" stroke={NAVY} strokeWidth="1.8" strokeLinecap="round" />
                 <path d="M22 8l6-3 1 7" stroke={NAVY} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -277,10 +273,7 @@ function HeroVisual() {
 
         {/* Handwritten note */}
         <div className="absolute left-[572px] top-[24px] w-[160px] text-center">
-          <p className={`${caveat.className} text-[24px] font-semibold leading-[1.05] -rotate-[8deg]`} style={{ color: NAVY }}>
-            {rich($t("WooHireHero__t9", "Let's Build"))}<br />
-            {rich($t("WooHireHero__t10", "Something Great"))}<br />
-            {rich($t("WooHireHero__t11", "Together"))}</p>
+          <p className={`${caveat.className} text-[24px] font-semibold leading-[1.05] -rotate-[8deg]`} style={{ color: NAVY }}>{rich($t("WooHireHero__t9m", "Let's Build<br>Something Great<br>Together"))}</p>
           <svg className="mx-auto mt-1" width="60" height="44" viewBox="0 0 60 44" fill="none" aria-hidden>
             <path d="M40 2C46 18 34 30 16 38" stroke={NAVY} strokeWidth="1.6" strokeLinecap="round" />
             <path d="M22 31l-7 7 9 2" stroke={NAVY} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -290,11 +283,7 @@ function HeroVisual() {
         {/* "Your Vision" card */}
         <motion.div {...float(1.4, 6)} className="absolute left-[4px] top-[392px]">
           <div className="flex items-end gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-[0_20px_40px_-18px_rgba(15,40,60,0.35)] border border-slate-100">
-            <p className="text-small" style={{ color: NAVY }}>
-              {rich($t("WooHireHero__t12", "Your Vision"))}<br />
-              {rich($t("WooHireHero__t13", "Our Development"))}<br />
-              <span className="font-bold" style={{ color: DEEP_TEAL }}>{$t("WooHireHero__t14", "Real Results")}</span>
-            </p>
+            <p className="text-small" style={{ color: NAVY }}>{rich($t("WooHireHero__t12m", "Your Vision<br>Our Development<br><span class=\"font-bold text-[#0f5c56]\">Real Results</span>"))}</p>
             <ChartUpIcon />
           </div>
         </motion.div>
@@ -355,7 +344,7 @@ export default function WooHireHero() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-teal-100">
                 <CartIcon />
               </span>
-              {$t("WooHireHero__t18", "WooCommerce Experts You Can Rely On")}</motion.span>
+              {html($t("WooHireHero__t18", "WooCommerce Experts You Can Rely On"))}</motion.span>
 
             <motion.h1
               variants={fadeUp}
@@ -364,16 +353,14 @@ export default function WooHireHero() {
             >
               {$t("WooHireHero__t19", "Dedicated")}<br />
               <span className="relative inline-block" style={{ color: TEAL }}>
-                {$t("WooHireHero__t20", "WooCommerce")}<svg className="pointer-events-none absolute -bottom-2 left-[30%] h-3 w-[70%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
+                {html($t("WooHireHero__t20", "WooCommerce"))}<svg className="pointer-events-none absolute -bottom-2 left-[30%] h-3 w-[70%]" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden>
                   <path d="M2 9C60 3 130 2 198 5" fill="none" stroke={TEAL} strokeWidth="3.5" strokeLinecap="round" />
                 </svg>
               </span>
               <br />
               {$t("WooHireHero__t21", "Developers")}</motion.h1>
 
-            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[480px] text-slate-500">
-              {rich($t("WooHireHero__t22", "We build high-performance, scalable and feature-rich WooCommerce stores that"))}{" "}
-              <span className="font-semibold" style={{ color: TEAL }}>{$t("WooHireHero__t23", "drive sales")}</span> {rich($t("WooHireHero__t24", "and deliver exceptional shopping experiences."))}</motion.p>
+            <motion.p variants={fadeUp} className="text-body mt-6 max-w-[480px] text-slate-500">{rich($t("WooHireHero__t22m", "We build high-performance, scalable and feature-rich WooCommerce stores that <span class=\"font-semibold text-[#0d9488]\">drive sales</span> and deliver exceptional shopping experiences."))}</motion.p>
 
             <motion.ul variants={fadeUp} className="mt-7 grid max-w-[460px] grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               {FEATURES.map((f) => (
@@ -407,10 +394,7 @@ export default function WooHireHero() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-teal-200 transition-transform group-hover:scale-105">
                   <PlayIcon />
                 </span>
-                <span className="leading-tight">
-                  <span className="block text-[14px] font-semibold" style={{ color: NAVY }}>{$t("WooHireHero__t28", "See How We Work")}</span>
-                  <span className="block text-[11.5px] text-slate-500">{$t("WooHireHero__t29", "Watch 2-min video")}</span>
-                </span>
+                <span className="leading-tight">{rich($t("WooHireHero__t28m", "<span class=\"block text-[14px] font-semibold text-[#132a43]\">See How We Work</span><span class=\"block text-[11.5px] text-slate-500\">Watch 2-min video</span>"))}</span>
               </Link>
             </motion.div>
           </motion.div>

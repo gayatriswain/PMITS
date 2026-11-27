@@ -6,7 +6,7 @@ import { Puzzle, Link as LinkIcon, Sliders, BarChart, Send, ShieldCheck, Lock, C
 import Image from 'next/image';
 import { useCmsText } from "@/components/cms/SectionContent";
 import NextLink from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const CustomDevFeatures = () => {
   const $t = useCmsText();
@@ -50,11 +50,11 @@ const CustomDevFeatures = () => {
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h3 className="text-teal-600 font-bold tracking-[0.15em] uppercase text-xs mb-4">
-            {$t("CustomDevFeatures__t13", "Custom isn't extra. It's everything.")}</h3>
+            {html($t("CustomDevFeatures__t13", "Custom isn't extra. It's everything."))}</h3>
           <h2 className="text-h2 font-extrabold text-slate-900 mb-6">
-            {$t("CustomDevFeatures__t14", "Design It. Build It. Scale It.")}<br/>
+            {html($t("CustomDevFeatures__t14", "Design It. Build It. Scale It."))}<br/>
             <span className="text-teal-600 relative inline-block mt-2">
-              {$t("CustomDevFeatures__t15", "Exactly How You Want.")}<svg className="absolute w-full h-[12px] -bottom-1 left-0 text-teal-500 opacity-60" viewBox="0 0 200 12" preserveAspectRatio="none">
+              {html($t("CustomDevFeatures__t15", "Exactly How You Want."))}<svg className="absolute w-full h-[12px] -bottom-1 left-0 text-teal-500 opacity-60" viewBox="0 0 200 12" preserveAspectRatio="none">
                 <path d="M 0,8 Q 100,0 200,8 L 200,12 Q 100,4 0,12 Z" fill="currentColor"/>
               </svg>
             </span>
@@ -69,8 +69,8 @@ const CustomDevFeatures = () => {
           {/* Left Column (Hero Card with 3D Graphic) */}
           <div className="lg:col-span-1 bg-white rounded-[32px] p-6 sm:p-8 shadow-sm border border-slate-100 flex flex-col relative overflow-hidden">
             <div className="mb-8 z-10 relative">
-              <h3 className="text-h5 font-extrabold text-slate-900 mb-2">{$t("CustomDevFeatures__t17", "You Imagine.")}</h3>
-              <h3 className="text-h5 font-extrabold text-teal-600 mb-4">{$t("CustomDevFeatures__t18", "We Make It Real.")}</h3>
+              <h3 className="text-h5 font-extrabold text-slate-900 mb-2">{html($t("CustomDevFeatures__t17", "You Imagine."))}</h3>
+              <h3 className="text-h5 font-extrabold text-teal-600 mb-4">{html($t("CustomDevFeatures__t18", "We Make It Real."))}</h3>
               <p className="text-small text-slate-500">
                 {rich($t("CustomDevFeatures__t19", "From the smallest feature to the big picture architecture—we give you the power to customize every element."))}</p>
             </div>
@@ -241,7 +241,7 @@ const CustomDevFeatures = () => {
               <Send className="w-5 h-5 text-white ml-[-2px]" />
             </div>
             <div>
-              <h4 className="text-lg font-bold text-slate-900 mb-1">{$t("CustomDevFeatures__t20", "Have something specific in mind?")}</h4>
+              <h4 className="text-lg font-bold text-slate-900 mb-1">{html($t("CustomDevFeatures__t20", "Have something specific in mind?"))}</h4>
               <p className="text-small text-slate-500">
                 {rich($t("CustomDevFeatures__t21", "Tell us what you want to build. We'll turn it into a solution that fits your vision perfectly."))}</p>
             </div>
@@ -251,17 +251,17 @@ const CustomDevFeatures = () => {
           <div className="flex flex-wrap justify-center xl:justify-start gap-x-8 gap-y-4">
             <div className="flex flex-col items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-teal-600" />
-              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{$t("CustomDevFeatures__t22", "Free Strategy Session")}</span>
+              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{html($t("CustomDevFeatures__t22", "Free Strategy Session"))}</span>
             </div>
             <div className="w-[1px] h-8 bg-slate-100 hidden sm:block"></div>
             <div className="flex flex-col items-center gap-2">
               <Lock className="w-5 h-5 text-teal-600" />
-              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{$t("CustomDevFeatures__t23", "No Obligation")}</span>
+              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{html($t("CustomDevFeatures__t23", "No Obligation"))}</span>
             </div>
             <div className="w-[1px] h-8 bg-slate-100 hidden sm:block"></div>
             <div className="flex flex-col items-center gap-2">
               <CheckCircle className="w-5 h-5 text-teal-600" />
-              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{$t("CustomDevFeatures__t24", "100% Confidential")}</span>
+              <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{html($t("CustomDevFeatures__t24", "100% Confidential"))}</span>
             </div>
           </div>
 
@@ -282,7 +282,7 @@ const CustomDevFeatures = () => {
                   </div>
                 ))}
               </div>
-              <span className="text-xs font-semibold text-slate-500">{$t("CustomDevFeatures__t27", "Trusted by 500+ businesses")}</span>
+              <span className="text-xs font-semibold text-slate-500">{html($t("CustomDevFeatures__t27", "Trusted by 500+ businesses"))}</span>
             </div>
           </div>
 

@@ -1,6 +1,7 @@
 import { cloneElement, isValidElement, type ReactElement } from "react";
 import { getCmsPage, type CmsSection } from "@/lib/cms";
 import { SectionContentProvider } from "./SectionContent";
+import EditMark from "./EditMark";
 import { GLOBAL_PATH, type GlobalKey } from "./global-sections.data";
 import TrustedBar from "@/app/components/shared/TrustedBar";
 import WhyChooseUs from "@/app/components/shared/WhyChooseUs";
@@ -31,9 +32,11 @@ function withContent(el: ReactElement, key: string, content?: Record<string, unk
   const has = !!content && Object.keys(content).length > 0;
   const child = has ? cloneElement(el as ReactElement<{ content?: Record<string, unknown> }>, { content }) : el;
   return (
-    <SectionContentProvider key={key} value={has ? content : null}>
-      {child}
-    </SectionContentProvider>
+    <EditMark key={key} k={key}>
+      <SectionContentProvider sectionKey={key} value={has ? content : null}>
+        {child}
+      </SectionContentProvider>
+    </EditMark>
   );
 }
 
@@ -89,5 +92,5 @@ export async function CmsSlot({ path, k, children }: { path: string; k: string; 
 /** A shared section placed outside the CMS page sections (e.g. the CTA under blog posts): global content only. */
 export async function GlobalSlot({ children }: { children: ReactElement }) {
   const r = await resolve(children);
-  return r.hidden ? null : withContent(children, String(GLOBAL_BY_COMPONENT.get(children.type) ?? "global"), r.content);
+  return r.hidden ? null : withContent(children, `global:${String(GLOBAL_BY_COMPONENT.get(children.type) ?? "section")}`, r.content);
 }

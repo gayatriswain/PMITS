@@ -6,7 +6,7 @@ import Link from "next/link";
 import Container from "../shared/Container";
 import { ArrowIcon, BuildingIcon, CartIcon, CheckIcon, GearIcon, PencilIcon, PinIcon, PlusIcon, SearchIcon, TrophyIcon, UsersIcon } from "../shared/icons";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 
@@ -93,11 +93,8 @@ export default function LocationServices({ slot1 }: { slot1: ReactNode }) {
               style={{ color: TEAL }}
             >
               <span className="h-px w-5" style={{ backgroundColor: TEAL }} />
-              {$t("LocationServices__t1", "Our Digital Services in Noida")}</span>
-            <h2 className="text-h2 mt-3 font-serif font-bold" style={{ color: NAVY }}>
-              {$t("LocationServices__t2", "Digital Solutions")}<br />
-              {$t("LocationServices__t3", "That Drive Growth ")}<span style={{ color: TEAL }}>{$t("LocationServices__t4", "in Noida")}</span>
-            </h2>
+              {html($t("LocationServices__t1", "Our Digital Services in Noida"))}</span>
+            <h2 className="text-h2 mt-3 font-serif font-bold" style={{ color: NAVY }}>{rich($t("LocationServices__t2m", "Digital Solutions<br>That Drive Growth <span class=\"text-[#0d9488]\">in Noida</span>"))}</h2>
             <p className="text-small mt-4 max-w-md text-slate-600">
               {rich($t("LocationServices__t5", "From WordPress development to powerful SEO strategies, we provide end-to-end digital solutions tailored for businesses in Noida."))}</p>
           </div>
@@ -138,7 +135,7 @@ export default function LocationServices({ slot1 }: { slot1: ReactNode }) {
                 backgroundRepeat: "repeat-x",
               }}
             />
-            {$t("LocationServices__t6", "What We Do Best")}<span
+            {html($t("LocationServices__t6", "What We Do Best"))}<span
               className="h-1 w-10"
               style={{
                 backgroundImage: `radial-gradient(${TEAL} 1px, transparent 1.5px)`,
@@ -149,9 +146,7 @@ export default function LocationServices({ slot1 }: { slot1: ReactNode }) {
           </span>
 
           <div className="mx-auto max-w-2xl pt-2 text-center">
-            <h2 className="text-h2 mt-3 font-serif font-bold" style={{ color: NAVY }}>
-              {$t("LocationServices__t7", "WordPress Development Services ")}<span style={{ color: TEAL }}>{$t("LocationServices__t8", "in Noida")}</span>
-            </h2>
+            <h2 className="text-h2 mt-3 font-serif font-bold" style={{ color: NAVY }}>{rich($t("LocationServices__t7m", "WordPress Development Services <span class=\"text-[#0d9488]\">in Noida</span>"))}</h2>
             <p className="text-small mt-3 text-slate-500">
               {rich($t("LocationServices__t9", "We build fast, secure, scalable and SEO-friendly WordPress websites that help businesses in Noida establish a strong online presence."))}</p>
           </div>
@@ -164,7 +159,7 @@ export default function LocationServices({ slot1 }: { slot1: ReactNode }) {
                   className="text-[10px] font-bold uppercase tracking-widest text-slate-400"
                   style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
                 >
-                  {$t("LocationServices__t10", "Our Core Focus")}</span>
+                  {html($t("LocationServices__t10", "Our Core Focus"))}</span>
                 <span className="h-16 w-px bg-slate-200" />
               </div>
               <div>
@@ -193,10 +188,7 @@ export default function LocationServices({ slot1 }: { slot1: ReactNode }) {
                     className="absolute inset-0 m-auto h-16 w-16 rounded-full"
                   />
                 </div>
-                <h3 className="text-h5 mt-4 font-bold" style={{ color: NAVY }}>
-                  {$t("LocationServices__t13", "WordPress Development")}<br />
-                  <span style={{ color: TEAL }}>{$t("LocationServices__t14", "Services in Noida")}</span>
-                </h3>
+                <h3 className="text-h5 mt-4 font-bold" style={{ color: NAVY }}>{rich($t("LocationServices__t13m", "WordPress Development<br><span class=\"text-[#0d9488]\">Services in Noida</span>"))}</h3>
                 <ul className="mt-4 flex flex-col gap-2.5">
                   {wpChecklist.map((item) => (
                     <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
@@ -276,9 +268,7 @@ export default function LocationServices({ slot1 }: { slot1: ReactNode }) {
           <div className="text-center lg:max-w-xs lg:shrink-0 lg:text-left">
             <p className="text-caption font-bold uppercase tracking-widest" style={{ color: TEAL }}>
               {rich($t("LocationServices__t21", "Local Roots. Better Results."))}</p>
-            <h3 className="text-h6 mt-2 font-bold" style={{ color: NAVY }}>
-              {$t("LocationServices__t22", "Proudly Serving Businesses Across ")}<span style={{ color: TEAL }}>{$t("LocationServices__t23", "Noida")}</span>
-            </h3>
+            <h3 className="text-h6 mt-2 font-bold" style={{ color: NAVY }}>{rich($t("LocationServices__t22m", "Proudly Serving Businesses Across <span class=\"text-[#0d9488]\">Noida</span>"))}</h3>
             <p className="text-small mt-2 text-slate-500">
               {rich($t("LocationServices__t24", "We work with companies and startups in all major sectors and locations of Noida & NCR."))}</p>
           </div>

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 // --- Premium Animated 2D Illustration Components ---
 
@@ -194,7 +194,7 @@ export default function ShopifyWhatWeOffer() {
           className="text-center mb-16"
         >
           <div className="flex flex-col items-center justify-center gap-2 mb-4">
-            <span className="text-[12px] font-black tracking-widest text-[#0d9488] uppercase">{$t("ShopifyWhatWeOffer__t17", "What We Offer")}</span>
+            <span className="text-[12px] font-black tracking-widest text-[#0d9488] uppercase">{html($t("ShopifyWhatWeOffer__t17", "What We Offer"))}</span>
             <div className="flex items-center gap-1 opacity-60">
               <span className="w-4 h-[1.5px] bg-[#0d9488]" />
               <span className="w-1.5 h-1.5 rounded-full bg-[#0d9488]" />
@@ -202,9 +202,7 @@ export default function ShopifyWhatWeOffer() {
             </div>
           </div>
           
-          <h2 className="text-h2 font-black text-[#0f2333] mb-4">
-            {$t("ShopifyWhatWeOffer__t18", "More Than a ")}<span className="text-[#0d9488]">{$t("ShopifyWhatWeOffer__t19", "Beautiful Store.")}</span>
-          </h2>
+          <h2 className="text-h2 font-black text-[#0f2333] mb-4">{rich($t("ShopifyWhatWeOffer__t18m", "More Than a <span class=\"text-[#0d9488]\">Beautiful Store.</span>"))}</h2>
           <p className="text-body text-slate-500 font-medium">
             {rich($t("ShopifyWhatWeOffer__t20", "We design high-performing Shopify stores that attract, engage and convert."))}</p>
         </motion.div>

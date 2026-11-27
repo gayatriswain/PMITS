@@ -7,7 +7,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { CakeMark } from "./HireCakePhpExpertise";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -118,7 +118,7 @@ export default function HireCakePhpResults() {
             style={{ color: RED }}
           >
             <i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
-            {$t("HireCakePhpResults__t1", "Real CakePHP Results")}<i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
+            {html($t("HireCakePhpResults__t1", "Real CakePHP Results"))}<i aria-hidden className="h-px w-10" style={{ background: RED, opacity: 0.45 }} />
           </motion.span>
           <motion.div variants={fadeUp} custom={1} className="flex items-center gap-3" aria-hidden>
             <i className="h-px w-16" style={{ background: RED, opacity: 0.3 }} />
@@ -141,7 +141,7 @@ export default function HireCakePhpResults() {
                 className="text-h2 font-playfair font-bold tracking-tight text-[#0f1a2e]"
               >
                 {$t("HireCakePhpResults__t2", "Real Projects.")}<br />
-                {$t("HireCakePhpResults__t3", "Real ")}<span style={{ color: RED }}>{$t("HireCakePhpResults__t4", "CakePHP")}</span> {$t("HireCakePhpResults__t5", "Impact")}<span style={{ color: RED }}>.</span>
+                {$t("HireCakePhpResults__t3", "Real ")}<span style={{ color: RED }}>{html($t("HireCakePhpResults__t4", "CakePHP"))}</span> {$t("HireCakePhpResults__t5", "Impact")}<span style={{ color: RED }}>.</span>
               </motion.h2>
               <motion.p
                 variants={fadeUp}
@@ -238,10 +238,7 @@ export default function HireCakePhpResults() {
                 </span>
               </span>
               <div>
-                <h3 className="text-h6 font-playfair font-bold text-[#0f1a2e]">
-                  {$t("HireCakePhpResults__t8", "Trusted by businesses")}<br />
-                  <span style={{ color: RED }}>{$t("HireCakePhpResults__t9", "across industries.")}</span>
-                </h3>
+                <h3 className="text-h6 font-playfair font-bold text-[#0f1a2e]">{rich($t("HireCakePhpResults__t8m", "Trusted by businesses<br><span class=\"text-[#d92b32]\">across industries.</span>"))}</h3>
                 <p className="mt-1.5 max-w-[250px] text-[11px] leading-relaxed text-slate-500">
                   {rich($t("HireCakePhpResults__t10", "Long-term partnerships built on trust, quality and results."))}</p>
               </div>
@@ -276,7 +273,7 @@ export default function HireCakePhpResults() {
                 className="h-auto w-[86px] select-none drop-shadow-[0_14px_16px_rgba(120,40,40,0.2)]"
               />
               <div>
-                <h3 className="text-[17px] font-bold leading-tight text-[#0f1a2e]">{$t("HireCakePhpResults__t11", "Have a project in mind?")}</h3>
+                <h3 className="text-[17px] font-bold leading-tight text-[#0f1a2e]">{html($t("HireCakePhpResults__t11", "Have a project in mind?"))}</h3>
                 <p className="text-caption mt-1 text-slate-500">{rich($t("HireCakePhpResults__t12", "Let's build something amazing with CakePHP."))}</p>
               </div>
             </div>
@@ -300,7 +297,7 @@ export default function HireCakePhpResults() {
                     </svg>
                   </span>
                   <span>
-                    <span className="block text-[10px] font-semibold text-slate-400">{$t("HireCakePhpResults__t15", "Call Us")}</span>
+                    <span className="block text-[10px] font-semibold text-slate-400">{html($t("HireCakePhpResults__t15", "Call Us"))}</span>
                     <span className="block text-[12.5px] font-semibold text-[#0f1a2e]">{PHONE}</span>
                   </span>
                 </a>
@@ -314,7 +311,7 @@ export default function HireCakePhpResults() {
                     </svg>
                   </span>
                   <span>
-                    <span className="block text-[10px] font-semibold text-slate-400">{$t("HireCakePhpResults__t16", "Email Us")}</span>
+                    <span className="block text-[10px] font-semibold text-slate-400">{html($t("HireCakePhpResults__t16", "Email Us"))}</span>
                     <span className="block text-[12.5px] font-semibold text-[#0f1a2e]">{EMAIL}</span>
                   </span>
                 </a>

@@ -7,7 +7,7 @@ import {
   TrendingUp, Filter, Calendar, Clock, ChevronDown, ChevronLeft, ChevronRight 
 } from 'lucide-react';
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { categoryHref, categorySlug } from "@/lib/blog-slug";
 
 // --- Dummy Data ---
@@ -200,7 +200,7 @@ export default function BlogGrid({ posts, activeCategory = 'All' }: { posts?: Bl
         <div className="flex items-center justify-center gap-4 mb-12">
           <div className="h-px bg-gradient-to-r from-transparent to-[#14b8a6]/40 w-16"></div>
           <span className="text-[#0f766e] text-[10px] font-extrabold uppercase tracking-widest">
-            {$t("BlogGrid__t1", "EXPLORE INSIGHTS BY TOPIC")}</span>
+            {html($t("BlogGrid__t1", "EXPLORE INSIGHTS BY TOPIC"))}</span>
           <div className="h-px bg-gradient-to-l from-transparent to-[#14b8a6]/40 w-16"></div>
         </div>
 
@@ -230,7 +230,7 @@ export default function BlogGrid({ posts, activeCategory = 'All' }: { posts?: Bl
 
           <button className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:border-[#14b8a6] hover:text-[#0f766e] transition-all ml-auto lg:ml-0">
             <Filter size={16} className="text-slate-400" />
-            {$t("BlogGrid__t2", "Filter ")}<ChevronDown size={14} className="ml-1" />
+            {html($t("BlogGrid__t2", "Filter "))}<ChevronDown size={14} className="ml-1" />
           </button>
         </div>
 
@@ -245,7 +245,7 @@ export default function BlogGrid({ posts, activeCategory = 'All' }: { posts?: Bl
           </div>
 
           <div className="flex items-center gap-3 whitespace-nowrap">
-            <span className="text-sm text-slate-500 font-medium">{$t("BlogGrid__t5", "Sort by:")}</span>
+            <span className="text-sm text-slate-500 font-medium">{html($t("BlogGrid__t5", "Sort by:"))}</span>
             <div className="relative">
               <select 
                 value={sortBy}
@@ -333,7 +333,7 @@ export default function BlogGrid({ posts, activeCategory = 'All' }: { posts?: Bl
                 disabled={currentPage === 1}
                 className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-bold border border-slate-200 text-slate-500 hover:border-[#14b8a6] hover:text-[#0f766e] disabled:opacity-50 disabled:pointer-events-none transition-all"
               >
-                <ChevronLeft size={16} /> {$t("BlogGrid__t8", "Previous")}</button>
+                <ChevronLeft size={16} /> {html($t("BlogGrid__t8", "Previous"))}</button>
               
               <div className="flex items-center gap-1">
                 {Array.from({ length: totalPages }).map((_, i) => {
@@ -360,7 +360,7 @@ export default function BlogGrid({ posts, activeCategory = 'All' }: { posts?: Bl
                 disabled={currentPage === totalPages}
                 className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-bold border border-slate-200 text-slate-500 hover:border-[#14b8a6] hover:text-[#0f766e] disabled:opacity-50 disabled:pointer-events-none transition-all"
               >
-                {$t("BlogGrid__t9", "Next ")}<ChevronRight size={16} />
+                {html($t("BlogGrid__t9", "Next "))}<ChevronRight size={16} />
               </button>
             </div>
             
@@ -372,7 +372,7 @@ export default function BlogGrid({ posts, activeCategory = 'All' }: { posts?: Bl
 
         {filteredArticles.length === 0 && (
           <div className="text-center py-20 text-slate-500">
-            {$t("BlogGrid__t11", "No articles found for this category.")}</div>
+            {html($t("BlogGrid__t11", "No articles found for this category."))}</div>
         )}
 
       </div>

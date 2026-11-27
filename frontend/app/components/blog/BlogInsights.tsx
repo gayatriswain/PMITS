@@ -6,7 +6,7 @@ import { Calendar, Clock, ArrowRight, Sparkles, ShoppingCart, MapPin, Search, Ch
 import Image from 'next/image';
 import { useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 export default function BlogInsights() {
   const $t = useCmsText();
@@ -62,7 +62,7 @@ export default function BlogInsights() {
         {/* Title */}
         <div className="flex items-center justify-center gap-4 mb-10">
           <div className="h-[1px] bg-gradient-to-r from-transparent to-teal-200 w-16 md:w-32"></div>
-          <span className="text-[#0f766e] text-[11px] font-extrabold tracking-[0.2em] uppercase">{$t("BlogInsights__t31", "Explore Insights by Topic")}</span>
+          <span className="text-[#0f766e] text-[11px] font-extrabold tracking-[0.2em] uppercase">{html($t("BlogInsights__t31", "Explore Insights by Topic"))}</span>
           <div className="h-[1px] bg-gradient-to-l from-transparent to-teal-200 w-16 md:w-32"></div>
         </div>
 
@@ -92,10 +92,10 @@ export default function BlogInsights() {
             <div className="relative z-10">
               <div className="bg-white/80 backdrop-blur-sm border border-teal-100 text-[#0f766e] text-[9px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-6 shadow-sm">
                 <Sparkles size={12} className="text-[#14b8a6]" />
-                {$t("BlogInsights__t34", "Featured Insight")}</div>
+                {html($t("BlogInsights__t34", "Featured Insight"))}</div>
 
               <h3 className="text-h3 font-extrabold text-[#0f2923] mb-5 tracking-tight max-w-[90%]">
-                {$t("BlogInsights__t35", "The Search Is Changing. Is Your Business Ready?")}</h3>
+                {html($t("BlogInsights__t35", "The Search Is Changing. Is Your Business Ready?"))}</h3>
               
               <p className="text-body text-slate-600 mb-8 max-w-[85%] relative z-10">
                 {rich($t("BlogInsights__t36", "AI search, evolving SERPs, and changing user behavior are reshaping how businesses get discovered online."))}</p>
@@ -103,16 +103,16 @@ export default function BlogInsights() {
               <div className="flex items-center gap-6 text-xs text-slate-500 font-medium mb-10 relative z-10">
                 <div className="flex items-center gap-1.5">
                   <Calendar size={14} className="text-slate-400" />
-                  {$t("BlogInsights__t37", "May 20, 2026")}</div>
+                  {html($t("BlogInsights__t37", "May 20, 2026"))}</div>
                 <div className="flex items-center gap-1.5">
                   <Clock size={14} className="text-slate-400" />
-                  {$t("BlogInsights__t38", "8 min read")}</div>
+                  {html($t("BlogInsights__t38", "8 min read"))}</div>
                 <div className="flex items-center gap-2 border-l border-slate-200 pl-6 hidden sm:flex">
                   <div className="flex -space-x-2">
                     <div className="w-6 h-6 rounded-full border border-white bg-slate-200 overflow-hidden"><img src={$t("BlogInsights__t39", "https://i.pravatar.cc/100?img=11")} alt={$t("BlogInsights__t40", "Avatar")} /></div>
                     <div className="w-6 h-6 rounded-full border border-white bg-slate-300 overflow-hidden"><img src={$t("BlogInsights__t41", "https://i.pravatar.cc/100?img=12")} alt={$t("BlogInsights__t42", "Avatar")} /></div>
                   </div>
-                  <span className="text-[11px] font-bold text-slate-700">{$t("BlogInsights__t43", "ProManage Team")}</span>
+                  <span className="text-[11px] font-bold text-slate-700">{html($t("BlogInsights__t43", "ProManage Team"))}</span>
                 </div>
               </div>
 
@@ -180,11 +180,10 @@ export default function BlogInsights() {
           {/* Left Text */}
           <div className="w-full lg:w-1/4 relative z-10 text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-100 pb-8 lg:pb-0 lg:pr-8">
             <div className="flex items-center justify-center lg:justify-start gap-2 mb-3">
-              <span className="text-[#0f766e] text-[9px] font-extrabold uppercase tracking-widest">{$t("BlogInsights__t45", "What's Changing Right Now")}</span>
+              <span className="text-[#0f766e] text-[9px] font-extrabold uppercase tracking-widest">{html($t("BlogInsights__t45", "What's Changing Right Now"))}</span>
               <div className="h-[1px] bg-teal-100 w-8 hidden md:block"></div>
             </div>
-            <h3 className="text-h4 font-extrabold text-[#0f2923] mb-3">
-              {$t("BlogInsights__t46", "Stay Ahead of")}<br/>{$t("BlogInsights__t47", "What's Next.")}</h3>
+            <h3 className="text-h4 font-extrabold text-[#0f2923] mb-3">{rich($t("BlogInsights__t46m", "Stay Ahead of<br>What's Next."))}</h3>
             <p className="text-small text-slate-500 mb-4">
               {rich($t("BlogInsights__t48", "Key shifts in search and digital that you should know."))}</p>
             {/* Scribble underline graphic (css fallback) */}
@@ -209,9 +208,9 @@ export default function BlogInsights() {
                   <text x="32" y="34.5" fontFamily="sans-serif" fontSize="11" fontWeight="800" fill="#0f2923" textAnchor="middle">{$t("BlogInsights__t49", "AI")}</text>
                 </svg>
               </div>
-              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{$t("BlogInsights__t50", "AI Search & Overviews")}</h5>
+              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{html($t("BlogInsights__t50", "AI Search & Overviews"))}</h5>
               <p className="text-[11px] text-slate-500 leading-relaxed mb-3">{rich($t("BlogInsights__t51", "AI Overviews, SGE and conversational search are here to stay."))}</p>
-              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{$t("BlogInsights__t52", "8 New Articles ")}<ArrowRight size={12}/></div>
+              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{html($t("BlogInsights__t52", "8 New Articles "))}<ArrowRight size={12}/></div>
             </div>
 
             {/* Col 2 */}
@@ -230,9 +229,9 @@ export default function BlogInsights() {
                   <path d="M32 33v8M28 37h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{$t("BlogInsights__t53", "Ecommerce Discovery")}</h5>
+              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{html($t("BlogInsights__t53", "Ecommerce Discovery"))}</h5>
               <p className="text-[11px] text-slate-500 leading-relaxed mb-3">{rich($t("BlogInsights__t54", "Product discovery is evolving beyond the traditional search box."))}</p>
-              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{$t("BlogInsights__t55", "12 New Articles ")}<ArrowRight size={12}/></div>
+              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{html($t("BlogInsights__t55", "12 New Articles "))}<ArrowRight size={12}/></div>
             </div>
 
             {/* Col 3 */}
@@ -248,9 +247,9 @@ export default function BlogInsights() {
                   </g>
                 </svg>
               </div>
-              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{$t("BlogInsights__t56", "Google Updates")}</h5>
+              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{html($t("BlogInsights__t56", "Google Updates"))}</h5>
               <p className="text-[11px] text-slate-500 leading-relaxed mb-3">{rich($t("BlogInsights__t57", "Core updates, spam updates and ranking changes explained."))}</p>
-              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{$t("BlogInsights__t58", "15 New Articles ")}<ArrowRight size={12}/></div>
+              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{html($t("BlogInsights__t58", "15 New Articles "))}<ArrowRight size={12}/></div>
             </div>
 
             {/* Col 4 */}
@@ -269,9 +268,9 @@ export default function BlogInsights() {
                   <circle cx="32" cy="28" r="4.5" fill="#f4fcfb"/>
                 </svg>
               </div>
-              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{$t("BlogInsights__t59", "Local Visibility")}</h5>
+              <h5 className="text-[13px] font-extrabold text-[#0f2923] mb-2 tracking-tight">{html($t("BlogInsights__t59", "Local Visibility"))}</h5>
               <p className="text-[11px] text-slate-500 leading-relaxed mb-3">{rich($t("BlogInsights__t60", "Maps, reviews and local packs—opportunities you can't miss."))}</p>
-              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{$t("BlogInsights__t61", "9 New Articles ")}<ArrowRight size={12}/></div>
+              <div className="text-[10px] font-bold text-[#0f766e] flex items-center gap-1 group-hover:gap-2 transition-all">{html($t("BlogInsights__t61", "9 New Articles "))}<ArrowRight size={12}/></div>
             </div>
 
           </div>

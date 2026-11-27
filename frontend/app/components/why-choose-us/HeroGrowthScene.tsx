@@ -5,6 +5,7 @@ import Image from "next/image";
 import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import { BarChart3, Code2, Flag, PenTool, Rocket, Search, type LucideIcon } from "lucide-react";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const TEAL = "#0d9488";
@@ -96,11 +97,7 @@ export default function HeroGrowthScene() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
         >
-          <p className="font-heading text-[clamp(13px,1.5vw,20px)] font-semibold leading-snug" style={{ color: NAVY }}>
-            {$t("HeroGrowthScene__t3", "Your Vision")}
-            <br />
-            {$t("HeroGrowthScene__t4", "Our Execution")}
-          </p>
+          <p className="font-heading text-[clamp(13px,1.5vw,20px)] font-semibold leading-snug" style={{ color: NAVY }}>{rich($t("HeroGrowthScene__t3m", "Your Vision<br>Our Execution"))}</p>
         </motion.div>
         <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none">
           <motion.path
@@ -127,13 +124,13 @@ export default function HeroGrowthScene() {
           transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
         >
           <p className="font-heading text-[clamp(10px,1.45vw,20px)] font-bold leading-tight" style={{ color: NAVY }}>
-            {$t("HeroGrowthScene__t5", "Designed to Engage.")}
+            {html($t("HeroGrowthScene__t5", "Designed to Engage."))}
           </p>
           <p className="font-heading text-[clamp(10px,1.45vw,20px)] font-bold leading-tight" style={{ color: TEAL }}>
-            {$t("HeroGrowthScene__t6", "Built to Grow.")}
+            {html($t("HeroGrowthScene__t6", "Built to Grow."))}
           </p>
           <span className="mt-2 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[clamp(7px,0.7vw,10px)] font-semibold text-white" style={{ backgroundColor: NAVY }}>
-            {$t("HeroGrowthScene__t7", "Explore")} →
+            {html($t("HeroGrowthScene__t7", "Explore"))} →
           </span>
         </motion.div>
 
@@ -145,10 +142,10 @@ export default function HeroGrowthScene() {
           transition={{ duration: 0.8, delay: 0.9 }}
         >
           <p className="text-[clamp(6px,0.85vw,11px)] font-bold leading-tight" style={{ color: NAVY }}>
-            {$t("HeroGrowthScene__t8", "Mobile Experience")}
+            {html($t("HeroGrowthScene__t8", "Mobile Experience"))}
           </p>
           <p className="mt-1 text-[clamp(5px,0.7vw,9.5px)] font-medium leading-snug" style={{ color: TEAL }}>
-            {$t("HeroGrowthScene__t9", "Seamless. Fast. Effective.")}
+            {html($t("HeroGrowthScene__t9", "Seamless. Fast. Effective."))}
           </p>
         </motion.div>
 
@@ -176,7 +173,7 @@ export default function HeroGrowthScene() {
           transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
         >
           <motion.div {...f(6, 5)} className="rounded-xl bg-white/95 p-[clamp(6px,1vw,14px)] shadow-[0_20px_40px_-18px_rgba(15,23,42,0.35)] ring-1 ring-slate-100">
-            <p className="text-[clamp(8px,0.8vw,11px)] font-medium text-slate-500">{$t("HeroGrowthScene__t10", "Performance")}</p>
+            <p className="text-[clamp(8px,0.8vw,11px)] font-medium text-slate-500">{html($t("HeroGrowthScene__t10", "Performance"))}</p>
             <p className="font-heading text-[clamp(12px,1.4vw,20px)] font-bold" style={{ color: NAVY }}>
               <CountUp value={$t("HeroGrowthScene__t11", "+230%")} />
             </p>
@@ -210,7 +207,7 @@ export default function HeroGrowthScene() {
           transition={{ duration: 0.8, delay: 0.75, ease: EASE }}
         >
           <motion.div {...f(7, 5.6, 0.4)} className="rounded-xl bg-white/95 p-[clamp(6px,1vw,14px)] shadow-[0_22px_44px_-18px_rgba(15,23,42,0.4)] ring-1 ring-slate-100">
-            <p className="text-[clamp(8px,0.8vw,11px)] font-medium text-slate-500">{$t("HeroGrowthScene__t12", "Leads Generated")}</p>
+            <p className="text-[clamp(8px,0.8vw,11px)] font-medium text-slate-500">{html($t("HeroGrowthScene__t12", "Leads Generated"))}</p>
             <p className="font-heading text-[clamp(12px,1.4vw,20px)] font-bold" style={{ color: NAVY }}>
               <CountUp value={$t("HeroGrowthScene__t13", "+180%")} />
             </p>

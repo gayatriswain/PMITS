@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const dmSerif = { className: "font-heading" }; // global font from app/layout.tsx
 
@@ -195,7 +195,7 @@ export default function UiUxWhatWeDo() {
           >
             <span className="w-8 sm:w-12 h-px bg-teal-500/40" />
             <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.25em] text-[#0d9488] uppercase">
-              {$t("UiUxWhatWeDo__t1", "WHAT WE DO")}</span>
+              {html($t("UiUxWhatWeDo__t1", "WHAT WE DO"))}</span>
             <span className="w-8 sm:w-12 h-px bg-teal-500/40" />
           </motion.div>
 
@@ -208,10 +208,8 @@ export default function UiUxWhatWeDo() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <span className={`${dmSerif.className} block font-normal tracking-[-0.015em]`}>
-              {$t("UiUxWhatWeDo__t2", "Digital experiences")}</span>
-            <span className={`${dmSerif.className} block font-normal tracking-[-0.015em]`}>
-              {$t("UiUxWhatWeDo__t3", "designed to ")}<span className="text-[#0d9488]">{$t("UiUxWhatWeDo__t4", "perform.")}</span>
-            </span>
+              {html($t("UiUxWhatWeDo__t2", "Digital experiences"))}</span>
+            <span className={`${dmSerif.className} block font-normal tracking-[-0.015em]`}>{rich($t("UiUxWhatWeDo__t3m", "designed to <span class=\"text-[#0d9488]\">perform.</span>"))}</span>
           </motion.h2>
 
           {/* Subtitle */}
@@ -221,8 +219,7 @@ export default function UiUxWhatWeDo() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {rich($t("UiUxWhatWeDo__t5", "We combine user empathy, design thinking and technology"))}<br className="hidden sm:inline" /> {rich($t("UiUxWhatWeDo__t6", "to craft intuitive, engaging and result-driven digital experiences."))}</motion.p>
+          >{rich($t("UiUxWhatWeDo__t5m", "We combine user empathy, design thinking and technology<br class=\"hidden sm:inline\"> to craft intuitive, engaging and result-driven digital experiences."))}</motion.p>
         </div>
 
         {/* ---------------- MAIN BENTO SECTION ---------------- */}
@@ -243,13 +240,9 @@ export default function UiUxWhatWeDo() {
                 <div className="flex-1 flex flex-col justify-between h-full z-10 max-w-[260px] sm:max-w-[270px]">
                   <div>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 border border-teal-200/80 text-[9.5px] font-bold tracking-[0.14em] text-[#0d9488] uppercase">
-                      {$t("UiUxWhatWeDo__t7", "USER FIRST. IMPACT ALWAYS.")}</span>
+                      {html($t("UiUxWhatWeDo__t7", "USER FIRST. IMPACT ALWAYS."))}</span>
 
-                    <h3 className="text-h4 mt-4 font-bold text-[#0c1e3d] tracking-tight">
-                      {$t("UiUxWhatWeDo__t8", "Great design is more")}<br />
-                      {$t("UiUxWhatWeDo__t9", "than how it looks.")}<br />
-                      <span className="text-[#0d9488]">{$t("UiUxWhatWeDo__t10", "It's how it works.")}</span>
-                    </h3>
+                    <h3 className="text-h4 mt-4 font-bold text-[#0c1e3d] tracking-tight">{rich($t("UiUxWhatWeDo__t8m", "Great design is more<br>than how it looks.<br><span class=\"text-[#0d9488]\">It's how it works.</span>"))}</h3>
 
                     <p className="text-small mt-3.5 text-slate-600">
                       {rich($t("UiUxWhatWeDo__t11", "We design experiences that are easy to use, built to scale and focused on real business outcomes."))}</p>
@@ -261,7 +254,7 @@ export default function UiUxWhatWeDo() {
                       href={$t("UiUxWhatWeDo__t12", "#contact")}
                       className="group inline-flex items-center gap-1.5 text-[13px] font-bold text-[#0d9488] hover:text-[#0b766c] transition-colors"
                     >
-                      <span>{$t("UiUxWhatWeDo__t13", "Let's create impact")}</span>
+                      <span>{html($t("UiUxWhatWeDo__t13", "Let's create impact"))}</span>
                       <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
@@ -298,7 +291,7 @@ export default function UiUxWhatWeDo() {
                         <span className="w-1.5 h-1.5 rounded-full bg-[#0d9488]" />
                       </div>
                       <div className="flex items-center justify-center h-8">
-                        <span className="text-teal-600/40 text-[9px] font-mono tracking-wider">{$t("UiUxWhatWeDo__t14", "GRID 12-COL")}</span>
+                        <span className="text-teal-600/40 text-[9px] font-mono tracking-wider">{html($t("UiUxWhatWeDo__t14", "GRID 12-COL"))}</span>
                       </div>
                       <div className="flex gap-1.5">
                         <span className="w-8 h-1 rounded bg-teal-400/40" />
@@ -330,7 +323,7 @@ export default function UiUxWhatWeDo() {
                       </div>
                       <div className="grid grid-cols-2 gap-1.5 my-1">
                         <div className="rounded-md bg-[#0d9488] p-1.5 flex items-center justify-center shadow-sm">
-                          <span className="text-[9px] font-bold text-white tracking-wide">{$t("UiUxWhatWeDo__t15", "CTA")}</span>
+                          <span className="text-[9px] font-bold text-white tracking-wide">{html($t("UiUxWhatWeDo__t15", "CTA"))}</span>
                         </div>
                         <div className="rounded-md bg-slate-800 p-1.5 border border-slate-700/80" />
                       </div>
@@ -356,7 +349,7 @@ export default function UiUxWhatWeDo() {
                         <span className="w-3.5 h-3.5 rounded-md bg-teal-100 border border-teal-300" />
                       </div>
                       <div className="w-full h-10 border border-dashed border-slate-300 rounded-md flex items-center justify-center">
-                        <span className="text-slate-400 text-[9px] font-medium">{$t("UiUxWhatWeDo__t16", "✕ Wireframe")}</span>
+                        <span className="text-slate-400 text-[9px] font-medium">{html($t("UiUxWhatWeDo__t16", "✕ Wireframe"))}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="w-10 h-1.5 rounded bg-slate-300/80" />
@@ -393,7 +386,7 @@ export default function UiUxWhatWeDo() {
                       {/* Image block with cross & teal button */}
                       <div className="rounded-lg bg-slate-50 border border-slate-100 p-1.5 flex items-center gap-1.5">
                         <div className="w-8 h-6 rounded-md bg-teal-500/20 border border-teal-300 flex items-center justify-center">
-                          <span className="text-[#0d9488] text-[8px] font-bold">{$t("UiUxWhatWeDo__t17", "PRO")}</span>
+                          <span className="text-[#0d9488] text-[8px] font-bold">{html($t("UiUxWhatWeDo__t17", "PRO"))}</span>
                         </div>
                         <div className="flex-1 space-y-1">
                           <span className="block w-12 h-1 rounded bg-slate-700" />
@@ -411,7 +404,7 @@ export default function UiUxWhatWeDo() {
                           <span className="w-1.5 h-1.5 rounded-full bg-[#0c1e3d]" />
                         </div>
                         <span className="px-1.5 py-0.5 rounded-full bg-[#0d9488] text-white text-[8px] font-bold">
-                          {$t("UiUxWhatWeDo__t18", "Published")}</span>
+                          {html($t("UiUxWhatWeDo__t18", "Published"))}</span>
                       </div>
                     </div>
                   </motion.div>

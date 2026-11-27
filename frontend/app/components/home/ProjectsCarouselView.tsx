@@ -7,7 +7,7 @@ import Container from "../shared/Container";
 import { ArrowIcon, ChevronLeftIcon, ChevronRightIcon } from "../shared/icons";
 import { SkylineIllustration, HavenlyIllustration } from "./ProjectIllustrations";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const TEAL = "#0d9488";
 const NAVY = "#132a43";
@@ -190,7 +190,7 @@ export default function ProjectsCarouselView({ cms }: { cms?: CmsProject[] }) {
                       {project.tag}
                     </span>
                     <span className="text-xs font-medium" style={{ color: TEAL }}>
-                      {$t("ProjectsCarousel__t4", "Website Design & Development")}</span>
+                      {html($t("ProjectsCarousel__t4", "Website Design & Development"))}</span>
                   </div>
                 </div>
               );

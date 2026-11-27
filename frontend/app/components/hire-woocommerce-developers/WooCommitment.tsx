@@ -6,7 +6,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -174,11 +174,7 @@ function CommitmentVisual() {
           <span className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ backgroundColor: PURPLE_SOFT }}>
             <BarsIcon size={20} />
           </span>
-          <p className="text-[11px] font-bold leading-tight" style={{ color: NAVY }}>
-            {rich($t("WooCommitment__t3", "Growing"))}<br />
-            {rich($t("WooCommitment__t4", "Your Business"))}<br />
-            <span style={{ color: PURPLE }}>{$t("WooCommitment__t5", "is Our Goal!")}</span>
-          </p>
+          <p className="text-[11px] font-bold leading-tight" style={{ color: NAVY }}>{rich($t("WooCommitment__t3m", "Growing<br>Your Business<br><span class=\"text-[#7f54b3]\">is Our Goal!</span>"))}</p>
         </motion.div>
 
       </div>
@@ -204,7 +200,7 @@ export default function WooCommitment() {
               <span className="flex h-6 w-6 items-center justify-center rounded-full" style={{ backgroundColor: PURPLE }}>
                 <StarIcon />
               </span>
-              {$t("WooCommitment__t6", "Your success. Our commitment.")}</motion.span>
+              {html($t("WooCommitment__t6", "Your success. Our commitment."))}</motion.span>
 
             <motion.h2
               variants={fadeUp}
@@ -212,7 +208,7 @@ export default function WooCommitment() {
               style={{ color: NAVY }}
             >
               {$t("WooCommitment__t7", "Build Powerful Stores.")}<br />
-              {$t("WooCommitment__t8", "Delivered with ")}<span style={{ color: PURPLE }}>{$t("WooCommitment__t9", "Commitment.")}</span>
+              {$t("WooCommitment__t8", "Delivered with ")}<span style={{ color: PURPLE }}>{html($t("WooCommitment__t9", "Commitment."))}</span>
             </motion.h2>
 
             <ol className="relative mt-8 flex flex-col gap-6">
@@ -277,7 +273,7 @@ export default function WooCommitment() {
             <p className="text-[22px] sm:text-[26px] font-extrabold tracking-tight" style={{ color: NAVY }}>
               {rich($t("WooCommitment__t10", "Let's Build Something"))}{" "}
               <span className={`${caveat.className} relative inline-block text-[32px] font-bold`} style={{ color: PURPLE }}>
-                {$t("WooCommitment__t11", "Great")}<svg className="pointer-events-none absolute -bottom-1 left-0 h-2 w-full" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
+                {html($t("WooCommitment__t11", "Great"))}<svg className="pointer-events-none absolute -bottom-1 left-0 h-2 w-full" viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden>
                   <path d="M2 6C30 2 70 2 98 4" fill="none" stroke={PURPLE} strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
               </span>{" "}

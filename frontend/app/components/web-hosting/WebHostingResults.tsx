@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BarChart3, Cloud, Database, Gauge, Globe, Headphones, Layers, Lock, MapPin, MousePointer2, Server, ShieldCheck, SlidersHorizontal, Zap, type LucideIcon } from "lucide-react";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#0f2333";
 const TEAL = "#0f766e";
@@ -62,11 +62,9 @@ export default function WebHostingResults() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: EASE }} className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#eef7f5] px-4 py-1.5 text-[12px] font-bold uppercase tracking-[0.1em]" style={{ color: TEAL }}>
               <BarChart3 className="h-4 w-4" />
-              {$t("WebHostingResults__t1", "Real results")}
+              {html($t("WebHostingResults__t1", "Real results"))}
             </span>
-            <h2 className="text-h2 font-heading mt-4 font-bold tracking-[-0.02em]" style={{ color: NAVY }}>
-              {$t("WebHostingResults__t2", "Hosting You Can See")} <span style={{ color: TEAL }}>{$t("WebHostingResults__t3", "Working.")}</span>
-            </h2>
+            <h2 className="text-h2 font-heading mt-4 font-bold tracking-[-0.02em]" style={{ color: NAVY }}>{rich($t("WebHostingResults__t2m", "Hosting You Can See <span class=\"text-[#0f766e]\">Working.</span>"))}</h2>
             <p className="text-body mx-auto mt-3 max-w-[560px] text-slate-600">{rich($t("WebHostingResults__t4", "Real performance, real uptime, real websites — not just hosting promises."))}</p>
           </motion.div>
 
@@ -102,24 +100,22 @@ export default function WebHostingResults() {
                   ))}
                   <span className="ml-3 flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] text-slate-600 ring-1 ring-slate-200">
                     <Lock className="h-3 w-3 text-emerald-600" />
-                    {$t("WebHostingResults__t5", "yourclientwebsite.com")}
+                    {html($t("WebHostingResults__t5", "yourclientwebsite.com"))}
                   </span>
                 </div>
                 <div className="p-5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[14px] font-bold" style={{ color: NAVY }}>{$t("WebHostingResults__t6", "YourClient")}</span>
+                    <span className="text-[14px] font-bold" style={{ color: NAVY }}>{html($t("WebHostingResults__t6", "YourClient"))}</span>
                     <span className="hidden items-center gap-4 text-[10px] text-slate-600 sm:flex">
                       {clientNav.map((n) => <span key={n}>{n}</span>)}
-                      <span className="rounded px-2 py-1 font-semibold text-white" style={{ background: TEAL }}>{$t("WebHostingResults__t7", "Get Started")}</span>
+                      <span className="rounded px-2 py-1 font-semibold text-white" style={{ background: TEAL }}>{html($t("WebHostingResults__t7", "Get Started"))}</span>
                     </span>
                   </div>
                   <div className="mt-4 grid grid-cols-[1fr_0.9fr] items-center gap-4">
                     <div>
-                      <p className="text-h5 font-heading font-bold leading-tight" style={{ color: NAVY }}>
-                        {$t("WebHostingResults__t8", "Digital solutions that drive")} <span style={{ color: TEAL }}>{$t("WebHostingResults__t9", "real growth.")}</span>
-                      </p>
-                      <p className="mt-2 text-[11px] leading-relaxed text-slate-500">{$t("WebHostingResults__t10", "We help businesses build fast, secure and high-performing websites.")}</p>
-                      <span className="mt-3 inline-flex items-center gap-1 rounded px-3 py-1.5 text-[10px] font-semibold text-white" style={{ background: TEAL }}>{$t("WebHostingResults__t11", "Explore Services")} →</span>
+                      <p className="text-h5 font-heading font-bold leading-tight" style={{ color: NAVY }}>{rich($t("WebHostingResults__t8m", "Digital solutions that drive <span class=\"text-[#0f766e]\">real growth.</span>"))}</p>
+                      <p className="mt-2 text-[11px] leading-relaxed text-slate-500">{html($t("WebHostingResults__t10", "We help businesses build fast, secure and high-performing websites."))}</p>
+                      <span className="mt-3 inline-flex items-center gap-1 rounded px-3 py-1.5 text-[10px] font-semibold text-white" style={{ background: TEAL }}>{html($t("WebHostingResults__t11", "Explore Services"))} →</span>
                     </div>
                     <Image src={$t("WebHostingResults__t12", "/web-hosting/client-building.webp")} alt={$t("WebHostingResults__t13", "Modern office building")} width={289} height={315} className="h-auto w-full rounded-lg object-cover" />
                   </div>
@@ -130,16 +126,16 @@ export default function WebHostingResults() {
               </div>
               <p className="mt-3 flex items-center gap-2 text-caption text-slate-600">
                 <MapPin className="h-4 w-4" style={{ color: TEAL }} />
-                {$t("WebHostingResults__t14", "Business Website • WordPress • USA")}
+                {html($t("WebHostingResults__t14", "Business Website • WordPress • USA"))}
               </p>
             </div>
 
             {/* before / after */}
             <div>
               <div className="grid grid-cols-[1fr_auto_1fr] items-center px-2 text-[12px] font-bold uppercase tracking-wide">
-                <span className="text-center" style={{ color: NAVY }}>{$t("WebHostingResults__t15", "Before")}</span>
+                <span className="text-center" style={{ color: NAVY }}>{html($t("WebHostingResults__t15", "Before"))}</span>
                 <svg viewBox="0 0 60 12" className="h-3 w-14" fill="none" aria-hidden><path d="M2 9 C 20 1, 40 1, 56 6" stroke={NAVY} strokeWidth="1.4" /><path d="M51 2 L57 6 L51 9" stroke={NAVY} strokeWidth="1.4" /></svg>
-                <span className="text-center" style={{ color: TEAL }}>{$t("WebHostingResults__t16", "With ProManage")}</span>
+                <span className="text-center" style={{ color: TEAL }}>{html($t("WebHostingResults__t16", "With ProManage"))}</span>
               </div>
               <AnimatePresence mode="wait">
                 <motion.div key={tab?.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35 }} className="mt-3 space-y-3">
@@ -165,7 +161,7 @@ export default function WebHostingResults() {
                 </motion.div>
               </AnimatePresence>
               <div className="mt-3 rounded-xl bg-[#eef6f6] px-4 py-4">
-                <p className="text-center text-[13px] font-bold" style={{ color: NAVY }}>{$t("WebHostingResults__t17", "What changed?")}</p>
+                <p className="text-center text-[13px] font-bold" style={{ color: NAVY }}>{html($t("WebHostingResults__t17", "What changed?"))}</p>
                 <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {changes.map((c, i) => {
                     const Icon = CHANGE_ICONS[i % CHANGE_ICONS.length];
@@ -198,7 +194,7 @@ export default function WebHostingResults() {
           </ul>
           <p className="mt-4 flex items-center justify-center gap-2 text-caption text-slate-500">
             <Lock className="h-3.5 w-3.5" />
-            {$t("WebHostingResults__t18", "Measured performance from active websites hosted on ProManage.")}
+            {html($t("WebHostingResults__t18", "Measured performance from active websites hosted on ProManage."))}
           </p>
         </div>
       </Container>

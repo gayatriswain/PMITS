@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -120,15 +120,13 @@ export default function SocialMediaMarketingHero() {
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
             <span className="w-8 h-[3px] rounded-full" style={{ backgroundColor: TEAL }} />
             <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-              {$t("SocialMediaMarketingHero__t1", "Creative Social Media Marketing")}</span>
+              {html($t("SocialMediaMarketingHero__t1", "Creative Social Media Marketing"))}</span>
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="text-h1 font-serif font-bold tracking-tight mb-6">
-            <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingHero__t2", "Every Day,")}</span>
-            <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingHero__t3", "Millions Scroll.")}</span>
-            <span className="block" style={{ color: NAVY }}>
-              {$t("SocialMediaMarketingHero__t4", "Make Sure They")}{" "}
-              <span className="font-serif italic" style={{ color: TEAL }}>{$t("SocialMediaMarketingHero__t5", "Stop")}</span> {$t("SocialMediaMarketingHero__t6", "For You.")}</span>
+            <span className="block" style={{ color: NAVY }}>{html($t("SocialMediaMarketingHero__t2", "Every Day,"))}</span>
+            <span className="block" style={{ color: NAVY }}>{html($t("SocialMediaMarketingHero__t3", "Millions Scroll."))}</span>
+            <span className="block" style={{ color: NAVY }}>{rich($t("SocialMediaMarketingHero__t4m", "Make Sure They <span class=\"font-serif italic text-[#0d9488]\">Stop</span> For You."))}</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} className="text-body text-slate-600 max-w-lg mb-8">

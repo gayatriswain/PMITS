@@ -9,7 +9,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 import { Rocket, Target, ShieldCheck, Clock, FileText, User, Mail, Phone, MapPin, Edit3, Lock, Send, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 import { goToThankYou } from "@/lib/forms";
 
 const TEAL = "#0d9488";
@@ -71,14 +71,14 @@ export default function WhyChooseUsProposalForm() {
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-teal-100 bg-white mb-8 shadow-sm">
                 <Rocket size={14} style={{ color: TEAL }} />
                 <span className="text-[10px] font-extrabold tracking-widest uppercase" style={{ color: TEAL }}>
-                  {$t("WhyChooseUsProposalForm__t1", "LET'S TURN YOUR IDEA INTO REALITY")}</span>
+                  {html($t("WhyChooseUsProposalForm__t1", "LET'S TURN YOUR IDEA INTO REALITY"))}</span>
               </div>
 
               {/* Heading */}
               <h2 className="text-h1 font-heading font-extrabold leading-[1.05] mb-7 text-[#0b1220] tracking-[-0.02em]">
-                <span className="block">{$t("WhyChooseUsProposalForm__t2", "Get My")}</span>
+                <span className="block">{html($t("WhyChooseUsProposalForm__t2", "Get My"))}</span>
                 <span className="relative inline-block">
-                  <span style={{ color: TEAL }}>{$t("WhyChooseUsProposalForm__t3", "Free")}</span> {$t("WhyChooseUsProposalForm__t4", "Proposal")}
+                  <span style={{ color: TEAL }}>{html($t("WhyChooseUsProposalForm__t3", "Free"))}</span> {html($t("WhyChooseUsProposalForm__t4", "Proposal"))}
                   {/* brush underline under "Proposal" */}
                   <svg aria-hidden className="absolute -bottom-3 left-[34%] h-4 w-[72%]" viewBox="0 0 200 16" preserveAspectRatio="none" fill="none">
                     <path d="M3 12C55 4 130 2 197 7" stroke="#0f5c56" strokeWidth="4" strokeLinecap="round" />
@@ -98,7 +98,7 @@ export default function WhyChooseUsProposalForm() {
                     <Target size={20} className="text-teal-600" />
                   </div>
                   <div>
-                    <h4 className="text-[15px] font-bold text-[#0b1220] mb-1">{$t("WhyChooseUsProposalForm__t6", "Tailored for You")}</h4>
+                    <h4 className="text-[15px] font-bold text-[#0b1220] mb-1">{html($t("WhyChooseUsProposalForm__t6", "Tailored for You"))}</h4>
                     <p className="text-caption text-slate-500 font-medium">{rich($t("WhyChooseUsProposalForm__t7", "A custom strategy aligned with your goals."))}</p>
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function WhyChooseUsProposalForm() {
                     <Rocket size={20} className="text-purple-600" />
                   </div>
                   <div>
-                    <h4 className="text-[15px] font-bold text-[#0b1220] mb-1">{$t("WhyChooseUsProposalForm__t8", "Actionable & Clear")}</h4>
+                    <h4 className="text-[15px] font-bold text-[#0b1220] mb-1">{html($t("WhyChooseUsProposalForm__t8", "Actionable & Clear"))}</h4>
                     <p className="text-caption text-slate-500 font-medium">{rich($t("WhyChooseUsProposalForm__t9", "No fluff, just a clear plan that delivers results."))}</p>
                   </div>
                 </div>
@@ -120,7 +120,7 @@ export default function WhyChooseUsProposalForm() {
                     <ShieldCheck size={20} className="text-amber-600" />
                   </div>
                   <div>
-                    <h4 className="text-[15px] font-bold text-[#0b1220] mb-1">{$t("WhyChooseUsProposalForm__t10", "100% Confidential")}</h4>
+                    <h4 className="text-[15px] font-bold text-[#0b1220] mb-1">{html($t("WhyChooseUsProposalForm__t10", "100% Confidential"))}</h4>
                     <p className="text-caption text-slate-500 font-medium">{rich($t("WhyChooseUsProposalForm__t11", "Your information is safe with us."))}</p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ export default function WhyChooseUsProposalForm() {
                     <Clock size={20} className="text-blue-600" />
                   </div>
                   <div>
-                    <h4 className="text-[15px] font-bold text-[#0b1220] mb-1">{$t("WhyChooseUsProposalForm__t12", "Fast Response")}</h4>
+                    <h4 className="text-[15px] font-bold text-[#0b1220] mb-1">{html($t("WhyChooseUsProposalForm__t12", "Fast Response"))}</h4>
                     <p className="text-caption text-slate-500 font-medium">{rich($t("WhyChooseUsProposalForm__t13", "We'll get back to you within 24 hours."))}</p>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function WhyChooseUsProposalForm() {
                 </div>
                 <div>
                   <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">{rich($t("WhyChooseUsProposalForm__t16", "Trusted by"))}</p>
-                  <h4 className="text-lg font-black text-[#0f2333] leading-none mb-1">{$t("WhyChooseUsProposalForm__t17", "100+")}</h4>
+                  <h4 className="text-lg font-black text-[#0f2333] leading-none mb-1">{html($t("WhyChooseUsProposalForm__t17", "100+"))}</h4>
                   <p className="text-[10px] text-slate-500 font-semibold">{rich($t("WhyChooseUsProposalForm__t18", "Businesses Worldwide"))}</p>
                 </div>
                 <div className="ml-2 w-8 h-8 rounded bg-teal-50 flex items-end justify-between p-1">
@@ -198,9 +198,9 @@ export default function WhyChooseUsProposalForm() {
                   </svg>
                 </div>
                 <h3 className="text-h4 font-heading font-bold text-white mb-1">
-                  {$t("WhyChooseUsProposalForm__t19", "Let's Build Something")}</h3>
+                  {html($t("WhyChooseUsProposalForm__t19", "Let's Build Something"))}</h3>
                 <h3 className="font-caveat text-[clamp(34px,3.2vw,48px)] font-semibold leading-none -rotate-2" style={{ color: MINT }}>
-                  {$t("WhyChooseUsProposalForm__t20", "Amazing Together!")}</h3>
+                  {html($t("WhyChooseUsProposalForm__t20", "Amazing Together!"))}</h3>
                 {/* Decorative Swirl under text */}
                 <svg aria-hidden className="w-44 h-3 mt-2" viewBox="0 0 160 12" preserveAspectRatio="none" fill="none">
                   <path d="M4 9C50 2 110 1 156 6" stroke={MINT} strokeWidth="2.6" strokeLinecap="round" />
@@ -211,7 +211,7 @@ export default function WhyChooseUsProposalForm() {
               {sent ? (
                 <div className="rounded-2xl border border-[#113a34] bg-[#061815] px-6 py-12 text-center">
                   <div className="mx-auto w-12 h-12 rounded-full bg-[#0d9488]/20 text-[#2dd4bf] flex items-center justify-center text-xl font-bold">✓</div>
-                  <h4 className="mt-4 text-lg font-bold text-white">{$t("WhyChooseUsProposalForm__t21", "Thank you! Your proposal request is in.")}</h4>
+                  <h4 className="mt-4 text-lg font-bold text-white">{html($t("WhyChooseUsProposalForm__t21", "Thank you! Your proposal request is in."))}</h4>
                   <p className="text-small mt-1.5 text-slate-400">{rich($t("WhyChooseUsProposalForm__t22", "Our team will get back to you within 24 hours."))}</p>
                 </div>
               ) : (
@@ -265,8 +265,8 @@ export default function WhyChooseUsProposalForm() {
                       className="peer w-full bg-white/[0.04] border border-white/20 rounded-xl py-[18px] pl-12 pr-4 text-[14px] text-white placeholder:text-white/75 hover:border-white/30 focus:outline-none focus:border-[#5fd4bd] focus:bg-white/[0.07] transition-colors"
                     />
                     <span aria-hidden className="pointer-events-none absolute left-12 top-1/2 -translate-y-1/2 text-[14px] leading-tight text-white/75 peer-[:not(:placeholder-shown)]:hidden">
-                      {$t("WhyChooseUsProposalForm__t26", "Phone Number*")}
-                      <span className="block text-[12px] text-white/55">{$t("WhyChooseUsProposalForm__t33", "(with country code)")}</span>
+                      {html($t("WhyChooseUsProposalForm__t26", "Phone Number*"))}
+                      <span className="block text-[12px] text-white/55">{html($t("WhyChooseUsProposalForm__t33", "(with country code)"))}</span>
                     </span>
                   </div>
                 </div>
@@ -300,7 +300,7 @@ export default function WhyChooseUsProposalForm() {
                 <div className="my-3 flex items-center gap-4">
                   <span aria-hidden className="h-px flex-1 border-t border-dashed border-white/25" />
                   <span className="font-caveat whitespace-nowrap text-[clamp(20px,1.8vw,26px)]" style={{ color: MINT }}>
-                    {$t("WhyChooseUsProposalForm__t29", "No Commitment. Just Possibilities.")}
+                    {html($t("WhyChooseUsProposalForm__t29", "No Commitment. Just Possibilities."))}
                   </span>
                   <span aria-hidden className="h-px flex-1 border-t border-dashed border-white/25" />
                 </div>

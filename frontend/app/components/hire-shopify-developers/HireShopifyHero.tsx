@@ -7,6 +7,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { useFitScale } from "../shared/useFitScale";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { html, rich } from "@/components/cms/rich";
 
 const caveat = { className: "font-caveat" }; // global font from app/layout.tsx
 
@@ -102,11 +103,7 @@ const trust__cms = [
 function Heading({ className = "" }: { className?: string }) {
   const $t = useCmsText();
   return (
-    <h1 className={`font-black tracking-tight ${className}`} style={{ color: NAVY }}>
-      {$t("HireShopifyHero__t1", "Hire")}{" "}
-      <span className="bg-gradient-to-r from-[#2f9e4f] to-[#0e5a33] bg-clip-text text-transparent">{$t("HireShopifyHero__t2", "Shopify")}</span>
-      <br />
-      {$t("HireShopifyHero__t3", "Developers")}</h1>
+    <h1 className={`font-black tracking-tight ${className}`} style={{ color: NAVY }}>{rich($t("HireShopifyHero__t1m", "Hire <span class=\"bg-gradient-to-r from-[#2f9e4f] to-[#0e5a33] bg-clip-text text-transparent\">Shopify</span><br>Developers"))}</h1>
   );
 }
 
@@ -137,7 +134,7 @@ function Buttons({ className = "" }: { className?: string }) {
           </svg>
         </span>
         <span className="text-[15px] font-semibold" style={{ color: NAVY }}>
-          {$t("HireShopifyHero__t7", "Talk to Our Experts")}</span>
+          {html($t("HireShopifyHero__t7", "Talk to Our Experts"))}</span>
       </Link>
     </div>
   );
@@ -190,10 +187,7 @@ export default function HireShopifyHero() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 1.1 }}
-              >
-                {$t("HireShopifyHero__t10", "Build")}<br />
-                {$t("HireShopifyHero__t11", "Sell")}<br />
-                {$t("HireShopifyHero__t12", "Grow")}</motion.div>
+              >{rich($t("HireShopifyHero__t10m", "Build<br>Sell<br>Grow"))}</motion.div>
               <svg className="absolute pointer-events-none" style={{ left: 1128, top: 14 }} width="80" height="80" viewBox="0 0 80 80" fill="none">
                 <motion.path
                   d="M6 22 C 30 6, 56 14, 62 50"
@@ -227,15 +221,13 @@ export default function HireShopifyHero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 2 }}
-              >
-                {$t("HireShopifyHero__t13", "More")}<br />
-                {$t("HireShopifyHero__t14", "than just a store.")}</motion.div>
+              >{rich($t("HireShopifyHero__t13m", "More<br>than just a store."))}</motion.div>
 
               {/* ---------- copy ---------- */}
               <motion.div className="absolute left-[35px] top-[66px] w-[470px]" variants={stagger} initial="hidden" animate="show">
                 <motion.div variants={fadeUp} className="flex items-center gap-3 text-[11.5px] font-medium tracking-[0.2em] uppercase text-slate-500">
                   <span className="w-12 h-px bg-slate-300" />
-                  {$t("HireShopifyHero__t15", "Ecommerce Experts, Real Results")}<span className="w-12 h-px bg-slate-300" />
+                  {html($t("HireShopifyHero__t15", "Ecommerce Experts, Real Results"))}<span className="w-12 h-px bg-slate-300" />
                 </motion.div>
 
                 <motion.div variants={fadeUp} className="mt-5">
@@ -278,8 +270,8 @@ export default function HireShopifyHero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 1.6 }}
               >
-                {$t("HireShopifyHero__t16", "Your Shopify Store")}<br />
-                <span className="ml-8">{$t("HireShopifyHero__t17", "Our Expertise.")}</span>
+                {html($t("HireShopifyHero__t16", "Your Shopify Store"))}<br />
+                <span className="ml-8">{html($t("HireShopifyHero__t17", "Our Expertise."))}</span>
               </motion.div>
               <svg className="absolute pointer-events-none" style={{ left: 74, top: 778 }} width="230" height="26" viewBox="0 0 230 26" fill="none">
                 <motion.path d="M4 20 C 60 18, 150 10, 224 3" stroke="#2f9e4f" strokeWidth="3" strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.9, delay: 2.2 }} />
@@ -292,7 +284,7 @@ export default function HireShopifyHero() {
         <div className="lg:hidden py-10 sm:py-14">
           <div className="flex items-center gap-3 text-[11px] font-medium tracking-[0.18em] uppercase text-slate-500">
             <span className="w-8 h-px bg-slate-300" />
-            {$t("HireShopifyHero__t18", "Ecommerce Experts, Real Results")}</div>
+            {html($t("HireShopifyHero__t18", "Ecommerce Experts, Real Results"))}</div>
           <Heading className="mt-4 text-5xl sm:text-6xl leading-[1.05]" />
           <p className="text-body mt-5 text-slate-600 max-w-lg">{copy}</p>
 
@@ -315,8 +307,8 @@ export default function HireShopifyHero() {
           </div>
 
           <div className={`${caveat.className} mt-4 text-3xl font-semibold`} style={{ color: DEEP }}>
-            {$t("HireShopifyHero__t21", "Your Shopify Store")}<br />
-            <span className="ml-6">{$t("HireShopifyHero__t22", "Our Expertise.")}</span>
+            {html($t("HireShopifyHero__t21", "Your Shopify Store"))}<br />
+            <span className="ml-6">{html($t("HireShopifyHero__t22", "Our Expertise."))}</span>
           </div>
         </div>
       </Container>

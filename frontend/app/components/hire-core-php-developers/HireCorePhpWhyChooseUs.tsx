@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../shared/Container";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
+import { html, rich } from "@/components/cms/rich";
 
 interface OrbitFeature {
   id: string;
@@ -182,10 +183,7 @@ function PartnerBanner({ className = "" }: { className?: string }) {
               <path d="m9 6 6 6-6 6" />
             </svg>
           </motion.span>
-          <div className="text-left text-[17px] font-semibold leading-snug text-white">
-            {$t("HireCorePhpWhyChooseUs__t1", "The Right Partner for Your")}<br />
-            <span className="text-[#3fd6cf]">{$t("HireCorePhpWhyChooseUs__t2", "Core PHP Projects.")}</span>
-          </div>
+          <div className="text-left text-[17px] font-semibold leading-snug text-white">{rich($t("HireCorePhpWhyChooseUs__t1m", "The Right Partner for Your<br><span class=\"text-[#3fd6cf]\">Core PHP Projects.</span>"))}</div>
         </div>
 
         <span className="hidden lg:block w-px h-12 bg-white/15" />
@@ -220,8 +218,8 @@ function HubCircle({ className = "" }: { className?: string }) {
   return (
     <div className={`rounded-full bg-white border border-slate-100 shadow-[0_26px_50px_-18px_rgba(15,35,80,0.35)] flex flex-col items-center justify-center text-center ${className}`}>
       <span className="w-9 h-[2px] rounded-full bg-[#0f8a83]" />
-      <div className="mt-2.5 text-[15px] font-extrabold tracking-wide text-[#0c1e3d] leading-none">{$t("HireCorePhpWhyChooseUs__t7", "CORE PHP")}</div>
-      <div className="mt-1.5 text-[15px] font-extrabold tracking-wide text-[#0f8a83] leading-none">{$t("HireCorePhpWhyChooseUs__t8", "EXCELLENCE")}</div>
+      <div className="mt-2.5 text-[15px] font-extrabold tracking-wide text-[#0c1e3d] leading-none">{html($t("HireCorePhpWhyChooseUs__t7", "CORE PHP"))}</div>
+      <div className="mt-1.5 text-[15px] font-extrabold tracking-wide text-[#0f8a83] leading-none">{html($t("HireCorePhpWhyChooseUs__t8", "EXCELLENCE"))}</div>
       <svg viewBox="0 0 24 24" className="mt-2.5 w-6 h-6 text-[#0f8a83]" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />
       </svg>
@@ -249,7 +247,7 @@ export default function HireCorePhpWhyChooseUs() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                {$t("HireCorePhpWhyChooseUs__t9", "Why businesses choose us")}</motion.div>
+                {html($t("HireCorePhpWhyChooseUs__t9", "Why businesses choose us"))}</motion.div>
               <motion.h2
                 className="absolute left-[47px] top-[80px] text-[44px] font-black tracking-tight leading-[1.12] text-[#0c1e3d] whitespace-nowrap"
                 initial={{ opacity: 0, y: 16 }}
@@ -257,7 +255,7 @@ export default function HireCorePhpWhyChooseUs() {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 {$t("HireCorePhpWhyChooseUs__t10", "Experience That")}<br />
-                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{$t("HireCorePhpWhyChooseUs__t11", "Delivers Confidence.")}</span>
+                <span className="bg-gradient-to-r from-[#0f8a83] to-[#1aa6a6] bg-clip-text text-transparent">{html($t("HireCorePhpWhyChooseUs__t11", "Delivers Confidence."))}</span>
               </motion.h2>
               <motion.p
                 className="absolute left-[47px] top-[200px] w-[400px] text-[14.5px] leading-[1.55] text-slate-600"
@@ -358,11 +356,8 @@ export default function HireCorePhpWhyChooseUs() {
 
         {/* ======================= MOBILE / TABLET ======================= */}
         <div className="lg:hidden">
-          <div className="text-[11.5px] font-bold tracking-[0.22em] text-[#0f8a83] uppercase">{$t("HireCorePhpWhyChooseUs__t14", "Why businesses choose us")}</div>
-          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0c1e3d]">
-            {$t("HireCorePhpWhyChooseUs__t15", "Experience That")}<br />
-            <span className="text-[#0f8a83]">{$t("HireCorePhpWhyChooseUs__t16", "Delivers Confidence.")}</span>
-          </h2>
+          <div className="text-[11.5px] font-bold tracking-[0.22em] text-[#0f8a83] uppercase">{html($t("HireCorePhpWhyChooseUs__t14", "Why businesses choose us"))}</div>
+          <h2 className="text-h2 mt-3 font-black tracking-tight text-[#0c1e3d]">{rich($t("HireCorePhpWhyChooseUs__t15m", "Experience That<br><span class=\"text-[#0f8a83]\">Delivers Confidence.</span>"))}</h2>
           <p className="text-body mt-4 text-slate-600 max-w-md">{subtitle}</p>
           <div className="mt-5 w-10 h-[3px] rounded-full bg-[#0f8a83]" />
 

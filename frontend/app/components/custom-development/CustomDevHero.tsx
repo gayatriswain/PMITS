@@ -98,7 +98,7 @@ const TrustItem = ({ icon, title, sub }: any) => (
 
 import Image from 'next/image';
 import { useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const CentralIsometric = () => {
   const $t = useCmsText();
@@ -276,7 +276,7 @@ export default function CustomDevHero() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white shadow-sm border border-teal-100 text-[10px] font-bold tracking-widest text-teal-700 uppercase mb-6"
           >
-            <span className="text-teal-500 font-black text-sm">&lt;/&gt;</span> {$t("CustomDevHero__t2", "CUSTOM DEVELOPMENT")}</motion.div>
+            <span className="text-teal-500 font-black text-sm">&lt;/&gt;</span> {html($t("CustomDevHero__t2", "CUSTOM DEVELOPMENT"))}</motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -285,7 +285,7 @@ export default function CustomDevHero() {
             className="text-h1 font-extrabold text-slate-800 tracking-tight mb-6"
           >
             {$t("CustomDevHero__t3", "Your Vision, Our Code.")}<br />
-            {$t("CustomDevHero__t4", "100% Custom. ")}<span className="text-teal-600 relative inline-block">{$t("CustomDevHero__t5", "100% Yours.")}<svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-300 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 8 Q 50 0 100 8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg></span>
+            {$t("CustomDevHero__t4", "100% Custom. ")}<span className="text-teal-600 relative inline-block">{html($t("CustomDevHero__t5", "100% Yours."))}<svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-300 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 8 Q 50 0 100 8" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg></span>
           </motion.h1>
 
           <motion.p

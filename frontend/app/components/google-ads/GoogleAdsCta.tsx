@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useCmsText } from "@/components/cms/SectionContent";
 import Link from "next/link";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 export default function GoogleAdsCta() {
   const $t = useCmsText();
@@ -20,14 +20,10 @@ export default function GoogleAdsCta() {
             <span className="text-[#00897b] text-xl leading-none">✦</span>
             <span className="text-[#00897b] text-[10px] font-bold tracking-[0.2em] uppercase relative">
               <span className="absolute -left-8 top-1/2 -translate-y-1/2 w-6 h-px bg-[#00897b]/30"></span>
-              {$t("GoogleAdsCta__t1", "Ready to grow?")}</span>
+              {html($t("GoogleAdsCta__t1", "Ready to grow?"))}</span>
           </div>
 
-          <h2 className="text-h2 font-bold text-[#132a43] mb-6 font-serif">
-            {$t("GoogleAdsCta__t2", "Let's Build Your")}<br />
-            {$t("GoogleAdsCta__t3", "Next Growth Story")}<br />
-            <span className="text-[#004e48]">{$t("GoogleAdsCta__t4", "Together.")}</span>
-          </h2>
+          <h2 className="text-h2 font-bold text-[#132a43] mb-6 font-serif">{rich($t("GoogleAdsCta__t2m", "Let's Build Your<br>Next Growth Story<br><span class=\"text-[#004e48]\">Together.</span>"))}</h2>
 
           <p className="text-body text-slate-500 mb-10 max-w-lg">
             {rich($t("GoogleAdsCta__t5", "You've seen what's possible. Now, let's create a Google Ads strategy that drives real customers and real business growth."))}</p>
@@ -50,7 +46,7 @@ export default function GoogleAdsCta() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#132a43] mb-1">{$t("GoogleAdsCta__t8", "Custom Strategy")}</h4>
+                <h4 className="text-xs font-bold text-[#132a43] mb-1">{html($t("GoogleAdsCta__t8", "Custom Strategy"))}</h4>
                 <p className="text-[10px] text-slate-500 leading-tight">{rich($t("GoogleAdsCta__t9", "Tailored to your business goals and market."))}</p>
               </div>
             </div>
@@ -60,7 +56,7 @@ export default function GoogleAdsCta() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#132a43] mb-1">{$t("GoogleAdsCta__t10", "Transparent Results")}</h4>
+                <h4 className="text-xs font-bold text-[#132a43] mb-1">{html($t("GoogleAdsCta__t10", "Transparent Results"))}</h4>
                 <p className="text-[10px] text-slate-500 leading-tight">{rich($t("GoogleAdsCta__t11", "Clear reporting. Real numbers. No hidden surprises."))}</p>
               </div>
             </div>
@@ -70,7 +66,7 @@ export default function GoogleAdsCta() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#132a43] mb-1">{$t("GoogleAdsCta__t12", "No Lock-in Contracts")}</h4>
+                <h4 className="text-xs font-bold text-[#132a43] mb-1">{html($t("GoogleAdsCta__t12", "No Lock-in Contracts"))}</h4>
                 <p className="text-[10px] text-slate-500 leading-tight">{rich($t("GoogleAdsCta__t13", "Work with us because you want to."))}</p>
               </div>
             </div>
@@ -104,7 +100,7 @@ export default function GoogleAdsCta() {
             <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white mb-4 backdrop-blur-sm ml-auto">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
             </div>
-            <p className="text-small text-white font-bold">{rich($t("GoogleAdsCta__t19", "More leads."))}<br/>{rich($t("GoogleAdsCta__t20", "Lower costs."))}<br/>{rich($t("GoogleAdsCta__t21", "Better ROI."))}</p>
+            <p className="text-small text-white font-bold">{rich($t("GoogleAdsCta__t19m", "More leads.<br>Lower costs.<br>Better ROI."))}</p>
           </div>
           {/* Floating Results Bar */}
           <div className="absolute bottom-8 right-6 lg:right-[max(1.25rem,calc((100vw-1640px)/2+1.25rem))] left-6 lg:left-12 bg-white/95 backdrop-blur-xl rounded-3xl p-5 lg:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-white/50 z-30">
@@ -120,7 +116,7 @@ export default function GoogleAdsCta() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
                 <div>
-                  <h4 className="text-h5 font-bold text-[#132a43] mb-1">{$t("GoogleAdsCta__t23", "+186%")}</h4>
+                  <h4 className="text-h5 font-bold text-[#132a43] mb-1">{html($t("GoogleAdsCta__t23", "+186%"))}</h4>
                   <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-wider">{rich($t("GoogleAdsCta__t24", "Qualified Leads"))}</p>
                 </div>
               </div>
@@ -144,7 +140,7 @@ export default function GoogleAdsCta() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
                 </div>
                 <div>
-                  <h4 className="text-h5 font-bold text-[#132a43] mb-1">{$t("GoogleAdsCta__t26", "6.2x")}</h4>
+                  <h4 className="text-h5 font-bold text-[#132a43] mb-1">{html($t("GoogleAdsCta__t26", "6.2x"))}</h4>
                   <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-wider">{rich($t("GoogleAdsCta__t27", "ROAS Improved"))}</p>
                 </div>
               </div>
@@ -156,7 +152,7 @@ export default function GoogleAdsCta() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
                 <div>
-                  <h4 className="text-h5 font-bold text-[#132a43] mb-1">{$t("GoogleAdsCta__t28", "100+")}</h4>
+                  <h4 className="text-h5 font-bold text-[#132a43] mb-1">{html($t("GoogleAdsCta__t28", "100+"))}</h4>
                   <p className="text-[9px] font-semibold text-slate-500 uppercase tracking-wider">{rich($t("GoogleAdsCta__t29", "Businesses Trust Us"))}</p>
                 </div>
               </div>

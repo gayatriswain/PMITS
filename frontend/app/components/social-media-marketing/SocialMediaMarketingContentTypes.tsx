@@ -5,7 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import type { InstagramMedia } from "../../lib/instagram";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -251,12 +251,12 @@ export default function SocialMediaMarketingContentTypes({
             <motion.div variants={fadeUp} className="flex items-center gap-3 mb-3">
               <span className="w-6 h-[2px]" style={{ backgroundColor: TEAL }} />
               <span className="text-[11px] font-bold tracking-[0.15em] uppercase" style={{ color: TEAL }}>
-                {$t("SocialMediaMarketingContentTypes__t1", "Content That Connects")}</span>
+                {html($t("SocialMediaMarketingContentTypes__t1", "Content That Connects"))}</span>
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-h2 font-serif font-bold">
-              <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingContentTypes__t2", "Great Content")}</span>
-              <span className="block" style={{ color: NAVY }}>{$t("SocialMediaMarketingContentTypes__t3", "Lives Everywhere.")}</span>
-              <span className="block font-serif italic" style={{ color: TEAL }}>{$t("SocialMediaMarketingContentTypes__t4", "We Make It Work.")}</span>
+              <span className="block" style={{ color: NAVY }}>{html($t("SocialMediaMarketingContentTypes__t2", "Great Content"))}</span>
+              <span className="block" style={{ color: NAVY }}>{html($t("SocialMediaMarketingContentTypes__t3", "Lives Everywhere."))}</span>
+              <span className="block font-serif italic" style={{ color: TEAL }}>{html($t("SocialMediaMarketingContentTypes__t4", "We Make It Work."))}</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-body text-slate-600 mt-4 max-w-md">
               {rich($t("SocialMediaMarketingContentTypes__t5", "From scroll-stopping reels to engaging carousels and stories that convert — we create content designed to connect, engage, and grow your brand."))}</motion.p>

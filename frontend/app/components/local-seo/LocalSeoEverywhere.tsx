@@ -76,9 +76,7 @@ export default function LocalSeoEverywhere() {
           <LH2 className="mt-5" size="text-[clamp(30px,3.1vw,60px)]">
             {$t("LocalSeoEverywhere__t2", "From One Location to")}<br />
             <T>{$t("LocalSeoEverywhere__t3", "Everywhere")}</T> {$t("LocalSeoEverywhere__t4", "Customers Search.")}</LH2>
-          <p className="text-body mx-auto mt-5 max-w-[640px] text-slate-600">
-            {rich($t("LocalSeoEverywhere__t5", "We build and optimize your presence across all local discovery channels so your business shows up "))}<b className="font-semibold text-[#0f766e]">{$t("LocalSeoEverywhere__t6", "where it matters most.")}</b>
-          </p>
+          <p className="text-body mx-auto mt-5 max-w-[640px] text-slate-600">{rich($t("LocalSeoEverywhere__t5m", "We build and optimize your presence across all local discovery channels so your business shows up <b class=\"font-semibold text-[#0f766e]\">where it matters most.</b>"))}</p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-y-10 min-[480px]:grid-cols-2 sm:gap-x-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 xl:gap-x-6">
@@ -128,9 +126,7 @@ export default function LocalSeoEverywhere() {
               <Target className="h-10 w-10" strokeWidth={1.6} />
               <span className="ai-anim absolute inset-0 rounded-full border border-white/30" style={{ animation: "aiPing 2.4s ease-out infinite" }} />
             </span>
-            <p className={`text-body ${heading.className} font-bold`}>
-              {rich($t("LocalSeoEverywhere__t7", "More Visibility."))}<br /> {rich($t("LocalSeoEverywhere__t8", "More Customers."))}<br /> {rich($t("LocalSeoEverywhere__t9", "More "))}<span className="text-teal-200">{$t("LocalSeoEverywhere__t10", "Growth.")}</span>
-            </p>
+            <p className={`text-body ${heading.className} font-bold`}>{rich($t("LocalSeoEverywhere__t7m", "More Visibility.<br> More Customers.<br> More <span class=\"text-teal-200\">Growth.</span>"))}</p>
           </div>
           <div className="grid gap-5 p-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:py-7">
             {WINS.map(({ Icon, title, text }, i) => (

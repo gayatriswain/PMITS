@@ -6,7 +6,7 @@ import { motion, useInView, type Variants } from "framer-motion";
 import Container from "../shared/Container";
 import { Counter } from "../shared/useCountUp";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const NAVY = "#132a43";
 const DEEP_TEAL = "#0f5c56";
@@ -364,11 +364,7 @@ export default function SeoGrowthFramework() {
                 {rich($t("SeoGrowthFramework__t1", "Our Complete SEO Framework"))}</p>
               <DottedRule />
             </div>
-            <h2 className="text-h2 font-serif font-semibold mb-3" style={{ color: NAVY }}>
-              {$t("SeoGrowthFramework__t2", "Complete SEO Solutions")}<br />
-              {$t("SeoGrowthFramework__t3", "That Drive ")}<span style={{ color: TEAL }}>{$t("SeoGrowthFramework__t4", "Real Growth")}</span>
-              <span style={{ color: GOLD }}>.</span>
-            </h2>
+            <h2 className="text-h2 font-serif font-semibold mb-3" style={{ color: NAVY }}>{rich($t("SeoGrowthFramework__t2m", "Complete SEO Solutions<br>That Drive <span class=\"text-[#1b8a80]\">Real Growth</span><span class=\"text-[#d4a54a]\">.</span>"))}</h2>
             <p className="text-body text-slate-600 max-w-xl">
               {rich($t("SeoGrowthFramework__t5", "From strategy to execution, we cover every aspect of SEO to increase your visibility, attract the right audience and deliver measurable business results."))}</p>
           </motion.div>
@@ -441,7 +437,7 @@ export default function SeoGrowthFramework() {
                   className="text-[10px] font-bold tracking-[0.25em] uppercase whitespace-nowrap [writing-mode:vertical-rl] rotate-180"
                   style={{ color: TEAL }}
                 >
-                  {$t("SeoGrowthFramework__t6", "Our Core Focus")}</span>
+                  {html($t("SeoGrowthFramework__t6", "Our Core Focus"))}</span>
                 <motion.span
                   className="w-px flex-1 origin-top"
                   style={{ backgroundColor: `${TEAL}80` }}
@@ -455,11 +451,7 @@ export default function SeoGrowthFramework() {
 
               {/* Content */}
               <div className="relative pt-[184px] pb-10 pl-14 pr-5">
-                <h3 className="text-h5 font-serif font-semibold mb-4">
-                  <span style={{ color: NAVY }}>{$t("SeoGrowthFramework__t7", "SEO Solutions")}</span>
-                  <br />
-                  <span style={{ color: TEAL }}>{$t("SeoGrowthFramework__t8", "That Grow Your Business")}</span>
-                </h3>
+                <h3 className="text-h5 font-serif font-semibold mb-4">{rich($t("SeoGrowthFramework__t7m", "<span class=\"text-[#132a43]\">SEO Solutions</span><br><span class=\"text-[#1b8a80]\">That Grow Your Business</span>"))}</h3>
                 <span className="block w-8 h-[2px] mb-6" style={{ backgroundColor: GOLD }} />
 
                 <p className="text-small text-slate-600 mb-5">

@@ -6,7 +6,7 @@ import DottedMap from "dotted-map/without-countries";
 import Container from "../shared/Container";
 import WORLD_DOT_MAP from "../shared/worldDotMap";
 import { useCmsData, useCmsText } from "@/components/cms/SectionContent";
-import { rich } from "@/components/cms/rich";
+import { html, rich } from "@/components/cms/rich";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const RED = "#d92b32";
@@ -215,11 +215,8 @@ export default function HireCakePhpExpertise() {
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em]" style={{ color: RED }}>
             <i aria-hidden className="h-1.5 w-1.5 rounded-full" style={{ background: RED }} />
-            {$t("HireCakePhpExpertise__t1", "CakePHP Expertise")}</span>
-          <h2 className="text-h2 mt-4 font-serif font-bold tracking-tight text-[#0f1a2e]">
-            {$t("HireCakePhpExpertise__t2", "More than Developers.")}<br />
-            <span style={{ color: RED }}>{$t("HireCakePhpExpertise__t3", "A Complete CakePHP Partner.")}</span>
-          </h2>
+            {html($t("HireCakePhpExpertise__t1", "CakePHP Expertise"))}</span>
+          <h2 className="text-h2 mt-4 font-serif font-bold tracking-tight text-[#0f1a2e]">{rich($t("HireCakePhpExpertise__t2m", "More than Developers.<br><span class=\"text-[#d92b32]\">A Complete CakePHP Partner.</span>"))}</h2>
           <p className="text-body mx-auto mt-4 max-w-xl text-slate-600">
             {rich($t("HireCakePhpExpertise__t4", "We combine deep CakePHP expertise with proven engineering practices to deliver secure, scalable and future-ready web applications."))}</p>
         </div>
@@ -250,7 +247,7 @@ export default function HireCakePhpExpertise() {
             <div className="flex flex-col items-center gap-1.5 lg:px-2">
               <CakeMark />
               <span className="text-[22px] font-extrabold leading-none tracking-tight" style={{ color: RED }}>
-                {$t("HireCakePhpExpertise__t5", "CakePHP")}</span>
+                {html($t("HireCakePhpExpertise__t5", "CakePHP"))}</span>
             </div>
 
             <ul className="grid grid-cols-2 gap-y-5 sm:grid-cols-4">

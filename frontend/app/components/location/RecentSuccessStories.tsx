@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "../shared/Container";
 import { useCmsText } from "@/components/cms/SectionContent";
+import { html, rich } from "@/components/cms/rich";
 
 export default function RecentSuccessStories() {
   const $t = useCmsText();
@@ -93,9 +94,8 @@ export default function RecentSuccessStories() {
         {/* Header Area */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 relative z-10">
           <div>
-            <h4 className="text-[#0D9488] font-bold tracking-widest text-sm uppercase mb-4">{$t("RecentSuccessStories__t22", "RECENT SUCCESS STORIES")}</h4>
-            <h2 className="text-h2 font-extrabold text-[#0F172A] font-serif">
-              {$t("RecentSuccessStories__t23", "Real Results. Real Impact. ")}<br /> {$t("RecentSuccessStories__t24", "For ")}<span className="text-[#0D9488]">{$t("RecentSuccessStories__t25", "Noida")}</span> {$t("RecentSuccessStories__t26", "Businesses.")}</h2>
+            <h4 className="text-[#0D9488] font-bold tracking-widest text-sm uppercase mb-4">{html($t("RecentSuccessStories__t22", "RECENT SUCCESS STORIES"))}</h4>
+            <h2 className="text-h2 font-extrabold text-[#0F172A] font-serif">{rich($t("RecentSuccessStories__t23m", "Real Results. Real Impact. <br> For <span class=\"text-[#0D9488]\">Noida</span> Businesses."))}</h2>
             <div className="w-12 h-1 bg-[#0D9488] mt-6"></div>
           </div>
           <Link href={$t("RecentSuccessStories__t27", "/testimonials")} className="hidden md:inline-flex items-center gap-2 font-bold text-[#0D9488] hover:text-teal-800 transition-colors mt-6 md:mt-0">
